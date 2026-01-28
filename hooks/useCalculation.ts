@@ -2,14 +2,40 @@
 
 import * as React from "react";
 import { calculateLeaveByTime } from "@/lib/calculator";
-import type { CalculationResult, CalculationInput } from "@/types/jfk";
-import { THINKING_STEPS } from "@/components/ThinkingState";
+import type { CalculationResult, CalculationInput, TerminalId } from "@/types/jfk";
 
 type CalcState =
   | { status: "idle" }
   | { status: "loading"; currentStep: string; completedSteps: string[] }
   | { status: "done"; result: CalculationResult }
   | { status: "error"; message: string };
+
+interface ClaudeResponse {
+  flight: {
+    status: "on_time" | "delayed" | "cancelled";
+    departureTime: string;
+    terminal: string;
+    gate: string | null;
+    delayMinutes: number | null;
+    destination: string;
+    isInternational: boolean;
+  };
+  traffic: {
+    durationMinutes: number;
+    description: string;
+    level: "light" | "moderate" | "heavy" | "severe";
+  };
+  security: {
+    estimatedWaitMinutes: number;
+    notes: string;
+  };
+  weather: {
+    conditions: string;
+    impactOnTravel: "none" | "minor" | "moderate" | "severe";
+  };
+  warnings: string[];
+  tips: string[];
+}
 
 export function useCalculation() {
   const [state, setState] = React.useState<CalcState>({ status: "idle" });
@@ -18,74 +44,95 @@ export function useCalculation() {
     setState({ status: "loading", currentStep: "flight", completedSteps: [] });
 
     try {
-      // Simulate step-by-step progress with delays
-      // In production, these would be actual API calls
+      // Call Claude API to get real-time data
+      const response = await fetch("/api/calculate", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          flightNumber: input.flightNumber,
+          date: input.date.toISOString(),
+          origin: input.origin,
+          hasPrecheck: input.hasPrecheck,
+          hasClear: input.hasClear,
+          checkingBag: input.checkingBag,
+        }),
+      });
 
-      // Step 1: Flight info
-      await simulateStep(800);
+      // Update progress as we "process" the response
       setState((s) =>
         s.status === "loading"
-          ? {
-              ...s,
-              currentStep: "traffic",
-              completedSteps: [...s.completedSteps, "flight"],
-            }
+          ? { ...s, currentStep: "traffic", completedSteps: ["flight"] }
+          : s
+      );
+      await delay(400);
+
+      setState((s) =>
+        s.status === "loading"
+          ? { ...s, currentStep: "security", completedSteps: ["flight", "traffic"] }
+          : s
+      );
+      await delay(400);
+
+      setState((s) =>
+        s.status === "loading"
+          ? { ...s, currentStep: "weather", completedSteps: ["flight", "traffic", "security"] }
+          : s
+      );
+      await delay(400);
+
+      setState((s) =>
+        s.status === "loading"
+          ? { ...s, currentStep: "calculating", completedSteps: ["flight", "traffic", "security", "weather"] }
           : s
       );
 
-      // Step 2: Traffic
-      await simulateStep(1000);
-      setState((s) =>
-        s.status === "loading"
-          ? {
-              ...s,
-              currentStep: "security",
-              completedSteps: [...s.completedSteps, "traffic"],
-            }
-          : s
-      );
+      if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.error || "Failed to get travel data");
+      }
 
-      // Step 3: Security
-      await simulateStep(800);
-      setState((s) =>
-        s.status === "loading"
-          ? {
-              ...s,
-              currentStep: "weather",
-              completedSteps: [...s.completedSteps, "security"],
-            }
-          : s
-      );
+      const data: ClaudeResponse = await response.json();
 
-      // Step 4: Weather
-      await simulateStep(600);
-      setState((s) =>
-        s.status === "loading"
-          ? {
-              ...s,
-              currentStep: "calculating",
-              completedSteps: [...s.completedSteps, "weather"],
-            }
-          : s
-      );
-
-      // Step 5: Calculate
-      await simulateStep(500);
-
-      // For now, use mock travel time (in production, this would come from scraping)
-      const mockTravelTime = getMockTravelTime(input.origin);
-
+      // Use Claude's real-time data in the calculation
       const result = calculateLeaveByTime({
         input,
-        travelTimeMinutes: mockTravelTime,
+        travelTimeMinutes: data.traffic.durationMinutes,
+        securityWaitMinutes: data.security.estimatedWaitMinutes,
         flightInfo: {
-          destination: getMockDestination(input.flightNumber),
-          isInternational: isLikelyInternational(input.flightNumber),
+          destination: data.flight.destination,
+          isInternational: data.flight.isInternational,
+          terminal: data.flight.terminal as TerminalId,
+          gate: data.flight.gate || undefined,
+          status: data.flight.status === "on_time" ? "on_time" :
+                  data.flight.status === "delayed" ? "delayed" :
+                  data.flight.status === "cancelled" ? "cancelled" : "unknown",
+          delayMinutes: data.flight.delayMinutes || undefined,
         },
       });
 
+      // Add Claude's warnings and tips to the result
+      if (data.warnings?.length) {
+        result.warnings = [...result.warnings, ...data.warnings];
+      }
+      if (data.tips?.length) {
+        result.proTips = [...data.tips, ...result.proTips];
+      }
+
+      // Add traffic and weather info to breakdown details
+      const trafficStep = result.breakdown.find(s => s.id === "travel");
+      if (trafficStep) {
+        trafficStep.details = `${data.traffic.description}. Traffic: ${data.traffic.level}.`;
+      }
+
+      // Add weather warning if significant
+      if (data.weather.impactOnTravel !== "none") {
+        result.warnings.push(`Weather: ${data.weather.conditions}`);
+      }
+
       setState({ status: "done", result });
+
     } catch (error) {
+      console.error("Calculation error:", error);
       setState({
         status: "error",
         message: error instanceof Error ? error.message : "Something went wrong",
@@ -100,125 +147,6 @@ export function useCalculation() {
   return { state, calculate, reset };
 }
 
-// Helper to simulate API delays
-function simulateStep(ms: number): Promise<void> {
+function delay(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
-}
-
-// Mock travel time based on origin (in production, would come from Google Maps)
-function getMockTravelTime(origin: string): number {
-  const lowerOrigin = origin.toLowerCase();
-
-  // Manhattan neighborhoods
-  if (
-    lowerOrigin.includes("manhattan") ||
-    lowerOrigin.includes("midtown") ||
-    lowerOrigin.includes("upper east") ||
-    lowerOrigin.includes("upper west") ||
-    lowerOrigin.includes("chelsea") ||
-    lowerOrigin.includes("soho") ||
-    lowerOrigin.includes("tribeca") ||
-    lowerOrigin.includes("10001") ||
-    lowerOrigin.includes("10019") ||
-    lowerOrigin.includes("10022")
-  ) {
-    return 45 + Math.floor(Math.random() * 15); // 45-60 min
-  }
-
-  // Brooklyn
-  if (
-    lowerOrigin.includes("brooklyn") ||
-    lowerOrigin.includes("williamsburg") ||
-    lowerOrigin.includes("park slope") ||
-    lowerOrigin.includes("11201") ||
-    lowerOrigin.includes("11211")
-  ) {
-    return 35 + Math.floor(Math.random() * 15); // 35-50 min
-  }
-
-  // Queens (closer to JFK)
-  if (
-    lowerOrigin.includes("queens") ||
-    lowerOrigin.includes("astoria") ||
-    lowerOrigin.includes("jamaica") ||
-    lowerOrigin.includes("11101") ||
-    lowerOrigin.includes("11432")
-  ) {
-    return 20 + Math.floor(Math.random() * 15); // 20-35 min
-  }
-
-  // Long Island
-  if (
-    lowerOrigin.includes("long island") ||
-    lowerOrigin.includes("nassau") ||
-    lowerOrigin.includes("suffolk")
-  ) {
-    return 30 + Math.floor(Math.random() * 20); // 30-50 min
-  }
-
-  // New Jersey
-  if (
-    lowerOrigin.includes("jersey") ||
-    lowerOrigin.includes("hoboken") ||
-    lowerOrigin.includes("newark")
-  ) {
-    return 50 + Math.floor(Math.random() * 20); // 50-70 min
-  }
-
-  // Default
-  return 40 + Math.floor(Math.random() * 15); // 40-55 min
-}
-
-// Mock destination based on flight number
-function getMockDestination(flightNumber: string): string {
-  const upper = flightNumber.toUpperCase();
-
-  // Common destinations by airline
-  if (upper.startsWith("DL")) {
-    const destinations = ["Los Angeles", "San Francisco", "Atlanta", "Seattle", "Miami"];
-    return destinations[Math.floor(Math.random() * destinations.length)];
-  }
-  if (upper.startsWith("AA")) {
-    const destinations = ["Dallas", "Chicago", "Los Angeles", "Miami", "Phoenix"];
-    return destinations[Math.floor(Math.random() * destinations.length)];
-  }
-  if (upper.startsWith("B6")) {
-    const destinations = ["Boston", "Fort Lauderdale", "San Juan", "Los Angeles", "San Francisco"];
-    return destinations[Math.floor(Math.random() * destinations.length)];
-  }
-  if (upper.startsWith("BA") || upper.startsWith("VS")) {
-    return "London";
-  }
-  if (upper.startsWith("AF")) {
-    return "Paris";
-  }
-  if (upper.startsWith("LH")) {
-    return "Frankfurt";
-  }
-  if (upper.startsWith("EI")) {
-    return "Dublin";
-  }
-
-  return "Unknown";
-}
-
-// Check if flight is likely international based on airline code
-function isLikelyInternational(flightNumber: string): boolean {
-  const upper = flightNumber.toUpperCase();
-  const internationalAirlines = [
-    "AF",
-    "LH",
-    "BA",
-    "VS",
-    "EI",
-    "KL",
-    "EK",
-    "EY",
-    "SQ",
-    "QR",
-    "TK",
-    "FI",
-    "NH",
-  ];
-  return internationalAirlines.some((code) => upper.startsWith(code));
 }
