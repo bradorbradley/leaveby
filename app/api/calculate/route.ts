@@ -3,57 +3,10 @@ import { NextRequest, NextResponse } from "next/server";
 
 const client = new Anthropic();
 
-const SYSTEM_PROMPT = `You are a helpful assistant that provides real-time travel information for flights departing from JFK airport.
-
-When given flight details, you need to search for and provide:
-1. Flight status (on time, delayed, cancelled) and departure time
-2. Which terminal the flight departs from
-3. Current traffic conditions from the origin to JFK
-4. Current TSA security wait times at that terminal
-5. Any weather that might impact travel
-
-IMPORTANT: You MUST respond with ONLY a valid JSON object in this exact format, no other text:
-
-{
-  "flight": {
-    "status": "on_time" | "delayed" | "cancelled",
-    "departureTime": "HH:MM AM/PM",
-    "terminal": "1" | "4" | "5" | "7" | "8",
-    "gate": "string or null",
-    "delayMinutes": number or null,
-    "destination": "city name",
-    "isInternational": boolean
-  },
-  "traffic": {
-    "durationMinutes": number,
-    "description": "brief description of route and conditions",
-    "level": "light" | "moderate" | "heavy" | "severe"
-  },
-  "security": {
-    "estimatedWaitMinutes": number,
-    "notes": "any relevant notes about security"
-  },
-  "weather": {
-    "conditions": "brief description",
-    "impactOnTravel": "none" | "minor" | "moderate" | "severe"
-  },
-  "warnings": ["array of any important warnings"],
-  "tips": ["array of helpful tips for this specific trip"]
-}
-
-Use web search to find current, real-time information. Today's date is ${new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}.
-
-If you cannot find specific real-time data, make reasonable estimates based on:
-- Typical traffic patterns for the time of day
-- Historical TSA wait times for that terminal
-- Standard flight operations
-
-Always provide the JSON response, even if some data is estimated.`;
-
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { flightNumber, date, origin, hasPrecheck, hasClear, checkingBag } = body;
+    const { flightNumber, airport, date, origin, hasPrecheck, hasClear, hasGlobalEntry, checkingBag, airlineStatus } = body;
 
     const dateObj = new Date(date);
     const dateStr = dateObj.toLocaleDateString('en-US', {
@@ -62,35 +15,54 @@ export async function POST(request: NextRequest) {
       month: 'long',
       day: 'numeric'
     });
-    const timeStr = dateObj.toLocaleTimeString('en-US', {
-      hour: 'numeric',
-      minute: '2-digit',
-      hour12: true
-    });
 
-    const userPrompt = `I need real-time travel information for this JFK flight:
+    const prompt = `I need to catch flight ${flightNumber} from ${airport} airport.
 
-Flight: ${flightNumber}
-Date: ${dateStr}
-Scheduled departure: around ${timeStr}
-Traveling from: ${origin}
-Security: ${hasPrecheck ? 'Has TSA PreCheck' : 'Standard screening'}${hasClear ? ', Has CLEAR' : ''}
-Bags: ${checkingBag ? 'Checking a bag' : 'Carry-on only'}
+Details:
+- Date: ${dateStr}
+- Leaving from: ${origin}
+- Security: ${hasPrecheck || hasGlobalEntry ? 'TSA PreCheck' : 'Standard screening'}${hasClear ? ' + CLEAR' : ''}
+- Bags: ${checkingBag ? 'Checking a bag' : 'Carry-on only'}
+${airlineStatus && airlineStatus !== 'none' ? `- Airline status: ${airlineStatus}` : ''}
 
-Please search for:
-1. Current status of flight ${flightNumber} - is it on time? What terminal and gate?
-2. Current traffic conditions from ${origin} to JFK airport
-3. Current TSA security wait times at the departing terminal
-4. Current weather conditions that might affect travel
+Tell me:
+1. What terminal does this flight depart from?
+2. How long will it take to get from ${origin} to ${airport} airport right now?
+3. What are current TSA security wait times at that terminal?
+4. Any weather, construction, or other issues I should know about?
+5. What time should I leave to make this flight comfortably?
 
-Respond with ONLY the JSON object, no other text.`;
+Give me a definitive "leave by" time - not a range. Be specific.
+
+Respond with ONLY this JSON format, no other text:
+{
+  "leaveByTime": "7:15 AM",
+  "flight": {
+    "airline": "Delta",
+    "number": "405",
+    "destination": "Los Angeles",
+    "terminal": "2",
+    "departureTime": "10:30 AM",
+    "isInternational": false
+  },
+  "breakdown": {
+    "travelMinutes": 45,
+    "travelDescription": "Via I-85 S, moderate traffic expected",
+    "securityMinutes": 25,
+    "securityDescription": "PreCheck line currently ~15 min, added buffer for variability",
+    "airportBufferMinutes": 15,
+    "airportBufferDescription": "Walk to gate, any last-minute needs"
+  },
+  "totalMinutes": 120,
+  "warnings": ["Array of any important warnings - construction, weather, delays, etc"],
+  "tips": ["Array of helpful tips specific to this airport/terminal/situation"]
+}`;
 
     const response = await client.messages.create({
       model: "claude-sonnet-4-20250514",
       max_tokens: 1024,
-      system: SYSTEM_PROMPT,
       messages: [
-        { role: "user", content: userPrompt }
+        { role: "user", content: prompt }
       ],
     });
 
@@ -103,7 +75,6 @@ Respond with ONLY the JSON object, no other text.`;
     // Parse the JSON response
     let data;
     try {
-      // Try to extract JSON from the response (in case there's any extra text)
       const jsonMatch = textContent.text.match(/\{[\s\S]*\}/);
       if (jsonMatch) {
         data = JSON.parse(jsonMatch[0]);

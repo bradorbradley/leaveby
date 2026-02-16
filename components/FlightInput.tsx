@@ -6,11 +6,26 @@ import { Plane } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
+import { Select } from "@/components/ui/select";
 import { DateSelector } from "@/components/ui/date-selector";
-import { parseFlightNumber, getAirlineName, getTerminalForAirline } from "@/lib/jfk-data";
+
+// Top 10 US airports by passenger volume
+const AIRPORTS = [
+  { value: "ATL", label: "Atlanta (ATL)" },
+  { value: "DFW", label: "Dallas/Fort Worth (DFW)" },
+  { value: "DEN", label: "Denver (DEN)" },
+  { value: "ORD", label: "Chicago O'Hare (ORD)" },
+  { value: "LAX", label: "Los Angeles (LAX)" },
+  { value: "JFK", label: "New York JFK (JFK)" },
+  { value: "LAS", label: "Las Vegas (LAS)" },
+  { value: "MCO", label: "Orlando (MCO)" },
+  { value: "MIA", label: "Miami (MIA)" },
+  { value: "CLT", label: "Charlotte (CLT)" },
+];
 
 export interface FlightInputData {
   flightNumber: string;
+  airport: string;
   date: Date;
   origin: string;
   hasPrecheck: boolean;
@@ -24,6 +39,7 @@ interface FlightInputProps {
 
 export function FlightInput({ onSubmit }: FlightInputProps) {
   const [flightNumber, setFlightNumber] = React.useState("");
+  const [airport, setAirport] = React.useState("JFK");
   const [date, setDate] = React.useState(new Date());
   const [origin, setOrigin] = React.useState("");
   const [hasPrecheck, setHasPrecheck] = React.useState(false);
@@ -31,24 +47,18 @@ export function FlightInput({ onSubmit }: FlightInputProps) {
   const [hasGlobalEntry, setHasGlobalEntry] = React.useState(false);
   const [errors, setErrors] = React.useState<Record<string, string>>({});
 
-  // Parse flight number for airline detection
-  const parsedFlight = React.useMemo(() => {
-    return parseFlightNumber(flightNumber);
-  }, [flightNumber]);
-
-  const airlineName = parsedFlight ? getAirlineName(parsedFlight.airlineCode) : null;
-  const terminal = parsedFlight ? getTerminalForAirline(parsedFlight.airlineCode) : null;
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const newErrors: Record<string, string> = {};
 
+    // Simple validation - just check format
+    const cleaned = flightNumber.replace(/\s+/g, "").toUpperCase();
+    const validFormat = /^[A-Z]{2}\d+$/.test(cleaned);
+
     if (!flightNumber.trim()) {
       newErrors.flightNumber = "Please enter your flight number";
-    } else if (!parsedFlight) {
-      newErrors.flightNumber = "Please enter a valid flight number (e.g., DL 405)";
-    } else if (!terminal) {
-      newErrors.flightNumber = "We don't recognize this airline at JFK. Please check the flight number.";
+    } else if (!validFormat) {
+      newErrors.flightNumber = "Enter flight number like DL405 or AA1234";
     }
 
     if (!origin.trim()) {
@@ -61,7 +71,8 @@ export function FlightInput({ onSubmit }: FlightInputProps) {
     }
 
     onSubmit({
-      flightNumber: flightNumber.trim().toUpperCase(),
+      flightNumber: cleaned,
+      airport,
       date,
       origin: origin.trim(),
       hasPrecheck,
@@ -69,6 +80,8 @@ export function FlightInput({ onSubmit }: FlightInputProps) {
       hasGlobalEntry,
     });
   };
+
+  const selectedAirport = AIRPORTS.find(a => a.value === airport);
 
   return (
     <motion.div
@@ -96,28 +109,25 @@ export function FlightInput({ onSubmit }: FlightInputProps) {
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-6">
+        {/* Airport Selector */}
+        <Select
+          label="Which airport?"
+          value={airport}
+          onValueChange={setAirport}
+          options={AIRPORTS}
+        />
+
         {/* Flight Number */}
-        <div>
-          <Input
-            label="Flight number"
-            placeholder="e.g., DL 405"
-            value={flightNumber}
-            onChange={(e) => {
-              setFlightNumber(e.target.value);
-              setErrors((prev) => ({ ...prev, flightNumber: "" }));
-            }}
-            error={errors.flightNumber}
-          />
-          {airlineName && terminal && (
-            <motion.p
-              initial={{ opacity: 0, y: -5 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="mt-2 text-sm text-success"
-            >
-              {airlineName} • Terminal {terminal}
-            </motion.p>
-          )}
-        </div>
+        <Input
+          label="Flight number"
+          placeholder="e.g., DL405"
+          value={flightNumber}
+          onChange={(e) => {
+            setFlightNumber(e.target.value);
+            setErrors((prev) => ({ ...prev, flightNumber: "" }));
+          }}
+          error={errors.flightNumber}
+        />
 
         {/* Date Selector */}
         <DateSelector
@@ -129,7 +139,7 @@ export function FlightInput({ onSubmit }: FlightInputProps) {
         {/* Origin */}
         <Input
           label="Where are you leaving from?"
-          placeholder="Zip, neighborhood, or address"
+          placeholder="Address, zip, or neighborhood"
           value={origin}
           onChange={(e) => {
             setOrigin(e.target.value);

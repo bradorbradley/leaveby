@@ -3,42 +3,30 @@
 import * as React from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { FlightInput, type FlightInputData } from "@/components/FlightInput";
-import { OptionsForm, type OptionsData } from "@/components/OptionsForm";
 import { ThinkingState } from "@/components/ThinkingState";
 import { ResultsScreen } from "@/components/ResultsScreen";
-import { useCalculation } from "@/hooks/useCalculation";
-import type { CalculationInput } from "@/types/jfk";
+import { useCalculation, type CalculationInput } from "@/hooks/useCalculation";
 
-type Screen = "input" | "options" | "loading" | "results";
+type Screen = "input" | "loading" | "results";
 
 export default function Home() {
   const [screen, setScreen] = React.useState<Screen>("input");
-  const [flightData, setFlightData] = React.useState<FlightInputData | null>(null);
   const { state, calculate, reset } = useCalculation();
 
-  // Handle flight input submission
-  const handleFlightSubmit = (data: FlightInputData) => {
-    setFlightData(data);
-    setScreen("options");
-  };
-
-  // Handle options submission
-  const handleOptionsSubmit = async (options: OptionsData) => {
-    if (!flightData) return;
-
+  // Handle flight input submission - go straight to calculation
+  const handleSubmit = async (data: FlightInputData) => {
     setScreen("loading");
 
     const input: CalculationInput = {
-      flightNumber: flightData.flightNumber,
-      date: flightData.date,
-      origin: flightData.origin,
-      hasPrecheck: flightData.hasPrecheck,
-      hasClear: flightData.hasClear,
-      hasGlobalEntry: flightData.hasGlobalEntry,
-      hasTouchlessId: options.hasTouchlessId,
-      checkingBag: options.checkingBag,
-      airlineStatus: options.airlineStatus,
-      bufferPreference: 40, // Default 40 min buffer
+      flightNumber: data.flightNumber,
+      airport: data.airport,
+      date: data.date,
+      origin: data.origin,
+      hasPrecheck: data.hasPrecheck,
+      hasClear: data.hasClear,
+      hasGlobalEntry: data.hasGlobalEntry,
+      checkingBag: false, // Default to no checked bag for simplicity
+      airlineStatus: "none",
     };
 
     await calculate(input);
@@ -54,12 +42,6 @@ export default function Home() {
   // Handle start over
   const handleStartOver = () => {
     reset();
-    setFlightData(null);
-    setScreen("input");
-  };
-
-  // Handle back from options
-  const handleBack = () => {
     setScreen("input");
   };
 
@@ -70,28 +52,12 @@ export default function Home() {
           {screen === "input" && (
             <motion.div
               key="input"
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, x: -20 }}
               transition={{ duration: 0.3 }}
             >
-              <FlightInput onSubmit={handleFlightSubmit} />
-            </motion.div>
-          )}
-
-          {screen === "options" && flightData && (
-            <motion.div
-              key="options"
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -20 }}
-              transition={{ duration: 0.3 }}
-            >
-              <OptionsForm
-                flightData={flightData}
-                onBack={handleBack}
-                onSubmit={handleOptionsSubmit}
-              />
+              <FlightInput onSubmit={handleSubmit} />
             </motion.div>
           )}
 

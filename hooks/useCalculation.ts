@@ -1,41 +1,47 @@
 "use client";
 
 import * as React from "react";
-import { calculateLeaveByTime } from "@/lib/calculator";
-import type { CalculationResult, CalculationInput, TerminalId } from "@/types/jfk";
+
+export interface CalculationResult {
+  leaveByTime: string;
+  flight: {
+    airline: string;
+    number: string;
+    destination: string;
+    terminal: string;
+    departureTime: string;
+    isInternational: boolean;
+  };
+  breakdown: {
+    travelMinutes: number;
+    travelDescription: string;
+    securityMinutes: number;
+    securityDescription: string;
+    airportBufferMinutes: number;
+    airportBufferDescription: string;
+  };
+  totalMinutes: number;
+  warnings: string[];
+  tips: string[];
+}
+
+export interface CalculationInput {
+  flightNumber: string;
+  airport: string;
+  date: Date;
+  origin: string;
+  hasPrecheck: boolean;
+  hasClear: boolean;
+  hasGlobalEntry: boolean;
+  checkingBag: boolean;
+  airlineStatus: string;
+}
 
 type CalcState =
   | { status: "idle" }
   | { status: "loading"; currentStep: string; completedSteps: string[] }
   | { status: "done"; result: CalculationResult }
   | { status: "error"; message: string };
-
-interface ClaudeResponse {
-  flight: {
-    status: "on_time" | "delayed" | "cancelled";
-    departureTime: string;
-    terminal: string;
-    gate: string | null;
-    delayMinutes: number | null;
-    destination: string;
-    isInternational: boolean;
-  };
-  traffic: {
-    durationMinutes: number;
-    description: string;
-    level: "light" | "moderate" | "heavy" | "severe";
-  };
-  security: {
-    estimatedWaitMinutes: number;
-    notes: string;
-  };
-  weather: {
-    conditions: string;
-    impactOnTravel: "none" | "minor" | "moderate" | "severe";
-  };
-  warnings: string[];
-  tips: string[];
-}
 
 export function useCalculation() {
   const [state, setState] = React.useState<CalcState>({ status: "idle" });
@@ -44,92 +50,46 @@ export function useCalculation() {
     setState({ status: "loading", currentStep: "flight", completedSteps: [] });
 
     try {
-      // Call Claude API to get real-time data
-      const response = await fetch("/api/calculate", {
+      // Start the API call
+      const fetchPromise = fetch("/api/calculate", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           flightNumber: input.flightNumber,
+          airport: input.airport,
           date: input.date.toISOString(),
           origin: input.origin,
           hasPrecheck: input.hasPrecheck,
           hasClear: input.hasClear,
+          hasGlobalEntry: input.hasGlobalEntry,
           checkingBag: input.checkingBag,
+          airlineStatus: input.airlineStatus,
         }),
       });
 
-      // Update progress as we "process" the response
-      setState((s) =>
-        s.status === "loading"
-          ? { ...s, currentStep: "traffic", completedSteps: ["flight"] }
-          : s
-      );
-      await delay(400);
+      // Animate through steps while waiting
+      await delay(600);
+      setState(s => s.status === "loading" ? { ...s, currentStep: "traffic", completedSteps: ["flight"] } : s);
 
-      setState((s) =>
-        s.status === "loading"
-          ? { ...s, currentStep: "security", completedSteps: ["flight", "traffic"] }
-          : s
-      );
-      await delay(400);
+      await delay(600);
+      setState(s => s.status === "loading" ? { ...s, currentStep: "security", completedSteps: ["flight", "traffic"] } : s);
 
-      setState((s) =>
-        s.status === "loading"
-          ? { ...s, currentStep: "weather", completedSteps: ["flight", "traffic", "security"] }
-          : s
-      );
-      await delay(400);
+      await delay(600);
+      setState(s => s.status === "loading" ? { ...s, currentStep: "weather", completedSteps: ["flight", "traffic", "security"] } : s);
 
-      setState((s) =>
-        s.status === "loading"
-          ? { ...s, currentStep: "calculating", completedSteps: ["flight", "traffic", "security", "weather"] }
-          : s
-      );
+      await delay(600);
+      setState(s => s.status === "loading" ? { ...s, currentStep: "calculating", completedSteps: ["flight", "traffic", "security", "weather"] } : s);
+
+      // Wait for API response
+      const response = await fetchPromise;
 
       if (!response.ok) {
         const error = await response.json();
         throw new Error(error.error || "Failed to get travel data");
       }
 
-      const data: ClaudeResponse = await response.json();
-
-      // Use Claude's real-time data in the calculation
-      const result = calculateLeaveByTime({
-        input,
-        travelTimeMinutes: data.traffic.durationMinutes,
-        securityWaitMinutes: data.security.estimatedWaitMinutes,
-        flightInfo: {
-          destination: data.flight.destination,
-          isInternational: data.flight.isInternational,
-          terminal: data.flight.terminal as TerminalId,
-          gate: data.flight.gate || undefined,
-          status: data.flight.status === "on_time" ? "on_time" :
-                  data.flight.status === "delayed" ? "delayed" :
-                  data.flight.status === "cancelled" ? "cancelled" : "unknown",
-          delayMinutes: data.flight.delayMinutes || undefined,
-        },
-      });
-
-      // Add Claude's warnings and tips to the result
-      if (data.warnings?.length) {
-        result.warnings = [...result.warnings, ...data.warnings];
-      }
-      if (data.tips?.length) {
-        result.proTips = [...data.tips, ...result.proTips];
-      }
-
-      // Add traffic and weather info to breakdown details
-      const trafficStep = result.breakdown.find(s => s.id === "travel");
-      if (trafficStep) {
-        trafficStep.details = `${data.traffic.description}. Traffic: ${data.traffic.level}.`;
-      }
-
-      // Add weather warning if significant
-      if (data.weather.impactOnTravel !== "none") {
-        result.warnings.push(`Weather: ${data.weather.conditions}`);
-      }
-
-      setState({ status: "done", result });
+      const data: CalculationResult = await response.json();
+      setState({ status: "done", result: data });
 
     } catch (error) {
       console.error("Calculation error:", error);
@@ -148,5 +108,5 @@ export function useCalculation() {
 }
 
 function delay(ms: number): Promise<void> {
-  return new Promise((resolve) => setTimeout(resolve, ms));
+  return new Promise(resolve => setTimeout(resolve, ms));
 }
