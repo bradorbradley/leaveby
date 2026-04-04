@@ -7,7 +7,12 @@ const AIRPORT_REGEX = /\b(ATL|AUS|BNA|BOS|CLT|DCA|DEN|DFW|DTW|EWR|FLL|IAD|IAH|JF
 
 export function parseFlightNumber(input: string) {
   const normalized = input.trim().toUpperCase().replace(/\s+/g, "");
-  const match = normalized.match(/^([A-Z0-9]{2,3})(\d{1,4}[A-Z]?)$/);
+  // Try 2-letter IATA code first (most common: DL, UA, AA, etc.)
+  // Then fall back to 3-letter code (some carriers use 3)
+  const match =
+    normalized.match(/^([A-Z]{2})(\d{1,4}[A-Z]?)$/) ??
+    normalized.match(/^([A-Z]\d)(\d{1,4}[A-Z]?)$/) ??
+    normalized.match(/^([A-Z0-9]{3})(\d{1,4}[A-Z]?)$/);
   if (!match) {
     return null;
   }
