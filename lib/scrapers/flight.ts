@@ -1,6 +1,6 @@
 import { formatISO } from "date-fns";
 
-import { detectAirportTerminalByAirline, getAirlineProfile } from "@/lib/airports";
+import { detectAirportTerminalByAirline, getAirlineProfile, getAirportProfile } from "@/lib/airports";
 import { parseFlightNumber } from "@/lib/flight-utils";
 import { flattenResultText, searchBrave } from "@/lib/scrapers/brave";
 import type { AirportCode } from "@/types/airport";
@@ -53,7 +53,9 @@ export async function fetchFlightInfo(
     }
 
     // Extract departure time — try multiple formats
-    const departureTime = extractDepartureTime(blob, date);
+    // Times from search results are in the airport's local timezone
+    const airport = getAirportProfile(departureAirport);
+    const departureTime = extractDepartureTime(blob, date, airport?.timezone ?? "America/New_York");
 
     // Extract terminal — be specific to avoid false matches
     const terminal = extractTerminal(blob) ?? detectAirportTerminalByAirline(departureAirport, parsed.airlineCode) ?? null;
@@ -79,7 +81,7 @@ export async function fetchFlightInfo(
       departureAirport,
       destinationAirportCode: destinationCode,
       destinationCity: destinationCode,
-      departureTime: departureTime ?? formatISO(new Date(`${date}T09:00:00`)),
+      departureTime: departureTime ?? localToISO(date, "09:00", airport?.timezone ?? "America/New_York"),
       terminal,
       gate,
       status,
@@ -96,7 +98,7 @@ export async function fetchFlightInfo(
       departureAirport: preferredAirport,
       destinationAirportCode: undefined,
       destinationCity: undefined,
-      departureTime: formatISO(new Date(`${date}T09:00:00`)),
+      departureTime: localToISO(date, "09:00", getAirportProfile(preferredAirport)?.timezone ?? "America/New_York"),
       terminal: detectAirportTerminalByAirline(preferredAirport, parsed.airlineCode),
       gate: null,
       status: "unknown",
@@ -108,40 +110,47 @@ export async function fetchFlightInfo(
   }
 }
 
-function extractDepartureTime(text: string, date: string): string | null {
-  // Try "at HH:MM" (24h format, common in flight tracker snippets)
-  const at24Match = text.match(/(?:at|departs?|leaves?|departure)\s+(\d{1,2}):(\d{2})(?:\s*(am|pm))?/i);
-  if (at24Match) {
-    let hours = parseInt(at24Match[1], 10);
-    const minutes = parseInt(at24Match[2], 10);
-    const meridian = at24Match[3]?.toLowerCase();
-    if (meridian === "pm" && hours < 12) hours += 12;
-    if (meridian === "am" && hours === 12) hours = 0;
-    if (hours >= 0 && hours <= 23 && minutes >= 0 && minutes <= 59) {
-      return formatISO(new Date(`${date}T${String(hours).padStart(2, "0")}:${String(minutes).padStart(2, "0")}:00`));
-    }
-  }
+function extractDepartureTime(text: string, date: string, timezone: string): string | null {
+  // Try multiple patterns to find a departure time
+  const patterns = [
+    // "at HH:MM" or "departs HH:MM" with optional am/pm
+    /(?:at|departs?|leaves?|departure|scheduled)\s+(\d{1,2}):(\d{2})(?:\s*(am|pm|[A-Z]{2,4}))?/i,
+    // Standalone "HH:MM am/pm"
+    /\b(\d{1,2}):(\d{2})\s+(am|pm)\b/i,
+    // Bold time from snippets: **15:39**
+    /\*\*(\d{1,2}):(\d{2})\*\*/,
+  ];
 
-  // Try standalone "HH:MM am/pm" pattern
-  const ampmMatch = text.match(/\b(\d{1,2}):(\d{2})\s*(am|pm)\b/i);
-  if (ampmMatch) {
-    let hours = parseInt(ampmMatch[1], 10);
-    const minutes = parseInt(ampmMatch[2], 10);
-    const meridian = ampmMatch[3].toLowerCase();
-    if (meridian === "pm" && hours < 12) hours += 12;
-    if (meridian === "am" && hours === 12) hours = 0;
-    if (hours >= 0 && hours <= 23 && minutes >= 0 && minutes <= 59) {
-      return formatISO(new Date(`${date}T${String(hours).padStart(2, "0")}:${String(minutes).padStart(2, "0")}:00`));
-    }
-  }
+  for (const pattern of patterns) {
+    const match = text.match(pattern);
+    if (!match) continue;
 
-  // Try bold time pattern from search snippets: **07:00** or similar
-  const boldTimeMatch = text.match(/\*\*(\d{1,2}):(\d{2})\*\*/);
-  if (boldTimeMatch) {
-    const hours = parseInt(boldTimeMatch[1], 10);
-    const minutes = parseInt(boldTimeMatch[2], 10);
-    if (hours >= 0 && hours <= 23 && minutes >= 0 && minutes <= 59) {
-      return formatISO(new Date(`${date}T${String(hours).padStart(2, "0")}:${String(minutes).padStart(2, "0")}:00`));
+    let hours = parseInt(match[1], 10);
+    const minutes = parseInt(match[2], 10);
+    const suffix = match[3]?.toLowerCase();
+
+    // Handle am/pm
+    if (suffix === "pm" && hours < 12) hours += 12;
+    if (suffix === "am" && hours === 12) hours = 0;
+
+    if (hours < 0 || hours > 23 || minutes < 0 || minutes > 59) continue;
+
+    // The time from search is in the airport's LOCAL timezone.
+    // Create an ISO string that reflects this correctly.
+    // Use the IANA timezone to get the correct UTC offset.
+    const localTimeStr = `${date}T${String(hours).padStart(2, "0")}:${String(minutes).padStart(2, "0")}:00`;
+
+    try {
+      // Create a Date by computing the UTC offset for this timezone on this date
+      const utcGuess = new Date(localTimeStr + "Z"); // treat as UTC first
+      const localAtUtc = new Date(utcGuess.toLocaleString("en-US", { timeZone: timezone }));
+      const offsetMs = localAtUtc.getTime() - utcGuess.getTime();
+      // The actual UTC time = local time - offset
+      const corrected = new Date(utcGuess.getTime() - offsetMs);
+      return formatISO(corrected);
+    } catch {
+      // If timezone conversion fails, fall back to treating as UTC
+      return formatISO(new Date(localTimeStr));
     }
   }
 
@@ -161,4 +170,17 @@ function extractGate(text: string): string | null {
 
 function extractDelay(text: string): number {
   return Number(text.match(/(\d{1,3})\s*(?:-?\s*)?(?:minute|min)\s+delay/i)?.[1] ?? 0);
+}
+
+/** Convert a local date + HH:mm to an ISO string accounting for the airport timezone */
+function localToISO(date: string, hhmm: string, timezone: string): string {
+  const localTimeStr = `${date}T${hhmm}:00`;
+  try {
+    const utcGuess = new Date(localTimeStr + "Z");
+    const localAtUtc = new Date(utcGuess.toLocaleString("en-US", { timeZone: timezone }));
+    const offsetMs = localAtUtc.getTime() - utcGuess.getTime();
+    return formatISO(new Date(utcGuess.getTime() - offsetMs));
+  } catch {
+    return formatISO(new Date(localTimeStr));
+  }
 }
