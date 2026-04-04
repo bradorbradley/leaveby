@@ -6,7 +6,7 @@ import { safeJsonParse } from "@/lib/utils";
 import type { AirportCode } from "@/types/airport";
 import type { CalculationOptions, CalculationResult } from "@/types/calculation";
 
-type CalculationStep = "flight" | "traffic" | "security" | "weather" | "calculating";
+type CalculationStep = "searching" | "calculating";
 
 type CalcState =
   | { status: "idle" }
@@ -32,7 +32,7 @@ export function useCalculation() {
     try {
       setState({
         status: "loading",
-        step: "flight",
+        step: "searching",
         completedSteps: [],
         partial: {},
       });

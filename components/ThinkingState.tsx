@@ -1,15 +1,12 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Calculator, Car, Check, Cloud, Plane, Shield, Sparkles } from "lucide-react";
+import { Calculator, Check, Search, Sparkles } from "lucide-react";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 const thinkingSteps = [
-  { id: "flight", label: "Finding your flight...", icon: Plane },
-  { id: "traffic", label: "Checking current traffic...", icon: Car },
-  { id: "security", label: "Scanning terminal security lines...", icon: Shield },
-  { id: "weather", label: "Checking conditions...", icon: Cloud },
+  { id: "searching", label: "Searching for your flight, traffic, and conditions...", icon: Search },
   { id: "calculating", label: "Crunching the numbers...", icon: Calculator },
 ] as const;
 
