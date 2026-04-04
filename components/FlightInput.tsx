@@ -26,7 +26,7 @@ export function FlightInput({
   onChange: (patch: Partial<FlightFormValues>) => void;
   onContinue: () => void;
 }) {
-  const ready = values.flightNumber.trim() && values.origin.trim();
+  const ready = values.flightNumber.trim().length >= 3;
   const airports = listAirports();
 
   return (
