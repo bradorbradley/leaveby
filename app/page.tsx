@@ -1,48 +1,34 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 
 import { FlightInput } from "@/components/FlightInput";
-import { OptionsForm } from "@/components/OptionsForm";
 import { ResultsScreen } from "@/components/ResultsScreen";
 import { ThinkingState } from "@/components/ThinkingState";
-import { getAirlineProfile } from "@/lib/airports";
-import { parseFlightNumber, resolveDateFromPreset } from "@/lib/flight-utils";
+import { inferAirportFromFlightContext, resolveDateFromPreset } from "@/lib/flight-utils";
 import { useCalculation } from "@/hooks/useCalculation";
-import type { AirportCode } from "@/types/airport";
 import type { CalculationOptions } from "@/types/calculation";
-import type { FlightFormValues, OptionsFormValues } from "@/types/forms";
-import type { FlightInfo } from "@/types/flight";
+import type { LeaveByFormValues } from "@/types/forms";
 
-type Screen = "flight" | "options" | "thinking" | "results";
+type Screen = "input" | "thinking" | "results";
 
-const initialFlightForm: FlightFormValues = {
+const initialForm: LeaveByFormValues = {
   flightNumber: "",
   datePreset: "today",
   customDate: "",
   origin: "",
+  checkedBag: false,
   hasPreCheck: false,
   hasClear: false,
   hasGlobalEntry: false,
-  airportCode: "JFK",
-};
-
-const initialOptions: OptionsFormValues = {
-  checkedBag: false,
-  airlineStatus: "None",
-  hasTouchlessId: false,
   bufferMinutes: 40,
 };
 
 export default function HomePage() {
   const { state, calculate, reset } = useCalculation();
-  const [screen, setScreen] = useState<Screen>("flight");
-  const [flightForm, setFlightForm] = useState<FlightFormValues>(initialFlightForm);
-  const [optionsForm, setOptionsForm] = useState<OptionsFormValues>(initialOptions);
-  const [previewFlight, setPreviewFlight] = useState<FlightInfo | null>(null);
-
-  const parsedFlight = useMemo(() => parseFlightNumber(flightForm.flightNumber), [flightForm.flightNumber]);
+  const [screen, setScreen] = useState<Screen>("input");
+  const [form, setForm] = useState<LeaveByFormValues>(initialForm);
 
   useEffect(() => {
     if (state.status === "done") {
@@ -50,66 +36,34 @@ export default function HomePage() {
     }
   }, [state.status]);
 
-  const continueToOptions = () => {
-    if (!parsedFlight) return;
-    const airline = getAirlineProfile(parsedFlight.airlineCode);
-    const terminal = airline?.airportAssignments[flightForm.airportCode as AirportCode] ?? null;
-    const date = resolveDateFromPreset(flightForm.datePreset, flightForm.customDate);
-
-    setPreviewFlight({
-      flightNumber: parsedFlight.normalized,
-      airlineCode: parsedFlight.airlineCode,
-      airlineName: parsedFlight.airlineName,
-      departureAirport: flightForm.airportCode as AirportCode,
-      destinationAirportCode: undefined,
-      destinationCity: undefined,
-      departureTime: `${date}T09:00:00.000Z`,
-      terminal,
-      gate: null,
-      status: "unknown",
-      delayMinutes: 0,
-      region: "domestic",
-      source: "Preview",
-      notes: [],
-    });
-    setOptionsForm((current) => ({
-      ...current,
-      airlineStatus: airline?.statusTiers[0] ?? "None",
-      hasTouchlessId: parsedFlight.airlineCode === "DL" ? current.hasTouchlessId : false,
-    }));
-    setScreen("options");
-  };
-
   const submitCalculation = async () => {
-    const date = resolveDateFromPreset(flightForm.datePreset, flightForm.customDate);
+    const date = resolveDateFromPreset(form.datePreset, form.customDate);
     const payloadOptions: CalculationOptions = {
-      origin: flightForm.origin,
-      hasPreCheck: flightForm.hasPreCheck,
-      hasClear: flightForm.hasClear,
-      hasGlobalEntry: flightForm.hasGlobalEntry,
-      hasTouchlessId: optionsForm.hasTouchlessId,
-      checkedBag: optionsForm.checkedBag,
-      airlineStatus: optionsForm.airlineStatus,
+      origin: form.origin,
+      hasPreCheck: form.hasPreCheck,
+      hasClear: form.hasClear,
+      hasGlobalEntry: form.hasGlobalEntry,
+      hasTouchlessId: false,
+      checkedBag: form.checkedBag,
+      airlineStatus: "None",
       mobileBoardingPass: true,
-      bufferMinutes: optionsForm.bufferMinutes,
+      bufferMinutes: form.bufferMinutes,
     };
 
     setScreen("thinking");
     await calculate({
-      flightNumber: flightForm.flightNumber,
+      flightNumber: form.flightNumber,
       date,
-      airportCode: flightForm.airportCode as AirportCode,
-      origin: flightForm.origin,
+      airportCode: inferAirportFromFlightContext(form.flightNumber),
+      origin: form.origin,
       options: payloadOptions,
     });
   };
 
   const resetAll = () => {
     reset();
-    setScreen("flight");
-    setFlightForm(initialFlightForm);
-    setOptionsForm(initialOptions);
-    setPreviewFlight(null);
+    setScreen("input");
+    setForm(initialForm);
   };
 
   return (
@@ -129,21 +83,11 @@ export default function HomePage() {
           exit={{ opacity: 0, x: -18 }}
           transition={{ duration: 0.3 }}
         >
-          {screen === "flight" ? (
+          {screen === "input" ? (
             <FlightInput
-              values={flightForm}
-              onChange={(patch) => setFlightForm((current) => ({ ...current, ...patch }))}
-              onContinue={continueToOptions}
-            />
-          ) : null}
-
-          {screen === "options" ? (
-            <OptionsForm
-              flight={previewFlight}
-              values={optionsForm}
-              onChange={(patch) => setOptionsForm((current) => ({ ...current, ...patch }))}
-              onBack={() => setScreen("flight")}
-              onCalculate={submitCalculation}
+              values={form}
+              onChange={(patch) => setForm((current) => ({ ...current, ...patch }))}
+              onSubmit={submitCalculation}
             />
           ) : null}
 
@@ -161,7 +105,7 @@ export default function HomePage() {
               <p className="mt-3 text-sm text-muted-foreground">{state.message}</p>
               <button
                 type="button"
-                className="mt-6 rounded-2xl bg-accent px-5 py-3 text-sm font-medium text-accent-foreground"
+                className="mt-6 min-h-12 rounded-2xl bg-accent px-5 py-3 text-sm font-medium text-accent-foreground"
                 onClick={resetAll}
               >
                 Try again

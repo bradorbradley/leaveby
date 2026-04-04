@@ -1,19 +1,13 @@
 export type DatePreset = "today" | "tomorrow" | "custom";
 
-export interface FlightFormValues {
+export interface LeaveByFormValues {
   flightNumber: string;
   datePreset: DatePreset;
   customDate: string;
   origin: string;
+  checkedBag: boolean;
   hasPreCheck: boolean;
   hasClear: boolean;
   hasGlobalEntry: boolean;
-  airportCode: string;
-}
-
-export interface OptionsFormValues {
-  checkedBag: boolean;
-  airlineStatus: string;
-  hasTouchlessId: boolean;
   bufferMinutes: number;
 }

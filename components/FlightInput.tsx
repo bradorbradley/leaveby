@@ -1,56 +1,71 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, LockKeyhole, MapPin, Plane, ShieldCheck } from "lucide-react";
+import { Briefcase, CalendarDays, MapPin, Plane, ShieldCheck } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
-import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { listAirports } from "@/lib/airports";
-import type { FlightFormValues } from "@/types/forms";
+import { parseFlightNumber } from "@/lib/flight-utils";
+import type { LeaveByFormValues } from "@/types/forms";
 
-const dateOptions: Array<{ value: FlightFormValues["datePreset"]; label: string }> = [
+const dateOptions: Array<{ value: LeaveByFormValues["datePreset"]; label: string }> = [
   { value: "today", label: "Today" },
   { value: "tomorrow", label: "Tomorrow" },
-  { value: "custom", label: "Choose date" },
+  { value: "custom", label: "Pick date" },
 ];
+
+const perkOptions = [
+  { key: "hasPreCheck", label: "PreCheck" },
+  { key: "hasClear", label: "CLEAR" },
+  { key: "hasGlobalEntry", label: "Global Entry" },
+] satisfies Array<{ key: keyof Pick<LeaveByFormValues, "hasPreCheck" | "hasClear" | "hasGlobalEntry">; label: string }>;
 
 export function FlightInput({
   values,
   onChange,
-  onContinue,
+  onSubmit,
 }: {
-  values: FlightFormValues;
-  onChange: (patch: Partial<FlightFormValues>) => void;
-  onContinue: () => void;
+  values: LeaveByFormValues;
+  onChange: (patch: Partial<LeaveByFormValues>) => void;
+  onSubmit: () => void;
 }) {
-  const ready = values.flightNumber.trim().length >= 3;
-  const airports = listAirports();
+  const ready =
+    Boolean(parseFlightNumber(values.flightNumber)) &&
+    (values.datePreset !== "custom" || Boolean(values.customDate));
 
   return (
     <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
       <section className="glass-card relative overflow-hidden p-6 sm:p-8">
         <div className="hero-noise absolute inset-0" />
-        <div className="relative z-10 space-y-6">
+        <form
+          className="relative z-10 space-y-6"
+          onSubmit={(event) => {
+            event.preventDefault();
+            if (!ready) return;
+            onSubmit();
+          }}
+        >
           <div className="space-y-3">
             <p className="section-label">LeaveBy</p>
             <h1 className="text-balance text-4xl leading-none sm:text-5xl">When should you leave?</h1>
             <p className="max-w-md text-[15px] text-muted-foreground">
-              Enter your flight, where you’re leaving from, and what security perks you have. We’ll do the airport math.
+              Enter the flight and a few travel details. We&apos;ll figure out the airport timing from there.
             </p>
           </div>
 
           <div className="space-y-5">
             <div>
               <Label className="field-label">Flight number</Label>
-              <div className="input-shell flex items-center gap-3">
-                <Plane className="h-4 w-4 text-accent" />
+              <div className="input-shell flex min-h-12 items-center gap-3">
+                <Plane className="h-4 w-4 shrink-0 text-accent" />
                 <Input
+                  autoCapitalize="characters"
+                  autoCorrect="off"
+                  className="h-12 uppercase"
                   placeholder="DL 405"
                   value={values.flightNumber}
-                  onChange={(event) => onChange({ flightNumber: event.target.value })}
+                  onChange={(event) => onChange({ flightNumber: event.target.value.toUpperCase() })}
                 />
               </div>
             </div>
@@ -63,19 +78,17 @@ export function FlightInput({
                     key={option.value}
                     type="button"
                     onClick={() => onChange({ datePreset: option.value })}
-                    className={`rounded-2xl border px-4 py-3 text-left text-sm transition ${
-                      values.datePreset === option.value
-                        ? "border-accent bg-accent/10 text-primary"
-                        : "border-border bg-white/80 text-muted-foreground hover:bg-secondary"
-                    }`}
+                    className={pillButtonClass(values.datePreset === option.value)}
                   >
-                    {option.label}
+                    <CalendarDays className="h-4 w-4" />
+                    <span>{option.label}</span>
                   </button>
                 ))}
               </div>
               {values.datePreset === "custom" ? (
-                <div className="input-shell mt-2">
+                <div className="input-shell mt-2 flex min-h-12 items-center">
                   <Input
+                    className="h-12"
                     type="date"
                     value={values.customDate}
                     onChange={(event) => onChange({ customDate: event.target.value })}
@@ -85,64 +98,67 @@ export function FlightInput({
             </div>
 
             <div>
-              <Label className="field-label">Airport</Label>
-              <Select value={values.airportCode} onValueChange={(airportCode) => onChange({ airportCode })}>
-                <SelectTrigger>
-                  <SelectValue placeholder="Choose airport" />
-                </SelectTrigger>
-                <SelectContent>
-                  {airports.map((airport) => (
-                    <SelectItem key={airport.code} value={airport.code}>
-                      {airport.code} · {airport.city}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            </div>
-
-            <div>
               <Label className="field-label">Leaving from</Label>
-              <div className="input-shell flex items-center gap-3">
-                <MapPin className="h-4 w-4 text-accent" />
+              <div className="input-shell flex min-h-12 items-center gap-3">
+                <MapPin className="h-4 w-4 shrink-0 text-accent" />
                 <Input
+                  className="h-12"
                   placeholder="Zip, neighborhood, or address"
                   value={values.origin}
                   onChange={(event) => onChange({ origin: event.target.value })}
                 />
               </div>
-              <p className="mt-2 text-xs text-muted-foreground">We don’t store your location.</p>
+              <p className="mt-2 text-xs text-muted-foreground">Optional — helps with travel time</p>
             </div>
 
             <div>
-              <Label className="field-label">Security status</Label>
-              <div className="space-y-3">
-                <SecurityToggle
-                  checked={values.hasPreCheck}
-                  icon={ShieldCheck}
-                  label="TSA PreCheck"
-                  onCheckedChange={(checked) => onChange({ hasPreCheck: checked })}
-                />
-                <SecurityToggle
-                  checked={values.hasClear}
-                  icon={LockKeyhole}
-                  label="CLEAR"
-                  onCheckedChange={(checked) => onChange({ hasClear: checked })}
-                />
-                <SecurityToggle
-                  checked={values.hasGlobalEntry}
-                  icon={ShieldCheck}
-                  label="Global Entry"
-                  onCheckedChange={(checked) => onChange({ hasGlobalEntry: checked })}
-                />
+              <Label className="field-label">Checking a bag?</Label>
+              <div className="grid grid-cols-2 gap-3">
+                <button
+                  type="button"
+                  className={toggleButtonClass(values.checkedBag)}
+                  onClick={() => onChange({ checkedBag: true })}
+                >
+                  <Briefcase className="h-4 w-4" />
+                  <span>Yes</span>
+                </button>
+                <button
+                  type="button"
+                  className={toggleButtonClass(!values.checkedBag)}
+                  onClick={() => onChange({ checkedBag: false })}
+                >
+                  <Briefcase className="h-4 w-4" />
+                  <span>No</span>
+                </button>
+              </div>
+            </div>
+
+            <div>
+              <Label className="field-label">Security perks</Label>
+              <div className="flex flex-wrap gap-2">
+                {perkOptions.map((option) => (
+                  <button
+                    key={option.key}
+                    type="button"
+                    className={pillButtonClass(values[option.key])}
+                    onClick={() =>
+                      onChange({
+                        [option.key]: !values[option.key],
+                      } as Pick<LeaveByFormValues, typeof option.key>)
+                    }
+                  >
+                    <ShieldCheck className="h-4 w-4" />
+                    <span>{option.label}</span>
+                  </button>
+                ))}
               </div>
             </div>
           </div>
 
-          <Button size="lg" variant="coral" className="w-full sm:w-auto" disabled={!ready} onClick={onContinue}>
-            Continue
-            <ArrowRight className="h-4 w-4" />
+          <Button className="w-full" size="lg" type="submit" variant="coral" disabled={!ready}>
+            When should I leave?
           </Button>
-        </div>
+        </form>
       </section>
 
       <aside className="glass-card p-6 sm:p-8">
@@ -172,22 +188,18 @@ export function FlightInput({
   );
 }
 
-function SecurityToggle({
-  checked,
-  onCheckedChange,
-  label,
-  icon: Icon,
-}: {
-  checked: boolean;
-  onCheckedChange: (checked: boolean) => void;
-  label: string;
-  icon: typeof ShieldCheck;
-}) {
-  return (
-    <label className="flex cursor-pointer items-center gap-3 rounded-2xl border border-border bg-white/75 p-3 text-sm">
-      <Checkbox checked={checked} onCheckedChange={(value) => onCheckedChange(Boolean(value))} />
-      <Icon className="h-4 w-4 text-accent" />
-      <span>{label}</span>
-    </label>
-  );
+function pillButtonClass(active: boolean) {
+  return `inline-flex min-h-12 items-center justify-center gap-2 rounded-2xl border px-4 py-3 text-sm transition ${
+    active
+      ? "border-accent bg-accent/10 text-primary"
+      : "border-border bg-white/80 text-muted-foreground hover:bg-secondary"
+  }`;
+}
+
+function toggleButtonClass(active: boolean) {
+  return `inline-flex min-h-12 items-center justify-center gap-2 rounded-2xl border px-4 py-4 text-sm transition ${
+    active
+      ? "border-accent bg-accent/10 text-primary"
+      : "border-border bg-white/85 text-muted-foreground hover:bg-secondary"
+  }`;
 }
