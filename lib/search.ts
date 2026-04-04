@@ -78,7 +78,7 @@ export async function searchFlightDetails(input: {
   origin: string;
   options: CalculationOptions;
 }): Promise<SearchResult> {
-  const client = new OpenAI();
+  const client = new OpenAI({ timeout: 120000 });
 
   const parsed = parseFlightNumber(input.flightNumber);
   if (!parsed) throw new Error("We couldn't parse that flight number.");
