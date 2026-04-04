@@ -1,4 +1,4 @@
-import Anthropic from "@anthropic-ai/sdk";
+import OpenAI from "openai";
 
 import { getAirlineProfile, getAirportProfile, getTerminalProfile } from "@/lib/airports";
 import { airlineProfiles } from "@/lib/airports/data";
@@ -78,7 +78,7 @@ export async function searchFlightDetails(input: {
   origin: string;
   options: CalculationOptions;
 }): Promise<SearchResult> {
-  const client = new Anthropic();
+  const client = new OpenAI();
 
   const parsed = parseFlightNumber(input.flightNumber);
   if (!parsed) throw new Error("We couldn't parse that flight number.");
@@ -86,7 +86,6 @@ export async function searchFlightDetails(input: {
   const airportContext = buildAirportContext(input.airportCode);
   const airlineContext = buildAirlineContext(parsed.airlineCode);
 
-  // Build list of nearby airports the airline operates from
   const airlineProfile = getAirlineProfile(parsed.airlineCode);
   const possibleAirports = airlineProfile
     ? Object.keys(airlineProfile.airportAssignments).join(", ")
@@ -187,26 +186,30 @@ ${RESPONSE_SCHEMA}
 - If any data point is unavailable, provide your best estimate and explain in the notes field what you couldn't find
 - Prefer live/current data over historical averages whenever available`;
 
-  const response = await client.messages.create({
-    model: "claude-sonnet-4-20250514",
-    max_tokens: 2048,
-    tools: [
-      {
-        type: "web_search_20250305",
-        name: "web_search",
-        max_uses: 10,
-      },
-    ],
-    messages: [{ role: "user", content: prompt }],
+  const response = await client.responses.create({
+    model: "gpt-4o",
+    tools: [{ type: "web_search_preview" }],
+    input: prompt,
   });
 
-  // Extract the text response (after any tool use blocks)
-  const textBlock = response.content.find((block) => block.type === "text");
-  if (!textBlock || textBlock.type !== "text") {
+  // Extract the text output from the response
+  const textOutput = response.output.find(
+    (block: { type: string }) => block.type === "message",
+  );
+  if (!textOutput || textOutput.type !== "message") {
     throw new Error("No response from search.");
   }
 
-  const raw = JSON.parse(textBlock.text.replace(/```json?\n?/g, "").replace(/```/g, "").trim());
+  const textContent = textOutput.content.find(
+    (part: { type: string }) => part.type === "output_text",
+  );
+  if (!textContent || textContent.type !== "output_text") {
+    throw new Error("No text in search response.");
+  }
+
+  const raw = JSON.parse(
+    textContent.text.replace(/```json?\n?/g, "").replace(/```/g, "").trim(),
+  );
 
   // Map raw response into our typed structures
   const airport = getAirportProfile(
@@ -256,7 +259,7 @@ ${RESPONSE_SCHEMA}
     terminal: flight.terminal,
     airportCode: departureAirport,
     baseWaitMinutes: raw.security.estimatedWaitMinutes ?? 25,
-    adjustedWaitMinutes: raw.security.estimatedWaitMinutes ?? 25, // calculator will re-adjust based on PreCheck/CLEAR
+    adjustedWaitMinutes: raw.security.estimatedWaitMinutes ?? 25,
     confidence: "live",
     sourceNotes: raw.security.notes ?? [],
     usedSources: ["Web search"],
