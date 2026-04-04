@@ -45,6 +45,63 @@ const RESPONSE_SCHEMA = `{
   }
 }`;
 
+// ─── Brave Search ───────────────────────────────────────────────────────────
+
+interface BraveResult {
+  title: string;
+  url: string;
+  description: string;
+  extraSnippets?: string[];
+}
+
+async function searchBrave(query: string): Promise<BraveResult[]> {
+  const apiKey = process.env.BRAVE_SEARCH_API_KEY;
+  if (!apiKey) return []; // graceful fallback — OpenAI web search will cover
+
+  const params = new URLSearchParams({
+    q: query,
+    text_decorations: "false",
+    result_filter: "web",
+    count: "5",
+  });
+
+  try {
+    const response = await fetch(
+      `https://api.search.brave.com/res/v1/web/search?${params.toString()}`,
+      {
+        headers: {
+          Accept: "application/json",
+          "X-Subscription-Token": apiKey,
+        },
+        signal: AbortSignal.timeout(8000),
+      },
+    );
+
+    if (!response.ok) return [];
+    const json = await response.json();
+    return ((json.web?.results ?? []) as BraveResult[]).map((r) => ({
+      title: r.title,
+      url: r.url,
+      description: r.description,
+      extraSnippets: r.extraSnippets ?? [],
+    }));
+  } catch {
+    return []; // Brave failed — OpenAI will handle search as fallback
+  }
+}
+
+function formatResults(label: string, results: BraveResult[]): string {
+  if (results.length === 0) return `[${label}]: No results found. Use your own web search to find this.`;
+  return `[${label}]:\n${results
+    .map(
+      (r, i) =>
+        `  ${i + 1}. ${r.title}\n     ${r.url}\n     ${r.description}${r.extraSnippets?.length ? "\n     " + r.extraSnippets.join("\n     ") : ""}`,
+    )
+    .join("\n")}`;
+}
+
+// ─── Airport context helpers ────────────────────────────────────────────────
+
 function buildAirportContext(airportCode: AirportCode): string {
   const airport = getAirportProfile(airportCode);
   if (!airport) return "";
@@ -71,6 +128,8 @@ function buildAirlineContext(airlineCode: string): string {
   return `Airline: ${airline.name} (${airline.code}), typical terminals: ${assignments}`;
 }
 
+// ─── Main search function ───────────────────────────────────────────────────
+
 export async function searchFlightDetails(input: {
   flightNumber: string;
   date: string;
@@ -85,13 +144,46 @@ export async function searchFlightDetails(input: {
 
   const airportContext = buildAirportContext(input.airportCode);
   const airlineContext = buildAirlineContext(parsed.airlineCode);
+  const airport = getAirportProfile(input.airportCode);
+  const airportName = airport?.name ?? input.airportCode;
 
   const airlineProfile = getAirlineProfile(parsed.airlineCode);
   const possibleAirports = airlineProfile
     ? Object.keys(airlineProfile.airportAssignments).join(", ")
     : input.airportCode;
 
-  const prompt = `You are a flight departure research assistant. Your job is to search specific, trusted websites to gather real-time data for a traveler's upcoming flight, then return structured JSON. Be thorough and precise — this data determines when someone leaves for the airport.
+  // ── Brave searches: all 4 in parallel ──────────────────────────────────
+  const [flightResults1, flightResults2, trafficResults, trafficIncidents, securityResults, weatherResults1, weatherResults2] =
+    await Promise.all([
+      // Flight: two sources for cross-checking
+      searchBrave(`${parsed.airlineName} flight ${parsed.flightDigits} ${input.date} departure time status`),
+      searchBrave(`site:flightaware.com ${parsed.airlineCode}${parsed.flightDigits}`),
+      // Traffic
+      searchBrave(`driving time from ${input.origin} to ${airportName}`),
+      searchBrave(`${airportName} traffic delays construction today`),
+      // Security
+      searchBrave(`${input.airportCode} TSA wait time today ${airport?.terminals?.[0]?.name ?? ""}`),
+      // Weather: two sources
+      searchBrave(`${airport?.city ?? input.airportCode} airport weather today site:weather.gov`),
+      searchBrave(`${input.airportCode} airport weather conditions today`),
+    ]);
+
+  const braveData = [
+    formatResults("Flight search — general", flightResults1),
+    formatResults("Flight search — FlightAware", flightResults2),
+    formatResults("Traffic — drive time", trafficResults),
+    formatResults("Traffic — incidents & delays", trafficIncidents),
+    formatResults("Security — TSA wait times", securityResults),
+    formatResults("Weather — weather.gov", weatherResults1),
+    formatResults("Weather — general", weatherResults2),
+  ].join("\n\n");
+
+  const hasBraveData = [flightResults1, flightResults2, trafficResults, securityResults, weatherResults1, weatherResults2]
+    .some((r) => r.length > 0);
+
+  // ── OpenAI: reason about the data ──────────────────────────────────────
+
+  const prompt = `You are a flight departure research assistant. Extract accurate, structured data from the search results below and return JSON. This data determines when someone leaves for the airport — precision matters.
 
 **Flight:** ${parsed.normalized} (${parsed.airlineName})
 **Date:** ${input.date}
@@ -100,99 +192,59 @@ export async function searchFlightDetails(input: {
 ${airlineContext}
 ${airportContext}
 
-The airline operates from these airports: ${possibleAirports}. Determine which airport this flight actually departs from on ${input.date}.
+The airline operates from these airports: ${possibleAirports}.
 
 ---
 
-## STEP 1: Flight info (MOST IMPORTANT — get this right)
+## Search results from Brave (pre-fetched)
 
-Search for the flight on these sites IN ORDER. Use the first one that returns data, then cross-check with a second source if possible:
-
-1. **flightaware.com** — search "${parsed.airlineCode}${parsed.flightDigits}" on flightaware.com. This is the most reliable source for real-time departure time, terminal, gate, delay status, and route.
-2. **flightstats.com** — search "${parsed.airlineName} ${parsed.flightDigits} ${input.date}". Good for terminal and gate assignments.
-3. **google.com** — search "${parsed.airlineName} flight ${parsed.flightDigits} ${input.date} status". Google's flight card often shows departure time, terminal, and delay info directly.
-
-What to extract:
-- Scheduled departure time in the airport's LOCAL timezone (e.g., if the flight departs JFK at 3:25 PM Eastern, return "15:25")
-- Departure airport code (3-letter IATA)
-- Destination airport code
-- Terminal and gate (if available)
-- Status: is it on time, delayed (by how many minutes), or cancelled?
-
-**Cross-check rule:** If the departure time from source 1 and source 2 disagree by more than 15 minutes, note this in the response and prefer the FlightAware time. If a flight shows as delayed, report the NEW expected departure time, not the original scheduled time.
-
-**If you cannot find the flight at all**, set status to "unknown" and departureTimeLocal to "09:00". Do NOT guess a departure time.
+${braveData}
 
 ---
 
-## STEP 2: Drive time & traffic
+## Your task
 
-Search for current driving conditions:
+Analyze ALL the search results above and extract:
 
-1. **google.com** — search "driving time from ${input.origin} to [departure airport name]". Google often shows a travel time estimate directly in search results.
-2. **google.com** — search "[departure airport name] traffic delays today" to find any construction, closures, or incidents affecting airport access roads.
+### 1. Flight info (MOST IMPORTANT)
+- Find the departure time for ${parsed.normalized} on ${input.date}
+- Cross-check between the general flight search and FlightAware results
+- If both sources show a departure time and they disagree by more than 15 minutes, prefer FlightAware
+- If the flight is delayed, report the NEW expected time, not the original
+- If you can't find the flight in the results above, set status to "unknown" and departureTimeLocal to "09:00" — do NOT guess
+- Departure time must be in HH:MM 24-hour format in the airport's LOCAL timezone
 
-What to extract:
-- Estimated drive time in minutes (be realistic — include current traffic)
-- Brief route description (e.g., "Via I-278 and Belt Parkway")
-- Current conditions (light/moderate/heavy traffic)
-- Any specific incidents: construction zones, closures, crashes, congestion alerts
+### 2. Drive time & traffic
+- Extract realistic drive time from "${input.origin}" to the departure airport
+- Note any construction, closures, or incidents from the traffic results
+- If the origin is a neighborhood name, estimate from its center
+- Drive time must be a realistic number (not 0, not 999)
 
-**If the origin is vague** (e.g., just a neighborhood name like "Williamsburg" or "Upper West Side"), estimate the drive time to the airport from the center of that area. Don't return 0 or skip this.
+### 3. TSA security wait
+- Extract the current standard screening wait time in minutes (NOT PreCheck/CLEAR — we adjust separately)
+- If no live data in the results, use the terminal estimates from the airport context above and note it's an estimate
 
----
+### 4. Weather
+- Summarize current conditions at the airport
+- Rate impact: "none" (clear/normal), "minor" (light rain, gusty 15-25mph), "moderate" (steady rain, fog, 25-40mph winds), "severe" (thunderstorms, snow, ice, 40+ mph, ground stops)
 
-## STEP 3: TSA security wait times
-
-Search for security line wait times at the specific terminal:
-
-1. **google.com** — search "[airport code] terminal [terminal id] TSA wait time today" (e.g., "JFK terminal 4 TSA wait time today")
-
-What to extract:
-- Estimated wait time in MINUTES for standard screening (not PreCheck or CLEAR — we adjust for those separately)
-- Any notes about closed lanes, construction, or unusually long lines
-
-**If you can't find live data**, look at the airport context I provided above — it includes typical wait estimates per terminal. Use the "normal" estimate and note that it's an estimate, not live data.
-
----
-
-## STEP 4: Weather
-
-Search for weather at the departure airport:
-
-1. **weather.gov** — search "[airport city] weather today site:weather.gov". This is the authoritative US weather source.
-2. **google.com** — search "[airport code] airport weather" as a backup.
-
-What to extract:
-- Brief weather summary (e.g., "Partly cloudy, 65°F, winds 12 mph")
-- Impact assessment:
-  - "none" = clear/partly cloudy, normal winds, no precipitation
-  - "minor" = light rain, gusty winds (15-25 mph), fog expected to clear
-  - "moderate" = steady rain, fog, winds 25-40 mph, winter weather advisory
-  - "severe" = thunderstorms, heavy snow, ice, winds 40+ mph, FAA ground stop
+${!hasBraveData ? `\n**IMPORTANT: Brave Search returned no results. Use your own web search tool to find all of the above data. Search flightaware.com for the flight, Google for drive time, TSA wait times, and weather.gov for weather.**\n` : ""}
 
 ---
 
 ## Response format
 
-Return ONLY valid JSON. No markdown code fences. No explanation text before or after. Just the JSON object.
-
-${RESPONSE_SCHEMA}
-
-## Critical rules
-- departureTimeLocal MUST be HH:MM in 24-hour format in the airport's LOCAL timezone
-- Do NOT invent or guess flight departure times — only report what you find on flight tracking sites
-- estimatedMinutes for traffic must be a realistic number (not 0, not 999)
-- If any data point is unavailable, provide your best estimate and explain in the notes field what you couldn't find
-- Prefer live/current data over historical averages whenever available`;
+Return ONLY valid JSON. No markdown fences. No explanation. Just the JSON object:
+${RESPONSE_SCHEMA}`;
 
   const response = await client.responses.create({
     model: "gpt-4o",
-    tools: [{ type: "web_search_preview" }],
+    // If Brave had gaps, let OpenAI fill them with its own search
+    tools: hasBraveData ? [] : [{ type: "web_search_preview" as const }],
     input: prompt,
   });
 
-  // Extract the text output from the response
+  // Extract the text output
   const textOutput = response.output.find(
     (block: { type: string }) => block.type === "message",
   );
@@ -211,12 +263,14 @@ ${RESPONSE_SCHEMA}
     textContent.text.replace(/```json?\n?/g, "").replace(/```/g, "").trim(),
   );
 
-  // Map raw response into our typed structures
-  const airport = getAirportProfile(
+  // ── Map into typed structures ──────────────────────────────────────────
+
+  const resolvedAirport = getAirportProfile(
     (raw.flight.departureAirport as AirportCode) || input.airportCode,
   );
-  const tz = airport?.timezone ?? "America/New_York";
-  const departureAirport = (raw.flight.departureAirport as AirportCode) || input.airportCode;
+  const tz = resolvedAirport?.timezone ?? "America/New_York";
+  const departureAirport =
+    (raw.flight.departureAirport as AirportCode) || input.airportCode;
 
   const KNOWN_US_AIRPORTS = new Set(
     airlineProfiles.flatMap((a) => Object.keys(a.airportAssignments)),
@@ -229,7 +283,11 @@ ${RESPONSE_SCHEMA}
     departureAirport,
     destinationAirportCode: raw.flight.destinationAirport ?? undefined,
     destinationCity: raw.flight.destinationAirport ?? undefined,
-    departureTime: localTimeToISO(raw.flight.departureTimeLocal, input.date, tz),
+    departureTime: localTimeToISO(
+      raw.flight.departureTimeLocal,
+      input.date,
+      tz,
+    ),
     terminal:
       raw.flight.terminal ??
       getTerminalProfile(departureAirport, null)?.id ??
@@ -239,20 +297,23 @@ ${RESPONSE_SCHEMA}
     delayMinutes: raw.flight.delayMinutes ?? 0,
     region:
       raw.flight.isInternational ||
-      (raw.flight.destinationAirport && !KNOWN_US_AIRPORTS.has(raw.flight.destinationAirport))
+      (raw.flight.destinationAirport &&
+        !KNOWN_US_AIRPORTS.has(raw.flight.destinationAirport))
         ? "international"
         : "domestic",
-    source: "Web search",
+    source: hasBraveData ? "Brave Search + OpenAI" : "OpenAI web search",
     notes: [],
   };
 
   const traffic: TravelEstimate = {
     durationMinutes: raw.traffic.estimatedMinutes ?? 60,
-    routeSummary: raw.traffic.routeSummary ?? `${input.origin} to ${departureAirport}`,
+    routeSummary:
+      raw.traffic.routeSummary ?? `${input.origin} to ${departureAirport}`,
     trafficSummary: raw.traffic.conditions ?? "Traffic conditions unknown.",
     incidents: raw.traffic.incidents ?? [],
-    constructionBufferMinutes: airport?.constructionBufferMinutes.baseline ?? 5,
-    source: "Web search",
+    constructionBufferMinutes:
+      resolvedAirport?.constructionBufferMinutes.baseline ?? 5,
+    source: hasBraveData ? "Brave Search + OpenAI" : "OpenAI web search",
   };
 
   const security: SecurityEstimate = {
@@ -260,22 +321,30 @@ ${RESPONSE_SCHEMA}
     airportCode: departureAirport,
     baseWaitMinutes: raw.security.estimatedWaitMinutes ?? 25,
     adjustedWaitMinutes: raw.security.estimatedWaitMinutes ?? 25,
-    confidence: "live",
+    confidence: hasBraveData ? "live" : "estimated",
     sourceNotes: raw.security.notes ?? [],
-    usedSources: ["Web search"],
+    usedSources: hasBraveData
+      ? ["Brave Search", "OpenAI"]
+      : ["OpenAI web search"],
   };
 
   const weather: WeatherEstimate = {
     summary: raw.weather.summary ?? "Conditions appear normal.",
     impact: raw.weather.impact ?? "none",
     notes: raw.weather.notes ?? [],
-    source: "Web search",
+    source: hasBraveData ? "Brave Search + OpenAI" : "OpenAI web search",
   };
 
   return { flight, traffic, security, weather };
 }
 
-function localTimeToISO(hhmm: string, date: string, timezone: string): string {
+// ─── Helpers ────────────────────────────────────────────────────────────────
+
+function localTimeToISO(
+  hhmm: string,
+  date: string,
+  timezone: string,
+): string {
   const [hours, minutes] = (hhmm ?? "09:00").split(":").map(Number);
   const localTimeStr = `${date}T${String(hours).padStart(2, "0")}:${String(minutes).padStart(2, "0")}:00`;
 
