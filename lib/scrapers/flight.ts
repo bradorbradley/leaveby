@@ -1,267 +1,259 @@
 import { formatISO } from "date-fns";
 
+import { airlineNameFromIata, iataToIcaoIdent } from "@/lib/airline-codes";
 import { detectAirportTerminalByAirline, getAirlineProfile, getAirportProfile } from "@/lib/airports";
 import { parseFlightNumber } from "@/lib/flight-utils";
-import { flattenResultText, searchBrave } from "@/lib/scrapers/brave";
+import { formatInZone, instantToZonedParts, normalizeTimezone, zonedTimeToUtcISO } from "@/lib/tz";
 import type { AirportCode } from "@/types/airport";
 import type { FlightInfo } from "@/types/flight";
 
-const KNOWN_AIRPORTS = new Set([
-  "ATL","AUS","BNA","BOS","CLT","DCA","DEN","DFW","DTW","EWR","FLL",
-  "IAD","IAH","JFK","LAS","LAX","LGA","MCO","MIA","MSP","ORD","PDX",
-  "PHL","PHX","SAN","SEA","SFO","SLC","TPA","BWI","RDU","HNL","MDW",
-  "DAL","ANC","OAK","SMF","SNA","ONT","BUR","ISP","SWF","HPN",
-]);
+const FETCH_HEADERS = {
+  "User-Agent":
+    "Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1",
+  Accept: "text/html,application/xhtml+xml",
+};
+
+interface FlightAwareEndpoint {
+  TZ?: string;
+  iata?: string;
+  icao?: string;
+  friendlyName?: string;
+  friendlyLocation?: string;
+  coord?: [number, number];
+  gate?: string | null;
+  terminal?: string | null;
+}
+
+interface FlightAwareLeg {
+  origin?: FlightAwareEndpoint;
+  destination?: FlightAwareEndpoint;
+  gateDepartureTimes?: { scheduled?: number | null; estimated?: number | null; actual?: number | null };
+  cancelled?: boolean;
+}
 
 export async function fetchFlightInfo(
   flightNumber: string,
   date: string,
-  preferredAirport: AirportCode = "JFK",
+  _preferredAirport?: AirportCode,
 ): Promise<FlightInfo> {
   const parsed = parseFlightNumber(flightNumber);
   if (!parsed) {
-    throw new Error("We couldn't parse that flight number.");
+    throw new Error("We couldn't parse that flight number. Try a format like DL 405.");
   }
 
-  const airline = getAirlineProfile(parsed.airlineCode);
+  const airlineName =
+    getAirlineProfile(parsed.airlineCode)?.name ?? airlineNameFromIata(parsed.airlineCode) ?? parsed.airlineName;
 
-  // Strategy: First try flight-status.com (structured, date-specific data)
-  // Then fall back to Brave Search for supplementary info
-  const query = `${airline?.name ?? parsed.airlineCode} flight ${parsed.flightDigits} ${date} departure time airport terminal`;
-
+  // Primary: FlightAware's public flight page, which embeds structured schedule
+  // data (origin, terminal, gate, timezone-safe epoch times) for ~2 weeks of legs.
   try {
-    // Try to fetch flight-status.com for authoritative, date-specific data
-    const directData = await fetchFlightStatusCom(parsed.airlineCode, parsed.flightDigits, date);
-    
-    // Also search for supplementary info (terminal, gate, etc.)
-    const results = await searchBrave(query);
-    const blob = flattenResultText(results);
-
-    // Extract route: look for "from AIRPORT (CODE) to AIRPORT (CODE)" pattern
-    const routeMatch = blob.match(/from\s+[\w\s]+\(([A-Z]{3})\)\s+(?:\w+\s+)?to\s+[\w\s]+\(([A-Z]{3})\)/i);
-    // Also try "CODE to CODE" pattern
-    const simpleRouteMatch = blob.match(/\b([A-Z]{3})\s+to\s+([A-Z]{3})\b/);
-
-    let departureAirport: AirportCode = preferredAirport;
-    let destinationCode: string | undefined;
-
-    if (routeMatch) {
-      const from = routeMatch[1].toUpperCase();
-      const to = routeMatch[2].toUpperCase();
-      if (KNOWN_AIRPORTS.has(from)) departureAirport = from as AirportCode;
-      destinationCode = to;
-    } else if (simpleRouteMatch) {
-      const from = simpleRouteMatch[1].toUpperCase();
-      const to = simpleRouteMatch[2].toUpperCase();
-      if (KNOWN_AIRPORTS.has(from)) departureAirport = from as AirportCode;
-      if (KNOWN_AIRPORTS.has(to)) destinationCode = to;
+    const flightAware = await fetchFromFlightAware(parsed.airlineCode, parsed.flightDigits, date);
+    if (flightAware) {
+      return {
+        ...flightAware,
+        terminal:
+          flightAware.terminal ?? detectAirportTerminalByAirline(flightAware.departureAirport, parsed.airlineCode),
+        flightNumber: parsed.normalized,
+        airlineCode: parsed.airlineCode,
+        airlineName,
+      };
     }
-
-    // Prefer direct data from flight-status.com, fall back to search extraction
-    const airport = getAirportProfile(departureAirport);
-    const tz = airport?.timezone ?? "America/New_York";
-    
-    // Use direct data if available (already in local ISO format)
-    let departureTime: string | null = null;
-    if (directData?.departureTimeLocal) {
-      departureTime = localISOToUTC(directData.departureTimeLocal, tz);
-      // Override airport from direct source if found
-      if (directData.departureAirport && KNOWN_AIRPORTS.has(directData.departureAirport)) {
-        departureAirport = directData.departureAirport as AirportCode;
-      }
-      if (directData.destinationAirport) {
-        destinationCode = directData.destinationAirport;
-      }
-    }
-    
-    if (!departureTime) {
-      departureTime = extractDepartureTime(blob, date, tz);
-    }
-
-    // Extract terminal — be specific to avoid false matches
-    const terminal = extractTerminal(blob) ?? detectAirportTerminalByAirline(departureAirport, parsed.airlineCode) ?? null;
-    const gate = extractGate(blob);
-    const delayMinutes = extractDelay(blob);
-
-    const isInternational = destinationCode
-      ? !KNOWN_AIRPORTS.has(destinationCode)
-      : false;
-
-    const status = /cancelled|canceled/i.test(blob)
-      ? "cancelled"
-      : delayMinutes > 0
-        ? "delayed"
-        : /scheduled|on time/i.test(blob)
-          ? "scheduled"
-          : "unknown";
-
-    return {
-      flightNumber: parsed.normalized,
-      airlineCode: parsed.airlineCode,
-      airlineName: airline?.name ?? parsed.airlineName,
-      departureAirport,
-      destinationAirportCode: destinationCode,
-      destinationCity: destinationCode,
-      departureTime: departureTime ?? localToISO(date, "09:00", airport?.timezone ?? "America/New_York"),
-      terminal,
-      gate,
-      status,
-      delayMinutes,
-      region: isInternational ? "international" : "domestic",
-      source: results[0]?.url ?? "Brave Search",
-      notes: results.slice(0, 3).map((r) => r.url),
-    };
   } catch {
-    return {
-      flightNumber: parsed.normalized,
-      airlineCode: parsed.airlineCode,
-      airlineName: airline?.name ?? parsed.airlineName,
-      departureAirport: preferredAirport,
-      destinationAirportCode: undefined,
-      destinationCity: undefined,
-      departureTime: localToISO(date, "09:00", getAirportProfile(preferredAirport)?.timezone ?? "America/New_York"),
-      terminal: detectAirportTerminalByAirline(preferredAirport, parsed.airlineCode),
-      gate: null,
-      status: "unknown",
-      delayMinutes: 0,
-      region: "domestic",
-      source: "Fallback schedule estimate",
-      notes: ["Live flight search unavailable. Using airline/airport mapping."],
-    };
-  }
-}
-
-function extractDepartureTime(text: string, date: string, timezone: string): string | null {
-  // Try multiple patterns to find a departure time
-  const patterns = [
-    // "at HH:MM" or "departs HH:MM" with optional am/pm
-    /(?:at|departs?|leaves?|departure|scheduled)\s+(\d{1,2}):(\d{2})(?:\s*(am|pm|[A-Z]{2,4}))?/i,
-    // Standalone "HH:MM am/pm"
-    /\b(\d{1,2}):(\d{2})\s+(am|pm)\b/i,
-    // Bold time from snippets: **15:39**
-    /\*\*(\d{1,2}):(\d{2})\*\*/,
-  ];
-
-  for (const pattern of patterns) {
-    const match = text.match(pattern);
-    if (!match) continue;
-
-    let hours = parseInt(match[1], 10);
-    const minutes = parseInt(match[2], 10);
-    const suffix = match[3]?.toLowerCase();
-
-    // Handle am/pm
-    if (suffix === "pm" && hours < 12) hours += 12;
-    if (suffix === "am" && hours === 12) hours = 0;
-
-    if (hours < 0 || hours > 23 || minutes < 0 || minutes > 59) continue;
-
-    // The time from search is in the airport's LOCAL timezone.
-    // Create an ISO string that reflects this correctly.
-    // Use the IANA timezone to get the correct UTC offset.
-    const localTimeStr = `${date}T${String(hours).padStart(2, "0")}:${String(minutes).padStart(2, "0")}:00`;
-
-    try {
-      // Create a Date by computing the UTC offset for this timezone on this date
-      const utcGuess = new Date(localTimeStr + "Z"); // treat as UTC first
-      const localAtUtc = new Date(utcGuess.toLocaleString("en-US", { timeZone: timezone }));
-      const offsetMs = localAtUtc.getTime() - utcGuess.getTime();
-      // The actual UTC time = local time - offset
-      const corrected = new Date(utcGuess.getTime() - offsetMs);
-      return formatISO(corrected);
-    } catch {
-      // If timezone conversion fails, fall back to treating as UTC
-      return formatISO(new Date(localTimeStr));
-    }
+    // fall through to next source
   }
 
-  return null;
-}
-
-function extractTerminal(text: string): string | null {
-  // Match "terminal X" but NOT "terminal and" or "terminal information"
-  const match = text.match(/\bterminal\s+(\d{1,2}[A-Z]?)\b/i);
-  return match?.[1] ?? null;
-}
-
-function extractGate(text: string): string | null {
-  const match = text.match(/\bgate\s+([A-Z]\d{1,2}|\d{1,3})\b/i);
-  return match?.[1] ?? null;
-}
-
-function extractDelay(text: string): number {
-  return Number(text.match(/(\d{1,3})\s*(?:-?\s*)?(?:minute|min)\s+delay/i)?.[1] ?? 0);
-}
-
-/** Fetch structured flight data from flight-status.com */
-async function fetchFlightStatusCom(
-  airlineCode: string,
-  flightDigits: string,
-  date: string
-): Promise<{
-  departureTimeLocal: string | null;
-  departureAirport: string | null;
-  destinationAirport: string | null;
-} | null> {
+  // Secondary: flight-status.com lists date-specific scheduled departures.
   try {
-    const url = `https://flight-status.com/${airlineCode.toLowerCase()}-${flightDigits}`;
-    const res = await fetch(url, { 
-      headers: { "User-Agent": "Mozilla/5.0" },
-      signal: AbortSignal.timeout(5000),
-    });
-    if (!res.ok) return null;
-    const html = await res.text();
-    
-    // Find the entry for the requested date
-    // The page has entries like: "Sat 04 Apr" then "2026-04-04T19:25"
-    // Find departure time for our date
-    const datePrefix = date; // "2026-04-04"
-    const timeRegex = new RegExp(`${datePrefix}T(\\d{2}:\\d{2})`, "g");
-    const times: string[] = [];
-    let match;
-    while ((match = timeRegex.exec(html)) !== null) {
-      times.push(match[1]);
+    const direct = await fetchFromFlightStatusCom(parsed.airlineCode, parsed.flightDigits, date);
+    if (direct) {
+      return { ...direct, flightNumber: parsed.normalized, airlineCode: parsed.airlineCode, airlineName };
     }
-    
-    // First match is departure time for that date
-    const depTime = times[0] ?? null;
-    
-    // Extract airports from "(CODE)" pattern
-    const airportMatches = html.match(/\(([A-Z]{3})\)/g)?.map(m => m.slice(1, 4)) ?? [];
-    const departureAirport = airportMatches[0] ?? null;
-    const destinationAirport = airportMatches[1] ?? null;
-    
-    return {
-      departureTimeLocal: depTime ? `${date}T${depTime}:00` : null,
-      departureAirport,
-      destinationAirport,
-    };
+  } catch {
+    // fall through to fallback
+  }
+
+  // Last resort: airline hub mapping with an honest note that we're guessing.
+  const fallbackAirport = guessAirlineHub(parsed.airlineCode);
+  const airport = getAirportProfile(fallbackAirport);
+  const departureTime = zonedTimeToUtcISO(date, "09:00", airport.timezone);
+  return {
+    flightNumber: parsed.normalized,
+    airlineCode: parsed.airlineCode,
+    airlineName,
+    departureAirport: fallbackAirport,
+    departureAirportName: airport.name,
+    departureTimezone: airport.timezone,
+    airportCoord: airport.weatherStation.lat ? { lat: airport.weatherStation.lat, lon: airport.weatherStation.lon } : undefined,
+    destinationAirportCode: undefined,
+    destinationCity: undefined,
+    departureTime,
+    departureLocalLabel: formatInZone(new Date(departureTime), airport.timezone),
+    terminal: detectAirportTerminalByAirline(fallbackAirport, parsed.airlineCode),
+    gate: null,
+    status: "unknown",
+    delayMinutes: 0,
+    region: "domestic",
+    source: "Fallback schedule estimate",
+    notes: [
+      "We couldn't find live schedule data for this flight, so this uses a conservative 9:00am placeholder.",
+      "Double-check your departure time on your airline's app.",
+    ],
+  };
+}
+
+async function fetchFromFlightAware(
+  airlineIata: string,
+  flightDigits: string,
+  date: string,
+): Promise<Omit<FlightInfo, "flightNumber" | "airlineCode" | "airlineName"> | null> {
+  const ident = iataToIcaoIdent(airlineIata, flightDigits) ?? `${airlineIata}${flightDigits}`;
+  const response = await fetch(`https://www.flightaware.com/live/flight/${ident}`, {
+    headers: FETCH_HEADERS,
+    signal: AbortSignal.timeout(9000),
+    cache: "no-store",
+  });
+  if (!response.ok) return null;
+  const html = await response.text();
+  const blobMatch = html.match(/trackpollBootstrap = (\{[\s\S]*?\});<\/script>/);
+  if (!blobMatch) return null;
+
+  let bootstrap: { flights?: Record<string, { activityLog?: { flights?: FlightAwareLeg[] } } & FlightAwareLeg> };
+  try {
+    bootstrap = JSON.parse(blobMatch[1]);
   } catch {
     return null;
   }
+
+  const legs: FlightAwareLeg[] = [];
+  for (const flight of Object.values(bootstrap.flights ?? {})) {
+    if (flight.origin?.iata && flight.gateDepartureTimes?.scheduled) legs.push(flight);
+    for (const leg of flight.activityLog?.flights ?? []) {
+      if (leg.origin?.iata && leg.gateDepartureTimes?.scheduled) legs.push(leg);
+    }
+  }
+  if (legs.length === 0) return null;
+
+  // Exact date match: the leg whose scheduled departure falls on the requested
+  // date in the origin airport's local timezone.
+  for (const leg of legs) {
+    const tz = normalizeTimezone(leg.origin?.TZ);
+    const scheduled = new Date((leg.gateDepartureTimes?.scheduled ?? 0) * 1000);
+    if (instantToZonedParts(scheduled, tz).isoDate === date) {
+      return buildFromLeg(leg, { exactDate: true });
+    }
+  }
+
+  // No leg for that date (likely beyond FlightAware's ~2-day forward window).
+  // Flights keep stable schedules, so project the most recent leg's local
+  // departure time onto the requested date.
+  const reference = legs[0];
+  const tz = normalizeTimezone(reference.origin?.TZ);
+  const referenceParts = instantToZonedParts(new Date((reference.gateDepartureTimes?.scheduled ?? 0) * 1000), tz);
+  const projectedDeparture = zonedTimeToUtcISO(date, referenceParts.hhmm, tz);
+  const projected = buildFromLeg(reference, { exactDate: false });
+  return {
+    ...projected,
+    departureTime: projectedDeparture,
+    departureLocalLabel: formatInZone(new Date(projectedDeparture), tz),
+    status: "scheduled",
+    delayMinutes: 0,
+    gate: null,
+    source: "FlightAware · typical schedule for this flight",
+    notes: [
+      `This flight normally departs around ${referenceParts.hhmm} local time; we've applied that to your travel date.`,
+      "Exact-day schedule data appears closer to departure — re-check the day before you fly.",
+    ],
+  };
 }
 
-/** Convert a local ISO datetime string to UTC ISO, accounting for timezone */
-function localISOToUTC(localISO: string, timezone: string): string {
-  try {
-    const utcGuess = new Date(localISO + "Z");
-    const localAtUtc = new Date(utcGuess.toLocaleString("en-US", { timeZone: timezone }));
-    const offsetMs = localAtUtc.getTime() - utcGuess.getTime();
-    return formatISO(new Date(utcGuess.getTime() - offsetMs));
-  } catch {
-    return formatISO(new Date(localISO));
-  }
+function buildFromLeg(
+  leg: FlightAwareLeg,
+  { exactDate }: { exactDate: boolean },
+): Omit<FlightInfo, "flightNumber" | "airlineCode" | "airlineName"> {
+  const origin = leg.origin!;
+  const tz = normalizeTimezone(origin.TZ);
+  const scheduled = (leg.gateDepartureTimes?.scheduled ?? 0) * 1000;
+  const estimated = (leg.gateDepartureTimes?.estimated ?? leg.gateDepartureTimes?.scheduled ?? 0) * 1000;
+  const best = new Date(Math.max(scheduled, estimated));
+  const delayMinutes = Math.max(0, Math.round((estimated - scheduled) / 60000));
+  const destinationIcao = leg.destination?.icao ?? "";
+  const isDomestic = /^(K|PH|PA|TJ|TI)/.test(destinationIcao);
+
+  return {
+    departureAirport: origin.iata as AirportCode,
+    departureAirportName: origin.friendlyName,
+    departureTimezone: tz,
+    airportCoord: origin.coord ? { lat: origin.coord[1], lon: origin.coord[0] } : undefined,
+    destinationAirportCode: leg.destination?.iata,
+    destinationCity: leg.destination?.friendlyLocation ?? leg.destination?.iata,
+    departureTime: formatISO(best),
+    departureLocalLabel: formatInZone(best, tz),
+    terminal: origin.terminal ?? null,
+    gate: origin.gate ?? null,
+    status: leg.cancelled ? "cancelled" : delayMinutes > 0 ? "delayed" : "scheduled",
+    delayMinutes,
+    region: isDomestic ? "domestic" : "international",
+    source: exactDate ? "FlightAware · live schedule" : "FlightAware",
+    notes: [],
+  };
 }
 
-/** Convert a local date + HH:mm to an ISO string accounting for the airport timezone */
-function localToISO(date: string, hhmm: string, timezone: string): string {
-  const localTimeStr = `${date}T${hhmm}:00`;
-  try {
-    const utcGuess = new Date(localTimeStr + "Z");
-    const localAtUtc = new Date(utcGuess.toLocaleString("en-US", { timeZone: timezone }));
-    const offsetMs = localAtUtc.getTime() - utcGuess.getTime();
-    return formatISO(new Date(utcGuess.getTime() - offsetMs));
-  } catch {
-    return formatISO(new Date(localTimeStr));
-  }
+async function fetchFromFlightStatusCom(
+  airlineIata: string,
+  flightDigits: string,
+  date: string,
+): Promise<Omit<FlightInfo, "flightNumber" | "airlineCode" | "airlineName"> | null> {
+  const response = await fetch(`https://flight-status.com/${airlineIata.toLowerCase()}-${flightDigits}`, {
+    headers: FETCH_HEADERS,
+    signal: AbortSignal.timeout(8000),
+    cache: "no-store",
+  });
+  if (!response.ok) return null;
+  const html = await response.text();
+
+  const timeRegex = new RegExp(`${date}T(\\d{2}:\\d{2})`, "g");
+  const times: string[] = [];
+  let match: RegExpExecArray | null;
+  while ((match = timeRegex.exec(html)) !== null) times.push(match[1]);
+  const departureHHMM = times[0];
+  if (!departureHHMM) return null;
+
+  const airportCodes = html.match(/\(([A-Z]{3})\)/g)?.map((code) => code.slice(1, 4)) ?? [];
+  const departureAirport = (airportCodes[0] ?? "JFK") as AirportCode;
+  const destination = airportCodes[1];
+  const airport = getAirportProfile(departureAirport);
+  const departureTime = zonedTimeToUtcISO(date, departureHHMM, airport.timezone);
+
+  return {
+    departureAirport,
+    departureAirportName: airport.name,
+    departureTimezone: airport.timezone,
+    airportCoord: airport.weatherStation.lat ? { lat: airport.weatherStation.lat, lon: airport.weatherStation.lon } : undefined,
+    destinationAirportCode: destination,
+    destinationCity: destination,
+    departureTime,
+    departureLocalLabel: formatInZone(new Date(departureTime), airport.timezone),
+    terminal: detectAirportTerminalByAirline(departureAirport, airlineIata),
+    gate: null,
+    status: "scheduled",
+    delayMinutes: 0,
+    region: "domestic",
+    source: "flight-status.com schedule",
+    notes: [],
+  };
+}
+
+function guessAirlineHub(airlineIata: string): AirportCode {
+  const hubs: Record<string, AirportCode> = {
+    DL: "ATL",
+    AA: "DFW",
+    UA: "ORD",
+    WN: "DAL",
+    B6: "JFK",
+    AS: "SEA",
+    NK: "FLL",
+    F9: "DEN",
+    HA: "HNL",
+  };
+  return hubs[airlineIata.toUpperCase()] ?? "JFK";
 }

@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import { FlightInput } from "@/components/FlightInput";
 import { ResultsScreen } from "@/components/ResultsScreen";
 import { ThinkingState } from "@/components/ThinkingState";
-import { inferAirportFromFlightContext, resolveDateFromPreset } from "@/lib/flight-utils";
+import { resolveDateFromPreset } from "@/lib/flight-utils";
 import { useCalculation } from "@/hooks/useCalculation";
 import type { CalculationOptions } from "@/types/calculation";
 import type { LeaveByFormValues } from "@/types/forms";
@@ -18,6 +18,7 @@ const initialForm: LeaveByFormValues = {
   datePreset: "today",
   customDate: "",
   origin: "",
+  mode: "drive",
   checkedBag: false,
   hasPreCheck: false,
   hasClear: false,
@@ -40,6 +41,7 @@ export default function HomePage() {
     const date = resolveDateFromPreset(form.datePreset, form.customDate);
     const payloadOptions: CalculationOptions = {
       origin: form.origin,
+      mode: form.mode,
       hasPreCheck: form.hasPreCheck,
       hasClear: form.hasClear,
       hasGlobalEntry: form.hasGlobalEntry,
@@ -54,7 +56,6 @@ export default function HomePage() {
     await calculate({
       flightNumber: form.flightNumber,
       date,
-      airportCode: inferAirportFromFlightContext(form.flightNumber),
       origin: form.origin,
       options: payloadOptions,
     });

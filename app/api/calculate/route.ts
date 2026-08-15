@@ -3,18 +3,17 @@ import { NextRequest } from "next/server";
 import { calculateLeaveByTime } from "@/lib/calculator";
 import { fetchFlightInfo } from "@/lib/scrapers/flight";
 import { fetchSecurityWaitTime } from "@/lib/scrapers/security";
-import { fetchTrafficTime } from "@/lib/scrapers/traffic";
+import { fetchTravelTime } from "@/lib/scrapers/traffic";
 import { fetchWeather } from "@/lib/scrapers/weather";
-import type { AirportCode } from "@/types/airport";
 import type { CalculationOptions } from "@/types/calculation";
 
 export const runtime = "nodejs";
+export const maxDuration = 60;
 
 export async function POST(request: NextRequest) {
   const body = (await request.json()) as {
     flightNumber: string;
     date: string;
-    airportCode: AirportCode;
     origin: string;
     options: CalculationOptions;
   };
@@ -29,11 +28,11 @@ export async function POST(request: NextRequest) {
 
       try {
         send({ step: "flight", status: "loading" });
-        const flight = await fetchFlightInfo(body.flightNumber, body.date, body.airportCode);
+        const flight = await fetchFlightInfo(body.flightNumber, body.date);
         send({ step: "flight", status: "done", data: flight });
 
         send({ step: "traffic", status: "loading" });
-        const traffic = await fetchTrafficTime(body.origin, flight.departureAirport, flight.terminal);
+        const traffic = await fetchTravelTime(body.origin, flight, body.options.mode ?? "drive");
         send({ step: "traffic", status: "done", data: traffic });
 
         send({ step: "security", status: "loading" });
@@ -42,11 +41,12 @@ export async function POST(request: NextRequest) {
           flight.terminal,
           new Date(flight.departureTime),
           body.options,
+          flight.departureTimezone,
         );
         send({ step: "security", status: "done", data: security });
 
         send({ step: "weather", status: "loading" });
-        const weather = await fetchWeather(flight.departureAirport);
+        const weather = await fetchWeather(flight);
         send({ step: "weather", status: "done", data: weather });
 
         send({ step: "calculating", status: "loading" });

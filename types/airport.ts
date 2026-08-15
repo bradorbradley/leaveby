@@ -1,31 +1,6 @@
-export type AirportCode =
-  | "ATL"
-  | "AUS"
-  | "BNA"
-  | "BOS"
-  | "CLT"
-  | "DCA"
-  | "DEN"
-  | "DFW"
-  | "DTW"
-  | "EWR"
-  | "FLL"
-  | "IAD"
-  | "IAH"
-  | "JFK"
-  | "LAS"
-  | "LAX"
-  | "LGA"
-  | "MCO"
-  | "MIA"
-  | "MSP"
-  | "ORD"
-  | "PDX"
-  | "PHL"
-  | "PHX"
-  | "SAN"
-  | "SEA"
-  | "SFO";
+// Any IATA code is a valid airport; we keep rich profiles for the majors and
+// synthesize a sensible generic profile for everything else.
+export type AirportCode = string;
 
 export type SecurityService = "standard" | "precheck" | "clear" | "global-entry" | "touchless-id" | "reserve";
 

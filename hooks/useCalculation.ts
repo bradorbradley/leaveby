@@ -3,7 +3,6 @@
 import { useState } from "react";
 
 import { safeJsonParse } from "@/lib/utils";
-import type { AirportCode } from "@/types/airport";
 import type { CalculationOptions, CalculationResult } from "@/types/calculation";
 
 type CalculationStep = "flight" | "traffic" | "security" | "weather" | "calculating";
@@ -25,7 +24,6 @@ export function useCalculation() {
   const calculate = async (payload: {
     flightNumber: string;
     date: string;
-    airportCode: AirportCode;
     origin: string;
     options: CalculationOptions;
   }) => {

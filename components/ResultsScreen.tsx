@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 
 import { Breakdown } from "@/components/Breakdown";
 import { BufferSlider } from "@/components/BufferSlider";
+import { FlightSummaryCard } from "@/components/FlightSummaryCard";
 import { PeakDayBadge } from "@/components/PeakDayBadge";
 import { ProTip } from "@/components/ProTip";
 import { ShareButton } from "@/components/ShareButton";
@@ -50,6 +51,8 @@ export function ResultsScreen({
           ) : null}
         </div>
       </section>
+
+      <FlightSummaryCard flight={result.flight} />
 
       <Breakdown items={rewriteBufferItem(result.breakdown, bufferMinutes)} />
 

@@ -1,18 +1,25 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Briefcase, CalendarDays, MapPin, Plane, ShieldCheck } from "lucide-react";
+import { Briefcase, CalendarDays, Car, CarTaxiFront, MapPin, Plane, ShieldCheck, TrainFront } from "lucide-react";
 
+import { BufferSlider } from "@/components/BufferSlider";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { parseFlightNumber } from "@/lib/flight-utils";
-import type { LeaveByFormValues } from "@/types/forms";
+import type { LeaveByFormValues, TravelMode } from "@/types/forms";
 
 const dateOptions: Array<{ value: LeaveByFormValues["datePreset"]; label: string }> = [
   { value: "today", label: "Today" },
   { value: "tomorrow", label: "Tomorrow" },
   { value: "custom", label: "Pick date" },
+];
+
+const modeOptions: Array<{ value: TravelMode; label: string; icon: typeof Car }> = [
+  { value: "drive", label: "Driving", icon: Car },
+  { value: "rideshare", label: "Rideshare", icon: CarTaxiFront },
+  { value: "transit", label: "Train", icon: TrainFront },
 ];
 
 const perkOptions = [
@@ -112,6 +119,26 @@ export function FlightInput({
             </div>
 
             <div>
+              <Label className="field-label">How are you getting there?</Label>
+              <div className="grid grid-cols-3 gap-2">
+                {modeOptions.map((option) => {
+                  const Icon = option.icon;
+                  return (
+                    <button
+                      key={option.value}
+                      type="button"
+                      onClick={() => onChange({ mode: option.value })}
+                      className={pillButtonClass(values.mode === option.value)}
+                    >
+                      <Icon className="h-4 w-4" />
+                      <span>{option.label}</span>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
+            <div>
               <Label className="field-label">Checking a bag?</Label>
               <div className="grid grid-cols-2 gap-3">
                 <button
@@ -151,6 +178,13 @@ export function FlightInput({
                     <span>{option.label}</span>
                   </button>
                 ))}
+              </div>
+            </div>
+
+            <div>
+              <Label className="field-label">Breathing room after security</Label>
+              <div className="rounded-2xl border border-border bg-white/80 px-4 py-4">
+                <BufferSlider value={values.bufferMinutes} onChange={(bufferMinutes) => onChange({ bufferMinutes })} />
               </div>
             </div>
           </div>
