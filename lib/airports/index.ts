@@ -1,10 +1,22 @@
-import { format } from "date-fns";
-
-import { airlineProfiles, airportProfiles, peakTravelWindows } from "@/lib/airports/data";
+import { airlineProfiles, airportProfiles, makeGenericAirport, peakTravelWindows } from "@/lib/airports/data";
+import { instantToZonedParts } from "@/lib/tz";
 import type { AirlineProfile, AirportCode, AirportProfile, TerminalProfile } from "@/types/airport";
 
-export function getAirportProfile(code: AirportCode): AirportProfile {
-  return airportProfiles[code];
+export interface AirportSeed {
+  name?: string;
+  city?: string;
+  timezone?: string;
+  coord?: { lat: number; lon: number };
+}
+
+/**
+ * Look up a curated airport profile, or synthesize a sensible generic one so
+ * any departure airport (not just the majors we've profiled) still works.
+ */
+export function getAirportProfile(code: AirportCode, seed?: AirportSeed): AirportProfile {
+  const known = airportProfiles[code];
+  if (known) return known;
+  return makeGenericAirport(code, seed?.name, seed?.timezone, seed?.coord);
 }
 
 export function listAirports(): AirportProfile[] {
@@ -25,9 +37,9 @@ export function detectAirportTerminalByAirline(airportCode: AirportCode, airline
   return getAirlineProfile(airlineCode)?.airportAssignments[airportCode] ?? null;
 }
 
-export function isPeakTravelDate(date: Date) {
-  const isoDate = format(date, "yyyy-MM-dd");
-  const peakWindow = peakTravelWindows.find((window) => window.dates.includes(isoDate));
+export function isPeakTravelDate(date: Date, timezone = "America/New_York") {
+  const local = instantToZonedParts(date, timezone);
+  const peakWindow = peakTravelWindows.find((window) => window.dates.includes(local.isoDate));
   if (peakWindow) {
     return {
       isPeak: true,
@@ -37,12 +49,10 @@ export function isPeakTravelDate(date: Date) {
     };
   }
 
-  const day = date.getDay();
-  const hours = date.getHours();
-  if (day === 5 || day === 0) {
+  if (local.weekday === "Fri" || local.weekday === "Sun") {
     return { isPeak: true, level: "high" as const, multiplier: 1.25, label: "Busy weekend travel pattern" };
   }
-  if (day === 1 && hours < 10) {
+  if (local.weekday === "Mon" && local.hour < 10) {
     return { isPeak: true, level: "moderate" as const, multiplier: 1.18, label: "Monday business-travel push" };
   }
   return { isPeak: false, level: null, multiplier: 1, label: null };
@@ -53,11 +63,12 @@ export function isTerminalServiceOpen(
   terminalId: string | null | undefined,
   service: "precheck" | "clear" | "reserve" | "touchless-id",
   atTime: Date,
+  timezone?: string,
 ) {
   const terminal = getTerminalProfile(airportCode, terminalId);
   const hours = terminal?.security.serviceHours?.[service];
   if (!hours) return Boolean(terminal?.security.services[service]);
 
-  const hhmm = format(atTime, "HH:mm");
+  const hhmm = instantToZonedParts(atTime, timezone ?? getAirportProfile(airportCode).timezone).hhmm;
   return hhmm >= hours.opensAt && hhmm <= hours.closesAt;
 }

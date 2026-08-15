@@ -15,12 +15,16 @@ export function calculateLeaveByTime(input: {
   options: CalculationOptions;
 }): CalculationResult {
   const { flight, traffic, security, weather, options } = input;
-  const airport = getAirportProfile(flight.departureAirport);
+  const airport = getAirportProfile(flight.departureAirport, {
+    name: flight.departureAirportName,
+    timezone: flight.departureTimezone,
+    coord: flight.airportCoord,
+  });
   const terminal = getTerminalProfile(flight.departureAirport, flight.terminal);
   const departure = parseISO(flight.departureTime);
   const boardingLead = airport.standardBoardingBuffer[flight.region];
   const boardingTime = subMinutes(departure, boardingLead);
-  const peakTravel = isPeakTravelDate(departure);
+  const peakTravel = isPeakTravelDate(departure, flight.departureTimezone ?? airport.timezone);
 
   const curbToSecurity = averageRange(terminal?.curbToSecurityMinutes ?? [5, 8]);
   const gateWalk = averageRange(terminal?.securityToGateMinutes ?? [6, 12]) + (needsConcoursePenalty(flight) ? 8 : 0);
@@ -54,12 +58,11 @@ export function calculateLeaveByTime(input: {
     terminalName: terminal?.name ?? `Terminal ${flight.terminal ?? "?"}`,
   });
 
-  const quality =
-    security.confidence === "live" && !traffic.source.includes("Fallback") && !flight.source.includes("Fallback")
+  const quality = flight.source.includes("Fallback")
+    ? "fallback"
+    : flight.source.includes("FlightAware") && !traffic.source.includes("Fallback")
       ? "live"
-      : security.confidence === "fallback" || traffic.source.includes("Fallback") || flight.source.includes("Fallback")
-        ? "fallback"
-        : "mixed";
+      : "mixed";
 
   return {
     leaveByTime: formatISO(leaveByTime),
@@ -73,11 +76,11 @@ export function calculateLeaveByTime(input: {
     traffic,
     security,
     weather,
-    breakdown: [
+    breakdown: filterBreakdown([
       {
         id: "travel",
-        icon: "car",
-        label: `Travel to ${flight.departureAirport}${flight.terminal ? ` T${flight.terminal}` : ""}`,
+        icon: options.mode === "transit" ? "train" : "car",
+        label: `${options.mode === "transit" ? "Transit" : options.mode === "rideshare" ? "Ride" : "Drive"} to ${flight.departureAirport}${flight.terminal ? ` T${flight.terminal}` : ""}`,
         minutes: traffic.durationMinutes,
         detail: `${traffic.routeSummary}. ${traffic.trafficSummary} ${traffic.incidents.join(" ")}`.trim(),
       },
@@ -118,7 +121,7 @@ export function calculateLeaveByTime(input: {
         minutes: options.bufferMinutes,
         detail: `Targeting ${options.bufferMinutes} minutes after security before boarding.`,
       },
-    ],
+    ]),
     warnings,
     proTips,
     peakDayLabel: peakTravel.label,
@@ -159,7 +162,13 @@ function buildWarnings(input: {
 
   if (
     (input.options.hasPreCheck || input.options.hasGlobalEntry) &&
-    !isTerminalServiceOpen(input.flight.departureAirport, input.flight.terminal, "precheck", input.boardingTime)
+    !isTerminalServiceOpen(
+      input.flight.departureAirport,
+      input.flight.terminal,
+      "precheck",
+      input.boardingTime,
+      input.flight.departureTimezone,
+    )
   ) {
     warnings.push("PreCheck lanes may be closed for your arrival window. This may fall back to standard screening.");
   }
@@ -172,8 +181,21 @@ function buildWarnings(input: {
     warnings.push("Live route friction detected. Construction or congestion is already in play.");
   }
 
+  if (input.traffic.durationMinutes > 240) {
+    warnings.push(
+      `Your starting point looks very far from ${input.flight.departureAirport} — double-check the flight number and that you're leaving from where you think.`,
+    );
+  }
+
   warnings.push("REAL ID or passport required for domestic travel.");
-  warnings.push(...airport.alerts);
+  // Skip airport-wide alerts that are about a different terminal than this trip.
+  const terminalMentionPattern = /Terminal\s+([A-Z0-9]+)/gi;
+  warnings.push(
+    ...airport.alerts.filter((alert) => {
+      const mentions = Array.from(alert.matchAll(terminalMentionPattern)).map((match) => match[1]);
+      return mentions.length === 0 || !input.flight.terminal || mentions.includes(input.flight.terminal);
+    }),
+  );
   warnings.push(...(terminal?.accessNotes ?? []));
 
   return Array.from(new Set(warnings));
@@ -187,6 +209,14 @@ function buildProTips(input: { flight: FlightInfo; options: CalculationOptions; 
 
   if (input.options.hasTouchlessId) {
     tips.push("Open your airline app before arriving so biometric entry is ready.");
+  }
+
+  if (input.options.mode === "rideshare") {
+    tips.push("Request your ride about 5 minutes before your leave-by time so the car arrives as you walk out.");
+  }
+
+  if (input.options.mode === "transit") {
+    tips.push("Trains don't wait — check your line's live schedule and aim for one train earlier than you need.");
   }
 
   if (input.flight.region === "international") {
@@ -217,4 +247,8 @@ function averageRange([min, max]: [number, number]) {
 
 function needsConcoursePenalty(flight: FlightInfo) {
   return flight.departureAirport === "JFK" && flight.terminal === "8" && !!flight.gate?.match(/^3|4/);
+}
+
+function filterBreakdown(items: import("@/types/calculation").BreakdownItem[]) {
+  return items.filter((item) => item.minutes > 0 || item.id === "buffer");
 }

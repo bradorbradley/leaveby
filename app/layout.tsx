@@ -19,8 +19,14 @@ const jetBrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "LeaveBy",
-  description: "Real-time airport departure planning.",
+  title: "LeaveBy — when to leave for your flight",
+  description: "Enter your flight and a few details. We do the airport math and tell you exactly when to walk out the door.",
+};
+
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#faf8f5",
 };
 
 export default function RootLayout({

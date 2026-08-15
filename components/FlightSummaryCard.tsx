@@ -18,9 +18,13 @@ export function FlightSummaryCard({ flight }: { flight: FlightInfo }) {
             {flight.destinationAirportCode ? ` to ${flight.destinationAirportCode}` : ""}
           </h3>
           <p className="text-sm text-muted-foreground">
-            {format(new Date(flight.departureTime), "EEE, MMM d • h:mmaaa")} •{" "}
+            Departs {flight.departureLocalLabel ?? format(new Date(flight.departureTime), "EEE, MMM d • h:mmaaa")} •{" "}
             {flight.terminal ? `Terminal ${flight.terminal}` : "Terminal pending"}
+            {flight.gate ? ` • Gate ${flight.gate}` : ""}
           </p>
+          {flight.status === "delayed" && flight.delayMinutes > 0 ? (
+            <p className="text-sm font-medium text-accent">Running about {flight.delayMinutes} min late</p>
+          ) : null}
         </div>
       </CardContent>
     </Card>

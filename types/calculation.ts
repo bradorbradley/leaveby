@@ -3,8 +3,11 @@ import type { SecurityEstimate } from "@/types/security";
 import type { TravelEstimate } from "@/types/traffic";
 import type { WeatherEstimate } from "@/types/weather";
 
+import type { TravelMode } from "@/types/forms";
+
 export interface CalculationOptions {
   origin: string;
+  mode: TravelMode;
   hasPreCheck: boolean;
   hasClear: boolean;
   hasGlobalEntry: boolean;

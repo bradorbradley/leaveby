@@ -1,7 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { BriefcaseBusiness, Car, CheckCircle2, ChevronDown, Clock3, Footprints, PlaneTakeoff, Shield } from "lucide-react";
+import { BriefcaseBusiness, Car, CheckCircle2, ChevronDown, Clock3, Footprints, PlaneTakeoff, Shield, TrainFront } from "lucide-react";
 import { useState } from "react";
 
 import { minutesToLabel } from "@/lib/utils";
@@ -9,6 +9,7 @@ import type { BreakdownItem } from "@/types/calculation";
 
 const iconMap = {
   car: Car,
+  train: TrainFront,
   briefcase: BriefcaseBusiness,
   check: CheckCircle2,
   footprints: Footprints,
