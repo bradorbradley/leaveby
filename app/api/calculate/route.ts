@@ -1,5 +1,6 @@
 import { NextRequest } from "next/server";
 
+import { agentAvailable, researchLeavePlan } from "@/lib/agent";
 import { calculateLeaveByTime } from "@/lib/calculator";
 import { fetchFlightInfo } from "@/lib/scrapers/flight";
 import { fetchSecurityWaitTime } from "@/lib/scrapers/security";
@@ -8,7 +9,7 @@ import { fetchWeather } from "@/lib/scrapers/weather";
 import type { CalculationOptions } from "@/types/calculation";
 
 export const runtime = "nodejs";
-export const maxDuration = 60;
+export const maxDuration = 300;
 
 export async function POST(request: NextRequest) {
   const body = (await request.json()) as {
@@ -35,28 +36,49 @@ export async function POST(request: NextRequest) {
         const traffic = await fetchTravelTime(body.origin, flight, body.options.mode ?? "drive");
         send({ step: "traffic", status: "done", data: traffic });
 
-        send({ step: "security", status: "loading" });
-        const security = await fetchSecurityWaitTime(
-          flight.departureAirport,
-          flight.terminal,
-          new Date(flight.departureTime),
-          body.options,
-          flight.departureTimezone,
-        );
-        send({ step: "security", status: "done", data: security });
-
         send({ step: "weather", status: "loading" });
         const weather = await fetchWeather(flight);
         send({ step: "weather", status: "done", data: weather });
 
-        send({ step: "calculating", status: "loading" });
-        const result = calculateLeaveByTime({
-          flight,
-          traffic,
-          security,
-          weather,
-          options: body.options,
-        });
+        // The real thinking: ask Claude to research this specific trip live.
+        // Falls back to the deterministic model if no API key or on failure.
+        let result = null;
+        if (agentAvailable()) {
+          send({ step: "research", status: "loading" });
+          result = await researchLeavePlan({
+            flight,
+            traffic,
+            weather,
+            options: body.options,
+            originLabel: body.origin,
+          });
+          if (result) {
+            send({ step: "research", status: "done" });
+          }
+        }
+
+        if (!result) {
+          send({ step: "research", status: "loading" });
+          const security = await fetchSecurityWaitTime(
+            flight.departureAirport,
+            flight.terminal,
+            new Date(flight.departureTime),
+            body.options,
+            flight.departureTimezone,
+          );
+          send({ step: "research", status: "done", data: security });
+
+          send({ step: "calculating", status: "loading" });
+          result = calculateLeaveByTime({
+            flight,
+            traffic,
+            security,
+            weather,
+            options: body.options,
+          });
+        } else {
+          send({ step: "calculating", status: "loading" });
+        }
 
         send({ step: "done", result });
       } catch (error) {
