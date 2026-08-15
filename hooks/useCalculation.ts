@@ -5,7 +5,7 @@ import { useState } from "react";
 import { safeJsonParse } from "@/lib/utils";
 import type { CalculationOptions, CalculationResult } from "@/types/calculation";
 
-type CalculationStep = "flight" | "traffic" | "security" | "weather" | "calculating";
+type CalculationStep = "flight" | "traffic" | "weather" | "research" | "calculating";
 
 type CalcState =
   | { status: "idle" }

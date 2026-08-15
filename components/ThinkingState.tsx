@@ -7,9 +7,9 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 const thinkingSteps = [
   { id: "flight", label: "Finding your flight...", icon: Plane },
-  { id: "traffic", label: "Checking current traffic...", icon: Car },
-  { id: "security", label: "Scanning terminal security lines...", icon: Shield },
+  { id: "traffic", label: "Mapping your route...", icon: Car },
   { id: "weather", label: "Checking conditions...", icon: Cloud },
+  { id: "research", label: "Researching your airport, terminal & security...", icon: Shield },
   { id: "calculating", label: "Crunching the numbers...", icon: Calculator },
 ] as const;
 
