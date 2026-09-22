@@ -90,6 +90,7 @@ export type PlanEvent =
   | { type: "flight_notfound"; message: string }
   | { type: "route"; route: RouteEstimate }
   | { type: "search"; query: string }
+  | { type: "stage"; stage: "traffic" | "security" | "rules" | "today" | "synthesis" }
   | { type: "note"; text: string }
   | { type: "result"; result: PlanResult }
   | { type: "error"; message: string };

@@ -6,7 +6,7 @@ One screen. Tell it your flight, where you're leaving from, whether you're check
 
 1. **Resolve the flight.** Flight number + date → airport, terminal, scheduled local departure, domestic vs international. Scraped from FlightAware's public page first (fast, timezone-correct), with an OpenAI web-search fallback. If neither finds it, the app asks for the airport and departure time.
 2. **Locate the traveler.** Address, zip, neighborhood, or "use my current location". Free geocoding (Photon / zippopotam) and a free-flow drive time from OSRM.
-3. **Research the trip.** One OpenAI call (`gpt-5` with the `web_search` tool, streamed) runs 5 to 8 targeted searches: traffic on that route at that hour, construction at the airport, which checkpoint to use, whether PreCheck / CLEAR / Touchless ID are open then, bag-drop cutoff, boarding lead, anything unusual that day. It returns integer minutes for each leg plus short plain-English findings, validated against a strict JSON schema. The search queries stream to the loading screen as they happen.
+3. **Research the trip.** Four focused web searches run in parallel, one model call each (`gpt-4.1` with the `web_search` tool): traffic and roads on that route at that hour, the checkpoint and lanes at that terminal, the airline's bag-drop and boarding rules plus the walks inside, and anything unusual that day. A quick synthesis call turns the four notes into integer minutes per leg and short plain-English findings, validated against a strict JSON schema. Each step has its own timeout, so the whole thing takes about 10 seconds and can never hang. Airport-level findings are cached for a few hours per server instance.
 4. **Do the math.** Subtract backwards from departure: boarding lead → gate time → walk → security → curb/bag drop → drive. A checked bag adds a second constraint (the airline's bag-drop cutoff); the earlier of the two wins. Rounded down to a 5-minute mark. The gate-time slider recomputes instantly on the client.
 5. **Reveal.** The time, big. Uber / Lyft / Maps deep links to the terminal. The receipt (a stacked bar and a timeline), then only the findings that changed the number.
 
@@ -27,9 +27,11 @@ npm run dev
 | Variable | Required | Notes |
 | --- | --- | --- |
 | `OPENAI_API_KEY` | yes | Used for the research step and the flight fallback. |
-| `OPENAI_RESEARCH_MODEL` | no | Default `gpt-5`. Must support the `web_search` tool. |
-| `OPENAI_RESEARCH_EFFORT` | no | `low` (default), `medium`, or `high`. Higher is slower. |
-| `OPENAI_FAST_MODEL` | no | Default `gpt-4.1`. Structured lookups. |
+| `OPENAI_FAST_MODEL` | no | Default `gpt-4.1`. Used for flight lookups, the four research scouts, and synthesis. |
+| `OPENAI_SCOUT_MODEL` | no | Override the scout model. Must support the `web_search` tool. |
+| `OPENAI_SYNTH_MODEL` | no | Override the synthesis model. |
+| `RESEARCH_SCOUT_TIMEOUT_MS` | no | Default 14000. |
+| `RESEARCH_SYNTH_TIMEOUT_MS` | no | Default 18000. |
 
 ## Code map
 

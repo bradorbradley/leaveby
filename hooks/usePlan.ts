@@ -7,11 +7,14 @@ import type { PlanEvent, PlanRequest, PlanResult, RouteEstimate } from "@/types/
 
 export type Phase = "idle" | "searching" | "done" | "error" | "notfound";
 
+export type Stage = "traffic" | "security" | "rules" | "today" | "synthesis";
+
 export interface Progress {
   flight: FlightInfo | null;
   route: RouteEstimate | null;
   searches: string[];
   notes: string[];
+  stages: Stage[];
 }
 
 export interface PlanState {
@@ -21,7 +24,10 @@ export interface PlanState {
   error: string | null;
 }
 
-const emptyProgress: Progress = { flight: null, route: null, searches: [], notes: [] };
+const emptyProgress: Progress = { flight: null, route: null, searches: [], notes: [], stages: [] };
+
+/** Hard ceiling on a single plan request; the server has its own budgets well under this. */
+const CLIENT_DEADLINE_MS = 75_000;
 
 export function usePlan() {
   const [state, setState] = useState<PlanState>({ phase: "idle", progress: emptyProgress, result: null, error: null });
@@ -40,6 +46,11 @@ export function usePlan() {
     const controller = new AbortController();
     abortRef.current = controller;
     setState({ phase: "searching", progress: emptyProgress, result: null, error: null });
+    let timedOut = false;
+    const deadline = setTimeout(() => {
+      timedOut = true;
+      controller.abort();
+    }, CLIENT_DEADLINE_MS);
 
     try {
       const response = await fetch("/api/plan", {
@@ -64,6 +75,8 @@ export function usePlan() {
               return { ...prev, progress: { ...prev.progress, route: event.route } };
             case "search":
               return { ...prev, progress: { ...prev.progress, searches: [...prev.progress.searches, event.query] } };
+            case "stage":
+              return { ...prev, progress: { ...prev.progress, stages: [...prev.progress.stages, event.stage] } };
             case "note":
               return { ...prev, progress: { ...prev.progress, notes: [...prev.progress.notes, event.text] } };
             case "flight_notfound":
@@ -106,9 +119,14 @@ export function usePlan() {
       }
       if (!finished) setState((prev) => ({ ...prev, phase: "error", error: "The connection dropped before we finished. Try again." }));
     } catch (error) {
-      if ((error as Error).name === "AbortError") return;
+      if ((error as Error).name === "AbortError") {
+        if (timedOut) setState((prev) => ({ ...prev, phase: "error", error: "That took too long. Try again." }));
+        return;
+      }
       const message = error instanceof Error ? error.message : "Something went wrong.";
       setState((prev) => ({ ...prev, phase: "error", error: message }));
+    } finally {
+      clearTimeout(deadline);
     }
   }, []);
 

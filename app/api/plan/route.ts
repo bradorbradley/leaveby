@@ -70,6 +70,7 @@ export async function POST(request: NextRequest) {
           checkedBag: Boolean(body.checkedBag),
           perks,
           onSearch: (query) => send({ type: "search", query }),
+          onStage: (stage) => send({ type: "stage", stage }),
           onNote: (text) => send({ type: "note", text }),
         });
 

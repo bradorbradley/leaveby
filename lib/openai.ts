@@ -13,5 +13,3 @@ export function openai(): OpenAI {
 
 /** Fast model for structured lookups (flight/airport resolution). */
 export const FAST_MODEL = process.env.OPENAI_FAST_MODEL ?? "gpt-4.1";
-/** Reasoning model with web search for the research step. */
-export const RESEARCH_MODEL = process.env.OPENAI_RESEARCH_MODEL ?? "gpt-5";
