@@ -1,120 +1,115 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { UserRound } from "lucide-react";
+import { useCallback, useEffect, useState } from "react";
 
-import { FlightInput } from "@/components/FlightInput";
-import { ResultsScreen } from "@/components/ResultsScreen";
-import { ThinkingState } from "@/components/ThinkingState";
-import { resolveDateFromPreset } from "@/lib/flight-utils";
-import { useCalculation } from "@/hooks/useCalculation";
-import type { CalculationOptions } from "@/types/calculation";
-import type { LeaveByFormValues } from "@/types/forms";
-
-type Screen = "input" | "thinking" | "results";
-
-const initialForm: LeaveByFormValues = {
-  flightNumber: "",
-  datePreset: "today",
-  customDate: "",
-  origin: "",
-  mode: "drive",
-  checkedBag: false,
-  hasPreCheck: false,
-  hasClear: false,
-  hasGlobalEntry: false,
-  bufferMinutes: 40,
-};
+import { Mark } from "@/components/Mark";
+import { PlanForm, initialValues, toRequest, type FormValues } from "@/components/PlanForm";
+import { ProfileSheet } from "@/components/ProfileSheet";
+import { Reveal } from "@/components/Reveal";
+import { Searching } from "@/components/Searching";
+import { usePlan } from "@/hooks/usePlan";
+import { clearProfile, defaultProfile, loadProfile, profileIsEmpty, rememberOrigin, saveProfile, type Profile } from "@/lib/profile";
 
 export default function HomePage() {
-  const { state, calculate, reset } = useCalculation();
-  const [screen, setScreen] = useState<Screen>("input");
-  const [form, setForm] = useState<LeaveByFormValues>(initialForm);
+  const { state, run, cancel, reset } = usePlan();
+  const [profile, setProfile] = useState<Profile>(defaultProfile);
+  const [values, setValues] = useState<FormValues>(() => initialValues(defaultProfile));
+  const [sheetOpen, setSheetOpen] = useState(false);
+  const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-    if (state.status === "done") {
-      setScreen("results");
-    }
-  }, [state.status]);
+    const p = loadProfile();
+    setProfile(p);
+    setValues(initialValues(p));
+    setLoaded(true);
+  }, []);
 
-  const submitCalculation = async () => {
-    const date = resolveDateFromPreset(form.datePreset, form.customDate);
-    const payloadOptions: CalculationOptions = {
-      origin: form.origin,
-      mode: form.mode,
-      hasPreCheck: form.hasPreCheck,
-      hasClear: form.hasClear,
-      hasGlobalEntry: form.hasGlobalEntry,
-      hasTouchlessId: false,
-      checkedBag: form.checkedBag,
-      airlineStatus: "None",
-      mobileBoardingPass: true,
-      bufferMinutes: form.bufferMinutes,
-    };
+  const updateProfile = useCallback((p: Profile) => {
+    setProfile(p);
+    saveProfile(p);
+  }, []);
 
-    setScreen("thinking");
-    await calculate({
-      flightNumber: form.flightNumber,
-      date,
-      origin: form.origin,
-      options: payloadOptions,
-    });
+  const patch = (partial: Partial<FormValues>) => setValues((v) => ({ ...v, ...partial }));
+
+  const submit = () => {
+    const request = toRequest(values, state.phase === "notfound");
+    // Remember what the traveler set, so next time is one tap shorter.
+    let next: Profile = { ...profile, perks: values.perks, bufferMinutes: values.bufferMinutes };
+    const o = values.origin;
+    if (o && typeof o.lat === "number" && typeof o.lon === "number" && o.label) next = rememberOrigin(next, { label: o.label, lat: o.lat, lon: o.lon });
+    updateProfile(next);
+    void run(request);
   };
 
-  const resetAll = () => {
+  const startOver = () => {
     reset();
-    setScreen("input");
-    setForm(initialForm);
+    setValues((v) => ({ ...initialValues(profile), flightNumber: "", origin: v.origin }));
   };
+
+  const phase = state.phase;
+  const showForm = phase === "idle" || phase === "notfound" || phase === "error";
 
   return (
-    <main className="app-shell">
-      <div className="mb-8 flex items-center justify-between pt-2">
-        <div>
-          <p className="section-label">Airport Math, handled</p>
-          <p className="mt-1 text-sm text-muted-foreground">Mobile-first departure timing for major U.S. airports.</p>
+    <main className="shell">
+      <header className="mb-3 flex items-center justify-between">
+        <div className="flex items-center gap-2 font-display text-[19px] font-black tracking-tight">
+          <Mark /> Leave By
         </div>
-      </div>
+        <button
+          type="button"
+          aria-label="Saved on this phone"
+          onClick={() => setSheetOpen(true)}
+          className={`grid h-9 w-9 place-items-center rounded-full border-[1.5px] border-line ${loaded && !profileIsEmpty(profile) ? "bg-blush" : "bg-paper"}`}
+        >
+          <UserRound className="h-4 w-4" />
+        </button>
+      </header>
 
       <AnimatePresence mode="wait">
-        <motion.div
-          key={screen}
-          initial={{ opacity: 0, x: 18 }}
-          animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: -18 }}
-          transition={{ duration: 0.3 }}
-        >
-          {screen === "input" ? (
-            <FlightInput
-              values={form}
-              onChange={(patch) => setForm((current) => ({ ...current, ...patch }))}
-              onSubmit={submitCalculation}
+        {showForm ? (
+          <motion.div key="form" className="flex flex-1 flex-col" initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }}>
+            {phase === "error" && state.error ? (
+              <div className="mb-3 rounded-[18px] bg-blush px-4 py-3 text-[14px] font-semibold">{state.error}</div>
+            ) : null}
+            <PlanForm values={values} onChange={patch} onSubmit={submit} profile={profile} notFound={phase === "notfound" ? state.error : null} />
+          </motion.div>
+        ) : null}
+        {phase === "searching" ? (
+          <motion.div key="searching" className="flex flex-1 flex-col" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+            <Searching progress={state.progress} flightNumber={values.flightNumber} onCancel={cancel} />
+          </motion.div>
+        ) : null}
+        {phase === "done" && state.result ? (
+          <motion.div key="done" className="flex flex-1 flex-col" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+            <Reveal
+              result={state.result}
+              onReset={startOver}
+              onBuffer={(bufferMinutes) => {
+                setValues((v) => ({ ...v, bufferMinutes }));
+                updateProfile({ ...profile, bufferMinutes });
+              }}
             />
-          ) : null}
-
-          {screen === "thinking" && state.status === "loading" ? (
-            <ThinkingState currentStep={state.step} completedSteps={state.completedSteps} />
-          ) : null}
-
-          {screen === "results" && state.status === "done" ? (
-            <ResultsScreen result={state.result} onBack={resetAll} />
-          ) : null}
-
-          {state.status === "error" ? (
-            <div className="glass-card mx-auto max-w-xl p-8 text-center">
-              <h2 className="text-3xl">We hit a snag</h2>
-              <p className="mt-3 text-sm text-muted-foreground">{state.message}</p>
-              <button
-                type="button"
-                className="mt-6 min-h-12 rounded-2xl bg-accent px-5 py-3 text-sm font-medium text-accent-foreground"
-                onClick={resetAll}
-              >
-                Try again
-              </button>
-            </div>
-          ) : null}
-        </motion.div>
+          </motion.div>
+        ) : null}
       </AnimatePresence>
+
+      <ProfileSheet
+        open={sheetOpen}
+        profile={profile}
+        onChange={(p) => {
+          updateProfile(p);
+          setValues((v) => ({ ...v, perks: p.perks, bufferMinutes: p.bufferMinutes, origin: v.origin ?? (p.home ? { ...p.home } : null) }));
+        }}
+        onForget={() => {
+          clearProfile();
+          setProfile(defaultProfile);
+          setValues(initialValues(defaultProfile));
+          setSheetOpen(false);
+        }}
+        onClose={() => setSheetOpen(false)}
+      />
     </main>
   );
 }

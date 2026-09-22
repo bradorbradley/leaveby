@@ -55,16 +55,17 @@ export async function geocodeOrigin(
     const json = (await response.json()) as {
       features?: Array<{
         geometry: { coordinates: [number, number] };
-        properties: { name?: string; city?: string; state?: string };
+        properties: { name?: string; street?: string; housenumber?: string; district?: string; city?: string; state?: string };
       }>;
     };
     const feature = json.features?.[0];
     if (!feature) return null;
-    const { name, city, state } = feature.properties;
+    const { name, street, housenumber, district, city, state } = feature.properties;
+    const line = [housenumber, street].filter(Boolean).join(" ") || name;
     return {
       lat: feature.geometry.coordinates[1],
       lon: feature.geometry.coordinates[0],
-      label: [name, city ?? state].filter(Boolean).join(", "),
+      label: [line, district ?? city ?? state].filter(Boolean).join(", "),
     };
   } catch {
     return null;
