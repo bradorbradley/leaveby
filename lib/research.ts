@@ -29,10 +29,18 @@ const CACHE_TTL_MS = Number(process.env.RESEARCH_CACHE_TTL_MS ?? 3 * 3600_000);
 const SCOUT_MODEL = process.env.OPENAI_SCOUT_MODEL ?? FAST_MODEL;
 const SYNTH_MODEL = process.env.OPENAI_SYNTH_MODEL ?? FAST_MODEL;
 
+interface Citation {
+  title: string;
+  url: string;
+}
+
 interface ScoutResult {
   stage: Exclude<Stage, "synthesis">;
   text: string;
   queries: string[];
+  citations: Citation[];
+  /** True only when the answer cites at least one web source. Unverified notes are never used. */
+  verified: boolean;
 }
 
 // Per-instance cache. Serverless instances are short-lived, but a warm one
@@ -99,7 +107,7 @@ function buildContext(input: ResearchInput): TripContext {
 
 const SCOUT_SYSTEM = `You are a research scout for Leave By, an app that tells one traveler when to walk out the door for a flight. You have web search. Answer ONE focused question about THIS airport, THIS terminal, THIS hour, THIS day. Run one or two searches, then answer.
 
-Rules: be specific and current. Prefer official sources (airport, TSA, airline, DOT) and recent reports. Give numbers where you can (minutes, hours of operation, cutoffs). Say "not found" for anything you could not verify rather than guessing. Keep it under 130 words, plain sentences, no headers. End with a line "Sources:" listing up to 3 short source names.`;
+Rules: be specific and current. Prefer official sources (airport, TSA, airline, DOT) and recent reports. Give numbers where you can (minutes, hours of operation, cutoffs). Every fact must come from a page you searched; cite it inline. Say "not found" for anything you could not verify rather than guessing. Never fill gaps from memory. Keep it under 130 words, plain sentences, no headers.`;
 
 function scoutPrompts(c: TripContext, input: ResearchInput): Array<{ stage: ScoutResult["stage"]; question: string; cacheKey: string }> {
   const { flight, route } = input;
@@ -152,11 +160,25 @@ async function runScout(prompt: { stage: ScoutResult["stage"]; question: string;
   );
   let text = "";
   const seen = new Set<string>();
+  const citations: Citation[] = [];
+  const seenUrls = new Set<string>();
+  const addCitation = (a: { type?: string; url?: string; title?: string }) => {
+    if (a?.type !== "url_citation" || !a.url) return;
+    const key = a.url.split("?")[0];
+    if (seenUrls.has(key)) return;
+    seenUrls.add(key);
+    citations.push({ title: (a.title ?? "").trim() || hostOf(a.url), url: a.url });
+  };
   const deadline = Date.now() + SCOUT_TIMEOUT_MS;
   for await (const event of stream) {
     if (Date.now() > deadline) throw new Error(`scout ${prompt.stage} timed out`);
-    if (event.type === "response.output_item.added" || event.type === "response.output_item.done") {
-      const it = event.item as { type?: string; action?: { query?: string; queries?: string[] } };
+    if (event.type === "response.output_text.annotation.added") {
+      addCitation(event.annotation as { type?: string; url?: string; title?: string });
+    } else if (event.type === "response.output_item.added" || event.type === "response.output_item.done") {
+      const it = event.item as { type?: string; action?: { query?: string; queries?: string[] }; content?: Array<{ annotations?: Array<{ type?: string; url?: string; title?: string }> }> };
+      if (it?.type === "message") {
+        for (const part of it.content ?? []) for (const a of part.annotations ?? []) addCitation(a);
+      }
       if (it?.type === "web_search_call") {
         const qs = it.action?.queries?.length ? it.action.queries : it.action?.query ? [it.action.query] : [];
         for (const q of qs) {
@@ -173,9 +195,18 @@ async function runScout(prompt: { stage: ScoutResult["stage"]; question: string;
       throw new Error(`scout ${prompt.stage} ${event.type}`);
     }
   }
-  const value: ScoutResult = { stage: prompt.stage, text: text.trim(), queries };
-  if (value.text) cache.set(prompt.cacheKey, { at: Date.now(), value });
+  const clean = text.trim();
+  const value: ScoutResult = { stage: prompt.stage, text: clean, queries, citations, verified: citations.length > 0 && clean.length > 0 };
+  if (value.verified) cache.set(prompt.cacheKey, { at: Date.now(), value });
   return value;
+}
+
+function hostOf(url: string): string {
+  try {
+    return new URL(url).hostname.replace(/^www\./, "");
+  } catch {
+    return url;
+  }
 }
 
 const SYNTH_SYSTEM = `You are the brain behind Leave By. You turn research notes into the minutes a traveler needs, and into a few plain sentences shown on a phone.
@@ -230,11 +261,12 @@ async function runResearch(input: ResearchInput): Promise<Research | null> {
   const notes: ScoutResult[] = [];
   const failed: string[] = [];
   settled.forEach((s, i) => {
-    if (s.status === "fulfilled" && s.value.text) notes.push(s.value);
+    if (s.status === "fulfilled" && s.value.verified) notes.push(s.value);
     else failed.push(prompts[i].stage);
   });
   if (!notes.length) return null;
-  if (failed.length) input.onNote?.(`Some lookups timed out: ${failed.join(", ")}.`);
+  if (failed.length) input.onNote?.(`Not verified live: ${failed.join(", ")}.`);
+  const baseline = fallbackNumbers(input);
 
   input.onStage?.("synthesis");
   const user = `## The trip
@@ -247,9 +279,20 @@ async function runResearch(input: ResearchInput): Promise<Research | null> {
 - Skip-the-line: ${c.lanes}
 - Weather forecast near departure: ${c.weatherLine}
 
-## Research notes (from live web searches just now)
-${notes.map((n) => `### ${n.stage}\n${n.text}`).join("\n\n")}
-${failed.length ? `\n(Notes missing for: ${failed.join(", ")}. Use typical patterns for those and lower confidence.)` : ""}
+## Verified research notes (live web searches just now, each backed by cited sources)
+${notes.map((n) => `### ${n.stage}\n${n.text}\nCited: ${n.citations.map((c) => hostOf(c.url)).join(", ")}`).join("\n\n")}
+${failed.length ? `\n(No verified note for: ${failed.join(", ")}. For those pieces use the typical baseline below, do not invent specifics, and set confidence to at most "medium".)` : ""}
+
+## Typical baseline for this airport (use only where the notes are silent)
+- driveMinutes ${baseline.driveMinutes}${input.route.freeFlowMinutes ? ` (routing engine free-flow ${input.route.freeFlowMinutes})` : ""}
+- curbToCheckpointMinutes ${baseline.curbToCheckpointMinutes}
+- securityMinutes ${baseline.securityMinutes} for ${baseline.lane}
+- checkpointToGateMinutes ${baseline.checkpointToGateMinutes}
+- boardingLeadMinutes ${baseline.boardingLeadMinutes}
+- bagDropCutoffMinutes ${baseline.bagDropCutoffMinutes ?? "n/a"}
+
+## Rules
+Only state facts that appear in the verified notes. Never invent hours, closures, cutoffs, or construction. If a note says "not found", fall back to the baseline. Sentences shown to the traveler must be traceable to a note.
 
 ## Return
 Fill the JSON schema. Minutes are integers. "checkpoint" names the checkpoint to use. "lane" names the lane they will actually use. "traffic", "security", and "gate" are one short sentence each. "headsUp" up to 3, "tips" up to 3, "sources" up to 4 short notes on what came from where.`;
@@ -267,7 +310,19 @@ Fill the JSON schema. Minutes are integers. "checkpoint" names the checkpoint to
   if (!parsed) return null;
   const engine = `${SCOUT_MODEL} scouts + ${SYNTH_MODEL}`;
   const result = sanitize(parsed, input, engine);
-  if (failed.length && result.confidence === "high") result.confidence = "medium";
+  // Sources are the real citations, not the model's description of them.
+  const cited = notes.flatMap((n) => n.citations);
+  const byHost = new Map<string, Citation>();
+  for (const c of cited) if (!byHost.has(hostOf(c.url))) byHost.set(hostOf(c.url), c);
+  result.sources = Array.from(byHost.values())
+    .slice(0, 6)
+    .map((c) => (c.title && c.title !== hostOf(c.url) ? `${c.title} (${hostOf(c.url)})` : hostOf(c.url)));
+  if (failed.length) {
+    if (result.confidence === "high") result.confidence = "medium";
+    const labels: Record<string, string> = { traffic: "traffic", security: "security lines", rules: "airline rules", today: "today's conditions" };
+    const note = `Couldn't verify ${failed.map((f) => labels[f] ?? f).join(" or ")} live, so that part uses typical numbers.`;
+    result.headsUp = [note, ...result.headsUp].slice(0, 3);
+  }
   return result;
 }
 
@@ -298,10 +353,13 @@ function sanitize(r: Partial<Research>, input: ResearchInput, engine: string): R
   const base = fallbackNumbers(input);
   const strings = (arr: unknown, max: number) =>
     Array.isArray(arr) ? arr.filter((s): s is string => typeof s === "string" && s.trim().length > 0).slice(0, max) : [];
+  const free = input.route.freeFlowMinutes;
+  const driveLo = free ? Math.round(free * 0.9) : 5;
+  const driveHi = free ? Math.round(free * 2.2) + 15 : 900;
   return {
-    driveMinutes: clamp(r.driveMinutes, 5, 900, base.driveMinutes),
+    driveMinutes: clamp(r.driveMinutes, driveLo, driveHi, base.driveMinutes),
     curbToCheckpointMinutes: clamp(r.curbToCheckpointMinutes, 2, 60, base.curbToCheckpointMinutes),
-    securityMinutes: clamp(r.securityMinutes, 3, 120, base.securityMinutes),
+    securityMinutes: clamp(r.securityMinutes, 5, 120, base.securityMinutes),
     checkpointToGateMinutes: clamp(r.checkpointToGateMinutes, 2, 45, base.checkpointToGateMinutes),
     boardingLeadMinutes: clamp(r.boardingLeadMinutes, 20, 90, base.boardingLeadMinutes),
     bagDropCutoffMinutes: input.checkedBag ? clamp(r.bagDropCutoffMinutes, 30, 120, base.bagDropCutoffMinutes ?? 45) : null,
