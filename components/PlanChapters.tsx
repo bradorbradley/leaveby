@@ -141,8 +141,8 @@ export function PlanChapters({
     <div>
       <div
         ref={scroller}
-        className="-mx-5 flex snap-x snap-mandatory items-stretch gap-2.5 overflow-x-auto px-5 pb-2 pt-1"
-        style={{ scrollbarWidth: "none", WebkitOverflowScrolling: "touch" }}
+        className="-mx-1 flex snap-x snap-mandatory items-stretch gap-2.5 overflow-x-auto px-1 pb-2 pt-1"
+        style={{ scrollbarWidth: "none", WebkitOverflowScrolling: "touch", scrollPaddingLeft: 4 }}
       >
         {chapters.map((c, i) => {
           const dark = i < DARK_UNTIL;
@@ -159,7 +159,7 @@ export function PlanChapters({
               initial={reduce ? false : { opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ type: "spring", stiffness: 240, damping: 26, delay: 0.35 + i * 0.07 }}
-              className="flex min-h-[250px] w-[82%] shrink-0 snap-start flex-col rounded-[24px] border p-4"
+              className="flex min-h-[250px] w-[86%] shrink-0 snap-start flex-col rounded-[22px] border p-4"
               style={{
                 background: bg,
                 color: ink,
