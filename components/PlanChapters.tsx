@@ -16,18 +16,19 @@ export interface Chapter {
   notes: string[];
 }
 
-/** Warm paper at the start of the evening, ink by wheels-up. */
-const RAMP = ["#FCFAF6", "#F8DED5", "#F2B9AA", "#E4806A", "#B85A4E", "#5C3F4F", "#1F2030"];
-const DARK_FROM = 3; // cards at this index and beyond use paper text
+/** Ink at the moment that matters, lightening to paper by wheels-up. */
+const RAMP = ["#1F2030", "#4A3A4C", "#A6544A", "#E4806A", "#F2B9AA", "#F8DED5", "#FCFAF6"];
+const DARK_UNTIL = 3; // cards before this index use paper text
 
-const LABELS: Record<string, string> = {
-  leave: "Leave by",
-  arrive: "Arrive by",
-  security: "In line by",
-  gate: "Cleared by",
-  spare: "At gate by",
-  boarding: "Boarding",
-  departure: "Departure",
+/** One idea per line, nothing said twice on a card. */
+const COPY: Record<string, { eyebrow: string; title: string; minutes?: string }> = {
+  leave: { eyebrow: "Leave by", title: "Walk out the door", minutes: "Drive" },
+  arrive: { eyebrow: "Arrive by", title: "At the terminal", minutes: "To security" },
+  security: { eyebrow: "In line by", title: "Security", minutes: "Wait" },
+  gate: { eyebrow: "Cleared by", title: "Walk to the gate", minutes: "Walk" },
+  spare: { eyebrow: "At the gate by", title: "Spare time", minutes: "Until boarding" },
+  boarding: { eyebrow: "Boarding", title: "Boarding begins", minutes: "Until departure" },
+  departure: { eyebrow: "Departure", title: "Wheels up" },
 };
 
 const EMOJI: Record<string, string> = {
@@ -41,8 +42,10 @@ const EMOJI: Record<string, string> = {
 
 /** Things you must not miss: closures, cutoffs, detours, remote lots, weather, events. */
 const CRITICAL = /construction|closed|closure|detour|cut ?off|closes|remote lot|shuttle|delay|strike|weather|storm|snow|rain|alert|event|parade|marathon|game|concert|road ?work|lane closure|only|must|required/i;
+/** All-clear phrasing ("no construction", "as normal", "not found") is reassurance, not a warning. */
+const ALL_CLEAR = /\bno (?:\w+ ){0,2}(?:construction|closures?|delays?|detours?|road ?work|disruptions?|events?)\b|not found|no reports?|as normal|\bnormal\b|unaffected|open as usual/i;
 export function isCritical(note: string) {
-  return CRITICAL.test(note);
+  return CRITICAL.test(note) && !ALL_CLEAR.test(note);
 }
 
 function Emoji({ step, mode, dark }: { step: string; mode: Mode; dark: boolean }) {
@@ -138,15 +141,16 @@ export function PlanChapters({
     <div>
       <div
         ref={scroller}
-        className="-mx-5 flex snap-x snap-mandatory items-start gap-2.5 overflow-x-auto px-5 pb-2 pt-1"
+        className="-mx-5 flex snap-x snap-mandatory items-stretch gap-2.5 overflow-x-auto px-5 pb-2 pt-1"
         style={{ scrollbarWidth: "none", WebkitOverflowScrolling: "touch" }}
       >
         {chapters.map((c, i) => {
-          const dark = i >= DARK_FROM;
+          const dark = i < DARK_UNTIL;
           const bg = RAMP[Math.min(i, RAMP.length - 1)];
           const ink = dark ? "#FCFAF6" : "#1F2030";
-          const muted = dark ? "rgba(252,250,246,0.72)" : "#62606F";
-          const next = chapters[i + 1];
+          const muted = dark ? "rgba(252,250,246,0.76)" : "#62606F";
+          const copy = COPY[c.key] ?? { eyebrow: c.title, title: c.title };
+          const minutesLabel = c.key === "leave" ? (mode === "transit" ? "Transit" : mode === "drive" ? "Drive and park" : "Drive") : copy.minutes;
           const critical = c.notes.filter(isCritical);
           const plain = c.notes.filter((n) => !isCritical(n));
           return (
@@ -155,7 +159,7 @@ export function PlanChapters({
               initial={reduce ? false : { opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ type: "spring", stiffness: 240, damping: 26, delay: 0.35 + i * 0.07 }}
-              className="flex min-h-[236px] w-[82%] shrink-0 snap-start flex-col rounded-[24px] border p-4"
+              className="flex min-h-[250px] w-[82%] shrink-0 snap-start flex-col rounded-[24px] border p-4"
               style={{
                 background: bg,
                 color: ink,
@@ -166,34 +170,25 @@ export function PlanChapters({
               <div className="flex items-start justify-between gap-3">
                 <div>
                   <p className="text-[11px] font-semibold uppercase tracking-[0.18em]" style={{ color: muted }}>
-                    {LABELS[c.key] ?? c.title}
+                    {copy.eyebrow}
                   </p>
                   <p className="display-soft mt-1 font-display text-[46px] font-semibold leading-none tracking-[-0.02em]">{fmtTimeShort(c.iso, tz)}</p>
+                  {c.key === "leave" ? (
+                    <p className="mt-2 text-[13.5px] font-semibold tabular-nums" style={{ color: "var(--mustard-soft)" }}>
+                      Absolute latest {fmtTimeShort(latestISO, tz)}
+                    </p>
+                  ) : null}
                 </div>
                 <Emoji step={c.key} mode={mode} dark={dark} />
               </div>
-              <p className="mt-2 text-[16px] font-semibold">{c.title}</p>
-              {c.segLabel && typeof c.segMin === "number" ? (
+              <p className="mt-2 text-[16px] font-semibold">{copy.title}</p>
+              {minutesLabel && typeof c.segMin === "number" ? (
                 <span
                   className="mt-2 inline-flex w-fit items-center gap-1.5 rounded-full px-2.5 py-1 text-[12px] font-medium"
                   style={{ background: dark ? "rgba(255,255,255,0.12)" : "rgba(31,32,48,0.06)", color: ink }}
                 >
-                  {c.segLabel} · <b className="font-semibold tabular-nums">{c.segMin} min</b>
+                  {minutesLabel} · <b className="font-semibold tabular-nums">{c.segMin} min</b>
                 </span>
-              ) : null}
-
-              {c.key === "leave" ? (
-                <div
-                  className="mt-3 flex items-start gap-2 rounded-[14px] px-3 py-2.5 text-[13px] leading-snug"
-                  style={{ background: "rgba(31,32,48,0.06)", color: ink }}
-                >
-                  <span aria-hidden="true" className="text-[15px] leading-none">
-                    ⏱️
-                  </span>
-                  <span>
-                    <b className="font-semibold">Absolute latest {fmtTimeShort(latestISO, tz)}.</b> Leave then and you reach the gate as boarding starts, with nothing spare.
-                  </span>
-                </div>
               ) : null}
 
               {critical.map((n) => (
@@ -219,9 +214,6 @@ export function PlanChapters({
                 </p>
               ))}
 
-              <p className="mt-auto pt-3 text-[12px]" style={{ color: muted }}>
-                {next ? `Next: ${next.title} at ${fmtTimeShort(next.iso, tz)}` : "Wheels up."}
-              </p>
             </motion.article>
           );
         })}
@@ -232,7 +224,7 @@ export function PlanChapters({
             key={c.key}
             className="block h-1.5 w-1.5 rounded-full"
             animate={{ scale: active === i ? 1.5 : 1, opacity: active === i ? 1 : 0.6 }}
-            style={{ background: RAMP[Math.min(i, RAMP.length - 1)] === "#FCFAF6" ? "#E36F58" : RAMP[Math.min(i, RAMP.length - 1)] }}
+            style={{ background: i === chapters.length - 1 ? "#E36F58" : RAMP[Math.min(i, RAMP.length - 1)] }}
             transition={{ type: "spring", stiffness: 300, damping: 20 }}
           />
         ))}
