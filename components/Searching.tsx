@@ -12,7 +12,7 @@ import type { Progress } from "@/hooks/usePlan";
  * One line at a time. It advances on real progress events when they arrive
  * and on a timer when they don't, so it never looks stuck.
  */
-const LINES: Array<{ key: string; text: string }> = [
+export const LINES: Array<{ key: string; text: string }> = [
   { key: "flight", text: "Finding your flight" },
   { key: "route", text: "Mapping the drive" },
   { key: "traffic", text: "Looking at live traffic on your route" },
@@ -23,7 +23,7 @@ const LINES: Array<{ key: string; text: string }> = [
 ];
 
 /** Two circles breathe past each other; their overlap is the lens. A star turns slowly above. */
-function Orbit({ still }: { still: boolean }) {
+export function Orbit({ still }: { still: boolean }) {
   const ease = "easeInOut" as const;
   return (
     <svg viewBox="0 0 260 260" width="220" height="220" aria-hidden="true" className="overflow-visible">
