@@ -1,5 +1,6 @@
 "use client";
 
+import { AnimatePresence, motion } from "framer-motion";
 import { Home, LocateFixed, MapPin, Clock, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
@@ -36,7 +37,7 @@ export function OriginField({
   const wrapRef = useRef<HTMLDivElement>(null);
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  const chosen = value && (value.label || (typeof value.lat === "number")) ? value : null;
+  const chosen = value && (value.label || typeof value.lat === "number") ? value : null;
 
   useEffect(() => {
     const onDoc = (e: MouseEvent) => {
@@ -108,7 +109,7 @@ export function OriginField({
   const quick: Array<{ key: string; icon: React.ReactNode; label: string; sub?: string; onClick: () => void }> = [];
   quick.push({
     key: "loc",
-    icon: <LocateFixed className="h-4 w-4 text-lilac-deep" />,
+    icon: <LocateFixed className="h-4 w-4 text-coral" />,
     label: locating ? "Finding you…" : "Use my current location",
     onClick: useLocation,
   });
@@ -124,7 +125,7 @@ export function OriginField({
   return (
     <div ref={wrapRef} className="relative">
       <div className={`field ${showList ? "rounded-b-none" : ""}`}>
-        <MapPin className="h-5 w-5 shrink-0 text-lilac-deep" />
+        <MapPin className="h-5 w-5 shrink-0 text-coral" />
         {chosen ? (
           <>
             <span className="min-w-0 flex-1 truncate">{chosen.label ?? chosen.text}</span>
@@ -166,42 +167,50 @@ export function OriginField({
           />
         )}
       </div>
-      {showList ? (
-        <div className="absolute left-0 right-0 z-20 -mt-px max-h-72 overflow-y-auto rounded-b-[18px] border-[1.5px] border-t-0 border-line bg-paper shadow-sheet">
-          {listItems.length
-            ? listItems.map((s) => (
-                <button
-                  key={`${s.label}-${s.sub}`}
-                  type="button"
-                  className="flex w-full items-start gap-2.5 px-3.5 py-2.5 text-left hover:bg-ground"
-                  onMouseDown={(e) => e.preventDefault()}
-                  onClick={() => pick({ label: s.sub ? `${s.label}, ${s.sub}` : s.label, lat: s.lat, lon: s.lon })}
-                >
-                  <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-ink-3" />
-                  <span className="min-w-0">
-                    <span className="block truncate text-[15px] font-semibold">{s.label}</span>
-                    {s.sub ? <span className="block truncate text-[12.5px] text-ink-2">{s.sub}</span> : null}
-                  </span>
-                </button>
-              ))
-            : quick.map((q) => (
-                <button
-                  key={q.key}
-                  type="button"
-                  className="flex w-full items-center gap-2.5 px-3.5 py-3 text-left hover:bg-ground"
-                  onMouseDown={(e) => e.preventDefault()}
-                  onClick={q.onClick}
-                >
-                  {q.icon}
-                  <span className="min-w-0">
-                    <span className="block truncate text-[15px] font-semibold">{q.label}</span>
-                    {q.sub ? <span className="block truncate text-[12.5px] text-ink-2">{q.sub}</span> : null}
-                  </span>
-                </button>
-              ))}
-          {locError ? <p className="px-3.5 pb-3 text-[12.5px] text-blush-deep">{locError}</p> : null}
-        </div>
-      ) : null}
+      <AnimatePresence>
+        {showList ? (
+          <motion.div
+            initial={{ opacity: 0, y: -4 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -4 }}
+            transition={{ duration: 0.18 }}
+            className="absolute left-0 right-0 z-20 -mt-px max-h-72 overflow-y-auto rounded-b-[18px] border border-t-0 border-line bg-paper shadow-pop"
+          >
+            {listItems.length
+              ? listItems.map((s) => (
+                  <button
+                    key={`${s.label}-${s.sub}`}
+                    type="button"
+                    className="flex w-full items-start gap-3 px-4 py-3 text-left hover:bg-ground"
+                    onMouseDown={(e) => e.preventDefault()}
+                    onClick={() => pick({ label: s.sub ? `${s.label}, ${s.sub}` : s.label, lat: s.lat, lon: s.lon })}
+                  >
+                    <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-ink-3" />
+                    <span className="min-w-0">
+                      <span className="block truncate text-[15px] font-medium">{s.label}</span>
+                      {s.sub ? <span className="block truncate text-[12.5px] text-ink-2">{s.sub}</span> : null}
+                    </span>
+                  </button>
+                ))
+              : quick.map((q) => (
+                  <button
+                    key={q.key}
+                    type="button"
+                    className="flex w-full items-center gap-3 px-4 py-3 text-left hover:bg-ground"
+                    onMouseDown={(e) => e.preventDefault()}
+                    onClick={q.onClick}
+                  >
+                    {q.icon}
+                    <span className="min-w-0">
+                      <span className="block truncate text-[15px] font-medium">{q.label}</span>
+                      {q.sub ? <span className="block truncate text-[12.5px] text-ink-2">{q.sub}</span> : null}
+                    </span>
+                  </button>
+                ))}
+            {locError ? <p className="px-4 pb-3 text-[12.5px] text-coral">{locError}</p> : null}
+          </motion.div>
+        ) : null}
+      </AnimatePresence>
     </div>
   );
 }

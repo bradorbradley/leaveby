@@ -33,13 +33,13 @@ export function Countdown({ toISO, className = "" }: { toISO: string; className?
 
   return (
     <div
-      className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-[13px] font-bold tabular-nums ${
-        past ? "bg-ink text-ground" : soon ? "bg-ink text-ground" : "bg-paper/70 text-ink"
+      className={`inline-flex items-center gap-2 rounded-full px-3.5 py-1.5 text-[13px] font-semibold tabular-nums ${
+        past ? "bg-coral text-paper" : soon ? "bg-ink text-paper" : "border border-line bg-paper/80 text-ink backdrop-blur"
       } ${className}`}
       role="timer"
       aria-live="off"
     >
-      <span className={`h-1.5 w-1.5 rounded-full ${past || soon ? "bg-butter animate-pulse" : "bg-lilac-deep"}`} aria-hidden="true" />
+      <span className={`h-1.5 w-1.5 rounded-full ${past ? "bg-paper" : soon ? "bg-mustard-soft animate-pulse" : "bg-coral"}`} aria-hidden="true" />
       {past ? `Leave now · ${formatCountdown(-remaining)} ago` : `in ${formatCountdown(remaining)}`}
     </div>
   );

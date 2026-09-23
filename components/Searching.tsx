@@ -1,9 +1,9 @@
 "use client";
 
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { useEffect, useMemo, useState } from "react";
 
-import { Mark } from "@/components/Mark";
+import { STAR } from "@/components/Mark";
 import { fmtTimeShort } from "@/lib/format";
 import type { Progress } from "@/hooks/usePlan";
 
@@ -21,13 +21,55 @@ const LINES: Array<{ key: string; text: string }> = [
   { key: "synthesis", text: "Putting it together" },
 ];
 
+/** Two circles breathe past each other; their overlap is the lens. A star turns slowly above. */
+function Orbit({ still }: { still: boolean }) {
+  const ease = "easeInOut" as const;
+  return (
+    <svg viewBox="0 0 260 260" width="220" height="220" aria-hidden="true" className="overflow-visible">
+      <g style={{ mixBlendMode: "multiply" }}>
+        <motion.circle
+          r="72"
+          cy="150"
+          fill="var(--coral-pale)"
+          animate={still ? { cx: 106 } : { cx: [84, 118, 84] }}
+          transition={still ? { duration: 0.6 } : { duration: 5.2, repeat: Infinity, ease }}
+        />
+        <motion.circle
+          r="72"
+          cy="150"
+          fill="var(--coral-soft)"
+          animate={still ? { cx: 154 } : { cx: [176, 142, 176] }}
+          transition={still ? { duration: 0.6 } : { duration: 5.2, repeat: Infinity, ease }}
+        />
+      </g>
+      <motion.g
+        style={{ originX: "130px", originY: "78px" }}
+        animate={still ? { rotate: 0, scale: 1 } : { rotate: 360 }}
+        transition={still ? { duration: 0.8 } : { duration: 26, repeat: Infinity, ease: "linear" }}
+      >
+        <path d={STAR} transform="translate(93 41) scale(0.74)" fill="var(--mustard)" />
+      </motion.g>
+      <circle cx="130" cy="78" r="5" fill="var(--paper)" />
+      <motion.circle
+        cx="130"
+        cy="150"
+        r="6"
+        fill="var(--ink)"
+        animate={still ? { scale: 1 } : { scale: [1, 1.5, 1] }}
+        transition={still ? { duration: 0.4 } : { duration: 2.6, repeat: Infinity, ease }}
+        style={{ originX: "130px", originY: "150px" }}
+      />
+    </svg>
+  );
+}
+
 export function Searching({ progress, flightNumber, onCancel }: { progress: Progress; flightNumber: string; onCancel: () => void }) {
+  const reduce = useReducedMotion();
   const f = progress.flight;
   const tz = f?.departureTimezone ?? "America/New_York";
 
-  // Real signals: flight found, route mapped, synthesis started. The four
-  // searches run in parallel, so while they're in flight the line cycles
-  // through them instead of pretending they happen one after another.
+  // Real signals: flight found, route mapped, synthesis started. The searches
+  // run in parallel, so while they're in flight the line cycles through them.
   const floor = useMemo(() => {
     let i = 0;
     if (f) i = 1;
@@ -60,11 +102,10 @@ export function Searching({ progress, flightNumber, onCancel }: { progress: Prog
 
   return (
     <div className="flex flex-1 flex-col items-center justify-center pb-16 text-center">
-      <div className="relative mb-8">
-        <span className="absolute -inset-5 animate-[spin_14s_linear_infinite] rounded-full border-2 border-dashed border-lilac-deep/40" />
-        <Mark size={112} className="animate-bob" />
-      </div>
-      <h2 className="text-[26px] font-black leading-tight">{f ? `Checking ${f.departureAirport} right now` : `Finding ${flightNumber}`}</h2>
+      <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ type: "spring", stiffness: 200, damping: 24 }} className="mb-6">
+        <Orbit still={Boolean(reduce) || synthesizing} />
+      </motion.div>
+      <h2 className="display-soft text-[30px] leading-tight">{f ? `Checking ${f.departureAirport} right now` : `Finding ${flightNumber}`}</h2>
 
       <div className="mt-3 flex h-7 items-center justify-center" aria-live="polite">
         <AnimatePresence mode="wait" initial={false}>
@@ -81,11 +122,13 @@ export function Searching({ progress, flightNumber, onCancel }: { progress: Prog
         </AnimatePresence>
       </div>
 
-      <div className="mt-5 flex gap-1.5" aria-hidden="true">
+      <div className="mt-5 flex gap-2" aria-hidden="true">
         {LINES.slice(2).map((l, i) => (
-          <span
+          <motion.span
             key={l.key}
-            className={`h-1.5 w-1.5 rounded-full transition-colors duration-300 ${shown === i + 2 || shown === 6 ? "bg-lilac-deep" : "bg-line"}`}
+            animate={{ scale: shown === i + 2 || shown === 6 ? 1.35 : 1, backgroundColor: shown === i + 2 || shown === 6 ? "var(--coral)" : "var(--coral-pale)" }}
+            transition={{ type: "spring", stiffness: 300, damping: 20 }}
+            className="h-1.5 w-1.5 rounded-full"
           />
         ))}
       </div>
@@ -94,14 +137,14 @@ export function Searching({ progress, flightNumber, onCancel }: { progress: Prog
         <motion.p
           initial={{ opacity: 0, y: 6 }}
           animate={{ opacity: 1, y: 0 }}
-          className="mt-8 rounded-full bg-paper px-4 py-2 text-[13px] font-semibold text-ink-2"
+          className="mt-8 rounded-full border border-line bg-paper px-4 py-2 text-[13px] font-medium text-ink-2 shadow-card"
         >
           {f.flightNumber} · {f.departureAirport}
           {f.terminal ? ` Terminal ${f.terminal}` : ""} · {fmtTimeShort(f.departureTime, tz)}
         </motion.p>
       ) : null}
 
-      <button type="button" onClick={onCancel} className="mt-10 text-[14px] font-semibold text-ink-3">
+      <button type="button" onClick={onCancel} className="mt-10 text-[14px] font-medium text-ink-3">
         Never mind
       </button>
     </div>

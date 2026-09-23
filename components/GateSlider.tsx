@@ -14,12 +14,12 @@ export function GateSlider({
   return (
     <div className="card">
       <div className="flex items-baseline justify-between">
-        <label htmlFor={id} className="text-[11.5px] font-bold uppercase tracking-[0.1em] text-ink-3">
+        <label htmlFor={id} className="text-[11px] font-semibold uppercase tracking-[0.18em] text-ink-3">
           Spare time before boarding
         </label>
-        <span className={`font-display font-black tabular-nums leading-none ${compact ? "text-[22px]" : "text-[34px]"}`}>
+        <span className={`display-soft font-display font-semibold leading-none ${compact ? "text-[24px]" : "text-[34px]"}`}>
           {value}
-          <span className="ml-1 font-sans text-[13px] font-semibold text-ink-2">min</span>
+          <span className="ml-1 font-sans text-[13px] font-medium text-ink-2">min</span>
         </span>
       </div>
       <input
@@ -33,7 +33,7 @@ export function GateSlider({
         onChange={(e) => onChange(Number(e.target.value))}
         aria-valuetext={`${value} minutes of spare time before boarding`}
       />
-      <div className="flex justify-between text-[11px] font-semibold text-ink-3">
+      <div className="flex justify-between text-[11px] font-medium uppercase tracking-[0.12em] text-ink-3">
         <span>Tight</span>
         <span>Relaxed</span>
       </div>
