@@ -8,7 +8,7 @@ import { PlanFields, isReady, type FormValues } from "@/components/PlanForm";
 import { deviceTz, fmtDay, fmtTime, fmtTimeShort, localDateString, minutesBetween, tzAbbrev } from "@/lib/format";
 import { computePlan } from "@/lib/plan-math";
 import type { Profile } from "@/lib/profile";
-import { airlineLogoUrl, appleMapsLink, flightStatusLink, googleMapsLink, lyftLink, planQuery, reminderLink, shareText, uberLink } from "@/lib/ride-links";
+import { airlineLogoUrl, appleMapsLink, flightStatusLink, googleMapsLink, lyftLink, reminderLink, shareText, uberLink } from "@/lib/ride-links";
 import type { PlanRequest, PlanResult } from "@/types/plan";
 
 interface LiveStatus {
@@ -27,6 +27,8 @@ export function Reveal({
   onUpdate,
   profile,
   onReset,
+  planUrl,
+  sharedAt,
 }: {
   result: PlanResult;
   request: PlanRequest;
@@ -35,12 +37,13 @@ export function Reveal({
   onUpdate: () => void;
   profile: Profile;
   onReset: () => void;
+  planUrl: string;
+  sharedAt: string | null;
 }) {
   const [editing, setEditing] = useState(false);
   const [copied, setCopied] = useState(false);
   const [live, setLive] = useState<LiveStatus | null>(null);
   const [logoOk, setLogoOk] = useState(true);
-  const [planUrl, setPlanUrl] = useState("");
 
   const f = result.flight;
   const tz = f.departureTimezone ?? "America/New_York";
@@ -50,14 +53,6 @@ export function Reveal({
     () => computePlan({ flight: f, route: result.route, research: r, bufferMinutes: buffer, checkedBag: result.checkedBag, mode: result.mode }),
     [f, result.route, result.checkedBag, result.mode, r, buffer],
   );
-
-  useEffect(() => {
-    try {
-      setPlanUrl(`${window.location.origin}/?${planQuery({ ...request, bufferMinutes: buffer })}`);
-    } catch {
-      setPlanUrl("");
-    }
-  }, [request, buffer]);
 
   // Live status: refresh every two minutes while the reveal is open.
   useEffect(() => {
@@ -177,6 +172,14 @@ export function Reveal({
             {foreignTz ? ` · ${tzAbbrev(plan.leaveISO, tz)}` : null}
           </p>
           {late ? <p className="mt-2 text-[14px] font-semibold text-ink">You&apos;re {Math.abs(minutesUntil)} min behind. Go.</p> : null}
+          {sharedAt ? (
+            <p className="mt-2 text-[12px] text-ink-2">
+              Shared plan from {fmtTimeShort(sharedAt, tz)} ·{" "}
+              <button type="button" onClick={onUpdate} className="font-semibold text-ink underline underline-offset-2">
+                Refresh
+              </button>
+            </p>
+          ) : null}
         </div>
       </motion.section>
 
