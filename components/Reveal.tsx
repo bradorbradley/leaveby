@@ -27,6 +27,8 @@ interface LiveStatus {
   departureTime: string;
 }
 
+const WEATHER_EMOJI: Record<string, string> = { rain: "🌧️", "heavy-rain": "🌧️", storm: "⛈️", snow: "🌨️", ice: "🧊", fog: "🌫️", wind: "💨" };
+
 const rise = {
   hidden: { opacity: 0, y: 18 },
   show: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 240, damping: 26 } },
@@ -232,11 +234,16 @@ export function Reveal({
           <span className="grid h-11 w-11 shrink-0 place-items-center rounded-[14px] bg-ink font-display text-[15px] font-semibold text-paper">{f.airlineCode}</span>
         )}
         <div className="min-w-0 flex-1">
-          <div className="flex items-center gap-2">
+          <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
             <a href={flightStatusLink(result)} target="_blank" rel="noreferrer" className="font-display text-[19px] font-semibold underline decoration-line underline-offset-4">
               {f.flightNumber}
             </a>
             <span className={`rounded-full px-2.5 py-0.5 text-[11px] font-semibold ${status.cls}`}>{status.label}</span>
+            {r.weather ? (
+              <span className="whitespace-nowrap rounded-full bg-mustard-soft px-2.5 py-0.5 text-[11px] font-semibold text-ink" title={`Added ${r.weather.extraMinutes} min to the drive`}>
+                {WEATHER_EMOJI[r.weather.kind]} {r.weather.label}
+              </span>
+            ) : null}
           </div>
           <p className="truncate text-[13.5px] text-ink-2">
             <b className="font-semibold text-ink">{f.departureAirport}</b>

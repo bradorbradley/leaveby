@@ -1,6 +1,7 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
 import { fmtTimeShort } from "@/lib/format";
@@ -41,7 +42,7 @@ const EMOJI: Record<string, string> = {
 };
 
 /** Things you must not miss: closures, cutoffs, detours, remote lots, weather, events. */
-const CRITICAL = /construction|closed|closure|detour|cut ?off|closes|remote lot|shuttle|delay|strike|weather|storm|snow|rain|alert|event|parade|marathon|game|concert|road ?work|lane closure|only|must|required/i;
+const CRITICAL = /construction|closed|closure|detour|cut ?off|closes|remote lot|shuttle|delay|strike|weather|storm|snow|rain|fog|wind|icy|ice|warning|alert|event|parade|marathon|game|concert|road ?work|lane closure|only|must|required/i;
 /** All-clear phrasing ("no construction", "as normal", "not found") is reassurance, not a warning. */
 const ALL_CLEAR = /\bno (?:\w+ ){0,2}(?:construction|closures?|delays?|detours?|road ?work|disruptions?|events?)\b|not found|no reports?|as normal|\bnormal\b|unaffected|open as usual/i;
 export function isCritical(note: string) {
@@ -110,6 +111,36 @@ export function PlanChapters({
   const reduce = useReducedMotion();
   const scroller = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState(0);
+  // People don't discover sideways scrolling on their own: nudge once, label it, and give real buttons.
+  const [touched, setTouched] = useState(false);
+  const [nudge, setNudge] = useState(false);
+  const step = () => ((scroller.current?.firstElementChild as HTMLElement | null)?.getBoundingClientRect().width ?? 0) + 10;
+  const go = (i: number) => {
+    const el = scroller.current;
+    if (!el) return;
+    const n = Math.max(0, Math.min(chapters.length - 1, i));
+    setTouched(true);
+    el.scrollTo({ left: n * step(), behavior: reduce ? "auto" : "smooth" });
+  };
+  useEffect(() => {
+    const el = scroller.current;
+    if (!el || reduce) return;
+    let done = false;
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (done || !entry.isIntersecting || entry.intersectionRatio < 0.6) return;
+        done = true;
+        // On travel day the carousel may have moved to the current step already; that's hint enough.
+        if (el.scrollLeft > 10) return io.disconnect();
+        io.disconnect();
+        setTimeout(() => setNudge(true), 700);
+        setTimeout(() => setNudge(false), 2100);
+      },
+      { threshold: [0, 0.6, 1] },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, [reduce]);
 
   // Page dots follow the scroll; on travel day the carousel opens on the step you're in.
   useEffect(() => {
@@ -117,10 +148,17 @@ export function PlanChapters({
     if (!el) return;
     const onScroll = () => {
       const w = (el.firstElementChild as HTMLElement | null)?.getBoundingClientRect().width ?? 1;
-      setActive(Math.round(el.scrollLeft / (w + 10)));
+      const i = Math.round(el.scrollLeft / (w + 10));
+      setActive(i);
+      if (i > 0) setTouched(true);
     };
+    const onTouch = () => setTouched(true);
     el.addEventListener("scroll", onScroll, { passive: true });
-    return () => el.removeEventListener("scroll", onScroll);
+    el.addEventListener("pointerdown", onTouch, { passive: true });
+    return () => {
+      el.removeEventListener("scroll", onScroll);
+      el.removeEventListener("pointerdown", onTouch);
+    };
   }, []);
   useEffect(() => {
     if (!isToday) return;
@@ -157,8 +195,12 @@ export function PlanChapters({
             <motion.article
               key={c.key}
               initial={reduce ? false : { opacity: 0, y: 14 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ type: "spring", stiffness: 240, damping: 26, delay: 0.35 + i * 0.07 }}
+              animate={{ opacity: 1, y: 0, x: nudge ? [0, -64, -64, 0] : 0 }}
+              transition={{
+                opacity: { type: "spring", stiffness: 240, damping: 26, delay: 0.35 + i * 0.07 },
+                y: { type: "spring", stiffness: 240, damping: 26, delay: 0.35 + i * 0.07 },
+                x: nudge ? { duration: 1.3, times: [0, 0.35, 0.55, 1], ease: "easeInOut" } : { duration: 0.2 },
+              }}
               className="flex min-h-[250px] w-[86%] shrink-0 snap-start flex-col rounded-[22px] border p-4"
               style={{
                 background: bg,
@@ -218,16 +260,61 @@ export function PlanChapters({
           );
         })}
       </div>
-      <div className="mt-1 flex justify-center gap-1.5" aria-hidden="true">
-        {chapters.map((c, i) => (
-          <motion.i
-            key={c.key}
-            className="block h-1.5 w-1.5 rounded-full"
-            animate={{ scale: active === i ? 1.5 : 1, opacity: active === i ? 1 : 0.6 }}
-            style={{ background: i === chapters.length - 1 ? "#E36F58" : RAMP[Math.min(i, RAMP.length - 1)] }}
-            transition={{ type: "spring", stiffness: 300, damping: 20 }}
-          />
-        ))}
+      <div className="mt-2 flex items-center justify-between gap-2">
+        <button
+          type="button"
+          onClick={() => go(active - 1)}
+          disabled={active === 0}
+          aria-label="Previous step"
+          className="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-line bg-paper text-ink shadow-card transition-opacity disabled:opacity-30"
+        >
+          <ChevronLeft className="h-4 w-4" />
+        </button>
+        <div className="flex min-w-0 flex-1 flex-col items-center gap-1.5">
+          <div className="flex justify-center gap-1.5">
+            {chapters.map((c, i) => (
+              <button key={c.key} type="button" onClick={() => go(i)} aria-label={`Step ${i + 1}: ${(COPY[c.key] ?? { eyebrow: c.title }).eyebrow}`} className="grid h-5 w-4 place-items-center">
+                <motion.i
+                  className="block h-1.5 w-1.5 rounded-full"
+                  animate={{ scale: active === i ? 1.5 : 1, opacity: active === i ? 1 : 0.6 }}
+                  style={{ background: i === chapters.length - 1 ? "#E36F58" : RAMP[Math.min(i, RAMP.length - 1)] }}
+                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                />
+              </button>
+            ))}
+          </div>
+          <AnimatePresence mode="wait" initial={false}>
+            <motion.p
+              key={touched ? "count" : "hint"}
+              initial={{ opacity: 0, y: 4 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -4 }}
+              transition={{ duration: 0.2 }}
+              className="flex items-center gap-1 text-[12px] font-semibold text-ink-2"
+            >
+              {touched ? (
+                `Step ${active + 1} of ${chapters.length}`
+              ) : (
+                <>
+                  Swipe for all {chapters.length} steps
+                  <motion.span animate={reduce ? undefined : { x: [0, 4, 0] }} transition={{ duration: 1.1, repeat: Infinity, ease: "easeInOut" }} className="inline-flex">
+                    <ChevronRight className="h-3.5 w-3.5" />
+                  </motion.span>
+                </>
+              )}
+            </motion.p>
+          </AnimatePresence>
+        </div>
+        <button
+          type="button"
+          onClick={() => go(active + 1)}
+          disabled={active >= chapters.length - 1}
+          aria-label="Next step"
+          className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-ink text-paper shadow-card transition-opacity disabled:opacity-30"
+          style={{ backgroundImage: "linear-gradient(180deg, #2e2f44 0%, var(--ink) 60%)" }}
+        >
+          <ChevronRight className="h-4 w-4" />
+        </button>
       </div>
     </div>
   );

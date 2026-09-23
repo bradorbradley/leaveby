@@ -3,7 +3,8 @@ import { FAST_MODEL, hasOpenAI, openai } from "@/lib/openai";
 import { instantToZonedParts } from "@/lib/tz";
 import type { FlightInfo } from "@/types/flight";
 import type { Mode, Perks, Research, RouteEstimate } from "@/types/plan";
-import type { WeatherEstimate } from "@/types/weather";
+import { fmtTime } from "@/lib/format";
+import type { WeatherBrief, WeatherEstimate } from "@/types/weather";
 
 export type Stage = "traffic" | "security" | "rules" | "today" | "synthesis";
 
@@ -49,6 +50,10 @@ interface ScoutResult {
 const cache = new Map<string, { at: number; value: ScoutResult }>();
 
 export async function researchTrip(input: ResearchInput): Promise<Research> {
+  return applyWeather(await researchTripRaw(input), input);
+}
+
+async function researchTripRaw(input: ResearchInput): Promise<Research> {
   if (!hasOpenAI()) return fallbackResearch(input, "No OpenAI key configured");
   try {
     const result = await runResearch(input);
@@ -58,6 +63,51 @@ export async function researchTrip(input: ResearchInput): Promise<Research> {
     const message = error instanceof Error ? error.message : String(error);
     return fallbackResearch(input, message);
   }
+}
+
+const WEATHER_LABEL: Record<WeatherBrief["kind"], string> = {
+  rain: "Rain", "heavy-rain": "Heavy rain", storm: "Storms", snow: "Snow", ice: "Icy roads", fog: "Fog", wind: "Strong wind",
+};
+
+/**
+ * Weather is applied by rule, not left to the model: bad weather in the trip
+ * window always adds drive time and always shows up as a warning on the
+ * leave card. Official warnings also go in the heads-up line.
+ */
+export function applyWeather(research: Research, input: ResearchInput): Research {
+  const w = input.weather;
+  const out: Research = { ...research, weather: null };
+  if (!w) return out;
+  const warnings = (w.alerts ?? []).filter((a) => /warning/i.test(a));
+  if (warnings.length) {
+    const note = `${warnings[0]} in effect near ${input.flight.departureAirport}. Check your flight status before you leave.`;
+    out.headsUp = [note, ...research.headsUp.filter((h) => h !== note)].slice(0, 2);
+  }
+  if (!w.kind || w.impact === "none") return out;
+  const drive = research.driveMinutes;
+  const share = w.impact === "severe" ? 0.3 : w.impact === "moderate" ? 0.2 : 0.1;
+  const floor = w.impact === "severe" ? 12 : w.impact === "moderate" ? 8 : 5;
+  let extra = Math.min(45, Math.max(floor, Math.round(drive * share)));
+  if (input.mode === "transit") extra = Math.max(3, Math.round(extra / 2));
+  const tz = input.flight.departureTimezone ?? "UTC";
+  const at = w.peakISO ? (() => { const t = fmtTime(w.peakISO!, tz); return ` around ${t.hm.replace(/:00$/, "")} ${t.ampm}`; })() : "";
+  const pct = w.chance != null && (w.kind === "rain" || w.kind === "heavy-rain" || w.kind === "snow") ? ` (${w.chance}%)` : "";
+  const roads = input.mode === "transit" ? "slower trains and buses" : "slower roads";
+  const lead: Record<WeatherBrief["kind"], string> = {
+    rain: w.chance != null && w.chance < 50 ? `Chance of rain${at}${pct}.` : `Rain likely${at}${pct}.`,
+    "heavy-rain": `Heavy rain${at}${pct}.`,
+    storm: `Thunderstorms${at}. Flights may run late.`,
+    snow: `Snow forecast${at}${pct}.`,
+    ice: `Freezing rain${at}. Roads may be icy.`,
+    fog: `Fog${at}.`,
+    wind: `Strong wind${at}.`,
+  };
+  const note = `${lead[w.kind]} Added ${extra} min for ${roads}.`;
+  out.driveMinutes = drive + extra;
+  out.driveNotes = [note, ...research.driveNotes.filter((n) => !/\b(rain|snow|storm|weather|fog|wind)\b/i.test(n))].slice(0, 2);
+  const label = w.kind === "rain" && w.chance != null && w.chance < 50 ? "Chance of rain" : w.kind === "rain" ? "Rain likely" : WEATHER_LABEL[w.kind];
+  out.weather = { kind: w.kind, label, chance: w.chance ?? null, peakISO: w.peakISO ?? null, extraMinutes: extra };
+  return out;
 }
 
 function laneList(perks: Perks): string[] {
@@ -294,7 +344,7 @@ async function runResearch(input: ResearchInput): Promise<Research | null> {
 - Getting there: ${c.modeLine}
 - Bag: ${c.bag}
 - Skip-the-line: ${c.lanes}
-- Weather forecast near departure: ${c.weatherLine}
+- Weather (for context only; the app adds weather time and notes itself): ${c.weatherLine}
 
 ## Verified research notes (live web searches just now, each backed by cited sources)
 ${notes.map((n) => `### ${n.stage}\n${n.text}\nCited: ${n.citations.map((c) => hostOf(c.url)).join(", ")}`).join("\n\n")}
@@ -312,7 +362,7 @@ ${failed.length ? `\n(No verified note for: ${failed.join(", ")}. For those piec
 Only state facts that appear in the verified notes. Never invent hours, closures, cutoffs, or construction. If a note says "not found", fall back to the baseline and say nothing about it. Every note shown to the traveler must be traceable to a research note.
 
 ## Return
-Fill the JSON schema. Minutes are integers. Notes are shown under the step where they matter and the traveler is on a phone, so be brief: driveNotes 1 or 2, securityNotes 1 or 2, gateNotes 1 when the notes describe the walk to the gates (say what makes it that long: the concourse, a train, a far pier) and 0 otherwise. Put holiday, event, or weather warnings that slow the roads into driveNotes. securityNotes: the typical wait for their lane at this hour, plus one thing that matters (a perk lane that backs up at peak, which entrance, bag cutoff). Do not rank their lanes against each other. A note must be a concrete number or something a first-timer would not know. Never restate the traveler's inputs and never state the obvious. At most 14 words per note, plain words.`;
+Fill the JSON schema. Minutes are integers. Notes are shown under the step where they matter and the traveler is on a phone, so be brief: driveNotes 1 or 2, securityNotes 1 or 2, gateNotes 1 when the notes describe the walk to the gates (say what makes it that long: the concourse, a train, a far pier) and 0 otherwise. Put holiday or event warnings that slow the roads into driveNotes. Do not add minutes or notes for weather: the app adds those from the forecast. securityNotes: the typical wait for their lane at this hour, plus one thing that matters (a perk lane that backs up at peak, which entrance, bag cutoff). Do not rank their lanes against each other. A note must be a concrete number or something a first-timer would not know. Never restate the traveler's inputs and never state the obvious. At most 14 words per note, plain words.`;
 
   const response = await openai().responses.create(
     {
