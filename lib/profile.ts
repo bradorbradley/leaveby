@@ -1,4 +1,4 @@
-import type { Perks } from "@/types/plan";
+import type { Mode, Perks } from "@/types/plan";
 
 export interface SavedPlace {
   label: string;
@@ -8,6 +8,7 @@ export interface SavedPlace {
 
 export interface Profile {
   perks: Perks;
+  mode: Mode;
   bufferMinutes: number;
   home: SavedPlace | null;
   recents: SavedPlace[];
@@ -17,6 +18,7 @@ const KEY = "leaveby.profile.v1";
 
 export const defaultProfile: Profile = {
   perks: { precheck: false, clear: false, globalEntry: false, touchlessId: false },
+  mode: "ride",
   bufferMinutes: 30,
   home: null,
   recents: [],
@@ -30,6 +32,7 @@ export function loadProfile(): Profile {
     const parsed = JSON.parse(raw) as Partial<Profile>;
     return {
       perks: { ...defaultProfile.perks, ...(parsed.perks ?? {}) },
+      mode: parsed.mode === "drive" || parsed.mode === "transit" ? parsed.mode : "ride",
       bufferMinutes: typeof parsed.bufferMinutes === "number" ? parsed.bufferMinutes : defaultProfile.bufferMinutes,
       home: parsed.home ?? null,
       recents: Array.isArray(parsed.recents) ? parsed.recents.slice(0, 3) : [],

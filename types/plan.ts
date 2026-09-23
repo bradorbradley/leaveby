@@ -23,8 +23,12 @@ export interface ManualFlight {
   departureTime: string;
 }
 
+export type Mode = "ride" | "drive" | "transit";
+
 export interface PlanRequest {
   flightNumber: string;
+  /** How they're getting to the airport. Defaults to ride (Uber/Lyft/taxi, curb drop-off). */
+  mode?: Mode;
   /** YYYY-MM-DD, the local departure date. */
   date: string;
   origin?: OriginInput | null;
@@ -53,11 +57,12 @@ export interface Research {
   bagDropCutoffMinutes: number | null;
   checkpoint: string;
   lane: string;
-  traffic: string;
-  security: string;
-  gate: string | null;
+  /** Short notes shown at the step where they matter. */
+  driveNotes: string[];
+  securityNotes: string[];
+  gateNotes: string[];
+  /** Trip-level warnings (holiday, weather, events). */
   headsUp: string[];
-  tips: string[];
   sources: string[];
   confidence: "high" | "medium" | "low";
   /** Which engine produced this. */
@@ -74,6 +79,8 @@ export interface PlanResult {
   flight: FlightInfo;
   route: RouteEstimate;
   research: Research;
+  mode: Mode;
+  checkedBag: boolean;
   bufferMinutes: number;
   /** Leave time with a zero-minute gate buffer. Client: leave = min(anchor - buffer, bagLeave). */
   anchorISO: string;

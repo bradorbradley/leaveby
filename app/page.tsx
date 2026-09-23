@@ -2,15 +2,17 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import { UserRound } from "lucide-react";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 import { Mark } from "@/components/Mark";
-import { PlanForm, initialValues, toRequest, type FormValues } from "@/components/PlanForm";
+import { PlanForm, initialValues, toRequest, valuesFromRequest, type FormValues } from "@/components/PlanForm";
 import { ProfileSheet } from "@/components/ProfileSheet";
 import { Reveal } from "@/components/Reveal";
 import { Searching } from "@/components/Searching";
 import { usePlan } from "@/hooks/usePlan";
 import { clearProfile, defaultProfile, loadProfile, profileIsEmpty, rememberOrigin, saveProfile, type Profile } from "@/lib/profile";
+import { parsePlanQuery, planQuery } from "@/lib/ride-links";
+import type { PlanRequest } from "@/types/plan";
 
 export default function HomePage() {
   const { state, run, cancel, reset } = usePlan();
@@ -18,34 +20,74 @@ export default function HomePage() {
   const [values, setValues] = useState<FormValues>(() => initialValues(defaultProfile));
   const [sheetOpen, setSheetOpen] = useState(false);
   const [loaded, setLoaded] = useState(false);
-
-  useEffect(() => {
-    const p = loadProfile();
-    setProfile(p);
-    setValues(initialValues(p));
-    setLoaded(true);
-  }, []);
+  const [editing, setEditing] = useState(false);
+  const [lastRequest, setLastRequest] = useState<PlanRequest | null>(null);
+  const booted = useRef(false);
 
   const updateProfile = useCallback((p: Profile) => {
     setProfile(p);
     saveProfile(p);
   }, []);
 
+  const launch = useCallback(
+    (request: PlanRequest, current: Profile) => {
+      let next: Profile = { ...current, perks: request.perks, bufferMinutes: request.bufferMinutes, mode: request.mode ?? current.mode };
+      const o = request.origin;
+      if (o && typeof o.lat === "number" && typeof o.lon === "number" && o.label) next = rememberOrigin(next, { label: o.label, lat: o.lat, lon: o.lon });
+      updateProfile(next);
+      setLastRequest(request);
+      setEditing(false);
+      void run(request);
+    },
+    [run, updateProfile],
+  );
+
+  useEffect(() => {
+    if (booted.current) return;
+    booted.current = true;
+    const p = loadProfile();
+    setProfile(p);
+    // A shared link reopens that exact plan.
+    const fromUrl = typeof window !== "undefined" ? parsePlanQuery(window.location.search) : null;
+    if (fromUrl) {
+      setValues(valuesFromRequest(fromUrl, p));
+      launch(fromUrl, p);
+    } else {
+      setValues(initialValues(p));
+    }
+    setLoaded(true);
+  }, [launch]);
+
+  // Keep the address bar in sync so the page itself is the shareable link.
+  useEffect(() => {
+    if (state.phase === "done" && lastRequest) {
+      try {
+        window.history.replaceState(null, "", `/?${planQuery(lastRequest)}`);
+      } catch {
+        // ignore
+      }
+    }
+  }, [state.phase, lastRequest]);
+
   const patch = (partial: Partial<FormValues>) => setValues((v) => ({ ...v, ...partial }));
 
-  const submit = () => {
-    const request = toRequest(values, state.phase === "notfound");
-    // Remember what the traveler set, so next time is one tap shorter.
-    let next: Profile = { ...profile, perks: values.perks, bufferMinutes: values.bufferMinutes };
-    const o = values.origin;
-    if (o && typeof o.lat === "number" && typeof o.lon === "number" && o.label) next = rememberOrigin(next, { label: o.label, lat: o.lat, lon: o.lon });
-    updateProfile(next);
-    void run(request);
+  const submit = () => launch(toRequest(values, state.phase === "notfound"), profile);
+
+  const edit = () => {
+    reset();
+    setEditing(true);
   };
 
   const startOver = () => {
     reset();
-    setValues((v) => ({ ...initialValues(profile), flightNumber: "", origin: v.origin }));
+    setEditing(false);
+    setLastRequest(null);
+    setValues((v) => ({ ...initialValues(profile), origin: v.origin }));
+    try {
+      window.history.replaceState(null, "", "/");
+    } catch {
+      // ignore
+    }
   };
 
   const phase = state.phase;
@@ -70,10 +112,8 @@ export default function HomePage() {
       <AnimatePresence mode="wait">
         {showForm ? (
           <motion.div key="form" className="flex flex-1 flex-col" initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }}>
-            {phase === "error" && state.error ? (
-              <div className="mb-3 rounded-[18px] bg-blush px-4 py-3 text-[14px] font-semibold">{state.error}</div>
-            ) : null}
-            <PlanForm values={values} onChange={patch} onSubmit={submit} profile={profile} notFound={phase === "notfound" ? state.error : null} />
+            {phase === "error" && state.error ? <div className="mb-3 rounded-[18px] bg-blush px-4 py-3 text-[14px] font-semibold">{state.error}</div> : null}
+            <PlanForm values={values} onChange={patch} onSubmit={submit} profile={profile} notFound={phase === "notfound" ? state.error : null} editing={editing} />
           </motion.div>
         ) : null}
         {phase === "searching" ? (
@@ -81,13 +121,16 @@ export default function HomePage() {
             <Searching progress={state.progress} flightNumber={values.flightNumber} onCancel={cancel} />
           </motion.div>
         ) : null}
-        {phase === "done" && state.result ? (
+        {phase === "done" && state.result && lastRequest ? (
           <motion.div key="done" className="flex flex-1 flex-col" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
             <Reveal
               result={state.result}
+              request={lastRequest}
+              onEdit={edit}
               onReset={startOver}
               onBuffer={(bufferMinutes) => {
                 setValues((v) => ({ ...v, bufferMinutes }));
+                setLastRequest((r) => (r ? { ...r, bufferMinutes } : r));
                 updateProfile({ ...profile, bufferMinutes });
               }}
             />
@@ -100,7 +143,7 @@ export default function HomePage() {
         profile={profile}
         onChange={(p) => {
           updateProfile(p);
-          setValues((v) => ({ ...v, perks: p.perks, bufferMinutes: p.bufferMinutes, origin: v.origin ?? (p.home ? { ...p.home } : null) }));
+          setValues((v) => ({ ...v, perks: p.perks, mode: p.mode, bufferMinutes: p.bufferMinutes, origin: v.origin ?? (p.home ? { ...p.home } : null) }));
         }}
         onForget={() => {
           clearProfile();

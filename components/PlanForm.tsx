@@ -1,14 +1,13 @@
 "use client";
 
 import { CalendarDays, Plane } from "lucide-react";
-import { useState } from "react";
 
 import { GateSlider } from "@/components/GateSlider";
 import { OriginField } from "@/components/OriginField";
 import { localDateString, prettyDate } from "@/lib/format";
 import { parseFlightNumber } from "@/lib/flight-utils";
 import type { Profile } from "@/lib/profile";
-import type { ManualFlight, OriginInput, Perks, PlanRequest } from "@/types/plan";
+import type { ManualFlight, Mode, OriginInput, Perks, PlanRequest } from "@/types/plan";
 
 type DateMode = "today" | "tomorrow" | "custom";
 
@@ -17,6 +16,7 @@ export interface FormValues {
   dateMode: DateMode;
   customDate: string;
   origin: OriginInput | null;
+  mode: Mode;
   checkedBag: boolean;
   perks: Perks;
   bufferMinutes: number;
@@ -30,10 +30,29 @@ export function initialValues(profile: Profile): FormValues {
     dateMode: hour >= 20 ? "tomorrow" : "today",
     customDate: "",
     origin: profile.home ? { label: profile.home.label, lat: profile.home.lat, lon: profile.home.lon } : null,
+    mode: profile.mode,
     checkedBag: false,
     perks: { ...profile.perks },
     bufferMinutes: profile.bufferMinutes,
     manual: { airport: "", departureTime: "" },
+  };
+}
+
+/** Rebuild form values from a shared link or a previous run. */
+export function valuesFromRequest(req: PlanRequest, profile: Profile): FormValues {
+  const base = initialValues(profile);
+  const dateMode: DateMode = req.date === localDateString(0) ? "today" : req.date === localDateString(1) ? "tomorrow" : "custom";
+  return {
+    ...base,
+    flightNumber: req.flightNumber,
+    dateMode,
+    customDate: dateMode === "custom" ? req.date : "",
+    origin: req.origin ?? null,
+    mode: req.mode ?? base.mode,
+    checkedBag: req.checkedBag,
+    perks: { ...req.perks },
+    bufferMinutes: req.bufferMinutes,
+    manual: req.manual ?? base.manual,
   };
 }
 
@@ -43,6 +62,7 @@ export function toRequest(v: FormValues, includeManual: boolean): PlanRequest {
     flightNumber: v.flightNumber.trim().toUpperCase(),
     date,
     origin: v.origin,
+    mode: v.mode,
     checkedBag: v.checkedBag,
     perks: v.perks,
     bufferMinutes: v.bufferMinutes,
@@ -57,24 +77,39 @@ const perkOptions: Array<{ key: keyof Perks; label: string }> = [
   { key: "touchlessId", label: "Touchless ID" },
 ];
 
+const modeOptions: Array<{ key: Mode; label: string }> = [
+  { key: "ride", label: "Ride" },
+  { key: "drive", label: "Driving" },
+  { key: "transit", label: "Transit" },
+];
+
 export function PlanForm({
   values,
   onChange,
   onSubmit,
   profile,
   notFound,
+  editing,
 }: {
   values: FormValues;
   onChange: (patch: Partial<FormValues>) => void;
   onSubmit: () => void;
   profile: Profile;
   notFound: string | null;
+  editing?: boolean;
 }) {
-  const [dateOpen, setDateOpen] = useState(false);
   const flightOk = Boolean(parseFlightNumber(values.flightNumber));
   const dateOk = values.dateMode !== "custom" || /^\d{4}-\d{2}-\d{2}$/.test(values.customDate);
   const manualOk = !notFound || (values.manual.airport.trim().length === 3 && /^\d{2}:\d{2}$/.test(values.manual.departureTime));
   const ready = flightOk && dateOk && manualOk;
+
+  // A picked date that is today or tomorrow snaps to that chip, so only one chip is ever lit.
+  const pickDate = (value: string) => {
+    if (!value) return onChange({ dateMode: "custom", customDate: "" });
+    if (value === localDateString(0)) return onChange({ dateMode: "today", customDate: "" });
+    if (value === localDateString(1)) return onChange({ dateMode: "tomorrow", customDate: "" });
+    onChange({ dateMode: "custom", customDate: value });
+  };
 
   return (
     <form
@@ -85,7 +120,15 @@ export function PlanForm({
       }}
     >
       <h1 className="mb-5 mt-2 text-[34px] font-black leading-[1.02]">
-        When do I <span className="rounded-lg bg-butter px-1">need to leave?</span>
+        {editing ? (
+          <>
+            Change <span className="rounded-lg bg-butter px-1">anything.</span>
+          </>
+        ) : (
+          <>
+            When do I <span className="rounded-lg bg-butter px-1">need to leave?</span>
+          </>
+        )}
       </h1>
 
       <div className="flex flex-col gap-4">
@@ -115,16 +158,12 @@ export function PlanForm({
                 type="button"
                 className="chip date justify-center !min-h-[38px] !text-[13.5px]"
                 aria-pressed={values.dateMode === mode}
-                onClick={() => onChange({ dateMode: mode })}
+                onClick={() => onChange({ dateMode: mode, customDate: "" })}
               >
                 {mode === "today" ? "Today" : "Tomorrow"}
               </button>
             ))}
-            <label
-              className="chip date relative justify-center !min-h-[38px] cursor-pointer !text-[13.5px]"
-              aria-pressed={values.dateMode === "custom"}
-              onClick={() => setDateOpen(true)}
-            >
+            <label className="chip date relative justify-center !min-h-[38px] cursor-pointer !text-[13.5px]" aria-pressed={values.dateMode === "custom"}>
               <CalendarDays className="h-4 w-4" />
               {values.dateMode === "custom" && values.customDate ? prettyDate(values.customDate) : "Pick"}
               <input
@@ -132,18 +171,11 @@ export function PlanForm({
                 aria-label="Pick a date"
                 className="absolute inset-0 h-full w-full cursor-pointer opacity-0"
                 min={localDateString(0)}
-                value={values.customDate}
-                onFocus={() => setDateOpen(true)}
-                onChange={(e) => {
-                  onChange({ dateMode: "custom", customDate: e.target.value });
-                  setDateOpen(false);
-                }}
+                value={values.dateMode === "custom" ? values.customDate : ""}
+                onChange={(e) => pickDate(e.target.value)}
               />
             </label>
           </div>
-          {dateOpen && values.dateMode === "custom" && !values.customDate ? (
-            <p className="mt-1.5 text-[12.5px] text-ink-2">Pick the departure date.</p>
-          ) : null}
           {notFound ? (
             <div className="mt-2 rounded-[18px] bg-butter p-3.5">
               <p className="text-[14px] font-semibold">{notFound} Tell us the airport and departure time.</p>
@@ -177,6 +209,17 @@ export function PlanForm({
             Leaving from
           </label>
           <OriginField value={values.origin} onChange={(origin) => onChange({ origin })} home={profile.home} recents={profile.recents} />
+        </div>
+
+        <div>
+          <span className="label">Getting there</span>
+          <div className="seg !grid-cols-3" role="group" aria-label="How you're getting to the airport">
+            {modeOptions.map((m) => (
+              <button key={m.key} type="button" aria-pressed={values.mode === m.key} onClick={() => onChange({ mode: m.key })}>
+                {m.label}
+              </button>
+            ))}
+          </div>
         </div>
 
         <div>
@@ -214,7 +257,7 @@ export function PlanForm({
 
       <div className="sticky bottom-0 mt-6 bg-gradient-to-t from-ground via-ground to-transparent pb-4 pt-3">
         <button type="submit" className="btn-primary" disabled={!ready}>
-          {notFound ? "Try again" : "When should I leave?"}
+          {notFound ? "Try again" : editing ? "Update my time" : "When should I leave?"}
         </button>
       </div>
     </form>

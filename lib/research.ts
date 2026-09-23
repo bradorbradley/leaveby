@@ -2,7 +2,7 @@ import { getAirportProfile, getTerminalProfile } from "@/lib/airports";
 import { FAST_MODEL, hasOpenAI, openai } from "@/lib/openai";
 import { instantToZonedParts } from "@/lib/tz";
 import type { FlightInfo } from "@/types/flight";
-import type { Perks, Research, RouteEstimate } from "@/types/plan";
+import type { Mode, Perks, Research, RouteEstimate } from "@/types/plan";
 import type { WeatherEstimate } from "@/types/weather";
 
 export type Stage = "traffic" | "security" | "rules" | "today" | "synthesis";
@@ -13,6 +13,7 @@ export interface ResearchInput {
   weather: WeatherEstimate | null;
   checkedBag: boolean;
   perks: Perks;
+  mode: Mode;
   onSearch?: (query: string) => void;
   onStage?: (stage: Stage) => void;
   onNote?: (text: string) => void;
@@ -80,6 +81,7 @@ interface TripContext {
   bag: string;
   weatherLine: string;
   tz: string;
+  modeLine: string;
 }
 
 function buildContext(input: ResearchInput): TripContext {
@@ -102,6 +104,12 @@ function buildContext(input: ResearchInput): TripContext {
     lanes: describeLanes(perks),
     bag: checkedBag ? "checking a bag" : "carry-on only with a mobile boarding pass",
     weatherLine: weather ? `${weather.summary}${weather.notes.length ? ` ${weather.notes.join(" ")}` : ""}` : "unknown",
+    modeLine:
+      input.mode === "drive"
+        ? "driving their own car and parking at the airport (include finding parking, the lot-to-terminal walk or shuttle)"
+        : input.mode === "transit"
+          ? "taking public transit (subway, train, or bus, including any AirTrain or shuttle to the terminal)"
+          : "taking a rideshare or taxi, dropped at the departures curb",
   };
 }
 
@@ -117,8 +125,13 @@ function scoutPrompts(c: TripContext, input: ResearchInput): Array<{ stage: Scou
   return [
     {
       stage: "traffic",
-      cacheKey: `traffic|${terminalKey}|${c.weekday}|${hourBucket}|${originKey}`,
-      question: `Getting to ${c.terminalLabel} by car or rideshare from ${c.originLine}, arriving around ${c.arrivalHour} on a ${c.weekday}. What is a realistic door-to-curb drive time with typical traffic for that hour? Name the chokepoints. Is there active roadway, curb, or parking construction at the airport this month, and where do rideshares drop off at this terminal?`,
+      cacheKey: `traffic|${input.mode}|${terminalKey}|${c.weekday}|${hourBucket}|${originKey}`,
+      question:
+        input.mode === "transit"
+          ? `Getting to ${c.terminalLabel} by public transit from ${c.originLine}, arriving around ${c.arrivalHour} on a ${c.weekday}. What is the realistic route and total door-to-terminal time including waits and any AirTrain or shuttle? How often does it run at that hour? Any service changes or construction affecting it this week?`
+          : input.mode === "drive"
+            ? `Driving and parking at ${c.terminalLabel} from ${c.originLine}, arriving around ${c.arrivalHour} on a ${c.weekday}. What is a realistic drive time with typical traffic for that hour? Name the chokepoints. Which parking lot or garage serves this terminal, how long from the lot to the terminal (walk or shuttle), and is there active roadway or parking construction this month?`
+            : `Getting to ${c.terminalLabel} by rideshare or taxi from ${c.originLine}, arriving around ${c.arrivalHour} on a ${c.weekday}. What is a realistic door-to-curb drive time with typical traffic for that hour? Name the chokepoints. Is there active roadway or curb construction at the airport this month, and exactly where do rideshares drop off at this terminal?`,
     },
     {
       stage: "security",
@@ -219,19 +232,18 @@ const SCHEMA = {
   type: "object",
   additionalProperties: false,
   properties: {
-    driveMinutes: { type: "integer", description: "Door to departures curb with traffic for that hour" },
-    curbToCheckpointMinutes: { type: "integer", description: "Curb to the checkpoint they should use, including bag drop if they check a bag" },
+    driveMinutes: { type: "integer", description: "Door to the terminal with traffic for that hour. For driving, include parking and the lot-to-terminal walk or shuttle. For transit, the full door-to-terminal trip including waits." },
+    curbToCheckpointMinutes: { type: "integer", description: "Curb or terminal entrance to the checkpoint they should use, including bag drop if they check a bag" },
     securityMinutes: { type: "integer", description: "Queue plus screening for their lane at their arrival hour" },
     checkpointToGateMinutes: { type: "integer", description: "Checkpoint to gate area, including trains or long walks" },
     boardingLeadMinutes: { type: "integer", description: "Minutes before departure that boarding starts" },
     bagDropCutoffMinutes: { type: ["integer", "null"], description: "Airline bag-drop cutoff in minutes before departure, null if no checked bag" },
-    checkpoint: { type: "string" },
-    lane: { type: "string" },
-    traffic: { type: "string" },
-    security: { type: "string" },
-    gate: { type: ["string", "null"] },
-    headsUp: { type: "array", items: { type: "string" } },
-    tips: { type: "array", items: { type: "string" } },
+    checkpoint: { type: "string", description: "The checkpoint to use, e.g. 'Terminal 4 main checkpoint, departures level'" },
+    lane: { type: "string", description: "The lane they will actually use, e.g. 'TSA PreCheck' or 'standard lanes'" },
+    driveNotes: { type: "array", items: { type: "string" }, description: "1 to 3 short notes for the trip to the airport: traffic, roads, construction, exactly where to get dropped or park" },
+    securityNotes: { type: "array", items: { type: "string" }, description: "1 to 3 short notes for curb through security: which entrance, expected wait, bag drop cutoff if checking a bag, a shorter checkpoint if one exists" },
+    gateNotes: { type: "array", items: { type: "string" }, description: "0 to 2 short notes for the walk to the gate: distance, trains, far gates, elevator or shortcut hacks" },
+    headsUp: { type: "array", items: { type: "string" }, description: "0 to 2 trip-level warnings: holiday, weather, events, strikes" },
     sources: { type: "array", items: { type: "string" } },
     confidence: { type: "string", enum: ["high", "medium", "low"] },
   },
@@ -244,11 +256,10 @@ const SCHEMA = {
     "bagDropCutoffMinutes",
     "checkpoint",
     "lane",
-    "traffic",
-    "security",
-    "gate",
+    "driveNotes",
+    "securityNotes",
+    "gateNotes",
     "headsUp",
-    "tips",
     "sources",
     "confidence",
   ],
@@ -274,7 +285,7 @@ async function runResearch(input: ResearchInput): Promise<Research | null> {
 - Terminal: ${c.terminalLabel}
 - Likely at the airport around ${c.arrivalHour} on a ${c.weekday}
 - Leaving from: ${c.originLine}
-- Getting there by car or rideshare, dropped at the departures curb
+- Getting there: ${c.modeLine}
 - Bag: ${c.bag}
 - Skip-the-line: ${c.lanes}
 - Weather forecast near departure: ${c.weatherLine}
@@ -292,10 +303,10 @@ ${failed.length ? `\n(No verified note for: ${failed.join(", ")}. For those piec
 - bagDropCutoffMinutes ${baseline.bagDropCutoffMinutes ?? "n/a"}
 
 ## Rules
-Only state facts that appear in the verified notes. Never invent hours, closures, cutoffs, or construction. If a note says "not found", fall back to the baseline. Sentences shown to the traveler must be traceable to a note.
+Only state facts that appear in the verified notes. Never invent hours, closures, cutoffs, or construction. If a note says "not found", fall back to the baseline and say nothing about it. Every note shown to the traveler must be traceable to a research note.
 
 ## Return
-Fill the JSON schema. Minutes are integers. "checkpoint" names the checkpoint to use. "lane" names the lane they will actually use. "traffic", "security", and "gate" are one short sentence each. "headsUp" up to 3, "tips" up to 3, "sources" up to 4 short notes on what came from where.`;
+Fill the JSON schema. Minutes are integers. Notes are shown under the step where they matter, so put traffic and drop-off facts in driveNotes, checkpoint and wait facts in securityNotes, walking facts in gateNotes. A note must be a concrete number or something a first-timer would not know (which entrance, which checkpoint is shorter, where rideshares really drop, which garage, the far gates). Never restate the traveler's own inputs and never state the obvious, such as "you can use PreCheck". At most 18 words per note.`;
 
   const response = await openai().responses.create(
     {
@@ -321,7 +332,7 @@ Fill the JSON schema. Minutes are integers. "checkpoint" names the checkpoint to
     if (result.confidence === "high") result.confidence = "medium";
     const labels: Record<string, string> = { traffic: "traffic", security: "security lines", rules: "airline rules", today: "today's conditions" };
     const note = `Couldn't verify ${failed.map((f) => labels[f] ?? f).join(" or ")} live, so that part uses typical numbers.`;
-    result.headsUp = [note, ...result.headsUp].slice(0, 3);
+    result.headsUp = [note, ...result.headsUp].slice(0, 2);
   }
   return result;
 }
@@ -352,10 +363,10 @@ function clamp(n: unknown, lo: number, hi: number, fallback: number): number {
 function sanitize(r: Partial<Research>, input: ResearchInput, engine: string): Research {
   const base = fallbackNumbers(input);
   const strings = (arr: unknown, max: number) =>
-    Array.isArray(arr) ? arr.filter((s): s is string => typeof s === "string" && s.trim().length > 0).slice(0, max) : [];
+    Array.isArray(arr) ? arr.filter((s): s is string => typeof s === "string" && s.trim().length > 0).map((s) => s.trim()).slice(0, max) : [];
   const free = input.route.freeFlowMinutes;
   const driveLo = free ? Math.round(free * 0.9) : 5;
-  const driveHi = free ? Math.round(free * 2.2) + 15 : 900;
+  const driveHi = free ? (input.mode === "transit" ? Math.round(free * 3) + 30 : input.mode === "drive" ? Math.round(free * 2.2) + 35 : Math.round(free * 2.2) + 15) : 900;
   return {
     driveMinutes: clamp(r.driveMinutes, driveLo, driveHi, base.driveMinutes),
     curbToCheckpointMinutes: clamp(r.curbToCheckpointMinutes, 2, 60, base.curbToCheckpointMinutes),
@@ -365,11 +376,10 @@ function sanitize(r: Partial<Research>, input: ResearchInput, engine: string): R
     bagDropCutoffMinutes: input.checkedBag ? clamp(r.bagDropCutoffMinutes, 30, 120, base.bagDropCutoffMinutes ?? 45) : null,
     checkpoint: typeof r.checkpoint === "string" && r.checkpoint ? r.checkpoint : base.checkpoint,
     lane: typeof r.lane === "string" && r.lane ? r.lane : base.lane,
-    traffic: typeof r.traffic === "string" && r.traffic ? r.traffic : base.traffic,
-    security: typeof r.security === "string" && r.security ? r.security : base.security,
-    gate: typeof r.gate === "string" && r.gate ? r.gate : null,
-    headsUp: withDistanceWarning(input, strings(r.headsUp, 3)),
-    tips: strings(r.tips, 3),
+    driveNotes: strings(r.driveNotes, 3),
+    securityNotes: strings(r.securityNotes, 3),
+    gateNotes: strings(r.gateNotes, 2),
+    headsUp: withDistanceWarning(input, strings(r.headsUp, 2)),
     sources: strings(r.sources, 4),
     confidence: r.confidence === "high" || r.confidence === "medium" || r.confidence === "low" ? r.confidence : "medium",
     engine,
@@ -382,7 +392,7 @@ function withDistanceWarning(input: ResearchInput, headsUp: string[]): string[] 
   if (!free || free < 180) return headsUp;
   const hours = Math.round(free / 30) / 2;
   const note = `That's about a ${hours}-hour drive to ${input.flight.departureAirport}. Double-check where you're leaving from.`;
-  return [note, ...headsUp].slice(0, 3);
+  return [note, ...headsUp].slice(0, 2);
 }
 
 function fallbackNumbers(input: ResearchInput): Research {
@@ -406,8 +416,9 @@ function fallbackNumbers(input: ResearchInput): Research {
   const security = expedited ? Math.max(8, Math.round(standardWait * 0.45)) : perks.clear ? Math.max(10, Math.round(standardWait * 0.6)) : standardWait;
   const intl = flight.region === "international";
   const curb = (terminal?.curbToSecurityMinutes[1] ?? 8) + (checkedBag ? 12 : 0);
+  const modeExtra = input.mode === "drive" ? 15 : input.mode === "transit" ? Math.round(drive * 0.6) + 15 : 0;
   return {
-    driveMinutes: drive,
+    driveMinutes: drive + modeExtra,
     curbToCheckpointMinutes: curb,
     securityMinutes: security,
     checkpointToGateMinutes: terminal?.securityToGateMinutes[1] ?? 10,
@@ -415,13 +426,12 @@ function fallbackNumbers(input: ResearchInput): Research {
     bagDropCutoffMinutes: checkedBag ? (intl ? airport.bagCutoffs.checkedInternational : airport.bagCutoffs.checkedDomestic) : null,
     checkpoint: terminal ? `${terminal.name} checkpoint` : "Main checkpoint",
     lane: expedited ? "TSA PreCheck" : perks.clear ? "CLEAR" : "standard lanes",
-    traffic: route.originLabel
-      ? `${rush ? "Rush hour on the way, so the drive is padded." : "Typical traffic for that hour."}`
-      : "No starting point given, so this assumes a typical trip from the metro area.",
-    security: `${expedited ? "PreCheck" : perks.clear ? "CLEAR" : "Standard"} lanes usually run about ${security} minutes at that hour.`,
-    gate: null,
+    driveNotes: [
+      route.originLabel ? (rush ? "Rush hour on the way, so the drive is padded." : "Typical traffic for that hour.") : "No starting point given, so this assumes a typical trip from the metro area.",
+    ],
+    securityNotes: [`${expedited ? "PreCheck" : perks.clear ? "CLEAR" : "Standard"} lanes usually run about ${security} minutes at that hour.`],
+    gateNotes: [],
     headsUp: [],
-    tips: [],
     sources: ["Typical numbers for this airport; live search was not available."],
     confidence: "low",
     engine: "typical-numbers",
@@ -431,5 +441,5 @@ function fallbackNumbers(input: ResearchInput): Research {
 function fallbackResearch(input: ResearchInput, reason: string): Research {
   const base = fallbackNumbers(input);
   input.onNote?.(`Live search unavailable (${reason}). Using typical numbers.`);
-  return { ...base, headsUp: withDistanceWarning(input, ["Live search was unavailable, so these are typical numbers for this airport."]) };
+  return { ...base, headsUp: withDistanceWarning(input, ["Live search was unavailable, so these are typical numbers for this airport."]).slice(0, 2) };
 }

@@ -1,5 +1,5 @@
 import type { FlightInfo } from "@/types/flight";
-import type { PlanResult, Research, RouteEstimate, TimelineStop } from "@/types/plan";
+import type { Mode, PlanResult, Research, RouteEstimate, TimelineStop } from "@/types/plan";
 
 const MIN = 60_000;
 
@@ -9,6 +9,7 @@ export interface PlanMathInput {
   research: Research;
   bufferMinutes: number;
   checkedBag: boolean;
+  mode?: Mode;
   now?: Date;
 }
 
@@ -21,6 +22,7 @@ export interface PlanMathInput {
  */
 export function computePlan(input: PlanMathInput): PlanResult {
   const { flight, route, research: r, bufferMinutes, checkedBag } = input;
+  const mode: Mode = input.mode ?? "ride";
   const now = input.now ?? new Date();
   const departure = new Date(flight.departureTime).getTime();
 
@@ -51,7 +53,7 @@ export function computePlan(input: PlanMathInput): PlanResult {
 
   const timeline: TimelineStop[] = [
     { key: "leave", label: "Walk out the door", iso: new Date(leave).toISOString() },
-    { key: "curb", label: checkedBag ? "At the curb, drop your bag" : "At the curb", iso: new Date(curb).toISOString() },
+    { key: "curb", label: mode === "transit" ? "At the terminal" : mode === "drive" ? "Parked, at the terminal" : "At the curb", iso: new Date(curb).toISOString() },
     { key: "security", label: "Through security", iso: new Date(throughSecurity).toISOString() },
     { key: "gate", label: "At the gate", iso: new Date(atGate).toISOString() },
     { key: "boarding", label: "Boarding starts", iso: new Date(boarding).toISOString() },
@@ -64,6 +66,8 @@ export function computePlan(input: PlanMathInput): PlanResult {
     research: bagBound
       ? { ...r, headsUp: dedupe([`Bag drop closes ${r.bagDropCutoffMinutes} minutes before departure, and that sets your leave time.`, ...r.headsUp]).slice(0, 3) }
       : r,
+    mode,
+    checkedBag,
     bufferMinutes,
     anchorISO: new Date(anchor).toISOString(),
     bagLeaveISO: bagLeave !== null ? new Date(bagLeave).toISOString() : null,

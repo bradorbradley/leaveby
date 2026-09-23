@@ -63,19 +63,21 @@ export async function POST(request: NextRequest) {
           globalEntry: Boolean(body.perks?.globalEntry),
           touchlessId: Boolean(body.perks?.touchlessId),
         };
+        const mode = body.mode === "drive" || body.mode === "transit" ? body.mode : "ride";
         const research = await researchTrip({
           flight,
           route,
           weather,
           checkedBag: Boolean(body.checkedBag),
           perks,
+          mode,
           onSearch: (query) => send({ type: "search", query }),
           onStage: (stage) => send({ type: "stage", stage }),
           onNote: (text) => send({ type: "note", text }),
         });
 
         const bufferMinutes = Math.min(120, Math.max(0, Math.round(Number(body.bufferMinutes) || 30)));
-        const result = computePlan({ flight, route, research, bufferMinutes, checkedBag: Boolean(body.checkedBag) });
+        const result = computePlan({ flight, route, research, bufferMinutes, checkedBag: Boolean(body.checkedBag), mode });
         send({ type: "result", result });
       } catch (error) {
         const message = error instanceof Error ? error.message : "Something went wrong.";
