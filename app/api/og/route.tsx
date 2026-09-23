@@ -90,7 +90,7 @@ export async function GET(request: NextRequest) {
             <span>departs {dep}</span>
             {terminal ? <span>Terminal {terminal}</span> : null}
           </div>
-          {spare ? <span>{spare} min to spare at the gate</span> : null}
+          {spare ? <span>{spare} min spare before boarding</span> : null}
         </div>
       </div>
     ),

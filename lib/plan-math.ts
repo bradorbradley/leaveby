@@ -42,18 +42,20 @@ export function computePlan(input: PlanMathInput): PlanResult {
 
   const gateLeave = anchor - bufferMinutes * MIN;
   const rawLeave = bagLeave !== null ? Math.min(gateLeave, bagLeave) : gateLeave;
-  // Round down to a clean 5-minute mark; the spare minutes become slack at the gate.
+  // Round down to a clean 5-minute mark; the extra minutes become spare time before boarding.
   const leave = Math.floor(rawLeave / (5 * MIN)) * 5 * MIN;
   const bagBound = bagLeave !== null && bagLeave < gateLeave;
 
   // Timeline follows the binding path so the stops add up.
   const curb = leave + r.driveMinutes * MIN;
-  const throughSecurity = curb + (r.curbToCheckpointMinutes + r.securityMinutes) * MIN;
+  const atCheckpoint = curb + r.curbToCheckpointMinutes * MIN;
+  const throughSecurity = atCheckpoint + r.securityMinutes * MIN;
   const atGate = throughSecurity + r.checkpointToGateMinutes * MIN;
 
   const timeline: TimelineStop[] = [
     { key: "leave", label: "Walk out the door", iso: new Date(leave).toISOString() },
     { key: "curb", label: mode === "transit" ? "At the terminal" : mode === "drive" ? "Parked, at the terminal" : "At the curb", iso: new Date(curb).toISOString() },
+    { key: "checkpoint", label: "In the security line", iso: new Date(atCheckpoint).toISOString() },
     { key: "security", label: "Through security", iso: new Date(throughSecurity).toISOString() },
     { key: "gate", label: "At the gate", iso: new Date(atGate).toISOString() },
     { key: "boarding", label: "Boarding starts", iso: new Date(boarding).toISOString() },

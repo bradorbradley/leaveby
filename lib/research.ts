@@ -150,7 +150,10 @@ function scoutPrompts(c: TripContext, input: ResearchInput): Array<{ stage: Scou
         const laneQ = lanes.length
           ? `The traveler has: ${lanes.join("; ")}. For EACH of these at ${c.terminalLabel}: does it exist here, what are its hours, and what is the typical wait around ${c.arrivalHour} on a ${c.weekday}? Which one is fastest at that hour? Note if CLEAR or PreCheck lanes back up at peak times despite the perk.`
           : `The traveler has no expedited screening. What do standard lanes at ${c.terminalLabel} run around ${c.arrivalHour} on a ${c.weekday}?`;
-        return `Security at ${c.terminalLabel} for ${flight.airlineName}. ${laneQ} Which checkpoints does this terminal have, which is usually shorter, and which entrance leads to the expedited lanes?`;
+        const gateQ = flight.gate
+          ? `Then the walk: how many minutes from that checkpoint to gate ${flight.gate}, and is there a train, a long concourse, or a far pier involved?`
+          : `Then the walk: how many minutes from that checkpoint to ${flight.airlineName}'s gates in this terminal, and is there a train, a long concourse, or a far pier involved?`;
+        return `Security at ${c.terminalLabel} for ${flight.airlineName}. ${laneQ} Which checkpoints does this terminal have, which is usually shorter, and which entrance leads to the expedited lanes? ${gateQ}`;
       })(),
     },
   ];
@@ -247,7 +250,7 @@ const SCHEMA = {
     lane: { type: "string", description: "The lane they will actually use, e.g. 'TSA PreCheck' or 'standard lanes'" },
     driveNotes: { type: "array", items: { type: "string" }, description: "1 or 2 short notes for the trip to the airport: expected traffic, any construction or event that slows it, where to get dropped or park" },
     securityNotes: { type: "array", items: { type: "string" }, description: "1 or 2 short notes for security: the typical wait for their lane at this hour, and one thing that matters (backs up at peak, which entrance, bag cutoff)" },
-    gateNotes: { type: "array", items: { type: "string" }, description: "0 or 1 short note for the walk to the gate: only if long, a train, or far gates" },
+    gateNotes: { type: "array", items: { type: "string" }, description: "1 short note that justifies checkpointToGateMinutes from the research (which concourse or gates, a train, a long pier, the distance). Empty only if the notes say nothing about the walk." },
     sources: { type: "array", items: { type: "string" } },
     confidence: { type: "string", enum: ["high", "medium", "low"] },
   },
@@ -309,7 +312,7 @@ ${failed.length ? `\n(No verified note for: ${failed.join(", ")}. For those piec
 Only state facts that appear in the verified notes. Never invent hours, closures, cutoffs, or construction. If a note says "not found", fall back to the baseline and say nothing about it. Every note shown to the traveler must be traceable to a research note.
 
 ## Return
-Fill the JSON schema. Minutes are integers. Notes are shown under the step where they matter and the traveler is on a phone, so be brief: driveNotes 1 or 2, securityNotes 1 or 2, gateNotes 0 or 1. Put holiday, event, or weather warnings that slow the roads into driveNotes. securityNotes: the typical wait for their lane at this hour, plus one thing that matters (a perk lane that backs up at peak, which entrance, bag cutoff). Do not rank their lanes against each other. A note must be a concrete number or something a first-timer would not know. Never restate the traveler's inputs and never state the obvious. At most 14 words per note, plain words.`;
+Fill the JSON schema. Minutes are integers. Notes are shown under the step where they matter and the traveler is on a phone, so be brief: driveNotes 1 or 2, securityNotes 1 or 2, gateNotes 1 when the notes describe the walk to the gates (say what makes it that long: the concourse, a train, a far pier) and 0 otherwise. Put holiday, event, or weather warnings that slow the roads into driveNotes. securityNotes: the typical wait for their lane at this hour, plus one thing that matters (a perk lane that backs up at peak, which entrance, bag cutoff). Do not rank their lanes against each other. A note must be a concrete number or something a first-timer would not know. Never restate the traveler's inputs and never state the obvious. At most 14 words per note, plain words.`;
 
   const response = await openai().responses.create(
     {
@@ -381,12 +384,25 @@ function sanitize(r: Partial<Research>, input: ResearchInput, engine: string): R
     lane: typeof r.lane === "string" && r.lane ? r.lane : base.lane,
     driveNotes: strings(r.driveNotes, 2),
     securityNotes: strings(r.securityNotes, 2),
-    gateNotes: strings(r.gateNotes, 1),
+    gateNotes: strings(r.gateNotes, 1).length ? strings(r.gateNotes, 1) : [typicalWalkNote(input, clamp(r.checkpointToGateMinutes, 2, 45, base.checkpointToGateMinutes))],
     headsUp: withDistanceWarning(input, []),
     sources: strings(r.sources, 4),
     confidence: r.confidence === "high" || r.confidence === "medium" || r.confidence === "low" ? r.confidence : "medium",
     engine,
   };
+}
+
+/** The walk to the gate is never shown as a bare number: say what it is based on. */
+function typicalWalkNote(input: ResearchInput, minutes: number): string {
+  const terminal = getTerminalProfile(input.flight.departureAirport, input.flight.terminal);
+  if (terminal) {
+    const [lo, hi] = terminal.securityToGateMinutes;
+    const name = terminal.name.replace(/^Terminal /, "Terminal ");
+    const range = lo === hi ? `about ${hi} min` : `${lo}–${hi} min`;
+    if (minutes >= hi) return `${name} gates are ${range} from security. This plans for the far end.`;
+    return `${name} gates are ${range} from security.`;
+  }
+  return `Typical walk to a far gate at ${input.flight.departureAirport}. Most gates are closer.`;
 }
 
 /** A very long drive usually means the wrong origin or the wrong airport. Say so first. */
@@ -433,7 +449,7 @@ function fallbackNumbers(input: ResearchInput): Research {
       route.originLabel ? (rush ? "Rush hour on the way, so the drive is padded." : "Typical traffic for that hour.") : "No starting point given, so this assumes a typical trip from the metro area.",
     ],
     securityNotes: [`${expedited ? "PreCheck" : perks.clear ? "CLEAR" : "Standard"} lanes usually run about ${security} minutes at that hour.`],
-    gateNotes: [],
+    gateNotes: [typicalWalkNote(input, terminal?.securityToGateMinutes[1] ?? 10)],
     headsUp: [],
     sources: ["Typical numbers for this airport; live search was not available."],
     confidence: "low",

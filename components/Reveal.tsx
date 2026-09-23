@@ -92,12 +92,14 @@ export function Reveal({
   const stops = plan.timeline;
   const seg = (a: number, b: number) => minutesBetween(stops[a].iso, stops[b].iso);
   const travelLabel = result.mode === "transit" ? "Transit" : result.mode === "drive" ? "Drive + park" : "Drive";
+  const arriveLabel = result.mode === "drive" ? "Terminal to security" : result.mode === "transit" ? "Terminal to security" : "Curb to security";
   const segments = [
     { label: travelLabel, min: seg(0, 1), color: "var(--lilac-deep)" },
-    { label: "Curb through security", min: seg(1, 2), color: "var(--blush-deep)" },
-    { label: "Walk to the gate", min: seg(2, 3), color: "var(--butter-deep)" },
-    { label: "Time to spare", min: seg(3, 4), color: "var(--sage-deep)" },
-    { label: "Boarding to doors", min: seg(4, 5), color: "var(--ink-3)" },
+    { label: arriveLabel, min: seg(1, 2), color: "var(--blush)" },
+    { label: "Security", min: seg(2, 3), color: "var(--blush-deep)" },
+    { label: "Walk", min: seg(3, 4), color: "var(--butter-deep)" },
+    { label: "Until boarding", min: seg(4, 5), color: "var(--sage-deep)" },
+    { label: "Boarding to doors", min: seg(5, 6), color: "var(--ink-3)" },
   ];
   const total = segments.reduce((s, x) => s + x.min, 0);
 
@@ -106,13 +108,15 @@ export function Reveal({
   if (result.checkedBag && r.bagDropCutoffMinutes && !r.securityNotes.some((n) => /bag/i.test(n))) {
     securityNotes.push(`Bag drop closes ${r.bagDropCutoffMinutes} min before departure.`);
   }
+  const arriveTitle = result.mode === "drive" ? "Parked at the airport" : "Arrive at the airport";
   const rows: Array<{ key: string; iso: string; title: string; seg?: (typeof segments)[number]; lead?: string; notes: string[]; hot?: boolean }> = [
     { key: "leave", iso: stops[0].iso, title: "Walk out the door", seg: segments[0], notes: driveNotes, hot: true },
-    { key: "security", iso: stops[1].iso, title: "Security", seg: segments[1], lead: r.checkpoint, notes: securityNotes },
-    { key: "gate", iso: stops[2].iso, title: "Walk to the gate", seg: segments[2], notes: r.gateNotes },
-    { key: "wait", iso: stops[3].iso, title: "At the gate", seg: segments[3], notes: [] },
-    { key: "boarding", iso: stops[4].iso, title: "Boarding starts", seg: segments[4], notes: [] },
-    { key: "departure", iso: stops[5].iso, title: "Departure", notes: [] },
+    { key: "arrive", iso: stops[1].iso, title: arriveTitle, seg: segments[1], notes: [] },
+    { key: "security", iso: stops[2].iso, title: "Security", seg: segments[2], lead: r.checkpoint, notes: securityNotes },
+    { key: "gate", iso: stops[3].iso, title: "Walk to the gate", seg: segments[3], notes: r.gateNotes },
+    { key: "spare", iso: stops[4].iso, title: "Spare time", seg: segments[4], notes: [] },
+    { key: "boarding", iso: stops[5].iso, title: "Boarding starts", seg: segments[5], notes: [] },
+    { key: "departure", iso: stops[6].iso, title: "Departure", notes: [] },
   ];
 
   const status = statusPill(live, f);

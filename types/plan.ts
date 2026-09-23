@@ -70,7 +70,7 @@ export interface Research {
 }
 
 export interface TimelineStop {
-  key: "leave" | "curb" | "security" | "gate" | "boarding" | "departure";
+  key: "leave" | "curb" | "checkpoint" | "security" | "gate" | "boarding" | "departure";
   label: string;
   iso: string;
 }
