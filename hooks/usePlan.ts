@@ -41,6 +41,13 @@ export function usePlan() {
 
   const reset = cancel;
 
+  /** Show a finished plan without searching (a shared link). */
+  const hydrate = useCallback((result: PlanResult) => {
+    abortRef.current?.abort();
+    abortRef.current = null;
+    setState({ phase: "done", progress: emptyProgress, result, error: null });
+  }, []);
+
   const run = useCallback(async (request: PlanRequest) => {
     abortRef.current?.abort();
     const controller = new AbortController();
@@ -130,5 +137,5 @@ export function usePlan() {
     }
   }, []);
 
-  return { state, run, cancel, reset };
+  return { state, run, cancel, reset, hydrate };
 }

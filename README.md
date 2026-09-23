@@ -44,3 +44,7 @@ npm run dev
 - `lib/plan-math.ts` — the subtraction. Pure, shared by server and client.
 - `lib/profile.ts` — what's remembered on the phone.
 - `lib/ride-links.ts` — Uber, Lyft, Google Maps, Google Calendar links.
+
+## Sharing
+
+The reveal's URL carries the finished plan as a compressed payload (`p=`), so anyone who opens a shared link sees it in about a second without re-running the search. A small "Shared plan · Refresh" line lets them re-run it live. The same URL serves per-plan Open Graph and Twitter tags, and `/api/og` renders a 1200×630 card (leave time, date, flight, route, departure, terminal) so iMessage, Slack, and social feeds show a preview. The `f`, `d`, `o`, … params stay on the URL as a fallback that re-runs the search if the payload can't be decoded.

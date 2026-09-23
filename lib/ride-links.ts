@@ -69,7 +69,7 @@ export function shareText(result: PlanResult, leaveLabel: string, bufferMinutes:
 }
 
 /** Encode the inputs into a shareable URL that reopens this exact plan. */
-export function planQuery(request: PlanRequest): string {
+export function planQuery(request: PlanRequest, payload?: string | null): string {
   const p = new URLSearchParams();
   p.set("f", request.flightNumber);
   p.set("d", request.date);
@@ -83,6 +83,7 @@ export function planQuery(request: PlanRequest): string {
   if (perks.length) p.set("p", perks.join(","));
   p.set("b", String(request.bufferMinutes));
   if (request.mode && request.mode !== "ride") p.set("m", request.mode);
+  if (payload) p.set("p", payload);
   return p.toString();
 }
 
