@@ -3,6 +3,7 @@
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { useEffect, useMemo, useState } from "react";
 
+import { PlaneFlight } from "@/components/Glyphs";
 import { STAR } from "@/components/Mark";
 import { fmtTimeShort } from "@/lib/format";
 import type { Progress } from "@/hooks/usePlan";
@@ -99,11 +100,17 @@ export function Searching({ progress, flightNumber, onCancel }: { progress: Prog
   }, [floor, synthesizing]);
 
   const line = LINES[Math.min(shown, LINES.length - 1)];
+  const [pass, setPass] = useState(0);
+  useEffect(() => {
+    const t = setInterval(() => setPass((k) => k + 1), 5600);
+    return () => clearInterval(t);
+  }, []);
 
   return (
     <div className="flex flex-1 flex-col items-center justify-center pb-16 text-center">
-      <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ type: "spring", stiffness: 200, damping: 24 }} className="mb-6">
+      <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ type: "spring", stiffness: 200, damping: 24 }} className="relative mb-6 w-[300px]">
         <Orbit still={Boolean(reduce) || synthesizing} />
+        {synthesizing ? null : <PlaneFlight key={pass} play delay={0.6} />}
       </motion.div>
       <h2 className="display-soft text-[30px] leading-tight">{f ? `Checking ${f.departureAirport} right now` : `Finding ${flightNumber}`}</h2>
 

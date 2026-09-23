@@ -137,7 +137,7 @@ export function HomeClient() {
         className="mb-4 flex items-center justify-between"
       >
         <div className="flex items-center gap-2.5 font-display text-[21px] font-semibold tracking-[-0.01em]">
-          <Mark size={22} /> Leave By
+          <Mark size={22} spin /> Leave By
         </div>
         <button
           type="button"
