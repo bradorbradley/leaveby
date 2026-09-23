@@ -14,6 +14,7 @@ import { PlanFields, isReady, type FormValues } from "@/components/PlanForm";
 import { RollingNumber } from "@/components/RollingNumber";
 import { deviceTz, fmtDay, fmtTime, fmtTimeShort, localDateString, minutesBetween, tzAbbrev } from "@/lib/format";
 import { computePlan } from "@/lib/plan-math";
+import { planRows } from "@/lib/plan-rows";
 import type { Profile } from "@/lib/profile";
 import { airlineLogoUrl, appleMapsLink, dropoffCoord, dropoffLabel, flightStatusLink, googleMapsLink, lyftLink, reminderLink, shareText, uberLink } from "@/lib/ride-links";
 import type { PlanRequest, PlanResult } from "@/types/plan";
@@ -110,46 +111,12 @@ export function Reveal({
   const soon = !late && minutesUntil <= 20;
   const leaveLabel = `${leave.hm} ${leave.ampm}${day.rel === "Today" ? "" : ` ${day.rel ?? day.pretty}`}`;
 
-  const stops = plan.timeline;
-  const seg = (a: number, b: number) => minutesBetween(stops[a].iso, stops[b].iso);
-  const travelLabel = result.mode === "transit" ? "Transit" : result.mode === "drive" ? "Drive + park" : "Drive";
-  const arriveLabel = result.mode === "ride" ? "Curb to security" : "Terminal to security";
-  const segments = [
-    { label: travelLabel, min: seg(0, 1), color: "var(--ink)" },
-    { label: arriveLabel, min: seg(1, 2), color: "var(--coral-pale)" },
-    { label: "Security", min: seg(2, 3), color: "var(--coral)" },
-    { label: "Walk", min: seg(3, 4), color: "var(--mustard)" },
-    { label: "Until boarding", min: seg(4, 5), color: "var(--sage)" },
-    { label: "Boarding to doors", min: seg(5, 6), color: "var(--ink-3)" },
-  ];
-  const total = segments.reduce((s, x) => s + x.min, 0);
-
-  const driveNotes = r.driveNotes;
-  const securityNotes = [...r.securityNotes];
-  if (result.checkedBag && r.bagDropCutoffMinutes && !r.securityNotes.some((n) => /bag/i.test(n))) {
-    securityNotes.push(`Bag drop closes ${r.bagDropCutoffMinutes} min before departure.`);
-  }
-  const arriveTitle = result.mode === "drive" ? "Parked at the airport" : "Arrive at the airport";
-  const rows: Array<{ key: string; iso: string; title: string; seg?: (typeof segments)[number]; lead?: string; notes: string[]; hot?: boolean }> = [
-    { key: "leave", iso: stops[0].iso, title: "Walk out the door", seg: segments[0], notes: driveNotes, hot: true },
-    { key: "arrive", iso: stops[1].iso, title: arriveTitle, seg: segments[1], notes: [] },
-    { key: "security", iso: stops[2].iso, title: "Security", seg: segments[2], lead: r.checkpoint, notes: securityNotes },
-    { key: "gate", iso: stops[3].iso, title: "Walk to the gate", seg: segments[3], notes: r.gateNotes },
-    { key: "spare", iso: stops[4].iso, title: "Spare time", seg: segments[4], notes: [] },
-    { key: "boarding", iso: stops[5].iso, title: "Boarding starts", seg: segments[5], notes: [] },
-    { key: "departure", iso: stops[6].iso, title: "Departure", notes: [] },
-  ];
+  const { rows, total, latestISO } = planRows(plan);
 
   const status = statusPill(live, f);
   const gate = live?.gate ?? f.gate;
   const terminal = live?.terminal ?? f.terminal;
   const isToday = request.date === localDateString(0);
-  const latestISO = (() => {
-    const anchor = new Date(plan.anchorISO).getTime();
-    const bag = plan.bagLeaveISO ? new Date(plan.bagLeaveISO).getTime() : Infinity;
-    const raw = Math.min(anchor, bag);
-    return new Date(Math.floor(raw / 300_000) * 300_000).toISOString();
-  })();
   const pickupISO = new Date(new Date(plan.leaveISO).getTime() - 5 * 60_000).toISOString();
 
   const share = async () => {

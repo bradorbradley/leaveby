@@ -2,6 +2,7 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import { UserRound } from "lucide-react";
+import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 import { Mark } from "@/components/Mark";
@@ -85,7 +86,7 @@ export function HomeClient() {
     (async () => {
       const payload = await encodeSharedPlan(slimForShare(lastRequest, result));
       if (cancelled) return;
-      const url = `/?${planQuery(lastRequest, payload)}`;
+      const url = `${window.location.pathname}?${planQuery(lastRequest, payload)}`;
       try {
         window.history.replaceState(null, "", url);
         setPlanUrl(`${window.location.origin}${url}`);
@@ -119,7 +120,7 @@ export function HomeClient() {
     setSharedAt(null);
     setValues((v) => ({ ...initialValues(profile), origin: v.origin }));
     try {
-      window.history.replaceState(null, "", "/");
+      window.history.replaceState(null, "", window.location.pathname);
     } catch {
       // ignore
     }
@@ -136,9 +137,9 @@ export function HomeClient() {
         transition={{ type: "spring", stiffness: 240, damping: 26 }}
         className="mb-4 flex items-center justify-between"
       >
-        <div className="flex items-center gap-2.5 font-display text-[21px] font-semibold tracking-[-0.01em]">
+        <Link href="/" className="flex items-center gap-2.5 font-display text-[21px] font-semibold tracking-[-0.01em]">
           <Mark size={22} spin /> Leave By
-        </div>
+        </Link>
         <button
           type="button"
           aria-label="Saved on this phone"
