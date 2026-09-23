@@ -20,10 +20,10 @@ export const appMetadata: Metadata = {
   twitter: { card: "summary_large_image", title: "Leave By", description: TAGLINE, images: ["/api/og"] },
 };
 
-const PITCH = "Type your flight number. Leave By checks live traffic, today's security lines, and your terminal, then gives you one time: when to walk out the door.";
+const PITCH = "The morning of a flight should not be stressful. Type your flight number and Leave By checks live traffic, today's security lines, and your terminal, then gives you one calm answer: when to walk out the door.";
 
 export const landingMetadata: Metadata = {
-  title: "Leave By · Know the minute to leave for the airport",
+  title: "Leave By · Stop worrying about when to leave for the airport",
   description: PITCH,
   metadataBase: new URL(SITE),
   openGraph: { title: "Leave By", description: PITCH, images: ["/api/og"], type: "website", url: "/" },

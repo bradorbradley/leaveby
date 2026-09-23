@@ -4,14 +4,14 @@ import { motion, useReducedMotion } from "framer-motion";
 import { BellRing, Car, Globe, Luggage, Share2, ShieldCheck, Smartphone, Timer, TrainFront } from "lucide-react";
 
 const FEATURES = [
-  { icon: Timer, title: "A live countdown", body: "The minutes to your door, ticking, so you never do the math twice." },
-  { icon: Car, title: "Ride to the terminal", body: "Uber and Lyft open with your terminal pinned as the drop-off. Not the airport. Not the rental lot." },
+  { icon: Timer, title: "A live countdown", body: "The minutes to your door, ticking, so you can stop checking the clock and doing the math." },
+  { icon: Car, title: "Ride to the terminal", body: "Uber and Lyft open with your terminal pinned as the drop-off. Not the airport. Not the rental lot. No panic at the curb." },
   { icon: TrainFront, title: "Drive, ride, or transit", body: "Parking time when you drive. Curb time when you ride. Train schedules when you take the train." },
-  { icon: Luggage, title: "Bag-drop cutoffs", body: "Checking a bag? Your airline's cutoff becomes part of the plan, and moves your time when it must." },
+  { icon: Luggage, title: "Bag-drop cutoffs", body: "Checking a bag? The cutoff is already in the plan, so you never find out about it at the counter." },
   { icon: ShieldCheck, title: "PreCheck, CLEAR, Global Entry", body: "Tell it your lane once. Waits are looked up for that lane, at that checkpoint, today." },
-  { icon: BellRing, title: "A reminder in your calendar", body: "One tap adds the leave time to your calendar with the plan attached." },
-  { icon: Share2, title: "Share the whole plan", body: "The link opens instantly, with the finished plan and a preview card wherever you paste it." },
-  { icon: Smartphone, title: "No account. Nothing to install.", body: "Works in the browser on any phone. Your home and preferences stay on your device." },
+  { icon: BellRing, title: "A reminder in your calendar", body: "One tap adds the leave time to your calendar with the plan attached. Then you can forget about it until it is time." },
+  { icon: Share2, title: "Share the whole plan", body: "Everyone traveling with you sees the same time and the same plan. No debate, no nagging." },
+  { icon: Smartphone, title: "No account. Nothing to install.", body: "Works in the browser on any phone. Your home and preferences stay on your device. Nothing to set up when you are already stressed." },
   { icon: Globe, title: "Any airline, any airport", body: "Domestic or international. Times are always shown in the airport's own timezone." },
 ];
 

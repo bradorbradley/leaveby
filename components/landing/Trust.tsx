@@ -129,9 +129,9 @@ function Latest() {
 }
 
 const CARDS = [
-  { title: "Live, not averaged.", body: "Traffic is measured on your route at your leave time. Security waits are today's, for your checkpoint and lane. Notices are from this morning.", demo: <Findings /> },
-  { title: "Every minute explained.", body: "Each step shows how long it takes and why. If the walk to your gate is long, the plan tells you which gates and how far.", demo: <Breakdown /> },
-  { title: "Early by design.", body: "The plan is conservative where it matters and honest about the margin, so you always know the line you cannot cross.", demo: <Latest /> },
+  { title: "Live, not averaged.", body: "Traffic on your route at your leave time. Today's security wait for your lane. This morning's notices. What is actually happening, not what usually happens.", demo: <Findings /> },
+  { title: "Every minute explained.", body: "Each step shows how long it takes and why. When you can see the reasons, you stop redoing the math in your head.", demo: <Breakdown /> },
+  { title: "Early by design.", body: "Conservative where it matters, honest about the margin. You always know the line you cannot cross, so you never wonder if you are cutting it close.", demo: <Latest /> },
 ];
 
 export function Trust() {
