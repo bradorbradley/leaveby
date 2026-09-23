@@ -100,7 +100,7 @@ export function Reveal({
   ];
   const total = segments.reduce((s, x) => s + x.min, 0);
 
-  const driveNotes = [...r.driveNotes, ...r.alternatives.map((a) => `Another way: ${a}`)];
+  const driveNotes = r.driveNotes;
   // With a recommendation the lane is already named; otherwise lead with lane and checkpoint.
   const securityNotes = [...(r.recommendation ? [] : [`${r.lane} · ${r.checkpoint}`]), ...r.securityNotes];
   if (result.checkedBag && r.bagDropCutoffMinutes && !r.securityNotes.some((n) => /bag/i.test(n))) {

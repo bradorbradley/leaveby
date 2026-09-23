@@ -18,7 +18,6 @@ const LINES: Array<{ key: string; text: string }> = [
   { key: "security", text: "Checking security lines at the terminal" },
   { key: "rules", text: "Reading the airline's bag and boarding rules" },
   { key: "today", text: "Scanning today's airport news and weather" },
-  { key: "options", text: "Looking for shuttles and shortcuts" },
   { key: "synthesis", text: "Putting it together" },
 ];
 
@@ -43,15 +42,15 @@ export function Searching({ progress, flightNumber, onCancel }: { progress: Prog
     setShown((s) => Math.max(s, floor));
   }, [floor]);
   useEffect(() => {
-    if (synthesizing) setShown(7);
+    if (synthesizing) setShown(6);
   }, [synthesizing]);
   useEffect(() => {
     const t = setInterval(() => {
       setShown((s) => {
-        if (synthesizing) return 7;
+        if (synthesizing) return 6;
         if (s < floor) return floor;
         if (s < 2) return s + 1;
-        return s >= 6 ? 2 : s + 1;
+        return s >= 5 ? 2 : s + 1;
       });
     }, 2000);
     return () => clearInterval(t);
@@ -86,7 +85,7 @@ export function Searching({ progress, flightNumber, onCancel }: { progress: Prog
         {LINES.slice(2).map((l, i) => (
           <span
             key={l.key}
-            className={`h-1.5 w-1.5 rounded-full transition-colors duration-300 ${shown === i + 2 || shown === 7 ? "bg-lilac-deep" : "bg-line"}`}
+            className={`h-1.5 w-1.5 rounded-full transition-colors duration-300 ${shown === i + 2 || shown === 6 ? "bg-lilac-deep" : "bg-line"}`}
           />
         ))}
       </div>

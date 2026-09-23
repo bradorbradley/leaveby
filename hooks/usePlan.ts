@@ -7,7 +7,7 @@ import type { PlanEvent, PlanRequest, PlanResult, RouteEstimate } from "@/types/
 
 export type Phase = "idle" | "searching" | "done" | "error" | "notfound";
 
-export type Stage = "traffic" | "security" | "rules" | "today" | "options" | "synthesis";
+export type Stage = "traffic" | "security" | "rules" | "today" | "synthesis";
 
 export interface Progress {
   flight: FlightInfo | null;
