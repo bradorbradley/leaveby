@@ -81,7 +81,7 @@
   }
 
   .field {
-    @apply flex min-h-[52px] w-full items-center gap-2.5 rounded-[18px] border-[1.5px] border-line bg-paper px-3.5 text-[16px] font-semibold text-ink;
+    @apply flex min-h-[54px] w-full items-center gap-2.5 rounded-[18px] border-[1.5px] border-line bg-paper px-3.5 text-[16px] font-semibold text-ink;
   }
 
   .field input {
@@ -89,7 +89,7 @@
   }
 
   .chip {
-    @apply inline-flex min-h-[40px] items-center gap-1.5 rounded-full border-[1.5px] border-line bg-paper px-3.5 text-[14px] font-semibold text-ink-2 transition active:scale-95;
+    @apply inline-flex min-h-[46px] items-center gap-1.5 rounded-full border-[1.5px] border-line bg-paper px-4 text-[14px] font-semibold text-ink-2 transition active:scale-95;
   }
 
   .chip[aria-pressed="true"] {
@@ -105,7 +105,7 @@
   }
 
   .seg button {
-    @apply min-h-[42px] rounded-[14px] text-[15px] font-semibold text-ink-2 transition;
+    @apply min-h-[46px] rounded-[14px] text-[15px] font-semibold text-ink-2 transition;
   }
 
   .seg button[aria-pressed="true"] {

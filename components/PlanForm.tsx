@@ -130,14 +130,14 @@ export function PlanFields({
             <button
               key={mode}
               type="button"
-              className="chip date justify-center !min-h-[38px] !text-[13.5px]"
+              className="chip date justify-center !text-[14px]"
               aria-pressed={values.dateMode === mode}
               onClick={() => onChange({ dateMode: mode, customDate: "" })}
             >
               {mode === "today" ? "Today" : "Tomorrow"}
             </button>
           ))}
-          <label className="chip date relative justify-center !min-h-[38px] cursor-pointer !text-[13.5px]" aria-pressed={values.dateMode === "custom"}>
+          <label className="chip date relative justify-center cursor-pointer !text-[14px]" aria-pressed={values.dateMode === "custom"}>
             <CalendarDays className="h-4 w-4" />
             {values.dateMode === "custom" && values.customDate ? prettyDate(values.customDate) : "Pick"}
             <input
@@ -264,8 +264,8 @@ export function PlanForm({
         When do I <span className="rounded-lg bg-butter px-1">need to leave?</span>
       </h1>
       <PlanFields values={values} onChange={onChange} profile={profile} notFound={notFound} />
-      <div className="sticky bottom-0 mt-6 bg-gradient-to-t from-ground via-ground to-transparent pb-4 pt-3">
-        <button type="submit" className="btn-primary" disabled={!ready}>
+      <div className="pointer-events-none sticky bottom-0 mt-6 bg-gradient-to-t from-ground via-ground/95 to-transparent pb-[max(env(safe-area-inset-bottom),16px)] pt-4">
+        <button type="submit" className="btn-primary pointer-events-auto" disabled={!ready}>
           {notFound ? "Try again" : "When should I leave?"}
         </button>
       </div>
