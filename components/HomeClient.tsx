@@ -5,7 +5,7 @@ import { UserRound } from "lucide-react";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 import { Mark } from "@/components/Mark";
-import { PlanForm, initialValues, toRequest, valuesFromRequest, type FormValues } from "@/components/PlanForm";
+import { PlanForm, initialValues, isReady, toRequest, type FormValues, valuesFromRequest } from "@/components/PlanForm";
 import { ProfileSheet } from "@/components/ProfileSheet";
 import { Reveal } from "@/components/Reveal";
 import { Searching } from "@/components/Searching";
@@ -147,7 +147,16 @@ export function HomeClient() {
       <AnimatePresence mode="wait">
         {showForm ? (
           <motion.div key="form" className="flex flex-1 flex-col" initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }}>
-            {phase === "error" && state.error ? <div className="mb-3 rounded-[18px] bg-blush px-4 py-3 text-[14px] font-semibold">{state.error}</div> : null}
+            {phase === "error" && state.error ? (
+              <div className="mb-3 flex items-center justify-between gap-3 rounded-[18px] bg-blush px-4 py-3 text-[14px] font-semibold">
+                <span>{state.error}</span>
+                {isReady(values, null) ? (
+                  <button type="button" onClick={submit} className="shrink-0 rounded-full bg-ink px-3.5 py-2 text-[13px] font-bold text-ground">
+                    Try again
+                  </button>
+                ) : null}
+              </div>
+            ) : null}
             <PlanForm values={values} onChange={patch} onSubmit={submit} profile={profile} notFound={phase === "notfound" ? state.error : null} />
           </motion.div>
         ) : null}
