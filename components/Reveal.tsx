@@ -1,11 +1,14 @@
 "use client";
 
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { BellRing, Car, Map, Pencil, RotateCcw, Share2, TrainFront, X } from "lucide-react";
-import { useEffect, useMemo, useState } from "react";
+import { BellRing, Map, Pencil, RotateCcw, Share2, TrainFront, X } from "lucide-react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
+import { Confetti } from "@/components/Confetti";
 import { Countdown } from "@/components/Countdown";
+import { CarGlyph, CoffeeGlyph, PinGlyph, PlaneFlight, PlaneGlyph, ScanGlyph, TicketGlyph, TrainGlyph, WalkGlyph } from "@/components/Glyphs";
 import { Geometry } from "@/components/Mark";
+import { TiltCard } from "@/components/TiltCard";
 import { PlanFields, isReady, type FormValues } from "@/components/PlanForm";
 import { RollingNumber } from "@/components/RollingNumber";
 import { deviceTz, fmtDay, fmtTime, fmtTimeShort, localDateString, minutesBetween, tzAbbrev } from "@/lib/format";
@@ -53,6 +56,10 @@ export function Reveal({
   const [copied, setCopied] = useState(false);
   const [live, setLive] = useState<LiveStatus | null>(null);
   const [logoOk, setLogoOk] = useState(true);
+  const [burst, setBurst] = useState(0);
+  const [fly, setFly] = useState(false);
+  const barRef = useRef<HTMLDivElement>(null);
+  const [barWidth, setBarWidth] = useState(0);
 
   const f = result.flight;
   const tz = f.departureTimezone ?? "America/New_York";
@@ -62,6 +69,23 @@ export function Reveal({
     () => computePlan({ flight: f, route: result.route, research: r, bufferMinutes: buffer, checkedBag: result.checkedBag, mode: result.mode }),
     [f, result.route, result.checkedBag, result.mode, r, buffer],
   );
+
+  // The plane takes off once the digits have landed, and again whenever the time changes.
+  useEffect(() => {
+    setFly(false);
+    const t = setTimeout(() => setFly(true), 900);
+    return () => clearTimeout(t);
+  }, [plan.leaveISO]);
+
+  useEffect(() => {
+    const el = barRef.current;
+    if (!el) return;
+    const measure = () => setBarWidth(el.clientWidth);
+    measure();
+    const ro = new ResizeObserver(measure);
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
 
   // Live status: refresh every two minutes while the reveal is open.
   useEffect(() => {
@@ -136,6 +160,7 @@ export function Reveal({
   const share = async () => {
     const text = shareText(result, leaveLabel, buffer, planUrl);
     try {
+      setBurst((b) => b + 1);
       if (navigator.share) {
         await navigator.share({ text });
         return;
@@ -158,11 +183,13 @@ export function Reveal({
       initial="hidden"
       animate="show"
     >
-      <motion.section
-        variants={{ hidden: { opacity: 0, scale: 0.96, y: 10 }, show: { opacity: 1, scale: 1, y: 0, transition: { type: "spring", stiffness: 220, damping: 24 } } }}
-        className={`relative overflow-hidden rounded-[28px] border border-line px-5 pb-6 pt-7 text-center shadow-card ${late ? "bg-coral-pale" : soon ? "bg-mustard-soft" : "bg-paper"}`}
-      >
+      <motion.section variants={{ hidden: { opacity: 0, scale: 0.96, y: 10 }, show: { opacity: 1, scale: 1, y: 0, transition: { type: "spring", stiffness: 220, damping: 24 } } }}>
+        <TiltCard
+          className={`relative overflow-hidden rounded-[28px] border border-line px-5 pb-6 pt-7 text-center ${late ? "bg-coral-pale" : soon ? "bg-mustard-soft" : "bg-paper"}`}
+        >
+        <span aria-hidden="true" className="pointer-events-none absolute inset-0 rounded-[28px]" style={{ boxShadow: "inset 0 1px 0 rgba(255,255,255,0.9), 0 18px 36px -20px rgba(31,32,48,0.35), 0 48px 80px -48px rgba(31,32,48,0.35)" }} />
         <Geometry tone={tone} />
+        <PlaneFlight play={fly} tone={late ? "var(--coral)" : "var(--ink)"} />
         <button
           type="button"
           aria-label={editing ? "Close editing" : "Change your inputs"}
@@ -196,6 +223,7 @@ export function Reveal({
             </p>
           ) : null}
         </div>
+        </TiltCard>
       </motion.section>
 
       <AnimatePresence initial={false}>
@@ -282,12 +310,12 @@ export function Reveal({
               )}
             </p>
             <div className="grid grid-cols-2 gap-2">
-              <a href={uberLink(result)} target="_blank" rel="noreferrer" className="btn-dark">
-                <Car className="h-4 w-4" /> Uber
-              </a>
-              <a href={lyftLink(result)} target="_blank" rel="noreferrer" className="btn-dark">
-                <Car className="h-4 w-4" /> Lyft
-              </a>
+              <motion.a whileTap={{ scale: 0.97 }} href={uberLink(result)} target="_blank" rel="noreferrer" className="btn-dark">
+                <CarGlyph size={18} drive={false} /> Uber
+              </motion.a>
+              <motion.a whileTap={{ scale: 0.97 }} href={lyftLink(result)} target="_blank" rel="noreferrer" className="btn-dark">
+                <CarGlyph size={18} drive={false} /> Lyft
+              </motion.a>
             </div>
             <p className="mt-2 text-center text-[12.5px] text-ink-3">
               Drop-off <b className="font-semibold text-ink-2">{dropoffLabel(result)}</b>
@@ -316,7 +344,19 @@ export function Reveal({
             </b>
           </span>
         </div>
-        <div className="mt-3 flex h-2.5 gap-[3px] overflow-hidden rounded-full">
+        <div ref={barRef} className="relative mt-6">
+          {barWidth > 0 && !reduce ? (
+            <motion.span
+              aria-hidden="true"
+              className="absolute -top-[18px] left-0 text-ink"
+              initial={{ x: 0, opacity: 0 }}
+              animate={{ x: [0, Math.max(0, barWidth - 18)], opacity: [0, 1, 1, 0] }}
+              transition={{ duration: 1.9, delay: 0.35, ease: [0.45, 0, 0.2, 1], times: [0, 0.08, 0.9, 1] }}
+            >
+              <CarGlyph size={18} drive={false} />
+            </motion.span>
+          ) : null}
+        <div className="flex h-2.5 gap-[3px] overflow-hidden rounded-full">
           {segments.map((s, i) => (
             <motion.span
               key={s.label}
@@ -328,6 +368,7 @@ export function Reveal({
             />
           ))}
         </div>
+        </div>
         <ol className="mt-4 flex flex-col">
           {rows.map((row, i) => (
             <motion.li
@@ -335,17 +376,22 @@ export function Reveal({
               initial={reduce ? false : { opacity: 0, x: -8 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ type: "spring", stiffness: 240, damping: 26, delay: 0.45 + i * 0.06 }}
-              className="grid grid-cols-[56px_16px_1fr] gap-x-3"
+              className="grid grid-cols-[52px_34px_1fr] gap-x-3"
             >
-              <time className="display-soft pt-0.5 font-display text-[17px] font-semibold leading-none">{fmtTimeShort(row.iso, tz).replace(/ (AM|PM)/, "")}</time>
+              <time className="display-soft pt-1.5 font-display text-[17px] font-semibold leading-none">{fmtTimeShort(row.iso, tz).replace(/ (AM|PM)/, "")}</time>
               <span className="relative flex justify-center">
-                <i
-                  className="mt-1 block h-3 w-3 rounded-full"
-                  style={{ background: row.seg ? row.seg.color : "var(--line)", boxShadow: row.hot ? "0 0 0 4px var(--coral-pale)" : undefined }}
-                />
-                {i < rows.length - 1 ? <i className="absolute bottom-0 top-5 w-px bg-line" /> : null}
+                <motion.span
+                  initial={reduce ? false : { scale: 0.4 }}
+                  animate={{ scale: 1 }}
+                  transition={{ type: "spring", stiffness: 320, damping: 16, delay: 0.55 + i * 0.06 }}
+                  className="relative z-10 grid h-[30px] w-[30px] place-items-center rounded-full"
+                  style={{ background: glyphBg(row.key, row.seg?.color), color: glyphInk(row.key), boxShadow: row.hot ? "0 0 0 4px var(--coral-pale), 0 6px 14px -6px rgba(31,32,48,0.4)" : "0 6px 14px -8px rgba(31,32,48,0.35)" }}
+                >
+                  {glyphFor(row.key, result.mode)}
+                </motion.span>
+                {i < rows.length - 1 ? <i className="absolute bottom-0 top-8 w-px bg-line" /> : null}
               </span>
-              <div className={`min-w-0 ${i < rows.length - 1 ? "pb-4" : ""}`}>
+              <div className={`min-w-0 pt-1 ${i < rows.length - 1 ? "pb-4" : ""}`}>
                 <span className={`block text-[15px] ${row.hot ? "font-semibold" : "font-medium"} text-ink`}>{row.title}</span>
                 {row.seg ? (
                   <span className="mt-1 inline-flex items-center gap-1.5 rounded-full bg-ground px-2.5 py-0.5 text-[11.5px] font-medium text-ink-2">
@@ -372,12 +418,13 @@ export function Reveal({
       ) : null}
 
       <motion.div variants={rise} className="grid grid-cols-2 gap-2">
-        <a href={reminderLink(result, plan.leaveISO, planUrl)} className="btn-secondary">
+        <motion.a whileTap={{ scale: 0.97 }} href={reminderLink(result, plan.leaveISO, planUrl)} className="btn-secondary">
           <BellRing className="h-4 w-4" /> Set reminder
-        </a>
-        <button type="button" onClick={share} className="btn-secondary">
+        </motion.a>
+        <motion.button type="button" onClick={share} whileTap={{ scale: 0.97 }} className="btn-secondary relative">
           <Share2 className="h-4 w-4" /> {copied ? "Copied" : "Share"}
-        </button>
+          <Confetti burst={burst} />
+        </motion.button>
       </motion.div>
 
       <motion.button variants={rise} type="button" onClick={onReset} className="mx-auto mt-1 flex items-center gap-1.5 text-[14px] font-medium text-ink-2">
@@ -396,4 +443,33 @@ function statusPill(live: LiveStatus | null, f: PlanResult["flight"]): { label: 
   if (delay > 0 || status === "delayed") return { label: delay > 0 ? `Delayed ${delay} min` : "Delayed", cls: "bg-mustard-soft text-ink" };
   if (status === "unknown") return { label: "Scheduled", cls: "bg-ground text-ink-2" };
   return { label: "On time", cls: "bg-sage-soft text-ink" };
+}
+
+/** Which little character sits on each step. */
+function glyphFor(key: string, mode: PlanResult["mode"]) {
+  switch (key) {
+    case "leave":
+      return mode === "transit" ? <TrainGlyph size={16} /> : <CarGlyph size={16} />;
+    case "arrive":
+      return <PinGlyph size={16} />;
+    case "security":
+      return <ScanGlyph size={16} />;
+    case "gate":
+      return <WalkGlyph size={16} />;
+    case "spare":
+      return <CoffeeGlyph size={16} />;
+    case "boarding":
+      return <TicketGlyph size={16} />;
+    default:
+      return <PlaneGlyph size={16} takeoff repeat />;
+  }
+}
+
+function glyphBg(key: string, segColor?: string) {
+  if (key === "departure") return "var(--ink)";
+  return segColor ?? "var(--line)";
+}
+
+function glyphInk(key: string) {
+  return key === "arrive" ? "var(--ink)" : "var(--paper)";
 }

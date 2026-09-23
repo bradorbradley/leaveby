@@ -1,7 +1,9 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-import { CalendarDays, Check, Plane } from "lucide-react";
+import { CalendarDays, Check } from "lucide-react";
+
+import { PlaneGlyph } from "@/components/Glyphs";
 
 import { GateSlider } from "@/components/GateSlider";
 import { OriginField } from "@/components/OriginField";
@@ -166,7 +168,9 @@ export function PlanFields({
           Your flight
         </label>
         <div className="field">
-          <Plane className="h-5 w-5 shrink-0 text-coral" />
+          <span className="shrink-0 text-coral">
+            <PlaneGlyph size={22} takeoff={Boolean(parseFlightNumber(values.flightNumber))} key={parseFlightNumber(values.flightNumber) ? values.flightNumber.trim() : "idle"} />
+          </span>
           <input
             id="flight"
             value={values.flightNumber}

@@ -26,10 +26,23 @@
 
   body {
     background: var(--ground);
+    background-image: radial-gradient(120% 80% at 50% -10%, #faf6ef 0%, var(--ground) 60%);
     color: var(--ink);
     -webkit-tap-highlight-color: transparent;
     overscroll-behavior-y: none;
     font-feature-settings: "ss01", "cv11";
+  }
+
+  /* Paper grain: barely there, but it stops the ground reading as a flat fill. */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.05;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
   }
 
   h1,
@@ -71,7 +84,7 @@
 
 @layer components {
   .shell {
-    @apply mx-auto flex min-h-dvh w-full max-w-[430px] flex-col px-5;
+    @apply relative z-[1] mx-auto flex min-h-dvh w-full max-w-[430px] flex-col px-5;
     padding-top: max(env(safe-area-inset-top), 16px);
     padding-bottom: env(safe-area-inset-bottom);
   }
@@ -82,7 +95,14 @@
   }
 
   .field {
-    @apply flex min-h-[56px] w-full items-center gap-3 rounded-[18px] border border-line bg-paper px-4 text-[16px] font-medium text-ink shadow-card;
+    @apply flex min-h-[56px] w-full items-center gap-3 rounded-[18px] border border-line bg-paper px-4 text-[16px] font-medium text-ink;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9), 0 1px 2px rgba(31, 32, 48, 0.05), 0 10px 22px -14px rgba(31, 32, 48, 0.3);
+    transition: box-shadow 0.25s ease, transform 0.25s ease;
+  }
+
+  .field:focus-within {
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9), 0 0 0 3px rgba(227, 111, 88, 0.18), 0 14px 28px -14px rgba(31, 32, 48, 0.35);
+    transform: translateY(-1px);
   }
 
   .field input {
@@ -93,12 +113,19 @@
     @apply relative inline-flex min-h-[44px] items-center gap-1.5 rounded-full border border-line bg-paper px-4 text-[14px] font-medium text-ink-2 transition-colors duration-200;
   }
 
+  .chip {
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9), 0 1px 2px rgba(31, 32, 48, 0.04), 0 8px 16px -12px rgba(31, 32, 48, 0.3);
+  }
+
   .chip[aria-pressed="true"] {
     @apply border-ink bg-ink text-paper;
+    background-image: linear-gradient(180deg, #2e2f44 0%, var(--ink) 60%);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14), 0 8px 16px -10px rgba(31, 32, 48, 0.5);
   }
 
   .seg {
-    @apply relative grid grid-cols-2 gap-1 rounded-[18px] border border-line bg-paper p-1 shadow-card;
+    @apply relative grid grid-cols-2 gap-1 rounded-[18px] border border-line bg-paper p-1;
+    box-shadow: inset 0 1px 3px rgba(31, 32, 48, 0.06), 0 1px 0 rgba(255, 255, 255, 0.8);
   }
 
   .seg button {
@@ -110,19 +137,27 @@
   }
 
   .card {
-    @apply rounded-[24px] border border-line bg-paper p-4 shadow-card;
+    @apply rounded-[24px] border border-line bg-paper p-4;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9), 0 1px 2px rgba(31, 32, 48, 0.05), 0 14px 28px -18px rgba(31, 32, 48, 0.32), 0 36px 60px -40px rgba(31, 32, 48, 0.28);
+  }
+
+  .btn-primary,
+  .btn-dark {
+    background-image: linear-gradient(180deg, #2e2f44 0%, var(--ink) 55%, #16172a 100%);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16), inset 0 -2px 0 rgba(0, 0, 0, 0.25), 0 10px 20px -10px rgba(31, 32, 48, 0.6), 0 24px 40px -24px rgba(31, 32, 48, 0.55);
   }
 
   .btn-primary {
-    @apply flex min-h-[58px] w-full items-center justify-center gap-2 rounded-full bg-ink text-[16.5px] font-semibold text-paper shadow-cta transition-[transform,opacity] duration-200 active:scale-[0.985] disabled:opacity-35 disabled:shadow-none disabled:active:scale-100;
+    @apply flex min-h-[58px] w-full items-center justify-center gap-2 rounded-full bg-ink text-[16.5px] font-semibold text-paper transition-[transform,opacity,box-shadow] duration-200 active:translate-y-px active:scale-[0.985] disabled:opacity-35 disabled:shadow-none disabled:active:scale-100;
   }
 
   .btn-dark {
-    @apply flex min-h-[50px] items-center justify-center gap-2 rounded-full bg-ink px-4 text-[14.5px] font-semibold text-paper transition-transform duration-200 active:scale-[0.98];
+    @apply flex min-h-[50px] items-center justify-center gap-2 rounded-full bg-ink px-4 text-[14.5px] font-semibold text-paper transition-transform duration-200 active:translate-y-px active:scale-[0.98];
   }
 
   .btn-secondary {
-    @apply flex min-h-[48px] items-center justify-center gap-2 rounded-full border border-line bg-paper px-4 text-[14px] font-semibold text-ink shadow-card transition-transform duration-200 active:scale-[0.98];
+    @apply flex min-h-[48px] items-center justify-center gap-2 rounded-full border border-line bg-paper px-4 text-[14px] font-semibold text-ink transition-transform duration-200 active:scale-[0.98];
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9), 0 1px 2px rgba(31, 32, 48, 0.05), 0 10px 22px -14px rgba(31, 32, 48, 0.35);
   }
 
   .display-soft {
