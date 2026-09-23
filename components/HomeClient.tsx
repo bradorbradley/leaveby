@@ -130,28 +130,33 @@ export function HomeClient() {
 
   return (
     <main className="shell">
-      <header className="mb-3 flex items-center justify-between">
-        <div className="flex items-center gap-2 font-display text-[19px] font-black tracking-tight">
-          <Mark /> Leave By
+      <motion.header
+        initial={{ opacity: 0, y: -6 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ type: "spring", stiffness: 240, damping: 26 }}
+        className="mb-4 flex items-center justify-between"
+      >
+        <div className="flex items-center gap-2.5 font-display text-[21px] font-semibold tracking-[-0.01em]">
+          <Mark size={22} /> Leave By
         </div>
         <button
           type="button"
           aria-label="Saved on this phone"
           onClick={() => setSheetOpen(true)}
-          className={`grid h-9 w-9 place-items-center rounded-full border-[1.5px] border-line ${loaded && !profileIsEmpty(profile) ? "bg-blush" : "bg-paper"}`}
+          className={`grid h-10 w-10 place-items-center rounded-full border border-line shadow-card ${loaded && !profileIsEmpty(profile) ? "bg-coral-pale" : "bg-paper"}`}
         >
           <UserRound className="h-4 w-4" />
         </button>
-      </header>
+      </motion.header>
 
       <AnimatePresence mode="wait">
         {showForm ? (
-          <motion.div key="form" className="flex flex-1 flex-col" initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }}>
+          <motion.div key="form" className="flex flex-1 flex-col" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ duration: 0.28 }}>
             {phase === "error" && state.error ? (
-              <div className="mb-3 flex items-center justify-between gap-3 rounded-[18px] bg-blush px-4 py-3 text-[14px] font-semibold">
+              <div className="mb-3 flex items-center justify-between gap-3 rounded-[18px] bg-coral-pale px-4 py-3 text-[14px] font-medium">
                 <span>{state.error}</span>
                 {isReady(values, null) ? (
-                  <button type="button" onClick={submit} className="shrink-0 rounded-full bg-ink px-3.5 py-2 text-[13px] font-bold text-ground">
+                  <button type="button" onClick={submit} className="shrink-0 rounded-full bg-ink px-3.5 py-2 text-[13px] font-semibold text-paper">
                     Try again
                   </button>
                 ) : null}
@@ -161,12 +166,12 @@ export function HomeClient() {
           </motion.div>
         ) : null}
         {phase === "searching" ? (
-          <motion.div key="searching" className="flex flex-1 flex-col" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+          <motion.div key="searching" className="flex flex-1 flex-col" initial={{ opacity: 0, scale: 0.98 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 1.02 }} transition={{ duration: 0.3 }}>
             <Searching progress={state.progress} flightNumber={values.flightNumber} onCancel={cancel} />
           </motion.div>
         ) : null}
         {phase === "done" && state.result && lastRequest ? (
-          <motion.div key="done" className="flex flex-1 flex-col" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+          <motion.div key="done" className="flex flex-1 flex-col" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0, y: 10 }} transition={{ duration: 0.3 }}>
             <Reveal
               result={state.result}
               request={lastRequest}

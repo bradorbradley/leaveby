@@ -1,11 +1,13 @@
 "use client";
 
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { BellRing, Car, Map, Pencil, RotateCcw, Share2, TrainFront, X } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 
-import { PlanFields, isReady, type FormValues } from "@/components/PlanForm";
 import { Countdown } from "@/components/Countdown";
+import { Geometry } from "@/components/Mark";
+import { PlanFields, isReady, type FormValues } from "@/components/PlanForm";
+import { RollingNumber } from "@/components/RollingNumber";
 import { deviceTz, fmtDay, fmtTime, fmtTimeShort, localDateString, minutesBetween, tzAbbrev } from "@/lib/format";
 import { computePlan } from "@/lib/plan-math";
 import type { Profile } from "@/lib/profile";
@@ -19,6 +21,11 @@ interface LiveStatus {
   terminal: string | null;
   departureTime: string;
 }
+
+const rise = {
+  hidden: { opacity: 0, y: 18 },
+  show: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 240, damping: 26 } },
+} as const;
 
 export function Reveal({
   result,
@@ -41,6 +48,7 @@ export function Reveal({
   planUrl: string;
   sharedAt: string | null;
 }) {
+  const reduce = useReducedMotion();
   const [editing, setEditing] = useState(false);
   const [copied, setCopied] = useState(false);
   const [live, setLive] = useState<LiveStatus | null>(null);
@@ -92,13 +100,13 @@ export function Reveal({
   const stops = plan.timeline;
   const seg = (a: number, b: number) => minutesBetween(stops[a].iso, stops[b].iso);
   const travelLabel = result.mode === "transit" ? "Transit" : result.mode === "drive" ? "Drive + park" : "Drive";
-  const arriveLabel = result.mode === "drive" ? "Terminal to security" : result.mode === "transit" ? "Terminal to security" : "Curb to security";
+  const arriveLabel = result.mode === "ride" ? "Curb to security" : "Terminal to security";
   const segments = [
-    { label: travelLabel, min: seg(0, 1), color: "var(--lilac-deep)" },
-    { label: arriveLabel, min: seg(1, 2), color: "var(--blush)" },
-    { label: "Security", min: seg(2, 3), color: "var(--blush-deep)" },
-    { label: "Walk", min: seg(3, 4), color: "var(--butter-deep)" },
-    { label: "Until boarding", min: seg(4, 5), color: "var(--sage-deep)" },
+    { label: travelLabel, min: seg(0, 1), color: "var(--ink)" },
+    { label: arriveLabel, min: seg(1, 2), color: "var(--coral-pale)" },
+    { label: "Security", min: seg(2, 3), color: "var(--coral)" },
+    { label: "Walk", min: seg(3, 4), color: "var(--mustard)" },
+    { label: "Until boarding", min: seg(4, 5), color: "var(--sage)" },
     { label: "Boarding to doors", min: seg(5, 6), color: "var(--ink-3)" },
   ];
   const total = segments.reduce((s, x) => s + x.min, 0);
@@ -141,53 +149,48 @@ export function Reveal({
   };
 
   const ready = isReady(values, null);
+  const tone = late ? "coral" : soon ? "mustard" : "paper";
 
   return (
-    <div className="flex flex-1 flex-col gap-3 pb-8">
+    <motion.div
+      className="flex flex-1 flex-col gap-3 pb-8"
+      variants={{ hidden: {}, show: { transition: { staggerChildren: reduce ? 0 : 0.09, delayChildren: 0.05 } } }}
+      initial="hidden"
+      animate="show"
+    >
       <motion.section
-        initial={{ scale: 0.92, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ type: "spring", stiffness: 260, damping: 20 }}
-        className={`relative overflow-hidden rounded-[28px] px-5 pb-5 pt-6 text-center ${late ? "bg-blush" : soon ? "bg-butter" : "bg-lilac"}`}
+        variants={{ hidden: { opacity: 0, scale: 0.96, y: 10 }, show: { opacity: 1, scale: 1, y: 0, transition: { type: "spring", stiffness: 220, damping: 24 } } }}
+        className={`relative overflow-hidden rounded-[28px] border border-line px-5 pb-6 pt-7 text-center shadow-card ${late ? "bg-coral-pale" : soon ? "bg-mustard-soft" : "bg-paper"}`}
       >
-        <span aria-hidden="true" className={`absolute -left-10 -top-12 h-32 w-32 rounded-full ${late ? "bg-butter/70" : "bg-blush/70"}`} />
-        <span aria-hidden="true" className={`absolute -bottom-10 -right-6 h-24 w-24 rounded-full ${late ? "bg-lilac/70" : "bg-butter/80"}`} />
-        <span aria-hidden="true" className="absolute bottom-5 left-5 animate-twinkle text-lg [animation-delay:0.8s]">✦</span>
+        <Geometry tone={tone} />
         <button
           type="button"
           aria-label={editing ? "Close editing" : "Change your inputs"}
           aria-expanded={editing}
           onClick={() => setEditing((e) => !e)}
-          className="absolute right-3 top-3 z-10 grid h-9 w-9 place-items-center rounded-full bg-paper/80 text-ink shadow-sm backdrop-blur"
+          className="absolute right-3.5 top-3.5 z-10 grid h-10 w-10 place-items-center rounded-full border border-line bg-paper/90 text-ink shadow-card backdrop-blur"
         >
           {editing ? <X className="h-4 w-4" /> : <Pencil className="h-4 w-4" />}
         </button>
         <div className="relative">
-          <p className="text-[12px] font-bold uppercase tracking-[0.16em] text-ink-2">{late ? "Leave now" : "Leave by"}</p>
-          <motion.div
-            key={plan.leaveISO}
-            initial={{ scale: 0.7, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ type: "spring", stiffness: 300, damping: 18 }}
-            className="mt-1 flex items-baseline justify-center gap-1.5 font-display text-[76px] font-black leading-none tracking-[-0.04em] tabular-nums"
-            aria-live="polite"
-          >
-            {leave.hm}
-            <span className="text-[24px] font-bold tracking-normal">{leave.ampm}</span>
-          </motion.div>
-          <p className="mt-1 text-[14px] text-ink-2">
-            {day.rel ? <b className="text-ink">{day.rel}</b> : null}
+          <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-ink-2">{late ? "Leave now" : "Leave by"}</p>
+          <div className="display-soft mt-2 flex items-baseline justify-center gap-2 font-display text-[92px] font-semibold leading-none tracking-[-0.03em]" aria-live="polite">
+            <RollingNumber value={leave.hm} />
+            <span className="font-sans text-[18px] font-semibold tracking-[0.06em] text-ink-2">{leave.ampm}</span>
+          </div>
+          <p className="mt-2 text-[14.5px] text-ink-2">
+            {day.rel ? <b className="font-semibold text-ink">{day.rel}</b> : null}
             {day.rel ? " · " : null}
             {day.pretty}
             {foreignTz ? ` · ${tzAbbrev(plan.leaveISO, tz)}` : null}
           </p>
-          <div className="mt-2.5">
+          <div className="mt-3">
             <Countdown toISO={plan.leaveISO} />
           </div>
           {sharedAt ? (
-            <p className="mt-2 text-[12px] text-ink-2">
+            <p className="mt-2.5 text-[12.5px] text-ink-2">
               Shared plan from {fmtTimeShort(sharedAt, tz)} ·{" "}
-              <button type="button" onClick={onUpdate} className="font-semibold text-ink underline underline-offset-2">
+              <button type="button" onClick={onUpdate} className="font-semibold text-ink underline underline-offset-4">
                 Refresh
               </button>
             </p>
@@ -202,15 +205,15 @@ export function Reveal({
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.25 }}
+            transition={{ type: "spring", stiffness: 260, damping: 30 }}
             className="overflow-hidden"
           >
             <div className="card flex flex-col gap-3 !p-3.5">
               <PlanFields values={values} onChange={onChange} profile={profile} notFound={null} compact />
-              <p className="text-[12px] text-ink-3">The gate slider updates the time instantly. Anything else needs a fresh search.</p>
+              <p className="text-[12.5px] text-ink-3">The slider updates the time instantly. Anything else needs a fresh search.</p>
               <button
                 type="button"
-                className="btn-primary !min-h-[48px] !text-[15px]"
+                className="btn-primary !min-h-[50px] !text-[15px]"
                 disabled={!ready}
                 onClick={() => {
                   setEditing(false);
@@ -224,137 +227,163 @@ export function Reveal({
         ) : null}
       </AnimatePresence>
 
-      <section className="card flex items-center gap-3">
+      <motion.section variants={rise} className="card flex items-center gap-3.5">
         {logoOk ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img
             src={airlineLogoUrl(f.airlineCode)}
             alt=""
-            width={40}
-            height={40}
-            className="h-10 w-10 shrink-0 rounded-xl bg-ground object-contain"
+            width={44}
+            height={44}
+            className="h-11 w-11 shrink-0 rounded-[14px] border border-line bg-ground object-contain p-1"
             onError={() => setLogoOk(false)}
           />
         ) : (
-          <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-lilac font-display text-[13px] font-black">{f.airlineCode}</span>
+          <span className="grid h-11 w-11 shrink-0 place-items-center rounded-[14px] bg-ink font-display text-[15px] font-semibold text-paper">{f.airlineCode}</span>
         )}
         <div className="min-w-0 flex-1">
           <div className="flex items-center gap-2">
-            <a href={flightStatusLink(result)} target="_blank" rel="noreferrer" className="text-[16px] font-bold underline decoration-line underline-offset-4">
+            <a href={flightStatusLink(result)} target="_blank" rel="noreferrer" className="font-display text-[19px] font-semibold underline decoration-line underline-offset-4">
               {f.flightNumber}
             </a>
-            <span className={`rounded-full px-2 py-0.5 text-[11px] font-bold ${status.cls}`}>{status.label}</span>
+            <span className={`rounded-full px-2.5 py-0.5 text-[11px] font-semibold ${status.cls}`}>{status.label}</span>
           </div>
-          <p className="truncate text-[13px] text-ink-2">
-            <b className="text-ink">{f.departureAirport}</b>
+          <p className="truncate text-[13.5px] text-ink-2">
+            <b className="font-semibold text-ink">{f.departureAirport}</b>
             {f.destinationAirportCode ? (
               <>
                 {" → "}
-                <b className="text-ink">{f.destinationAirportCode}</b>
+                <b className="font-semibold text-ink">{f.destinationAirportCode}</b>
               </>
             ) : null}
             {" · departs "}
-            <b className="text-ink">{fmtTimeShort(live?.departureTime ?? f.departureTime, tz)}</b>
+            <b className="font-semibold text-ink">{fmtTimeShort(live?.departureTime ?? f.departureTime, tz)}</b>
             {terminal ? ` · T${terminal}` : ""}
             {gate ? ` · Gate ${gate}` : ""}
           </p>
         </div>
-      </section>
+      </motion.section>
 
-      <section>
+      <motion.section variants={rise}>
         {result.mode === "ride" ? (
           <>
-            <p className="mb-1.5 text-center text-[12.5px] text-ink-2">
+            <p className="mb-2 text-center text-[13px] text-ink-2">
               {isToday ? (
                 <>
-                  Book pickup for <b className="text-ink">{fmtTimeShort(pickupISO, tz)}</b>
+                  Book pickup for <b className="font-semibold text-ink">{fmtTimeShort(pickupISO, tz)}</b>
                 </>
               ) : (
                 <>
-                  Tap <b className="text-ink">Schedule</b> in the app and set pickup for <b className="text-ink">{day.pretty}, {fmtTimeShort(pickupISO, tz)}</b>
+                  Tap <b className="font-semibold text-ink">Schedule</b> in the app and set pickup for{" "}
+                  <b className="font-semibold text-ink">
+                    {day.pretty}, {fmtTimeShort(pickupISO, tz)}
+                  </b>
                 </>
               )}
             </p>
             <div className="grid grid-cols-2 gap-2">
-              <a href={uberLink(result)} target="_blank" rel="noreferrer" className="btn-secondary !bg-ink !text-ground">
+              <a href={uberLink(result)} target="_blank" rel="noreferrer" className="btn-dark">
                 <Car className="h-4 w-4" /> Uber
               </a>
-              <a href={lyftLink(result)} target="_blank" rel="noreferrer" className="btn-secondary !bg-ink !text-ground">
+              <a href={lyftLink(result)} target="_blank" rel="noreferrer" className="btn-dark">
                 <Car className="h-4 w-4" /> Lyft
               </a>
             </div>
-            <p className="mt-1.5 text-center text-[12px] text-ink-3">
-              Drop-off: <b className="font-semibold text-ink-2">{dropoffLabel(result)}</b>
+            <p className="mt-2 text-center text-[12.5px] text-ink-3">
+              Drop-off <b className="font-semibold text-ink-2">{dropoffLabel(result)}</b>
               {dropoffCoord(result) || !f.terminal ? "" : " · confirm the terminal in the app"}
             </p>
           </>
         ) : (
           <div className="grid grid-cols-2 gap-2">
-            <a href={googleMapsLink(result, result.mode === "transit" ? "transit" : "driving")} target="_blank" rel="noreferrer" className="btn-secondary !bg-ink !text-ground">
+            <a href={googleMapsLink(result, result.mode === "transit" ? "transit" : "driving")} target="_blank" rel="noreferrer" className="btn-dark">
               {result.mode === "transit" ? <TrainFront className="h-4 w-4" /> : <Map className="h-4 w-4" />} Google Maps
             </a>
-            <a href={appleMapsLink(result, result.mode === "transit" ? "transit" : "driving")} target="_blank" rel="noreferrer" className="btn-secondary !bg-ink !text-ground">
+            <a href={appleMapsLink(result, result.mode === "transit" ? "transit" : "driving")} target="_blank" rel="noreferrer" className="btn-dark">
               {result.mode === "transit" ? <TrainFront className="h-4 w-4" /> : <Map className="h-4 w-4" />} Apple Maps
             </a>
           </div>
         )}
-      </section>
+      </motion.section>
 
-      <section className="card">
+      <motion.section variants={rise} className="card">
         <div className="flex items-baseline justify-between">
-          <h3 className="text-[11.5px] font-bold uppercase tracking-[0.1em] text-ink-3">The plan</h3>
+          <h3 className="font-sans text-[11px] font-semibold uppercase tracking-[0.18em] text-ink-3">The plan</h3>
           <span className="text-[12.5px] text-ink-2">
-            Door to departure <b className="tabular-nums text-ink">{Math.floor(total / 60)}h {total % 60}m</b>
+            Door to departure{" "}
+            <b className="font-semibold tabular-nums text-ink">
+              {Math.floor(total / 60)}h {total % 60}m
+            </b>
           </span>
         </div>
-        <div className="mt-2 flex h-3 gap-0.5 overflow-hidden rounded-full">
-          {segments.map((s) => (
-            <span key={s.label} style={{ flex: Math.max(s.min, 1), background: s.color }} className="block transition-[flex] duration-300" />
+        <div className="mt-3 flex h-2.5 gap-[3px] overflow-hidden rounded-full">
+          {segments.map((s, i) => (
+            <motion.span
+              key={s.label}
+              style={{ flex: Math.max(s.min, 1), background: s.color, transformOrigin: "left" }}
+              initial={reduce ? false : { scaleX: 0 }}
+              animate={{ scaleX: 1 }}
+              transition={{ type: "spring", stiffness: 160, damping: 24, delay: 0.35 + i * 0.07 }}
+              className="block rounded-full"
+            />
           ))}
         </div>
-        <ol className="mt-3 flex flex-col">
+        <ol className="mt-4 flex flex-col">
           {rows.map((row, i) => (
-            <li key={row.key} className="grid grid-cols-[58px_14px_1fr] gap-x-2.5">
-              <time className="pt-0.5 text-[13px] font-bold tabular-nums">{fmtTimeShort(row.iso, tz).replace(/ (AM|PM)/, "")}</time>
+            <motion.li
+              key={row.key}
+              initial={reduce ? false : { opacity: 0, x: -8 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ type: "spring", stiffness: 240, damping: 26, delay: 0.45 + i * 0.06 }}
+              className="grid grid-cols-[56px_16px_1fr] gap-x-3"
+            >
+              <time className="display-soft pt-0.5 font-display text-[17px] font-semibold leading-none">{fmtTimeShort(row.iso, tz).replace(/ (AM|PM)/, "")}</time>
               <span className="relative flex justify-center">
-                <i className="mt-1 block h-2.5 w-2.5 rounded-full" style={{ background: row.seg ? row.seg.color : "var(--line)", boxShadow: row.hot ? "0 0 0 4px var(--lilac)" : undefined }} />
-                {i < rows.length - 1 ? <i className="absolute bottom-0 top-4 w-0.5 bg-line" /> : null}
+                <i
+                  className="mt-1 block h-3 w-3 rounded-full"
+                  style={{ background: row.seg ? row.seg.color : "var(--line)", boxShadow: row.hot ? "0 0 0 4px var(--coral-pale)" : undefined }}
+                />
+                {i < rows.length - 1 ? <i className="absolute bottom-0 top-5 w-px bg-line" /> : null}
               </span>
-              <div className={`min-w-0 ${i < rows.length - 1 ? "pb-3.5" : ""}`}>
-                <span className={`block text-[14px] ${row.hot ? "font-bold text-ink" : "font-semibold text-ink"}`}>{row.title}</span>
+              <div className={`min-w-0 ${i < rows.length - 1 ? "pb-4" : ""}`}>
+                <span className={`block text-[15px] ${row.hot ? "font-semibold" : "font-medium"} text-ink`}>{row.title}</span>
                 {row.seg ? (
-                  <span className="mt-0.5 inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[11.5px] font-semibold text-ink-2" style={{ background: "var(--ground)" }}>
+                  <span className="mt-1 inline-flex items-center gap-1.5 rounded-full bg-ground px-2.5 py-0.5 text-[11.5px] font-medium text-ink-2">
                     <i className="h-1.5 w-1.5 rounded-full" style={{ background: row.seg.color }} />
                     {row.seg.label} · <span className="tabular-nums text-ink">{row.seg.min} min</span>
                   </span>
                 ) : null}
-                {row.lead ? <p className="mt-1 text-[13px] leading-snug text-ink">{row.lead}</p> : null}
+                {row.lead ? <p className="mt-1.5 text-[13.5px] leading-snug text-ink">{row.lead}</p> : null}
                 {row.notes.map((n) => (
-                  <p key={n} className="mt-1 text-[13px] leading-snug text-ink-2">
+                  <p key={n} className="mt-1 text-[13.5px] leading-snug text-ink-2">
                     {n}
                   </p>
                 ))}
               </div>
-            </li>
+            </motion.li>
           ))}
         </ol>
-      </section>
+      </motion.section>
 
-      {r.headsUp.length ? <p className="px-1 text-center text-[12px] text-ink-3">{r.headsUp.join(" ")}</p> : null}
+      {r.headsUp.length ? (
+        <motion.p variants={rise} className="px-1 text-center text-[12.5px] text-ink-3">
+          {r.headsUp.join(" ")}
+        </motion.p>
+      ) : null}
 
-      <div className="grid grid-cols-2 gap-2">
+      <motion.div variants={rise} className="grid grid-cols-2 gap-2">
         <a href={reminderLink(result, plan.leaveISO, planUrl)} className="btn-secondary">
           <BellRing className="h-4 w-4" /> Set reminder
         </a>
         <button type="button" onClick={share} className="btn-secondary">
           <Share2 className="h-4 w-4" /> {copied ? "Copied" : "Share"}
         </button>
-      </div>
+      </motion.div>
 
-      <button type="button" onClick={onReset} className="mx-auto mt-1 flex items-center gap-1.5 text-[14px] font-semibold text-ink-2">
+      <motion.button variants={rise} type="button" onClick={onReset} className="mx-auto mt-1 flex items-center gap-1.5 text-[14px] font-medium text-ink-2">
         <RotateCcw className="h-4 w-4" /> Start over
-      </button>
-    </div>
+      </motion.button>
+    </motion.div>
   );
 }
 
@@ -362,9 +391,9 @@ function statusPill(live: LiveStatus | null, f: PlanResult["flight"]): { label: 
   const status = live?.status ?? f.status;
   const delay = live?.delayMinutes ?? f.delayMinutes;
   const dep = new Date(live?.departureTime ?? f.departureTime).getTime();
-  if (status === "cancelled") return { label: "Cancelled", cls: "bg-blush text-ink" };
-  if (Date.now() > dep + 10 * 60_000) return { label: "Departed", cls: "bg-line text-ink-2" };
-  if (delay > 0 || status === "delayed") return { label: delay > 0 ? `Delayed ${delay} min` : "Delayed", cls: "bg-butter text-ink" };
-  if (status === "unknown") return { label: "Scheduled", cls: "bg-line text-ink-2" };
-  return { label: "On time", cls: "bg-sage text-ink" };
+  if (status === "cancelled") return { label: "Cancelled", cls: "bg-coral text-paper" };
+  if (Date.now() > dep + 10 * 60_000) return { label: "Departed", cls: "bg-ground text-ink-2" };
+  if (delay > 0 || status === "delayed") return { label: delay > 0 ? `Delayed ${delay} min` : "Delayed", cls: "bg-mustard-soft text-ink" };
+  if (status === "unknown") return { label: "Scheduled", cls: "bg-ground text-ink-2" };
+  return { label: "On time", cls: "bg-sage-soft text-ink" };
 }

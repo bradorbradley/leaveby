@@ -5,15 +5,8 @@ import { X } from "lucide-react";
 
 import { GateSlider } from "@/components/GateSlider";
 import { OriginField } from "@/components/OriginField";
+import { Chip, perkOptions } from "@/components/PlanForm";
 import type { Profile } from "@/lib/profile";
-import type { Perks } from "@/types/plan";
-
-const perkOptions: Array<{ key: keyof Perks; label: string }> = [
-  { key: "precheck", label: "TSA PreCheck" },
-  { key: "clear", label: "CLEAR" },
-  { key: "globalEntry", label: "Global Entry" },
-  { key: "touchlessId", label: "Touchless ID" },
-];
 
 export function ProfileSheet({
   open,
@@ -35,7 +28,7 @@ export function ProfileSheet({
           <motion.button
             type="button"
             aria-label="Close"
-            className="fixed inset-0 z-30 bg-ink/40"
+            className="fixed inset-0 z-30 bg-ink/35 backdrop-blur-[2px]"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -48,12 +41,12 @@ export function ProfileSheet({
             initial={{ y: "100%" }}
             animate={{ y: 0 }}
             exit={{ y: "100%" }}
-            transition={{ type: "spring", stiffness: 320, damping: 32 }}
+            transition={{ type: "spring", stiffness: 320, damping: 34 }}
           >
             <div className="mx-auto mb-3 h-1.5 w-10 rounded-full bg-line" />
             <div className="mb-4 flex items-center justify-between">
-              <h2 className="text-[22px] font-black">Saved on this phone</h2>
-              <button type="button" onClick={onClose} aria-label="Close" className="grid h-9 w-9 place-items-center rounded-full bg-paper">
+              <h2 className="display-soft text-[26px]">Saved on this phone</h2>
+              <button type="button" onClick={onClose} aria-label="Close" className="grid h-10 w-10 place-items-center rounded-full border border-line bg-paper">
                 <X className="h-4 w-4" />
               </button>
             </div>
@@ -76,21 +69,14 @@ export function ProfileSheet({
                 <span className="label">Skip the line</span>
                 <div className="flex flex-wrap gap-2">
                   {perkOptions.map((p) => (
-                    <button
-                      key={p.key}
-                      type="button"
-                      className="chip"
-                      aria-pressed={profile.perks[p.key]}
-                      onClick={() => onChange({ ...profile, perks: { ...profile.perks, [p.key]: !profile.perks[p.key] } })}
-                    >
-                      {profile.perks[p.key] ? <span className="text-sage-deep">✓</span> : null}
+                    <Chip key={p.key} pressed={profile.perks[p.key]} onClick={() => onChange({ ...profile, perks: { ...profile.perks, [p.key]: !profile.perks[p.key] } })}>
                       {p.label}
-                    </button>
+                    </Chip>
                   ))}
                 </div>
               </div>
               <GateSlider id="gate-default" compact value={profile.bufferMinutes} onChange={(bufferMinutes) => onChange({ ...profile, bufferMinutes })} />
-              <button type="button" onClick={onForget} className="text-[13.5px] font-semibold text-blush-deep">
+              <button type="button" onClick={onForget} className="text-[13.5px] font-medium text-coral">
                 Forget everything
               </button>
             </div>

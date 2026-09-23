@@ -1,6 +1,7 @@
 "use client";
 
-import { CalendarDays, Plane } from "lucide-react";
+import { motion, useReducedMotion } from "framer-motion";
+import { CalendarDays, Check, Plane } from "lucide-react";
 
 import { GateSlider } from "@/components/GateSlider";
 import { OriginField } from "@/components/OriginField";
@@ -70,7 +71,7 @@ export function toRequest(v: FormValues, includeManual: boolean): PlanRequest {
   };
 }
 
-const perkOptions: Array<{ key: keyof Perks; label: string }> = [
+export const perkOptions: Array<{ key: keyof Perks; label: string }> = [
   { key: "precheck", label: "TSA PreCheck" },
   { key: "clear", label: "CLEAR" },
   { key: "globalEntry", label: "Global Entry" },
@@ -80,8 +81,50 @@ const perkOptions: Array<{ key: keyof Perks; label: string }> = [
 const modeOptions: Array<{ key: Mode; label: string }> = [
   { key: "ride", label: "Rideshare / taxi" },
   { key: "drive", label: "Driving" },
-  { key: "transit", label: "Public transit" },
+  { key: "transit", label: "Transit" },
 ];
+
+const spring = { type: "spring", stiffness: 380, damping: 32 } as const;
+
+/** A segmented control whose ink pill slides between options. */
+export function Seg<T extends string>({
+  id,
+  options,
+  value,
+  onChange,
+  label,
+  cols,
+}: {
+  id: string;
+  options: Array<{ key: T; label: string }>;
+  value: T;
+  onChange: (v: T) => void;
+  label: string;
+  cols?: number;
+}) {
+  return (
+    <div className="seg" role="group" aria-label={label} style={cols ? { gridTemplateColumns: `repeat(${cols}, minmax(0, 1fr))` } : undefined}>
+      {options.map((o) => (
+        <button key={o.key} type="button" aria-pressed={value === o.key} onClick={() => onChange(o.key)} className="!px-1">
+          {value === o.key ? <motion.span layoutId={`seg-${id}`} transition={spring} className="absolute inset-0 rounded-[14px] bg-ink" /> : null}
+          <span className="relative z-10">{o.label}</span>
+        </button>
+      ))}
+    </div>
+  );
+}
+
+/** A toggle chip with a tick that grows in. */
+export function Chip({ pressed, onClick, children, className = "" }: { pressed: boolean; onClick: () => void; children: React.ReactNode; className?: string }) {
+  return (
+    <motion.button type="button" className={`chip ${className}`} aria-pressed={pressed} onClick={onClick} whileTap={{ scale: 0.96 }}>
+      <motion.span initial={false} animate={{ width: pressed ? 16 : 0, opacity: pressed ? 1 : 0 }} transition={spring} className="inline-flex overflow-hidden">
+        <Check className="h-4 w-4 shrink-0" />
+      </motion.span>
+      {children}
+    </motion.button>
+  );
+}
 
 export function PlanFields({
   values,
@@ -96,6 +139,7 @@ export function PlanFields({
   notFound: string | null;
   compact?: boolean;
 }) {
+  const reduce = useReducedMotion();
   // A picked date that is today or tomorrow snaps to that chip, so only one chip is ever lit.
   const pickDate = (value: string) => {
     if (!value) return onChange({ dateMode: "custom", customDate: "" });
@@ -104,14 +148,25 @@ export function PlanFields({
     onChange({ dateMode: "custom", customDate: value });
   };
 
+  const segId = compact ? "c" : "f";
+  const item = {
+    hidden: { opacity: 0, y: reduce ? 0 : 14 },
+    show: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 260, damping: 26 } },
+  } as const;
+
   return (
-    <div className={`flex flex-col ${compact ? "gap-3" : "gap-4"}`}>
-      <div>
+    <motion.div
+      className={`flex flex-col ${compact ? "gap-3" : "gap-5"}`}
+      variants={{ hidden: {}, show: { transition: { staggerChildren: compact ? 0 : 0.06, delayChildren: compact ? 0 : 0.05 } } }}
+      initial="hidden"
+      animate="show"
+    >
+      <motion.div variants={item}>
         <label className="label" htmlFor="flight">
           Your flight
         </label>
         <div className="field">
-          <Plane className="h-5 w-5 shrink-0 text-lilac-deep" />
+          <Plane className="h-5 w-5 shrink-0 text-coral" />
           <input
             id="flight"
             value={values.flightNumber}
@@ -127,17 +182,18 @@ export function PlanFields({
         </div>
         <div className="mt-2 grid grid-cols-3 gap-1.5">
           {(["today", "tomorrow"] as const).map((mode) => (
-            <button
+            <motion.button
               key={mode}
               type="button"
-              className="chip date justify-center !text-[14px]"
+              className="chip justify-center"
               aria-pressed={values.dateMode === mode}
+              whileTap={{ scale: 0.96 }}
               onClick={() => onChange({ dateMode: mode, customDate: "" })}
             >
               {mode === "today" ? "Today" : "Tomorrow"}
-            </button>
+            </motion.button>
           ))}
-          <label className="chip date relative justify-center cursor-pointer !text-[14px]" aria-pressed={values.dateMode === "custom"}>
+          <label className="chip relative cursor-pointer justify-center" aria-pressed={values.dateMode === "custom"}>
             <CalendarDays className="h-4 w-4" />
             {values.dateMode === "custom" && values.customDate ? prettyDate(values.customDate) : "Pick"}
             <input
@@ -151,10 +207,10 @@ export function PlanFields({
           </label>
         </div>
         {notFound ? (
-          <div className="mt-2 rounded-[18px] bg-butter p-3.5">
-            <p className="text-[14px] font-semibold">{notFound} Tell us the airport and departure time.</p>
+          <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} className="mt-2 rounded-[18px] bg-mustard-soft p-3.5">
+            <p className="text-[14px] font-medium">{notFound} Tell us the airport and departure time.</p>
             <div className="mt-2.5 grid grid-cols-2 gap-2">
-              <div className="field !min-h-[46px] !bg-paper/80">
+              <div className="field !min-h-[46px] !shadow-none">
                 <input
                   aria-label="Airport code"
                   placeholder="JFK"
@@ -165,7 +221,7 @@ export function PlanFields({
                   onChange={(e) => onChange({ manual: { ...values.manual, airport: e.target.value.toUpperCase() } })}
                 />
               </div>
-              <div className="field relative !min-h-[46px] !bg-paper/80">
+              <div className="field relative !min-h-[46px] !shadow-none">
                 <input
                   aria-label="Departure time"
                   type="time"
@@ -174,60 +230,51 @@ export function PlanFields({
                 />
               </div>
             </div>
-          </div>
+          </motion.div>
         ) : null}
-      </div>
+      </motion.div>
 
-      <div>
+      <motion.div variants={item}>
         <label className="label" htmlFor="origin">
           Leaving from
         </label>
         <OriginField value={values.origin} onChange={(origin) => onChange({ origin })} home={profile.home} recents={profile.recents} />
-      </div>
+      </motion.div>
 
-      <div>
+      <motion.div variants={item}>
         <span className="label">Getting there</span>
-        <div className="seg !grid-cols-3" role="group" aria-label="How you're getting to the airport">
-          {modeOptions.map((m) => (
-            <button key={m.key} type="button" className="!px-1 !text-[13px]" aria-pressed={values.mode === m.key} onClick={() => onChange({ mode: m.key })}>
-              {m.label}
-            </button>
-          ))}
-        </div>
-      </div>
+        <Seg id={`${segId}-mode`} options={modeOptions} value={values.mode} onChange={(mode) => onChange({ mode })} label="How you're getting to the airport" cols={3} />
+      </motion.div>
 
-      <div>
+      <motion.div variants={item}>
         <span className="label">Checking a bag?</span>
-        <div className="seg" role="group" aria-label="Checking a bag">
-          <button type="button" aria-pressed={!values.checkedBag} onClick={() => onChange({ checkedBag: false })}>
-            No
-          </button>
-          <button type="button" aria-pressed={values.checkedBag} onClick={() => onChange({ checkedBag: true })}>
-            Yes
-          </button>
-        </div>
-      </div>
+        <Seg
+          id={`${segId}-bag`}
+          options={[
+            { key: "no", label: "No" },
+            { key: "yes", label: "Yes" },
+          ]}
+          value={values.checkedBag ? "yes" : "no"}
+          onChange={(v) => onChange({ checkedBag: v === "yes" })}
+          label="Checking a bag"
+        />
+      </motion.div>
 
-      <div>
+      <motion.div variants={item}>
         <span className="label">Skip the line</span>
         <div className="flex flex-wrap gap-2">
           {perkOptions.map((p) => (
-            <button
-              key={p.key}
-              type="button"
-              className="chip"
-              aria-pressed={values.perks[p.key]}
-              onClick={() => onChange({ perks: { ...values.perks, [p.key]: !values.perks[p.key] } })}
-            >
-              {values.perks[p.key] ? <span className="text-sage-deep">✓</span> : null}
+            <Chip key={p.key} pressed={values.perks[p.key]} onClick={() => onChange({ perks: { ...values.perks, [p.key]: !values.perks[p.key] } })}>
               {p.label}
-            </button>
+            </Chip>
           ))}
         </div>
-      </div>
+      </motion.div>
 
-      <GateSlider compact={compact} value={values.bufferMinutes} onChange={(bufferMinutes) => onChange({ bufferMinutes })} />
-    </div>
+      <motion.div variants={item}>
+        <GateSlider compact={compact} value={values.bufferMinutes} onChange={(bufferMinutes) => onChange({ bufferMinutes })} />
+      </motion.div>
+    </motion.div>
   );
 }
 
@@ -260,11 +307,18 @@ export function PlanForm({
         if (ready) onSubmit();
       }}
     >
-      <h1 className="mb-5 mt-2 text-[34px] font-black leading-[1.02]">
-        When do I <span className="rounded-lg bg-butter px-1">need to leave?</span>
-      </h1>
+      <motion.h1
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ type: "spring", stiffness: 220, damping: 26 }}
+        className="display-soft mb-6 mt-3 text-[42px] leading-[1.02]"
+      >
+        When do I need
+        <br />
+        to <em className="font-normal italic text-coral">leave?</em>
+      </motion.h1>
       <PlanFields values={values} onChange={onChange} profile={profile} notFound={notFound} />
-      <div className="pointer-events-none sticky bottom-0 mt-6 bg-gradient-to-t from-ground via-ground/95 to-transparent pb-[max(env(safe-area-inset-bottom),16px)] pt-4">
+      <div className="pointer-events-none sticky bottom-0 mt-6 bg-gradient-to-t from-ground via-ground/95 to-transparent pb-[max(env(safe-area-inset-bottom),16px)] pt-5">
         <button type="submit" className="btn-primary pointer-events-auto" disabled={!ready}>
           {notFound ? "Try again" : "When should I leave?"}
         </button>
