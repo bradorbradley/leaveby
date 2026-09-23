@@ -1,14 +1,14 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { CalendarPlus, Car, ChevronDown, Map, Pencil, RotateCcw, Share2, TrainFront, X } from "lucide-react";
+import { BellRing, Car, Map, Pencil, RotateCcw, Share2, TrainFront, X } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 
 import { PlanFields, isReady, type FormValues } from "@/components/PlanForm";
 import { deviceTz, fmtDay, fmtTime, fmtTimeShort, localDateString, minutesBetween, tzAbbrev } from "@/lib/format";
 import { computePlan } from "@/lib/plan-math";
 import type { Profile } from "@/lib/profile";
-import { airlineLogoUrl, appleMapsLink, calendarLink, flightStatusLink, googleMapsLink, lyftLink, planQuery, shareText, uberLink } from "@/lib/ride-links";
+import { airlineLogoUrl, appleMapsLink, flightStatusLink, googleMapsLink, lyftLink, planQuery, reminderLink, shareText, uberLink } from "@/lib/ride-links";
 import type { PlanRequest, PlanResult } from "@/types/plan";
 
 interface LiveStatus {
@@ -101,14 +101,13 @@ export function Reveal({
   const total = segments.reduce((s, x) => s + x.min, 0);
 
   const driveNotes = r.driveNotes;
-  // With a recommendation the lane is already named; otherwise lead with lane and checkpoint.
-  const securityNotes = [...(r.recommendation ? [] : [`${r.lane} · ${r.checkpoint}`]), ...r.securityNotes];
+  const securityNotes = [...r.securityNotes];
   if (result.checkedBag && r.bagDropCutoffMinutes && !r.securityNotes.some((n) => /bag/i.test(n))) {
     securityNotes.push(`Bag drop closes ${r.bagDropCutoffMinutes} min before departure.`);
   }
   const rows: Array<{ key: string; iso: string; title: string; seg?: (typeof segments)[number]; lead?: string; notes: string[]; hot?: boolean }> = [
     { key: "leave", iso: stops[0].iso, title: "Walk out the door", seg: segments[0], notes: driveNotes, hot: true },
-    { key: "security", iso: stops[1].iso, title: "Security", seg: segments[1], lead: r.recommendation || undefined, notes: securityNotes },
+    { key: "security", iso: stops[1].iso, title: "Security", seg: segments[1], lead: r.checkpoint, notes: securityNotes },
     { key: "gate", iso: stops[2].iso, title: "Walk to the gate", seg: segments[2], notes: r.gateNotes },
     { key: "wait", iso: stops[3].iso, title: "At the gate", seg: segments[3], notes: [] },
     { key: "boarding", iso: stops[4].iso, title: "Boarding starts", seg: segments[4], notes: [] },
@@ -310,7 +309,7 @@ export function Reveal({
                     {row.seg.label} · <span className="tabular-nums text-ink">{row.seg.min} min</span>
                   </span>
                 ) : null}
-                {row.lead ? <p className="mt-1.5 text-[13.5px] font-semibold leading-snug text-ink">{row.lead}</p> : null}
+                {row.lead ? <p className="mt-1 text-[13px] leading-snug text-ink">{row.lead}</p> : null}
                 {row.notes.map((n) => (
                   <p key={n} className="mt-1 text-[13px] leading-snug text-ink-2">
                     {n}
@@ -322,41 +321,16 @@ export function Reveal({
         </ol>
       </section>
 
-      {r.headsUp.length ? (
-        <section className="rounded-[20px] bg-butter p-4">
-          <h3 className="text-[11.5px] font-bold uppercase tracking-[0.1em] text-ink-2">⚠️ Heads up</h3>
-          <ul className="mt-1 flex flex-col gap-1.5 text-[14px] text-ink">
-            {r.headsUp.map((h) => (
-              <li key={h}>{h}</li>
-            ))}
-          </ul>
-        </section>
-      ) : null}
+      {r.headsUp.length ? <p className="px-1 text-center text-[12px] text-ink-3">{r.headsUp.join(" ")}</p> : null}
 
       <div className="grid grid-cols-2 gap-2">
-        <a href={calendarLink(result, plan.leaveISO, planUrl)} target="_blank" rel="noreferrer" className="btn-secondary">
-          <CalendarPlus className="h-4 w-4" /> Add to calendar
+        <a href={reminderLink(result, plan.leaveISO, planUrl)} className="btn-secondary">
+          <BellRing className="h-4 w-4" /> Set reminder
         </a>
         <button type="button" onClick={share} className="btn-secondary">
           <Share2 className="h-4 w-4" /> {copied ? "Copied" : "Share"}
         </button>
       </div>
-
-      <details className="group px-1">
-        <summary className="flex cursor-pointer list-none items-center justify-center gap-1 text-center text-[12px] font-semibold text-ink-3">
-          Where this came from <ChevronDown className="h-3.5 w-3.5 transition group-open:rotate-180" />
-        </summary>
-        <ul className="mt-2 flex flex-col gap-1 text-[12px] text-ink-3">
-          {r.sources.map((s) => (
-            <li key={s} className="break-words">
-              {s}
-            </li>
-          ))}
-          <li>
-            Searched live with {r.engine}. Flight data: {f.source}. Route: {result.route.source}.
-          </li>
-        </ul>
-      </details>
 
       <button type="button" onClick={onReset} className="mx-auto mt-1 flex items-center gap-1.5 text-[14px] font-semibold text-ink-2">
         <RotateCcw className="h-4 w-4" /> Start over

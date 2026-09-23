@@ -56,21 +56,11 @@ export function airlineLogoUrl(airlineCode: string) {
   return `https://pics.avs.io/64/64/${encodeURIComponent(airlineCode)}.png`;
 }
 
-function calDate(iso: string) {
-  return new Date(iso).toISOString().replace(/[-:]/g, "").replace(/\.\d{3}/, "");
-}
-
-export function calendarLink(result: PlanResult, leaveISO: string, planUrl: string) {
-  const f = result.flight;
-  const end = new Date(new Date(leaveISO).getTime() + 15 * 60_000).toISOString();
-  const params = new URLSearchParams({
-    action: "TEMPLATE",
-    text: `Leave for ${terminalLabel(result)} (${f.flightNumber})`,
-    dates: `${calDate(leaveISO)}/${calDate(end)}`,
-    details: `Leave By says walk out the door now. ${f.flightNumber} departs ${f.departureLocalLabel ?? ""}.\n${planUrl}`,
-    location: destinationQuery(result),
-  });
-  return `https://calendar.google.com/calendar/render?${params.toString()}`;
+/** Calendar event with alerts, served as .ics so iOS opens the Add to Calendar sheet. */
+export function reminderLink(result: PlanResult, leaveISO: string, planUrl: string) {
+  const params = new URLSearchParams({ leave: leaveISO, flight: result.flight.flightNumber, place: terminalLabel(result) });
+  if (planUrl) params.set("url", planUrl);
+  return `/api/reminder?${params.toString()}`;
 }
 
 export function shareText(result: PlanResult, leaveLabel: string, bufferMinutes: number, planUrl: string) {

@@ -61,9 +61,7 @@ export interface Research {
   driveNotes: string[];
   securityNotes: string[];
   gateNotes: string[];
-  /** One sentence: which of the traveler's lanes to use here and why. Empty when the notes don't support one. */
-  recommendation: string;
-  /** Trip-level warnings (holiday, weather, events). */
+  /** System notes only (couldn't verify live, very long drive). Never from the model. */
   headsUp: string[];
   sources: string[];
   confidence: "high" | "medium" | "low";

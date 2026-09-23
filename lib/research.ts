@@ -245,11 +245,9 @@ const SCHEMA = {
     bagDropCutoffMinutes: { type: ["integer", "null"], description: "Airline bag-drop cutoff in minutes before departure, null if no checked bag" },
     checkpoint: { type: "string", description: "The checkpoint to use, e.g. 'Terminal 4 main checkpoint, departures level'" },
     lane: { type: "string", description: "The lane they will actually use, e.g. 'TSA PreCheck' or 'standard lanes'" },
-    driveNotes: { type: "array", items: { type: "string" }, description: "1 to 3 short notes for the trip to the airport: traffic, roads, construction, exactly where to get dropped or park" },
-    securityNotes: { type: "array", items: { type: "string" }, description: "1 to 3 short notes for curb through security: which entrance, expected wait, bag drop cutoff if checking a bag, a shorter checkpoint if one exists" },
-    gateNotes: { type: "array", items: { type: "string" }, description: "0 to 2 short notes for the walk to the gate: distance, trains, far gates, elevator or shortcut hacks" },
-    recommendation: { type: "string", description: "One sentence naming which of the traveler's own lanes to use at this terminal and why, only when the notes support it; otherwise empty string" },
-    headsUp: { type: "array", items: { type: "string" }, description: "0 to 2 trip-level warnings not already covered by the step notes: holiday, weather, events, strikes" },
+    driveNotes: { type: "array", items: { type: "string" }, description: "1 or 2 short notes for the trip to the airport: expected traffic, any construction or event that slows it, where to get dropped or park" },
+    securityNotes: { type: "array", items: { type: "string" }, description: "1 or 2 short notes for security: the typical wait for their lane at this hour, and one thing that matters (backs up at peak, which entrance, bag cutoff)" },
+    gateNotes: { type: "array", items: { type: "string" }, description: "0 or 1 short note for the walk to the gate: only if long, a train, or far gates" },
     sources: { type: "array", items: { type: "string" } },
     confidence: { type: "string", enum: ["high", "medium", "low"] },
   },
@@ -265,8 +263,6 @@ const SCHEMA = {
     "driveNotes",
     "securityNotes",
     "gateNotes",
-    "recommendation",
-    "headsUp",
     "sources",
     "confidence",
   ],
@@ -313,7 +309,7 @@ ${failed.length ? `\n(No verified note for: ${failed.join(", ")}. For those piec
 Only state facts that appear in the verified notes. Never invent hours, closures, cutoffs, or construction. If a note says "not found", fall back to the baseline and say nothing about it. Every note shown to the traveler must be traceable to a research note.
 
 ## Return
-Fill the JSON schema. Minutes are integers. Notes are shown under the step where they matter, so put traffic and drop-off facts in driveNotes, checkpoint and wait facts in securityNotes, walking facts in gateNotes. securityNotes should cover the traveler's own lanes at this terminal: whether each exists here, its hours, and the typical wait at this hour, including when a perk lane backs up at peak. "recommendation" is one sentence naming the fastest of THEIR lanes here and why, only if the notes support it. headsUp must not repeat anything already in a step note. A note must be a concrete number or something a first-timer would not know (which entrance, which checkpoint is shorter, where rideshares really drop, which garage, the far gates). Never restate the traveler's own inputs and never state the obvious, such as "you can use PreCheck". At most 18 words per note.`;
+Fill the JSON schema. Minutes are integers. Notes are shown under the step where they matter and the traveler is on a phone, so be brief: driveNotes 1 or 2, securityNotes 1 or 2, gateNotes 0 or 1. Put holiday, event, or weather warnings that slow the roads into driveNotes. securityNotes: the typical wait for their lane at this hour, plus one thing that matters (a perk lane that backs up at peak, which entrance, bag cutoff). Do not rank their lanes against each other. A note must be a concrete number or something a first-timer would not know. Never restate the traveler's inputs and never state the obvious. At most 14 words per note, plain words.`;
 
   const response = await openai().responses.create(
     {
@@ -383,30 +379,14 @@ function sanitize(r: Partial<Research>, input: ResearchInput, engine: string): R
     bagDropCutoffMinutes: input.checkedBag ? clamp(r.bagDropCutoffMinutes, 30, 120, base.bagDropCutoffMinutes ?? 45) : null,
     checkpoint: typeof r.checkpoint === "string" && r.checkpoint ? r.checkpoint : base.checkpoint,
     lane: typeof r.lane === "string" && r.lane ? r.lane : base.lane,
-    driveNotes: strings(r.driveNotes, 3),
-    securityNotes: strings(r.securityNotes, 3),
-    gateNotes: strings(r.gateNotes, 2),
-    recommendation: typeof r.recommendation === "string" ? r.recommendation.trim() : "",
-    headsUp: withDistanceWarning(input, dedupeAgainst(strings(r.headsUp, 2), [...strings(r.driveNotes, 3), ...strings(r.securityNotes, 3), ...strings(r.gateNotes, 2)])),
+    driveNotes: strings(r.driveNotes, 2),
+    securityNotes: strings(r.securityNotes, 2),
+    gateNotes: strings(r.gateNotes, 1),
+    headsUp: withDistanceWarning(input, []),
     sources: strings(r.sources, 4),
     confidence: r.confidence === "high" || r.confidence === "medium" || r.confidence === "low" ? r.confidence : "medium",
     engine,
   };
-}
-
-/** Drop heads-up items that mostly repeat a step note. */
-function dedupeAgainst(items: string[], notes: string[]): string[] {
-  const words = (t: string) => new Set(t.toLowerCase().replace(/[^a-z0-9 ]/g, " ").split(/\s+/).filter((w) => w.length > 3));
-  const noteSets = notes.map(words);
-  return items.filter((item) => {
-    const w = words(item);
-    if (!w.size) return false;
-    return !noteSets.some((n) => {
-      let overlap = 0;
-      for (const x of w) if (n.has(x)) overlap++;
-      return overlap / w.size >= 0.5;
-    });
-  });
 }
 
 /** A very long drive usually means the wrong origin or the wrong airport. Say so first. */
@@ -454,7 +434,6 @@ function fallbackNumbers(input: ResearchInput): Research {
     ],
     securityNotes: [`${expedited ? "PreCheck" : perks.clear ? "CLEAR" : "Standard"} lanes usually run about ${security} minutes at that hour.`],
     gateNotes: [],
-    recommendation: "",
     headsUp: [],
     sources: ["Typical numbers for this airport; live search was not available."],
     confidence: "low",
