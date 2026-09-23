@@ -6,9 +6,10 @@ import { useEffect, useMemo, useRef, useState } from "react";
 
 import { Confetti } from "@/components/Confetti";
 import { Countdown } from "@/components/Countdown";
-import { CarGlyph, CoffeeGlyph, PinGlyph, PlaneFlight, PlaneGlyph, ScanGlyph, TicketGlyph, TrainGlyph, WalkGlyph } from "@/components/Glyphs";
+import { CarGlyph, PlaneFlight } from "@/components/Glyphs";
 import { Geometry } from "@/components/Mark";
 import { TiltCard } from "@/components/TiltCard";
+import { PlanChapters } from "@/components/PlanChapters";
 import { PlanFields, isReady, type FormValues } from "@/components/PlanForm";
 import { RollingNumber } from "@/components/RollingNumber";
 import { deviceTz, fmtDay, fmtTime, fmtTimeShort, localDateString, minutesBetween, tzAbbrev } from "@/lib/format";
@@ -155,6 +156,12 @@ export function Reveal({
   const gate = live?.gate ?? f.gate;
   const terminal = live?.terminal ?? f.terminal;
   const isToday = request.date === localDateString(0);
+  const latestISO = (() => {
+    const anchor = new Date(plan.anchorISO).getTime();
+    const bag = plan.bagLeaveISO ? new Date(plan.bagLeaveISO).getTime() : Infinity;
+    const raw = Math.min(anchor, bag);
+    return new Date(Math.floor(raw / 300_000) * 300_000).toISOString();
+  })();
   const pickupISO = new Date(new Date(plan.leaveISO).getTime() - 5 * 60_000).toISOString();
 
   const share = async () => {
@@ -369,46 +376,15 @@ export function Reveal({
           ))}
         </div>
         </div>
-        <ol className="mt-4 flex flex-col">
-          {rows.map((row, i) => (
-            <motion.li
-              key={row.key}
-              initial={reduce ? false : { opacity: 0, x: -8 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ type: "spring", stiffness: 240, damping: 26, delay: 0.45 + i * 0.06 }}
-              className="grid grid-cols-[52px_34px_1fr] gap-x-3"
-            >
-              <time className="display-soft pt-1.5 font-display text-[17px] font-semibold leading-none">{fmtTimeShort(row.iso, tz).replace(/ (AM|PM)/, "")}</time>
-              <span className="relative flex justify-center">
-                <motion.span
-                  initial={reduce ? false : { scale: 0.4 }}
-                  animate={{ scale: 1 }}
-                  transition={{ type: "spring", stiffness: 320, damping: 16, delay: 0.55 + i * 0.06 }}
-                  className="relative z-10 grid h-[30px] w-[30px] place-items-center rounded-full"
-                  style={{ background: glyphBg(row.key, row.seg?.color), color: glyphInk(row.key), boxShadow: row.hot ? "0 0 0 4px var(--coral-pale), 0 6px 14px -6px rgba(31,32,48,0.4)" : "0 6px 14px -8px rgba(31,32,48,0.35)" }}
-                >
-                  {glyphFor(row.key, result.mode)}
-                </motion.span>
-                {i < rows.length - 1 ? <i className="absolute bottom-0 top-8 w-px bg-line" /> : null}
-              </span>
-              <div className={`min-w-0 pt-1 ${i < rows.length - 1 ? "pb-4" : ""}`}>
-                <span className={`block text-[15px] ${row.hot ? "font-semibold" : "font-medium"} text-ink`}>{row.title}</span>
-                {row.seg ? (
-                  <span className="mt-1 inline-flex items-center gap-1.5 rounded-full bg-ground px-2.5 py-0.5 text-[11.5px] font-medium text-ink-2">
-                    <i className="h-1.5 w-1.5 rounded-full" style={{ background: row.seg.color }} />
-                    {row.seg.label} · <span className="tabular-nums text-ink">{row.seg.min} min</span>
-                  </span>
-                ) : null}
-                {row.lead ? <p className="mt-1.5 text-[13.5px] leading-snug text-ink">{row.lead}</p> : null}
-                {row.notes.map((n) => (
-                  <p key={n} className="mt-1 text-[13.5px] leading-snug text-ink-2">
-                    {n}
-                  </p>
-                ))}
-              </div>
-            </motion.li>
-          ))}
-        </ol>
+        <div className="mt-4">
+          <PlanChapters
+            chapters={rows.map((row) => ({ key: row.key, iso: row.iso, title: row.title, segLabel: row.seg?.label, segMin: row.seg?.min, lead: row.lead, notes: row.notes }))}
+            mode={result.mode}
+            tz={tz}
+            latestISO={latestISO}
+            isToday={isToday}
+          />
+        </div>
       </motion.section>
 
       {r.headsUp.length ? (
@@ -443,33 +419,4 @@ function statusPill(live: LiveStatus | null, f: PlanResult["flight"]): { label: 
   if (delay > 0 || status === "delayed") return { label: delay > 0 ? `Delayed ${delay} min` : "Delayed", cls: "bg-mustard-soft text-ink" };
   if (status === "unknown") return { label: "Scheduled", cls: "bg-ground text-ink-2" };
   return { label: "On time", cls: "bg-sage-soft text-ink" };
-}
-
-/** Which little character sits on each step. */
-function glyphFor(key: string, mode: PlanResult["mode"]) {
-  switch (key) {
-    case "leave":
-      return mode === "transit" ? <TrainGlyph size={16} /> : <CarGlyph size={16} />;
-    case "arrive":
-      return <PinGlyph size={16} />;
-    case "security":
-      return <ScanGlyph size={16} />;
-    case "gate":
-      return <WalkGlyph size={16} />;
-    case "spare":
-      return <CoffeeGlyph size={16} />;
-    case "boarding":
-      return <TicketGlyph size={16} />;
-    default:
-      return <PlaneGlyph size={16} takeoff repeat />;
-  }
-}
-
-function glyphBg(key: string, segColor?: string) {
-  if (key === "departure") return "var(--ink)";
-  return segColor ?? "var(--line)";
-}
-
-function glyphInk(key: string) {
-  return key === "arrive" ? "var(--ink)" : "var(--paper)";
 }
