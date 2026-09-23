@@ -1,17 +1,15 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { BellRing, Share2 } from "lucide-react";
 import { useEffect, useState } from "react";
 
-import { Confetti } from "@/components/Confetti";
 import { Countdown } from "@/components/Countdown";
 import { CarGlyph, PlaneFlight } from "@/components/Glyphs";
 import { Geometry } from "@/components/Mark";
 import { RollingNumber } from "@/components/RollingNumber";
 import { TiltCard } from "@/components/TiltCard";
 import { fmtDay, fmtTime, fmtTimeShort } from "@/lib/format";
-import { airlineLogoUrl, dropoffLabel, lyftLink, reminderLink, shareText, uberLink } from "@/lib/ride-links";
+import { airlineLogoUrl, dropoffLabel, lyftLink, uberLink } from "@/lib/ride-links";
 import type { PlanResult } from "@/types/plan";
 
 /** The big time. The plane takes off once the digits have landed. */
@@ -97,38 +95,6 @@ export function DemoRide({ plan, compact = false }: { plan: PlanResult; compact?
       <p className="mt-2 text-center text-[12.5px] text-ink-3">
         Drop-off <b className="font-semibold text-ink-2">{dropoffLabel(plan)}</b>
       </p>
-    </div>
-  );
-}
-
-export function DemoActions({ plan, planUrl }: { plan: PlanResult; planUrl: string }) {
-  const tz = plan.flight.departureTimezone ?? "America/Los_Angeles";
-  const [burst, setBurst] = useState(0);
-  const [copied, setCopied] = useState(false);
-  const share = async () => {
-    setBurst((b) => b + 1);
-    const text = shareText(plan, fmtTimeShort(plan.leaveISO, tz), plan.bufferMinutes, planUrl);
-    try {
-      if (navigator.share) {
-        await navigator.share({ text });
-        return;
-      }
-      await navigator.clipboard.writeText(text);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 1500);
-    } catch {
-      // user cancelled
-    }
-  };
-  return (
-    <div className="grid grid-cols-2 gap-2">
-      <motion.a whileTap={{ scale: 0.97 }} href={reminderLink(plan, plan.leaveISO, planUrl)} className="btn-secondary">
-        <BellRing className="h-4 w-4" /> Set reminder
-      </motion.a>
-      <motion.button type="button" onClick={share} whileTap={{ scale: 0.97 }} className="btn-secondary relative">
-        <Share2 className="h-4 w-4" /> {copied ? "Copied" : "Share"}
-        <Confetti burst={burst} />
-      </motion.button>
     </div>
   );
 }
