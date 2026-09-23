@@ -5,7 +5,7 @@ import type { FlightInfo } from "@/types/flight";
 import type { Mode, Perks, Research, RouteEstimate } from "@/types/plan";
 import type { WeatherEstimate } from "@/types/weather";
 
-export type Stage = "traffic" | "security" | "rules" | "today" | "synthesis";
+export type Stage = "traffic" | "security" | "rules" | "today" | "options" | "synthesis";
 
 export interface ResearchInput {
   flight: FlightInfo;
@@ -58,6 +58,15 @@ export async function researchTrip(input: ResearchInput): Promise<Research> {
     const message = error instanceof Error ? error.message : String(error);
     return fallbackResearch(input, message);
   }
+}
+
+function laneList(perks: Perks): string[] {
+  return [
+    perks.touchlessId && "TSA PreCheck Touchless ID / the airline's Digital ID (face scan)",
+    perks.clear && "CLEAR",
+    perks.precheck && "TSA PreCheck",
+    perks.globalEntry && !perks.precheck && "TSA PreCheck (via Global Entry)",
+  ].filter((x): x is string => Boolean(x));
 }
 
 function describeLanes(perks: Perks): string {
@@ -136,7 +145,18 @@ function scoutPrompts(c: TripContext, input: ResearchInput): Array<{ stage: Scou
     {
       stage: "security",
       cacheKey: `security|${terminalKey}|${c.weekday}|${hourBucket}|${c.lanes}`,
-      question: `Security at ${c.terminalLabel} around ${c.arrivalHour} on a ${c.weekday} for a traveler with: ${c.lanes}. Which checkpoints does this terminal have and which is usually shorter? What is the typical wait for their lane at that hour? Are TSA PreCheck lanes open at that hour here (some close evenings)? Is CLEAR present at this terminal and open then? Does this terminal have a reputation for backing up?`,
+      question: (() => {
+        const lanes = laneList(input.perks);
+        const laneQ = lanes.length
+          ? `The traveler has: ${lanes.join("; ")}. For EACH of these at ${c.terminalLabel}: does it exist here, what are its hours, and what is the typical wait around ${c.arrivalHour} on a ${c.weekday}? Which one is fastest at that hour? Note if CLEAR or PreCheck lanes back up at peak times despite the perk.`
+          : `The traveler has no expedited screening. What do standard lanes at ${c.terminalLabel} run around ${c.arrivalHour} on a ${c.weekday}?`;
+        return `Security at ${c.terminalLabel} for ${flight.airlineName}. ${laneQ} Which checkpoints does this terminal have, which is usually shorter, and which entrance leads to the expedited lanes?`;
+      })(),
+    },
+    {
+      stage: "options",
+      cacheKey: `options|${input.mode}|${terminalKey}|${originKey}`,
+      question: `Besides ${c.modeLine}, are there other ways to get from ${c.originLine} to ${c.terminalLabel} that a local might not know: airport shuttles such as Uber Shuttle, express airport buses, commuter rail plus AirTrain, ferries, or a cheaper or faster combination? For each real option give the pickup point, how often it runs, rough time and price. Only list options that currently operate; say "none found" otherwise.`,
     },
     {
       stage: "rules",
@@ -243,7 +263,9 @@ const SCHEMA = {
     driveNotes: { type: "array", items: { type: "string" }, description: "1 to 3 short notes for the trip to the airport: traffic, roads, construction, exactly where to get dropped or park" },
     securityNotes: { type: "array", items: { type: "string" }, description: "1 to 3 short notes for curb through security: which entrance, expected wait, bag drop cutoff if checking a bag, a shorter checkpoint if one exists" },
     gateNotes: { type: "array", items: { type: "string" }, description: "0 to 2 short notes for the walk to the gate: distance, trains, far gates, elevator or shortcut hacks" },
-    headsUp: { type: "array", items: { type: "string" }, description: "0 to 2 trip-level warnings: holiday, weather, events, strikes" },
+    recommendation: { type: "string", description: "One sentence naming which of the traveler's own lanes to use at this terminal and why, only when the notes support it; otherwise empty string" },
+    alternatives: { type: "array", items: { type: "string" }, description: "0 to 2 other ways to get to this terminal from the origin that a local might not know (shuttle, express bus, rail), each with pickup point and frequency; only from the notes" },
+    headsUp: { type: "array", items: { type: "string" }, description: "0 to 2 trip-level warnings not already covered by the step notes: holiday, weather, events, strikes" },
     sources: { type: "array", items: { type: "string" } },
     confidence: { type: "string", enum: ["high", "medium", "low"] },
   },
@@ -259,6 +281,8 @@ const SCHEMA = {
     "driveNotes",
     "securityNotes",
     "gateNotes",
+    "recommendation",
+    "alternatives",
     "headsUp",
     "sources",
     "confidence",
@@ -306,7 +330,7 @@ ${failed.length ? `\n(No verified note for: ${failed.join(", ")}. For those piec
 Only state facts that appear in the verified notes. Never invent hours, closures, cutoffs, or construction. If a note says "not found", fall back to the baseline and say nothing about it. Every note shown to the traveler must be traceable to a research note.
 
 ## Return
-Fill the JSON schema. Minutes are integers. Notes are shown under the step where they matter, so put traffic and drop-off facts in driveNotes, checkpoint and wait facts in securityNotes, walking facts in gateNotes. A note must be a concrete number or something a first-timer would not know (which entrance, which checkpoint is shorter, where rideshares really drop, which garage, the far gates). Never restate the traveler's own inputs and never state the obvious, such as "you can use PreCheck". At most 18 words per note.`;
+Fill the JSON schema. Minutes are integers. Notes are shown under the step where they matter, so put traffic and drop-off facts in driveNotes, checkpoint and wait facts in securityNotes, walking facts in gateNotes. securityNotes should cover the traveler's own lanes at this terminal: whether each exists here, its hours, and the typical wait at this hour, including when a perk lane backs up at peak. "recommendation" is one sentence naming the fastest of THEIR lanes here and why, only if the notes support it. "alternatives" are other real ways to get there (shuttle, express bus, rail) with pickup point and frequency, only from the notes. headsUp must not repeat anything already in a step note. A note must be a concrete number or something a first-timer would not know (which entrance, which checkpoint is shorter, where rideshares really drop, which garage, the far gates). Never restate the traveler's own inputs and never state the obvious, such as "you can use PreCheck". At most 18 words per note.`;
 
   const response = await openai().responses.create(
     {
@@ -328,11 +352,14 @@ Fill the JSON schema. Minutes are integers. Notes are shown under the step where
   result.sources = Array.from(byHost.values())
     .slice(0, 6)
     .map((c) => (c.title && c.title !== hostOf(c.url) ? `${c.title} (${hostOf(c.url)})` : hostOf(c.url)));
-  if (failed.length) {
+  if (failed.some((f) => f !== "options")) {
     if (result.confidence === "high") result.confidence = "medium";
     const labels: Record<string, string> = { traffic: "traffic", security: "security lines", rules: "airline rules", today: "today's conditions" };
-    const note = `Couldn't verify ${failed.map((f) => labels[f] ?? f).join(" or ")} live, so that part uses typical numbers.`;
-    result.headsUp = [note, ...result.headsUp].slice(0, 2);
+    const core = failed.filter((f) => f !== "options");
+    if (core.length) {
+      const note = `Couldn't verify ${core.map((f) => labels[f] ?? f).join(" or ")} live, so that part uses typical numbers.`;
+      result.headsUp = [note, ...result.headsUp].slice(0, 2);
+    }
   }
   return result;
 }
@@ -379,11 +406,28 @@ function sanitize(r: Partial<Research>, input: ResearchInput, engine: string): R
     driveNotes: strings(r.driveNotes, 3),
     securityNotes: strings(r.securityNotes, 3),
     gateNotes: strings(r.gateNotes, 2),
-    headsUp: withDistanceWarning(input, strings(r.headsUp, 2)),
+    recommendation: typeof r.recommendation === "string" ? r.recommendation.trim() : "",
+    alternatives: strings(r.alternatives, 2),
+    headsUp: withDistanceWarning(input, dedupeAgainst(strings(r.headsUp, 2), [...strings(r.driveNotes, 3), ...strings(r.securityNotes, 3), ...strings(r.gateNotes, 2)])),
     sources: strings(r.sources, 4),
     confidence: r.confidence === "high" || r.confidence === "medium" || r.confidence === "low" ? r.confidence : "medium",
     engine,
   };
+}
+
+/** Drop heads-up items that mostly repeat a step note. */
+function dedupeAgainst(items: string[], notes: string[]): string[] {
+  const words = (t: string) => new Set(t.toLowerCase().replace(/[^a-z0-9 ]/g, " ").split(/\s+/).filter((w) => w.length > 3));
+  const noteSets = notes.map(words);
+  return items.filter((item) => {
+    const w = words(item);
+    if (!w.size) return false;
+    return !noteSets.some((n) => {
+      let overlap = 0;
+      for (const x of w) if (n.has(x)) overlap++;
+      return overlap / w.size >= 0.5;
+    });
+  });
 }
 
 /** A very long drive usually means the wrong origin or the wrong airport. Say so first. */
@@ -431,6 +475,8 @@ function fallbackNumbers(input: ResearchInput): Research {
     ],
     securityNotes: [`${expedited ? "PreCheck" : perks.clear ? "CLEAR" : "Standard"} lanes usually run about ${security} minutes at that hour.`],
     gateNotes: [],
+    recommendation: "",
+    alternatives: [],
     headsUp: [],
     sources: ["Typical numbers for this airport; live search was not available."],
     confidence: "low",

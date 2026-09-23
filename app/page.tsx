@@ -20,7 +20,6 @@ export default function HomePage() {
   const [values, setValues] = useState<FormValues>(() => initialValues(defaultProfile));
   const [sheetOpen, setSheetOpen] = useState(false);
   const [loaded, setLoaded] = useState(false);
-  const [editing, setEditing] = useState(false);
   const [lastRequest, setLastRequest] = useState<PlanRequest | null>(null);
   const booted = useRef(false);
 
@@ -36,7 +35,6 @@ export default function HomePage() {
       if (o && typeof o.lat === "number" && typeof o.lon === "number" && o.label) next = rememberOrigin(next, { label: o.label, lat: o.lat, lon: o.lon });
       updateProfile(next);
       setLastRequest(request);
-      setEditing(false);
       void run(request);
     },
     [run, updateProfile],
@@ -69,18 +67,23 @@ export default function HomePage() {
     }
   }, [state.phase, lastRequest]);
 
-  const patch = (partial: Partial<FormValues>) => setValues((v) => ({ ...v, ...partial }));
+  const patch = (partial: Partial<FormValues>) => {
+    setValues((v) => ({ ...v, ...partial }));
+    if (typeof partial.bufferMinutes === "number") {
+      const b = partial.bufferMinutes;
+      setLastRequest((r) => (r ? { ...r, bufferMinutes: b } : r));
+      setProfile((p) => {
+        const next = { ...p, bufferMinutes: b };
+        saveProfile(next);
+        return next;
+      });
+    }
+  };
 
   const submit = () => launch(toRequest(values, state.phase === "notfound"), profile);
 
-  const edit = () => {
-    reset();
-    setEditing(true);
-  };
-
   const startOver = () => {
     reset();
-    setEditing(false);
     setLastRequest(null);
     setValues((v) => ({ ...initialValues(profile), origin: v.origin }));
     try {
@@ -113,7 +116,7 @@ export default function HomePage() {
         {showForm ? (
           <motion.div key="form" className="flex flex-1 flex-col" initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }}>
             {phase === "error" && state.error ? <div className="mb-3 rounded-[18px] bg-blush px-4 py-3 text-[14px] font-semibold">{state.error}</div> : null}
-            <PlanForm values={values} onChange={patch} onSubmit={submit} profile={profile} notFound={phase === "notfound" ? state.error : null} editing={editing} />
+            <PlanForm values={values} onChange={patch} onSubmit={submit} profile={profile} notFound={phase === "notfound" ? state.error : null} />
           </motion.div>
         ) : null}
         {phase === "searching" ? (
@@ -123,17 +126,7 @@ export default function HomePage() {
         ) : null}
         {phase === "done" && state.result && lastRequest ? (
           <motion.div key="done" className="flex flex-1 flex-col" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-            <Reveal
-              result={state.result}
-              request={lastRequest}
-              onEdit={edit}
-              onReset={startOver}
-              onBuffer={(bufferMinutes) => {
-                setValues((v) => ({ ...v, bufferMinutes }));
-                setLastRequest((r) => (r ? { ...r, bufferMinutes } : r));
-                updateProfile({ ...profile, bufferMinutes });
-              }}
-            />
+            <Reveal result={state.result} request={lastRequest} values={values} onChange={patch} onUpdate={submit} profile={profile} onReset={startOver} />
           </motion.div>
         ) : null}
       </AnimatePresence>

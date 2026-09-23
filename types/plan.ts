@@ -61,6 +61,10 @@ export interface Research {
   driveNotes: string[];
   securityNotes: string[];
   gateNotes: string[];
+  /** One sentence: which of the traveler's lanes to use here and why. Empty when the notes don't support one. */
+  recommendation: string;
+  /** Other ways to get to this terminal from the origin that a local might not know (shuttles, express buses, rail). */
+  alternatives: string[];
   /** Trip-level warnings (holiday, weather, events). */
   headsUp: string[];
   sources: string[];
@@ -97,7 +101,7 @@ export type PlanEvent =
   | { type: "flight_notfound"; message: string }
   | { type: "route"; route: RouteEstimate }
   | { type: "search"; query: string }
-  | { type: "stage"; stage: "traffic" | "security" | "rules" | "today" | "synthesis" }
+  | { type: "stage"; stage: "traffic" | "security" | "rules" | "today" | "options" | "synthesis" }
   | { type: "note"; text: string }
   | { type: "result"; result: PlanResult }
   | { type: "error"; message: string };
