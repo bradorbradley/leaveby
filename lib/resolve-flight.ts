@@ -28,16 +28,28 @@ export async function resolveFlight(flightNumber: string, date: string, manual?:
     return buildManualFlight(parsed, date, manual);
   }
 
-  try {
-    const scraped = await fetchFlightInfo(parsed.normalized, date);
-    if (!scraped.source.startsWith("Fallback")) return scraped;
-  } catch {
-    // fall through
+  // The schedule scrape is fast but can stall or get rate-limited; try twice.
+  for (let attempt = 1; attempt <= 2; attempt++) {
+    try {
+      const scraped = await fetchFlightInfo(parsed.normalized, date);
+      if (!scraped.source.startsWith("Fallback")) return scraped;
+      console.warn(`[flight] scrape attempt ${attempt} found no schedule for ${parsed.normalized} ${date}`);
+    } catch (error) {
+      console.warn(`[flight] scrape attempt ${attempt} failed for ${parsed.normalized} ${date}:`, error instanceof Error ? error.message : error);
+    }
+    if (attempt === 1) await new Promise((r) => setTimeout(r, 400));
   }
 
   if (hasOpenAI()) {
-    const found = await resolveViaOpenAI(parsed.normalized, date);
-    if (found) return found;
+    try {
+      const found = await resolveViaOpenAI(parsed.normalized, date);
+      if (found) return found;
+      console.warn(`[flight] web search did not find ${parsed.normalized} ${date}`);
+    } catch (error) {
+      console.warn(`[flight] web search failed for ${parsed.normalized} ${date}:`, error instanceof Error ? error.message : error);
+    }
+  } else {
+    console.warn("[flight] no OPENAI_API_KEY; skipping web search fallback");
   }
 
   throw new FlightNotFoundError();
