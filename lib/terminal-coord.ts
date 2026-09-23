@@ -56,7 +56,7 @@ async function nominatim(q: string, around: Coord): Promise<NominatimRow[]> {
   const timer = setTimeout(() => controller.abort(), TIMEOUT_MS);
   try {
     const res = await fetch(`https://nominatim.openstreetmap.org/search?${params.toString()}`, {
-      headers: { "User-Agent": "LeaveBy/1.0 (https://leaveby.vercel.app)", Accept: "application/json" },
+      headers: { "User-Agent": "LeaveBy/1.0 (https://leaveby.xyz)", Accept: "application/json" },
       signal: controller.signal,
     });
     if (!res.ok) return [];
