@@ -5,6 +5,7 @@ import { BellRing, Car, Map, Pencil, RotateCcw, Share2, TrainFront, X } from "lu
 import { useEffect, useMemo, useState } from "react";
 
 import { PlanFields, isReady, type FormValues } from "@/components/PlanForm";
+import { Countdown } from "@/components/Countdown";
 import { deviceTz, fmtDay, fmtTime, fmtTimeShort, localDateString, minutesBetween, tzAbbrev } from "@/lib/format";
 import { computePlan } from "@/lib/plan-math";
 import type { Profile } from "@/lib/profile";
@@ -78,8 +79,13 @@ export function Reveal({
   const leave = fmtTime(plan.leaveISO, tz);
   const day = fmtDay(plan.leaveISO, tz);
   const foreignTz = deviceTz() && deviceTz() !== tz;
-  const minutesUntil = minutesBetween(new Date().toISOString(), plan.leaveISO);
-  const late = plan.isLate;
+  const [clock, setClock] = useState(() => Date.now());
+  useEffect(() => {
+    const id = setInterval(() => setClock(Date.now()), 30_000);
+    return () => clearInterval(id);
+  }, []);
+  const minutesUntil = minutesBetween(new Date(clock).toISOString(), plan.leaveISO);
+  const late = plan.isLate || minutesUntil < 0;
   const soon = !late && minutesUntil <= 20;
   const leaveLabel = `${leave.hm} ${leave.ampm}${day.rel === "Today" ? "" : ` ${day.rel ?? day.pretty}`}`;
 
@@ -171,7 +177,9 @@ export function Reveal({
             {day.pretty}
             {foreignTz ? ` · ${tzAbbrev(plan.leaveISO, tz)}` : null}
           </p>
-          {late ? <p className="mt-2 text-[14px] font-semibold text-ink">You&apos;re {Math.abs(minutesUntil)} min behind. Go.</p> : null}
+          <div className="mt-2.5">
+            <Countdown toISO={plan.leaveISO} />
+          </div>
           {sharedAt ? (
             <p className="mt-2 text-[12px] text-ink-2">
               Shared plan from {fmtTimeShort(sharedAt, tz)} ·{" "}
