@@ -29,6 +29,18 @@ const emptyProgress: Progress = { flight: null, route: null, searches: [], notes
 /** Hard ceiling on a single plan request; the server has its own budgets well under this. */
 const CLIENT_DEADLINE_MS = 75_000;
 
+/** Attempts per request before giving up. */
+const RETRIES = 3;
+
+/** Browser network errors are terse ("Load failed", "Failed to fetch"); say what to do instead. */
+function friendly(error: unknown): string {
+  const message = error instanceof Error ? error.message : "";
+  if (!message || error instanceof TypeError || /load failed|failed to fetch|network|connection/i.test(message)) {
+    return "Lost the connection. Check your signal and try again.";
+  }
+  return message;
+}
+
 export function usePlan() {
   const [state, setState] = useState<PlanState>({ phase: "idle", progress: emptyProgress, result: null, error: null });
   const abortRef = useRef<AbortController | null>(null);
@@ -59,7 +71,42 @@ export function usePlan() {
       controller.abort();
     }, CLIENT_DEADLINE_MS);
 
-    try {
+    const handle = (event: PlanEvent): boolean => {
+      let finished = false;
+      setState((prev) => {
+        switch (event.type) {
+          case "flight":
+            return { ...prev, progress: { ...prev.progress, flight: event.flight } };
+          case "route":
+            return { ...prev, progress: { ...prev.progress, route: event.route } };
+          case "search":
+            return { ...prev, progress: { ...prev.progress, searches: [...prev.progress.searches, event.query] } };
+          case "stage":
+            return { ...prev, progress: { ...prev.progress, stages: [...prev.progress.stages, event.stage] } };
+          case "note":
+            return { ...prev, progress: { ...prev.progress, notes: [...prev.progress.notes, event.text] } };
+          case "flight_notfound":
+            finished = true;
+            return { ...prev, phase: "notfound", error: event.message };
+          case "result":
+            finished = true;
+            return { ...prev, phase: "done", result: event.result };
+          case "error":
+            finished = true;
+            return { ...prev, phase: "error", error: event.message };
+          default:
+            return prev;
+        }
+      });
+      if (event.type === "flight_notfound" || event.type === "result" || event.type === "error") finished = true;
+      return finished;
+    };
+
+    /**
+     * One streamed request. Returns true when the server sent a terminal event.
+     * Throws on a network failure or a stream that ended early, so the caller can retry.
+     */
+    const attempt = async (): Promise<boolean> => {
       const response = await fetch("/api/plan", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -73,34 +120,6 @@ export function usePlan() {
       let buffer = "";
       let finished = false;
 
-      const handle = (event: PlanEvent) => {
-        setState((prev) => {
-          switch (event.type) {
-            case "flight":
-              return { ...prev, progress: { ...prev.progress, flight: event.flight } };
-            case "route":
-              return { ...prev, progress: { ...prev.progress, route: event.route } };
-            case "search":
-              return { ...prev, progress: { ...prev.progress, searches: [...prev.progress.searches, event.query] } };
-            case "stage":
-              return { ...prev, progress: { ...prev.progress, stages: [...prev.progress.stages, event.stage] } };
-            case "note":
-              return { ...prev, progress: { ...prev.progress, notes: [...prev.progress.notes, event.text] } };
-            case "flight_notfound":
-              finished = true;
-              return { ...prev, phase: "notfound", error: event.message };
-            case "result":
-              finished = true;
-              return { ...prev, phase: "done", result: event.result };
-            case "error":
-              finished = true;
-              return { ...prev, phase: "error", error: event.message };
-            default:
-              return prev;
-          }
-        });
-      };
-
       while (true) {
         const { value, done } = await reader.read();
         if (done) break;
@@ -111,7 +130,7 @@ export function usePlan() {
           buffer = buffer.slice(idx + 1);
           if (!line) continue;
           try {
-            handle(JSON.parse(line) as PlanEvent);
+            if (handle(JSON.parse(line) as PlanEvent)) finished = true;
           } catch {
             // ignore malformed line
           }
@@ -119,19 +138,36 @@ export function usePlan() {
       }
       if (buffer.trim()) {
         try {
-          handle(JSON.parse(buffer.trim()) as PlanEvent);
+          if (handle(JSON.parse(buffer.trim()) as PlanEvent)) finished = true;
         } catch {
           // ignore
         }
       }
-      if (!finished) setState((prev) => ({ ...prev, phase: "error", error: "The connection dropped before we finished. Try again." }));
+      if (!finished) throw new Error("The connection dropped before we finished.");
+      return true;
+    };
+
+    try {
+      // Phones drop connections mid-stream (Safari reports "Load failed"). The server
+      // caches research, so a quiet retry usually finishes in a couple of seconds.
+      for (let i = 0; i < RETRIES; i++) {
+        try {
+          await attempt();
+          return;
+        } catch (error) {
+          if ((error as Error).name === "AbortError") throw error;
+          if (i === RETRIES - 1) throw error;
+          setState((prev) => ({ ...prev, progress: emptyProgress }));
+          await new Promise((r) => setTimeout(r, 800 * (i + 1)));
+          if (controller.signal.aborted) return;
+        }
+      }
     } catch (error) {
       if ((error as Error).name === "AbortError") {
         if (timedOut) setState((prev) => ({ ...prev, phase: "error", error: "That took too long. Try again." }));
         return;
       }
-      const message = error instanceof Error ? error.message : "Something went wrong.";
-      setState((prev) => ({ ...prev, phase: "error", error: message }));
+      setState((prev) => ({ ...prev, phase: "error", error: friendly(error) }));
     } finally {
       clearTimeout(deadline);
     }
