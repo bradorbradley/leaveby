@@ -6,7 +6,10 @@ import { decodeSharedPlanServer } from "@/lib/share-payload.server";
 
 export const dynamic = "force-dynamic";
 
-const SITE = process.env.NEXT_PUBLIC_SITE_URL ?? "https://leaveby.vercel.app";
+/** Absolute origin for share cards: explicit override, else the domain Vercel serves production on (custom domain once attached), else the default. */
+const SITE =
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  (process.env.VERCEL_PROJECT_PRODUCTION_URL ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` : "https://leaveby.vercel.app");
 
 type SearchParams = Promise<Record<string, string | string[] | undefined>>;
 
