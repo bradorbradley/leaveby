@@ -2,7 +2,7 @@
 
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { BellRing, Map, Pencil, RotateCcw, Share2, TrainFront, X } from "lucide-react";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 import { Confetti } from "@/components/Confetti";
 import { Countdown } from "@/components/Countdown";
@@ -59,8 +59,6 @@ export function Reveal({
   const [logoOk, setLogoOk] = useState(true);
   const [burst, setBurst] = useState(0);
   const [fly, setFly] = useState(false);
-  const barRef = useRef<HTMLDivElement>(null);
-  const [barWidth, setBarWidth] = useState(0);
 
   const f = result.flight;
   const tz = f.departureTimezone ?? "America/New_York";
@@ -77,16 +75,6 @@ export function Reveal({
     const t = setTimeout(() => setFly(true), 900);
     return () => clearTimeout(t);
   }, [plan.leaveISO]);
-
-  useEffect(() => {
-    const el = barRef.current;
-    if (!el) return;
-    const measure = () => setBarWidth(el.clientWidth);
-    measure();
-    const ro = new ResizeObserver(measure);
-    ro.observe(el);
-    return () => ro.disconnect();
-  }, []);
 
   // Live status: refresh every two minutes while the reveal is open.
   useEffect(() => {
@@ -350,31 +338,6 @@ export function Reveal({
               {Math.floor(total / 60)}h {total % 60}m
             </b>
           </span>
-        </div>
-        <div ref={barRef} className="relative mt-6">
-          {barWidth > 0 && !reduce ? (
-            <motion.span
-              aria-hidden="true"
-              className="absolute -top-[18px] left-0 text-ink"
-              initial={{ x: 0, opacity: 0 }}
-              animate={{ x: [0, Math.max(0, barWidth - 18)], opacity: [0, 1, 1, 0] }}
-              transition={{ duration: 1.9, delay: 0.35, ease: [0.45, 0, 0.2, 1], times: [0, 0.08, 0.9, 1] }}
-            >
-              <CarGlyph size={18} drive={false} />
-            </motion.span>
-          ) : null}
-        <div className="flex h-2.5 gap-[3px] overflow-hidden rounded-full">
-          {segments.map((s, i) => (
-            <motion.span
-              key={s.label}
-              style={{ flex: Math.max(s.min, 1), background: s.color, transformOrigin: "left" }}
-              initial={reduce ? false : { scaleX: 0 }}
-              animate={{ scaleX: 1 }}
-              transition={{ type: "spring", stiffness: 160, damping: 24, delay: 0.35 + i * 0.07 }}
-              className="block rounded-full"
-            />
-          ))}
-        </div>
         </div>
         <div className="mt-4">
           <PlanChapters
