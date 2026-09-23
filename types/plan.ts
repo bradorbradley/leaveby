@@ -1,4 +1,5 @@
 import type { FlightInfo } from "@/types/flight";
+import type { WeatherBrief } from "@/types/weather";
 
 export interface Perks {
   precheck: boolean;
@@ -67,6 +68,8 @@ export interface Research {
   confidence: "high" | "medium" | "low";
   /** Which engine produced this. */
   engine: string;
+  /** Forecast trouble in the trip window, and the minutes it added to the drive. */
+  weather?: WeatherBrief | null;
 }
 
 export interface TimelineStop {
