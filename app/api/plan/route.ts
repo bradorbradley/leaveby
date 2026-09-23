@@ -5,6 +5,7 @@ import { researchTrip } from "@/lib/research";
 import { FlightNotFoundError, resolveFlight } from "@/lib/resolve-flight";
 import { estimateRoute } from "@/lib/route";
 import { fetchWeather } from "@/lib/scrapers/weather";
+import { resolveTerminalCoord } from "@/lib/terminal-coord";
 import type { PlanEvent, PlanRequest } from "@/types/plan";
 import type { WeatherEstimate } from "@/types/weather";
 
@@ -51,10 +52,12 @@ export async function POST(request: NextRequest) {
           return;
         }
 
-        const [route, weather] = await Promise.all([
+        const [route, weather, terminalCoord] = await Promise.all([
           estimateRoute(body.origin ?? null, flight),
           fetchWeather(flight).catch((): WeatherEstimate | null => null),
+          resolveTerminalCoord(flight).catch(() => null),
         ]);
+        flight = { ...flight, terminalCoord };
         send({ type: "route", route });
 
         const perks = {

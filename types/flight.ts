@@ -8,6 +8,8 @@ export interface FlightInfo {
   departureAirportName?: string;
   departureTimezone?: string;
   airportCoord?: { lat: number; lon: number };
+  /** The terminal building itself, for rideshare drop-off. Resolved at plan time. */
+  terminalCoord?: { lat: number; lon: number } | null;
   destinationAirportCode?: string;
   destinationCity?: string;
   departureTime: string;

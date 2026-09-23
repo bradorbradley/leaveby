@@ -11,9 +11,22 @@ function destinationQuery(result: PlanResult) {
   return f.terminal ? `${name} Terminal ${f.terminal}` : name;
 }
 
-/** Uber and Lyft deep links only take pickup and dropoff; neither accepts a scheduled time. */
+/**
+ * Uber and Lyft deep links only take pickup and dropoff; neither accepts a scheduled time.
+ * The dropoff pin is the terminal building when we resolved one. We never send the
+ * airport's generic coordinate: it snaps to whatever is nearest (a rental-car lot at JFK).
+ * Without a terminal pin, the address text alone lets the app pick the airport venue.
+ */
+export function dropoffCoord(result: PlanResult) {
+  return result.flight.terminalCoord ?? null;
+}
+
+export function dropoffLabel(result: PlanResult) {
+  return terminalLabel(result);
+}
+
 export function uberLink(result: PlanResult) {
-  const coord = result.flight.airportCoord;
+  const coord = dropoffCoord(result);
   const params = new URLSearchParams({ action: "setPickup", pickup: "my_location", "dropoff[formatted_address]": destinationQuery(result) });
   if (coord) {
     params.set("dropoff[latitude]", String(coord.lat));
@@ -24,12 +37,13 @@ export function uberLink(result: PlanResult) {
 }
 
 export function lyftLink(result: PlanResult) {
-  const coord = result.flight.airportCoord;
+  const coord = dropoffCoord(result);
   const params = new URLSearchParams({ id: "lyft" });
   if (coord) {
     params.set("destination[latitude]", String(coord.lat));
     params.set("destination[longitude]", String(coord.lon));
   }
+  params.set("destination[address]", destinationQuery(result));
   return `https://lyft.com/ride?${params.toString()}`;
 }
 
