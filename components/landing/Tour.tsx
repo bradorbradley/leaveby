@@ -244,7 +244,7 @@ function StepGo({ site }: { site: string }) {
       <div className="card !p-2.5">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src={`/api/og?${og.toString()}`} alt="The preview card a shared plan shows in Messages, Slack, and X" width={1200} height={630} className="w-full rounded-[16px] border border-line" loading="lazy" />
-        <p className="mt-2 px-1 text-center text-[12.5px] text-ink-3">The link opens instantly and previews like this wherever you paste it.</p>
+        <p className="mt-2 px-1 text-center text-[12.5px] text-ink-3">Send it to whoever&rsquo;s coming. Everyone sees the same time, so nobody has to nag.</p>
       </div>
     </div>
   );
@@ -253,16 +253,16 @@ function StepGo({ site }: { site: string }) {
 export function Tour({ site }: { site: string }) {
   return (
     <div className="flex flex-col gap-20 md:gap-28">
-      <Step n="01" title="Tell it your flight." body="Flight number. Where you're leaving from. How you're getting there. It remembers your home, your lane, and your comfort level for next time.">
+      <Step n="01" title="Tell it once." body="Flight number. Where you're leaving from. How you're getting there. No spreadsheet, no group-chat debate. It remembers you next time.">
         <StepForm />
       </Step>
-      <Step n="02" title="It checks the real world." body="Live traffic on your route. Today's wait at your checkpoint. Closures, construction, and the walk to your gate. Every number is looked up, right now, for this flight." flip>
+      <Step n="02" title="Let it do the worrying." body="Live traffic on your route. Today's wait at your checkpoint. Closures, construction, the walk to your gate. Everything you'd lie awake running through, checked for you, right now." flip>
         <StepSearch />
       </Step>
-      <Step n="03" title="Read the plan." body={<>Every step has a time and a reason. Slide the spare time and watch the plan move with it. The absolute latest is the line you never cross.</>}>
+      <Step n="03" title="See exactly why." body={<>Every step has a time and a reason, so the number feels earned, not arbitrary. Slide the spare time to match your nerves. The absolute latest is the line you never cross.</>}>
         <StepPlan />
       </Step>
-      <Step n="04" title="Go." body="One tap books a ride to your terminal, not the rental lot. Set a reminder in your calendar. Send the plan to whoever's coming with you." flip>
+      <Step n="04" title="Walk out the door sure." body="One tap books a ride to your terminal, not the rental lot. A reminder, so you can stop watching the clock. Share it, and the &ldquo;should we go yet?&rdquo; argument is over." flip>
         <StepGo site={site} />
       </Step>
     </div>

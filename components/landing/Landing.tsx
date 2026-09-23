@@ -53,7 +53,7 @@ export function Landing() {
       <section className="grid grid-cols-1 items-center gap-10 pt-12 md:grid-cols-[1.05fr_0.95fr] md:gap-8 md:pt-20 [&>*]:min-w-0">
         <div>
           <motion.div initial={reduce ? false : { opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ type: "spring", stiffness: 200, damping: 26 }}>
-            <Eyebrow>For the morning of your flight</Eyebrow>
+            <Eyebrow>For calmer airport mornings</Eyebrow>
           </motion.div>
           <motion.h1
             initial={reduce ? false : { opacity: 0, y: 18 }}
@@ -61,11 +61,11 @@ export function Landing() {
             transition={{ type: "spring", stiffness: 200, damping: 26, delay: 0.06 }}
             className="display-soft mt-4 text-[46px] leading-[0.98] md:text-[72px]"
           >
-            Know the minute
+            Stop <em className="font-normal italic text-coral">worrying</em>
             <br />
-            to <em className="font-normal italic text-coral">leave</em> for
+            about when
             <br />
-            the airport.
+            to leave.
           </motion.h1>
           <motion.p
             initial={reduce ? false : { opacity: 0, y: 18 }}
@@ -73,7 +73,7 @@ export function Landing() {
             transition={{ type: "spring", stiffness: 200, damping: 26, delay: 0.14 }}
             className="mt-6 max-w-[46ch] text-[17px] leading-relaxed text-ink-2 md:text-[19px]"
           >
-            Type your flight number. Leave By checks live traffic, today&rsquo;s security lines, and what&rsquo;s happening at your terminal, then gives you one time: when to walk out the door.
+            That knot in your stomach the morning of a flight is one question: did I leave early enough? Leave By answers it with live traffic, today&rsquo;s security lines, and your terminal, so you walk out the door sure, not hopeful.
           </motion.p>
           <motion.div
             initial={reduce ? false : { opacity: 0, y: 18 }}
@@ -82,7 +82,7 @@ export function Landing() {
             className="mt-8 flex flex-wrap items-center gap-4"
           >
             <Cta />
-            <p className="text-[13.5px] font-medium text-ink-3">Free. No account. About thirty seconds.</p>
+            <p className="text-[13.5px] font-medium text-ink-3">Free. No account. One less thing to think about.</p>
           </motion.div>
         </div>
         <motion.div initial={reduce ? false : { opacity: 0, y: 30, scale: 0.97 }} animate={{ opacity: 1, y: 0, scale: 1 }} transition={{ type: "spring", stiffness: 160, damping: 24, delay: 0.2 }} className="relative">
@@ -100,7 +100,7 @@ export function Landing() {
       <section className="pt-28 md:pt-40">
         <Rise className="mb-14 md:mb-20">
           <Eyebrow>How it works</Eyebrow>
-          <h2 className="display-soft mt-3 max-w-[18ch] text-[36px] leading-[1.02] md:text-[54px]">One flight number. One time to leave.</h2>
+          <h2 className="display-soft mt-3 max-w-[18ch] text-[36px] leading-[1.02] md:text-[54px]">One flight number. Zero second-guessing.</h2>
         </Rise>
         {mounted ? <Tour site={SITE} /> : null}
       </section>
@@ -108,10 +108,10 @@ export function Landing() {
       {/* Trust */}
       <section className="pt-28 md:pt-40">
         <Rise className="mb-10 md:mb-14">
-          <Eyebrow>Why trust it</Eyebrow>
+          <Eyebrow>Why you can relax</Eyebrow>
           <h2 className="display-soft mt-3 max-w-[18ch] text-[36px] leading-[1.02] md:text-[54px]">It checks. It doesn&rsquo;t guess.</h2>
           <p className="mt-4 max-w-[52ch] text-[16.5px] leading-relaxed text-ink-2">
-            Most advice is a rule of thumb: two hours, three for international. Leave By looks up this morning, this route, this terminal, and shows its work.
+            Rules of thumb are why you either sit at the gate for two hours or sprint to it. Leave By looks up this morning, this route, this terminal, and shows its work, so trusting the time is easy.
           </p>
         </Rise>
         {mounted ? <Trust /> : null}
@@ -120,8 +120,8 @@ export function Landing() {
       {/* Features */}
       <section className="pt-28 md:pt-40">
         <Rise className="mb-10 md:mb-14">
-          <Eyebrow>Everything on one screen</Eyebrow>
-          <h2 className="display-soft mt-3 max-w-[20ch] text-[36px] leading-[1.02] md:text-[54px]">Built for the morning of a flight.</h2>
+          <Eyebrow>Less to carry in your head</Eyebrow>
+          <h2 className="display-soft mt-3 max-w-[20ch] text-[36px] leading-[1.02] md:text-[54px]">Built for the nervous part of the trip.</h2>
         </Rise>
         <Features />
       </section>
@@ -138,7 +138,7 @@ export function Landing() {
             </svg>
             <div className="relative">
               <h2 className="display-soft mx-auto max-w-[16ch] text-[38px] leading-[1.02] text-paper md:text-[60px]">
-                Your flight. Your door. <em className="font-normal italic text-coral-soft">The minute between.</em>
+                Walk out the door calm. <em className="font-normal italic text-coral-soft">Every time.</em>
               </h2>
               <div className="mt-8 flex justify-center">
                 <Link href="/app" className="btn-secondary !min-h-[58px] !border-transparent !px-8 !text-[16.5px]">
