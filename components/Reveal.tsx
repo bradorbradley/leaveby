@@ -9,7 +9,7 @@ import { Countdown } from "@/components/Countdown";
 import { deviceTz, fmtDay, fmtTime, fmtTimeShort, localDateString, minutesBetween, tzAbbrev } from "@/lib/format";
 import { computePlan } from "@/lib/plan-math";
 import type { Profile } from "@/lib/profile";
-import { airlineLogoUrl, appleMapsLink, flightStatusLink, googleMapsLink, lyftLink, reminderLink, shareText, uberLink } from "@/lib/ride-links";
+import { airlineLogoUrl, appleMapsLink, dropoffCoord, dropoffLabel, flightStatusLink, googleMapsLink, lyftLink, reminderLink, shareText, uberLink } from "@/lib/ride-links";
 import type { PlanRequest, PlanResult } from "@/types/plan";
 
 interface LiveStatus {
@@ -283,6 +283,10 @@ export function Reveal({
                 <Car className="h-4 w-4" /> Lyft
               </a>
             </div>
+            <p className="mt-1.5 text-center text-[12px] text-ink-3">
+              Drop-off: <b className="font-semibold text-ink-2">{dropoffLabel(result)}</b>
+              {dropoffCoord(result) || !f.terminal ? "" : " · confirm the terminal in the app"}
+            </p>
           </>
         ) : (
           <div className="grid grid-cols-2 gap-2">
