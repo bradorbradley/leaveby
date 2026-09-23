@@ -15,7 +15,7 @@ export function GateSlider({
     <div className="card">
       <div className="flex items-baseline justify-between">
         <label htmlFor={id} className="text-[11.5px] font-bold uppercase tracking-[0.1em] text-ink-3">
-          Time at the gate
+          Spare time before boarding
         </label>
         <span className={`font-display font-black tabular-nums leading-none ${compact ? "text-[22px]" : "text-[34px]"}`}>
           {value}
@@ -31,7 +31,7 @@ export function GateSlider({
         step={5}
         value={value}
         onChange={(e) => onChange(Number(e.target.value))}
-        aria-valuetext={`${value} minutes at the gate before boarding`}
+        aria-valuetext={`${value} minutes of spare time before boarding`}
       />
       <div className="flex justify-between text-[11px] font-semibold text-ink-3">
         <span>Tight</span>

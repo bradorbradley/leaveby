@@ -33,7 +33,7 @@ export async function generateMetadata({ searchParams }: { searchParams: SearchP
   const day = fmtDay(result.leaveISO, tz);
   const route = f.destinationAirportCode ? `${f.departureAirport} → ${f.destinationAirportCode}` : f.departureAirport;
   const title = `Leave by ${leave} · ${f.flightNumber}`;
-  const description = `${day.pretty} · ${route} departs ${fmtTimeShort(f.departureTime, tz)}${f.terminal ? ` · Terminal ${f.terminal}` : ""} · ${request.bufferMinutes} min to spare at the gate`;
+  const description = `${day.pretty} · ${route} departs ${fmtTimeShort(f.departureTime, tz)}${f.terminal ? ` · Terminal ${f.terminal}` : ""} · ${request.bufferMinutes} min spare before boarding`;
   const og = new URLSearchParams({
     leave,
     day: day.pretty,

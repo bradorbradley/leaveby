@@ -16,7 +16,7 @@ const LINES: Array<{ key: string; text: string }> = [
   { key: "route", text: "Mapping the drive" },
   { key: "traffic", text: "Looking at live traffic on your route" },
   { key: "security", text: "Checking security lines at the terminal" },
-  { key: "rules", text: "Reading the airline's bag and boarding rules" },
+  { key: "rules", text: "Measuring the walk from security to your gate" },
   { key: "today", text: "Scanning today's airport news and weather" },
   { key: "synthesis", text: "Putting it together" },
 ];
