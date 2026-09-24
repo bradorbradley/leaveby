@@ -70,6 +70,8 @@ export interface Research {
   engine: string;
   /** Forecast trouble in the trip window, and the minutes it added to the drive. */
   weather?: WeatherBrief | null;
+  /** Live FAA ground stops, delay programs, and departure delays for this flight's airports. */
+  airportAlerts?: string[];
 }
 
 export interface TimelineStop {

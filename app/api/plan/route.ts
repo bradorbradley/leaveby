@@ -4,6 +4,7 @@ import { computePlan } from "@/lib/plan-math";
 import { researchTrip } from "@/lib/research";
 import { FlightNotFoundError, resolveFlight } from "@/lib/resolve-flight";
 import { estimateRoute } from "@/lib/route";
+import { faaAlerts } from "@/lib/scrapers/faa";
 import { fetchWeather } from "@/lib/scrapers/weather";
 import { resolveTerminalCoord } from "@/lib/terminal-coord";
 import type { PlanEvent, PlanRequest } from "@/types/plan";
@@ -52,10 +53,11 @@ export async function POST(request: NextRequest) {
           return;
         }
 
-        const [route, weather, terminalCoord] = await Promise.all([
+        const [route, weather, terminalCoord, airportAlerts] = await Promise.all([
           estimateRoute(body.origin ?? null, flight),
           fetchWeather(flight).catch((): WeatherEstimate | null => null),
           resolveTerminalCoord(flight).catch(() => null),
+          faaAlerts(flight.departureAirport, flight.destinationAirportCode, flight.departureTime).catch((): string[] => []),
         ]);
         flight = { ...flight, terminalCoord };
         send({ type: "route", route });
@@ -67,7 +69,7 @@ export async function POST(request: NextRequest) {
           touchlessId: Boolean(body.perks?.touchlessId),
         };
         const mode = body.mode === "drive" || body.mode === "transit" ? body.mode : "ride";
-        const research = await researchTrip({
+        const researched = await researchTrip({
           flight,
           route,
           weather,
@@ -78,6 +80,7 @@ export async function POST(request: NextRequest) {
           onStage: (stage) => send({ type: "stage", stage }),
           onNote: (text) => send({ type: "note", text }),
         });
+        const research = { ...researched, airportAlerts };
 
         const bufferMinutes = Math.min(120, Math.max(0, Math.round(Number(body.bufferMinutes) || 30)));
         const result = computePlan({ flight, route, research, bufferMinutes, checkedBag: Boolean(body.checkedBag), mode });

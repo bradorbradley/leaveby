@@ -20,6 +20,7 @@ import { airlineLogoUrl, appleMapsLink, dropoffCoord, dropoffLabel, flightStatus
 import type { PlanRequest, PlanResult } from "@/types/plan";
 
 interface LiveStatus {
+  airportAlerts?: string[];
   status: "scheduled" | "delayed" | "cancelled" | "unknown";
   delayMinutes: number;
   gate: string | null;
@@ -116,6 +117,8 @@ export function Reveal({
   const { rows, total, latestISO } = planRows(plan);
 
   const status = statusPill(live, f);
+  // Live FAA programs refresh with the flight status; the plan's copy covers the first moments and shared links.
+  const airportAlerts = live?.airportAlerts ?? r.airportAlerts ?? [];
   const gate = live?.gate ?? f.gate;
   const terminal = live?.terminal ?? f.terminal;
   const isToday = request.date === localDateString(0);
@@ -260,6 +263,13 @@ export function Reveal({
           </p>
         </div>
       </motion.section>
+
+      {airportAlerts.length ? (
+        <motion.div variants={rise} className="flex items-start gap-2 rounded-[18px] px-4 py-3 text-[13.5px] font-medium leading-snug" style={{ background: "var(--mustard-soft)", boxShadow: "inset 0 1px 0 rgba(255,255,255,0.6)" }} role="status">
+          <span aria-hidden="true" className="text-[15px] leading-none">⚠️</span>
+          <span>{airportAlerts.join(" ")}</span>
+        </motion.div>
+      ) : null}
 
       <motion.section variants={rise}>
         {result.mode === "ride" ? (

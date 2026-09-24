@@ -1,6 +1,7 @@
 import { NextRequest } from "next/server";
 
 import { resolveFlight } from "@/lib/resolve-flight";
+import { faaAlerts } from "@/lib/scrapers/faa";
 
 export const runtime = "nodejs";
 export const maxDuration = 30;
@@ -13,8 +14,10 @@ export async function GET(request: NextRequest) {
   if (!flightNumber || !/^\d{4}-\d{2}-\d{2}$/.test(date)) return Response.json({ error: "flight and date required" }, { status: 400 });
   try {
     const f = await resolveFlight(flightNumber, date);
+    const airportAlerts = await faaAlerts(f.departureAirport, f.destinationAirportCode, f.departureTime).catch((): string[] => []);
     return Response.json(
       {
+        airportAlerts,
         status: f.status,
         delayMinutes: f.delayMinutes,
         gate: f.gate,
