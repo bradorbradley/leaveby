@@ -72,33 +72,43 @@ export function OriginField({
     setOpen(false);
   };
 
-  const useLocation = () => {
-    if (!navigator.geolocation) {
-      setLocError("Location isn't available here.");
+  const useLocation = async () => {
+    if (!("geolocation" in navigator) || !window.isSecureContext) {
+      setLocError("Location isn't available in this browser. Type your address instead.");
       return;
     }
     setLocating(true);
     setLocError(null);
-    navigator.geolocation.getCurrentPosition(
-      async (pos) => {
-        const { latitude: lat, longitude: lon } = pos.coords;
-        let label = "My location";
-        try {
-          const r = await fetch(`/api/places?reverse=1&lat=${lat}&lon=${lon}`);
-          const json = (await r.json()) as { label: string | null };
-          if (json.label) label = json.label;
-        } catch {
-          // keep default label
-        }
+    let pos: GeolocationPosition;
+    try {
+      // A quick, coarse fix first; most phones answer from Wi-Fi in a second or two.
+      pos = await getPosition({ enableHighAccuracy: false, timeout: 8_000, maximumAge: 300_000 });
+    } catch (first) {
+      if ((first as GeolocationPositionError).code === 1) {
         setLocating(false);
-        pick({ label, lat, lon });
-      },
-      () => {
+        setLocError(deniedHelp());
+        return;
+      }
+      // Timed out or no fix yet: ask for GPS and give it longer before giving up.
+      try {
+        pos = await getPosition({ enableHighAccuracy: true, timeout: 20_000, maximumAge: 0 });
+      } catch (second) {
         setLocating(false);
-        setLocError("Couldn't get your location. Type it instead.");
-      },
-      { enableHighAccuracy: false, timeout: 10_000, maximumAge: 120_000 },
-    );
+        setLocError((second as GeolocationPositionError).code === 1 ? deniedHelp() : "Your phone couldn't get a location fix. Try again in a moment, or type your address.");
+        return;
+      }
+    }
+    const { latitude: lat, longitude: lon } = pos.coords;
+    let label = "My location";
+    try {
+      const r = await fetch(`/api/places?reverse=1&lat=${lat}&lon=${lon}`);
+      const json = (await r.json()) as { label: string | null };
+      if (json.label) label = json.label;
+    } catch {
+      // keep default label
+    }
+    setLocating(false);
+    pick({ label, lat, lon });
   };
 
   const commitFreeText = () => {
@@ -213,4 +223,21 @@ export function OriginField({
       </AnimatePresence>
     </div>
   );
+}
+
+function getPosition(options: PositionOptions) {
+  return new Promise<GeolocationPosition>((resolve, reject) => navigator.geolocation.getCurrentPosition(resolve, reject, options));
+}
+
+/** Permission denied is almost always a setting the person can flip, so say exactly where. */
+function deniedHelp() {
+  const ua = navigator.userAgent;
+  const ios = /iPhone|iPad|iPod/.test(ua) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+  if (ios) {
+    const safari = !/CriOS|FxiOS|EdgiOS|OPiOS|GSA|DuckDuckGo|Instagram|FBAN|FBAV/.test(ua);
+    return safari
+      ? "Location is off for Safari. Turn it on in Settings › Privacy & Security › Location Services › Safari Websites › While Using, then try again. Or type your address."
+      : "Location is off for this browser. Turn it on in Settings › Privacy & Security › Location Services › (your browser) › While Using, then try again. Or type your address.";
+  }
+  return "Location is blocked for this site. Tap the icon beside the address bar, allow Location, then try again. Or type your address.";
 }
