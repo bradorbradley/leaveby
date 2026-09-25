@@ -8,7 +8,7 @@ export const SITE = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.leaveby.xyz
 
 export type SearchParams = Promise<Record<string, string | string[] | undefined>>;
 
-const TAGLINE = "Tell it your flight. It tells you when to walk out the door.";
+const TAGLINE = "Never miss a flight again. Tell it your flight and it tells you exactly when to leave.";
 
 export const appMetadata: Metadata = {
   title: "Leave By",
@@ -18,10 +18,10 @@ export const appMetadata: Metadata = {
   twitter: { card: "summary_large_image", title: "Leave By", description: TAGLINE, images: ["/api/og"] },
 };
 
-const PITCH = "Never worry about missing a flight again. Leave By finds the exact time you need to leave, based on your flight, your preferences, and live data on your commute.";
+const PITCH = "Never miss a flight again. Leave By finds the exact time you need to leave, based on your flight, your preferences, and live data on your commute.";
 
 export const landingMetadata: Metadata = {
-  title: "Leave By · Never worry about missing a flight again",
+  title: "Leave By · Never miss a flight again",
   description: PITCH,
   metadataBase: new URL(SITE),
   openGraph: { title: "Leave By", description: PITCH, images: ["/api/og"], type: "website", url: "/" },

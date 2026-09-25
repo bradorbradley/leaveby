@@ -84,7 +84,7 @@ export async function GET(request: NextRequest) {
               need to <span style={{ color: "#E36F58", marginLeft: 22 }}>leave?</span>
             </span>
           </div>
-          <div style={{ fontSize: 32, color: "#62606F" }}>Tell it your flight. It tells you when to walk out the door.</div>
+          <div style={{ fontSize: 32, color: "#62606F" }}>Never miss a flight again.</div>
         </div>
       ),
       { width: 1200, height: 630, fonts },

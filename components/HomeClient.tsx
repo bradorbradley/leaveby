@@ -5,6 +5,7 @@ import { UserRound } from "lucide-react";
 import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 
+import { LegalFooter } from "@/components/LegalPage";
 import { Mark } from "@/components/Mark";
 import { PlanForm, initialValues, isReady, toRequest, type FormValues, valuesFromRequest } from "@/components/PlanForm";
 import { ProfileSheet } from "@/components/ProfileSheet";
@@ -187,6 +188,8 @@ export function HomeClient() {
           </motion.div>
         ) : null}
       </AnimatePresence>
+
+      <LegalFooter className="mt-auto pb-5 pt-10" />
 
       <ProfileSheet
         open={sheetOpen}

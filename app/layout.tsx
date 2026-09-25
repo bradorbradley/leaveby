@@ -8,7 +8,7 @@ const instrument = Instrument_Sans({ subsets: ["latin"], variable: "--font-body"
 
 export const metadata: Metadata = {
   title: "Leave By",
-  description: "Tell it your flight. It tells you when to walk out the door.",
+  description: "Never miss a flight again. Leave By tells you exactly when to leave for the airport.",
   applicationName: "Leave By",
   appleWebApp: { capable: true, statusBarStyle: "default", title: "Leave By" },
   formatDetection: { telephone: false },
