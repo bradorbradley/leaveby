@@ -48,7 +48,16 @@ export function Landing() {
       </motion.header>
 
       <section className="grid grid-cols-1 items-center gap-10 pt-12 md:grid-cols-[1.05fr_0.95fr] md:gap-8 md:pt-20 [&>*]:min-w-0">
-        <div>
+        <div className="relative">
+          <motion.div
+            aria-hidden="true"
+            className="pointer-events-none absolute -right-1 top-[-6px] z-10 w-[84px] md:hidden"
+            initial={reduce ? false : { opacity: 0, y: 24 }}
+            animate={reduce ? { opacity: 1 } : { opacity: 1, y: [0, -5, 0] }}
+            transition={reduce ? undefined : { opacity: { delay: 0.45, duration: 0.4 }, y: { delay: 0.45, duration: 3.2, repeat: Infinity, ease: "easeInOut" } }}
+          >
+            <Image src="/mascot/thumb.webp" alt="" width={480} height={674} priority className="h-auto w-full drop-shadow-[0_14px_16px_rgba(31,32,48,0.22)]" />
+          </motion.div>
           <motion.h1 {...enter(0.04)} className="display-soft text-[46px] leading-[0.98] md:text-[72px]">
             Never miss a <em className="font-normal italic text-coral">flight</em> again.
           </motion.h1>
@@ -70,7 +79,7 @@ export function Landing() {
           {mounted ? <HeroDemo /> : <div className="mx-auto h-[660px] w-[332px] max-w-full rounded-[46px] border-[7px] border-ink bg-ground" />}
           <motion.div
             aria-hidden="true"
-            className="pointer-events-none absolute -bottom-4 left-[max(0px,calc(50%-250px))] z-10 w-[118px] md:-bottom-6 md:left-[calc(50%-290px)] md:w-[170px]"
+            className="pointer-events-none absolute -bottom-6 left-[calc(50%-290px)] z-10 hidden w-[170px] md:block"
             initial={reduce ? false : { opacity: 0, y: 40 }}
             animate={reduce ? { opacity: 1 } : { opacity: 1, y: [0, -6, 0] }}
             transition={reduce ? undefined : { opacity: { delay: 0.7, duration: 0.4 }, y: { delay: 0.7, duration: 3.2, repeat: Infinity, ease: "easeInOut" } }}
