@@ -16,6 +16,7 @@ import { deviceTz, fmtDay, fmtTime, fmtTimeShort, localDateString, minutesBetwee
 import { computePlan } from "@/lib/plan-math";
 import { planRows } from "@/lib/plan-rows";
 import type { Profile } from "@/lib/profile";
+import { track } from "@/lib/track";
 import { airlineLogoUrl, appleMapsLink, dropoffCoord, dropoffLabel, flightStatusLink, googleMapsLink, lyftLink, reminderLink, shareText, uberLink } from "@/lib/ride-links";
 import type { PlanRequest, PlanResult } from "@/types/plan";
 
@@ -125,6 +126,7 @@ export function Reveal({
   const pickupISO = new Date(new Date(plan.leaveISO).getTime() - 5 * 60_000).toISOString();
 
   const share = async () => {
+    track("plan_shared", { native: typeof navigator !== "undefined" && !!navigator.share });
     const text = shareText(result, leaveLabel, buffer, planUrl);
     try {
       setBurst((b) => b + 1);
@@ -289,10 +291,10 @@ export function Reveal({
               )}
             </p>
             <div className="grid grid-cols-2 gap-2">
-              <motion.a whileTap={{ scale: 0.97 }} href={uberLink(result)} target="_blank" rel="noreferrer" className="btn-dark">
+              <motion.a whileTap={{ scale: 0.97 }} href={uberLink(result)} onClick={() => track("ride_tapped", { app: "uber" })} target="_blank" rel="noreferrer" className="btn-dark">
                 <CarGlyph size={18} drive={false} /> Uber
               </motion.a>
-              <motion.a whileTap={{ scale: 0.97 }} href={lyftLink(result)} target="_blank" rel="noreferrer" className="btn-dark">
+              <motion.a whileTap={{ scale: 0.97 }} href={lyftLink(result)} onClick={() => track("ride_tapped", { app: "lyft" })} target="_blank" rel="noreferrer" className="btn-dark">
                 <CarGlyph size={18} drive={false} /> Lyft
               </motion.a>
             </div>
@@ -303,10 +305,10 @@ export function Reveal({
           </>
         ) : (
           <div className="grid grid-cols-2 gap-2">
-            <a href={googleMapsLink(result, result.mode === "transit" ? "transit" : "driving")} target="_blank" rel="noreferrer" className="btn-dark">
+            <a href={googleMapsLink(result, result.mode === "transit" ? "transit" : "driving")} onClick={() => track("route_opened", { app: "google" })} target="_blank" rel="noreferrer" className="btn-dark">
               {result.mode === "transit" ? <TrainFront className="h-4 w-4" /> : <Map className="h-4 w-4" />} Google Maps
             </a>
-            <a href={appleMapsLink(result, result.mode === "transit" ? "transit" : "driving")} target="_blank" rel="noreferrer" className="btn-dark">
+            <a href={appleMapsLink(result, result.mode === "transit" ? "transit" : "driving")} onClick={() => track("route_opened", { app: "apple" })} target="_blank" rel="noreferrer" className="btn-dark">
               {result.mode === "transit" ? <TrainFront className="h-4 w-4" /> : <Map className="h-4 w-4" />} Apple Maps
             </a>
           </div>
@@ -341,7 +343,7 @@ export function Reveal({
       ) : null}
 
       <motion.div variants={rise} className="grid grid-cols-2 gap-2">
-        <motion.a whileTap={{ scale: 0.97 }} href={reminderLink(result, plan.leaveISO, planUrl)} className="btn-secondary">
+        <motion.a whileTap={{ scale: 0.97 }} href={reminderLink(result, plan.leaveISO, planUrl)} onClick={() => track("reminder_added")} className="btn-secondary">
           <BellRing className="h-4 w-4" /> Set reminder
         </motion.a>
         <motion.button type="button" onClick={share} whileTap={{ scale: 0.97 }} className="btn-secondary relative">

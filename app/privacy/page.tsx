@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 const mail = <a href={`mailto:${LEGAL.contactEmail}`}>{LEGAL.contactEmail}</a>;
 
 const PROVIDERS: Array<[string, string, string]> = [
-  ["Vercel", "Hosts the site and runs our servers. Receives your requests, including your IP address.", "https://vercel.com/legal/privacy-policy"],
+  ["Vercel", "Hosts the site, runs our servers and provides our cookie-free usage analytics. Receives your requests, including your IP address.", "https://vercel.com/docs/analytics/privacy-policy"],
   ["OpenAI", "Researches your trip: your flight, airports, travel times and your starting area (as the place name you chose), using web search. We don’t send your name or contact details.", "https://openai.com/policies/privacy-policy"],
   ["Komoot Photon (OpenStreetMap data) and Zippopotam.us", "Turn the place you type, or your device location, into a map point, and suggest places as you type.", "https://www.komoot.com/privacy"],
   ["OSRM (Project OSRM)", "Calculates the driving route and distance from your starting point to the airport.", "https://project-osrm.org"],
@@ -52,8 +52,12 @@ const sections: LegalSection[] = [
           use this to run, secure and debug the Service.
         </p>
         <p>
-          <strong>What we don’t collect.</strong> There are no accounts, so we don’t collect your name, email, phone number or payment details. We don’t use advertising or analytics trackers, and we
-          don’t use cookies for tracking.
+          <strong>Anonymous usage analytics.</strong> We use Vercel Web Analytics to understand how Leave By is used: pages viewed, the site that referred you, your country, device and browser type,
+          and simple in-app events such as “plan created” (with the departure airport and how you’re getting there), “flight not found”, or which ride or map button was tapped. It doesn’t use cookies,
+          doesn’t follow you across other sites, and isn’t tied to your identity. It never receives your address, location or share links.
+        </p>
+        <p>
+          <strong>What we don’t collect.</strong> There are no accounts, so we don’t collect your name, email, phone number or payment details. We don’t use advertising trackers or tracking cookies.
         </p>
       </>
     ),
@@ -77,6 +81,7 @@ const sections: LegalSection[] = [
         <ul>
           <li>calculate your leave-by time and trip plan;</li>
           <li>create share links, calendar reminders and ride links when you ask for them;</li>
+          <li>understand, in aggregate, how people use Leave By so we can improve it;</li>
           <li>keep the Service working, secure and free of abuse; and</li>
           <li>comply with the law.</li>
         </ul>
@@ -178,7 +183,7 @@ export default function PrivacyPage() {
       title="Privacy Policy"
       summary={
         <>
-          <p>No accounts, no ads, no tracking cookies, and we never sell your data.</p>
+          <p>No accounts, no ads, no tracking cookies, and we never sell your data. We count visits and app usage anonymously to improve the product.</p>
           <p>
             We use your flight and starting point only to work out when you should leave. Your saved places and preferences stay on your own phone. Location is used only if you tap “use my location”.
           </p>

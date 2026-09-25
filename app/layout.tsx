@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { Analytics } from "@vercel/analytics/next";
 import { Fraunces, Instrument_Sans } from "next/font/google";
 
 import "@/app/globals.css";
@@ -24,7 +25,10 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body className={`${fraunces.variable} ${instrument.variable} min-h-dvh bg-ground font-sans text-ink antialiased`}>{children}</body>
+      <body className={`${fraunces.variable} ${instrument.variable} min-h-dvh bg-ground font-sans text-ink antialiased`}>
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }
