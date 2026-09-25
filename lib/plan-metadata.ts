@@ -3,10 +3,8 @@ import type { Metadata } from "next";
 import { fmtDay, fmtTimeShort } from "@/lib/format";
 import { decodeSharedPlanServer } from "@/lib/share-payload.server";
 
-/** Absolute origin for share cards: explicit override, else the domain Vercel serves production on (custom domain once attached), else the default. */
-export const SITE =
-  process.env.NEXT_PUBLIC_SITE_URL ??
-  (process.env.VERCEL_PROJECT_PRODUCTION_URL ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` : "https://leaveby.vercel.app");
+/** Absolute origin for share cards and links: explicit override, else the canonical domain (the apex redirects here). */
+export const SITE = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.leaveby.xyz";
 
 export type SearchParams = Promise<Record<string, string | string[] | undefined>>;
 
