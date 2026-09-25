@@ -210,3 +210,18 @@ input[type="range"].gate::-moz-range-thumb {
     transition: none !important;
   }
 }
+
+/* Legal pages: readable long-form text. */
+.legal a {
+  @apply font-medium text-ink underline decoration-coral underline-offset-2;
+}
+.legal ul {
+  @apply list-disc space-y-2 pl-5;
+}
+.legal strong {
+  @apply font-semibold text-ink;
+}
+/* Warranty and liability limits: set apart so they're conspicuous. */
+.uppercase-legal {
+  @apply text-[13.5px] uppercase tracking-[0.02em];
+}
