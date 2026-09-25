@@ -11,7 +11,7 @@ let cache: { at: number; xml: string } | null = null;
 async function feed(): Promise<string | null> {
   if (cache && Date.now() - cache.at < TTL_MS) return cache.xml;
   try {
-    const res = await fetch(URL, { headers: { Accept: "application/xml", "User-Agent": "LeaveBy (https://leaveby.vercel.app)" }, signal: AbortSignal.timeout(5000), cache: "no-store" });
+    const res = await fetch(URL, { headers: { Accept: "application/xml", "User-Agent": "LeaveBy (https://www.leaveby.xyz)" }, signal: AbortSignal.timeout(5000), cache: "no-store" });
     if (!res.ok) return cache?.xml ?? null;
     const xml = await res.text();
     cache = { at: Date.now(), xml };

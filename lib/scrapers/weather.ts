@@ -2,7 +2,7 @@ import type { FlightInfo } from "@/types/flight";
 import type { WeatherEstimate, WeatherKind } from "@/types/weather";
 
 const NWS_HEADERS = {
-  "User-Agent": "LeaveBy (departure timing app; https://leaveby.vercel.app)",
+  "User-Agent": "LeaveBy (departure timing app; https://www.leaveby.xyz)",
   Accept: "application/geo+json",
 };
 
