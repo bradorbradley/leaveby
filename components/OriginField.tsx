@@ -5,6 +5,7 @@ import { Home, LocateFixed, MapPin, Clock, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
 import type { SavedPlace } from "@/lib/profile";
+import { track } from "@/lib/track";
 import type { OriginInput } from "@/types/plan";
 
 interface Suggestion {
@@ -75,6 +76,7 @@ export function OriginField({
   const useLocation = async () => {
     if (!("geolocation" in navigator) || !window.isSecureContext) {
       setLocError("Location isn't available in this browser. Type your address instead.");
+      track("location", { result: "unsupported" });
       return;
     }
     setLocating(true);
@@ -87,6 +89,7 @@ export function OriginField({
       if ((first as GeolocationPositionError).code === 1) {
         setLocating(false);
         setLocError(deniedHelp());
+        track("location", { result: "denied" });
         return;
       }
       // Timed out or no fix yet: ask for GPS and give it longer before giving up.
@@ -94,7 +97,9 @@ export function OriginField({
         pos = await getPosition({ enableHighAccuracy: true, timeout: 20_000, maximumAge: 0 });
       } catch (second) {
         setLocating(false);
-        setLocError((second as GeolocationPositionError).code === 1 ? deniedHelp() : "Your phone couldn't get a location fix. Try again in a moment, or type your address.");
+        const denied = (second as GeolocationPositionError).code === 1;
+        setLocError(denied ? deniedHelp() : "Your phone couldn't get a location fix. Try again in a moment, or type your address.");
+        track("location", { result: denied ? "denied" : "no_fix" });
         return;
       }
     }
@@ -108,6 +113,7 @@ export function OriginField({
       // keep default label
     }
     setLocating(false);
+    track("location", { result: "ok" });
     pick({ label, lat, lon });
   };
 

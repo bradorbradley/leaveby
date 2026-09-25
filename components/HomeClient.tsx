@@ -14,6 +14,7 @@ import { Searching } from "@/components/Searching";
 import { usePlan } from "@/hooks/usePlan";
 import { clearProfile, defaultProfile, loadProfile, profileIsEmpty, rememberOrigin, saveProfile, type Profile } from "@/lib/profile";
 import { parsePlanQuery, planQuery } from "@/lib/ride-links";
+import { track } from "@/lib/track";
 import { decodeSharedPlanClient, encodeSharedPlan, slimForShare } from "@/lib/share-payload";
 import type { PlanRequest, PlanResult } from "@/types/plan";
 
@@ -38,6 +39,7 @@ export function HomeClient() {
       const o = request.origin;
       if (o && typeof o.lat === "number" && typeof o.lon === "number" && o.label) next = rememberOrigin(next, { label: o.label, lat: o.lat, lon: o.lon });
       updateProfile(next);
+      track("plan_requested", { mode: request.mode ?? "ride", bag: request.checkedBag });
       setLastRequest(request);
       setSharedAt(null);
       void run(request);
@@ -62,6 +64,7 @@ export function HomeClient() {
           setLastRequest(shared.request);
           setSharedAt(shared.result.generatedAt);
           hydrate(shared.result);
+          track("shared_plan_opened", { airport: shared.result.flight.departureAirport });
           setLoaded(true);
           return;
         }
@@ -128,6 +131,17 @@ export function HomeClient() {
   };
 
   const phase = state.phase;
+
+  // Funnel: did a search end in a plan, a missing flight, or an error?
+  const prevPhase = useRef(phase);
+  useEffect(() => {
+    const was = prevPhase.current;
+    prevPhase.current = phase;
+    if (was !== "searching") return;
+    if (phase === "done" && state.result) track("plan_ready", { airport: state.result.flight.departureAirport, mode: state.result.mode });
+    else if (phase === "notfound") track("flight_not_found", { airline: (lastRequest?.flightNumber ?? "").replace(/\s+/g, "").slice(0, 2).toUpperCase() || null });
+    else if (phase === "error") track("plan_error", { reason: /too long/i.test(state.error ?? "") ? "timeout" : "error" });
+  }, [phase, state.result, state.error, lastRequest]);
   const showForm = phase === "idle" || phase === "notfound" || phase === "error";
 
   return (
