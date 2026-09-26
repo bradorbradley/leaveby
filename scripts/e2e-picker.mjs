@@ -1,5 +1,6 @@
 // End-to-end check of the flight picker against a running server:
 //   BASE=http://localhost:3000 node scripts/e2e-picker.mjs
+// (optional: FLIGHT, PICK, ORIGIN, OUT for screenshots, SHARE for a protected preview, CHROMIUM path)
 // Types a multi-leg flight number, checks every departure is listed and none is pre-picked,
 // picks one, plans it, and checks the plan is for the picked airport.
 import { chromium } from "playwright";
@@ -15,9 +16,15 @@ const fail = (msg) => {
   process.exit(1);
 };
 
-const browser = await chromium.launch(process.env.CHROMIUM ? { executablePath: process.env.CHROMIUM } : {});
-const page = await browser.newPage({ viewport: { width: 390, height: 844 }, deviceScaleFactor: 2 });
+const remote = !/localhost|127\.0\.0\.1/.test(BASE);
+const browser = await chromium.launch({
+  ...(process.env.CHROMIUM ? { executablePath: process.env.CHROMIUM } : {}),
+  ...(remote && process.env.HTTPS_PROXY ? { proxy: { server: process.env.HTTPS_PROXY } } : {}),
+});
+const page = await browser.newPage({ viewport: { width: 390, height: 844 }, deviceScaleFactor: 2, ignoreHTTPSErrors: Boolean(process.env.IGNORE_HTTPS_ERRORS) });
 page.on("pageerror", (e) => console.error("pageerror:", e.message));
+// A protected preview: open its share link first to get the access cookie.
+if (process.env.SHARE) await page.goto(process.env.SHARE, { waitUntil: "load" });
 await page.goto(`${BASE}/app`, { waitUntil: "networkidle" });
 
 await page.fill("#flight", FLIGHT);
