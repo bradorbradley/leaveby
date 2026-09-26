@@ -15,11 +15,12 @@ import { usePlan } from "@/hooks/usePlan";
 import { clearProfile, defaultProfile, loadProfile, profileIsEmpty, rememberOrigin, saveProfile, type Profile } from "@/lib/profile";
 import { parsePlanQuery, planQuery } from "@/lib/ride-links";
 import { track } from "@/lib/track";
+import { instantToZonedParts } from "@/lib/tz";
 import { decodeSharedPlanClient, encodeSharedPlan, slimForShare } from "@/lib/share-payload";
 import type { PlanRequest, PlanResult } from "@/types/plan";
 
 export function HomeClient() {
-  const { state, run, cancel, reset, hydrate } = usePlan();
+  const { state, run, cancel, reset, hydrate, askManual } = usePlan();
   const [sharedAt, setSharedAt] = useState<string | null>(null);
   const [profile, setProfile] = useState<Profile>(defaultProfile);
   const [values, setValues] = useState<FormValues>(() => initialValues(defaultProfile));
@@ -118,6 +119,17 @@ export function HomeClient() {
 
   const submit = () => launch(toRequest(values, state.phase === "notfound"), profile);
 
+  // An unverified flight looked wrong: reopen the form with its airport and time filled in to correct.
+  const fixFlight = () => {
+    const f = state.result?.flight;
+    if (f) {
+      const local = instantToZonedParts(new Date(f.departureTime), f.departureTimezone ?? "America/New_York");
+      setValues((v) => ({ ...v, manual: { airport: f.departureAirport, departureTime: local.hhmm } }));
+    }
+    track("flight_corrected", { airline: f?.airlineCode ?? null });
+    askManual("Let's get your flight right.");
+  };
+
   const startOver = () => {
     reset();
     setLastRequest(null);
@@ -198,6 +210,7 @@ export function HomeClient() {
               onReset={startOver}
               planUrl={planUrl}
               sharedAt={sharedAt}
+              onFixFlight={fixFlight}
             />
           </motion.div>
         ) : null}
