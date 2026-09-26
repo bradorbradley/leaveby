@@ -97,6 +97,13 @@ export function planQuery(request: PlanRequest, payload?: string | null): string
   if (perks.length) p.set("p", perks.join(","));
   p.set("b", String(request.bufferMinutes));
   if (request.mode && request.mode !== "ride") p.set("m", request.mode);
+  // The confirmed departure, so a link re-runs the same leg of a multi-leg flight number.
+  if (request.leg) {
+    p.set("a", request.leg.airport);
+    p.set("t", request.leg.time);
+    if (request.leg.destination) p.set("to", request.leg.destination);
+    if (request.leg.confirmed === "traveler") p.set("c", "1");
+  }
   if (payload) p.set("p", payload);
   return p.toString();
 }
@@ -112,6 +119,11 @@ export function parsePlanQuery(search: string): PlanRequest | null {
   const origin = Number.isFinite(lat) && Number.isFinite(lon) && p.get("lat") ? { label: label ?? "Saved spot", lat, lon } : label ? { text: label, label } : null;
   const perks = (p.get("p") ?? "").split(",");
   const m = p.get("m");
+  const airport = (p.get("a") ?? "").toUpperCase();
+  const time = p.get("t") ?? "";
+  const leg = /^[A-Z]{3}$/.test(airport) && /^\d{2}:\d{2}$/.test(time)
+    ? { airport, time, destination: p.get("to")?.toUpperCase() || null, confirmed: p.get("c") === "1" ? ("traveler" as const) : ("schedule" as const) }
+    : null;
   return {
     flightNumber,
     date,
@@ -120,5 +132,6 @@ export function parsePlanQuery(search: string): PlanRequest | null {
     perks: { precheck: perks.includes("pre"), clear: perks.includes("clear"), globalEntry: perks.includes("ge"), touchlessId: perks.includes("tid") },
     bufferMinutes: Math.min(120, Math.max(10, Number(p.get("b")) || 30)),
     mode: m === "drive" || m === "transit" ? m : "ride",
+    leg,
   };
 }

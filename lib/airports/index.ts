@@ -1,4 +1,5 @@
 import { airlineProfiles, airportProfiles, makeGenericAirport, peakTravelWindows } from "@/lib/airports/data";
+import { worldAirport } from "@/lib/airports/world";
 import { instantToZonedParts } from "@/lib/tz";
 import type { AirlineProfile, AirportCode, AirportProfile, TerminalProfile } from "@/types/airport";
 
@@ -16,7 +17,14 @@ export interface AirportSeed {
 export function getAirportProfile(code: AirportCode, seed?: AirportSeed): AirportProfile {
   const known = airportProfiles[code];
   if (known) return known;
-  return makeGenericAirport(code, seed?.name, seed?.timezone, seed?.coord);
+  // Never default an unknown airport to another timezone: take its real one from the world table.
+  const world = worldAirport(code);
+  return makeGenericAirport(
+    code,
+    seed?.name ?? world?.name,
+    seed?.timezone ?? world?.timezone,
+    seed?.coord ?? (world ? { lat: world.lat, lon: world.lon } : undefined),
+  );
 }
 
 export function listAirports(): AirportProfile[] {

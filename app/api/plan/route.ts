@@ -3,7 +3,8 @@ import { NextRequest } from "next/server";
 import { geocodeOrigin } from "@/lib/geo";
 import { computePlan } from "@/lib/plan-math";
 import { researchTrip } from "@/lib/research";
-import { FlightNotFoundError, resolveFlight } from "@/lib/resolve-flight";
+import { haversineKm } from "@/lib/flight-legs";
+import { FlightNotFoundError, legForPlan, resolveLeg } from "@/lib/resolve-flight";
 import { estimateRoute } from "@/lib/route";
 import { faaAlerts } from "@/lib/scrapers/faa";
 import { fetchWeather } from "@/lib/scrapers/weather";
@@ -13,6 +14,9 @@ import type { WeatherEstimate } from "@/types/weather";
 
 export const runtime = "nodejs";
 export const maxDuration = 300;
+
+/** An airport farther than this from where the traveler starts means the start or the flight is wrong. */
+const MAX_AIRPORT_KM = 300;
 
 export async function POST(request: NextRequest) {
   let body: PlanRequest;
@@ -32,8 +36,6 @@ export async function POST(request: NextRequest) {
           return;
         }
 
-        // Locate the traveler first: it picks the right leg of a multi-leg flight number
-        // and catches a flight that departs somewhere else entirely.
         let origin = body.origin ?? null;
         if (origin && typeof origin.lat !== "number" && origin.text?.trim()) {
           const geocoded = await geocodeOrigin(origin.text).catch(() => null);
@@ -41,15 +43,36 @@ export async function POST(request: NextRequest) {
         }
         const near = origin && typeof origin.lat === "number" && typeof origin.lon === "number" ? { lat: origin.lat, lon: origin.lon } : null;
 
+        // Plan only the departure the traveler confirmed. A flight number can fly several
+        // legs a day from different airports; we never choose one for them.
         let flight;
         try {
-          flight = await resolveFlight(body.flightNumber, body.date, body.manual, { near, nearLabel: origin?.label ?? origin?.text ?? null });
+          const choice = await legForPlan(body);
+          if (!choice) {
+            send({ type: "flight_notfound", message: "Pick which departure you're on." });
+            return;
+          }
+          flight = await resolveLeg(body.flightNumber, body.date, choice);
         } catch (error) {
           if (error instanceof FlightNotFoundError) {
             send({ type: "flight_notfound", message: error.message });
             return;
           }
           throw error;
+        }
+
+        // Starting hundreds of miles from the airport means the start or the flight is wrong.
+        if (near && flight.airportCoord) {
+          const km = haversineKm(near, flight.airportCoord);
+          if (km > MAX_AIRPORT_KM) {
+            const from = origin?.label ?? origin?.text ?? "where you're starting";
+            console.warn(`[plan] ${flight.flightNumber} ${flight.departureAirport} is ${Math.round(km)} km from the origin`);
+            send({
+              type: "error",
+              message: `${flight.departureAirport} is ${Math.round(km * 0.621)} miles from ${from}. Check where you're leaving from and which flight you picked.`,
+            });
+            return;
+          }
         }
         send({ type: "flight", flight });
 

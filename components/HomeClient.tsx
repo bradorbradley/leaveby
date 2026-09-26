@@ -15,12 +15,11 @@ import { usePlan } from "@/hooks/usePlan";
 import { clearProfile, defaultProfile, loadProfile, profileIsEmpty, rememberOrigin, saveProfile, type Profile } from "@/lib/profile";
 import { parsePlanQuery, planQuery } from "@/lib/ride-links";
 import { track } from "@/lib/track";
-import { instantToZonedParts } from "@/lib/tz";
 import { decodeSharedPlanClient, encodeSharedPlan, slimForShare } from "@/lib/share-payload";
 import type { PlanRequest, PlanResult } from "@/types/plan";
 
 export function HomeClient() {
-  const { state, run, cancel, reset, hydrate, askManual } = usePlan();
+  const { state, run, cancel, reset, hydrate } = usePlan();
   const [sharedAt, setSharedAt] = useState<string | null>(null);
   const [profile, setProfile] = useState<Profile>(defaultProfile);
   const [values, setValues] = useState<FormValues>(() => initialValues(defaultProfile));
@@ -104,8 +103,10 @@ export function HomeClient() {
     };
   }, [state.phase, state.result, lastRequest]);
 
-  const patch = (partial: Partial<FormValues>) => {
-    setValues((v) => ({ ...v, ...partial }));
+  const patch = useCallback((partial: Partial<FormValues>) => {
+    // A new flight number or date starts back at its schedule, not the last one's typed airport.
+    const newTrip = "flightNumber" in partial || "dateMode" in partial || "customDate" in partial;
+    setValues((v) => ({ ...v, ...(newTrip ? { manualOpen: false } : {}), ...partial }));
     if (typeof partial.bufferMinutes === "number") {
       const b = partial.bufferMinutes;
       setLastRequest((r) => (r ? { ...r, bufferMinutes: b } : r));
@@ -115,20 +116,9 @@ export function HomeClient() {
         return next;
       });
     }
-  };
+  }, []);
 
-  const submit = () => launch(toRequest(values, state.phase === "notfound"), profile);
-
-  // An unverified flight looked wrong: reopen the form with its airport and time filled in to correct.
-  const fixFlight = () => {
-    const f = state.result?.flight;
-    if (f) {
-      const local = instantToZonedParts(new Date(f.departureTime), f.departureTimezone ?? "America/New_York");
-      setValues((v) => ({ ...v, manual: { airport: f.departureAirport, departureTime: local.hhmm } }));
-    }
-    track("flight_corrected", { airline: f?.airlineCode ?? null });
-    askManual("Let's get your flight right.");
-  };
+  const submit = () => launch(toRequest(values), profile);
 
   const startOver = () => {
     reset();
@@ -183,7 +173,7 @@ export function HomeClient() {
             {phase === "error" && state.error ? (
               <div className="mb-3 flex items-center justify-between gap-3 rounded-[18px] bg-coral-pale px-4 py-3 text-[14px] font-medium">
                 <span>{state.error}</span>
-                {isReady(values, null) ? (
+                {isReady(values) ? (
                   <button type="button" onClick={submit} className="shrink-0 rounded-full bg-ink px-3.5 py-2 text-[13px] font-semibold text-paper">
                     Try again
                   </button>
@@ -210,7 +200,6 @@ export function HomeClient() {
               onReset={startOver}
               planUrl={planUrl}
               sharedAt={sharedAt}
-              onFixFlight={fixFlight}
             />
           </motion.div>
         ) : null}

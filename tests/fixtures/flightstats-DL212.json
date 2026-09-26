@@ -1,0 +1,227 @@
+{
+ "otherDays": [
+  {
+   "date1": "23-Sep",
+   "date2": "Sep-23",
+   "day": "Wednesday",
+   "year": "2026",
+   "flights": [
+    {
+     "arrivalAirport": {
+      "city": "Athens",
+      "fs": "ATH",
+      "iata": "ATH",
+      "name": "Athens Eleftherios Venizelos International Airport",
+      "state": "",
+      "country": "GR"
+     },
+     "arrivalTime": "1:20",
+     "arrivalTimeAmPm": "PM",
+     "arrivalTime24": "13:20",
+     "arrivalTimezone": "EEST",
+     "departureAirport": {
+      "city": "New York",
+      "fs": "JFK",
+      "iata": "JFK",
+      "name": "New York John F. Kennedy International Airport",
+      "state": "NY",
+      "country": "US"
+     },
+     "departureTime": "8:25",
+     "departureTimeAmPm": "PM",
+     "departureTime24": "20:25",
+     "departureTimezone": "EDT",
+     "url": "/flight-tracker/DL/212?year=2026&month=09&date=23&flightId=1409963063",
+     "sortTime": "2026-09-24T00:25:00.000Z"
+    }
+   ]
+  },
+  {
+   "date1": "24-Sep",
+   "date2": "Sep-24",
+   "day": "Thursday",
+   "year": "2026",
+   "flights": [
+    {
+     "arrivalAirport": {
+      "city": "Athens",
+      "fs": "ATH",
+      "iata": "ATH",
+      "name": "Athens Eleftherios Venizelos International Airport",
+      "state": "",
+      "country": "GR"
+     },
+     "arrivalTime": "1:20",
+     "arrivalTimeAmPm": "PM",
+     "arrivalTime24": "13:20",
+     "arrivalTimezone": "EEST",
+     "departureAirport": {
+      "city": "New York",
+      "fs": "JFK",
+      "iata": "JFK",
+      "name": "New York John F. Kennedy International Airport",
+      "state": "NY",
+      "country": "US"
+     },
+     "departureTime": "8:25",
+     "departureTimeAmPm": "PM",
+     "departureTime24": "20:25",
+     "departureTimezone": "EDT",
+     "url": "/flight-tracker/DL/212?year=2026&month=09&date=24&flightId=1410144724",
+     "sortTime": "2026-09-25T00:25:00.000Z"
+    }
+   ]
+  },
+  {
+   "date1": "25-Sep",
+   "date2": "Sep-25",
+   "day": "Friday",
+   "year": "2026",
+   "flights": [
+    {
+     "arrivalAirport": {
+      "city": "Athens",
+      "fs": "ATH",
+      "iata": "ATH",
+      "name": "Athens Eleftherios Venizelos International Airport",
+      "state": "",
+      "country": "GR"
+     },
+     "arrivalTime": "1:20",
+     "arrivalTimeAmPm": "PM",
+     "arrivalTime24": "13:20",
+     "arrivalTimezone": "EEST",
+     "departureAirport": {
+      "city": "New York",
+      "fs": "JFK",
+      "iata": "JFK",
+      "name": "New York John F. Kennedy International Airport",
+      "state": "NY",
+      "country": "US"
+     },
+     "departureTime": "8:25",
+     "departureTimeAmPm": "PM",
+     "departureTime24": "20:25",
+     "departureTimezone": "EDT",
+     "url": "/flight-tracker/DL/212?year=2026&month=09&date=25&flightId=1410339335",
+     "sortTime": "2026-09-26T00:25:00.000Z"
+    }
+   ]
+  },
+  {
+   "date1": "26-Sep",
+   "date2": "Sep-26",
+   "day": "Saturday",
+   "year": "2026",
+   "flights": [
+    {
+     "arrivalAirport": {
+      "city": "Athens",
+      "fs": "ATH",
+      "iata": "ATH",
+      "name": "Athens Eleftherios Venizelos International Airport",
+      "state": "",
+      "country": "GR"
+     },
+     "arrivalTime": "1:20",
+     "arrivalTimeAmPm": "PM",
+     "arrivalTime24": "13:20",
+     "arrivalTimezone": "EEST",
+     "departureAirport": {
+      "city": "New York",
+      "fs": "JFK",
+      "iata": "JFK",
+      "name": "New York John F. Kennedy International Airport",
+      "state": "NY",
+      "country": "US"
+     },
+     "departureTime": "8:25",
+     "departureTimeAmPm": "PM",
+     "departureTime24": "20:25",
+     "departureTimezone": "EDT",
+     "url": "/flight-tracker/DL/212?year=2026&month=09&date=26&flightId=1410532256",
+     "sortTime": "2026-09-27T00:25:00.000Z"
+    }
+   ]
+  },
+  {
+   "date1": "27-Sep",
+   "date2": "Sep-27",
+   "day": "Sunday",
+   "year": "2026",
+   "flights": [
+    {
+     "arrivalAirport": {
+      "city": "Athens",
+      "fs": "ATH",
+      "iata": "ATH",
+      "name": "Athens Eleftherios Venizelos International Airport",
+      "state": "",
+      "country": "GR"
+     },
+     "arrivalTime": "1:20",
+     "arrivalTimeAmPm": "PM",
+     "arrivalTime24": "13:20",
+     "arrivalTimezone": "EEST",
+     "departureAirport": {
+      "city": "New York",
+      "fs": "JFK",
+      "iata": "JFK",
+      "name": "New York John F. Kennedy International Airport",
+      "state": "NY",
+      "country": "US"
+     },
+     "departureTime": "8:25",
+     "departureTimeAmPm": "PM",
+     "departureTime24": "20:25",
+     "departureTimezone": "EDT",
+     "url": "/flight-tracker/DL/212?year=2026&month=09&date=27&flightId=1410732524",
+     "sortTime": "2026-09-28T00:25:00.000Z"
+    }
+   ]
+  },
+  {
+   "date1": "28-Sep",
+   "date2": "Sep-28",
+   "day": "Monday",
+   "year": "2026",
+   "flights": [
+    {
+     "arrivalAirport": {
+      "city": "Athens",
+      "fs": "ATH",
+      "iata": "ATH",
+      "name": "Athens Eleftherios Venizelos International Airport",
+      "state": "",
+      "country": "GR"
+     },
+     "arrivalTime": "1:20",
+     "arrivalTimeAmPm": "PM",
+     "arrivalTime24": "13:20",
+     "arrivalTimezone": "EEST",
+     "departureAirport": {
+      "city": "New York",
+      "fs": "JFK",
+      "iata": "JFK",
+      "name": "New York John F. Kennedy International Airport",
+      "state": "NY",
+      "country": "US"
+     },
+     "departureTime": "8:25",
+     "departureTimeAmPm": "PM",
+     "departureTime24": "20:25",
+     "departureTimezone": "EDT",
+     "url": "/flight-tracker/DL/212?year=2026&month=09&date=28&flightId=1410933074",
+     "sortTime": "2026-09-29T00:25:00.000Z"
+    }
+   ]
+  },
+  {
+   "date1": "29-Sep",
+   "date2": "Sep-29",
+   "day": "Tuesday",
+   "year": "2026",
+   "flights": []
+  }
+ ]
+}

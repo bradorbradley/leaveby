@@ -17,6 +17,17 @@ export interface OriginInput {
   label?: string;
 }
 
+/** The departure the traveler confirmed: we plan exactly this airport and time, never another leg. */
+export interface LegChoice {
+  /** IATA airport code, e.g. SFO. */
+  airport: string;
+  /** Local departure time HH:mm. */
+  time: string;
+  destination?: string | null;
+  /** schedule: picked from the flight's schedule. traveler: typed in by hand. */
+  confirmed: "schedule" | "traveler";
+}
+
 export interface ManualFlight {
   /** IATA airport code, e.g. JFK. */
   airport: string;
@@ -36,7 +47,9 @@ export interface PlanRequest {
   checkedBag: boolean;
   perks: Perks;
   bufferMinutes: number;
-  /** Used when the flight number cannot be resolved. */
+  /** The departure the traveler picked or entered. Required to plan. */
+  leg?: LegChoice | null;
+  /** Older links: airport and time typed in by hand. Read as a leg. */
   manual?: ManualFlight | null;
 }
 
