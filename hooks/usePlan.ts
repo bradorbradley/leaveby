@@ -173,12 +173,5 @@ export function usePlan() {
     }
   }, []);
 
-  /** Back to the form with the airport and time fields open, e.g. when a found flight looks wrong. */
-  const askManual = useCallback((message: string) => {
-    abortRef.current?.abort();
-    abortRef.current = null;
-    setState({ phase: "notfound", progress: emptyProgress, result: null, error: message });
-  }, []);
-
-  return { state, run, cancel, reset, hydrate, askManual };
+  return { state, run, cancel, reset, hydrate };
 }

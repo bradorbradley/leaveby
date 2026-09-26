@@ -20,7 +20,7 @@ const PROVIDERS: Array<[string, string, string]> = [
   ["OSRM (Project OSRM)", "Calculates the driving route and distance from your starting point to the airport.", "https://project-osrm.org"],
   ["National Weather Service and Open-Meteo", "Provide the weather forecast for your departure airport. We send the airport’s location, not yours.", "https://open-meteo.com/en/terms"],
   ["Federal Aviation Administration", "Provides live airport status such as ground stops and delay programs. No personal information is sent.", "https://www.faa.gov/privacy"],
-  ["Flight-status sources (such as FlightAware and flight-status.com)", "Look up your flight’s schedule, terminal and gate from the flight number and date.", "https://www.flightaware.com/about/privacy"],
+  ["Flight schedule sources (FlightAware and FlightStats)", "List the departures for your flight number and date, and your flight’s terminal, gate and status. We send only the flight number.", "https://www.flightaware.com/about/privacy"],
   ["avs.io", "Serves airline logos. Your browser loads these directly, so this service sees your IP address.", "https://pics.avs.io"],
 ];
 

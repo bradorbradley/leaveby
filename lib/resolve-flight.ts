@@ -1,11 +1,11 @@
 import { airlineNameFromIata } from "@/lib/airline-codes";
-import { getAirportProfile } from "@/lib/airports";
+import { detectAirportTerminalByAirline, getAirlineProfile } from "@/lib/airports";
+import { worldAirport } from "@/lib/airports/world";
+import { fetchSchedule, type Leg } from "@/lib/flight-legs";
 import { parseFlightNumber } from "@/lib/flight-utils";
-import { FAST_MODEL, hasOpenAI, openai } from "@/lib/openai";
-import { fetchFlightInfo, haversineKm, type LegHint } from "@/lib/scrapers/flight";
 import { formatInZone, zonedTimeToUtcISO } from "@/lib/tz";
-import type { FlightInfo } from "@/types/flight";
-import type { ManualFlight } from "@/types/plan";
+import type { FlightInfo, FlightOption, FlightOptions } from "@/types/flight";
+import type { LegChoice, PlanRequest } from "@/types/plan";
 
 export class FlightNotFoundError extends Error {
   constructor(message = "We couldn't find that flight.") {
@@ -14,243 +14,191 @@ export class FlightNotFoundError extends Error {
   }
 }
 
-/** A departure airport this far from where the traveler starts means we found the wrong flight or leg. */
-const MAX_AIRPORT_KM = 300;
+/** A schedule leg matches the traveler's choice if it leaves their airport within this long of their time. */
+const MATCH_WINDOW_MIN = 90;
+
+type Parsed = NonNullable<ReturnType<typeof parseFlightNumber>>;
+
+function airlineName(parsed: Parsed) {
+  return getAirlineProfile(parsed.airlineCode)?.name ?? airlineNameFromIata(parsed.airlineCode) ?? parsed.airlineName;
+}
 
 /**
- * Resolve a flight number + date into a FlightInfo.
- * 1. FlightAware / flight-status.com scrape (fast, timezone-correct).
- * 2. OpenAI web search with a strict schema.
- * 3. Throw FlightNotFoundError so the UI can ask for airport + time.
- * `hint` says where the traveler is, so multi-leg flight numbers resolve to their leg
- * and a flight departing somewhere else entirely is caught instead of planned.
+ * Every departure this flight number makes on the date, for the traveler to choose from.
+ * Never picks one for them. When the date is beyond what schedules publish, returns the
+ * routes it usually flies with their usual times, marked `exact: false`, for the traveler
+ * to confirm the time.
  */
-export async function resolveFlight(flightNumber: string, date: string, manual?: ManualFlight | null, hint: LegHint & { nearLabel?: string | null } = {}): Promise<FlightInfo> {
-  const flight = await resolveUnchecked(flightNumber, date, manual, hint);
-  if (manual?.airport && manual.departureTime) return flight;
-  if (hint.airport && flight.departureAirport !== hint.airport) {
-    throw new FlightNotFoundError(`${flight.flightNumber} from ${hint.airport} isn't in today's schedule data.`);
-  }
-  if (hint.near && flight.airportCoord && haversineKm(hint.near, flight.airportCoord) > MAX_AIRPORT_KM) {
-    const where = flight.departureAirportName ? `${flight.departureAirport} (${flight.departureAirportName})` : flight.departureAirport;
-    console.warn(`[flight] ${flight.flightNumber} ${date} resolved to ${flight.departureAirport} via ${flight.source}, far from the traveler`);
-    throw new FlightNotFoundError(
-      `We found ${flight.flightNumber} leaving from ${where}, which is far from where you're starting. Check the flight number and date, or enter your departure airport and time.`,
-    );
-  }
-  return flight;
-}
-
-async function resolveUnchecked(flightNumber: string, date: string, manual: ManualFlight | null | undefined, hint: LegHint & { nearLabel?: string | null }): Promise<FlightInfo> {
+export async function flightOptions(flightNumber: string, date: string, now = new Date()): Promise<FlightOptions> {
   const parsed = parseFlightNumber(flightNumber);
   if (!parsed) throw new FlightNotFoundError("That doesn't look like a flight number. Try DL 405.");
+  const base = { flightNumber: parsed.normalized, airlineName: airlineName(parsed), date };
+  const schedule = await fetchSchedule(parsed.airlineCode, parsed.flightDigits);
 
-  if (manual?.airport && manual.departureTime) {
-    return buildManualFlight(parsed, date, manual);
+  if (!schedule.reached.length) return { ...base, status: "unavailable", options: [] };
+
+  const onDate = schedule.legs.filter((l) => l.localDate === date);
+  if (onDate.length) {
+    return { ...base, status: "exact", options: onDate.map((l) => toOption(l, true, now)) };
   }
+  if (schedule.coveredDates.includes(date)) return { ...base, status: "not_operating", options: [] };
+  if (!schedule.legs.length) return { ...base, status: "not_found", options: [] };
 
-  // The schedule scrape is fast but can stall or get rate-limited; try twice.
-  for (let attempt = 1; attempt <= 2; attempt++) {
-    try {
-      const scraped = await fetchFlightInfo(parsed.normalized, date, hint);
-      if (!scraped.source.startsWith("Fallback")) return scraped;
-      console.warn(`[flight] scrape attempt ${attempt} found no schedule for ${parsed.normalized} ${date}`);
-    } catch (error) {
-      console.warn(`[flight] scrape attempt ${attempt} failed for ${parsed.normalized} ${date}:`, error instanceof Error ? error.message : error);
-    }
-    if (attempt === 1) await new Promise((r) => setTimeout(r, 400));
+  // Beyond the published window: each route it flies, at its most recent time.
+  const latest = new Map<string, Leg>();
+  for (const leg of schedule.legs) {
+    const key = `${leg.airport}>${leg.destination ?? ""}`;
+    const seen = latest.get(key);
+    if (!seen || leg.scheduledISO > seen.scheduledISO) latest.set(key, leg);
   }
-
-  if (hasOpenAI()) {
-    try {
-      const found = await resolveViaOpenAI(parsed.normalized, date, hint);
-      if (found) return found;
-      console.warn(`[flight] web search did not find ${parsed.normalized} ${date}`);
-    } catch (error) {
-      console.warn(`[flight] web search failed for ${parsed.normalized} ${date}:`, error instanceof Error ? error.message : error);
-    }
-  } else {
-    console.warn("[flight] no OPENAI_API_KEY; skipping web search fallback");
-  }
-
-  throw new FlightNotFoundError();
+  const options = [...latest.values()].map((l) => toOption(l, false, now)).sort((a, b) => a.time.localeCompare(b.time));
+  return { ...base, status: "typical", options };
 }
 
-async function buildManualFlight(
-  parsed: NonNullable<ReturnType<typeof parseFlightNumber>>,
-  date: string,
-  manual: ManualFlight,
-): Promise<FlightInfo> {
-  const code = manual.airport.trim().toUpperCase();
-  const known = getAirportProfile(code);
-  let timezone = known.timezone;
-  let name = known.name;
-  let coord = known.weatherStation.lat ? { lat: known.weatherStation.lat, lon: known.weatherStation.lon } : undefined;
-
-  if ((!coord || name === code) && hasOpenAI()) {
-    const meta = await resolveAirportMeta(code);
-    if (meta) {
-      timezone = meta.timezone;
-      name = meta.name;
-      coord = { lat: meta.lat, lon: meta.lon };
-    }
-  }
-
-  const departureTime = zonedTimeToUtcISO(date, manual.departureTime, timezone);
+function toOption(leg: Leg, exact: boolean, now: Date): FlightOption {
+  const departed = exact && new Date(leg.estimatedISO ?? leg.scheduledISO).getTime() < now.getTime();
   return {
+    id: `${leg.airport}-${leg.destination ?? "x"}-${leg.localTime}`,
+    airport: leg.airport,
+    airportName: leg.airportName,
+    city: leg.city,
+    destination: leg.destination,
+    destinationCity: leg.destinationCity,
+    time: leg.localTime,
+    departureISO: exact ? leg.scheduledISO : null,
+    terminal: exact ? leg.terminal : null,
+    exact,
+    departed,
+    cancelled: exact && leg.cancelled,
+  };
+}
+
+/**
+ * The flight the traveler chose: their airport and time, enriched with live schedule details
+ * (terminal, gate, delay) when a schedule leg matches. The airport is never swapped for another.
+ */
+export async function resolveLeg(flightNumber: string, date: string, choice: LegChoice): Promise<FlightInfo> {
+  const parsed = parseFlightNumber(flightNumber);
+  if (!parsed) throw new FlightNotFoundError("That doesn't look like a flight number. Try DL 405.");
+  const code = (choice.airport ?? "").trim().toUpperCase();
+  const airport = worldAirport(code);
+  if (!airport) throw new FlightNotFoundError(`We don't recognize the airport code "${code}". Use the 3-letter code on your ticket, like SFO.`);
+  if (!/^([01]\d|2[0-3]):[0-5]\d$/.test(choice.time ?? "")) throw new FlightNotFoundError("Enter your departure time.");
+
+  const scheduledISO = zonedTimeToUtcISO(date, choice.time, airport.timezone);
+  const base = {
     flightNumber: parsed.normalized,
     airlineCode: parsed.airlineCode,
-    airlineName: airlineNameFromIata(parsed.airlineCode) ?? parsed.airlineName,
+    airlineName: airlineName(parsed),
+  };
+
+  const schedule = await fetchSchedule(parsed.airlineCode, parsed.flightDigits).catch(() => null);
+  const match = schedule ? matchLeg(schedule.legs, code, date, scheduledISO) : null;
+  if (match) return fromLeg(base, match, choice);
+
+  // The schedule has this flight leaving their airport that day, but not near their time: say so.
+  const elsewhen = schedule?.legs.filter((l) => l.airport === code && l.localDate === date) ?? [];
+  const mismatch = elsewhen.length
+    ? [`The live schedule shows ${parsed.normalized} leaving ${code} at ${elsewhen.map((l) => clock(l.localTime)).join(" and ")} that day. We used the time you entered, ${clock(choice.time)}.`]
+    : [];
+
+  const destination = choice.destination?.toUpperCase() || null;
+  const destinationAirport = worldAirport(destination);
+  const typical = choice.confirmed === "schedule";
+  return {
+    ...base,
     departureAirport: code,
-    departureAirportName: name,
-    departureTimezone: timezone,
-    airportCoord: coord,
-    departureTime,
-    departureLocalLabel: formatInZone(new Date(departureTime), timezone),
-    terminal: null,
+    departureAirportName: airport.name,
+    departureTimezone: airport.timezone,
+    airportCoord: { lat: airport.lat, lon: airport.lon },
+    destinationAirportCode: destination ?? undefined,
+    destinationCity: destinationAirport?.city ?? destination ?? undefined,
+    departureTime: new Date(scheduledISO).toISOString(),
+    departureLocalLabel: formatInZone(new Date(scheduledISO), airport.timezone),
+    terminal: detectAirportTerminalByAirline(code, parsed.airlineCode),
     gate: null,
     status: "scheduled",
     delayMinutes: 0,
-    region: "domestic",
-    source: "Entered by traveler",
+    region: destinationAirport && destinationAirport.country !== airport.country ? "international" : "domestic",
+    source: typical ? "Usual schedule · time you confirmed" : "Airport and time you entered",
+    notes: [
+      ...mismatch,
+      ...(typical ? ["The airline hasn't published this day's live schedule yet, so we planned from the time you confirmed. Check it again the day before you fly."] : []),
+    ],
+  };
+}
+
+/**
+ * The departure to plan: the one the traveler picked or typed. Older share links carry only a
+ * flight number; those plan only when the schedule has exactly one departure that day.
+ */
+export async function legForPlan(body: PlanRequest, now = new Date()): Promise<LegChoice | null> {
+  const leg = body.leg;
+  if (leg?.airport && leg.time) return { airport: leg.airport, time: leg.time, destination: leg.destination ?? null, confirmed: leg.confirmed === "schedule" ? "schedule" : "traveler" };
+  if (body.manual?.airport && body.manual.departureTime) return { airport: body.manual.airport, time: body.manual.departureTime, confirmed: "traveler" };
+  const options = await flightOptions(body.flightNumber, body.date, now);
+  const open = options.status === "exact" ? options.options.filter((o) => !o.departed && !o.cancelled) : [];
+  if (open.length !== 1 || options.options.length !== 1) return null;
+  return { airport: open[0].airport, time: open[0].time, destination: open[0].destination, confirmed: "schedule" };
+}
+
+/** Live status for the leg a plan was built on, or null. Only ever the same airport. */
+export async function liveLeg(flightNumber: string, date: string, airportCode: string, time?: string | null): Promise<Leg | null> {
+  const parsed = parseFlightNumber(flightNumber);
+  const airport = worldAirport(airportCode);
+  if (!parsed || !airport) return null;
+  const schedule = await fetchSchedule(parsed.airlineCode, parsed.flightDigits);
+  const target = time && /^\d{2}:\d{2}$/.test(time) ? zonedTimeToUtcISO(date, time, airport.timezone) : null;
+  const sameDay = schedule.legs.filter((l) => l.airport === airport.code && l.localDate === date);
+  if (!target) return sameDay.length === 1 ? sameDay[0] : null;
+  return matchLeg(schedule.legs, airport.code, date, target);
+}
+
+/** The schedule leg leaving this airport on this date closest to the chosen time, within the match window. */
+export function matchLeg(legs: Leg[], airport: string, date: string, scheduledISO: string): Leg | null {
+  const target = new Date(scheduledISO).getTime();
+  let best: Leg | null = null;
+  let bestGap = MATCH_WINDOW_MIN * 60_000;
+  for (const leg of legs) {
+    if (leg.airport !== airport || leg.localDate !== date) continue;
+    const gap = Math.abs(new Date(leg.scheduledISO).getTime() - target);
+    if (gap <= bestGap) {
+      best = leg;
+      bestGap = gap;
+    }
+  }
+  return best;
+}
+
+function fromLeg(base: Pick<FlightInfo, "flightNumber" | "airlineCode" | "airlineName">, leg: Leg, choice: LegChoice): FlightInfo {
+  const scheduled = new Date(leg.scheduledISO).getTime();
+  const estimated = leg.estimatedISO ? new Date(leg.estimatedISO).getTime() : scheduled;
+  const best = new Date(Math.max(scheduled, estimated));
+  const delayMinutes = Math.max(0, Math.round((estimated - scheduled) / 60000));
+  const origin = worldAirport(leg.airport);
+  const destination = worldAirport(leg.destination ?? choice.destination);
+  return {
+    ...base,
+    departureAirport: leg.airport,
+    departureAirportName: leg.airportName ?? origin?.name,
+    departureTimezone: leg.timezone,
+    airportCoord: leg.coord ?? (origin ? { lat: origin.lat, lon: origin.lon } : undefined),
+    destinationAirportCode: leg.destination ?? choice.destination ?? undefined,
+    destinationCity: leg.destinationCity ?? destination?.city ?? undefined,
+    departureTime: best.toISOString(),
+    departureLocalLabel: formatInZone(best, leg.timezone),
+    terminal: leg.terminal ?? detectAirportTerminalByAirline(leg.airport, base.airlineCode),
+    gate: leg.gate,
+    status: leg.cancelled ? "cancelled" : delayMinutes > 0 ? "delayed" : "scheduled",
+    delayMinutes,
+    region: origin && destination && origin.country !== destination.country ? "international" : "domestic",
+    source: `${leg.source} · live schedule`,
     notes: [],
   };
 }
 
-interface AirportMeta {
-  name: string;
-  timezone: string;
-  lat: number;
-  lon: number;
-}
-
-async function resolveAirportMeta(code: string): Promise<AirportMeta | null> {
-  try {
-    const response = await openai().responses.create({
-      model: FAST_MODEL,
-      input: `Give the IANA timezone, full name, and coordinates of the airport with IATA code ${code}.`,
-      text: {
-        format: {
-          type: "json_schema",
-          name: "airport",
-          strict: true,
-          schema: {
-            type: "object",
-            additionalProperties: false,
-            properties: {
-              known: { type: "boolean" },
-              name: { type: "string" },
-              timezone: { type: "string" },
-              lat: { type: "number" },
-              lon: { type: "number" },
-            },
-            required: ["known", "name", "timezone", "lat", "lon"],
-          },
-        },
-      },
-    });
-    const json = JSON.parse(response.output_text) as AirportMeta & { known: boolean };
-    return json.known ? json : null;
-  } catch {
-    return null;
-  }
-}
-
-interface OpenAIFlight {
-  found: boolean;
-  airlineName: string;
-  departureAirport: string;
-  departureAirportName: string;
-  timezone: string;
-  airportLat: number;
-  airportLon: number;
-  terminal: string | null;
-  departureLocal: string;
-  destinationAirport: string | null;
-  destinationCity: string | null;
-  international: boolean;
-  status: "scheduled" | "delayed" | "cancelled" | "unknown";
-}
-
-async function resolveViaOpenAI(flightNumber: string, date: string, hint: LegHint & { nearLabel?: string | null } = {}): Promise<FlightInfo | null> {
-  const where = hint.airport
-    ? ` The traveler is departing from ${hint.airport}.`
-    : hint.near
-      ? ` The traveler is starting near ${hint.nearLabel ? `${hint.nearLabel} ` : ""}(${hint.near.lat.toFixed(2)}, ${hint.near.lon.toFixed(2)}).`
-      : "";
-  try {
-    const response = await openai().responses.create({
-      model: FAST_MODEL,
-      tools: [{ type: "web_search" }],
-      input: `Look up flight ${flightNumber} departing on ${date}.${where} One flight number often flies several legs in a day with different origins; return the single leg the traveler is on (the one departing the airport nearest them), never a different leg. Find the departure airport (IATA code), its IANA timezone and coordinates, the departure terminal if published, the scheduled local departure time on that date, the destination, and whether the route is international. If this flight number does not operate on that date, set found=false. departureLocal must be the local wall-clock time formatted YYYY-MM-DDTHH:mm.`,
-      text: {
-        format: {
-          type: "json_schema",
-          name: "flight",
-          strict: true,
-          schema: {
-            type: "object",
-            additionalProperties: false,
-            properties: {
-              found: { type: "boolean" },
-              airlineName: { type: "string" },
-              departureAirport: { type: "string" },
-              departureAirportName: { type: "string" },
-              timezone: { type: "string" },
-              airportLat: { type: "number" },
-              airportLon: { type: "number" },
-              terminal: { type: ["string", "null"] },
-              departureLocal: { type: "string" },
-              destinationAirport: { type: ["string", "null"] },
-              destinationCity: { type: ["string", "null"] },
-              international: { type: "boolean" },
-              status: { type: "string", enum: ["scheduled", "delayed", "cancelled", "unknown"] },
-            },
-            required: [
-              "found",
-              "airlineName",
-              "departureAirport",
-              "departureAirportName",
-              "timezone",
-              "airportLat",
-              "airportLon",
-              "terminal",
-              "departureLocal",
-              "destinationAirport",
-              "destinationCity",
-              "international",
-              "status",
-            ],
-          },
-        },
-      },
-    });
-    const json = JSON.parse(response.output_text) as OpenAIFlight;
-    if (!json.found || !/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}/.test(json.departureLocal)) return null;
-    const parsed = parseFlightNumber(flightNumber)!;
-    const [localDate, localTime] = json.departureLocal.split("T");
-    const departureTime = zonedTimeToUtcISO(localDate, localTime.slice(0, 5), json.timezone);
-    return {
-      flightNumber: parsed.normalized,
-      airlineCode: parsed.airlineCode,
-      airlineName: json.airlineName || parsed.airlineName,
-      departureAirport: json.departureAirport.toUpperCase(),
-      departureAirportName: json.departureAirportName,
-      departureTimezone: json.timezone,
-      airportCoord: { lat: json.airportLat, lon: json.airportLon },
-      destinationAirportCode: json.destinationAirport ?? undefined,
-      destinationCity: json.destinationCity ?? undefined,
-      departureTime,
-      departureLocalLabel: formatInZone(new Date(departureTime), json.timezone),
-      terminal: json.terminal,
-      gate: null,
-      status: json.status,
-      delayMinutes: 0,
-      region: json.international ? "international" : "domestic",
-      source: "Web search",
-      notes: ["We couldn't confirm this flight against a live schedule. Check the airport and departure time with your airline."],
-    };
-  } catch {
-    return null;
-  }
+/** "20:16" → "8:16 PM" */
+function clock(hhmm: string) {
+  const [h, m] = hhmm.split(":").map(Number);
+  return `${h % 12 || 12}:${String(m).padStart(2, "0")} ${h < 12 ? "AM" : "PM"}`;
 }

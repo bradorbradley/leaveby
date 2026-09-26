@@ -1,16 +1,18 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
+import { useCallback } from "react";
 import { CalendarDays, Check } from "lucide-react";
 
 import { PlaneGlyph } from "@/components/Glyphs";
 
+import { FlightPicker, legKey } from "@/components/FlightPicker";
 import { GateSlider } from "@/components/GateSlider";
 import { OriginField } from "@/components/OriginField";
 import { localDateString, prettyDate } from "@/lib/format";
 import { parseFlightNumber } from "@/lib/flight-utils";
 import type { Profile } from "@/lib/profile";
-import type { ManualFlight, Mode, OriginInput, Perks, PlanRequest } from "@/types/plan";
+import type { LegChoice, ManualFlight, Mode, OriginInput, Perks, PlanRequest } from "@/types/plan";
 
 type DateMode = "today" | "tomorrow" | "custom";
 
@@ -23,7 +25,12 @@ export interface FormValues {
   checkedBag: boolean;
   perks: Perks;
   bufferMinutes: number;
+  /** The departure picked from the schedule, and the flight|date it belongs to. */
+  leg: LegChoice | null;
+  legFor: string;
+  /** Airport and time typed in by hand, used when manualOpen. */
   manual: ManualFlight;
+  manualOpen: boolean;
 }
 
 export function initialValues(profile: Profile): FormValues {
@@ -37,8 +44,24 @@ export function initialValues(profile: Profile): FormValues {
     checkedBag: false,
     perks: { ...profile.perks },
     bufferMinutes: profile.bufferMinutes,
+    leg: null,
+    legFor: "",
     manual: { airport: "", departureTime: "" },
+    manualOpen: false,
   };
+}
+
+export function formDate(v: Pick<FormValues, "dateMode" | "customDate">) {
+  return v.dateMode === "custom" ? v.customDate : localDateString(v.dateMode === "tomorrow" ? 1 : 0);
+}
+
+/** The departure the traveler confirmed for the flight and date currently entered, or null. */
+export function confirmedLeg(v: FormValues): LegChoice | null {
+  if (v.manualOpen) {
+    const airport = v.manual.airport.trim().toUpperCase();
+    return /^[A-Z]{3}$/.test(airport) && /^\d{2}:\d{2}$/.test(v.manual.departureTime) ? { airport, time: v.manual.departureTime, confirmed: "traveler" } : null;
+  }
+  return v.leg && v.legFor && v.legFor === legKey(v.flightNumber, formDate(v)) ? v.leg : null;
 }
 
 /** Rebuild form values from a shared link or a previous run. */
@@ -55,12 +78,15 @@ export function valuesFromRequest(req: PlanRequest, profile: Profile): FormValue
     checkedBag: req.checkedBag,
     perks: { ...req.perks },
     bufferMinutes: req.bufferMinutes,
+    leg: req.leg ?? null,
+    legFor: req.leg ? legKey(req.flightNumber, req.date) : "",
     manual: req.manual ?? base.manual,
+    manualOpen: Boolean(!req.leg && req.manual),
   };
 }
 
-export function toRequest(v: FormValues, includeManual: boolean): PlanRequest {
-  const date = v.dateMode === "custom" ? v.customDate : localDateString(v.dateMode === "tomorrow" ? 1 : 0);
+export function toRequest(v: FormValues): PlanRequest {
+  const date = formDate(v);
   return {
     flightNumber: v.flightNumber.trim().toUpperCase(),
     date,
@@ -69,7 +95,7 @@ export function toRequest(v: FormValues, includeManual: boolean): PlanRequest {
     checkedBag: v.checkedBag,
     perks: v.perks,
     bufferMinutes: v.bufferMinutes,
-    manual: includeManual && v.manual.airport && v.manual.departureTime ? v.manual : null,
+    leg: confirmedLeg(v),
   };
 }
 
@@ -142,6 +168,8 @@ export function PlanFields({
   compact?: boolean;
 }) {
   const reduce = useReducedMotion();
+  const onPick = useCallback((leg: LegChoice | null, legFor: string) => onChange({ leg, legFor }), [onChange]);
+  const onManual = useCallback((patch: { manual?: ManualFlight; manualOpen?: boolean }) => onChange(patch), [onChange]);
   // A picked date that is today or tomorrow snaps to that chip, so only one chip is ever lit.
   const pickDate = (value: string) => {
     if (!value) return onChange({ dateMode: "custom", customDate: "" });
@@ -211,31 +239,21 @@ export function PlanFields({
           </label>
         </div>
         {notFound ? (
-          <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} className="mt-2 rounded-[18px] bg-mustard-soft p-3.5">
-            <p className="text-[14px] font-medium">{notFound} Tell us the airport and departure time.</p>
-            <div className="mt-2.5 grid grid-cols-2 gap-2">
-              <div className="field !min-h-[46px] !shadow-none">
-                <input
-                  aria-label="Airport code"
-                  placeholder="JFK"
-                  maxLength={3}
-                  className="uppercase"
-                  autoCapitalize="characters"
-                  value={values.manual.airport}
-                  onChange={(e) => onChange({ manual: { ...values.manual, airport: e.target.value.toUpperCase() } })}
-                />
-              </div>
-              <div className="field relative !min-h-[46px] !shadow-none">
-                <input
-                  aria-label="Departure time"
-                  type="time"
-                  value={values.manual.departureTime}
-                  onChange={(e) => onChange({ manual: { ...values.manual, departureTime: e.target.value } })}
-                />
-              </div>
-            </div>
-          </motion.div>
+          <motion.p initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} className="mt-2 rounded-[18px] bg-mustard-soft px-4 py-3 text-[14px] font-medium" role="alert">
+            {notFound}
+          </motion.p>
         ) : null}
+        <FlightPicker
+          flightNumber={values.flightNumber}
+          date={formDate(values)}
+          leg={values.leg}
+          legFor={values.legFor}
+          manual={values.manual}
+          manualOpen={values.manualOpen}
+          onPick={onPick}
+          onManual={onManual}
+          compact={compact}
+        />
       </motion.div>
 
       <motion.div variants={item}>
@@ -282,11 +300,11 @@ export function PlanFields({
   );
 }
 
-export function isReady(values: FormValues, notFound: string | null) {
+/** Ready only once the traveler has confirmed which departure they're on. */
+export function isReady(values: FormValues) {
   const flightOk = Boolean(parseFlightNumber(values.flightNumber));
   const dateOk = values.dateMode !== "custom" || /^\d{4}-\d{2}-\d{2}$/.test(values.customDate);
-  const manualOk = !notFound || (values.manual.airport.trim().length === 3 && /^\d{2}:\d{2}$/.test(values.manual.departureTime));
-  return flightOk && dateOk && manualOk;
+  return flightOk && dateOk && Boolean(confirmedLeg(values));
 }
 
 export function PlanForm({
@@ -302,7 +320,7 @@ export function PlanForm({
   profile: Profile;
   notFound: string | null;
 }) {
-  const ready = isReady(values, notFound);
+  const ready = isReady(values);
   return (
     <form
       className="flex flex-1 flex-col"
@@ -324,7 +342,7 @@ export function PlanForm({
       <PlanFields values={values} onChange={onChange} profile={profile} notFound={notFound} />
       <div className="pointer-events-none sticky bottom-0 mt-6 bg-gradient-to-t from-ground via-ground/95 to-transparent pb-[max(env(safe-area-inset-bottom),16px)] pt-5">
         <button type="submit" className="btn-primary pointer-events-auto" disabled={!ready}>
-          {notFound ? "Try again" : "When should I leave?"}
+          {ready ? (notFound ? "Try again" : "When should I leave?") : parseFlightNumber(values.flightNumber) ? "Pick your departure above" : "When should I leave?"}
         </button>
       </div>
     </form>

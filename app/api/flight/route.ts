@@ -1,36 +1,39 @@
 import { NextRequest } from "next/server";
 
-import { resolveFlight } from "@/lib/resolve-flight";
+import { liveLeg } from "@/lib/resolve-flight";
 import { faaAlerts } from "@/lib/scrapers/faa";
 
 export const runtime = "nodejs";
 export const maxDuration = 30;
 
-/** Live flight status for the reveal screen. Cheap: one schedule scrape. */
+/** Live status for the reveal screen: the exact departure the plan was built on (airport and time), nothing else. */
 export async function GET(request: NextRequest) {
   const params = request.nextUrl.searchParams;
   const flightNumber = params.get("flight") ?? "";
   const date = params.get("date") ?? "";
-  const airport = (params.get("airport") ?? "").toUpperCase() || null;
-  if (!flightNumber || !/^\d{4}-\d{2}-\d{2}$/.test(date)) return Response.json({ error: "flight and date required" }, { status: 400 });
-  try {
-    // Stick to the leg the plan was built for; a multi-leg flight number has others.
-    const f = await resolveFlight(flightNumber, date, null, { airport });
-    const airportAlerts = await faaAlerts(f.departureAirport, f.destinationAirportCode, f.departureTime).catch((): string[] => []);
-    return Response.json(
-      {
-        airportAlerts,
-        status: f.status,
-        delayMinutes: f.delayMinutes,
-        gate: f.gate,
-        terminal: f.terminal,
-        departureTime: f.departureTime,
-        source: f.source,
-        checkedAt: new Date().toISOString(),
-      },
-      { headers: { "Cache-Control": "no-store" } },
-    );
-  } catch {
-    return Response.json({ error: "not found" }, { status: 404, headers: { "Cache-Control": "no-store" } });
+  const airport = (params.get("airport") ?? "").toUpperCase();
+  const time = params.get("time");
+  if (!flightNumber || !/^\d{4}-\d{2}-\d{2}$/.test(date) || !/^[A-Z]{3}$/.test(airport)) {
+    return Response.json({ error: "flight, date and airport required" }, { status: 400 });
   }
+  const leg = await liveLeg(flightNumber, date, airport, time).catch(() => null);
+  if (!leg) return Response.json({ error: "not found" }, { status: 404, headers: { "Cache-Control": "no-store" } });
+  const scheduled = new Date(leg.scheduledISO).getTime();
+  const estimated = leg.estimatedISO ? new Date(leg.estimatedISO).getTime() : scheduled;
+  const delayMinutes = Math.max(0, Math.round((estimated - scheduled) / 60000));
+  const departureTime = new Date(Math.max(scheduled, estimated)).toISOString();
+  const airportAlerts = await faaAlerts(leg.airport, leg.destination ?? undefined, departureTime).catch((): string[] => []);
+  return Response.json(
+    {
+      airportAlerts,
+      status: leg.cancelled ? "cancelled" : delayMinutes > 0 ? "delayed" : "scheduled",
+      delayMinutes,
+      gate: leg.gate,
+      terminal: leg.terminal,
+      departureTime,
+      source: leg.source,
+      checkedAt: new Date().toISOString(),
+    },
+    { headers: { "Cache-Control": "no-store" } },
+  );
 }

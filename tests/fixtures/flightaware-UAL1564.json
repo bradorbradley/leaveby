@@ -1,0 +1,1028 @@
+{
+ "flights": {
+  "UAL1564-1790151443-airline-410p:0": {
+   "origin": {
+    "iata": "ORD",
+    "icao": "KORD",
+    "TZ": ":America/Chicago",
+    "friendlyName": "Chicago O'Hare Intl",
+    "friendlyLocation": "Chicago, IL",
+    "coord": [
+     -87.9081,
+     41.9769
+    ],
+    "gate": "C9",
+    "terminal": "1"
+   },
+   "destination": {
+    "iata": "SAN",
+    "icao": "KSAN",
+    "TZ": ":America/Los_Angeles",
+    "friendlyName": "San Diego Intl",
+    "friendlyLocation": "San Diego, CA",
+    "coord": [
+     -117.1897,
+     32.7336
+    ],
+    "gate": "50",
+    "terminal": "2"
+   },
+   "gateDepartureTimes": {
+    "scheduled": 1790385360,
+    "estimated": 1790385360,
+    "actual": 1790384880
+   },
+   "cancelled": false,
+   "activityLog": {
+    "flights": [
+     {
+      "origin": {
+       "iata": "ORD",
+       "icao": "KORD",
+       "TZ": ":America/Chicago",
+       "friendlyName": "Chicago O'Hare Intl",
+       "friendlyLocation": "Chicago, IL",
+       "coord": [
+        -87.9081,
+        41.9769
+       ],
+       "gate": null,
+       "terminal": "1"
+      },
+      "destination": {
+       "iata": "SAN",
+       "icao": "KSAN",
+       "TZ": ":America/Los_Angeles",
+       "friendlyName": "San Diego Intl",
+       "friendlyLocation": "San Diego, CA",
+       "coord": [
+        -117.1897,
+        32.7336
+       ],
+       "gate": null,
+       "terminal": "2"
+      },
+      "gateDepartureTimes": {
+       "scheduled": 1790558160,
+       "estimated": 1790558160,
+       "actual": null
+      },
+      "cancelled": false
+     },
+     {
+      "origin": {
+       "iata": "DFW",
+       "icao": "KDFW",
+       "TZ": ":America/Chicago",
+       "friendlyName": "Dallas-Fort Worth Intl",
+       "friendlyLocation": "Dallas-Fort Worth, TX",
+       "coord": [
+        -97.0377,
+        32.8972
+       ],
+       "gate": null,
+       "terminal": "E"
+      },
+      "destination": {
+       "iata": "ORD",
+       "icao": "KORD",
+       "TZ": ":America/Chicago",
+       "friendlyName": "Chicago O'Hare Intl",
+       "friendlyLocation": "Chicago, IL",
+       "coord": [
+        -87.9081,
+        41.9769
+       ],
+       "gate": null,
+       "terminal": "1"
+      },
+      "gateDepartureTimes": {
+       "scheduled": 1790543640,
+       "estimated": 1790543640,
+       "actual": null
+      },
+      "cancelled": false
+     },
+     {
+      "origin": {
+       "iata": "IAD",
+       "icao": "KIAD",
+       "TZ": ":America/New_York",
+       "friendlyName": "Washington Dulles Intl",
+       "friendlyLocation": "Washington, DC",
+       "coord": [
+        -77.4599,
+        38.9475
+       ],
+       "gate": null,
+       "terminal": null
+      },
+      "destination": {
+       "iata": "DFW",
+       "icao": "KDFW",
+       "TZ": ":America/Chicago",
+       "friendlyName": "Dallas-Fort Worth Intl",
+       "friendlyLocation": "Dallas-Fort Worth, TX",
+       "coord": [
+        -97.0377,
+        32.8972
+       ],
+       "gate": null,
+       "terminal": "E"
+      },
+      "gateDepartureTimes": {
+       "scheduled": 1790526900,
+       "estimated": 1790526900,
+       "actual": null
+      },
+      "cancelled": false
+     },
+     {
+      "origin": {
+       "iata": "ORD",
+       "icao": "KORD",
+       "TZ": ":America/Chicago",
+       "friendlyName": "Chicago O'Hare Intl",
+       "friendlyLocation": "Chicago, IL",
+       "coord": [
+        -87.9081,
+        41.9769
+       ],
+       "gate": "C11",
+       "terminal": "1"
+      },
+      "destination": {
+       "iata": "SAN",
+       "icao": "KSAN",
+       "TZ": ":America/Los_Angeles",
+       "friendlyName": "San Diego Intl",
+       "friendlyLocation": "San Diego, CA",
+       "coord": [
+        -117.1897,
+        32.7336
+       ],
+       "gate": "44",
+       "terminal": "2"
+      },
+      "gateDepartureTimes": {
+       "scheduled": 1790471760,
+       "estimated": 1790472240,
+       "actual": null
+      },
+      "cancelled": false
+     },
+     {
+      "origin": {
+       "iata": "DFW",
+       "icao": "KDFW",
+       "TZ": ":America/Chicago",
+       "friendlyName": "Dallas-Fort Worth Intl",
+       "friendlyLocation": "Dallas-Fort Worth, TX",
+       "coord": [
+        -97.0377,
+        32.8972
+       ],
+       "gate": "E5",
+       "terminal": "E"
+      },
+      "destination": {
+       "iata": "ORD",
+       "icao": "KORD",
+       "TZ": ":America/Chicago",
+       "friendlyName": "Chicago O'Hare Intl",
+       "friendlyLocation": "Chicago, IL",
+       "coord": [
+        -87.9081,
+        41.9769
+       ],
+       "gate": "G12",
+       "terminal": "3"
+      },
+      "gateDepartureTimes": {
+       "scheduled": 1790457660,
+       "estimated": 1790457660,
+       "actual": null
+      },
+      "cancelled": false
+     },
+     {
+      "origin": {
+       "iata": "IAD",
+       "icao": "KIAD",
+       "TZ": ":America/New_York",
+       "friendlyName": "Washington Dulles Intl",
+       "friendlyLocation": "Washington, DC",
+       "coord": [
+        -77.4599,
+        38.9475
+       ],
+       "gate": "D19",
+       "terminal": null
+      },
+      "destination": {
+       "iata": "DFW",
+       "icao": "KDFW",
+       "TZ": ":America/Chicago",
+       "friendlyName": "Dallas-Fort Worth Intl",
+       "friendlyLocation": "Dallas-Fort Worth, TX",
+       "coord": [
+        -97.0377,
+        32.8972
+       ],
+       "gate": "E6",
+       "terminal": "E"
+      },
+      "gateDepartureTimes": {
+       "scheduled": 1790440500,
+       "estimated": 1790440500,
+       "actual": null
+      },
+      "cancelled": false
+     },
+     {
+      "origin": {
+       "iata": "ORD",
+       "icao": "KORD",
+       "TZ": ":America/Chicago",
+       "friendlyName": "Chicago O'Hare Intl",
+       "friendlyLocation": "Chicago, IL",
+       "coord": [
+        -87.9081,
+        41.9769
+       ],
+       "gate": "C9",
+       "terminal": "1"
+      },
+      "destination": {
+       "iata": "SAN",
+       "icao": "KSAN",
+       "TZ": ":America/Los_Angeles",
+       "friendlyName": "San Diego Intl",
+       "friendlyLocation": "San Diego, CA",
+       "coord": [
+        -117.1897,
+        32.7336
+       ],
+       "gate": "50",
+       "terminal": "2"
+      },
+      "gateDepartureTimes": {
+       "scheduled": 1790385360,
+       "estimated": 1790385360,
+       "actual": 1790384880
+      },
+      "cancelled": false
+     },
+     {
+      "origin": {
+       "iata": "DFW",
+       "icao": "KDFW",
+       "TZ": ":America/Chicago",
+       "friendlyName": "Dallas-Fort Worth Intl",
+       "friendlyLocation": "Dallas-Fort Worth, TX",
+       "coord": [
+        -97.0377,
+        32.8972
+       ],
+       "gate": "E9",
+       "terminal": "E"
+      },
+      "destination": {
+       "iata": "ORD",
+       "icao": "KORD",
+       "TZ": ":America/Chicago",
+       "friendlyName": "Chicago O'Hare Intl",
+       "friendlyLocation": "Chicago, IL",
+       "coord": [
+        -87.9081,
+        41.9769
+       ],
+       "gate": "B21",
+       "terminal": "1"
+      },
+      "gateDepartureTimes": {
+       "scheduled": 1790370840,
+       "estimated": 1790372520,
+       "actual": 1790372940
+      },
+      "cancelled": false
+     },
+     {
+      "origin": {
+       "iata": "IAD",
+       "icao": "KIAD",
+       "TZ": ":America/New_York",
+       "friendlyName": "Washington Dulles Intl",
+       "friendlyLocation": "Washington, DC",
+       "coord": [
+        -77.4599,
+        38.9475
+       ],
+       "gate": "D12",
+       "terminal": null
+      },
+      "destination": {
+       "iata": "DFW",
+       "icao": "KDFW",
+       "TZ": ":America/Chicago",
+       "friendlyName": "Dallas-Fort Worth Intl",
+       "friendlyLocation": "Dallas-Fort Worth, TX",
+       "coord": [
+        -97.0377,
+        32.8972
+       ],
+       "gate": "E6",
+       "terminal": "E"
+      },
+      "gateDepartureTimes": {
+       "scheduled": 1790354100,
+       "estimated": 1790354100,
+       "actual": 1790353920
+      },
+      "cancelled": false
+     },
+     {
+      "origin": {
+       "iata": "ORD",
+       "icao": "KORD",
+       "TZ": ":America/Chicago",
+       "friendlyName": "Chicago O'Hare Intl",
+       "friendlyLocation": "Chicago, IL",
+       "coord": [
+        -87.9081,
+        41.9769
+       ],
+       "gate": "B9",
+       "terminal": "1"
+      },
+      "destination": {
+       "iata": "SAN",
+       "icao": "KSAN",
+       "TZ": ":America/Los_Angeles",
+       "friendlyName": "San Diego Intl",
+       "friendlyLocation": "San Diego, CA",
+       "coord": [
+        -117.1897,
+        32.7336
+       ],
+       "gate": "50",
+       "terminal": "2"
+      },
+      "gateDepartureTimes": {
+       "scheduled": 1790298960,
+       "estimated": 1790298960,
+       "actual": 1790298720
+      },
+      "cancelled": false
+     },
+     {
+      "origin": {
+       "iata": "DFW",
+       "icao": "KDFW",
+       "TZ": ":America/Chicago",
+       "friendlyName": "Dallas-Fort Worth Intl",
+       "friendlyLocation": "Dallas-Fort Worth, TX",
+       "coord": [
+        -97.0377,
+        32.8972
+       ],
+       "gate": "E9",
+       "terminal": "E"
+      },
+      "destination": {
+       "iata": "ORD",
+       "icao": "KORD",
+       "TZ": ":America/Chicago",
+       "friendlyName": "Chicago O'Hare Intl",
+       "friendlyLocation": "Chicago, IL",
+       "coord": [
+        -87.9081,
+        41.9769
+       ],
+       "gate": "B21",
+       "terminal": "1"
+      },
+      "gateDepartureTimes": {
+       "scheduled": 1790284440,
+       "estimated": 1790284440,
+       "actual": 1790284080
+      },
+      "cancelled": false
+     },
+     {
+      "origin": {
+       "iata": "IAD",
+       "icao": "KIAD",
+       "TZ": ":America/New_York",
+       "friendlyName": "Washington Dulles Intl",
+       "friendlyLocation": "Washington, DC",
+       "coord": [
+        -77.4599,
+        38.9475
+       ],
+       "gate": "D1",
+       "terminal": null
+      },
+      "destination": {
+       "iata": "DFW",
+       "icao": "KDFW",
+       "TZ": ":America/Chicago",
+       "friendlyName": "Dallas-Fort Worth Intl",
+       "friendlyLocation": "Dallas-Fort Worth, TX",
+       "coord": [
+        -97.0377,
+        32.8972
+       ],
+       "gate": "E8",
+       "terminal": "E"
+      },
+      "gateDepartureTimes": {
+       "scheduled": 1790267700,
+       "estimated": 1790267700,
+       "actual": 1790267460
+      },
+      "cancelled": false
+     },
+     {
+      "origin": {
+       "iata": "DFW",
+       "icao": "KDFW",
+       "TZ": ":America/Chicago",
+       "friendlyName": "Dallas-Fort Worth Intl",
+       "friendlyLocation": "Dallas-Fort Worth, TX",
+       "coord": [
+        -97.0377,
+        32.8972
+       ],
+       "gate": "E9",
+       "terminal": "E"
+      },
+      "destination": {
+       "iata": "ORD",
+       "icao": "KORD",
+       "TZ": ":America/Chicago",
+       "friendlyName": "Chicago O'Hare Intl",
+       "friendlyLocation": "Chicago, IL",
+       "coord": [
+        -87.9081,
+        41.9769
+       ],
+       "gate": "B7",
+       "terminal": "1"
+      },
+      "gateDepartureTimes": {
+       "scheduled": 1790204100,
+       "estimated": 1790204700,
+       "actual": 1790204580
+      },
+      "cancelled": false
+     },
+     {
+      "origin": {
+       "iata": "IAD",
+       "icao": "KIAD",
+       "TZ": ":America/New_York",
+       "friendlyName": "Washington Dulles Intl",
+       "friendlyLocation": "Washington, DC",
+       "coord": [
+        -77.4599,
+        38.9475
+       ],
+       "gate": "C9",
+       "terminal": null
+      },
+      "destination": {
+       "iata": "DFW",
+       "icao": "KDFW",
+       "TZ": ":America/Chicago",
+       "friendlyName": "Dallas-Fort Worth Intl",
+       "friendlyLocation": "Dallas-Fort Worth, TX",
+       "coord": [
+        -97.0377,
+        32.8972
+       ],
+       "gate": "E5",
+       "terminal": "E"
+      },
+      "gateDepartureTimes": {
+       "scheduled": 1790181600,
+       "estimated": 1790181600,
+       "actual": 1790181420
+      },
+      "cancelled": false
+     },
+     {
+      "origin": {
+       "iata": "DFW",
+       "icao": "KDFW",
+       "TZ": ":America/Chicago",
+       "friendlyName": "Dallas-Fort Worth Intl",
+       "friendlyLocation": "Dallas-Fort Worth, TX",
+       "coord": [
+        -97.0377,
+        32.8972
+       ],
+       "gate": "E8",
+       "terminal": "E"
+      },
+      "destination": {
+       "iata": "ORD",
+       "icao": "KORD",
+       "TZ": ":America/Chicago",
+       "friendlyName": "Chicago O'Hare Intl",
+       "friendlyLocation": "Chicago, IL",
+       "coord": [
+        -87.9081,
+        41.9769
+       ],
+       "gate": "C30",
+       "terminal": null
+      },
+      "gateDepartureTimes": {
+       "scheduled": 1790117700,
+       "estimated": 1790117700,
+       "actual": 1790116800
+      },
+      "cancelled": false
+     },
+     {
+      "origin": {
+       "iata": "IAD",
+       "icao": "KIAD",
+       "TZ": ":America/New_York",
+       "friendlyName": "Washington Dulles Intl",
+       "friendlyLocation": "Washington, DC",
+       "coord": [
+        -77.4599,
+        38.9475
+       ],
+       "gate": "D6",
+       "terminal": null
+      },
+      "destination": {
+       "iata": "DFW",
+       "icao": "KDFW",
+       "TZ": ":America/Chicago",
+       "friendlyName": "Dallas-Fort Worth Intl",
+       "friendlyLocation": "Dallas-Fort Worth, TX",
+       "coord": [
+        -97.0377,
+        32.8972
+       ],
+       "gate": "E5",
+       "terminal": "E"
+      },
+      "gateDepartureTimes": {
+       "scheduled": 1790095200,
+       "estimated": 1790095500,
+       "actual": 1790095380
+      },
+      "cancelled": false
+     },
+     {
+      "origin": {
+       "iata": "DFW",
+       "icao": "KDFW",
+       "TZ": ":America/Chicago",
+       "friendlyName": "Dallas-Fort Worth Intl",
+       "friendlyLocation": "Dallas-Fort Worth, TX",
+       "coord": [
+        -97.0377,
+        32.8972
+       ],
+       "gate": "E8",
+       "terminal": "E"
+      },
+      "destination": {
+       "iata": "ORD",
+       "icao": "KORD",
+       "TZ": ":America/Chicago",
+       "friendlyName": "Chicago O'Hare Intl",
+       "friendlyLocation": "Chicago, IL",
+       "coord": [
+        -87.9081,
+        41.9769
+       ],
+       "gate": "C31",
+       "terminal": "1"
+      },
+      "gateDepartureTimes": {
+       "scheduled": 1790031300,
+       "estimated": 1790032500,
+       "actual": 1790032200
+      },
+      "cancelled": false
+     },
+     {
+      "origin": {
+       "iata": "IAD",
+       "icao": "KIAD",
+       "TZ": ":America/New_York",
+       "friendlyName": "Washington Dulles Intl",
+       "friendlyLocation": "Washington, DC",
+       "coord": [
+        -77.4599,
+        38.9475
+       ],
+       "gate": "D18",
+       "terminal": null
+      },
+      "destination": {
+       "iata": "DFW",
+       "icao": "KDFW",
+       "TZ": ":America/Chicago",
+       "friendlyName": "Dallas-Fort Worth Intl",
+       "friendlyLocation": "Dallas-Fort Worth, TX",
+       "coord": [
+        -97.0377,
+        32.8972
+       ],
+       "gate": "E6",
+       "terminal": "E"
+      },
+      "gateDepartureTimes": {
+       "scheduled": 1790008800,
+       "estimated": 1790008800,
+       "actual": 1790008740
+      },
+      "cancelled": false
+     },
+     {
+      "origin": {
+       "iata": "DFW",
+       "icao": "KDFW",
+       "TZ": ":America/Chicago",
+       "friendlyName": "Dallas-Fort Worth Intl",
+       "friendlyLocation": "Dallas-Fort Worth, TX",
+       "coord": [
+        -97.0377,
+        32.8972
+       ],
+       "gate": "E6",
+       "terminal": "E"
+      },
+      "destination": {
+       "iata": "ORD",
+       "icao": "KORD",
+       "TZ": ":America/Chicago",
+       "friendlyName": "Chicago O'Hare Intl",
+       "friendlyLocation": "Chicago, IL",
+       "coord": [
+        -87.9081,
+        41.9769
+       ],
+       "gate": "B21",
+       "terminal": "1"
+      },
+      "gateDepartureTimes": {
+       "scheduled": 1789944900,
+       "estimated": 1789944900,
+       "actual": 1789945980
+      },
+      "cancelled": false
+     },
+     {
+      "origin": {
+       "iata": "IAD",
+       "icao": "KIAD",
+       "TZ": ":America/New_York",
+       "friendlyName": "Washington Dulles Intl",
+       "friendlyLocation": "Washington, DC",
+       "coord": [
+        -77.4599,
+        38.9475
+       ],
+       "gate": "D19",
+       "terminal": null
+      },
+      "destination": {
+       "iata": "DFW",
+       "icao": "KDFW",
+       "TZ": ":America/Chicago",
+       "friendlyName": "Dallas-Fort Worth Intl",
+       "friendlyLocation": "Dallas-Fort Worth, TX",
+       "coord": [
+        -97.0377,
+        32.8972
+       ],
+       "gate": "E8",
+       "terminal": "E"
+      },
+      "gateDepartureTimes": {
+       "scheduled": 1789922400,
+       "estimated": 1789922400,
+       "actual": 1789922160
+      },
+      "cancelled": false
+     },
+     {
+      "origin": {
+       "iata": "DFW",
+       "icao": "KDFW",
+       "TZ": ":America/Chicago",
+       "friendlyName": "Dallas-Fort Worth Intl",
+       "friendlyLocation": "Dallas-Fort Worth, TX",
+       "coord": [
+        -97.0377,
+        32.8972
+       ],
+       "gate": "E9",
+       "terminal": "E"
+      },
+      "destination": {
+       "iata": "ORD",
+       "icao": "KORD",
+       "TZ": ":America/Chicago",
+       "friendlyName": "Chicago O'Hare Intl",
+       "friendlyLocation": "Chicago, IL",
+       "coord": [
+        -87.9081,
+        41.9769
+       ],
+       "gate": "C30",
+       "terminal": "1"
+      },
+      "gateDepartureTimes": {
+       "scheduled": 1789858500,
+       "estimated": 1789864200,
+       "actual": null
+      },
+      "cancelled": true
+     },
+     {
+      "origin": {
+       "iata": "DFW",
+       "icao": "KDFW",
+       "TZ": ":America/Chicago",
+       "friendlyName": "Dallas-Fort Worth Intl",
+       "friendlyLocation": "Dallas-Fort Worth, TX",
+       "coord": [
+        -97.0377,
+        32.8972
+       ],
+       "gate": "E8",
+       "terminal": "E"
+      },
+      "destination": {
+       "iata": "ORD",
+       "icao": "KORD",
+       "TZ": ":America/Chicago",
+       "friendlyName": "Chicago O'Hare Intl",
+       "friendlyLocation": "Chicago, IL",
+       "coord": [
+        -87.9081,
+        41.9769
+       ],
+       "gate": "C31",
+       "terminal": "1"
+      },
+      "gateDepartureTimes": {
+       "scheduled": 1789772100,
+       "estimated": 1789772100,
+       "actual": 1789771980
+      },
+      "cancelled": false
+     },
+     {
+      "origin": {
+       "iata": "IAD",
+       "icao": "KIAD",
+       "TZ": ":America/New_York",
+       "friendlyName": "Washington Dulles Intl",
+       "friendlyLocation": "Washington, DC",
+       "coord": [
+        -77.4599,
+        38.9475
+       ],
+       "gate": "D8",
+       "terminal": null
+      },
+      "destination": {
+       "iata": "DFW",
+       "icao": "KDFW",
+       "TZ": ":America/Chicago",
+       "friendlyName": "Dallas-Fort Worth Intl",
+       "friendlyLocation": "Dallas-Fort Worth, TX",
+       "coord": [
+        -97.0377,
+        32.8972
+       ],
+       "gate": "E8",
+       "terminal": "E"
+      },
+      "gateDepartureTimes": {
+       "scheduled": 1789749600,
+       "estimated": 1789754400,
+       "actual": 1789754400
+      },
+      "cancelled": false
+     },
+     {
+      "origin": {
+       "iata": "DFW",
+       "icao": "KDFW",
+       "TZ": ":America/Chicago",
+       "friendlyName": "Dallas-Fort Worth Intl",
+       "friendlyLocation": "Dallas-Fort Worth, TX",
+       "coord": [
+        -97.0377,
+        32.8972
+       ],
+       "gate": "E9",
+       "terminal": "E"
+      },
+      "destination": {
+       "iata": "ORD",
+       "icao": "KORD",
+       "TZ": ":America/Chicago",
+       "friendlyName": "Chicago O'Hare Intl",
+       "friendlyLocation": "Chicago, IL",
+       "coord": [
+        -87.9081,
+        41.9769
+       ],
+       "gate": "G4",
+       "terminal": "3"
+      },
+      "gateDepartureTimes": {
+       "scheduled": 1789685700,
+       "estimated": 1789691400,
+       "actual": 1789691640
+      },
+      "cancelled": false
+     },
+     {
+      "origin": {
+       "iata": "IAD",
+       "icao": "KIAD",
+       "TZ": ":America/New_York",
+       "friendlyName": "Washington Dulles Intl",
+       "friendlyLocation": "Washington, DC",
+       "coord": [
+        -77.4599,
+        38.9475
+       ],
+       "gate": "C23",
+       "terminal": null
+      },
+      "destination": {
+       "iata": "DFW",
+       "icao": "KDFW",
+       "TZ": ":America/Chicago",
+       "friendlyName": "Dallas-Fort Worth Intl",
+       "friendlyLocation": "Dallas-Fort Worth, TX",
+       "coord": [
+        -97.0377,
+        32.8972
+       ],
+       "gate": "E4",
+       "terminal": "E"
+      },
+      "gateDepartureTimes": {
+       "scheduled": 1789663200,
+       "estimated": 1789663200,
+       "actual": 1789663380
+      },
+      "cancelled": false
+     },
+     {
+      "origin": {
+       "iata": "DFW",
+       "icao": "KDFW",
+       "TZ": ":America/Chicago",
+       "friendlyName": "Dallas-Fort Worth Intl",
+       "friendlyLocation": "Dallas-Fort Worth, TX",
+       "coord": [
+        -97.0377,
+        32.8972
+       ],
+       "gate": "E8",
+       "terminal": "E"
+      },
+      "destination": {
+       "iata": "ORD",
+       "icao": "KORD",
+       "TZ": ":America/Chicago",
+       "friendlyName": "Chicago O'Hare Intl",
+       "friendlyLocation": "Chicago, IL",
+       "coord": [
+        -87.9081,
+        41.9769
+       ],
+       "gate": "B22",
+       "terminal": "1"
+      },
+      "gateDepartureTimes": {
+       "scheduled": 1789599300,
+       "estimated": 1789610340,
+       "actual": 1789610280
+      },
+      "cancelled": false
+     },
+     {
+      "origin": {
+       "iata": "IAD",
+       "icao": "KIAD",
+       "TZ": ":America/New_York",
+       "friendlyName": "Washington Dulles Intl",
+       "friendlyLocation": "Washington, DC",
+       "coord": [
+        -77.4599,
+        38.9475
+       ],
+       "gate": "D6",
+       "terminal": null
+      },
+      "destination": {
+       "iata": "DFW",
+       "icao": "KDFW",
+       "TZ": ":America/Chicago",
+       "friendlyName": "Dallas-Fort Worth Intl",
+       "friendlyLocation": "Dallas-Fort Worth, TX",
+       "coord": [
+        -97.0377,
+        32.8972
+       ],
+       "gate": "E5",
+       "terminal": "E"
+      },
+      "gateDepartureTimes": {
+       "scheduled": 1789576800,
+       "estimated": 1789577400,
+       "actual": 1789577280
+      },
+      "cancelled": false
+     },
+     {
+      "origin": {
+       "iata": "DFW",
+       "icao": "KDFW",
+       "TZ": ":America/Chicago",
+       "friendlyName": "Dallas-Fort Worth Intl",
+       "friendlyLocation": "Dallas-Fort Worth, TX",
+       "coord": [
+        -97.0377,
+        32.8972
+       ],
+       "gate": "E4",
+       "terminal": "E"
+      },
+      "destination": {
+       "iata": "ORD",
+       "icao": "KORD",
+       "TZ": ":America/Chicago",
+       "friendlyName": "Chicago O'Hare Intl",
+       "friendlyLocation": "Chicago, IL",
+       "coord": [
+        -87.9081,
+        41.9769
+       ],
+       "gate": "B20",
+       "terminal": "1"
+      },
+      "gateDepartureTimes": {
+       "scheduled": 1789512900,
+       "estimated": 1789516500,
+       "actual": 1789516260
+      },
+      "cancelled": false
+     },
+     {
+      "origin": {
+       "iata": "IAD",
+       "icao": "KIAD",
+       "TZ": ":America/New_York",
+       "friendlyName": "Washington Dulles Intl",
+       "friendlyLocation": "Washington, DC",
+       "coord": [
+        -77.4599,
+        38.9475
+       ],
+       "gate": "D8",
+       "terminal": null
+      },
+      "destination": {
+       "iata": "DFW",
+       "icao": "KDFW",
+       "TZ": ":America/Chicago",
+       "friendlyName": "Dallas-Fort Worth Intl",
+       "friendlyLocation": "Dallas-Fort Worth, TX",
+       "coord": [
+        -97.0377,
+        32.8972
+       ],
+       "gate": "E4",
+       "terminal": "E"
+      },
+      "gateDepartureTimes": {
+       "scheduled": 1789490400,
+       "estimated": 1789490400,
+       "actual": 1789490280
+      },
+      "cancelled": false
+     }
+    ]
+   }
+  }
+ }
+}

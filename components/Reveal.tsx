@@ -18,6 +18,7 @@ import { planRows } from "@/lib/plan-rows";
 import type { Profile } from "@/lib/profile";
 import { track } from "@/lib/track";
 import { airlineLogoUrl, appleMapsLink, dropoffCoord, dropoffLabel, flightStatusLink, googleMapsLink, lyftLink, reminderLink, shareText, uberLink } from "@/lib/ride-links";
+import { instantToZonedParts } from "@/lib/tz";
 import type { PlanRequest, PlanResult } from "@/types/plan";
 
 interface LiveStatus {
@@ -46,7 +47,6 @@ export function Reveal({
   onReset,
   planUrl,
   sharedAt,
-  onFixFlight,
 }: {
   result: PlanResult;
   request: PlanRequest;
@@ -57,8 +57,6 @@ export function Reveal({
   onReset: () => void;
   planUrl: string;
   sharedAt: string | null;
-  /** Send the traveler to enter the airport and time themselves when the flight couldn't be verified. */
-  onFixFlight?: () => void;
 }) {
   const reduce = useReducedMotion();
   const [editing, setEditing] = useState(false);
@@ -84,12 +82,16 @@ export function Reveal({
     return () => clearTimeout(t);
   }, [plan.leaveISO]);
 
-  // Live status: refresh every two minutes while the reveal is open.
+  // Live status: refresh every two minutes while the reveal is open, for exactly this
+  // departure (airport and scheduled time), never another leg of the same flight number.
+  const legTime = request.leg?.time ?? request.manual?.departureTime ?? instantToZonedParts(new Date(f.departureTime), tz).hhmm;
   useEffect(() => {
     let cancelled = false;
     const load = async () => {
       try {
-        const res = await fetch(`/api/flight?flight=${encodeURIComponent(f.flightNumber)}&date=${encodeURIComponent(request.date)}&airport=${encodeURIComponent(f.departureAirport)}`);
+        const res = await fetch(
+          `/api/flight?flight=${encodeURIComponent(f.flightNumber)}&date=${encodeURIComponent(request.date)}&airport=${encodeURIComponent(f.departureAirport)}&time=${encodeURIComponent(legTime)}`,
+        );
         if (!res.ok) return;
         const json = (await res.json()) as LiveStatus;
         if (!cancelled) setLive(json);
@@ -103,7 +105,7 @@ export function Reveal({
       cancelled = true;
       clearInterval(t);
     };
-  }, [f.flightNumber, request.date, f.departureAirport]);
+  }, [f.flightNumber, request.date, f.departureAirport, legTime]);
 
   const leave = fmtTime(plan.leaveISO, tz);
   const day = fmtDay(plan.leaveISO, tz);
@@ -145,7 +147,7 @@ export function Reveal({
     }
   };
 
-  const ready = isReady(values, null);
+  const ready = isReady(values);
   const tone = late ? "coral" : soon ? "mustard" : "paper";
 
   return (
@@ -269,18 +271,11 @@ export function Reveal({
         </div>
       </motion.section>
 
-      {f.source === "Web search" || f.source.startsWith("Fallback") ? (
-        <motion.div variants={rise} className="rounded-[18px] bg-coral-pale px-4 py-3 text-[13.5px] leading-snug" role="alert">
-          <p className="font-semibold text-ink">Is this your flight?</p>
-          <p className="mt-1 text-ink-2">
-            We couldn’t confirm {f.flightNumber} against a live schedule. We have it leaving <b className="font-semibold text-ink">{f.departureAirport}</b>
-            {f.destinationAirportCode ? ` for ${f.destinationAirportCode}` : ""} at <b className="font-semibold text-ink">{fmtTimeShort(f.departureTime, tz)}</b>. If that’s wrong, this leave time is too.
-          </p>
-          {onFixFlight ? (
-            <button type="button" onClick={onFixFlight} className="mt-2 text-[13.5px] font-semibold text-ink underline underline-offset-4">
-              Enter my airport and time
-            </button>
-          ) : null}
+      {f.notes.length ? (
+        <motion.div variants={rise} className="rounded-[18px] bg-mustard-soft px-4 py-3 text-[13.5px] leading-snug" role="status">
+          {f.notes.map((note) => (
+            <p key={note}>{note}</p>
+          ))}
         </motion.div>
       ) : null}
 
