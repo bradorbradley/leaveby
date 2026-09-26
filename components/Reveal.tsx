@@ -46,6 +46,7 @@ export function Reveal({
   onReset,
   planUrl,
   sharedAt,
+  onFixFlight,
 }: {
   result: PlanResult;
   request: PlanRequest;
@@ -56,6 +57,8 @@ export function Reveal({
   onReset: () => void;
   planUrl: string;
   sharedAt: string | null;
+  /** Send the traveler to enter the airport and time themselves when the flight couldn't be verified. */
+  onFixFlight?: () => void;
 }) {
   const reduce = useReducedMotion();
   const [editing, setEditing] = useState(false);
@@ -86,7 +89,7 @@ export function Reveal({
     let cancelled = false;
     const load = async () => {
       try {
-        const res = await fetch(`/api/flight?flight=${encodeURIComponent(f.flightNumber)}&date=${encodeURIComponent(request.date)}`);
+        const res = await fetch(`/api/flight?flight=${encodeURIComponent(f.flightNumber)}&date=${encodeURIComponent(request.date)}&airport=${encodeURIComponent(f.departureAirport)}`);
         if (!res.ok) return;
         const json = (await res.json()) as LiveStatus;
         if (!cancelled) setLive(json);
@@ -100,7 +103,7 @@ export function Reveal({
       cancelled = true;
       clearInterval(t);
     };
-  }, [f.flightNumber, request.date]);
+  }, [f.flightNumber, request.date, f.departureAirport]);
 
   const leave = fmtTime(plan.leaveISO, tz);
   const day = fmtDay(plan.leaveISO, tz);
@@ -265,6 +268,21 @@ export function Reveal({
           </p>
         </div>
       </motion.section>
+
+      {f.source === "Web search" || f.source.startsWith("Fallback") ? (
+        <motion.div variants={rise} className="rounded-[18px] bg-coral-pale px-4 py-3 text-[13.5px] leading-snug" role="alert">
+          <p className="font-semibold text-ink">Is this your flight?</p>
+          <p className="mt-1 text-ink-2">
+            We couldn’t confirm {f.flightNumber} against a live schedule. We have it leaving <b className="font-semibold text-ink">{f.departureAirport}</b>
+            {f.destinationAirportCode ? ` for ${f.destinationAirportCode}` : ""} at <b className="font-semibold text-ink">{fmtTimeShort(f.departureTime, tz)}</b>. If that’s wrong, this leave time is too.
+          </p>
+          {onFixFlight ? (
+            <button type="button" onClick={onFixFlight} className="mt-2 text-[13.5px] font-semibold text-ink underline underline-offset-4">
+              Enter my airport and time
+            </button>
+          ) : null}
+        </motion.div>
+      ) : null}
 
       {airportAlerts.length ? (
         <motion.div variants={rise} className="flex items-start gap-2 rounded-[18px] px-4 py-3 text-[13.5px] font-medium leading-snug" style={{ background: "var(--mustard-soft)", boxShadow: "inset 0 1px 0 rgba(255,255,255,0.6)" }} role="status">

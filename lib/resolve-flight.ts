@@ -2,7 +2,7 @@ import { airlineNameFromIata } from "@/lib/airline-codes";
 import { getAirportProfile } from "@/lib/airports";
 import { parseFlightNumber } from "@/lib/flight-utils";
 import { FAST_MODEL, hasOpenAI, openai } from "@/lib/openai";
-import { fetchFlightInfo } from "@/lib/scrapers/flight";
+import { fetchFlightInfo, haversineKm, type LegHint } from "@/lib/scrapers/flight";
 import { formatInZone, zonedTimeToUtcISO } from "@/lib/tz";
 import type { FlightInfo } from "@/types/flight";
 import type { ManualFlight } from "@/types/plan";
@@ -14,13 +14,34 @@ export class FlightNotFoundError extends Error {
   }
 }
 
+/** A departure airport this far from where the traveler starts means we found the wrong flight or leg. */
+const MAX_AIRPORT_KM = 300;
+
 /**
  * Resolve a flight number + date into a FlightInfo.
  * 1. FlightAware / flight-status.com scrape (fast, timezone-correct).
  * 2. OpenAI web search with a strict schema.
  * 3. Throw FlightNotFoundError so the UI can ask for airport + time.
+ * `hint` says where the traveler is, so multi-leg flight numbers resolve to their leg
+ * and a flight departing somewhere else entirely is caught instead of planned.
  */
-export async function resolveFlight(flightNumber: string, date: string, manual?: ManualFlight | null): Promise<FlightInfo> {
+export async function resolveFlight(flightNumber: string, date: string, manual?: ManualFlight | null, hint: LegHint & { nearLabel?: string | null } = {}): Promise<FlightInfo> {
+  const flight = await resolveUnchecked(flightNumber, date, manual, hint);
+  if (manual?.airport && manual.departureTime) return flight;
+  if (hint.airport && flight.departureAirport !== hint.airport) {
+    throw new FlightNotFoundError(`${flight.flightNumber} from ${hint.airport} isn't in today's schedule data.`);
+  }
+  if (hint.near && flight.airportCoord && haversineKm(hint.near, flight.airportCoord) > MAX_AIRPORT_KM) {
+    const where = flight.departureAirportName ? `${flight.departureAirport} (${flight.departureAirportName})` : flight.departureAirport;
+    console.warn(`[flight] ${flight.flightNumber} ${date} resolved to ${flight.departureAirport} via ${flight.source}, far from the traveler`);
+    throw new FlightNotFoundError(
+      `We found ${flight.flightNumber} leaving from ${where}, which is far from where you're starting. Check the flight number and date, or enter your departure airport and time.`,
+    );
+  }
+  return flight;
+}
+
+async function resolveUnchecked(flightNumber: string, date: string, manual: ManualFlight | null | undefined, hint: LegHint & { nearLabel?: string | null }): Promise<FlightInfo> {
   const parsed = parseFlightNumber(flightNumber);
   if (!parsed) throw new FlightNotFoundError("That doesn't look like a flight number. Try DL 405.");
 
@@ -31,7 +52,7 @@ export async function resolveFlight(flightNumber: string, date: string, manual?:
   // The schedule scrape is fast but can stall or get rate-limited; try twice.
   for (let attempt = 1; attempt <= 2; attempt++) {
     try {
-      const scraped = await fetchFlightInfo(parsed.normalized, date);
+      const scraped = await fetchFlightInfo(parsed.normalized, date, hint);
       if (!scraped.source.startsWith("Fallback")) return scraped;
       console.warn(`[flight] scrape attempt ${attempt} found no schedule for ${parsed.normalized} ${date}`);
     } catch (error) {
@@ -42,7 +63,7 @@ export async function resolveFlight(flightNumber: string, date: string, manual?:
 
   if (hasOpenAI()) {
     try {
-      const found = await resolveViaOpenAI(parsed.normalized, date);
+      const found = await resolveViaOpenAI(parsed.normalized, date, hint);
       if (found) return found;
       console.warn(`[flight] web search did not find ${parsed.normalized} ${date}`);
     } catch (error) {
@@ -151,12 +172,17 @@ interface OpenAIFlight {
   status: "scheduled" | "delayed" | "cancelled" | "unknown";
 }
 
-async function resolveViaOpenAI(flightNumber: string, date: string): Promise<FlightInfo | null> {
+async function resolveViaOpenAI(flightNumber: string, date: string, hint: LegHint & { nearLabel?: string | null } = {}): Promise<FlightInfo | null> {
+  const where = hint.airport
+    ? ` The traveler is departing from ${hint.airport}.`
+    : hint.near
+      ? ` The traveler is starting near ${hint.nearLabel ? `${hint.nearLabel} ` : ""}(${hint.near.lat.toFixed(2)}, ${hint.near.lon.toFixed(2)}).`
+      : "";
   try {
     const response = await openai().responses.create({
       model: FAST_MODEL,
       tools: [{ type: "web_search" }],
-      input: `Look up flight ${flightNumber} departing on ${date}. Find the departure airport (IATA code), its IANA timezone and coordinates, the departure terminal if published, the scheduled local departure time on that date, the destination, and whether the route is international. If this flight number does not operate on that date, set found=false. departureLocal must be the local wall-clock time formatted YYYY-MM-DDTHH:mm.`,
+      input: `Look up flight ${flightNumber} departing on ${date}.${where} One flight number often flies several legs in a day with different origins; return the single leg the traveler is on (the one departing the airport nearest them), never a different leg. Find the departure airport (IATA code), its IANA timezone and coordinates, the departure terminal if published, the scheduled local departure time on that date, the destination, and whether the route is international. If this flight number does not operate on that date, set found=false. departureLocal must be the local wall-clock time formatted YYYY-MM-DDTHH:mm.`,
       text: {
         format: {
           type: "json_schema",
@@ -222,7 +248,7 @@ async function resolveViaOpenAI(flightNumber: string, date: string): Promise<Fli
       delayMinutes: 0,
       region: json.international ? "international" : "domestic",
       source: "Web search",
-      notes: [],
+      notes: ["We couldn't confirm this flight against a live schedule. Check the airport and departure time with your airline."],
     };
   } catch {
     return null;

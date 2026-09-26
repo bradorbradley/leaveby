@@ -11,9 +11,11 @@ export async function GET(request: NextRequest) {
   const params = request.nextUrl.searchParams;
   const flightNumber = params.get("flight") ?? "";
   const date = params.get("date") ?? "";
+  const airport = (params.get("airport") ?? "").toUpperCase() || null;
   if (!flightNumber || !/^\d{4}-\d{2}-\d{2}$/.test(date)) return Response.json({ error: "flight and date required" }, { status: 400 });
   try {
-    const f = await resolveFlight(flightNumber, date);
+    // Stick to the leg the plan was built for; a multi-leg flight number has others.
+    const f = await resolveFlight(flightNumber, date, null, { airport });
     const airportAlerts = await faaAlerts(f.departureAirport, f.destinationAirportCode, f.departureTime).catch((): string[] => []);
     return Response.json(
       {

@@ -5,6 +5,9 @@ import type { AirportCode } from "@/types/airport";
 
 const AIRPORT_REGEX = /\b(ATL|AUS|BNA|BOS|CLT|DCA|DEN|DFW|DTW|EWR|FLL|IAD|IAH|JFK|LAS|LAX|LGA|MCO|MIA|MSP|ORD|PDX|PHL|PHX|SAN|SEA|SFO)\b/g;
 
+/** Codes people type that aren't the airline's IATA code: Southwest is WN, not SW; some type ICAO codes like UAL. */
+const AIRLINE_ALIASES: Record<string, string> = { SW: "WN", SWA: "WN", UAL: "UA", AAL: "AA", DAL: "DL", JBU: "B6", ASA: "AS", NKS: "NK", FFT: "F9", HAL: "HA", SKW: "OO" };
+
 export function parseFlightNumber(input: string) {
   const normalized = input.trim().toUpperCase().replace(/\s+/g, "");
   // Try 2-letter IATA code first (most common: DL, UA, AA, etc.)
@@ -17,7 +20,8 @@ export function parseFlightNumber(input: string) {
     return null;
   }
 
-  const [, airlineCode, flightDigits] = match;
+  const [, typed, flightDigits] = match;
+  const airlineCode = AIRLINE_ALIASES[typed] ?? typed;
   const airline = getAirlineProfile(airlineCode);
   return {
     airlineCode,

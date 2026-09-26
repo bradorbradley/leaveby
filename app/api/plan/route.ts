@@ -1,5 +1,6 @@
 import { NextRequest } from "next/server";
 
+import { geocodeOrigin } from "@/lib/geo";
 import { computePlan } from "@/lib/plan-math";
 import { researchTrip } from "@/lib/research";
 import { FlightNotFoundError, resolveFlight } from "@/lib/resolve-flight";
@@ -31,9 +32,18 @@ export async function POST(request: NextRequest) {
           return;
         }
 
+        // Locate the traveler first: it picks the right leg of a multi-leg flight number
+        // and catches a flight that departs somewhere else entirely.
+        let origin = body.origin ?? null;
+        if (origin && typeof origin.lat !== "number" && origin.text?.trim()) {
+          const geocoded = await geocodeOrigin(origin.text).catch(() => null);
+          if (geocoded) origin = { ...origin, lat: geocoded.lat, lon: geocoded.lon, label: origin.label ?? geocoded.label };
+        }
+        const near = origin && typeof origin.lat === "number" && typeof origin.lon === "number" ? { lat: origin.lat, lon: origin.lon } : null;
+
         let flight;
         try {
-          flight = await resolveFlight(body.flightNumber, body.date, body.manual);
+          flight = await resolveFlight(body.flightNumber, body.date, body.manual, { near, nearLabel: origin?.label ?? origin?.text ?? null });
         } catch (error) {
           if (error instanceof FlightNotFoundError) {
             send({ type: "flight_notfound", message: error.message });
@@ -54,7 +64,7 @@ export async function POST(request: NextRequest) {
         }
 
         const [route, weather, terminalCoord, airportAlerts] = await Promise.all([
-          estimateRoute(body.origin ?? null, flight),
+          estimateRoute(origin, flight),
           fetchWeather(flight).catch((): WeatherEstimate | null => null),
           resolveTerminalCoord(flight).catch(() => null),
           faaAlerts(flight.departureAirport, flight.destinationAirportCode, flight.departureTime).catch((): string[] => []),
