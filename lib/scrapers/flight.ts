@@ -110,25 +110,12 @@ async function fetchFromFlightAware(
   hint: LegHint = {},
 ): Promise<Omit<FlightInfo, "flightNumber" | "airlineCode" | "airlineName"> | null> {
   const ident = iataToIcaoIdent(airlineIata, flightDigits) ?? `${airlineIata}${flightDigits}`;
-  const response = await fetch(`https://www.flightaware.com/live/flight/${ident}`, {
-    headers: FETCH_HEADERS,
-    signal: AbortSignal.timeout(9000),
-    cache: "no-store",
-  });
-  if (!response.ok) {
-    console.warn(`[flightaware] HTTP ${response.status} for ${ident}`);
-    return null;
-  }
-  const html = await response.text();
-  const blobMatch = html.match(/trackpollBootstrap = (\{[\s\S]*?\});<\/script>/);
-  if (!blobMatch) {
-    console.warn(`[flightaware] no schedule data in page for ${ident} (${html.length} bytes${/captcha|challenge|cf-|access denied/i.test(html) ? ", bot check" : ""})`);
-    return null;
-  }
+  const blob = await flightAwareBootstrap(ident);
+  if (!blob) return null;
 
   let bootstrap: { flights?: Record<string, { activityLog?: { flights?: FlightAwareLeg[] } } & FlightAwareLeg> };
   try {
-    bootstrap = JSON.parse(blobMatch[1]);
+    bootstrap = JSON.parse(blob);
   } catch {
     return null;
   }
@@ -172,6 +159,35 @@ async function fetchFromFlightAware(
       "Exact-day schedule data appears closer to departure — re-check the day before you fly.",
     ],
   };
+}
+
+// FlightAware throttles a server that asks too often, and every open result screen
+// re-checks its flight. Reuse a page for a few minutes; back off briefly after a failure.
+const PAGE_TTL_MS = 4 * 60_000;
+const FAIL_TTL_MS = 45_000;
+const pageCache = new Map<string, { at: number; blob: string | null }>();
+
+async function flightAwareBootstrap(ident: string): Promise<string | null> {
+  const hit = pageCache.get(ident);
+  if (hit && Date.now() - hit.at < (hit.blob ? PAGE_TTL_MS : FAIL_TTL_MS)) return hit.blob;
+  const remember = (blob: string | null) => {
+    if (pageCache.size > 500) pageCache.clear();
+    pageCache.set(ident, { at: Date.now(), blob });
+    return blob;
+  };
+  const response = await fetch(`https://www.flightaware.com/live/flight/${ident}`, {
+    headers: FETCH_HEADERS,
+    signal: AbortSignal.timeout(9000),
+    cache: "no-store",
+  });
+  if (!response.ok) {
+    console.warn(`[flightaware] HTTP ${response.status} for ${ident}`);
+    return remember(null);
+  }
+  const html = await response.text();
+  const blob = html.match(/trackpollBootstrap = (\{[\s\S]*?\});<\/script>/)?.[1] ?? null;
+  if (!blob) console.warn(`[flightaware] no schedule data in page for ${ident} (${html.length} bytes${/captcha|challenge|cf-|access denied/i.test(html) ? ", bot check" : ""})`);
+  return remember(blob);
 }
 
 function legDistanceKm(leg: FlightAwareLeg, near: { lat: number; lon: number }) {
