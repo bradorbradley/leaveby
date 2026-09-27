@@ -47,7 +47,7 @@ export function planRows(plan: PlanResult): { rows: PlanRow[]; total: number; la
       const from = cleared;
       cleared = stop.iso;
       const min = minutesBetween(from, stop.iso);
-      const eyebrow = i === 0 ? "In line by" : `Through ${all[i - 1].key === "border" ? borderTitle.toLowerCase() : "security"} by`;
+      const eyebrow = i === 0 ? "In line by" : `Through ${all[i - 1].key === "border" ? borderTitle.charAt(0).toLowerCase() + borderTitle.slice(1) : "security"} by`;
       return stop.key === "security"
         ? { key: "security" as const, iso: from, title: "Security", eyebrow, seg: { label: "Security", min }, lead: r.checkpoint, notes: securityNotes }
         : { key: "border" as const, iso: from, title: borderTitle, eyebrow, seg: { label: "Wait", min }, notes: r.borderNotes ?? [] };
