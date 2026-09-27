@@ -28,7 +28,9 @@ export function computePlan(input: PlanMathInput): PlanResult {
 
   // Security and passport control, in the order this airport runs them.
   const border = Math.max(0, r.borderMinutes ?? 0);
-  const borderName = (r.borderLabel || "passport control").toLowerCase();
+  // Lowercase only the first letter so "Passport control (EES)" keeps its acronym mid-sentence.
+  const label = r.borderLabel || "Passport control";
+  const borderName = label.charAt(0).toLowerCase() + label.slice(1);
   const screening: Array<{ key: "security" | "border"; minutes: number; label: string }> = [
     { key: "security" as const, minutes: r.securityMinutes, label: "Through security" },
     ...(border > 0 ? [{ key: "border" as const, minutes: border, label: `Through ${borderName}` }] : []),
