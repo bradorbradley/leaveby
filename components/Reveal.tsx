@@ -340,7 +340,7 @@ export function Reveal({
         </div>
         <div className="mt-4">
           <PlanChapters
-            chapters={rows.map((row) => ({ key: row.key, iso: row.iso, title: row.title, segLabel: row.seg?.label, segMin: row.seg?.min, lead: row.lead, notes: row.notes }))}
+            chapters={rows.map((row) => ({ key: row.key, iso: row.iso, title: row.title, eyebrow: row.eyebrow, segLabel: row.seg?.label, segMin: row.seg?.min, lead: row.lead, notes: row.notes }))}
             mode={result.mode}
             tz={tz}
             latestISO={latestISO}

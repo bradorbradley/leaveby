@@ -1,4 +1,5 @@
 import { getAirportProfile, getTerminalProfile } from "@/lib/airports";
+import { borderStep, countryName, usScreening, type BorderStep } from "@/lib/border";
 import { FAST_MODEL, hasOpenAI, openai } from "@/lib/openai";
 import { instantToZonedParts } from "@/lib/tz";
 import type { FlightInfo } from "@/types/flight";
@@ -110,7 +111,8 @@ export function applyWeather(research: Research, input: ResearchInput): Research
   return out;
 }
 
-function laneList(perks: Perks): string[] {
+function laneList(perks: Perks, us: boolean): string[] {
+  if (!us) return [];
   return [
     perks.touchlessId && "TSA PreCheck Touchless ID / the airline's Digital ID (face scan)",
     perks.clear && "CLEAR",
@@ -119,7 +121,8 @@ function laneList(perks: Perks): string[] {
   ].filter((x): x is string => Boolean(x));
 }
 
-function describeLanes(perks: Perks): string {
+function describeLanes(perks: Perks, us: boolean): string {
+  if (!us) return "none apply here: TSA PreCheck, CLEAR and Touchless ID exist only at US airports, so standard security";
   const lanes = [
     perks.precheck && "TSA PreCheck",
     perks.globalEntry && "Global Entry (which includes TSA PreCheck)",
@@ -141,6 +144,10 @@ interface TripContext {
   weatherLine: string;
   tz: string;
   modeLine: string;
+  /** TSA programs exist at this airport. */
+  us: boolean;
+  border: BorderStep;
+  destinationLine: string;
 }
 
 function buildContext(input: ResearchInput): TripContext {
@@ -150,8 +157,14 @@ function buildContext(input: ResearchInput): TripContext {
   const depParts = instantToZonedParts(dep, tz);
   const arrival = instantToZonedParts(new Date(dep.getTime() - 2 * 3600_000), tz);
   const airportName = flight.departureAirportName ? `${flight.departureAirport} (${flight.departureAirportName})` : flight.departureAirport;
+  const us = usScreening(flight.departureAirport);
+  const border = borderStep(flight.departureAirport, flight.destinationAirportCode);
+  const destination = flight.destinationCity ?? flight.destinationAirportCode ?? "its destination";
   return {
     tz,
+    us,
+    border,
+    destinationLine: border.toCountry ? `${destination} (${countryName(border.toCountry)})` : destination,
     flightLine: `${flight.flightNumber} (${flight.airlineName}), ${flight.region}, departing ${airportName} at ${depParts.hhmm} on ${depParts.weekday} ${depParts.isoDate} to ${flight.destinationCity ?? flight.destinationAirportCode ?? "unknown"}`,
     terminalLabel: flight.terminal ? `${flight.departureAirport} Terminal ${flight.terminal}` : `${flight.departureAirport} (terminal not published; find which terminal ${flight.airlineName} uses)`,
     arrivalHour: arrival.hhmm,
@@ -160,7 +173,7 @@ function buildContext(input: ResearchInput): TripContext {
     originLine: route.originLabel
       ? `${route.originLabel}${route.freeFlowMinutes ? ` (routing engine: ${route.freeFlowMinutes} min with no traffic, ${route.distanceKm ?? "?"} km)` : ""}`
       : "not given; assume a typical trip from within the metro area",
-    lanes: describeLanes(perks),
+    lanes: describeLanes(perks, us),
     bag: checkedBag ? "checking a bag" : "carry-on only with a mobile boarding pass",
     weatherLine: weather ? `${weather.summary}${weather.notes.length ? ` ${weather.notes.join(" ")}` : ""}` : "unknown",
     modeLine:
@@ -196,16 +209,38 @@ function scoutPrompts(c: TripContext, input: ResearchInput): Array<{ stage: Scou
       stage: "security",
       cacheKey: `security|${terminalKey}|${c.weekday}|${hourBucket}|${c.lanes}`,
       question: (() => {
-        const lanes = laneList(input.perks);
-        const laneQ = lanes.length
-          ? `The traveler has: ${lanes.join("; ")}. For EACH of these at ${c.terminalLabel}: does it exist here, what are its hours, and what is the typical wait around ${c.arrivalHour} on a ${c.weekday}? Which one is fastest at that hour? Note if CLEAR or PreCheck lanes back up at peak times despite the perk.`
-          : `The traveler has no expedited screening. What do standard lanes at ${c.terminalLabel} run around ${c.arrivalHour} on a ${c.weekday}?`;
+        const lanes = laneList(input.perks, c.us);
+        const laneQ = !c.us
+          ? `This is outside the US, so there is no TSA PreCheck or CLEAR. What does the security line at ${c.terminalLabel} typically run around ${c.arrivalHour} on a ${c.weekday}, for flights to ${c.destinationLine}? Is there a fast-track lane, and who can use it?`
+          : lanes.length
+            ? `The traveler has: ${lanes.join("; ")}. For EACH of these at ${c.terminalLabel}: does it exist here, what are its hours, and what is the typical wait around ${c.arrivalHour} on a ${c.weekday}? Which one is fastest at that hour? Note if CLEAR or PreCheck lanes back up at peak times despite the perk.`
+            : `The traveler has no expedited screening. What do standard lanes at ${c.terminalLabel} run around ${c.arrivalHour} on a ${c.weekday}?`;
         const gateQ = flight.gate
           ? `Then the walk: how many minutes from that checkpoint to gate ${flight.gate}, and is there a train, a long concourse, or a far pier involved?`
           : `Then the walk: how many minutes from that checkpoint to ${flight.airlineName}'s gates in this terminal, and is there a train, a long concourse, or a far pier involved?`;
         return `Security at ${c.terminalLabel} for ${flight.airlineName}. ${laneQ} Which checkpoints does this terminal have, which is usually shorter, and which entrance leads to the expedited lanes? ${gateQ}`;
       })(),
     },
+    ...(flight.region === "international" || c.border.kind !== "none"
+      ? [
+          {
+            stage: "rules" as const,
+            cacheKey: `rules|${flight.departureAirport}|${flight.airlineCode}|${c.border.toCountry ?? "?"}|${c.weekday}|${hourBucket}`,
+            question: [
+              `An international trip: ${flight.airlineName} ${flight.flightNumber} from ${c.terminalLabel} to ${c.destinationLine}, at the airport around ${c.arrivalHour} on a ${c.weekday}.`,
+              `What must the traveler clear between the curb and the gate, and how long does each take at that hour?`,
+              `(1) Check-in: must they see an agent for a document check even after checking in online, is there security questioning at check-in${c.border.usBound ? " for US-bound flights" : ""}, and when does ${flight.airlineName}'s check-in close for this flight?`,
+              c.border.kind === "preclearance"
+                ? `(2) US preclearance here: where it is, and the typical wait for US passport holders and for Global Entry at that hour.`
+                : c.border.kind === "exit"
+                  ? `(2) Passport (exit) control: is it before or after security, is there a separate area for flights to ${countryName(c.border.toCountry)}, e-gates, and the typical wait at that hour${c.border.schengenExit ? " for non-EU passport holders, now that the EU Entry/Exit System (EES) takes biometrics on exit" : ""}.`
+                  : `(2) Any passport or exit control on this route.`,
+              c.border.usBound ? `(3) Extra screening for flights to the US at this airport: does it exist, where (a separate checkpoint or at the gate), and how long.` : `(3) Any extra screening for this destination.`,
+              `(4) When does boarding start and when does the gate close for this flight? Which gate area do these flights use? Check the airport's official website first, and give its advice on how early to arrive.`,
+            ].join(" "),
+          },
+        ]
+      : []),
   ];
 }
 
@@ -291,9 +326,13 @@ const SCHEMA = {
   additionalProperties: false,
   properties: {
     driveMinutes: { type: "integer", description: "Door to the terminal with traffic for that hour. For driving, include parking and the lot-to-terminal walk or shuttle. For transit, the full door-to-terminal trip including waits." },
-    curbToCheckpointMinutes: { type: "integer", description: "Curb or terminal entrance to the checkpoint they should use, including bag drop if they check a bag" },
+    curbToCheckpointMinutes: { type: "integer", description: "Curb or terminal entrance to the checkpoint they should use, including bag drop if they check a bag, and any required document check or security questioning at check-in" },
     securityMinutes: { type: "integer", description: "Queue plus screening for their lane at their arrival hour" },
-    checkpointToGateMinutes: { type: "integer", description: "Checkpoint to gate area, including trains or long walks" },
+    borderMinutes: { type: "integer", description: "Passport (exit) control or US preclearance, plus any extra screening for this destination (for example a separate US-flights check), in minutes. 0 when the trip has none." },
+    borderLabel: { type: "string", description: "Title for that step, e.g. 'Passport control' or 'Passport control and US flight screening'. Empty when borderMinutes is 0." },
+    borderNotes: { type: "array", items: { type: "string" }, description: "0 to 2 short notes for that step: where it is, its typical wait, extra screening for this destination" },
+    borderBeforeSecurity: { type: "boolean", description: "True only if the notes say passport control comes before the security checkpoint at this airport. False otherwise, including when borderMinutes is 0." },
+    checkpointToGateMinutes: { type: "integer", description: "Checkpoint (or passport control) to gate area, including trains or long walks" },
     boardingLeadMinutes: { type: "integer", description: "Minutes before departure that boarding starts" },
     bagDropCutoffMinutes: { type: ["integer", "null"], description: "Airline bag-drop cutoff in minutes before departure, null if no checked bag" },
     checkpoint: { type: "string", description: "The checkpoint to use, e.g. 'Terminal 4 main checkpoint, departures level'" },
@@ -308,6 +347,10 @@ const SCHEMA = {
     "driveMinutes",
     "curbToCheckpointMinutes",
     "securityMinutes",
+    "borderMinutes",
+    "borderLabel",
+    "borderNotes",
+    "borderBeforeSecurity",
     "checkpointToGateMinutes",
     "boardingLeadMinutes",
     "bagDropCutoffMinutes",
@@ -344,6 +387,7 @@ async function runResearch(input: ResearchInput): Promise<Research | null> {
 - Getting there: ${c.modeLine}
 - Bag: ${c.bag}
 - Skip-the-line: ${c.lanes}
+- Border: ${c.border.kind === "none" ? "no passport control on this route" : `${c.border.label} applies (${c.border.kind === "preclearance" ? "US customs and immigration before departure" : `leaving ${countryName(c.border.fromCountry)} for ${countryName(c.border.toCountry)}`})`}${c.border.usBound ? "; US-bound flight, check for extra screening" : ""}
 - Weather (for context only; the app adds weather time and notes itself): ${c.weatherLine}
 
 ## Verified research notes (live web searches just now, each backed by cited sources)
@@ -354,6 +398,7 @@ ${failed.length ? `\n(No verified note for: ${failed.join(", ")}. For those piec
 - driveMinutes ${baseline.driveMinutes}${input.route.freeFlowMinutes ? ` (routing engine free-flow ${input.route.freeFlowMinutes})` : ""}
 - curbToCheckpointMinutes ${baseline.curbToCheckpointMinutes}
 - securityMinutes ${baseline.securityMinutes} for ${baseline.lane}
+- borderMinutes ${baseline.borderMinutes ?? 0}${c.border.kind === "none" ? " (none on this route: return 0)" : ` for ${c.border.label}`}
 - checkpointToGateMinutes ${baseline.checkpointToGateMinutes}
 - boardingLeadMinutes ${baseline.boardingLeadMinutes}
 - bagDropCutoffMinutes ${baseline.bagDropCutoffMinutes ?? "n/a"}
@@ -362,11 +407,13 @@ ${failed.length ? `\n(No verified note for: ${failed.join(", ")}. For those piec
 Only state facts that appear in the verified notes. Never invent hours, closures, cutoffs, or construction. If a note says "not found", fall back to the baseline and say nothing about it. Every note shown to the traveler must be traceable to a research note.
 
 ## Return
-Fill the JSON schema. Minutes are integers. Notes are shown under the step where they matter and the traveler is on a phone, so be brief: driveNotes 1 or 2, securityNotes 1 or 2, gateNotes 1 when the notes describe the walk to the gates (say what makes it that long: the concourse, a train, a far pier) and 0 otherwise. Put holiday or event warnings that slow the roads into driveNotes. Do not add minutes or notes for weather: the app adds those from the forecast. securityNotes: the typical wait for their lane at this hour, plus one thing that matters (a perk lane that backs up at peak, which entrance, bag cutoff). Do not rank their lanes against each other. A note must be a concrete number or something a first-timer would not know. Never restate the traveler's inputs and never state the obvious. At most 14 words per note, plain words.`;
+Fill the JSON schema. Minutes are integers. Notes are shown under the step where they matter and the traveler is on a phone, so be brief: driveNotes 1 or 2, securityNotes 1 or 2, gateNotes 1 when the notes describe the walk to the gates (say what makes it that long: the concourse, a train, a far pier) and 0 otherwise. Put holiday or event warnings that slow the roads into driveNotes. Do not add minutes or notes for weather: the app adds those from the forecast. securityNotes: the typical wait for their lane at this hour, plus one thing that matters (a perk lane that backs up at peak, which entrance, bag cutoff). Outside the US never mention TSA PreCheck, CLEAR or Touchless ID lanes as options. For borderMinutes, plan for the upper end of any range the notes give: these lines swing widely and a missed international flight is costly. On an international trip, put a required document check or check-in questioning in curbToCheckpointMinutes and passport control or preclearance plus any extra screening for the destination in borderMinutes, with borderNotes saying where and how long; boardingLeadMinutes is when boarding starts for this flight. Do not rank their lanes against each other. A note must be a concrete number or something a first-timer would not know. Never restate the traveler's inputs and never state the obvious. At most 14 words per note, plain words.`;
 
   const response = await openai().responses.create(
     {
       model: SYNTH_MODEL,
+      // Same notes, same minutes: keep the numbers steady between runs (GPT-4-class models take a temperature).
+      ...(/^gpt-4/.test(SYNTH_MODEL) ? { temperature: 0 } : {}),
       instructions: SYNTH_SYSTEM,
       input: user,
       text: { format: { type: "json_schema", name: "research", strict: true, schema: SCHEMA } },
@@ -386,7 +433,7 @@ Fill the JSON schema. Minutes are integers. Notes are shown under the step where
     .map((c) => (c.title && c.title !== hostOf(c.url) ? `${c.title} (${hostOf(c.url)})` : hostOf(c.url)));
   if (failed.length) {
     if (result.confidence === "high") result.confidence = "medium";
-    const labels: Record<string, string> = { traffic: "traffic", security: "security lines", rules: "airline rules", today: "today's conditions" };
+    const labels: Record<string, string> = { traffic: "traffic", security: "security lines", rules: "check-in and passport rules", today: "today's conditions" };
     const note = `Couldn't verify ${failed.map((f) => labels[f] ?? f).join(" or ")} live, so that part uses typical numbers.`;
     result.headsUp = [note, ...result.headsUp].slice(0, 2);
   }
@@ -427,6 +474,7 @@ function sanitize(r: Partial<Research>, input: ResearchInput, engine: string): R
     driveMinutes: clamp(r.driveMinutes, driveLo, driveHi, base.driveMinutes),
     curbToCheckpointMinutes: clamp(r.curbToCheckpointMinutes, 2, 60, base.curbToCheckpointMinutes),
     securityMinutes: clamp(r.securityMinutes, 5, 120, base.securityMinutes),
+    ...borderFields(r, input, base),
     checkpointToGateMinutes: clamp(r.checkpointToGateMinutes, 2, 45, base.checkpointToGateMinutes),
     boardingLeadMinutes: clamp(r.boardingLeadMinutes, 20, 90, base.boardingLeadMinutes),
     bagDropCutoffMinutes: input.checkedBag ? clamp(r.bagDropCutoffMinutes, 30, 120, base.bagDropCutoffMinutes ?? 45) : null,
@@ -439,6 +487,28 @@ function sanitize(r: Partial<Research>, input: ResearchInput, engine: string): R
     sources: strings(r.sources, 4),
     confidence: r.confidence === "high" || r.confidence === "medium" || r.confidence === "low" ? r.confidence : "medium",
     engine,
+  };
+}
+
+/** Passport control happens by rule, whatever the research says; research sets how long it takes. */
+function borderFields(r: Partial<Research> & { borderBeforeSecurity?: unknown }, input: ResearchInput, base: Research): Pick<Research, "borderMinutes" | "borderLabel" | "borderNotes" | "borderFirst"> {
+  const border = borderStep(input.flight.departureAirport, input.flight.destinationAirportCode);
+  const extra = r.borderMinutes ?? 0;
+  if (border.kind === "none") {
+    // No passport control, but research may have found extra screening for this destination.
+    if (extra < 5) return { borderMinutes: 0, borderLabel: null, borderNotes: [], borderFirst: false };
+    return { borderMinutes: Math.min(60, Math.round(extra)), borderLabel: r.borderLabel?.trim() || "Extra screening", borderNotes: (r.borderNotes ?? []).filter(Boolean).slice(0, 2), borderFirst: false };
+  }
+  const floor = border.kind === "preclearance" ? 20 : border.schengenExit ? 20 : 5;
+  const notes = (Array.isArray(r.borderNotes) ? r.borderNotes : []).filter((n): n is string => typeof n === "string" && n.trim().length > 0).map((n) => n.trim());
+  const arrival = input.perks.globalEntry && border.toCountry === "US" && border.kind === "exit" && input.flight.destinationAirportCode
+    ? [`Global Entry helps at customs in ${input.flight.destinationAirportCode}, not here.`]
+    : [];
+  return {
+    borderMinutes: clamp(r.borderMinutes, floor, 120, base.borderMinutes ?? border.baselineMinutes),
+    borderLabel: r.borderLabel?.trim() || border.label,
+    borderNotes: [...notes.slice(0, 2 - Math.min(1, arrival.length)), ...arrival].slice(0, 2),
+    borderFirst: r.borderBeforeSecurity === true,
   };
 }
 
@@ -478,11 +548,14 @@ function fallbackNumbers(input: ResearchInput): Research {
   const rush = !weekend && ((road.hour >= 7 && road.hour < 10) || (road.hour >= 15 && road.hour < 19));
   const factor = rush ? 1.45 : road.hour >= 6 && road.hour < 21 ? 1.2 : 1.0;
   const drive = route.freeFlowMinutes ? Math.round(route.freeFlowMinutes * factor) + 5 : 50;
-  const expedited = perks.precheck || perks.globalEntry || perks.touchlessId;
+  const us = usScreening(flight.departureAirport);
+  const border = borderStep(flight.departureAirport, flight.destinationAirportCode);
+  const expedited = us && (perks.precheck || perks.globalEntry || perks.touchlessId);
+  const clear = us && perks.clear;
   const wait = terminal?.security.waitEstimate ?? { offPeak: 15, normal: 25, peak: 40, holiday: 55 };
   const peakHour = (road.hour >= 5 && road.hour < 9) || (road.hour >= 15 && road.hour < 19);
   const standardWait = peakHour ? wait.peak : wait.normal;
-  const security = expedited ? Math.max(8, Math.round(standardWait * 0.45)) : perks.clear ? Math.max(10, Math.round(standardWait * 0.6)) : standardWait;
+  const security = expedited ? Math.max(8, Math.round(standardWait * 0.45)) : clear ? Math.max(10, Math.round(standardWait * 0.6)) : standardWait;
   const intl = flight.region === "international";
   const curb = (terminal?.curbToSecurityMinutes[1] ?? 8) + (checkedBag ? 12 : 0);
   const modeExtra = input.mode === "drive" ? 15 : input.mode === "transit" ? Math.round(drive * 0.6) + 15 : 0;
@@ -490,15 +563,18 @@ function fallbackNumbers(input: ResearchInput): Research {
     driveMinutes: drive + modeExtra,
     curbToCheckpointMinutes: curb,
     securityMinutes: security,
+    borderMinutes: border.baselineMinutes,
+    borderLabel: border.kind === "none" ? null : border.label,
+    borderNotes: border.kind === "exit" ? ["Typical passport control wait; allow more at busy times."] : border.kind === "preclearance" ? ["US customs and immigration happen here, before you fly."] : [],
     checkpointToGateMinutes: terminal?.securityToGateMinutes[1] ?? 10,
     boardingLeadMinutes: intl ? airport.standardBoardingBuffer.international : airport.standardBoardingBuffer.domestic,
     bagDropCutoffMinutes: checkedBag ? (intl ? airport.bagCutoffs.checkedInternational : airport.bagCutoffs.checkedDomestic) : null,
     checkpoint: terminal ? `${terminal.name} checkpoint` : "Main checkpoint",
-    lane: expedited ? "TSA PreCheck" : perks.clear ? "CLEAR" : "standard lanes",
+    lane: expedited ? "TSA PreCheck" : clear ? "CLEAR" : "standard lanes",
     driveNotes: [
       route.originLabel ? (rush ? "Rush hour on the way, so the drive is padded." : "Typical traffic for that hour.") : "No starting point given, so this assumes a typical trip from the metro area.",
     ],
-    securityNotes: [`${expedited ? "PreCheck" : perks.clear ? "CLEAR" : "Standard"} lanes usually run about ${security} minutes at that hour.`],
+    securityNotes: [`${expedited ? "PreCheck" : clear ? "CLEAR" : "Standard"} lanes usually run about ${security} minutes at that hour.`],
     gateNotes: [typicalWalkNote(input, terminal?.securityToGateMinutes[1] ?? 10)],
     headsUp: [],
     sources: ["Typical numbers for this airport; live search was not available."],

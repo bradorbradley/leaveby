@@ -12,7 +12,7 @@ import { planRows } from "@/lib/plan-rows";
 const ITEMS = [
   { key: "leave", emoji: "🚗", title: "Your commute", note: "Live traffic from your door" },
   { key: "arrive", emoji: "🧳", title: "Curb to security", note: "Your terminal" },
-  { key: "security", emoji: "🛂", title: "Security", note: "Today's wait for your lane" },
+  { key: "security", emoji: "🔍", title: "Security", note: "Today's wait for your lane" },
   { key: "gate", emoji: "🚶", title: "Walk to the gate", note: "How far your gate is" },
   { key: "spare", emoji: "☕", title: "Spare time", note: "You choose" },
   { key: "boarding", emoji: "🎫", title: "Boarding", note: "When your airline boards" },
