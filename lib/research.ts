@@ -476,7 +476,8 @@ function sanitize(r: Partial<Research>, input: ResearchInput, engine: string): R
     securityMinutes: clamp(r.securityMinutes, 5, 120, base.securityMinutes),
     ...borderFields(r, input, base),
     checkpointToGateMinutes: clamp(r.checkpointToGateMinutes, 2, 45, base.checkpointToGateMinutes),
-    boardingLeadMinutes: clamp(r.boardingLeadMinutes, 20, 90, base.boardingLeadMinutes),
+    // Long-haul international flights board 40+ minutes out; never plan to reach the gate later than that.
+    boardingLeadMinutes: clamp(r.boardingLeadMinutes, input.flight.region === "international" ? 40 : 20, 90, base.boardingLeadMinutes),
     bagDropCutoffMinutes: input.checkedBag ? clamp(r.bagDropCutoffMinutes, 30, 120, base.bagDropCutoffMinutes ?? 45) : null,
     checkpoint: typeof r.checkpoint === "string" && r.checkpoint ? r.checkpoint : base.checkpoint,
     lane: typeof r.lane === "string" && r.lane ? r.lane : base.lane,
