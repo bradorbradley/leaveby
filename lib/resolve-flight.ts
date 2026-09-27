@@ -1,6 +1,7 @@
 import { airlineNameFromIata } from "@/lib/airline-codes";
 import { detectAirportTerminalByAirline, getAirlineProfile } from "@/lib/airports";
 import { worldAirport } from "@/lib/airports/world";
+import { countryOf } from "@/lib/border";
 import { fetchSchedule, type Leg } from "@/lib/flight-legs";
 import { parseFlightNumber } from "@/lib/flight-utils";
 import { formatInZone, zonedTimeToUtcISO } from "@/lib/tz";
@@ -119,7 +120,7 @@ export async function resolveLeg(flightNumber: string, date: string, choice: Leg
     gate: null,
     status: "scheduled",
     delayMinutes: 0,
-    region: destinationAirport && destinationAirport.country !== airport.country ? "international" : "domestic",
+    region: destinationAirport && countryOf(destination) !== countryOf(code) ? "international" : "domestic",
     source: typical ? "Usual schedule · time you confirmed" : "Airport and time you entered",
     notes: [
       ...mismatch,
@@ -191,7 +192,7 @@ function fromLeg(base: Pick<FlightInfo, "flightNumber" | "airlineCode" | "airlin
     gate: leg.gate,
     status: leg.cancelled ? "cancelled" : delayMinutes > 0 ? "delayed" : "scheduled",
     delayMinutes,
-    region: origin && destination && origin.country !== destination.country ? "international" : "domestic",
+    region: origin && destination && countryOf(origin.code) !== countryOf(destination.code) ? "international" : "domestic",
     source: `${leg.source} · live schedule`,
     notes: [],
   };

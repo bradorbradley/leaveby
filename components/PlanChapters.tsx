@@ -11,6 +11,7 @@ export interface Chapter {
   key: string;
   iso: string;
   title: string;
+  eyebrow?: string;
   segLabel?: string;
   segMin?: number;
   lead?: string;
@@ -21,11 +22,17 @@ export interface Chapter {
 const RAMP = ["#1F2030", "#4A3A4C", "#A6544A", "#E4806A", "#F2B9AA", "#F8DED5", "#FCFAF6"];
 const DARK_UNTIL = 3; // cards before this index use paper text
 
+/** Spread the ramp over however many chapters there are (seven, or eight with passport control). */
+function ramp(i: number, count: number) {
+  return RAMP[Math.min(RAMP.length - 1, Math.round((i * (RAMP.length - 1)) / Math.max(1, count - 1)))];
+}
+
 /** One idea per line, nothing said twice on a card. */
 const COPY: Record<string, { eyebrow: string; title: string; minutes?: string }> = {
   leave: { eyebrow: "Leave by", title: "Walk out the door", minutes: "Drive" },
   arrive: { eyebrow: "Arrive by", title: "At the terminal", minutes: "To security" },
   security: { eyebrow: "In line by", title: "Security", minutes: "Wait" },
+  border: { eyebrow: "Through security by", title: "Passport control", minutes: "Wait" },
   gate: { eyebrow: "Cleared by", title: "Walk to the gate", minutes: "Walk" },
   spare: { eyebrow: "At the gate by", title: "Spare time", minutes: "Until boarding" },
   boarding: { eyebrow: "Boarding", title: "Boarding begins", minutes: "Until departure" },
@@ -34,7 +41,8 @@ const COPY: Record<string, { eyebrow: string; title: string; minutes?: string }>
 
 const EMOJI: Record<string, string> = {
   arrive: "🧳",
-  security: "🛂",
+  security: "🔍",
+  border: "🛂",
   gate: "🚶",
   spare: "☕",
   boarding: "🎫",
@@ -63,6 +71,7 @@ function Emoji({ step, mode, dark }: { step: string; mode: Mode; dark: boolean }
       animate = { y: [0, -5, 0], rotate: [0, -6, 0] };
       break;
     case "security":
+    case "border":
       animate = { scale: [1, 1.12, 1] };
       break;
     case "gate":
@@ -184,10 +193,11 @@ export function PlanChapters({
       >
         {chapters.map((c, i) => {
           const dark = i < DARK_UNTIL;
-          const bg = RAMP[Math.min(i, RAMP.length - 1)];
+          const bg = ramp(i, chapters.length);
           const ink = dark ? "#FCFAF6" : "#1F2030";
           const muted = dark ? "rgba(252,250,246,0.76)" : "#62606F";
-          const copy = COPY[c.key] ?? { eyebrow: c.title, title: c.title };
+          const base = COPY[c.key] ?? { eyebrow: c.title, title: c.title };
+          const copy = c.eyebrow ? { ...base, eyebrow: c.eyebrow } : base;
           const minutesLabel = c.key === "leave" ? (mode === "transit" ? "Transit" : mode === "drive" ? "Drive and park" : "Drive") : copy.minutes;
           const critical = c.notes.filter(isCritical);
           const plain = c.notes.filter((n) => !isCritical(n));
@@ -223,7 +233,7 @@ export function PlanChapters({
                 </div>
                 <Emoji step={c.key} mode={mode} dark={dark} />
               </div>
-              <p className="mt-2 text-[16px] font-semibold">{copy.title}</p>
+              <p className="mt-2 text-[16px] font-semibold">{c.key === "border" ? c.title : copy.title}</p>
               {minutesLabel && typeof c.segMin === "number" ? (
                 <span
                   className="mt-2 inline-flex w-fit items-center gap-1.5 rounded-full px-2.5 py-1 text-[12px] font-medium"
@@ -277,7 +287,7 @@ export function PlanChapters({
                 <motion.i
                   className="block h-1.5 w-1.5 rounded-full"
                   animate={{ scale: active === i ? 1.5 : 1, opacity: active === i ? 1 : 0.6 }}
-                  style={{ background: i === chapters.length - 1 ? "#E36F58" : RAMP[Math.min(i, RAMP.length - 1)] }}
+                  style={{ background: i === chapters.length - 1 ? "#E36F58" : ramp(i, chapters.length) }}
                   transition={{ type: "spring", stiffness: 300, damping: 20 }}
                 />
               </button>

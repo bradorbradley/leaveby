@@ -66,6 +66,13 @@ export interface Research {
   driveMinutes: number;
   curbToCheckpointMinutes: number;
   securityMinutes: number;
+  /** Passport (exit) control or US preclearance after security, 0 when there's none. Older plans lack it. */
+  borderMinutes?: number;
+  /** The border step's title, e.g. "Passport control". */
+  borderLabel?: string | null;
+  borderNotes?: string[];
+  /** Passport control comes before the security checkpoint at this airport. */
+  borderFirst?: boolean;
   checkpointToGateMinutes: number;
   boardingLeadMinutes: number;
   bagDropCutoffMinutes: number | null;
@@ -88,7 +95,7 @@ export interface Research {
 }
 
 export interface TimelineStop {
-  key: "leave" | "curb" | "checkpoint" | "security" | "gate" | "boarding" | "departure";
+  key: "leave" | "curb" | "checkpoint" | "security" | "border" | "gate" | "boarding" | "departure";
   label: string;
   iso: string;
 }
