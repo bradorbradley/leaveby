@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Analytics } from "@vercel/analytics/next";
+import { Analytics } from "@/components/Analytics";
 import { Fraunces, Instrument_Sans } from "next/font/google";
 
 import "@/app/globals.css";
@@ -11,6 +11,7 @@ export const metadata: Metadata = {
   title: "Leave By",
   description: "Never miss a flight again. Leave By tells you exactly when to leave for the airport.",
   applicationName: "Leave By",
+  referrer: "no-referrer",
   appleWebApp: { capable: true, statusBarStyle: "default", title: "Leave By" },
   formatDetection: { telephone: false },
 };
