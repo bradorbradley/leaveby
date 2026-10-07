@@ -10,7 +10,7 @@ export interface LegalSection {
 }
 
 /** Shared frame for the Terms and Privacy pages: a plain-language summary up top, then the full text. */
-export function LegalPage({ title, summary, sections }: { title: string; summary: React.ReactNode; sections: LegalSection[] }) {
+export function LegalPage({ title, summary, sections, effective = LEGAL.effective }: { title: string; summary: React.ReactNode; sections: LegalSection[]; effective?: string }) {
   return (
     <main className="relative z-[1] mx-auto w-full max-w-[720px] px-5 pb-20 md:px-8" style={{ paddingTop: "max(env(safe-area-inset-top), 16px)" }}>
       <header className="flex items-center justify-between">
@@ -23,7 +23,7 @@ export function LegalPage({ title, summary, sections }: { title: string; summary
       </header>
 
       <h1 className="display-soft mt-12 text-[40px] leading-[1.02] md:text-[56px]">{title}</h1>
-      <p className="mt-3 text-[14px] text-ink-3">Effective {LEGAL.effective}</p>
+      <p className="mt-3 text-[14px] text-ink-3">Effective {effective}</p>
 
       <section className="card mt-8 !p-5 md:!p-6">
         <h2 className="label !mb-3">The short version</h2>

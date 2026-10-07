@@ -16,7 +16,8 @@ import { deviceTz, fmtDay, fmtTime, fmtTimeShort, localDateString, minutesBetwee
 import { computePlan } from "@/lib/plan-math";
 import { planRows } from "@/lib/plan-rows";
 import type { Profile } from "@/lib/profile";
-import { track } from "@/lib/track";
+import { showPlanTracking, track } from "@/lib/track";
+import type { PlanTelemetry } from "@/lib/analytics";
 import { airlineLogoUrl, appleMapsLink, dropoffCoord, dropoffLabel, flightStatusLink, googleMapsLink, lyftLink, reminderLink, shareText, uberLink } from "@/lib/ride-links";
 import { instantToZonedParts } from "@/lib/tz";
 import type { PlanRequest, PlanResult } from "@/types/plan";
@@ -47,6 +48,7 @@ export function Reveal({
   onReset,
   planUrl,
   sharedAt,
+  telemetry,
 }: {
   result: PlanResult;
   request: PlanRequest;
@@ -57,6 +59,7 @@ export function Reveal({
   onReset: () => void;
   planUrl: string;
   sharedAt: string | null;
+  telemetry: PlanTelemetry | null;
 }) {
   const reduce = useReducedMotion();
   const [editing, setEditing] = useState(false);
@@ -74,6 +77,12 @@ export function Reveal({
     () => computePlan({ flight: f, route: result.route, research: r, bufferMinutes: buffer, checkedBag: result.checkedBag, mode: result.mode }),
     [f, result.route, result.checkedBag, result.mode, r, buffer],
   );
+
+  // Count only a usable plan that actually mounted, once per generation/shared opening.
+  // Gate-buffer changes and Strict Mode effect reruns cannot create more generations.
+  useEffect(() => {
+    if (Number.isFinite(Date.parse(plan.leaveISO))) showPlanTracking(telemetry);
+  }, [telemetry, plan.leaveISO]);
 
   // The plane takes off once the digits have landed, and again whenever the time changes.
   useEffect(() => {
@@ -131,19 +140,22 @@ export function Reveal({
   const pickupISO = new Date(new Date(plan.leaveISO).getTime() - 5 * 60_000).toISOString();
 
   const share = async () => {
-    track("plan_shared", { native: typeof navigator !== "undefined" && !!navigator.share });
+    const method = typeof navigator.share === "function" ? "native" : "clipboard";
+    track("share_attempted", { method });
     const text = shareText(result, leaveLabel, buffer, planUrl);
     try {
       setBurst((b) => b + 1);
       if (navigator.share) {
         await navigator.share({ text });
+        track("share_completed", { method });
         return;
       }
       await navigator.clipboard.writeText(text);
+      track("share_completed", { method });
       setCopied(true);
       setTimeout(() => setCopied(false), 1500);
-    } catch {
-      // user cancelled
+    } catch (error) {
+      track(error instanceof Error && error.name === "AbortError" ? "share_cancelled" : "share_failed", { method });
     }
   };
 
@@ -318,10 +330,10 @@ export function Reveal({
           </>
         ) : (
           <div className="grid grid-cols-2 gap-2">
-            <a href={googleMapsLink(result, result.mode === "transit" ? "transit" : "driving")} onClick={() => track("route_opened", { app: "google" })} target="_blank" rel="noreferrer" className="btn-dark">
+            <a href={googleMapsLink(result, result.mode === "transit" ? "transit" : "driving")} onClick={() => track("route_tapped", { app: "google" })} target="_blank" rel="noreferrer" className="btn-dark">
               {result.mode === "transit" ? <TrainFront className="h-4 w-4" /> : <Map className="h-4 w-4" />} Google Maps
             </a>
-            <a href={appleMapsLink(result, result.mode === "transit" ? "transit" : "driving")} onClick={() => track("route_opened", { app: "apple" })} target="_blank" rel="noreferrer" className="btn-dark">
+            <a href={appleMapsLink(result, result.mode === "transit" ? "transit" : "driving")} onClick={() => track("route_tapped", { app: "apple" })} target="_blank" rel="noreferrer" className="btn-dark">
               {result.mode === "transit" ? <TrainFront className="h-4 w-4" /> : <Map className="h-4 w-4" />} Apple Maps
             </a>
           </div>
@@ -356,7 +368,7 @@ export function Reveal({
       ) : null}
 
       <motion.div variants={rise} className="grid grid-cols-2 gap-2">
-        <motion.a whileTap={{ scale: 0.97 }} href={reminderLink(result, plan.leaveISO, planUrl)} onClick={() => track("reminder_added")} className="btn-secondary">
+        <motion.a whileTap={{ scale: 0.97 }} href={reminderLink(result, plan.leaveISO, planUrl)} onClick={() => track("reminder_tapped")} className="btn-secondary">
           <BellRing className="h-4 w-4" /> Set reminder
         </motion.a>
         <motion.button type="button" onClick={share} whileTap={{ scale: 0.97 }} className="btn-secondary relative">

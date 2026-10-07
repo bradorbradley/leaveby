@@ -1,6 +1,9 @@
 "use client";
 
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
+
+import type { PlanEntry, PlanTelemetry } from "@/lib/analytics";
+import { endPlanTracking, openSharedTracking, startPlanTracking } from "@/lib/track";
 
 import type { FlightInfo } from "@/types/flight";
 import type { PlanEvent, PlanRequest, PlanResult, RouteEstimate } from "@/types/plan";
@@ -22,6 +25,7 @@ export interface PlanState {
   progress: Progress;
   result: PlanResult | null;
   error: string | null;
+  telemetry: PlanTelemetry | null;
 }
 
 const emptyProgress: Progress = { flight: null, route: null, searches: [], notes: [], stages: [] };
@@ -42,29 +46,58 @@ function friendly(error: unknown): string {
 }
 
 export function usePlan() {
-  const [state, setState] = useState<PlanState>({ phase: "idle", progress: emptyProgress, result: null, error: null });
+  const [state, setState] = useState<PlanState>({ phase: "idle", progress: emptyProgress, result: null, error: null, telemetry: null });
   const abortRef = useRef<AbortController | null>(null);
+  const activeTelemetry = useRef<PlanTelemetry | null>(null);
+  const lifecycle = useRef(0);
+  const live = useRef(true);
+
+  useEffect(() => {
+    live.current = true;
+    const mounted = ++lifecycle.current;
+    return () => {
+      // Strict Mode replays setup/cleanup immediately; a real unmount has no next setup.
+      queueMicrotask(() => {
+        if (lifecycle.current !== mounted) return;
+        live.current = false;
+        abortRef.current?.abort();
+        abortRef.current = null;
+        endPlanTracking(activeTelemetry.current, "plan_cancelled");
+        activeTelemetry.current = null;
+      });
+    };
+  }, []);
 
   const cancel = useCallback(() => {
     abortRef.current?.abort();
+    endPlanTracking(activeTelemetry.current, "plan_cancelled");
+    activeTelemetry.current = null;
     abortRef.current = null;
-    setState({ phase: "idle", progress: emptyProgress, result: null, error: null });
+    setState({ phase: "idle", progress: emptyProgress, result: null, error: null, telemetry: null });
   }, []);
 
   const reset = cancel;
 
   /** Show a finished plan without searching (a shared link). */
   const hydrate = useCallback((result: PlanResult) => {
+    if (!live.current) return;
     abortRef.current?.abort();
+    endPlanTracking(activeTelemetry.current, "plan_cancelled");
+    activeTelemetry.current = null;
     abortRef.current = null;
-    setState({ phase: "done", progress: emptyProgress, result, error: null });
+    setState({ phase: "done", progress: emptyProgress, result, error: null, telemetry: openSharedTracking() });
   }, []);
 
-  const run = useCallback(async (request: PlanRequest) => {
+  const run = useCallback(async (request: PlanRequest, entry: PlanEntry = "form") => {
+    if (!live.current) return;
     abortRef.current?.abort();
+    endPlanTracking(activeTelemetry.current, "plan_cancelled");
+    activeTelemetry.current = null;
     const controller = new AbortController();
     abortRef.current = controller;
-    setState({ phase: "searching", progress: emptyProgress, result: null, error: null });
+    const telemetry = startPlanTracking(entry);
+    activeTelemetry.current = telemetry;
+    setState({ phase: "searching", progress: emptyProgress, result: null, error: null, telemetry });
     let timedOut = false;
     const deadline = setTimeout(() => {
       timedOut = true;
@@ -72,8 +105,13 @@ export function usePlan() {
     }, CLIENT_DEADLINE_MS);
 
     const handle = (event: PlanEvent): boolean => {
+      // A cancelled or superseded response must not replace a newer result.
+      if (controller.signal.aborted || abortRef.current !== controller) return true;
+      if (event.type === "flight_notfound") endPlanTracking(telemetry, "flight_not_found");
+      if (event.type === "error") endPlanTracking(telemetry, "plan_error", "error");
       let finished = false;
       setState((prev) => {
+        if (controller.signal.aborted || abortRef.current !== controller) return prev;
         switch (event.type) {
           case "flight":
             return { ...prev, progress: { ...prev.progress, flight: event.flight } };
@@ -130,7 +168,11 @@ export function usePlan() {
           buffer = buffer.slice(idx + 1);
           if (!line) continue;
           try {
-            if (handle(JSON.parse(line) as PlanEvent)) finished = true;
+            if (handle(JSON.parse(line) as PlanEvent)) {
+              finished = true;
+              void reader.cancel().catch(() => {});
+              return true;
+            }
           } catch {
             // ignore malformed line
           }
@@ -157,19 +199,27 @@ export function usePlan() {
         } catch (error) {
           if ((error as Error).name === "AbortError") throw error;
           if (i === RETRIES - 1) throw error;
-          setState((prev) => ({ ...prev, progress: emptyProgress }));
+          if (abortRef.current !== controller) return;
+          if (controller.signal.aborted) throw new DOMException("Aborted", "AbortError");
+          setState((prev) => abortRef.current === controller ? { ...prev, progress: emptyProgress } : prev);
           await new Promise((r) => setTimeout(r, 800 * (i + 1)));
-          if (controller.signal.aborted) return;
+          if (controller.signal.aborted) throw new DOMException("Aborted", "AbortError");
         }
       }
     } catch (error) {
+      if (abortRef.current !== controller) return;
       if ((error as Error).name === "AbortError") {
-        if (timedOut) setState((prev) => ({ ...prev, phase: "error", error: "That took too long. Try again." }));
+        if (timedOut) {
+          endPlanTracking(telemetry, "plan_error", "timeout");
+          setState((prev) => abortRef.current === controller ? { ...prev, phase: "error", error: "That took too long. Try again." } : prev);
+        }
         return;
       }
-      setState((prev) => ({ ...prev, phase: "error", error: friendly(error) }));
+      endPlanTracking(telemetry, "plan_error", "error");
+      setState((prev) => abortRef.current === controller ? { ...prev, phase: "error", error: friendly(error) } : prev);
     } finally {
       clearTimeout(deadline);
+      if (abortRef.current === controller) activeTelemetry.current = null;
     }
   }, []);
 

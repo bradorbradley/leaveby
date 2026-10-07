@@ -15,6 +15,7 @@ const mail = <a href={`mailto:${LEGAL.contactEmail}`}>{LEGAL.contactEmail}</a>;
 
 const PROVIDERS: Array<[string, string, string]> = [
   ["Vercel", "Hosts the site, runs our servers and provides our cookie-free usage analytics. Receives your requests, including your IP address.", "https://vercel.com/docs/analytics/privacy-policy"],
+  ["PostHog (when product analytics is enabled)", "Receives anonymous usage events and approved campaign labels. Its servers receive the connection IP; we disable location enrichment and configure the project to discard client IP data. No trip inputs or share-link contents are sent.", "https://posthog.com/privacy"],
   ["OpenAI", "Researches your trip: your flight, airports, travel times and your starting area (as the place name you chose), using web search. We don’t send your name or contact details.", "https://openai.com/policies/privacy-policy"],
   ["Komoot Photon (OpenStreetMap data) and Zippopotam.us", "Turn the place you type, or your device location, into a map point, and suggest places as you type.", "https://www.komoot.com/privacy"],
   ["OSRM (Project OSRM)", "Calculates the driving route and distance from your starting point to the airport.", "https://project-osrm.org"],
@@ -52,9 +53,10 @@ const sections: LegalSection[] = [
           use this to run, secure and debug the Service.
         </p>
         <p>
-          <strong>Anonymous usage analytics.</strong> We use Vercel Web Analytics to understand how Leave By is used: pages viewed, the site that referred you, your country, device and browser type,
-          and simple in-app events such as “plan created” (with the departure airport and how you’re getting there), “flight not found”, or which ride or map button was tapped. It doesn’t use cookies,
-          doesn’t follow you across other sites, and isn’t tied to your identity. It never receives your address, location or share links.
+          <strong>Anonymous usage analytics.</strong> Vercel Web Analytics counts page views and basic traffic information. We remove query strings and fragments from the page addresses sent to analytics.
+          When enabled, PostHog counts visits, plan requests, displayed plans, errors and button actions, with approved campaign labels. It receives no flight details, starting places, coordinates,
+          typed inputs or share-link contents. We do not use session recordings, automatic click capture or person profiles. A random identifier kept in your tab’s session storage groups usage events
+          for a visit. It expires after 30 minutes without an event, after 24 hours at most, or when that tab’s session storage is cleared; it is not a persistent person identifier.
         </p>
         <p>
           <strong>What we don’t collect.</strong> There are no accounts, so we don’t collect your name, email, phone number or payment details. We don’t use advertising trackers or tracking cookies.
@@ -143,6 +145,7 @@ const sections: LegalSection[] = [
           EU or the UK), you may have the right to know what personal information we hold about you, to get a copy of it, to correct or delete it, and to object to or limit how we use it.
         </p>
         <p>
+          We honor browser Do Not Track and Global Privacy Control signals by suppressing analytics events. Blocking analytics does not prevent you from making a plan.
           Because we don’t keep accounts or trip histories, we usually won’t have information tied to you. To make a request, email {mail}. We won’t discriminate against you for exercising your
           rights. If you’re in the EU or UK, we process your information to provide the Service you ask for and for our legitimate interest in keeping it running securely, and you can complain to your
           local data protection authority.
@@ -191,6 +194,7 @@ export default function PrivacyPage() {
         </>
       }
       sections={sections}
+      effective="October 7, 2026"
     />
   );
 }
