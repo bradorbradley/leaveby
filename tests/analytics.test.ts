@@ -32,6 +32,10 @@ test("Vercel URL scrubber strips entire query/hash and drops unknown paths", () 
   assert.equal(sanitizedPageUrl("https://www.leaveby.xyz/?utm_campaign=launch"), "https://www.leaveby.xyz/");
   assert.equal(sanitizedPageUrl("https://www.leaveby.xyz/PRIVATE_PERSON"), null);
   assert.equal(sanitizedPageUrl("not a url"), null);
+  assert.equal(sanitizedPageUrl("https://www.leaveby.xyz/airports/jfk?utm_source=google"), "https://www.leaveby.xyz/airports/jfk");
+  assert.equal(sanitizedPageUrl("https://www.leaveby.xyz/airports/PRIVATE"), null);
+  assert.equal(sanitizedPageUrl("https://www.leaveby.xyz/thanksgiving-travel-2026"), "https://www.leaveby.xyz/thanksgiving-travel-2026");
+  assert.equal(attribution("https://www.leaveby.xyz/airports/lax", "https://www.google.com/", []).entry_page, "/airports");
 });
 
 test("property allowlist drops all trip details and arbitrary values", () => {
