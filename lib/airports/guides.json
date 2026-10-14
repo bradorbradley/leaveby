@@ -395,6 +395,179 @@
    }
   ]
  },
+ "CLT": {
+  "code": "CLT",
+  "name": "Charlotte Douglas International Airport",
+  "city": "Charlotte",
+  "state": "NC",
+  "checkedOn": "2026-10-14",
+  "officialArrivalAdvice": {
+   "domestic": "Be inside the terminal at least 2 hours before a domestic flight, and plan to reach your parking space 30 minutes before that",
+   "international": "Be inside the terminal at least 3 hours before an international flight",
+   "source": "https://www.cltairport.com/news/stories/item/travel-tips/"
+  },
+  "terminals": [
+   {
+    "id": "Main",
+    "name": "Main Terminal (Concourses A-E)",
+    "airlines": [
+     "American Airlines",
+     "Delta Air Lines",
+     "United Airlines",
+     "Southwest Airlines",
+     "JetBlue",
+     "Frontier Airlines",
+     "Air Canada",
+     "Lufthansa",
+     "Etihad",
+     "Volaris",
+     "Contour Airlines"
+    ],
+    "checkpoints": [
+     {
+      "notes": "Standard, Special Assistance and Family lanes, 3:45am-8:00pm",
+      "precheck": false,
+      "clear": null,
+      "name": "Checkpoint 1"
+     },
+     {
+      "notes": "Main TSA PreCheck checkpoint, 3:45am-11:00pm. Standard and Special Assistance lanes open here only 7:00-11:00pm. Has the dedicated TSA PreCheck Touchless ID lane (American Airlines).",
+      "precheck": true,
+      "clear": null,
+      "name": "Checkpoint 2"
+     },
+     {
+      "notes": "Standard and Special Assistance lanes, 3:45am-8:00pm",
+      "precheck": false,
+      "clear": null,
+      "name": "Checkpoint 3"
+     }
+    ],
+    "notes": [
+     "One terminal building connects five concourses (A-E). There are no trams or shuttles between flights, and all gates are under one roof.",
+     "All concourses and gates are reachable from any security checkpoint",
+     "American Airlines is the dominant carrier (CLT is an American hub). Concourse assignments by airline were not verified from an official source.",
+     "The $608M Terminal Lobby Expansion, with expanded checkpoints, new skybridges and underground walkways from parking, was completed in September 2025"
+    ]
+   }
+  ],
+  "connectedAirside": true,
+  "betweenTerminals": "Single terminal: all five concourses (A-E) are connected after security, with no trains or shuttles needed",
+  "securityWaits": {
+   "summary": "CLT posts live checkpoint wait times on its website and app but no typical figures. In TSA's hourly screening counts for Mar 15-21 and Sep 13-19, 2026, the heaviest screening hours were about 5-9am, with a second bump around 1-3pm. Connecting passengers, the majority at CLT, don't go through security.",
+   "busiestTimes": [
+    "6:00-8:00am",
+    "1:00-3:00pm",
+    "Sundays and days before and after holidays (airport parking guidance)",
+    "Monday, Tuesday and Saturday mornings; Thursday, Friday and Sunday evenings (airport parking guidance)"
+   ],
+   "source": "https://www.tsa.gov/sites/default/files/foia-readingroom/tsa-throughput-data-to-september-13-2026-to-september-19-2026.pdf"
+  },
+  "precheckNotes": "Checkpoint 2 is CLT's designated Main TSA PreCheck checkpoint (3:45am-11:00pm), and Checkpoints 1 and 3 are not listed with PreCheck lanes. One older line on the airport's security page still says PreCheck is at 'checkpoint A', which conflicts with the current hours table.",
+  "clearAvailable": null,
+  "touchlessId": "TSA PreCheck Touchless ID launched at CLT on Dec 23, 2025, with a dedicated lane at Checkpoint 2. At launch only American Airlines offered it at CLT. AAdvantage members opt in through their profile with a passport on file and must renew annually. American and TSA confirmed in April 2026 that it is available at all American hubs, including CLT.",
+  "gettingThere": {
+   "rideshare": "Drop off at the upper-level (Departures/Ticketing) curb. App-based ride pickups are on the Departures/Ticketing level, inner lanes, Zones 1-3. The airport suggests going against the grain to avoid congestion: drop off at Arrivals and pick up at Departures.",
+   "transit": "CLT lists CATS Sprinter bus service among its ground-transportation options; route frequency and travel time to Uptown were not verified",
+   "driving": "Address: 5501 Josh Birmingham Parkway. From I-85 take Exit 32 or 33; from Uptown take I-77 S to Exit 6B (Billy Graham Pkwy, about 5 miles) or US-74 W (Wilkinson Blvd). Little Rock Road between I-85 and Wilkinson Blvd has been renamed North Josh Birmingham Parkway. Of about 25,000 parking spaces, 15,000 can be booked online, and lots can show 'Reservation Only' when drive-up spaces are full. Free shuttles from the lots run 24/7 every 10-15 minutes."
+  },
+  "construction2026": [
+   "Terminal renovations (new seating with power, flooring, lighting) are complete on Concourses A, B, C and the Atrium, and the airport says work will move to Concourses D and E",
+   "A fourth parallel runway is under construction and is reported to open in fall 2027. This is airfield work, not a terminal or roadway change."
+  ],
+  "bagDrop": null,
+  "tips": [
+   "After 8pm, Checkpoints 1 and 3 close and only Checkpoint 2 stays open, until 11pm. Once all checkpoints close, no one is allowed past security.",
+   "Every checkpoint reaches every gate, so pick the shortest line. The CLT website and app show live checkpoint wait times.",
+   "Plan to reach your parking space 30 minutes before you want to be in the terminal. Book parking online on busy days: drive-up spaces can sell out, but online bookings are still honored.",
+   "TSA PreCheck members flying American can use the Touchless ID lane at Checkpoint 2 if they've opted in through their AAdvantage profile",
+   "With a big group or lots of bags, drop people and luggage at the upper-level Departures curb before parking"
+  ],
+  "faq": [
+   {
+    "q": "How early should I get to Charlotte airport (CLT)?",
+    "a": "CLT advises being inside the terminal at least 2 hours before a domestic flight and 3 hours before an international flight. If you're parking, it also suggests reaching your parking space 30 minutes before that."
+   },
+   {
+    "q": "Which security checkpoint should I use at CLT?",
+    "a": "Any one: all concourses and gates are reachable from every checkpoint. TSA PreCheck is at Checkpoint 2 (3:45am-11pm), and after 8pm Checkpoint 2 is the only checkpoint open."
+   },
+   {
+    "q": "Does CLT have TSA PreCheck Touchless ID?",
+    "a": "Yes. It launched Dec 23, 2025, with a dedicated lane at Checkpoint 2, and at launch only American Airlines offered it at CLT. AAdvantage members with TSA PreCheck must opt in and add a valid passport to their profile."
+   }
+  ],
+  "sources": [
+   {
+    "title": "CLT - Security (checkpoint hours)",
+    "url": "https://www.cltairport.com/airport-info/security/"
+   },
+   {
+    "title": "CLT - Don't Wing It: Prepare to Fly (Mar 31, 2025)",
+    "url": "https://www.cltairport.com/news/stories/item/travel-tips/"
+   },
+   {
+    "title": "CLT - Prepare For Travel",
+    "url": "https://www.cltairport.com/airport-info/prepare-for-travel/"
+   },
+   {
+    "title": "CLT - Airlines",
+    "url": "https://www.cltairport.com/airport-info/airlines/"
+   },
+   {
+    "title": "CLT - Pick Up & Drop Off",
+    "url": "https://www.cltairport.com/to-and-from/pick-up-and-drop-off/"
+   },
+   {
+    "title": "CLT - Courtesy Vehicles & Ride App Pickup",
+    "url": "https://www.cltairport.com/to-and-from/courtesy-vehicles-and-ride-app-pickup/"
+   },
+   {
+    "title": "CLT - Ground Transportation (to and from)",
+    "url": "https://www.cltairport.com/to-and-from/"
+   },
+   {
+    "title": "CLT - Driving Directions",
+    "url": "https://www.cltairport.com/to-and-from/driving-directions/"
+   },
+   {
+    "title": "CLT - Parking Tips & FAQs",
+    "url": "https://www.cltairport.com/parking/parking-tips-and-faqs/"
+   },
+   {
+    "title": "CLT - CLT Airport Prepares for Labor Day (Aug 31, 2026)",
+    "url": "https://www.cltairport.com/en/news/press-releases/item/clt-airport-prepares-for-labor-day"
+   },
+   {
+    "title": "CLT - Terminal Lobby Expansion",
+    "url": "https://www.cltairport.com/news/construction-projects/terminal-lobby-expansion/"
+   },
+   {
+    "title": "CLT - Terminal Renovations & Expansions",
+    "url": "https://www.cltairport.com/news/construction-projects/terminal-renovations-and-expansions/"
+   },
+   {
+    "title": "CLT - News (runway set to open fall 2027 headline, Oct 1, 2026)",
+    "url": "https://www.cltairport.com/news/"
+   },
+   {
+    "title": "CLT - TSA PreCheck Touchless ID Arrives at CLT (Dec 23, 2025)",
+    "url": "https://www.cltairport.com/news/stories/item/tsa-precheck-touchless-id-arrives-at-clt/"
+   },
+   {
+    "title": "Metro Airport News - American Expands TSA PreCheck Touchless ID to All Hub Airports (Apr 24, 2026)",
+    "url": "https://metroairportnews.com/american-expands-tsa-precheck-touchless-id-to-all-hub-airports/"
+   },
+   {
+    "title": "TSA throughput data, September 13-19, 2026",
+    "url": "https://www.tsa.gov/sites/default/files/foia-readingroom/tsa-throughput-data-to-september-13-2026-to-september-19-2026.pdf"
+   },
+   {
+    "title": "TSA throughput data, March 15-21, 2026",
+    "url": "https://www.tsa.gov/sites/default/files/foia-readingroom/tsa-throughput-data-to-march-15-2026-to-march-21-2026.pdf"
+   }
+  ]
+ },
  "DCA": {
   "code": "DCA",
   "name": "Ronald Reagan Washington National Airport",
@@ -1373,6 +1546,228 @@
    }
   ]
  },
+ "FLL": {
+  "code": "FLL",
+  "name": "Fort Lauderdale-Hollywood International Airport",
+  "city": "Fort Lauderdale",
+  "state": "FL",
+  "checkedOn": "2026-10-14",
+  "officialArrivalAdvice": {
+   "domestic": null,
+   "international": null,
+   "source": null
+  },
+  "terminals": [
+   {
+    "id": "1",
+    "name": "Terminal 1 (Concourses A, B, C)",
+    "airlines": [
+     "Southwest",
+     "United",
+     "Frontier",
+     "Alaska",
+     "Allegiant",
+     "Breeze",
+     "Copa",
+     "Caribbean",
+     "Bahamasair"
+    ],
+    "checkpoints": [
+     {
+      "notes": "Checkpoint name as it appears in TSA's published throughput data. The airport's rental-car page also refers to a Concourse B security checkpoint on Level 2.",
+      "precheck": null,
+      "clear": null,
+      "name": "T1 Checkpoint"
+     }
+    ],
+    "notes": [
+     "The Rental Car Center is next to Terminal 1 and is reached by the Concourse B pedestrian bridge on Level 2",
+     "U.S. Customs for international arrivals is in Terminals 1 and 4",
+     "Terminal 1 carried the most screened passengers of any FLL checkpoint in TSA's hourly counts for Mar 15-21 and Sep 13-19, 2026"
+    ]
+   },
+   {
+    "id": "2",
+    "name": "Terminal 2 (Concourse D)",
+    "airlines": [
+     "Delta",
+     "WestJet"
+    ],
+    "checkpoints": [
+     {
+      "notes": "Checkpoint name as it appears in TSA's published throughput data",
+      "precheck": null,
+      "clear": null,
+      "name": "T2 Checkpoint"
+     }
+    ],
+    "notes": [
+     "Air Canada moved from Terminal 2 to Terminal 4 effective Sep 15, 2026",
+     "Enclosed post-security connectors linking Terminals 1-2 and 2-3 are under construction"
+    ]
+   },
+   {
+    "id": "3",
+    "name": "Terminal 3 (Concourses E, F)",
+    "airlines": [
+     "JetBlue",
+     "American",
+     "Avelo",
+     "Azul",
+     "Flair",
+     "Porter",
+     "Sun Country"
+    ],
+    "checkpoints": [
+     {
+      "notes": "Checkpoint name as it appears in TSA's published throughput data",
+      "precheck": null,
+      "clear": null,
+      "name": "T3E Checkpoint (Concourse E)"
+     },
+     {
+      "notes": "Checkpoint name as it appears in TSA's published throughput data",
+      "precheck": null,
+      "clear": null,
+      "name": "T3F Checkpoint (Concourse F)"
+     }
+    ],
+    "notes": [
+     "JetBlue's domestic flights use Terminal 3",
+     "Per two 2026 travel guides, Terminals 3 and 4 are connected after security by a pedestrian bridge"
+    ]
+   },
+   {
+    "id": "4",
+    "name": "Terminal 4 (Concourse G)",
+    "airlines": [
+     "Air Canada",
+     "Air Transat",
+     "Avianca",
+     "Flair",
+     "JetBlue (Puerto Rico, Dominican Republic and Jamaica)",
+     "Sunrise Airways"
+    ],
+    "checkpoints": [
+     {
+      "notes": "Checkpoint name as it appears in TSA's published throughput data",
+      "precheck": null,
+      "clear": null,
+      "name": "T4 Checkpoint"
+     }
+    ],
+    "notes": [
+     "Spirit Airlines, formerly FLL's largest carrier and a main Terminal 4 airline, ceased operations on May 2, 2026",
+     "The ground-transportation pickup area (GTA 4) east of Terminal 4 has been closed until further notice since April 11, 2025"
+    ]
+   }
+  ],
+  "connectedAirside": false,
+  "betweenTerminals": "Landside, walk along the curbside walkways or the parking-garage walking trail (follow ground-level arrows), or ride a parking-garage tram. Post-security connectors between Terminals 1-2 and 2-3 are under construction (targeted for late 2027 as of 2024 reporting), so today you generally must re-clear security to change terminals; 2026 travel guides say Terminals 3 and 4 are already linked airside.",
+  "securityWaits": {
+   "summary": "FLL does not publish typical waits. On Mar 14, 2026, during spring break, the cruise season and the federal shutdown, the Terminal 1 TSA line stretched outside the building. In TSA's hourly screening counts for Mar 15-21 and Sep 13-19, 2026, about 40% of each day's passengers were screened between 4am and 10am.",
+   "busiestTimes": [
+    "5:00-7:00am",
+    "8:00-11:00am",
+    "Sundays (busiest day in both sample weeks)",
+    "Cruise days: Friday, Saturday, Sunday and Monday mornings"
+   ],
+   "source": "https://www.tsa.gov/sites/default/files/foia-readingroom/tsa-throughput-data-to-march-15-2026-to-march-21-2026.pdf"
+  },
+  "precheckNotes": "The airport links to TSA's PreCheck schedule page for checkpoint opening and closing times instead of publishing its own. PreCheck lane locations by terminal were not verified from an official source.",
+  "clearAvailable": true,
+  "touchlessId": "FLL appears on an April 2026 list of the 65 airports offering TSA PreCheck Touchless ID. Which airlines support it at FLL was not confirmed from an official source; opt in through your airline profile and check your boarding pass for the Touchless ID indicator.",
+  "gettingThere": {
+   "rideshare": "Drop-off is on the upper level (Departures) outside each terminal. Pickup is on the lower level: Terminal 1 riders use a temporary area beyond the taxi podium (Zone Z), Terminal 2 riders use GTA-2, and Terminals 3 and 4 riders cross to the first floor of the southern Palm Garage (Zones A-D).",
+   "transit": "Free Tri-Rail shuttle buses run from lower-level stops at the terminals to the Fort Lauderdale-Hollywood International Airport Tri-Rail station in Dania Beach, a few miles away. Tri-Rail serves Miami-Dade, Broward and Palm Beach counties. Broward County Transit Route 1 stops at the Rental Car Center, Stop G. Port Everglades is about a 10-minute ride (taxi about $12). For PortMiami the airport says to allow at least 90 minutes.",
+   "driving": "The airport is at 100 Terminal Drive. The Palm, Hibiscus and Cypress garages have more than 11,000 spaces; long-term is $2 per 20 minutes, up to $20 per day. During peak periods, valet and self-parking can temporarily close when full, and FLL posts updates on X and Facebook."
+  },
+  "construction2026": [
+   "Post-security terminal connectors (Terminals 1-2 and 2-3), about $260M, were targeted for late 2027 completion as of 2024 reporting",
+   "The lower-level ground-transportation pickup between Terminals 2 and 3 (GTA 2) has been closed since March 10, 2025 for the connector construction, and GTA 4 east of Terminal 4 since April 11, 2025. Hotel, off-airport parking and Rental Car Center shuttles now use GTA 1 and GTA 3.",
+   "Ride-share pickup has moved: a temporary Zone Z serves Terminal 1, and Terminals 3 and 4 use the Palm Garage's southern first floor",
+   "Spirit Airlines shut down on May 2, 2026, and Air Canada moved to Terminal 4 on Sep 15, 2026. An August 2026 travel guide says terminal and gate assignments are more fluid than usual during FLL's capital program."
+  ],
+  "bagDrop": "During peak cruise activity, FLL says airlines may only check bags up to 2 hours before your scheduled flight. The airport also notes that some airlines won't accept bags earlier than 2-3 hours before departure, and you must check bags before going through security. Airline-specific cutoffs were not verified.",
+  "tips": [
+   "On cruise days (Fri-Mon), many returning cruise passengers reach FLL around 8:30am for flights all day, so terminals can be crowded. Don't arrive hours early, because airlines may not take your bags until 2 hours before departure.",
+   "Check FLL's 'Where Is My Airline' page before you go. Spirit no longer operates (shut down May 2026), Air Canada moved to Terminal 4 in Sept 2026, and JetBlue splits between Terminal 3 (domestic) and Terminal 4 (Puerto Rico, Dominican Republic, Jamaica).",
+   "Returning a rental car: the Rental Car Center is next to Terminal 1, which you reach on foot via the Level 2 bridge. Shuttles to Terminals 2-4 run every 10 minutes, 24/7.",
+   "Garages can temporarily close when full during peak periods, so have a backup plan and check FLL's social media updates before driving"
+  ],
+  "faq": [
+   {
+    "q": "How early should I get to Fort Lauderdale airport (FLL)?",
+    "a": "FLL doesn't publish a single recommended arrival time, and says to check your airline's check-in times. During peak cruise periods, airlines may only accept checked bags up to 2 hours before your flight, so arriving much earlier than that may mean waiting with your luggage."
+   },
+   {
+    "q": "Which terminal is my airline in at FLL?",
+    "a": "Per FLL's airline directory: Southwest, United, Frontier, Alaska, Allegiant and Breeze are in Terminal 1; Delta and WestJet in Terminal 2; JetBlue (domestic), American, Avelo, Porter and Sun Country in Terminal 3; and Air Canada, Avianca, Air Transat and some JetBlue international flights in Terminal 4."
+   },
+   {
+    "q": "Can I walk between terminals at FLL after security?",
+    "a": "Generally no. Post-security connectors between Terminals 1-2 and 2-3 are still under construction, so you walk between terminals landside via curbside walkways or the garage trail and re-clear security. 2026 travel guides say Terminals 3 and 4 are connected airside."
+   }
+  ],
+  "sources": [
+   {
+    "title": "FLL (Broward County) - Where Is My Airline",
+    "url": "https://www.broward.org/airport/Passengers/WhereIsMyAirline"
+   },
+   {
+    "title": "FLL (Broward County) - Airport homepage alerts",
+    "url": "https://www.broward.org/airport"
+   },
+   {
+    "title": "FLL (Broward County) - Cruise Passengers",
+    "url": "https://www.broward.org/airport/Passengers/CruisePassengers"
+   },
+   {
+    "title": "FLL (Broward County) - Ground Transportation",
+    "url": "https://www.broward.org/airport/Passengers/Transportation"
+   },
+   {
+    "title": "FLL (Broward County) - Ride Sharing Companies",
+    "url": "https://www.broward.org/airport/Passengers/Transportation/RideSharingCompanies"
+   },
+   {
+    "title": "FLL (Broward County) - Parking",
+    "url": "https://www.broward.org/airport/Passengers/Parking"
+   },
+   {
+    "title": "TSA throughput data, March 15-21, 2026 (hourly screening counts by checkpoint)",
+    "url": "https://www.tsa.gov/sites/default/files/foia-readingroom/tsa-throughput-data-to-march-15-2026-to-march-21-2026.pdf"
+   },
+   {
+    "title": "TSA throughput data, September 13-19, 2026",
+    "url": "https://www.tsa.gov/sites/default/files/foia-readingroom/tsa-throughput-data-to-september-13-2026-to-september-19-2026.pdf"
+   },
+   {
+    "title": "Local 10 - Long TSA lines at Fort Lauderdale airport amid government shutdown (Mar 14, 2026)",
+    "url": "https://local10.com/news/local/2026/03/14/long-tsa-lines-at-fort-lauderdale-airport-amid-government-shutdown/"
+   },
+   {
+    "title": "ABC News 4 - Spirit Airlines ceases operations (May 2, 2026)",
+    "url": "https://abcnews4.com/news/nation-world/spirit-shutdown-fl-based-budget-airline-ceases-operations-after-failed-federal-buyout"
+   },
+   {
+    "title": "Airport Technology - FLL Terminal Connectors (Jun 19, 2024)",
+    "url": "https://www.airport-technology.com/projects/fort-lauderdale-hollywood-international-airport-terminal-connectors-usa/"
+   },
+   {
+    "title": "Going - Fort Lauderdale Airport guide (updated Aug 17, 2026)",
+    "url": "https://www.going.com/guides/fort-lauderdale-airport"
+   },
+   {
+    "title": "Blacklane - A 2026 Guide to FLL (updated Sep 16, 2026)",
+    "url": "https://www.blacklane.com/en/blog/travel/airports/a-guide-to-fort-lauderdale-airport/"
+   },
+   {
+    "title": "The Bulkhead Seat - TSA Expands Touchless ID Screening to 65 US Airports (Apr 27, 2026)",
+    "url": "https://thebulkheadseat.com/tsa-expands-touchless-id-screening-to-65-us-airports-full-list/"
+   }
+  ]
+ },
  "IAD": {
   "code": "IAD",
   "name": "Washington Dulles International Airport",
@@ -1542,6 +1937,241 @@
    }
   ]
  },
+ "IAH": {
+  "code": "IAH",
+  "name": "George Bush Intercontinental Airport",
+  "city": "Houston",
+  "state": "TX",
+  "checkedOn": "2026-10-14",
+  "officialArrivalAdvice": {
+   "domestic": null,
+   "international": null,
+   "source": null
+  },
+  "terminals": [
+   {
+    "id": "A",
+    "name": "Terminal A",
+    "airlines": [
+     "American Airlines"
+    ],
+    "checkpoints": [
+     {
+      "notes": "Checkpoint 3:30am-7:30pm; TSA PreCheck 4:00am-6:00pm; CLEAR daily 4:00am-6:00pm",
+      "precheck": true,
+      "clear": true,
+      "name": "Terminal A North"
+     },
+     {
+      "notes": "Checkpoint 3:30am-12:00am; PreCheck hours not listed",
+      "precheck": null,
+      "clear": null,
+      "name": "Terminal A South"
+     }
+    ],
+    "notes": [
+     "American Airlines passengers are picked up on the Terminal A south side (Door A-115) per the airport's pickup page",
+     "Ride-app pickup is at Door A-114 (west side), Arrivals level"
+    ]
+   },
+   {
+    "id": "B",
+    "name": "Terminal B (United; under reconstruction)",
+    "airlines": [
+     "United"
+    ],
+    "checkpoints": [
+     {
+      "notes": "Listed as closed. While the Terminal B lobby is closed, Terminal B passengers check in, drop bags and clear TSA at Terminal C, then ride the Skyway to Terminal B.",
+      "precheck": false,
+      "clear": false,
+      "name": "Terminal B checkpoint"
+     }
+    ],
+    "notes": [
+     "The United Terminal B ticketing lobby has been closed since Jan 21, 2025. The airport says it stays closed until late 2026, and United's project site says it reopens in Fall 2026.",
+     "United gates B3-B31 remain in use",
+     "United runs an optional shuttle bus between Terminal B (gates 4-11), Terminal C (gates 30-45) and Terminal E (gates 1-10) as an alternative to the Skyway",
+     "Terminal B South ride-app passengers should take the Skyway to Terminal A or C for pickup"
+    ]
+   },
+   {
+    "id": "C",
+    "name": "Terminal C",
+    "airlines": [
+     "United"
+    ],
+    "checkpoints": [
+     {
+      "notes": "Checkpoint and TSA PreCheck 4:00am-10:00pm; CLEAR Sun-Fri 4:00am-7:00pm, Sat 4:00am-6:00pm. Also screens Terminal B passengers during the B lobby closure.",
+      "precheck": true,
+      "clear": true,
+      "name": "Terminal C North"
+     },
+     {
+      "notes": "Checkpoint 4:00am-7:30pm; PreCheck hours not listed",
+      "precheck": null,
+      "clear": null,
+      "name": "Terminal C South"
+     }
+    ],
+    "notes": [
+     "All United Terminal B check-in and bag drop currently happens here",
+     "METRO's 102 Bush IAH Express bus serves Terminal C"
+    ]
+   },
+   {
+    "id": "D",
+    "name": "Terminal D (international, including the new Terminal D-West concourse)",
+    "airlines": [],
+    "checkpoints": [
+     {
+      "notes": "Modified hours because only two airlines currently operate from the terminal: Sun, Mon, Wed and Fri 7:00-11:30am and 4:30-8:00pm; Tue, Thu and Sat 7:00am-8:00pm. An April 2026 airport update lists standard screening only. A separate table on the same page lists 4:00am-12:30am with PreCheck 5:00am-7:00pm, which conflicts.",
+      "precheck": null,
+      "clear": false,
+      "name": "Terminal D checkpoint"
+     }
+    ],
+    "notes": [
+     "Terminal D-West is the airport's new international concourse, next to the expanded Terminal E",
+     "International arrivals at Terminal D clear Customs in the Terminal E international arrivals hall",
+     "The two airlines currently operating from Terminal D were not named on the airport pages reviewed"
+    ]
+   },
+   {
+    "id": "E",
+    "name": "Terminal E",
+    "airlines": [
+     "United"
+    ],
+    "checkpoints": [
+     {
+      "notes": "Checkpoint 4:00am-12:00am; TSA PreCheck 4:00am-8:00pm. CLEAR is listed at Terminal E in the April 2026 airport update, and there is a post-security CLEAR enrollment center open daily 4:00am-6:00pm.",
+      "precheck": true,
+      "clear": true,
+      "name": "Terminal E checkpoint"
+     }
+    ],
+    "notes": [
+     "Customs and Immigration for international arrivals is in the Terminal E international arrivals hall",
+     "A TSA recheck area for international connections (opened August 2024) has a dedicated PreCheck lane past baggage claim",
+     "The METRO 500 IAH Downtown Direct bus stops at Terminal E, Level 2, Door E201"
+    ]
+   }
+  ],
+  "connectedAirside": true,
+  "betweenTerminals": "Inside security, the free Skyway train runs between Terminals A, C and D/E every two minutes (about 4 min 15 s from A to D/E). Outside security, the free Subway train links Terminals A, B, C, D/E and the Airport Marriott every three minutes, 3:15am-12:15am. The airport says the Subway lets you reach an open checkpoint in any terminal.",
+  "securityWaits": {
+   "summary": "Houston Airports shows live checkpoint waits online but no typical figures. During the Feb-Apr 2026 federal shutdown it warned of longer-than-normal waits and said PreCheck and CLEAR availability could change day to day. In TSA's hourly screening counts for Mar 15-21 and Sep 13-19, 2026, the heaviest screening was about 5-9am, with a second, smaller peak in mid-afternoon.",
+   "busiestTimes": [
+    "5:00-9:00am",
+    "Around 3:00pm",
+    "Mondays, Thursdays, Fridays and Sundays are busier; Tuesdays, Wednesdays and Saturdays typically lighter (Houston Airports)"
+   ],
+   "source": "https://www.fly2houston.com/airport-business/newsroom/articles/item/frequently-asked-questions-tsa-screening/"
+  },
+  "precheckNotes": "PreCheck hours differ by checkpoint: Terminal A North 4:00am-6:00pm, Terminal C North 4:00am-10:00pm, Terminal E 4:00am-8:00pm. Terminal A South and C South list no PreCheck hours, Terminal B's checkpoint is closed, and Terminal D listed standard screening only in April 2026. Houston Airports says PreCheck and CLEAR availability can vary day to day with staffing.",
+  "clearAvailable": true,
+  "touchlessId": "IAH appears on an April 2026 list of the 65 airports offering TSA PreCheck Touchless ID. Which airlines and checkpoints support it at IAH was not confirmed from an official source.",
+  "gettingThere": {
+   "rideshare": "Drop off on the Departures level at all terminals; the airport enforces 'Active Loading', so curbside stops are for immediate unloading only. Ride-app pickups (Arrivals level): Terminal A west side Door A-114; Terminal C south side Doors C-103/C-104; Terminal E west side, Level 2, Zone 5. Terminal B South riders take the Skyway to A or C.",
+   "transit": "METRO 500 IAH Downtown Direct runs nonstop between Terminal E (Level 2, Door E201) and the George R. Brown Convention Center downtown: $4.50 one way, daily 5:30am-8pm, every 30 minutes. The METRO 102 Bush IAH Express serves Terminal C.",
+   "driving": "Garage parking becomes reservation-only once garages reach 85% capacity, and ecopark2 (Will Clayton Pkwy) has been reservation-only since June 1, 2026. If you park in the A/B garage for a Terminal B flight, a United express shuttle takes you to your terminal."
+  },
+  "construction2026": [
+   "The United/Houston Airports Terminal B Transformation ($2.5B) is underway. The Terminal B ticketing lobby has been closed since Jan 21, 2025, with reopening expected in fall/late 2026. Until then, Terminal B flyers check in and clear security at Terminal C.",
+   "Road work near Terminals A and B ran from 10pm Mon Oct 12 to Fri Oct 16, 2026, with fewer lanes on southbound JFK Blvd near the Marriott as the airport prepares to open the new Terminal B. Drivers leaving A/B should allow extra time and follow detours toward Will Clayton Pkwy.",
+   "Terminal D's TSA checkpoint runs reduced, day-specific hours"
+  ],
+  "bagDrop": null,
+  "tips": [
+   "Flying United from a B gate? Until the new Terminal B opens, you check in, drop bags and clear security at Terminal C, then ride the Skyway to Terminal B.",
+   "All terminals are linked airside by the Skyway, and landside by the Subway (3:15am-12:15am), so if your terminal's checkpoint is closed or backed up you can screen at another open one and ride to your gate",
+   "Check checkpoint hours before early or late flights: Terminal D's checkpoint keeps reduced hours (as late as 7am opening), and several PreCheck lanes close between 6pm and 10pm",
+   "Book parking ahead: garages switch to reservation-only at 85% full, and ecopark2 is reservation-only",
+   "Mondays, Thursdays, Fridays and Sundays are the busier days at IAH; Tuesdays, Wednesdays and Saturdays are typically lighter"
+  ],
+  "faq": [
+   {
+    "q": "How early should I get to Houston Bush airport (IAH)?",
+    "a": "Houston Airports doesn't publish a fixed arrival time. It tells passengers to check live TSA wait times, stay in contact with their airline, and arrive early with extra time for screening, especially on busier Mondays, Thursdays, Fridays and Sundays."
+   },
+   {
+    "q": "Where do I check in for United flights from Terminal B at IAH?",
+    "a": "At Terminal C. The Terminal B ticketing lobby has been closed since Jan 21, 2025 for United's rebuild, which is expected to finish in fall/late 2026. Terminal B passengers check in, drop bags and clear TSA at Terminal C, then take the Skyway to the B gates."
+   },
+   {
+    "q": "Can I move between terminals after security at IAH?",
+    "a": "Yes. The free Skyway train connects Terminals A, C and D/E inside security every two minutes, about 4 minutes end to end. The Subway train connects all terminals before security."
+   }
+  ],
+  "sources": [
+   {
+    "title": "IAH - Security (checkpoint, PreCheck and CLEAR hours; Terminal D hours)",
+    "url": "https://www.fly2houston.com/iah/security/"
+   },
+   {
+    "title": "IAH - Airport Alerts (Terminal B lobby closure, road work, fiber-optic outage)",
+    "url": "https://www.fly2houston.com/iah/alerts/"
+   },
+   {
+    "title": "Houston Airports - TSA Operations Update at IAH (updated Apr 13, 2026)",
+    "url": "https://www.fly2houston.com/airport-business/newsroom/articles/item/frequently-asked-questions-tsa-screening/"
+   },
+   {
+    "title": "IAH - Connecting Passengers (Skyway and Subway)",
+    "url": "https://www.fly2houston.com/iah/connecting-passengers/"
+   },
+   {
+    "title": "IAH - Pick up / Drop off",
+    "url": "https://www.fly2houston.com/iah/ground-transportation/pick-up-drop-off/"
+   },
+   {
+    "title": "IAH - Taxi & Ride Apps",
+    "url": "https://www.fly2houston.com/iah/ground-transportation/taxi-and-ride-apps/"
+   },
+   {
+    "title": "IAH - METRO 500 IAH Downtown Direct",
+    "url": "https://www.fly2houston.com/iah/ground-transportation/metro-downtown-direct/"
+   },
+   {
+    "title": "IAH - Parking",
+    "url": "https://www.fly2houston.com/iah/parking/"
+   },
+   {
+    "title": "Houston Airports - Visible progress defines the IAH Terminal B Transformation (Oct 17, 2025)",
+    "url": "https://www.fly2houston.com/airport-business/newsroom/articles/item/visible-progress-defines-the-iah-terminal-b-transformation/"
+   },
+   {
+    "title": "Houston Airports - Faster connections for TSA PreCheck passengers at IAH (May 9, 2025)",
+    "url": "https://www.fly2houston.com/airport-business/newsroom/articles/item/faster-connections-for-tsa-precheck-passengers-at-iah/"
+   },
+   {
+    "title": "Houston Airports - Active Loading at IAH (Jun 20, 2024)",
+    "url": "https://www.fly2houston.com/airport-business/newsroom/articles/item/houston-airports-implements-active-loading-to-streamline-traffic-at-iah/"
+   },
+   {
+    "title": "Houston Airports - World Cup countdown clock in Terminal D-West (Jun 11, 2025)",
+    "url": "https://www.fly2houston.com/airport-business/newsroom/articles/item/one-terminal-one-clock-one-unforgettable-kickoff-to-the-2026-world-cup/"
+   },
+   {
+    "title": "United - IAH Terminal B Transformation",
+    "url": "https://www.iahbunited.com/"
+   },
+   {
+    "title": "TSA throughput data, March 15-21, 2026",
+    "url": "https://www.tsa.gov/sites/default/files/foia-readingroom/tsa-throughput-data-to-march-15-2026-to-march-21-2026.pdf"
+   },
+   {
+    "title": "TSA throughput data, September 13-19, 2026",
+    "url": "https://www.tsa.gov/sites/default/files/foia-readingroom/tsa-throughput-data-to-september-13-2026-to-september-19-2026.pdf"
+   },
+   {
+    "title": "The Bulkhead Seat - TSA Expands Touchless ID Screening to 65 US Airports (Apr 27, 2026)",
+    "url": "https://thebulkheadseat.com/tsa-expands-touchless-id-screening-to-65-us-airports-full-list/"
+   }
+  ]
+ },
  "JFK": {
   "code": "JFK",
   "name": "John F. Kennedy International Airport",
@@ -1671,8 +2301,7 @@
    "New Terminal One (replacing Terminal 1) has been delayed from 2026. As of September 2026, passengers are expected in the first quarter of 2027.",
    "New Terminal 6 (on the old T6/T7 site, with JetBlue as partner airline) was slated to open its first gates in late 2026. It had not been confirmed open as of mid-September 2026.",
    "Terminal 7 departures drop-off moved into the T7 parking garage (ground level) on 9/22/2026. The T7 taxi stand has also moved to the garage.",
-   "Ride-app pickups for Terminals 5 and 7 have moved to the Howard Beach AirTrain station lot until further notice",
-   "AirTrain JFK is suspended overnight from 10pm to 6am on the nights of Oct 13-14, 14-15 and 15-16, 2026. Free shuttle buses run instead."
+   "Ride-app pickups for Terminals 5 and 7 have moved to the Howard Beach AirTrain station lot until further notice"
   ],
   "bagDrop": "Delta at JFK: domestic bags must be checked at least 60 minutes before departure (45 minutes without bags), international check-in closes 1 hour before, and you must be at the gate 15 minutes before departure. JetBlue at JFK: check-in and bags 45 minutes before domestic departures and 60 minutes before international.",
   "tips": [
@@ -2557,10 +3186,11 @@
   "connectedAirside": false,
   "betweenTerminals": "Terminals A and B: walk across Level 3 of the shared building (525 ft). Terminal C: ride the 24-hour Terminal Link people mover from Terminal B to the Train Station, then walk about 1,200 ft through Parking Garage C, or take the 24-hour shuttle bus between Terminal B Level 1 (space B65) and Terminal C Level 1 (space C272). All of these are pre-security, so you must clear security again.",
   "securityWaits": {
-   "summary": "No official typical-wait figures are published. On a spring-break Monday morning in March 2026, local news reported waits of about 40 minutes, with lines at times stretching down terminal hallways.",
+   "summary": "MCO publishes no typical wait figures. On a spring-break Monday morning in March 2026, local news reported waits of about 40 minutes, with lines at times stretching down terminal hallways. In TSA's hourly screening counts for Mar 15-21 and Sep 13-19, 2026, volume stayed high from about 4am through 6pm, and the heaviest hours were 5-9am.",
    "busiestTimes": [
-    "Mornings",
-    "Late afternoon"
+    "5:00-9:00am",
+    "Late afternoon (per local news)",
+    "Sundays (busiest day in both TSA sample weeks)"
    ],
    "source": "https://www.wftv.com/news/local/travelers-face-long-lines-orlando-international-airport-amid-spring-break-surge/5THVTM2WJBHHLL72XT5WXERGTY"
   },
@@ -2656,6 +3286,14 @@
    {
     "title": "Disney Tourist Blog - TSA PreCheck Touchless is Pointless at Orlando Airport (Apr 11, 2026)",
     "url": "https://www.disneytouristblog.com/tsa-precheck-touchless-is-pointless-at-orlando-airport/"
+   },
+   {
+    "title": "TSA throughput data, March 15-21, 2026 (hourly screening counts by checkpoint)",
+    "url": "https://www.tsa.gov/sites/default/files/foia-readingroom/tsa-throughput-data-to-march-15-2026-to-march-21-2026.pdf"
+   },
+   {
+    "title": "TSA throughput data, September 13-19, 2026",
+    "url": "https://www.tsa.gov/sites/default/files/foia-readingroom/tsa-throughput-data-to-september-13-2026-to-september-19-2026.pdf"
    }
   ]
  },
@@ -2806,9 +3444,13 @@
   "connectedAirside": false,
   "betweenTerminals": "Before security, moving walkways on Level 3 link all three terminals, the Dolphin/Flamingo garages and the MIA Mover station; MIA says to allow 15 minutes between the North and South Terminals. Behind security, only Concourses D-E and H-J are connected, so moving between other concourses means clearing security again.",
   "securityWaits": {
-   "summary": null,
-   "busiestTimes": [],
-   "source": null
+   "summary": "MIA publishes real-time checkpoint waits on its site but no typical figures. In TSA's hourly screening counts for Mar 15-21 and Sep 13-19, 2026, MIA had two peaks, an early-morning one (about 6-8am) and a larger afternoon/evening one (about 3-7pm). This is unlike most airports, where mornings dominate.",
+   "busiestTimes": [
+    "6:00-8:00am",
+    "3:00-7:00pm",
+    "Fridays through Sundays (busiest days in both TSA sample weeks)"
+   ],
+   "source": "https://www.tsa.gov/sites/default/files/foia-readingroom/tsa-throughput-data-to-september-13-2026-to-september-19-2026.pdf"
   },
   "precheckNotes": "Per MIA's checkpoint list, PreCheck runs during checkpoint hours at Checkpoints 1 (Concourse D), 5, 6, 7 (Central) and 8, 9, 10 (South). Checkpoints 2, 3, 4 and DFIS in Concourse D are not listed with PreCheck. Checkpoint 9 is the only one open 24 hours.",
   "clearAvailable": true,
@@ -2898,6 +3540,14 @@
    {
     "title": "Upgraded Points - Miami International Airport guide (updated Sep 7, 2026)",
     "url": "https://upgradedpoints.com/travel/airports/miami-international-mia-airport/"
+   },
+   {
+    "title": "TSA throughput data, March 15-21, 2026 (hourly screening counts by checkpoint)",
+    "url": "https://www.tsa.gov/sites/default/files/foia-readingroom/tsa-throughput-data-to-march-15-2026-to-march-21-2026.pdf"
+   },
+   {
+    "title": "TSA throughput data, September 13-19, 2026",
+    "url": "https://www.tsa.gov/sites/default/files/foia-readingroom/tsa-throughput-data-to-september-13-2026-to-september-19-2026.pdf"
    }
   ]
  },
