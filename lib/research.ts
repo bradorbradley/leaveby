@@ -317,7 +317,7 @@ function hostOf(url: string): string {
 
 const SYNTH_SYSTEM = `You are the brain behind Leave By. You turn research notes into the minutes a traveler needs, and into a few plain sentences shown on a phone.
 
-Judgment: err a little protective (a missed flight costs hours, ten spare minutes cost nothing) but do not pad every number; travelers stop trusting an app that always says four hours. Where a note says "not found", use the airport's typical pattern. Never include the traveler's gate time; the app adds it.
+Judgment: err a little protective (a missed flight costs hours, ten spare minutes cost nothing) but do not pad every number; travelers stop trusting an app that always says four hours. Use typical times for that hour, never "can take up to" worst cases or outlier anecdotes. Where a note says "not found", use the airport's typical pattern. Never include the traveler's gate time; the app adds it.
 
 Writing: plain words, no jargon, no hedging, at most 18 words per sentence. Name the specific thing (the checkpoint, the road, the rule). "headsUp" is only things that genuinely change this trip; empty is fine.`;
 
@@ -325,9 +325,9 @@ const SCHEMA = {
   type: "object",
   additionalProperties: false,
   properties: {
-    driveMinutes: { type: "integer", description: "Door to the terminal with traffic for that hour. For driving, include parking and the lot-to-terminal walk or shuttle. For transit, the full door-to-terminal trip including waits." },
+    driveMinutes: { type: "integer", description: "Door to the terminal with the TYPICAL traffic for that hour (not a worst case). For driving, include parking and the lot-to-terminal walk or shuttle. For transit, the full door-to-terminal trip including waits." },
     curbToCheckpointMinutes: { type: "integer", description: "Curb or terminal entrance to the checkpoint they should use, including bag drop if they check a bag, and any required document check or security questioning at check-in" },
-    securityMinutes: { type: "integer", description: "Queue plus screening for their lane at their arrival hour" },
+    securityMinutes: { type: "integer", description: "Typical queue plus screening for their lane at their arrival hour. Not a worst case: ignore 'can take up to' outlier quotes." },
     borderMinutes: { type: "integer", description: "Passport (exit) control or US preclearance, plus any extra screening for this destination (for example a separate US-flights check), in minutes. 0 when the trip has none." },
     borderLabel: { type: "string", description: "Title for that step, e.g. 'Passport control' or 'Passport control and US flight screening'. Empty when borderMinutes is 0." },
     borderNotes: { type: "array", items: { type: "string" }, description: "0 to 2 short notes for that step: where it is, its typical wait, extra screening for this destination" },
@@ -463,17 +463,23 @@ function clamp(n: unknown, lo: number, hi: number, fallback: number): number {
   return Math.min(hi, Math.max(lo, v));
 }
 
-function sanitize(r: Partial<Research>, input: ResearchInput, engine: string): Research {
+export function sanitize(r: Partial<Research>, input: ResearchInput, engine: string): Research {
   const base = fallbackNumbers(input);
   const strings = (arr: unknown, max: number) =>
     Array.isArray(arr) ? arr.filter((s): s is string => typeof s === "string" && s.trim().length > 0).map((s) => s.trim()).slice(0, max) : [];
   const free = input.route.freeFlowMinutes;
   const driveLo = free ? Math.round(free * 0.9) : 5;
-  const driveHi = free ? (input.mode === "transit" ? Math.round(free * 3) + 30 : input.mode === "drive" ? Math.round(free * 2.2) + 35 : Math.round(free * 2.2) + 15) : 900;
+  // Traffic can't more than double an empty road outside rush hour, and barely moves it before dawn.
+  const { rush, quiet } = roadHour(input);
+  const traffic = rush ? 2.2 : quiet ? 1.5 : 1.8;
+  const driveHi = free ? (input.mode === "transit" ? Math.round(free * 3) + 30 : Math.round(free * traffic) + (input.mode === "drive" ? 35 : 15)) : 900;
+  // A research note quoting a worst case ("can take up to 2 hours") must not become the plan:
+  // cap security at a multiple of this terminal's typical wait for the hour.
+  const securityHi = Math.min(90, Math.max(45, Math.round(base.securityMinutes * 2.5)));
   return {
     driveMinutes: clamp(r.driveMinutes, driveLo, driveHi, base.driveMinutes),
     curbToCheckpointMinutes: clamp(r.curbToCheckpointMinutes, 2, 60, base.curbToCheckpointMinutes),
-    securityMinutes: clamp(r.securityMinutes, 5, 120, base.securityMinutes),
+    securityMinutes: clamp(r.securityMinutes, 5, securityHi, base.securityMinutes),
     ...borderFields(r, input, base),
     checkpointToGateMinutes: clamp(r.checkpointToGateMinutes, 2, 45, base.checkpointToGateMinutes),
     // Long-haul international flights board 40+ minutes out; never plan to reach the gate later than that.
@@ -535,6 +541,15 @@ function withDistanceWarning(input: ResearchInput, headsUp: string[]): string[] 
   return [note, ...headsUp].slice(0, 2);
 }
 
+/** The local hour the traveler is likely on the road (about 2.5 hours before departure). */
+export function roadHour(input: Pick<ResearchInput, "flight">, tz = input.flight.departureTimezone ?? "America/New_York") {
+  const road = instantToZonedParts(new Date(new Date(input.flight.departureTime).getTime() - 2.5 * 3600 * 1000), tz);
+  const weekend = road.weekday === "Sat" || road.weekday === "Sun";
+  const rush = !weekend && ((road.hour >= 7 && road.hour < 10) || (road.hour >= 15 && road.hour < 19));
+  const quiet = road.hour < 6 || road.hour >= 21;
+  return { road, weekend, rush, quiet };
+}
+
 function fallbackNumbers(input: ResearchInput): Research {
   const { flight, route, checkedBag, perks } = input;
   const airport = getAirportProfile(flight.departureAirport, {
@@ -544,9 +559,7 @@ function fallbackNumbers(input: ResearchInput): Research {
   });
   const terminal = getTerminalProfile(flight.departureAirport, flight.terminal);
   const tz = flight.departureTimezone ?? airport.timezone;
-  const road = instantToZonedParts(new Date(new Date(flight.departureTime).getTime() - 2.5 * 3600 * 1000), tz);
-  const weekend = road.weekday === "Sat" || road.weekday === "Sun";
-  const rush = !weekend && ((road.hour >= 7 && road.hour < 10) || (road.hour >= 15 && road.hour < 19));
+  const { road, rush } = roadHour(input, tz);
   const factor = rush ? 1.45 : road.hour >= 6 && road.hour < 21 ? 1.2 : 1.0;
   const drive = route.freeFlowMinutes ? Math.round(route.freeFlowMinutes * factor) + 5 : 50;
   const us = usScreening(flight.departureAirport);
