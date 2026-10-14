@@ -1,0 +1,115 @@
+{
+  "week": "2026-W42",
+  "notes": "7 concepts x 2 opening hooks = 14 posts. Each pair tests which hook wins on the same slides. Plan numbers are real Leave By results for Fri Oct 16, 2026 (live traffic, weather and security research at generation time).",
+  "concepts": [
+    {
+      "id": "theory-jfk",
+      "caption": "Airport theory says show up 15–20 minutes before your flight. We ran a real 6 AM JFK flight through Leave By. What time would you leave? 👇",
+      "hashtags": ["airporttheory", "traveltok", "jfk", "airporttips", "traveltips"],
+      "hooks": [
+        { "id": "a", "slide": { "type": "text", "kicker": "Tested", "title": "I tested *airport theory* on a 6 AM flight out of JFK", "sticker": "wow.webp" } },
+        { "id": "b", "slide": { "type": "text", "kicker": "Airport theory", "title": "TikTok says get to the airport *20 minutes* before your flight.", "sub": "Here's the math on a real one.", "sticker": "wow.webp" } }
+      ],
+      "slides": [
+        { "type": "text", "kicker": "Airport theory says", "title": "At the curb by *5:40 AM*", "sub": "for JetBlue 123, JFK → LAX, departing 6:00 AM" },
+        { "type": "text", "kicker": "But", "title": "Boarding starts at *5:30*", "sub": "And the 4 AM security line at Terminal 5 runs about 30 minutes." },
+        { "type": "plan", "time": "3:45", "ampm": "AM", "trip": "JetBlue 123 · JFK T5 → LAX · from Williamsburg", "rows": [["Drive (rain at 2 AM)", "46 min"], ["Curb to security", "5 min"], ["Security line", "30 min"], ["Walk to gate", "7 min"], ["Boarding starts", "5:30 AM"]], "note": "Real Leave By plan for Fri, Oct 16. Live traffic, weather and security. Yours will differ." },
+        { "type": "photo", "image": "s05_sprint.webp", "title": "Airport theory works…", "sub": "until one long line has you sprinting." },
+        { "type": "cta", "title": "Find *your* exact time" }
+      ]
+    },
+    {
+      "id": "pov-jfk",
+      "caption": "Settle it before the argument starts 😅 Real Leave By plan: 8:30 AM American flight from JFK, checking a bag, PreCheck.",
+      "hashtags": ["traveltok", "airporttips", "couplestravel", "jfk", "nyctravel"],
+      "hooks": [
+        { "id": "a", "slide": { "type": "text", "kicker": "POV", "title": "He says you can leave at *6:30* for an 8:30 flight", "sticker": "tap.webp" } },
+        { "id": "b", "slide": { "type": "text", "kicker": "POV", "title": "\"JFK is like 40 minutes away, *relax*.\"", "sub": "8:30 AM flight. Checking a bag.", "sticker": "tap.webp" } }
+      ],
+      "slides": [
+        { "type": "photo", "image": "s03_traffic.webp", "title": "So you check *Leave By*", "sub": "Rain at 4 AM. The Van Wyck. A bag to drop." },
+        { "type": "plan", "time": "5:45", "ampm": "AM", "trip": "American 1 · JFK T8 → LAX · from the Upper West Side", "rows": [["Drive (rain, Van Wyck)", "66 min"], ["Bag drop to security", "20 min"], ["PreCheck line", "17 min"], ["Walk to gate", "8 min"], ["Boarding starts", "8:00 AM"]], "note": "Real Leave By plan for Fri, Oct 16. Yours will differ." },
+        { "type": "text", "kicker": "Leaving at 6:30", "title": "puts you at the curb at *7:36*", "sub": "54 minutes before takeoff, with a bag to check, a line and a walk still ahead." },
+        { "type": "photo", "image": "a5_gate.webp", "at": "bottom", "title": "Leave at 5:45. *Coffee at the gate.*" },
+        { "type": "cta", "title": "Settle it *before* the argument", "sticker": "thumb.webp" }
+      ]
+    },
+    {
+      "id": "thanksgiving",
+      "caption": "The Sunday after Thanksgiving has been the busiest day in TSA history 3 years running. Flying home Nov 29? Don't use a blanket rule. Source: TSA.",
+      "hashtags": ["thanksgivingtravel", "traveltok", "airporttips", "tsa", "holidaytravel"],
+      "hooks": [
+        { "id": "a", "slide": { "type": "text", "kicker": "Thanksgiving 2026", "title": "The busiest day in TSA history? The Sunday after Thanksgiving. *Three years in a row.*", "size": 112 } },
+        { "id": "b", "slide": { "type": "text", "kicker": "Flying home Nov 29?", "title": "You're flying on the likely *busiest day* in TSA history.", "size": 116 } }
+      ],
+      "slides": [
+        { "type": "text", "kicker": "Sunday, Nov 30, 2025", "title": "*3,133,924* people screened by TSA", "sub": "The all-time record.", "note": "Source: TSA, ABC News" },
+        { "type": "photo", "image": "s04_security.webp", "title": "2026's version: *Sunday, Nov 29*", "sub": "Every lane fills. Even PreCheck." },
+        { "type": "text", "kicker": "Where the time goes", "title": "The drive. Bag drop. Security. *The walk.*", "sub": "Which of those blows up depends on your airport, your terminal and your hour." },
+        { "type": "cta", "title": "Get *your* Thanksgiving leave time", "sub": "Pick your flight. Live traffic, security and alerts." }
+      ]
+    },
+    {
+      "id": "four-things",
+      "caption": "Missing a flight usually isn't about the flight. Which one got you? 👇",
+      "hashtags": ["traveltips", "airporttips", "traveltok", "missedflight", "travelhacks"],
+      "hooks": [
+        { "id": "a", "slide": { "type": "text", "title": "4 things that make you miss your flight that *aren't* the flight", "sticker": "wow.webp" } },
+        { "id": "b", "slide": { "type": "text", "title": "You didn't miss your flight because of *the flight*.", "sticker": "wow.webp" } }
+      ],
+      "slides": [
+        { "type": "photo", "image": "s02_pack.webp", "kicker": "1", "title": "Bag drop *closes*", "sub": "Often 45–60 minutes before departure. Check your airline." },
+        { "type": "photo", "image": "s03_traffic.webp", "kicker": "2", "title": "The airport *roads*", "sub": "The last mile to the curb backs up first." },
+        { "type": "photo", "image": "s05b_tram.webp", "kicker": "3", "title": "The *walk*", "sub": "Some gates are a long walk, or a train, from security." },
+        { "type": "photo", "image": "s06_gate.webp", "kicker": "4", "title": "The door *closes* before takeoff", "sub": "Often 10–15 minutes before departure." },
+        { "type": "cta", "title": "Leave By counts *all four*" }
+      ]
+    },
+    {
+      "id": "europe-ees",
+      "caption": "Flying home from Europe this winter? The EU's new Entry/Exit System has doubled passport waits at some airports (Frankfurt averaged 120 min in July, per Euronews). Build it into your leave time.",
+      "hashtags": ["europetravel", "traveltok", "ees", "passportcontrol", "traveltips"],
+      "hooks": [
+        { "id": "a", "slide": { "type": "text", "kicker": "Flying home from Europe?", "title": "Passport control just got *a lot* slower.", "sticker": "wow.webp" } },
+        { "id": "b", "slide": { "type": "text", "kicker": "New in 2026", "title": "Europe's new border system *doubled* some airport waits.", "sticker": "wow.webp" } }
+      ],
+      "slides": [
+        { "type": "text", "kicker": "The EU Entry/Exit System", "title": "Fingerprints and a photo, *on the way out too*", "sub": "For non-EU travelers leaving the Schengen area since 2026." },
+        { "type": "text", "kicker": "July 2026", "title": "Frankfurt: *120 min* average wait", "sub": "Up from 60.", "note": "Source: Euronews, Aug 12 2026" },
+        { "type": "plan", "time": "6:15", "ampm": "AM", "trip": "United 125 · Athens → Newark · from Syntagma", "rows": [["Drive", "45 min"], ["Bag drop and check-in", "20 min"], ["Security", "50 min"], ["Passport control (EES)", "60 min"], ["Boarding starts", "9:45 AM"]], "note": "Real Leave By plan. Yours will differ." },
+        { "type": "cta", "title": "Leave By plans for *passport control*", "sub": "Pick your flight. It knows which routes need it." }
+      ]
+    },
+    {
+      "id": "mascot-pov",
+      "caption": "Same trip. One app. 🧳✨",
+      "hashtags": ["traveltok", "airporttips", "travelhacks", "traveltips", "airport"],
+      "hooks": [
+        { "id": "a", "slide": { "type": "photo", "image": "s07_calm_night.webp", "kicker": "POV", "title": "You checked *Leave By* the night before" } },
+        { "id": "b", "slide": { "type": "photo", "image": "s01_nosleep.webp", "kicker": "2:13 AM", "title": "\"When do I *actually* need to leave?\"" } }
+      ],
+      "slides": [
+        { "type": "photo", "image": "a1_door.webp", "at": "bottom", "title": "6 AM. *Ride's outside.*", "sub": "Leave by 6:00 for an 8:25 flight." },
+        { "type": "photo", "image": "a2_car.webp", "at": "bottom", "title": "Rain? Construction? *Already counted.*" },
+        { "type": "photo", "image": "a3_line.webp", "at": "bottom", "title": "PreCheck: *~10 min*", "sub": "Right on schedule." },
+        { "type": "photo", "image": "a5_gate.webp", "at": "bottom", "title": "*39 minutes* to spare.", "sub": "No rushing. No guessing." },
+        { "type": "cta", "title": "Never miss a flight *again*" }
+      ]
+    },
+    {
+      "id": "theory-dal",
+      "caption": "Airport theory at Dallas Love Field: real Leave By plan for Southwest 1, 7:00 AM. Would you cut it closer?",
+      "hashtags": ["airporttheory", "dallas", "southwest", "traveltok", "airporttips"],
+      "hooks": [
+        { "id": "a", "slide": { "type": "text", "kicker": "Dallas Love Field", "title": "Airport theory on a *7 AM* Southwest flight", "sticker": "wow.webp" } },
+        { "id": "b", "slide": { "type": "text", "kicker": "Airport theory", "title": "Southwest boards *30 minutes* before takeoff.", "sub": "Airport theory didn't read that part.", "sticker": "wow.webp" } }
+      ],
+      "slides": [
+        { "type": "text", "kicker": "Airport theory says", "title": "At the curb by *6:40*", "sub": "Boarding starts at 6:30." },
+        { "type": "plan", "time": "5:15", "ampm": "AM", "trip": "Southwest 1 · DAL → HOU · from Uptown", "rows": [["Drive", "15 min"], ["Curb to security", "8 min"], ["Security line (5:40 AM)", "22 min"], ["Walk to gate", "12 min"], ["Boarding starts", "6:30 AM"]], "note": "Real Leave By plan for Fri, Oct 16. Yours will differ." },
+        { "type": "text", "title": "A 12-minute drive.\nStill a *5:15* alarm.", "sub": "Short drives don't make short mornings." },
+        { "type": "cta", "title": "Find *your* exact time" }
+      ]
+    }
+  ]
+}

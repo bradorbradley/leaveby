@@ -6,7 +6,15 @@ export const SESSION_STORAGE_KEY = "leaveby.analytics.v2";
 
 const SOURCES = ["google", "bing", "x", "twitter", "linkedin", "reddit", "hackernews", "producthunt", "facebook", "instagram", "tiktok", "threads", "newsletter", "email"] as const;
 const MEDIUMS = ["social", "organic", "referral", "email", "cpc", "paid_social", "community"] as const;
-const PAGES = ["/", "/app", "/privacy", "/terms"] as const;
+const PAGES = ["/", "/app", "/privacy", "/terms", "/airports", "/thanksgiving-travel-2026"] as const;
+/** Public airport guides, e.g. /airports/jfk. An airport code is public, never personal. */
+const GUIDE_PATH = /^\/airports\/[a-z]{3}$/;
+
+/** The known page a path belongs to, or null for anything unexpected. */
+function knownPath(pathname: string): string | null {
+  if (PAGES.includes(pathname as typeof PAGES[number])) return pathname;
+  return GUIDE_PATH.test(pathname) ? pathname : null;
+}
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
 const CAMPAIGN_CODE = /^[a-z][a-z0-9_-]{0,39}$/;
 
@@ -52,7 +60,7 @@ export function attribution(url: string, referrer: string, campaigns: readonly s
     source: source === "twitter" ? "x" : source,
     medium: query.has("utm_medium") ? pick(query.get("utm_medium")?.toLowerCase(), MEDIUMS) : "unspecified",
     campaign: query.has("utm_campaign") ? pick(query.get("utm_campaign"), campaigns) : "none",
-    entry_page: pick(parsed.pathname, PAGES),
+    entry_page: GUIDE_PATH.test(parsed.pathname) ? "/airports" : pick(parsed.pathname, PAGES),
     entry_kind: ["p", "f"].some((key) => query.has(key)) ? "shared_link" : "standard",
   };
 }
@@ -61,8 +69,8 @@ export function attribution(url: string, referrer: string, campaigns: readonly s
 export function sanitizedPageUrl(url: string): string | null {
   try {
     const parsed = new URL(url);
-    if (!PAGES.includes(parsed.pathname as typeof PAGES[number])) return null;
-    return `${parsed.origin}${parsed.pathname}`;
+    const path = knownPath(parsed.pathname);
+    return path ? `${parsed.origin}${path}` : null;
   } catch {
     return null;
   }

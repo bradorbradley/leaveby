@@ -1,0 +1,3837 @@
+{
+ "ATL": {
+  "code": "ATL",
+  "name": "Hartsfield-Jackson Atlanta International Airport",
+  "city": "Atlanta",
+  "state": "GA",
+  "checkedOn": "2026-10-14",
+  "officialArrivalAdvice": {
+   "domestic": "Delta (ATL's hub carrier) recommends arriving at least 2 hours before domestic departures; ATL is not on Delta's list of airports with longer times",
+   "international": null,
+   "source": "https://www.delta.com/us/en/check-in-security/check-in-time-requirements/domestic-check-in"
+  },
+  "terminals": [
+   {
+    "id": "Domestic",
+    "name": "Domestic Terminal (North and South)",
+    "airlines": [
+     "Delta",
+     "Southwest",
+     "American",
+     "United",
+     "Alaska",
+     "JetBlue",
+     "Frontier"
+    ],
+    "checkpoints": [
+     {
+      "notes": "Open 24 hours for standard screening; the only checkpoint reported as open around the clock",
+      "precheck": null,
+      "clear": null,
+      "name": "Main Checkpoint"
+     },
+     {
+      "notes": "Hours reported as 3:30am-10pm (Chase) or 4am-9pm (Upgraded Points); standard and priority screening",
+      "precheck": null,
+      "clear": null,
+      "name": "North Checkpoint"
+     },
+     {
+      "notes": "Reported 3:30am-10pm for standard and CLEAR standard screening",
+      "precheck": null,
+      "clear": true,
+      "name": "Lower North Checkpoint"
+     },
+     {
+      "notes": "TSA PreCheck lanes only (incl. CLEAR with PreCheck); reported 4am-10pm (Chase) or 4am-9pm (Upgraded Points)",
+      "precheck": true,
+      "clear": true,
+      "name": "South Checkpoint"
+     }
+    ],
+    "notes": [
+     "Delta occupies the South side of the Domestic Terminal; other airlines, including Southwest, check in on the North side",
+     "The MARTA rail station is inside the Domestic Terminal",
+     "Concourses T, A, B, C, D, E and F are reached by the Plane Train (every 2 minutes) or the underground Transportation Mall walkway"
+    ]
+   },
+   {
+    "id": "International",
+    "name": "Maynard H. Jackson Jr. International Terminal",
+    "airlines": [
+     "Aeromexico",
+     "Air Canada",
+     "Air France",
+     "British Airways",
+     "Lufthansa",
+     "Qatar Airways"
+    ],
+    "checkpoints": [
+     {
+      "notes": "Standard screening reported 4:30am-midnight; PreCheck only during limited windows (Chase lists 7-10am and 2-7pm); CLEAR+ standard lanes reported 5am-8pm",
+      "precheck": true,
+      "clear": true,
+      "name": "International Terminal Departures checkpoint"
+     }
+    ],
+    "notes": [
+     "Separate building with its own highway exit (exit 239, vs. exit 238 for the Domestic Terminal)",
+     "Upper level has ticketing and security; lower level is customs and baggage claim",
+     "During the March 2026 TSA staffing crisis the airport told domestic travelers to stay away from the International Terminal checkpoint"
+    ]
+   }
+  ],
+  "connectedAirside": true,
+  "betweenTerminals": "Plane Train runs every 2 minutes beneath all concourses; you can also walk between all concourses through the underground Transportation Mall (domestic-to-international end to end is about 1.3 miles, roughly 30 minutes)",
+  "securityWaits": {
+   "summary": "No official typical-wait figures were accessible. Peak security times are 5-9am plus the days before and after holidays and long weekends. During the Feb-Apr 2026 DHS shutdown waits reached several hours and the airport advised arriving 4 hours early; that shutdown ended April 30, 2026.",
+   "busiestTimes": [
+    "5:00-9:00am",
+    "Days before and after holidays and long weekends"
+   ],
+   "source": "https://www.chase.com/personal/credit-cards/education/basics/tips-for-tsa-wait-times-at-atlanta-airport"
+  },
+  "precheckNotes": "The South Checkpoint (Delta side) is PreCheck-only. International Terminal PreCheck runs only during limited daytime windows. Checkpoint hours differ between guides and are subject to change.",
+  "clearAvailable": true,
+  "touchlessId": "TSA PreCheck Touchless ID is listed at ATL for Alaska, American, Delta, Southwest and United (opt in through your airline profile)",
+  "gettingThere": {
+   "rideshare": "Rideshare pickup is on the Domestic Terminal North lower level, next to the North Economy parking deck (follow orange signs)",
+   "transit": "MARTA Red and Gold lines leave from inside the Domestic Terminal every 10-20 minutes; about 15 minutes to the city center",
+   "driving": "Use exit 238 for the Domestic Terminal and exit 239 for the International Terminal. Redevelopment work limits space in the North and South parking decks until 2027; hourly domestic parking is $10/hour, daily garages $30/day, economy $20/day."
+  },
+  "construction2026": [
+   "North and South parking deck redevelopment limits parking in those decks until 2027",
+   "Concourse D widening continues section by section through summer 2029, with minimal gate closures"
+  ],
+  "bagDrop": "Delta: check bags at least 45 minutes before domestic departure (30 minutes if not checking bags); be at the gate 15 minutes before departure; bags are not accepted more than 6 hours early. Southwest: checked bags at the counter 45 minutes before domestic departure.",
+  "tips": [
+   "Delta flyers check in on the South side; most other airlines, including Southwest, are on the North side",
+   "The South Checkpoint is PreCheck-only, so travelers without PreCheck should use Main or North",
+   "The Main Checkpoint is the one reported open 24 hours; other checkpoints close in the evening",
+   "Gates on far concourses are a Plane Train ride away (trains every 2 minutes); walking the Transportation Mall from the domestic end to the international end takes about 30 minutes",
+   "If one domestic checkpoint looks crowded, local news suggests walking to the other side, but only if that line is moving"
+  ],
+  "faq": [
+   {
+    "q": "How early should I get to the Atlanta airport?",
+    "a": "Delta, ATL's main airline, recommends arriving at least 2 hours before a domestic flight. Peak security times are 5-9am and around holidays, so allow more time then. Check ATL's live wait times before you leave."
+   },
+   {
+    "q": "Is ATL still telling travelers to arrive 4 hours early?",
+    "a": "That advice was issued in March 2026 during the DHS shutdown, when TSA staffing was short. The shutdown ended April 30, 2026, and Congress later extended federal funding through December 11, 2026."
+   },
+   {
+    "q": "Which ATL security checkpoint has TSA PreCheck?",
+    "a": "The Domestic Terminal South Checkpoint on Delta's side is PreCheck-only, including CLEAR with PreCheck. The International Terminal also has PreCheck, but only during limited daytime hours."
+   }
+  ],
+  "sources": [
+   {
+    "title": "Delta - Check-In Times at U.S. Airports",
+    "url": "https://www.delta.com/us/en/check-in-security/check-in-time-requirements/domestic-check-in"
+   },
+   {
+    "title": "Chase - Tips for TSA wait times at Atlanta airport",
+    "url": "https://www.chase.com/personal/credit-cards/education/basics/tips-for-tsa-wait-times-at-atlanta-airport"
+   },
+   {
+    "title": "Upgraded Points - Hartsfield-Jackson Atlanta International Airport guide (updated Sept 25, 2026)",
+    "url": "https://upgradedpoints.com/travel/airports/hartsfield-jackson-atlanta-international-airport-review/"
+   },
+   {
+    "title": "ATL Airport District - Atlanta airport travel tips",
+    "url": "https://atldistrict.com/about-the-district/travel-tips/atlanta-airport"
+   },
+   {
+    "title": "Atlanta News First - TSA wait times amid partial government shutdown (Mar 24, 2026)",
+    "url": "https://atlantanewsfirst.com/2026/03/24/everything-you-need-know-about-tsa-wait-times-amid-partial-government-shutdown/"
+   },
+   {
+    "title": "CBS Atlanta - Travelers urged to arrive 4+ hours early (Mar 22, 2026)",
+    "url": "https://www.cbsnews.com/atlanta/news/atlanta-airport-tsa-lines-stretch-for-hours-amid-shutdown-travelers-urged-to-arrive-4-hours-early/"
+   },
+   {
+    "title": "Wikipedia - 2026 United States federal government shutdowns",
+    "url": "https://en.wikipedia.org/wiki/2026_United_States_federal_government_shutdowns"
+   },
+   {
+    "title": "WSB-TV - Concourse D expands at Hartsfield-Jackson (Sept 17, 2025)",
+    "url": "https://www.wsbtv.com/news/local/concourse-d-expands-hartsfield-jackson-atlanta-international-airport/KTAK4OMW6RA2VBGDPWCNYFLPZA"
+   },
+   {
+    "title": "The Bulkhead Seat - TSA PreCheck Touchless ID airport list (Mar 16, 2026)",
+    "url": "https://thebulkheadseat.com/?p=33789"
+   },
+   {
+    "title": "TSA - PreCheck Touchless ID",
+    "url": "https://www.tsa.gov/precheck/touchless-id"
+   },
+   {
+    "title": "AP via MyNorthwest - United narrows check-in window; airline comparison (May 2025)",
+    "url": "https://mynorthwest.com/lifestyle/united-is-narrowing-its-check-in-window-for-us-flights-heres-how-it-compares-to-other-airlines/4092751"
+   }
+  ]
+ },
+ "BOS": {
+  "code": "BOS",
+  "name": "Boston Logan International Airport",
+  "city": "Boston",
+  "state": "MA",
+  "checkedOn": "2026-10-14",
+  "officialArrivalAdvice": {
+   "domestic": "Massport recommends arriving 2 hours before domestic departures",
+   "international": "Massport recommends arriving 3 hours before international departures",
+   "source": "https://www.massport.com/logan-airport/at-the-airport/security-information"
+  },
+  "terminals": [
+   {
+    "id": "A",
+    "name": "Terminal A",
+    "airlines": [
+     "Delta"
+    ],
+    "checkpoints": [
+     {
+      "notes": "CLEAR+ lanes are to the right of the security checkpoint entrance. Hours are Sun-Fri 4:00am-7:30pm and Sat 4:00am-6:30pm.",
+      "precheck": true,
+      "clear": true,
+      "name": "Terminal A security"
+     }
+    ],
+    "notes": [
+     "Delta flies most domestic flights from Terminal A. All Delta international flights use Terminal E.",
+     "Terminal A is not connected to the other terminals after security",
+     "A free Delta shuttle runs between Terminals A and E (4:45am-11:00pm). Alternatively, take the Skywalk Bridge from the Terminal A lobby, about a 5-minute walk to Terminal E.",
+     "Ride-app pickup and drop-off for Terminal A is in the Central Parking Garage"
+    ]
+   },
+   {
+    "id": "B",
+    "name": "Terminal B",
+    "airlines": [
+     "American Airlines",
+     "United Airlines",
+     "Southwest",
+     "Alaska Airlines",
+     "Air Canada"
+    ],
+    "checkpoints": [
+     {
+      "notes": "CLEAR+ hours are Sun-Fri 4:00am-6:00pm and Sat 4:00am-5:30pm",
+      "precheck": true,
+      "clear": true,
+      "name": "Terminal B security"
+     }
+    ],
+    "notes": [
+     "Terminal B has two sides: one serving Air Canada, American and Alaska, the other serving Southwest and United",
+     "Since 9/1, the pedestrian bridge from Terminal A to the Air Canada/American/Alaska side of Terminal B is closed. Follow the detour or take the on-airport shuttle.",
+     "Pre-security escalators on the Southwest/United side may be out of service through November. Use the elevators.",
+     "Ride-app pickup and drop-off is on Level 2 (Departures) of the Terminal B parking garage"
+    ]
+   },
+   {
+    "id": "C",
+    "name": "Terminal C",
+    "airlines": [
+     "JetBlue"
+    ],
+    "checkpoints": [
+     {
+      "notes": "CLEAR+ hours are 4:00am-8:00pm. JetBlue lists the checkpoint hours as 3:00am-11:30pm.",
+      "precheck": true,
+      "clear": true,
+      "name": "Terminal C security"
+     }
+    ],
+    "notes": [
+     "JetBlue domestic and international departures leave from Terminal C. JetBlue international arrivals use Terminal E.",
+     "The bus stop for Logan Express, hotel shuttles, the Uber/Lyft Shuttle and shared vans has moved to Door C102, near the Logan Chapel",
+     "Ride-app pickup and drop-off for Terminal C is in the Central Parking Garage"
+    ]
+   },
+   {
+    "id": "E",
+    "name": "Terminal E",
+    "airlines": [
+     "Delta (international)"
+    ],
+    "checkpoints": [
+     {
+      "notes": "CLEAR+ hours are 4:30am-8:30pm",
+      "precheck": true,
+      "clear": true,
+      "name": "Terminal E security"
+     }
+    ],
+    "notes": [
+     "Terminal E is Logan's primary international terminal, though international flights can depart from any terminal",
+     "Vestibules E101 and E102 and the Terminal E-C Arrivals Level sidewalk are closed. The Terminal E taxi stand is now outside Door E107.",
+     "Ride-app pickup and drop-off for Terminal E is in the Central Parking Garage"
+    ]
+   }
+  ],
+  "connectedAirside": true,
+  "betweenTerminals": "Terminals B, C and E are connected after security. Terminal A is not, so you reach it by pre-security walkways or the free On-Airport Shuttle. Shuttle Route 11 links Terminals A, B, C and E (9am-10pm), and shuttles generally run every 5-6 minutes.",
+  "securityWaits": {
+   "summary": null,
+   "busiestTimes": [],
+   "source": null
+  },
+  "precheckNotes": "TSA PreCheck lanes are available in all terminals. Checkpoints normally open 2 hours before the first departure of the day. On CLEAR, sources differ: Massport's security page names Terminals A and B, while CLEAR's own location page lists lanes in A, B, C and E.",
+  "clearAvailable": true,
+  "touchlessId": "Delta lists BOS for TSA PreCheck Touchless ID, with dedicated Touchless ID bag drop. Southwest also lists BOS.",
+  "gettingThere": {
+   "rideshare": "Ride-app drop-off and pickup for Terminals A, C and E is in the Central Parking Garage. For Terminal B it is on Level 2 (Departures) of the Terminal B parking garage. Accessible ride-app drop-offs use the upper Departures curb.",
+   "transit": "The Silver Line SL1 runs from all terminals to South Station and is free from the airport. For the Blue Line, take free Massport shuttle Route 22, 33, 55 or 66 to Airport Station. Logan Express buses run from Back Bay ($3 to the airport, free back) and from Braintree, Danvers, Framingham and Woburn ($9 each way online, $7/day parking). The Braintree stop is moving to the MBTA Quincy Adams Garage on Tuesday, 11/3. An MBTA ferry connects to Long Wharf via shuttle Route 66.",
+   "driving": "Pre-booking parking online guarantees a space. Garages fill earliest on Tuesday and Wednesday mornings and during the February and April school vacation weeks. Economy Parking is capped at $37 per day and the Terminal B Garage at $46 per day."
+  },
+  "construction2026": [
+   "Runway 9-27 is closed for the second and final phase of FAA-required runway safety work. The closure began Aug 31, 2026 for about 75 days, ongoing through November. Expect flight delays, especially in the afternoons and evenings.",
+   "Since 9/1, the pedestrian bridge from Terminal A to the Air Canada/American/Alaska side of Terminal B is closed. Use the detour or the on-airport shuttle.",
+   "Terminal B pre-security escalators on the Southwest/United side may be out of service through November",
+   "Terminal C bus stop (Logan Express, hotel shuttles, Uber/Lyft Shuttle, shared vans) has moved to Door C102",
+   "Terminal E: vestibules E101 and E102 and the E-C Arrivals sidewalk are closed, and the taxi stand has moved to Door E107",
+   "The Braintree Logan Express stop is moving to the MBTA Quincy Adams Garage on Tuesday, 11/3"
+  ],
+  "bagDrop": "Delta (no BOS-specific exception): bags must be checked at least 45 minutes before domestic departures, international check-in closes 1 hour before, and you must be at the gate 15 minutes before departure. JetBlue at BOS: check-in and bags 45 minutes before domestic departures and 60 minutes before international.",
+  "tips": [
+   "Terminal A is not connected to the other terminals after security. If you are in the wrong terminal, you will have to clear security again.",
+   "Uber and Lyft drop you at the Central Parking Garage for Terminals A, C and E, not at the curb. Allow a few extra minutes to walk in.",
+   "The Silver Line SL1 runs directly to every terminal from South Station. Massport says it is free from the airport to downtown.",
+   "Runway 9-27 work through November can cause afternoon and evening delays. Check your flight status before you leave.",
+   "Logan garages fill earliest on Tuesday and Wednesday mornings, so pre-book parking if you are driving"
+  ],
+  "faq": [
+   {
+    "q": "How early should I get to Boston Logan?",
+    "a": "Massport recommends arriving 2 hours before domestic departures and 3 hours before international departures. Check with your airline during peak travel periods."
+   },
+   {
+    "q": "Can I walk between terminals at Logan after security?",
+    "a": "Terminals B, C and E are connected after security, but Terminal A is not. For Terminal A, use the pre-security walkways or the free On-Airport Shuttle."
+   },
+   {
+    "q": "Where do Uber and Lyft drop off at Logan?",
+    "a": "For Terminals A, C and E, ride apps use the Central Parking Garage. For Terminal B, they use Level 2 (Departures) of the Terminal B parking garage."
+   }
+  ],
+  "sources": [
+   {
+    "title": "Massport - Security Information",
+    "url": "https://www.massport.com/logan-airport/at-the-airport/security-information"
+   },
+   {
+    "title": "Massport - Roadway and Construction Updates",
+    "url": "https://www.massport.com/logan-airport/getting-to-logan/roadway-and-construction-updates"
+   },
+   {
+    "title": "Massport - Boston Logan home",
+    "url": "https://www.massport.com/logan-airport"
+   },
+   {
+    "title": "Massport - Connecting Flights",
+    "url": "https://www.massport.com/logan-airport/flights/connecting-flights"
+   },
+   {
+    "title": "Massport - International Flights",
+    "url": "https://www.massport.com/logan-airport/flights/international-flights"
+   },
+   {
+    "title": "Massport - On-Airport Shuttle",
+    "url": "https://www.massport.com/logan-airport/getting-to-logan/on-airport-shuttle"
+   },
+   {
+    "title": "Massport - Ride Apps (Uber/Lyft)",
+    "url": "https://www.massport.com/logan-airport/getting-to-logan/ride-apps-uber-lyft"
+   },
+   {
+    "title": "Massport - Public Transportation",
+    "url": "https://www.massport.com/logan-airport/getting-to-logan/public-transportation"
+   },
+   {
+    "title": "Massport - Logan Express",
+    "url": "https://www.massport.com/logan-airport/getting-to-logan/logan-express"
+   },
+   {
+    "title": "Massport - Parking",
+    "url": "https://www.massport.com/logan-airport/getting-to-logan/parking"
+   },
+   {
+    "title": "Winthrop Transcript - Massport to begin Phase 2 of runway safety work (Aug 13, 2026)",
+    "url": "https://winthroptranscript.com/2026/08/13/massport-to-begin-phase-2-of-runway-safety-work-at-boston-logan/"
+   },
+   {
+    "title": "CLEAR - Boston Logan Locations & Hours",
+    "url": "https://www.clearme.com/all-locations/logan-international-airport"
+   },
+   {
+    "title": "Delta - Boston Logan airport map",
+    "url": "https://www.delta.com/us/en/airports/united-states/boston-sky-club-airport-map"
+   },
+   {
+    "title": "JetBlue - Boston, MA airport information",
+    "url": "https://www.jetblue.com/at-the-airport/airport-information/boston-ma"
+   },
+   {
+    "title": "JetBlue - Airport Check-In",
+    "url": "https://www.jetblue.com/help/checking-in/airport-check-in"
+   },
+   {
+    "title": "Delta - U.S. Domestic Check-In Requirements",
+    "url": "https://www.delta.com/us/en/check-in-security/check-in-time-requirements/domestic-check-in"
+   },
+   {
+    "title": "Delta - International Check-In Requirements",
+    "url": "https://www.delta.com/us/en/check-in-security/check-in-time-requirements/international-check-in"
+   },
+   {
+    "title": "Delta - TSA PreCheck Touchless ID",
+    "url": "https://www.delta.com/us/en/check-in-security/expedited-airport-security/touchless-id"
+   },
+   {
+    "title": "Southwest - TSA PreCheck Touchless ID",
+    "url": "https://www.southwest.com/tsa-precheck-touchless-id/"
+   }
+  ]
+ },
+ "DCA": {
+  "code": "DCA",
+  "name": "Ronald Reagan Washington National Airport",
+  "city": "Arlington",
+  "state": "VA",
+  "checkedOn": "2026-10-14",
+  "officialArrivalAdvice": {
+   "domestic": "Arrive 2 hours before domestic flights (the airport's security FAQ suggests 90-120 minutes); check with your airline too",
+   "international": null,
+   "source": "https://flyreagan.com/dca/reagan-national-frequently-asked-questions"
+  },
+  "terminals": [
+   {
+    "id": "1",
+    "name": "Terminal 1 (Gates A1-A9)",
+    "airlines": [
+     "Southwest",
+     "Frontier",
+     "Air Canada"
+    ],
+    "checkpoints": [
+     {
+      "notes": "Serves only Air Canada, Frontier and Southwest. Security page lists 4:00am-9:00pm; the airport FAQ says Terminal 1 generally opens at 4:30am.",
+      "precheck": true,
+      "clear": true,
+      "name": "Terminal 1 checkpoint (Gates A1-A9)"
+     }
+    ],
+    "notes": [
+     "Formerly Terminal A; 9 gates.",
+     "Not connected airside to Terminal 2: moving between Terminal 1 and Terminal 2 requires going through security again.",
+     "Parking Garage 1 serves Air Canada, Frontier and Southwest.",
+     "Rideshare pickup is on the third (outer) curb."
+    ]
+   },
+   {
+    "id": "2",
+    "name": "Terminal 2 (Gates B10-E59)",
+    "airlines": [
+     "American Airlines",
+     "Delta Air Lines",
+     "United Airlines",
+     "Alaska Airlines",
+     "JetBlue"
+    ],
+    "checkpoints": [
+     {
+      "notes": "Closest to American Airlines. Open 4:00am-11:00pm.",
+      "precheck": true,
+      "clear": true,
+      "name": "Terminal 2 North checkpoint"
+     },
+     {
+      "notes": "Closest to Alaska, Delta, JetBlue and United; also serves American. Open 4:00am-9:00pm.",
+      "precheck": true,
+      "clear": true,
+      "name": "Terminal 2 South checkpoint"
+     }
+    ],
+    "notes": [
+     "Formerly Terminal B/C; 49 gates, plus the 14-gate American regional concourse opened in April 2021.",
+     "Since the Project Journey checkpoints opened in November 2021, passengers can move between Terminal 2 gate areas without re-screening.",
+     "The Metrorail station connects directly to the Terminal 2 concourse level by two enclosed pedestrian bridges.",
+     "Parking Garage 2 serves American, Alaska, Delta, JetBlue and United."
+    ]
+   }
+  ],
+  "connectedAirside": false,
+  "betweenTerminals": "Terminal 2 gates B10-E59 are connected after security, but going between Terminal 1 and Terminal 2 requires re-clearing security. Free airport shuttles run 24/7 between the terminals and parking facilities.",
+  "securityWaits": {
+   "summary": null,
+   "busiestTimes": [],
+   "source": null
+  },
+  "precheckNotes": "Each checkpoint at Reagan National has a designated PreCheck lane. Checkpoint hours: Terminal 2 North 4:00am-11:00pm, Terminal 2 South 4:00am-9:00pm, Terminal 1 4:00am-9:00pm (FAQ says Terminal 1 generally opens 4:30am).",
+  "clearAvailable": true,
+  "touchlessId": "TSA lists Touchless ID at 65 airports and tells travelers to check with their airline. Delta lists DCA as a participating airport with dedicated Touchless ID bag drop. A March 2026 third-party list shows Alaska, American, Delta and United participating at DCA.",
+  "gettingThere": {
+   "rideshare": "Terminal 2: meet your ride on the Baggage Claim (Arrivals) Level, 1st floor, outer curb (select Zone 1-4; green flags mark zones). Terminal 1: third (outer) curb. The airport does not publish separate rideshare drop-off instructions.",
+   "transit": "Metrorail Blue and Yellow lines stop at the Reagan National Airport station, linked to the Terminal 2 concourse level by two enclosed bridges; Terminal 1 is reached via the airport shuttle (exit to the street-side curb) or a walk inside the terminal. Daytime fares $2.25-$6.75.",
+   "driving": "Parking Garage 1 (Terminal 1 airlines), Parking Garage 2 (Terminal 2 airlines) and the Economy Lot, all with 24/7 shuttle service. Reserving is the only way to guarantee a space and price. Economy Lot capacity is reduced by about 40 percent while a new parking structure is built (construction extends into 2026). The cell phone lot is listed as closed; garages 1 and 2 are free for up to 60 minutes."
+  },
+  "construction2026": [
+   "Economy Lot: a new parking structure is under construction, cutting Economy capacity by about 40 percent; the airport says construction extends into 2026 and strongly encourages advance reservations.",
+   "Metrorail: 2026 weekend closures of the Reagan National Airport and Potomac Yard stations (March 7-8, May 9-10, May 16-17) and additional Crystal City weekends for a new Crystal City entrance (expected to open spring 2027); Metro said closures could add about 15 minutes, with shuttle buses.",
+   "Terminal 1 replacement (new facility replacing gates A1-A9, no added gates) is in planning; as of August 2026 construction was expected to start in 2027 and finish in December 2032, subject to change. The road outside Terminal 1 would be reconfigured."
+  ],
+  "bagDrop": "Delta at DCA: bags must be checked and check-in completed at least 45 minutes before domestic departure (with or without bags), 1 hour for international; bags not accepted more than 6 hours before departure.",
+  "tips": [
+   "Southwest, Frontier and Air Canada use Terminal 1 (gates A1-A9), which has its own checkpoint and is not connected airside to Terminal 2.",
+   "In Terminal 2, the North checkpoint is closest to American and stays open until 11pm; the South checkpoint (closest to Alaska, Delta, JetBlue, United) closes at 9pm.",
+   "Delta at DCA requires check-in 45 minutes before departure even without bags, longer than Delta's usual 30-minute no-bag cutoff.",
+   "The Metro station connects straight into Terminal 2's concourse level, which makes it the simplest way to avoid airport traffic and parking shortages.",
+   "The Economy Lot has lost about 40 percent of its capacity to garage construction, so reserve parking ahead."
+  ],
+  "faq": [
+   {
+    "q": "How early should I get to Reagan National (DCA)?",
+    "a": "The airport recommends arriving 2 hours before domestic flights, and its security FAQ suggests at least 90-120 minutes. Delta requires check-in at least 45 minutes before departure at DCA."
+   },
+   {
+    "q": "Which terminal is Southwest at DCA?",
+    "a": "Southwest, Frontier and Air Canada use Terminal 1 (gates A1-A9). American, Delta, United, Alaska and JetBlue use Terminal 2."
+   },
+   {
+    "q": "Can I walk between Terminal 1 and Terminal 2 at DCA after security?",
+    "a": "No. The airport says you need to go through security again to move between Terminal 1 and Terminal 2, though all Terminal 2 gates are connected after security."
+   }
+  ],
+  "sources": [
+   {
+    "title": "Reagan National - Frequently Asked Questions",
+    "url": "https://flyreagan.com/dca/reagan-national-frequently-asked-questions"
+   },
+   {
+    "title": "Reagan National - Security Information",
+    "url": "https://www.flyreagan.com/dca/security-information"
+   },
+   {
+    "title": "Reagan National - Airport Overview",
+    "url": "https://Flyreagan.com/airport-overview"
+   },
+   {
+    "title": "Reagan National - Ground Transportation (ride app pickup)",
+    "url": "https://flyreagan.com/dca/ground-transportation"
+   },
+   {
+    "title": "Reagan National - Metrorail Station",
+    "url": "https://flyreagan.com/dca/metrorail-station"
+   },
+   {
+    "title": "Reagan National - Parking Information",
+    "url": "https://www.flyreagan.com/parking-transportation/parking-information"
+   },
+   {
+    "title": "Reagan National - Construction Advisories",
+    "url": "https://www.flyreagan.com/travel-information/construction-project/construction-advisories"
+   },
+   {
+    "title": "NBC Washington - Weekend Metro closures at DCA (Feb 10, 2026)",
+    "url": "https://www.nbcwashington.com/news/local/transportation/weekend-metro-closures-dca/4058277"
+   },
+   {
+    "title": "WJLA - Major overhaul planned for Reagan National's historic terminal (Aug 10, 2026)",
+    "url": "https://wjla.com/news/local/major-overhaul-planned-for-reagan-nationals-historic-terminal-washington-dc-banjo-area-gates-mwaa-airports-authority"
+   },
+   {
+    "title": "TSA - PreCheck Touchless ID",
+    "url": "https://www.tsa.gov/touchless-id"
+   },
+   {
+    "title": "Delta - TSA PreCheck Touchless ID participating airports",
+    "url": "https://www.delta.com/us/en/check-in-security/expedited-airport-security/touchless-id"
+   },
+   {
+    "title": "The Bulkhead Seat - Touchless ID airports and airlines (Mar 16, 2026)",
+    "url": "https://thebulkheadseat.com/?p=33789"
+   },
+   {
+    "title": "Delta - Domestic check-in time requirements",
+    "url": "https://www.delta.com/us/en/check-in-security/check-in-time-requirements/domestic-check-in"
+   }
+  ]
+ },
+ "DEN": {
+  "code": "DEN",
+  "name": "Denver International Airport",
+  "city": "Denver",
+  "state": "CO",
+  "checkedOn": "2026-10-14",
+  "officialArrivalAdvice": {
+   "domestic": "Arrive at the airport at least 2 hours before your flight (DEN fall-break guidance, Oct 2026)",
+   "international": null,
+   "source": "https://www.cbsnews.com/colorado/news/more-than-950000-travelers-expected-through-denver-international-airport-for-fall-break/"
+  },
+  "terminals": [
+   {
+    "id": "Jeppesen",
+    "name": "Jeppesen Terminal (Great Hall)",
+    "airlines": [
+     "United",
+     "Southwest",
+     "Frontier",
+     "Delta",
+     "American",
+     "Alaska"
+    ],
+    "checkpoints": [
+     {
+      "notes": "Wikipedia lists standard screening 3:30am-1am and PreCheck 4am-8:45pm daily; Upgraded Points lists 3am-1am. 17 lanes.",
+      "precheck": true,
+      "clear": true,
+      "name": "West Security Checkpoint, Level 6"
+     },
+     {
+      "notes": "Opened Aug 2025, 17 lanes, north of the Southwest ticket counters. Entrance 1 standard, Entrance 2 priority and CLEAR without PreCheck, Entrance 3 PreCheck. Wikipedia lists standard 3am-8pm and PreCheck 4am-8pm; Upgraded Points lists 3am-1am.",
+      "precheck": true,
+      "clear": true,
+      "name": "East Security Checkpoint, Level 6"
+     }
+    ],
+    "notes": [
+     "Check in on Level 5, then take escalators or elevators up to Level 6 for security",
+     "The old North, South and A-Bridge checkpoints are permanently closed; all screening is on Level 6",
+     "Concourse A is a walk across the pedestrian bridge after security; Concourses B and C (and A) are also served by the underground train inside security",
+     "Great Hall renovation has closed some terminal areas; DEN advises going to the east or west side for your airline"
+    ]
+   }
+  ],
+  "connectedAirside": true,
+  "betweenTerminals": "Single terminal. The train inside security runs from Jeppesen Terminal to Concourses A, B and C (about 6 minutes to the farthest stop), and the bridge to Concourse A can be walked.",
+  "securityWaits": {
+   "summary": "DEN expected about 965,000 travelers over fall break 2026 (Oct 8-19). It forecast security peaks of 7-11am and 2-6pm, with Thursdays, Fridays and Mondays the busiest days.",
+   "busiestTimes": [
+    "7:00-11:00am",
+    "2:00-6:00pm",
+    "Thursdays, Fridays and Mondays"
+   ],
+   "source": "https://www.cbsnews.com/colorado/news/more-than-950000-travelers-expected-through-denver-international-airport-for-fall-break/"
+  },
+  "precheckNotes": "PreCheck lanes are at both Level 6 checkpoints, reportedly 4am to about 8:45pm (West) and to 8pm (East), so late-evening flyers may have only standard lanes. At the East checkpoint, PreCheck uses Entrance 3.",
+  "clearAvailable": true,
+  "touchlessId": "TSA PreCheck Touchless ID is listed at DEN for Alaska, American, Delta, Southwest and United (opt in through your airline profile)",
+  "gettingThere": {
+   "rideshare": "Drop-off is on Level 5 outside your airline's check-in. Uber and Lyft pickup is on Level 5 outside doors 504-510 (west) and 505-513 (east).",
+   "transit": "RTD A Line train to Denver Union Station takes about 37 minutes; trains run about every 15 minutes at peak and every 30 minutes off-peak",
+   "driving": "Peña Boulevard into the airport can get very busy, so leave extra time. Parking garages fill quickly at busy times; economy parking is $20/day and the Pikes Peak shuttle lot $10/day. Curbside waiting is not allowed; use the free cell phone lot."
+  },
+  "construction2026": [
+   "Great Hall renovation continues in Jeppesen Terminal, closing some areas, including parts of the food court",
+   "Eight more standard security lanes on the north end of Level 5 were scheduled for late summer 2026; this research could not confirm they have opened",
+   "Peña Boulevard widening and managed lanes are still being planned (preferred option due end of 2026); construction would follow the final decision expected in early 2028"
+  ],
+  "bagDrop": "United: check in at least 45 minutes before domestic departure (60 minutes for international). Southwest: checked bags at the counter 45 minutes before domestic departure. Delta: bags 45 minutes before domestic departure.",
+  "tips": [
+   "Security is on Level 6, one floor above check-in on Level 5; the old Level 5 checkpoints and the A-Bridge checkpoint are closed",
+   "Go to the east or west side of the terminal that matches your airline; the East checkpoint is just north of Southwest's ticket counters",
+   "Flying from Concourse A? You can walk across the bridge after security instead of taking the train",
+   "Peña Boulevard traffic can get very busy and garages fill quickly at peak times, so build in a driving buffer",
+   "Reported evening closing times differ between sources (East may close around 8pm), so late-night flyers should check flydenver.com for current checkpoint hours"
+  ],
+  "faq": [
+   {
+    "q": "How early should I get to Denver airport?",
+    "a": "DEN recommends arriving at least 2 hours before your flight. During busy periods its peaks run 7-11am and 2-6pm, so allow extra time for Peña Boulevard traffic and parking."
+   },
+   {
+    "q": "Where is security at Denver airport now?",
+    "a": "All screening is at the East and West checkpoints on Level 6 of the Great Hall. The South, North and A-Bridge checkpoints closed when the East checkpoint opened in August 2025."
+   },
+   {
+    "q": "How do I get from Denver airport to downtown by train?",
+    "a": "Take the RTD A Line to Denver Union Station, about 37 minutes. Trains run roughly every 15 minutes at peak times."
+   }
+  ],
+  "sources": [
+   {
+    "title": "CBS Colorado - 950,000+ travelers expected at DEN for fall break (Oct 9, 2026)",
+    "url": "https://www.cbsnews.com/colorado/news/more-than-950000-travelers-expected-through-denver-international-airport-for-fall-break/"
+   },
+   {
+    "title": "TSA - Operations begin at new East Security Checkpoint at DEN (Aug 2025)",
+    "url": "https://www.tsa.gov/news/press/releases/2025/08/04/tsa-begin-operations-new-east-security-checkpoint-den"
+   },
+   {
+    "title": "The Points Guy - Denver airport new security lanes (Aug 5, 2025)",
+    "url": "https://thepointsguy.com/news/denver-airport-new-security-lanes/"
+   },
+   {
+    "title": "Denver7 - DEN East Security Checkpoint opens ahead of schedule",
+    "url": "https://www.denver7.com/news/local-news/denver-international-airports-east-security-checkpoint-opens-ahead-of-schedule-under-budget"
+   },
+   {
+    "title": "Wikipedia - Denver International Airport",
+    "url": "https://en.wikipedia.org/wiki/Denver_International_Airport"
+   },
+   {
+    "title": "Upgraded Points - Denver International Airport guide (updated Sept 7, 2026)",
+    "url": "https://upgradedpoints.com/travel/airports/denver-international-den-airport/"
+   },
+   {
+    "title": "CBS Colorado - Peña Boulevard improvement options (July 13, 2026)",
+    "url": "https://www.cbsnews.com/colorado/news/pena-boulevard-denver-lanes-separated-lanes-improve/"
+   },
+   {
+    "title": "The Bulkhead Seat - TSA PreCheck Touchless ID airport list (Mar 16, 2026)",
+    "url": "https://thebulkheadseat.com/?p=33789"
+   },
+   {
+    "title": "Delta - Check-In Times at U.S. Airports",
+    "url": "https://www.delta.com/us/en/check-in-security/check-in-time-requirements/domestic-check-in"
+   },
+   {
+    "title": "AP via MyNorthwest - United narrows check-in window; airline comparison (May 2025)",
+    "url": "https://mynorthwest.com/lifestyle/united-is-narrowing-its-check-in-window-for-us-flights-heres-how-it-compares-to-other-airlines/4092751"
+   }
+  ]
+ },
+ "DFW": {
+  "code": "DFW",
+  "name": "Dallas Fort Worth International Airport",
+  "city": "Dallas-Fort Worth",
+  "state": "TX",
+  "checkedOn": "2026-10-14",
+  "officialArrivalAdvice": {
+   "domestic": "Arrive at least 2 hours before domestic flights, and allow extra travel time for construction",
+   "international": "Arrive at least 3 hours before international flights",
+   "source": "https://www.dfwairport.com/dfwnewsroom/dfw-airport-begins-next-phase-of-construction-project-to-build-new-bridge-into-terminal-c/"
+  },
+  "terminals": [
+   {
+    "id": "A",
+    "name": "Terminal A",
+    "airlines": [
+     "American"
+    ],
+    "checkpoints": [
+     {
+      "notes": "Touchless ID lane (American, Delta, United) and automated screening lanes",
+      "precheck": null,
+      "clear": false,
+      "name": "A21"
+     }
+    ],
+    "notes": [
+     "DART Orange Line station (direct to downtown Dallas)",
+     "TSA PreCheck is offered in Terminal A"
+    ]
+   },
+   {
+    "id": "B",
+    "name": "Terminal B",
+    "airlines": [
+     "American"
+    ],
+    "checkpoints": [],
+    "notes": [
+     "DART Silver Line and TEXRail (to downtown Fort Worth) stations",
+     "DFW's security page does not list PreCheck in Terminal B"
+    ]
+   },
+   {
+    "id": "C",
+    "name": "Terminal C",
+    "airlines": [
+     "American"
+    ],
+    "checkpoints": [
+     {
+      "notes": "TSA PreCheck only",
+      "precheck": true,
+      "clear": false,
+      "name": "C10"
+     },
+     {
+      "notes": "General and Priority screening",
+      "precheck": false,
+      "clear": false,
+      "name": "C11"
+     },
+     {
+      "notes": "General and TSA PreCheck",
+      "precheck": true,
+      "clear": false,
+      "name": "C20"
+     },
+     {
+      "notes": "Touchless ID lane (American, Delta, United)",
+      "precheck": null,
+      "clear": false,
+      "name": "C21"
+     },
+     {
+      "notes": "Closed, along with the C30 check-in area, for the first phase of Terminal C construction",
+      "precheck": false,
+      "clear": false,
+      "name": "C30"
+     }
+    ],
+    "notes": [
+     "DFW's busiest terminal, used only by American Airlines, and being rebuilt in three phases (renovation contract runs to Dec. 31, 2029)",
+     "Nine new or rebuilt gates opened June 2026",
+     "South garage (gates C26-C39) is closed for reconstruction; north and central garages remain open",
+     "Ground transportation and shuttle stops have moved to the lower-level curb; Terminal Link has one Terminal C stop, on the lower level near Gate C17"
+    ]
+   },
+   {
+    "id": "D",
+    "name": "Terminal D (international)",
+    "airlines": [
+     "American",
+     "British Airways",
+     "Lufthansa",
+     "Qatar Airways",
+     "Emirates",
+     "Japan Airlines",
+     "Aeromexico",
+     "Air France",
+     "Korean Air",
+     "Qantas",
+     "Sun Country",
+     "Volaris"
+    ],
+    "checkpoints": [
+     {
+      "notes": "Automated screening lanes",
+      "precheck": null,
+      "clear": false,
+      "name": "D18"
+     },
+     {
+      "notes": "Automated screening lanes",
+      "precheck": null,
+      "clear": false,
+      "name": "D22"
+     },
+     {
+      "notes": "Touchless ID lane (American, Delta, United) and automated screening lanes",
+      "precheck": null,
+      "clear": false,
+      "name": "D30"
+     }
+    ],
+    "notes": [
+     "Most foreign carriers use gates D6-D16; American uses D17-D40",
+     "Terminal D security peaks were forecast daily at 6-9am and 4-8pm (DFW's summer peak-time notice)",
+     "Ticketing and bag drop for the future Terminal F will be in Terminal D at first"
+    ]
+   },
+   {
+    "id": "E",
+    "name": "Terminal E",
+    "airlines": [
+     "Delta",
+     "United",
+     "Alaska",
+     "JetBlue",
+     "Frontier",
+     "Air Canada",
+     "American"
+    ],
+    "checkpoints": [
+     {
+      "notes": "CLEAR enrollment center",
+      "precheck": null,
+      "clear": false,
+      "name": "E8"
+     },
+     {
+      "notes": "Touchless ID lane (American, Delta, United); CLEAR enrollment center",
+      "precheck": null,
+      "clear": false,
+      "name": "E16"
+     },
+     {
+      "notes": "The only CLEAR lane at DFW; automated screening lanes",
+      "precheck": null,
+      "clear": true,
+      "name": "E18"
+     }
+    ],
+    "notes": [
+     "Delta gates E12-E17; United E4-E9; Alaska E11; JetBlue E10; Frontier E20"
+    ]
+   }
+  ],
+  "connectedAirside": true,
+  "betweenTerminals": "Skylink train inside security links all five terminals, 24 hours a day, every 2 minutes; average ride about 5 minutes, up to 9 minutes end to end. Terminal Link shuttle runs outside security every 8-10 minutes after 5am.",
+  "securityWaits": {
+   "summary": "Live waits are shown per checkpoint on DFW's website and app (buckets: 0-10, 11-20, 20+ min). DFW's construction page forecast summer peaks in Terminal D at 6-9am and 4-8pm daily.",
+   "busiestTimes": [
+    "6:00-9:00am",
+    "4:00-8:00pm"
+   ],
+   "source": "https://www.dfwairport.com/construction/"
+  },
+  "precheckNotes": "TSA PreCheck is available in Terminals A, C, D and E (not listed for B). In Terminal C, C10 is PreCheck-only and C20 has general plus PreCheck.",
+  "clearAvailable": true,
+  "touchlessId": "Dedicated TSA PreCheck Touchless ID lanes for American, Delta and United travelers at checkpoints A21, C21, D30 and E16",
+  "gettingThere": {
+   "rideshare": "Drop-off is at the upper-level curb of every terminal (active loading only). In Terminal C, ground transportation stops have moved to the lower-level curb during construction.",
+   "transit": "DART Orange Line from Terminal A goes direct to downtown Dallas (DART has listed about 50 minutes to West End station); DART Silver Line and TEXRail (to downtown Fort Worth) leave from Terminal B; TRE trains stop at CentrePort/DFW Airport station with a TRE Link shuttle to the terminals",
+   "driving": "Enter from SH 183 on the south or SH 114 / I-635 on the north; International Parkway runs north-south past every terminal. Terminals A, B and C now use new right-hand exits from International Parkway. Express South lot is closed for Terminal F construction; Terminal C south garage is closed."
+  },
+  "construction2026": [
+   "Terminal C rebuild (curb to gate) continues through 2029; the C30 check-in area and checkpoint are closed",
+   "Terminal C south garage (C26-C39) closed for reconstruction",
+   "Express South parking lot closed for construction of Terminal F, which is set to open in 2027",
+   "Terminal C ground transportation and shuttle stops relocated to the lower-level curb",
+   "New right-hand exits into Terminals A, B and C from International Parkway were completed in 2026, replacing the old left-hand exits"
+  ],
+  "bagDrop": "American: check in and drop bags at least 45 minutes before domestic flights and 60 minutes before international flights. Delta: bags 45 minutes before domestic departure (30 minutes to check in without bags). United: 45 minutes for domestic check-in.",
+  "tips": [
+   "Check which terminal and checkpoint your flight uses: DFW has multiple checkpoints per terminal, and once through security, Skylink connects every terminal",
+   "Terminal C's C30 checkpoint is closed for construction; use C10 (PreCheck only), C11 or C20",
+   "CLEAR lanes exist only at checkpoint E18; Touchless ID lanes are at A21, C21, D30 and E16",
+   "Allow extra time for the Terminal C construction zone: the south garage is closed and ground transportation stops are on the lower level",
+   "Terminal Link stops are on the upper level of every terminal except Terminal D",
+   "DFW's travel tips page promotes a free Fast Pass that lets you book a security screening time; check dfwairport.com for current availability"
+  ],
+  "faq": [
+   {
+    "q": "How early should I get to DFW Airport?",
+    "a": "DFW advises arriving at least 2 hours before domestic flights and 3 hours before international flights, and leaving extra time for construction-related traffic."
+   },
+   {
+    "q": "Can I go between terminals after security at DFW?",
+    "a": "Yes. The Skylink train runs inside security, 24 hours a day, with trains every 2 minutes, and links all five terminals. Rides average about 5 minutes."
+   },
+   {
+    "q": "Where is CLEAR at DFW?",
+    "a": "DFW's security page lists CLEAR only at checkpoint E18 in Terminal E, with CLEAR enrollment at checkpoints E8, E16 and E18."
+   }
+  ],
+  "sources": [
+   {
+    "title": "DFW Airport - Security",
+    "url": "https://www.dfwairport.com/security/"
+   },
+   {
+    "title": "DFW Airport - Construction News and Resources",
+    "url": "https://www.dfwairport.com/construction/"
+   },
+   {
+    "title": "DFW Newsroom - Construction notice: new bridge into Terminal C (Jan 6, 2026)",
+    "url": "https://www.dfwairport.com/dfwnewsroom/dfw-airport-begins-next-phase-of-construction-project-to-build-new-bridge-into-terminal-c/"
+   },
+   {
+    "title": "DFW Newsroom - Nine new gates open (June 8, 2026)",
+    "url": "https://www.dfwairport.com/dfwnewsroom/dfw-airport-opens-nine-new-gates-ahead-of-busy-summer-travel-season-celebrates-construction-progress-ahead-of-world-cup-games/"
+   },
+   {
+    "title": "DFW Airport - Airlines",
+    "url": "https://www.dfwairport.com/explore/plan/airlines/"
+   },
+   {
+    "title": "DFW Airport - Connect (Skylink)",
+    "url": "https://www.dfwairport.com/explore/plan/connect/"
+   },
+   {
+    "title": "DFW Airport - Travel Tips",
+    "url": "https://www.dfwairport.com/dfwnewsroom/traveltips/"
+   },
+   {
+    "title": "DFW Airport - Terminal Link Shuttle",
+    "url": "https://www.dfwairport.com/shuttles/terminal-link/"
+   },
+   {
+    "title": "DFW Airport - Airport Access & Directions",
+    "url": "https://www.dfwairport.com/explore/transportation/directions/"
+   },
+   {
+    "title": "DFW Newsroom - Rail options to DFW terminals (Dec 16, 2025)",
+    "url": "https://www.dfwairport.com/dfwnewsroom/connect-to-dfw-airports-terminals-via-rail-options-during-the-busy-holiday-season/"
+   },
+   {
+    "title": "DART - FAQ on DART's connection to DFW Airport",
+    "url": "https://dartdaily.dart.org/home/dart-to-dfw-frequently-asked-questions-about-dart's-connection-to-dfw-airport"
+   },
+   {
+    "title": "Community Impact - 7 construction updates from DFW (Aug 19, 2026)",
+    "url": "https://communityimpact.com/grapevine-colleyville-southlake/transportation/7-construction-updates-from-dallas-fort-worth-international-airport/"
+   },
+   {
+    "title": "Fort Worth Star-Telegram via British Aviation Group - DFW construction (May 2026)",
+    "url": "https://www.britishaviationgroup.co.uk/?p=25787"
+   },
+   {
+    "title": "Delta - Check-In Times at U.S. Airports",
+    "url": "https://www.delta.com/us/en/check-in-security/check-in-time-requirements/domestic-check-in"
+   },
+   {
+    "title": "AP via MyNorthwest - United narrows check-in window; airline comparison (May 2025)",
+    "url": "https://mynorthwest.com/lifestyle/united-is-narrowing-its-check-in-window-for-us-flights-heres-how-it-compares-to-other-airlines/4092751"
+   }
+  ]
+ },
+ "DTW": {
+  "code": "DTW",
+  "name": "Detroit Metropolitan Wayne County Airport",
+  "city": "Detroit (Romulus)",
+  "state": "MI",
+  "checkedOn": "2026-10-14",
+  "officialArrivalAdvice": {
+   "domestic": "Arrive 2 hours before a domestic flight",
+   "international": "Arrive 3 hours before an international flight",
+   "source": "https://www.metroairport.com/"
+  },
+  "terminals": [
+   {
+    "id": "McNamara",
+    "name": "McNamara Terminal",
+    "airlines": [
+     "Delta Air Lines",
+     "Aeromexico",
+     "Air France",
+     "WestJet"
+    ],
+    "checkpoints": [
+     {
+      "notes": null,
+      "precheck": null,
+      "clear": true,
+      "name": "Ticketing Lobby, Level 3"
+     },
+     {
+      "notes": null,
+      "precheck": null,
+      "clear": true,
+      "name": "Bridge from the Parking Garage, Level 2"
+     }
+    ],
+    "notes": [
+     "Concourse A is about a mile long; the ExpressTram stops at South Station (gates A1-A28), Terminal Station (A29-A55) and North Station (A56-A78).",
+     "Concourses B and C are reached through the tunnel from Concourse A's Terminal Station.",
+     "A new real-time parking guidance system (space-level green/red lights, Park Assist app) went live in the McNamara garage in July 2026.",
+     "Public buses stop on the Departures Level near Door #1."
+    ]
+   },
+   {
+    "id": "Evans",
+    "name": "Evans Terminal",
+    "airlines": [
+     "American Airlines",
+     "United Airlines",
+     "Southwest",
+     "Alaska Airlines",
+     "Frontier",
+     "JetBlue",
+     "Sun Country",
+     "Avelo",
+     "Air Canada",
+     "Lufthansa",
+     "Turkish Airlines",
+     "Royal Jordanian",
+     "Volaris"
+    ],
+    "checkpoints": [
+     {
+      "notes": null,
+      "precheck": null,
+      "clear": null,
+      "name": "Lobby, Ticketing Area"
+     }
+    ],
+    "notes": [
+     "Serves most non-Delta airlines.",
+     "Biometric (facial recognition) boarding is in use at eight international gates.",
+     "Parking guidance in the Big Blue Deck (serving Evans) was being installed and expected to go live later in 2026."
+    ]
+   }
+  ],
+  "connectedAirside": false,
+  "betweenTerminals": "Free Terminal-to-Terminal/Westin shuttle departs about every 10 minutes from each terminal's Ground Transportation Center and the Westin entrance; you must clear security again at the other terminal.",
+  "securityWaits": {
+   "summary": null,
+   "busiestTimes": [],
+   "source": null
+  },
+  "precheckNotes": "DTW participates in TSA PreCheck; the airport does not list which checkpoints have PreCheck lanes. The TSA PreCheck enrollment office is in the McNamara Terminal domestic baggage claim area.",
+  "clearAvailable": true,
+  "touchlessId": "TSA lists Touchless ID at 65 airports and tells travelers to check with their airline. Delta lists DTW as a participating airport with dedicated Touchless ID bag drop. A March 2026 third-party list shows Alaska, American, Delta and Southwest participating at DTW.",
+  "gettingThere": {
+   "rideshare": "Rideshare pickup is at the Big Blue Deck, Level 1 (Evans Terminal: cross the skybridge, then down to Level 1) or the McNamara Parking Garage, Level 4 (cross the skybridge to the Ground Transportation Center Level 6 elevators, then down to Level 4).",
+   "transit": "SMART FAST Michigan Route 261 and SMART Route 125 serve both terminals; Route 280 serves Evans only; AirRide runs to Ann Arbor. Buses stop at the Evans Ground Transportation Center and the McNamara Departures Level near Door #1.",
+   "driving": "Access is via I-94 and I-275. During MDOT's Restore I-94 project (through 2029), the airport advises using I-275 to Eureka Road and allowing extra time. More than 16,000 parking spaces across the garages."
+  },
+  "construction2026": [
+   "Restore I-94 (Wayne Road to Schaefer Road, about 13 miles, through 2029): since Aug. 1, 2026 eastbound I-94 east of I-275 runs in shared westbound lanes with two lanes each way; the SB Wayne Rd and SB Merriman Rd ramps to EB I-94 and the EB I-94 exit to Ecorse Rd are closed through mid-2027. The airport recommends I-275 to Eureka Road.",
+   "I-94/M-39 interchange ramp closures in effect from June 8, 2026 until May 2027.",
+   "Dingell Drive tunnels and roadway rehabilitation (the road to the McNamara Terminal) was launched in January 2024 as a year-round, multi-year program expected to finish in 2027; the airport said parking access is not affected."
+  ],
+  "bagDrop": "Delta (McNamara): domestic bags must be checked at least 45 minutes before departure (30 minutes if no checked bags); bags not accepted more than 6 hours before departure; be at the gate 15 minutes before departure.",
+  "tips": [
+   "Delta and its partners fly from McNamara; nearly every other airline uses Evans. The terminals are not connected after security, so go to the right one.",
+   "Through mid-2027, Restore I-94 closes several eastbound I-94 ramps near the airport; the airport recommends I-275 to Eureka Road.",
+   "CLEAR is available at both McNamara checkpoints, including the Level 2 checkpoint on the bridge from the parking garage.",
+   "McNamara Concourse A is about a mile long; the ExpressTram's South Station serves A1-A28 and North Station serves A56-A78.",
+   "The airport's homepage shows live security wait times for both terminals."
+  ],
+  "faq": [
+   {
+    "q": "How early should I get to DTW?",
+    "a": "The Wayne County Airport Authority recommends arriving 2 hours before a domestic flight and 3 hours before an international flight. Delta requires domestic bags to be checked at least 45 minutes before departure."
+   },
+   {
+    "q": "Which terminal is Delta at Detroit Metro?",
+    "a": "Delta and partners such as Air France, Aeromexico and WestJet use the McNamara Terminal. American, United, Southwest and most other airlines use the Evans Terminal."
+   },
+   {
+    "q": "How do I get between McNamara and Evans terminals?",
+    "a": "Take the free Terminal-to-Terminal shuttle, which leaves about every 10 minutes from each terminal's Ground Transportation Center. You must go through security again at the other terminal."
+   }
+  ],
+  "sources": [
+   {
+    "title": "Detroit Metro Airport - Home (arrival advice, airlines by terminal)",
+    "url": "https://www.metroairport.com/"
+   },
+   {
+    "title": "DTW - Security Checkpoints",
+    "url": "https://www.metroairport.com/at-dtw/safety-security/security-checkpoints"
+   },
+   {
+    "title": "DTW - Safety & Security",
+    "url": "https://www.metroairport.com/at-dtw/safety-security"
+   },
+   {
+    "title": "DTW - Rideshare",
+    "url": "https://www.metroairport.com/to-from-dtw/rideshare"
+   },
+   {
+    "title": "DTW - Traffic & Driving",
+    "url": "https://www.metroairport.com/to-from-dtw/traffic-driving"
+   },
+   {
+    "title": "DTW - Public Transportation",
+    "url": "https://metroairport.com/und/node/135"
+   },
+   {
+    "title": "DTW - How do I transfer between terminals",
+    "url": "https://www.metroairport.com/how-do-i-transfer-between-terminals"
+   },
+   {
+    "title": "DTW - Getting around the airport (ExpressTram, terminal shuttles)",
+    "url": "https://www.metroairport.com/node/56"
+   },
+   {
+    "title": "DTW - Transportation within the terminal (ExpressTram)",
+    "url": "https://www.metroairport.com/und/node/106"
+   },
+   {
+    "title": "DTW - MDOT Restore I-94 Construction Project",
+    "url": "https://www.metroairport.com/mdot-restore-i-94-construction-project"
+   },
+   {
+    "title": "WXYZ - Traffic shift complete on I-94 between I-275 and Michigan Ave (2026)",
+    "url": "https://www.wxyz.com/news/traffic-shift-complete-on-i-94-between-i-275-and-michigan-ave-heres-what-to-know"
+   },
+   {
+    "title": "DTW - New parking guidance system at McNamara Terminal (Jul 17, 2026)",
+    "url": "https://www.metroairport.com/about-us/dtw-news/dtw-debuts-new-parking-guidance-system-mcnamara-terminal-0"
+   },
+   {
+    "title": "FOX 2 Detroit - DTW road construction will impact travel to airport until 2027 (Jan 4, 2024)",
+    "url": "https://Fox2detroit.com/news/dtw-road-construction-will-impact-travel-to-airport-until-2027"
+   },
+   {
+    "title": "TSA - PreCheck Touchless ID",
+    "url": "https://www.tsa.gov/touchless-id"
+   },
+   {
+    "title": "Delta - TSA PreCheck Touchless ID participating airports",
+    "url": "https://www.delta.com/us/en/check-in-security/expedited-airport-security/touchless-id"
+   },
+   {
+    "title": "The Bulkhead Seat - Touchless ID airports and airlines (Mar 16, 2026)",
+    "url": "https://thebulkheadseat.com/?p=33789"
+   },
+   {
+    "title": "Delta - Domestic check-in time requirements",
+    "url": "https://www.delta.com/us/en/check-in-security/check-in-time-requirements/domestic-check-in"
+   }
+  ]
+ },
+ "EWR": {
+  "code": "EWR",
+  "name": "Newark Liberty International Airport",
+  "city": "Newark",
+  "state": "NJ",
+  "checkedOn": "2026-10-14",
+  "officialArrivalAdvice": {
+   "domestic": "The airport does not publish a set arrival time. Delta and JetBlue (EWR page) both recommend arriving 2 hours before departure.",
+   "international": "Delta recommends arriving at least 3 hours before international departures.",
+   "source": "https://www.jetblue.com/at-the-airport/airport-information/newark-nj"
+  },
+  "terminals": [
+   {
+    "id": "A",
+    "name": "Terminal A",
+    "airlines": [
+     "United Airlines",
+     "American Airlines",
+     "Delta",
+     "JetBlue",
+     "Air Canada"
+    ],
+    "checkpoints": [
+     {
+      "notes": "CLEAR+ is on the departures level, to the right of the security checkpoint entrance. Hours are Sun-Fri 4:30am-8:00pm and Sat 4:30am-7:00pm. JetBlue lists the EWR TSA checkpoint as open 24 hours.",
+      "precheck": null,
+      "clear": true,
+      "name": "Terminal A Departures checkpoint"
+     }
+    ],
+    "notes": [
+     "Gates 1-7 are 3-6 min from security, 8-28 are 2-10 min, and 29-34 are 3-6 min",
+     "The AirTrain does not stop directly at Terminal A. From the AirTrain it is about a 15-minute walk on a covered path, or a 5-minute shuttle.",
+     "An airside shuttle to Terminal C (United) leaves from between gates A28 and A29, after security",
+     "Terminal A was designed for about 13 million passengers a year but handled about 18 million in 2024. An expansion was approved in September 2026, with construction starting in 2027."
+    ]
+   },
+   {
+    "id": "B",
+    "name": "Terminal B",
+    "airlines": [
+     "Alaska Airlines",
+     "Lufthansa",
+     "Frontier Airlines",
+     "SAS"
+    ],
+    "checkpoints": [
+     {
+      "notes": "CLEAR is available for passengers flying from gates B40-B49. Hours are Sun-Fri 4:30am-7:30pm and Sat 4:30am-6:00pm.",
+      "precheck": null,
+      "clear": true,
+      "name": "Terminal B security"
+     }
+    ],
+    "notes": [
+     "Terminal B hosts over 25 international and domestic airlines. The ones listed here are those named by the airport.",
+     "Airport lists a 2-4 minute walk from security to all Terminal B gates",
+     "JetBlue international arrivals use Terminal B"
+    ]
+   },
+   {
+    "id": "C",
+    "name": "Terminal C",
+    "airlines": [
+     "United Airlines"
+    ],
+    "checkpoints": [
+     {
+      "notes": "CLEAR+ is on Level 3 at Door 2, overlooking the TSA PreCheck checkpoint. CLEAR+ hours are 4:30am-8:00pm.",
+      "precheck": true,
+      "clear": true,
+      "name": "Terminal C security, Level 3"
+     }
+    ],
+    "notes": [
+     "Gates 70-74 are 1-3 min from security, 75-123 are 4-7 min, and 125-139 are 7-10 min",
+     "United passengers can check in and drop bags at either Terminal C or Terminal A",
+     "An airside shuttle to Terminal A is near gate C71",
+     "For-hire vehicle (Uber/Lyft) pickups have permanently moved to Level 3 of the Terminal C garage, reached by the pedestrian bridge"
+    ]
+   }
+  ],
+  "connectedAirside": false,
+  "betweenTerminals": "There is no walkway between terminals after security. A continuous airside shuttle links Terminals A and C after TSA screening. The free AirTrain connects Terminals B and C, parking and the Airport Train Station before security, but it does not stop directly at Terminal A.",
+  "securityWaits": {
+   "summary": null,
+   "busiestTimes": [],
+   "source": null
+  },
+  "precheckNotes": "CLEAR's EWR page places the Terminal C CLEAR lane overlooking the TSA PreCheck checkpoint. We could not confirm PreCheck details for Terminals A and B on the airport site.",
+  "clearAvailable": true,
+  "touchlessId": "Delta lists EWR for TSA PreCheck Touchless ID at security, but not for dedicated Touchless ID bag drop. Southwest's list does not include EWR. We could not confirm United's Touchless ID at EWR.",
+  "gettingThere": {
+   "rideshare": "Drop-off is in front of each terminal. Pickups: Terminal A on the Arrivals level, directly across the street from the terminal. Terminal B on the Arrivals-level frontage. Terminal C on Level 3 of the Terminal C garage.",
+   "transit": "NJ Transit (Northeast Corridor or North Jersey Coast Line) and Amtrak stop at Newark Liberty Airport Station, which links to the terminals by AirTrain ($8.75 each way). NJ Transit to Midtown Manhattan takes about 30 minutes. Through Nov 20, 2026, AirTrain service to and from the Airport Train Station is suspended on weekdays from 5am to 3pm, with shuttle buses running instead. The Newark Airport Express bus serves Grand Central, Bryant Park and Port Authority Bus Terminal in about 50 minutes ($23.50 one way).",
+   "driving": "Curbs are for active drop-off and pickup only. The free Cell Phone Lot is next to the P4 Daily Parking garage, under five minutes from all terminals. Through Nov 6, 2026, access to P4 from southbound Brewster Road and the I-78 entrance from Brewster Road near P4 are detoured. The Port Authority urges pre-booking parking at least 3 hours ahead to avoid a peak drive-up surcharge."
+  },
+  "construction2026": [
+   "AirTrain Newark replacement work: through Nov 20, 2026, AirTrain service to and from the Airport Train Station (NJ Transit/Amtrak) is suspended on weekdays from 5am to 3pm. Shuttle buses replace it, and AirTrain service between terminals is not affected.",
+   "Runway 4L-22R is under a $121 million rehabilitation, with periodic nightly weekday closures. The airport advises checking with your airline for delays.",
+   "The FAA's hourly flight cap at Newark (72 arrivals and departures per hour) runs through Oct 24, 2026",
+   "Through Nov 6, 2026, access to P4 Daily Parking from southbound Brewster Road and the I-78 entrance from Brewster Road are detoured",
+   "On the nights of Oct 14 and 15, 2026 (10pm-5am), two lanes of the main airport entrance before the ramp to Terminal B/C parking are closed",
+   "Terminal C for-hire vehicle pickups have permanently moved from the curb to Level 3 of the Terminal C garage"
+  ],
+  "bagDrop": "Delta (no EWR-specific exception): bags must be checked at least 45 minutes before domestic departures, international check-in closes 1 hour before, and you must be at the gate 15 minutes before departure. JetBlue at EWR: check-in and bags 45 minutes before domestic departures and 60 minutes before international. United's EWR cutoffs could not be verified.",
+  "tips": [
+   "If you are flying from Terminal A by train, the AirTrain does not stop at Terminal A. Allow about 15 minutes to walk the covered path, or take the 5-minute shuttle.",
+   "Until Nov 20, 2026, the AirTrain to the NJ Transit/Amtrak station is replaced by shuttle buses on weekdays from 5am to 3pm. Allow extra time on weekday mornings.",
+   "United flies from both Terminal C and Terminal A, and an airside shuttle links the two after security, so check your departure terminal",
+   "At Terminal B, CLEAR is only for passengers flying from gates B40-B49"
+  ],
+  "faq": [
+   {
+    "q": "How early should I get to Newark airport?",
+    "a": "The airport does not publish a set time. JetBlue and Delta recommend 2 hours before domestic flights, and Delta recommends 3 hours for international. Allow extra time if you arrive by train on a weekday morning, because AirTrain shuttle buses replace trains to the rail station from 5am to 3pm through Nov 20, 2026."
+   },
+   {
+    "q": "Does the AirTrain go to Newark Terminal A?",
+    "a": "Not directly. From the AirTrain, Terminal A is about a 15-minute walk on a covered path or a 5-minute shuttle ride."
+   },
+   {
+    "q": "Can I walk between terminals at Newark after security?",
+    "a": "No. A continuous airside shuttle links Terminals A and C after screening, but there is no airside link to Terminal B. You reach Terminal B by the landside AirTrain."
+   }
+  ],
+  "sources": [
+   {
+    "title": "Newark Airport - Terminals",
+    "url": "https://www.newarkairport.com/explore-ewr/terminals"
+   },
+   {
+    "title": "EWR Terminal A",
+    "url": "https://www.newarkairport.com/explore-ewr/terminals/terminal-a"
+   },
+   {
+    "title": "EWR Terminal B",
+    "url": "https://www.newarkairport.com/explore-ewr/terminals/terminal-b"
+   },
+   {
+    "title": "EWR Terminal C",
+    "url": "https://www.newarkairport.com/explore-ewr/terminals/terminal-c"
+   },
+   {
+    "title": "EWR Departures Guide",
+    "url": "https://www.newarkairport.com/flights/departures"
+   },
+   {
+    "title": "EWR Alerts and Advisories",
+    "url": "https://www.newarkairport.com/alerts-advisories"
+   },
+   {
+    "title": "AirTrain Newark",
+    "url": "https://www.newarkairport.com/transportation/airtrain"
+   },
+   {
+    "title": "EWR Public Transportation",
+    "url": "https://www.newarkairport.com/transportation/public-transport"
+   },
+   {
+    "title": "EWR Ride Share Services",
+    "url": "https://www.newarkairport.com/transportation/ride-share-services"
+   },
+   {
+    "title": "EWR Pick-up and Drop-off",
+    "url": "https://www.newarkairport.com/transportation/pick-up-drop-off"
+   },
+   {
+    "title": "Port Authority Weekly Travel Advisory for Oct. 9 to 15, 2026",
+    "url": "https://www.panynj.gov/port-authority/en/press-room/press-release-archives/2026-press-releases/weekly-travel-advisory-for-oct--9-to-15-.html"
+   },
+   {
+    "title": "Port Authority Weekly Travel Advisory for Sept. 25 to Oct. 1, 2026",
+    "url": "https://www.panynj.gov/port-authority/en/press-room/press-release-archives/2026-press-releases/weekly-travel-advisory-for-sept--25-to-oct--1.html"
+   },
+   {
+    "title": "NJBIZ - Newark airport Terminal A approved for $110M expansion (Sept 28, 2026)",
+    "url": "https://njbiz.com/newark-airport-terminal-a-expansion-110m/"
+   },
+   {
+    "title": "NJBIZ - FAA extends Newark airport flight cap through 2026",
+    "url": "https://njbiz.com/faa-extends-newark-airport-flight-cap-2026/"
+   },
+   {
+    "title": "CLEAR - Newark Liberty International Airport Locations & Hours",
+    "url": "https://www.clearme.com/all-locations/newark-liberty-international-airport"
+   },
+   {
+    "title": "JetBlue - Newark, NJ (EWR) airport information",
+    "url": "https://www.jetblue.com/at-the-airport/airport-information/newark-nj"
+   },
+   {
+    "title": "JetBlue - Airport Check-In",
+    "url": "https://www.jetblue.com/help/checking-in/airport-check-in"
+   },
+   {
+    "title": "Delta - U.S. Domestic Check-In Requirements",
+    "url": "https://www.delta.com/us/en/check-in-security/check-in-time-requirements/domestic-check-in"
+   },
+   {
+    "title": "Delta - International Check-In Requirements",
+    "url": "https://www.delta.com/us/en/check-in-security/check-in-time-requirements/international-check-in"
+   },
+   {
+    "title": "Delta - TSA PreCheck Touchless ID",
+    "url": "https://www.delta.com/us/en/check-in-security/expedited-airport-security/touchless-id"
+   },
+   {
+    "title": "Southwest - TSA PreCheck Touchless ID",
+    "url": "https://www.southwest.com/tsa-precheck-touchless-id/"
+   }
+  ]
+ },
+ "JFK": {
+  "code": "JFK",
+  "name": "John F. Kennedy International Airport",
+  "city": "New York",
+  "state": "NY",
+  "checkedOn": "2026-10-14",
+  "officialArrivalAdvice": {
+   "domestic": "The airport does not publish a set arrival time. JetBlue (Terminal 5) recommends arriving 3 hours before domestic flights at JFK. Delta's general domestic guidance is at least 2 hours.",
+   "international": "JetBlue recommends 4 hours before international flights at JFK. Delta's general international guidance is at least 3 hours.",
+   "source": "https://www.jetblue.com/at-the-airport/airport-information/new-york-ny-jfk"
+  },
+  "terminals": [
+   {
+    "id": "1",
+    "name": "Terminal 1",
+    "airlines": [
+     "Air France",
+     "Turkish Airlines",
+     "Lufthansa",
+     "Swiss",
+     "Korean Air"
+    ],
+    "checkpoints": [],
+    "notes": [
+     "Airport lists a 1-5 minute walk from security to all gates",
+     "This is the old Terminal 1. The New Terminal One next door has not opened yet: as of September 2026 its operator expects to welcome passengers in Q1 2027. Phase one will have 13 gates plus 1 temporary gate.",
+     "For drivers, the Port Authority says to use the Van Wyck Expressway for direct access to Terminals 1 and 4"
+    ]
+   },
+   {
+    "id": "4",
+    "name": "Terminal 4",
+    "airlines": [
+     "Delta",
+     "Avianca",
+     "Virgin Atlantic",
+     "Emirates",
+     "LATAM"
+    ],
+    "checkpoints": [
+     {
+      "notes": "CLEAR+ lanes are on the departures level, to the right of the security checkpoint near Row 1 at Delta Priority check-in. Departures-lane hours are mostly 4:30am-10:00pm and vary by day. You can book a free T4 Reserve security time slot 7 days ahead, but availability depends on airline and destination.",
+      "precheck": null,
+      "clear": true,
+      "name": "Terminal 4 Departures checkpoint"
+     }
+    ],
+    "notes": [
+     "Concourse A gates A3-A8 are 3-6 min from security and A9-A21 are 8-10 min",
+     "Concourse B gates B18-B31 are 4-6 min, B32-B41 are 7-9 min, and B42-B55 are 10-14 min",
+     "A free Delta shuttle between concourses stops at B23, B54 and near A9 without re-screening. The airport notes it may not be faster than walking.",
+     "Delta has consolidated all of its JFK operations in Terminal 4"
+    ]
+   },
+   {
+    "id": "5",
+    "name": "Terminal 5",
+    "airlines": [
+     "JetBlue",
+     "Cape Air",
+     "Sun Country Airlines"
+    ],
+    "checkpoints": [],
+    "notes": [
+     "Gates 501-507 are 3-5 min from security, 508-521 are 5-10 min, and 522-530 are 3-7 min",
+     "JetBlue lists the T5 TSA checkpoint hours as 3:00am-12:00am and the ticket counter as 2:30am-12:00am",
+     "The terminal is being upgraded, with completion planned for 2026",
+     "Ride-app (Uber/Lyft) pickups have moved to the Howard Beach AirTrain station lot. Drop-offs still happen in front of the terminal."
+    ]
+   },
+   {
+    "id": "7",
+    "name": "Terminal 7",
+    "airlines": [
+     "Air Canada",
+     "ANA",
+     "Aer Lingus",
+     "Condor",
+     "Frontier",
+     "Kuwait Airways",
+     "Norse Atlantic",
+     "Icelandair"
+    ],
+    "checkpoints": [],
+    "notes": [
+     "Airport lists a 1-5 minute walk from security to all gates",
+     "Since 9/22/2026, departures drop-off is on the ground level of the Terminal 7 parking garage, not at the curb",
+     "Ride-app pickups have moved to the Howard Beach AirTrain station lot",
+     "Terminal 7 is being replaced by the new Terminal 6, which is still under construction"
+    ]
+   },
+   {
+    "id": "8",
+    "name": "Terminal 8",
+    "airlines": [
+     "American Airlines",
+     "British Airways",
+     "Alaska Airlines",
+     "Qatar Airways",
+     "Iberia"
+    ],
+    "checkpoints": [],
+    "notes": [
+     "Gates 1-10 are 2-5 min from security and 12-20 are 2-4 min",
+     "Gates 31-41 are 6-12 min and 42-47 are 6-8 min",
+     "For drivers, the Port Authority says to use the JFK Expressway for direct access to Terminals 5, 7 and 8"
+    ]
+   }
+  ],
+  "connectedAirside": false,
+  "betweenTerminals": "Take the AirTrain, which links all terminals in under 10 minutes and is free between terminals. Trains run every 5-15 minutes. You must go through TSA screening again at the new terminal.",
+  "securityWaits": {
+   "summary": null,
+   "busiestTimes": [],
+   "source": null
+  },
+  "precheckNotes": "We could not confirm which JFK checkpoints have PreCheck from an official source. CLEAR's JFK page lists PreCheck hours alongside the Terminal 4 CLEAR lanes.",
+  "clearAvailable": true,
+  "touchlessId": "Delta offers TSA PreCheck Touchless ID at JFK Terminal 4 for domestic and international flights, including dedicated Touchless ID bag drop. We could not confirm Touchless ID for other airlines or terminals at JFK.",
+  "gettingThere": {
+   "rideshare": "Rideshare drivers generally drop off and pick up in front of each terminal. Exceptions: Terminal 5 and 7 ride-app pickups are at the Howard Beach AirTrain station lot (the AirTrain ride there is free), and Terminal 7 drop-offs are on the ground level of the T7 parking garage. The free Lefferts Blvd AirTrain lot is another drop-off option that avoids the terminal curbs (about an 8-minute AirTrain ride to the terminals).",
+   "transit": "LIRR trains take about 20 minutes from Penn Station or Grand Central to Jamaica. From Jamaica, take AirTrain JFK, which also connects to the subway at Jamaica and Howard Beach. The AirTrain costs $8.75 when you enter or exit at Jamaica or Howard Beach and is free between terminals. The Port Authority strongly advises using mass transit during construction.",
+   "driving": "Under the new roadway layout, use the Van Wyck Expressway for Terminals 1 and 4 and the JFK Expressway for Terminals 5, 7 and 8. Expect detours and closures on the airport roads during construction. The Port Authority urges pre-booking parking at least 3 hours ahead, because drive-up parkers without a booking pay a peak-period surcharge."
+  },
+  "construction2026": [
+   "JFK's $19 billion redevelopment is underway. The Port Authority warns drivers and for-hire riders to expect delays, detours and closures on airport roads and strongly advises mass transit.",
+   "New Terminal One (replacing Terminal 1) has been delayed from 2026. As of September 2026, passengers are expected in the first quarter of 2027.",
+   "New Terminal 6 (on the old T6/T7 site, with JetBlue as partner airline) was slated to open its first gates in late 2026. It had not been confirmed open as of mid-September 2026.",
+   "Terminal 7 departures drop-off moved into the T7 parking garage (ground level) on 9/22/2026. The T7 taxi stand has also moved to the garage.",
+   "Ride-app pickups for Terminals 5 and 7 have moved to the Howard Beach AirTrain station lot until further notice",
+   "AirTrain JFK is suspended overnight from 10pm to 6am on the nights of Oct 13-14, 14-15 and 15-16, 2026. Free shuttle buses run instead."
+  ],
+  "bagDrop": "Delta at JFK: domestic bags must be checked at least 60 minutes before departure (45 minutes without bags), international check-in closes 1 hour before, and you must be at the gate 15 minutes before departure. JetBlue at JFK: check-in and bags 45 minutes before domestic departures and 60 minutes before international.",
+  "tips": [
+   "JetBlue recommends arriving 3 hours early for domestic flights and 4 hours early for international flights at JFK. That is longer than many travelers expect.",
+   "If your flight leaves from Terminal 7, your driver will drop you inside the T7 parking garage (ground level), not at the curb",
+   "To skip the terminal curbs, get dropped at the free Lefferts Blvd AirTrain lot and take the free AirTrain to your terminal (about 8 minutes)",
+   "Terminal 4 gates B42-B55 are listed at 10-14 minutes' walk from security, so allow extra time at the gate end",
+   "Check the airport's alerts before late-night trips: AirTrain JFK has scheduled overnight shutdowns, with shuttle buses running instead",
+   "The New Terminal One is not open yet. Airlines such as Air France, Lufthansa and Korean Air still operate from the existing Terminal 1."
+  ],
+  "faq": [
+   {
+    "q": "How early should I get to JFK?",
+    "a": "The airport does not publish a set time. JetBlue recommends 3 hours before domestic flights and 4 hours before international flights at JFK. Delta's general guidance is at least 2 hours for domestic and 3 hours for international. Construction on airport roads can add travel time, so the Port Authority advises using mass transit."
+   },
+   {
+    "q": "Is JFK's New Terminal One open?",
+    "a": "Not yet. As of September 2026, the New Terminal One is expected to welcome passengers in the first quarter of 2027. Until then, its future airlines operate from their current terminals."
+   },
+   {
+    "q": "Can I walk between terminals at JFK after security?",
+    "a": "No. You travel between terminals on the free AirTrain and must go through TSA screening again at your new terminal. The exception is Terminal 4, where Delta's free shuttle links the concourses without re-screening."
+   }
+  ],
+  "sources": [
+   {
+    "title": "JFK Airport - All Terminals",
+    "url": "https://www.jfkairport.com/explore-jfk/terminals"
+   },
+   {
+    "title": "JFK Terminal 1",
+    "url": "https://www.jfkairport.com/explore-jfk/terminals/terminal-1"
+   },
+   {
+    "title": "JFK Terminal 4",
+    "url": "https://www.jfkairport.com/explore-jfk/terminals/terminal-4"
+   },
+   {
+    "title": "JFK Terminal 5",
+    "url": "https://www.jfkairport.com/explore-jfk/terminals/terminal-5"
+   },
+   {
+    "title": "JFK Terminal 7",
+    "url": "https://www.jfkairport.com/explore-jfk/terminals/terminal-7"
+   },
+   {
+    "title": "JFK Terminal 8",
+    "url": "https://www.jfkairport.com/explore-jfk/terminals/terminal-8"
+   },
+   {
+    "title": "JFK Alerts and Advisories",
+    "url": "https://www.jfkairport.com/alerts-advisories"
+   },
+   {
+    "title": "JFK T7 Departures Frontage Relocation",
+    "url": "https://www.jfkairport.com/alerts-advisories/departures-frontage-relocation"
+   },
+   {
+    "title": "JFK Ride Share Information",
+    "url": "https://www.jfkairport.com/transportation/ride-share-services"
+   },
+   {
+    "title": "JFK Pick-up and Drop-off",
+    "url": "https://www.jfkairport.com/transportation/pick-up-drop-off"
+   },
+   {
+    "title": "AirTrain JFK",
+    "url": "https://www.jfkairport.com/transportation/airtrain"
+   },
+   {
+    "title": "JFK Flight Connections Guide",
+    "url": "https://www.jfkairport.com/flights/connections-guide"
+   },
+   {
+    "title": "Port Authority Weekly Travel Advisory for Oct. 9 to 15, 2026",
+    "url": "https://www.panynj.gov/port-authority/en/press-room/press-release-archives/2026-press-releases/weekly-travel-advisory-for-oct--9-to-15-.html"
+   },
+   {
+    "title": "Port Authority Weekly Travel Advisory for Sept. 25 to Oct. 1, 2026",
+    "url": "https://www.panynj.gov/port-authority/en/press-room/press-release-archives/2026-press-releases/weekly-travel-advisory-for-sept--25-to-oct--1.html"
+   },
+   {
+    "title": "Port Authority Builds - JFK Redevelopment",
+    "url": "https://www.portauthoritybuilds.com/redevelopment/us/en/jfk.html"
+   },
+   {
+    "title": "Port Authority Builds - JFK Terminal 6",
+    "url": "https://www.portauthoritybuilds.com/redevelopment/us/en/jfk/planned-projects/terminal-6.html"
+   },
+   {
+    "title": "The Points Guy - New York JFK's new Terminal One delayed until early 2027 (Sept 15, 2026)",
+    "url": "https://thepointsguy.com/news/new-york-jfk-new-terminal-one-delayed-2027/"
+   },
+   {
+    "title": "Simple Flying - Debt clock on JFK's delayed New Terminal 1 (June 15, 2026)",
+    "url": "https://simpleflying.com/6-billion-debt-clock-ticking-new-york-jfk-delayed-new-terminal-1/"
+   },
+   {
+    "title": "CLEAR - JFK International Airport Locations & Hours",
+    "url": "https://www.clearme.com/all-locations/john-f-kennedy-international-airport"
+   },
+   {
+    "title": "JetBlue - New York, NY (JFK) airport information",
+    "url": "https://www.jetblue.com/at-the-airport/airport-information/new-york-ny-jfk"
+   },
+   {
+    "title": "JetBlue - Airport Check-In",
+    "url": "https://www.jetblue.com/help/checking-in/airport-check-in"
+   },
+   {
+    "title": "Delta - U.S. Domestic Check-In Requirements",
+    "url": "https://www.delta.com/us/en/check-in-security/check-in-time-requirements/domestic-check-in"
+   },
+   {
+    "title": "Delta - International Check-In Requirements",
+    "url": "https://www.delta.com/us/en/check-in-security/check-in-time-requirements/international-check-in"
+   },
+   {
+    "title": "Delta - TSA PreCheck Touchless ID",
+    "url": "https://www.delta.com/us/en/check-in-security/expedited-airport-security/touchless-id"
+   },
+   {
+    "title": "Delta News Hub - JFK media kit",
+    "url": "https://news.delta.com/mediakit/john-f-kennedy-international-airport"
+   }
+  ]
+ },
+ "LAS": {
+  "code": "LAS",
+  "name": "Harry Reid International Airport",
+  "city": "Las Vegas",
+  "state": "NV",
+  "checkedOn": "2026-10-14",
+  "officialArrivalAdvice": {
+   "domestic": "Arrive at least 2 hours before your scheduled departure; allow extra time on weekends, holidays and during major conventions",
+   "international": "Arrive at least 3 hours before your scheduled departure",
+   "source": "https://www.harryreidairport.com/get-ready-for-your-flight"
+  },
+  "terminals": [
+   {
+    "id": "1",
+    "name": "Terminal 1 (A, B, C and D gates)",
+    "airlines": [
+     "Southwest",
+     "American",
+     "Delta",
+     "Allegiant",
+     "Sun Country"
+    ],
+    "checkpoints": [
+     {
+      "notes": "3:15 a.m.-1 a.m. per LAS security page (another LAS page says 3:30 a.m.-1 a.m.). CLEAR lane 4 a.m.-8 p.m. Sun/Mon/Thu/Fri and 4 a.m.-7:30 p.m. Tue/Wed/Sat.",
+      "precheck": null,
+      "clear": true,
+      "name": "A/B Gates checkpoint"
+     },
+     {
+      "notes": "3:05 a.m.-10 p.m. per LAS security page (another LAS page says closing 9:30 p.m.). CLEAR 4 a.m.-8 p.m.",
+      "precheck": null,
+      "clear": true,
+      "name": "C Gates (Southwest) / C Annex checkpoint"
+     },
+     {
+      "notes": "Open 24 hours. CLEAR 4 a.m.-10 p.m.",
+      "precheck": null,
+      "clear": true,
+      "name": "C/D Gates checkpoint"
+     }
+    ],
+    "notes": [
+     "Terminal 1 has ticketing, check-in and baggage claim for airlines using A, B, C and D gates",
+     "D gates are a satellite concourse reached by automated tram",
+     "Rideshare pickup is on Level 2 of the Terminal 1 parking garage",
+     "The RTC public bus stop (Routes 108 and Red Line) is at Terminal 1, Level Zero"
+    ]
+   },
+   {
+    "id": "3",
+    "name": "Terminal 3 (D and E gates)",
+    "airlines": [
+     "United",
+     "Alaska",
+     "JetBlue",
+     "Frontier",
+     "Hawaiian",
+     "Breeze",
+     "British Airways",
+     "Virgin Atlantic",
+     "Korean Air",
+     "Air Canada",
+     "WestJet",
+     "Aeromexico",
+     "Volaris",
+     "Condor",
+     "Edelweiss"
+    ],
+    "checkpoints": [
+     {
+      "notes": "3:30 a.m.-1:30 a.m. CLEAR 4 a.m.-8 p.m. Sun/Mon/Thu/Fri and 4 a.m.-7:30 p.m. Tue/Wed/Sat.",
+      "precheck": null,
+      "clear": true,
+      "name": "Terminal 3 Level 2 checkpoint (D and E gates)"
+     },
+     {
+      "notes": "TSA PreCheck travelers only; self-service screening pilot. 5 a.m.-1:30 p.m. per LAS security page and Aug 2026 reporting (another LAS page says 6 a.m.-2 p.m.).",
+      "precheck": true,
+      "clear": false,
+      "name": "Innovation Checkpoint (Terminal 3, Level Zero)"
+     }
+    ],
+    "notes": [
+     "Home to all international airlines and some domestic carriers, and has its own ticketing, check-in, baggage claim and Customs",
+     "An automated tram connects Terminal 3 to the D gates",
+     "Rideshare pickup is on the Valet Level of the Terminal 3 parking garage"
+    ]
+   }
+  ],
+  "connectedAirside": true,
+  "betweenTerminals": "Airside, trams connect Terminal 1 and Terminal 3 to the D gates, and LAS says Terminal 3 security can be used for Terminal 1 flights. Landside, a free inter-terminal shuttle runs about every 20-30 minutes from Level Zero at each terminal.",
+  "securityWaits": {
+   "summary": "LAS shows estimated current and hourly expected checkpoint waits on its Security Wait Times page (added April 2026). It warns these change minute to minute and should not be used to plan a later arrival.",
+   "busiestTimes": [],
+   "source": "https://www.harryreidairport.com/security-wait-times"
+  },
+  "precheckNotes": "LAS's site does not list PreCheck lanes by checkpoint. The Terminal 3 Innovation Checkpoint (Level Zero, about 5 a.m.-1:30 p.m.) is PreCheck-only, with self-service screening. Since Sept 2026, PreCheck members can reserve Gateside passes 1-3 days ahead on TSA.gov to go airside without a ticket.",
+  "clearAvailable": true,
+  "touchlessId": "LAS is on an April 2026 list of 65 airports with TSA PreCheck Touchless ID; participating airlines there were not specified. Opt in with your airline.",
+  "gettingThere": {
+   "rideshare": "Uber and Lyft drop off at the regular Departures curbs of Terminal 1 and Terminal 3. Pickups are in the garages: Level 2 at Terminal 1 and Valet Level at Terminal 3.",
+   "transit": "RTC Route 108 (Paradise) and the Red Line (formerly Route 109, Maryland Parkway) stop at Terminal 1, Level Zero. Terminal 3 travelers take the inter-terminal shuttle. LAS does not publish typical travel times to the Strip.",
+   "driving": "Both terminals have garages; there are 17,000+ public spaces including Economy and a Remote Lot with free shuttles. New parking rates took effect July 1, 2026. Discounted Terminal 3 Long Term parking ($16, Sat-Wed) requires a reservation. Expect lane reductions in the Airport Connector Tunnels through December 2026."
+  },
+  "construction2026": [
+   "Airport Connector Tunnel pavement project: since Aug 10, 2026, northbound and southbound tunnels are down to two lanes from 5 a.m. to midnight, and to one lane from midnight to 5 a.m. Sunday-Friday. Expected to finish by end of December 2026; LAS advises extra travel time.",
+   "Separate Clark County Public Works I-215/Airport Connector Interchange project and NDOT Sunset Road paving project are also under way, per LAS",
+   "Parking rates changed July 1, 2026"
+  ],
+  "bagDrop": "Delta at LAS: check-in at least 45 min before departure with or without bags, 1 hour for international-bound flights, at the gate 15 min before. Southwest: bags 45 min, check-in 30 min (domestic). Alaska: check-in and bag drop typically close 40 min before departure.",
+  "tips": [
+   "Parked at Terminal 3 but flying from Terminal 1 with no bags? LAS suggests using the Terminal 3 checkpoint and taking the tram, since it connects to the D gates and Terminal 1.",
+   "The C/D Gates checkpoint in Terminal 1 is open 24 hours, while the other checkpoints close overnight",
+   "PreCheck members flying from Terminal 3 in the morning can use the self-service Innovation Checkpoint on Level Zero, open about 5 a.m.-1:30 p.m.",
+   "Remote Lot and Economy parking are cheaper; discounted Terminal 3 Long Term ($16) is reservation-only and Saturday-Wednesday only",
+   "The Airport Connector Tunnels have reduced lanes through December 2026, so allow extra driving time",
+   "LAS warns that weekends, holidays and big conventions can call for more than the standard 2 hours"
+  ],
+  "faq": [
+   {
+    "q": "How early should I get to the Las Vegas airport?",
+    "a": "Harry Reid International recommends at least 2 hours before domestic flights and 3 hours before international flights. Add extra time on weekends, holidays or during major conventions."
+   },
+   {
+    "q": "Which terminal is my airline in at LAS?",
+    "a": "Southwest, American, Delta, Allegiant and Sun Country use Terminal 1. United, Alaska, JetBlue, Frontier, Hawaiian and all international airlines use Terminal 3. A free courtesy shuttle connects the terminals landside about every 20-30 minutes, so go to the right terminal if you are checking bags."
+   },
+   {
+    "q": "Is any security checkpoint at LAS open 24 hours?",
+    "a": "Yes. The Terminal 1 C/D Gates checkpoint is open 24 hours. The A/B, C Annex and Terminal 3 checkpoints open between about 3 and 3:30 a.m. and close in the late evening or after midnight."
+   }
+  ],
+  "sources": [
+   {
+    "title": "LAS - Security at LAS (checkpoint hours)",
+    "url": "https://www.harryreidairport.com/security-at-las"
+   },
+   {
+    "title": "LAS - Get Ready for Your Flight",
+    "url": "https://www.harryreidairport.com/get-ready-for-your-flight"
+   },
+   {
+    "title": "LAS - Security Wait Times",
+    "url": "https://www.harryreidairport.com/security-wait-times"
+   },
+   {
+    "title": "LAS - Airlines",
+    "url": "https://www.harryreidairport.com/flights/airlines"
+   },
+   {
+    "title": "LAS - Parking",
+    "url": "https://www.harryreidairport.com/parking"
+   },
+   {
+    "title": "LAS - Ride Share",
+    "url": "https://www.harryreidairport.com/taxi-and-ride-share/ride-share"
+   },
+   {
+    "title": "LAS - Taxi and Ride Share",
+    "url": "https://www.harryreidairport.com/taxi-and-ride-share"
+   },
+   {
+    "title": "LAS - Inter-Terminal Shuttle",
+    "url": "https://www.harryreidairport.com/busses-shuttles/inter-terminal-shuttle"
+   },
+   {
+    "title": "LAS - Public Bus",
+    "url": "https://www.harryreidairport.com/busses-shuttles/public-bus"
+   },
+   {
+    "title": "LAS press release - LAS Airport Begins Connector Tunnel Pavement Project (2026)",
+    "url": "https://www.harryreidairport.com/newsroom/press-releases/las-airport-begins-connector-tunnel-pavement-project"
+   },
+   {
+    "title": "CLEAR - Harry Reid Airport (LAS) CLEAR Locations & Hours",
+    "url": "https://www.clearme.com/all-locations/harry-reid-international-airport"
+   },
+   {
+    "title": "Hoodline - Las Vegas airport debuts nation's first self-checkout TSA line (Aug 6, 2026)",
+    "url": "https://hoodline.com/2026/08/las-vegas-airport-debuts-nation-s-first-self-checkout-tsa-line/"
+   },
+   {
+    "title": "FOX5 Vegas - Harry Reid International Airport adds TSA checkpoint wait times to website (Apr 9, 2026)",
+    "url": "https://www.fox5vegas.com/2026/04/09/harry-reid-international-airport-adds-tsa-checkpoint-wait-times-website"
+   },
+   {
+    "title": "FOX5 Vegas - How to enter Harry Reid terminals without an airline ticket (Sept 7, 2026)",
+    "url": "https://www.fox5vegas.com/2026/09/08/heres-how-enter-harry-reid-international-airport-terminals-without-an-airline-ticket/"
+   },
+   {
+    "title": "FOX5 Vegas - Trams at Harry Reid International Airport to undergo maintenance (Oct 21, 2025)",
+    "url": "https://www.fox5vegas.com/2025/10/22/trams-harry-reid-international-airport-undergo-maintenance"
+   },
+   {
+    "title": "The Bulkhead Seat - TSA Expands Touchless ID Screening to 65 US Airports (Apr 27, 2026)",
+    "url": "https://thebulkheadseat.com/tsa-expands-touchless-id-screening-to-65-us-airports-full-list/"
+   },
+   {
+    "title": "Delta - U.S. Domestic Check-In Requirements",
+    "url": "https://www.delta.com/us/en/check-in-security/check-in-time-requirements/domestic-check-in"
+   },
+   {
+    "title": "Southwest - When to Arrive for Your Flight",
+    "url": "https://support.southwest.com/helpcenter/article/airport-arrival-recommendation"
+   },
+   {
+    "title": "Alaska Airlines News - What's happening behind the scenes before your flight",
+    "url": "https://news.alaskaair.com/alaska-airlines/before-your-flight/"
+   }
+  ]
+ },
+ "LGA": {
+  "code": "LGA",
+  "name": "LaGuardia Airport",
+  "city": "New York",
+  "state": "NY",
+  "checkedOn": "2026-10-14",
+  "officialArrivalAdvice": {
+   "domestic": "The airport does not publish a set arrival time. Delta and JetBlue (LGA page) both recommend arriving at least 2 hours before domestic departures.",
+   "international": "Delta recommends arriving at least 3 hours before international departures.",
+   "source": "https://www.delta.com/us/en/check-in-security/check-in-time-requirements/domestic-check-in"
+  },
+  "terminals": [
+   {
+    "id": "A",
+    "name": "Terminal A (Marine Air Terminal)",
+    "airlines": [],
+    "checkpoints": [],
+    "notes": [
+     "On the airport's terminal list it appears as the historic Marine Air Terminal, serving Modern Aviation. No commercial airlines are listed there."
+    ]
+   },
+   {
+    "id": "B",
+    "name": "Terminal B",
+    "airlines": [
+     "American Airlines",
+     "United Airlines",
+     "Southwest",
+     "JetBlue",
+     "Air Canada",
+     "Frontier Airlines",
+     "Porter"
+    ],
+    "checkpoints": [
+     {
+      "notes": "TSA PreCheck is available, as is TSA PreCheck Touchless ID with participating airlines. B-FAST Express Pass is a paid front-of-line lane. JetBlue lists the checkpoint hours as 3:30am-11:00pm.",
+      "precheck": true,
+      "clear": null,
+      "name": "Terminal B security"
+     }
+    ],
+    "notes": [
+     "Gates 11-31 are about 4-6 min from security and gates 40-59 about 6-9 min",
+     "Curbside check-in is available. American charges $4 per bag on top of bag fees; Southwest charges only standard bag fees.",
+     "Ride-app pickup is on Level 2 of the Terminal B parking garage"
+    ]
+   },
+   {
+    "id": "C",
+    "name": "Terminal C",
+    "airlines": [
+     "Delta"
+    ],
+    "checkpoints": [
+     {
+      "notes": "CLEAR+ lanes are in front of the security checkpoint entrance on Level 3. Hours are Sun-Fri 4:30am-9:00pm and Sat 4:30am-5:30pm.",
+      "precheck": null,
+      "clear": true,
+      "name": "Terminal C security, Level 3"
+     }
+    ],
+    "notes": [
+     "Gates 60-69 are 9-11 min from security, 70-79 are 5-7 min, 80-89B are 3-5 min, and 92-98 are 5-10 min",
+     "Delta offers free curbside check-in (standard bag fees apply)",
+     "Ride-app pickup is in the Arrivals inner lane"
+    ]
+   }
+  ],
+  "connectedAirside": null,
+  "betweenTerminals": "A free on-airport bus connects all terminals, and a pedestrian path links Terminals B and C. The airport's connections guide does not say whether you must clear security again.",
+  "securityWaits": {
+   "summary": null,
+   "busiestTimes": [],
+   "source": null
+  },
+  "precheckNotes": "Terminal B has TSA PreCheck and Touchless ID for select airlines. We could not confirm PreCheck lane details for Terminal C on the airport site.",
+  "clearAvailable": true,
+  "touchlessId": "Delta lists LGA for TSA PreCheck Touchless ID, with dedicated Touchless ID bag drop. Southwest also lists LGA. The Terminal B page says Touchless ID is available through select participating airlines.",
+  "gettingThere": {
+   "rideshare": "Drop off at the terminal departures curb, which is for active drop-offs only. Ride-app pickup: Terminal B is on Level 2 of the Terminal B parking garage, and Terminal C is in the Arrivals inner lane. Confirm the spot in your app.",
+   "transit": "The LaGuardia Link Q70 bus is free year-round and serves Terminals B and C. It connects to the Jackson Heights-Roosevelt Av and 74 St-Broadway subway hubs and to LIRR at Woodside. Five MTA bus routes stop outside each terminal.",
+   "driving": "Curbs are for active drop-off and pickup only, and unattended vehicles are towed. The free Cell Phone Lot is off-airport on 94th Street between 23rd Avenue and Ditmars Blvd (open 7:00am-11:59pm). The Port Authority urges pre-booking parking, because drive-up parkers without a booking pay a peak-period surcharge."
+  },
+  "construction2026": [],
+  "bagDrop": "Delta at LGA: domestic bags and check-in close 45 minutes before departure, international check-in closes 1 hour before, and you must be at the gate 15 minutes before departure. JetBlue at LGA: check-in and bags 45 minutes before domestic departures. JetBlue's LGA counter opens 2 hours before departure and closes 30 minutes before.",
+  "tips": [
+   "Terminal C gates 60-69 are listed at 9-11 minutes' walk from security, the longest at LGA",
+   "The Q70 LaGuardia Link bus is free all year and connects to the subway and LIRR. It is a cheap way to avoid the terminal roads.",
+   "Whoever picks you up cannot wait at the curb. They should use the Cell Phone Lot on 94th Street until you are outside with your bags.",
+   "American's curbside check-in at Terminal B costs $4 per bag extra, while Delta's curbside at Terminal C has no extra fee"
+  ],
+  "faq": [
+   {
+    "q": "How early should I get to LaGuardia?",
+    "a": "The airport does not publish a set time. Delta and JetBlue both recommend arriving at least 2 hours before domestic flights, and Delta recommends 3 hours for international. Delta and JetBlue stop checking bags 45 minutes before domestic departures at LGA."
+   },
+   {
+    "q": "Which terminal is my airline at LaGuardia?",
+    "a": "Delta operates Terminal C. Terminal B serves American, United, Southwest, JetBlue, Air Canada, Frontier and Porter."
+   },
+   {
+    "q": "Is there free public transit to LaGuardia?",
+    "a": "Yes. The LaGuardia Link Q70 bus is fare-free year-round. It runs between Terminals B and C and the Jackson Heights-Roosevelt Av subway hub, with an LIRR connection at Woodside."
+   }
+  ],
+  "sources": [
+   {
+    "title": "LaGuardia Airport - All Terminals",
+    "url": "https://www.laguardiaairport.com/explore-lga/terminals"
+   },
+   {
+    "title": "LGA Terminal B",
+    "url": "https://www.laguardiaairport.com/explore-lga/terminals/terminal-b"
+   },
+   {
+    "title": "LGA Terminal C",
+    "url": "https://www.laguardiaairport.com/explore-lga/terminals/terminal-c"
+   },
+   {
+    "title": "LGA Departures Guide",
+    "url": "https://www.laguardiaairport.com/flights/departures"
+   },
+   {
+    "title": "LGA Connections Guide",
+    "url": "https://www.laguardiaairport.com/flights/connections-guide"
+   },
+   {
+    "title": "LGA Public Transportation",
+    "url": "https://www.laguardiaairport.com/transportation/public-transport"
+   },
+   {
+    "title": "LGA Pick-up and Drop-off",
+    "url": "https://www.laguardiaairport.com/transportation/pick-up-drop-off"
+   },
+   {
+    "title": "LGA Ride Share Services",
+    "url": "https://www.laguardiaairport.com/transportation/ride-share-services"
+   },
+   {
+    "title": "Port Authority Weekly Travel Advisory for Oct. 9 to 15, 2026",
+    "url": "https://www.panynj.gov/port-authority/en/press-room/press-release-archives/2026-press-releases/weekly-travel-advisory-for-oct--9-to-15-.html"
+   },
+   {
+    "title": "CLEAR - LaGuardia Airport Locations & Hours",
+    "url": "https://www.clearme.com/all-locations/laguardia-airport"
+   },
+   {
+    "title": "Delta - U.S. Domestic Check-In Requirements",
+    "url": "https://www.delta.com/us/en/check-in-security/check-in-time-requirements/domestic-check-in"
+   },
+   {
+    "title": "Delta - International Check-In Requirements",
+    "url": "https://www.delta.com/us/en/check-in-security/check-in-time-requirements/international-check-in"
+   },
+   {
+    "title": "Delta - TSA PreCheck Touchless ID",
+    "url": "https://www.delta.com/us/en/check-in-security/expedited-airport-security/touchless-id"
+   },
+   {
+    "title": "Southwest - TSA PreCheck Touchless ID",
+    "url": "https://www.southwest.com/tsa-precheck-touchless-id/"
+   },
+   {
+    "title": "JetBlue - New York, NY (LGA) airport information",
+    "url": "https://www.jetblue.com/at-the-airport/airport-information/new-york-ny-lga"
+   },
+   {
+    "title": "JetBlue - Airport Check-In",
+    "url": "https://www.jetblue.com/help/checking-in/airport-check-in"
+   }
+  ]
+ },
+ "MCO": {
+  "code": "MCO",
+  "name": "Orlando International Airport",
+  "city": "Orlando",
+  "state": "FL",
+  "checkedOn": "2026-10-14",
+  "officialArrivalAdvice": {
+   "domestic": "The Greater Orlando Aviation Authority recommends arriving at the security checkpoint 2 hours before scheduled departure; check with your airline for flight-specific advice",
+   "international": null,
+   "source": "https://flymco.com/faq/"
+  },
+  "terminals": [
+   {
+    "id": "A",
+    "name": "Terminal A (north side of the shared A/B building)",
+    "airlines": [
+     "Southwest",
+     "Frontier",
+     "Avelo"
+    ],
+    "checkpoints": [
+     {
+      "notes": "Used by Frontier and Avelo per the airport's airline directory. Leads to Gates 1-29 and 30-59 via Gate Link trams.",
+      "precheck": true,
+      "clear": true,
+      "name": "Security Checkpoint for Gates 1-59 (Level 3)"
+     },
+     {
+      "notes": "Used by Southwest per the airport's airline directory. Leads to Gates 70-99 and 100-129 via Gate Link trams.",
+      "precheck": true,
+      "clear": true,
+      "name": "Security Checkpoint for Gates 70-129 (Level 3, near the Hyatt/Hotel Atrium)"
+     }
+    ],
+    "notes": [
+     "Terminals A and B are opposite sides of the same building, only 525 feet apart; cross on Level 3 (Departures)",
+     "After security you can reach only the paired gate areas: Gates 1-29 with 30-59, or Gates 70-99 with 100-129",
+     "Southwest is listed at Gates 70-99 and 100-129; Frontier at Gates 1-29 and 70-99"
+    ]
+   },
+   {
+    "id": "B",
+    "name": "Terminal B (south side of the shared A/B building)",
+    "airlines": [
+     "American",
+     "Delta",
+     "United",
+     "Alaska",
+     "Allegiant",
+     "Breeze",
+     "Sun Country",
+     "Air Canada",
+     "WestJet",
+     "LATAM"
+    ],
+    "checkpoints": [
+     {
+      "notes": "Used by American, United, Alaska, Allegiant and Breeze per the airport's airline directory (Gates 30-59; Breeze at 1-29).",
+      "precheck": true,
+      "clear": true,
+      "name": "Security Checkpoint for Gates 1-59 (Level 3)"
+     },
+     {
+      "notes": "Used by Delta and most Terminal B international carriers (Gates 70-99) per the airport's airline directory.",
+      "precheck": true,
+      "clear": true,
+      "name": "Security Checkpoint for Gates 70-129 (Level 3)"
+     }
+    ],
+    "notes": [
+     "Same building and same two checkpoints as Terminal A",
+     "Terminal Link people mover to the Train Station and Terminal C leaves from Terminal B, East Hall/Hotel Atrium"
+    ]
+   },
+   {
+    "id": "C",
+    "name": "Terminal C",
+    "airlines": [
+     "JetBlue",
+     "British Airways",
+     "Virgin Atlantic",
+     "Emirates",
+     "Aer Lingus",
+     "Air France",
+     "Icelandair",
+     "Porter",
+     "Copa Airlines",
+     "Avianca",
+     "Azul"
+    ],
+    "checkpoints": [
+     {
+      "notes": "Single checkpoint; all Terminal C gates are reachable after screening. The airport's directory lists GOL as not offering TSA PreCheck.",
+      "precheck": true,
+      "clear": true,
+      "name": "Terminal C checkpoint (Gates C230-C254)"
+     }
+    ],
+    "notes": [
+     "Departures drop-off is on Level 2 (not Level 3 as at Terminals A/B)",
+     "JetBlue uses Gates C230-C238; most international carriers use C240-C245",
+     "Four new gates opened June 30, 2026, and Virgin Atlantic moved all its Orlando flights from Terminal A to Terminal C",
+     "Terminal C has early bag storage in its baggage system; ask your airline how early you can check bags"
+    ]
+   }
+  ],
+  "connectedAirside": false,
+  "betweenTerminals": "Terminals A and B: walk across Level 3 of the shared building (525 ft). Terminal C: ride the 24-hour Terminal Link people mover from Terminal B to the Train Station, then walk about 1,200 ft through Parking Garage C, or take the 24-hour shuttle bus between Terminal B Level 1 (space B65) and Terminal C Level 1 (space C272). All of these are pre-security, so you must clear security again.",
+  "securityWaits": {
+   "summary": "No official typical-wait figures are published. On a spring-break Monday morning in March 2026, local news reported waits of about 40 minutes, with lines at times stretching down terminal hallways.",
+   "busiestTimes": [
+    "Mornings",
+    "Late afternoon"
+   ],
+   "source": "https://www.wftv.com/news/local/travelers-face-long-lines-orlando-international-airport-amid-spring-break-surge/5THVTM2WJBHHLL72XT5WXERGTY"
+  },
+  "precheckNotes": "The airport lists normal TSA PreCheck operating hours as 4:00am to 8:30pm and says to check TSA's site to confirm the lanes will be open for your flight time. The airline directory lists PreCheck for nearly every carrier; GOL (Terminal C) is shown as not participating. PreCheck enrollment is offered at the three CLEAR locations at the checkpoints.",
+  "clearAvailable": true,
+  "touchlessId": "TSA PreCheck Touchless ID has a dedicated lane at MCO, reported in place since at least winter 2026. An April 2026 travel-blog report names Alaska, American, Delta, Southwest and United as participating airlines; you must opt in through your airline profile with your Known Traveler Number and passport. The writer used it at the Gates 70-129 checkpoint and said other checkpoints may differ.",
+  "gettingThere": {
+   "rideshare": "Uber, Lyft and other ride-share drop-offs: Departures curb Level 3 at Terminals A and B, Level 2 at Terminal C. Pickups: Arrivals curb Level 2 at A and B 24 hours a day (also the Level 3 Departures curb from 9:00pm to 2:00am); Arrivals curb Level 6 at Terminal C.",
+   "transit": "Lynx local buses leave from Terminal A, Level 1, Commercial Lane spaces A38-A41 ($2 per trip or $4.50 all day). They serve Downtown Orlando, the Convention Center and the Sand Lake Road SunRail station; SunRail runs Monday to Friday, 5:30am-9:30pm. Brightline trains to South Florida use the MCO Train Station, open daily 5am-11pm. The airport's approximate taxi fare to downtown Orlando is $38-$45.",
+   "driving": "Jeff Fuqua Blvd is the main entry road. Private cars drop off at Level 3 (Departures) at Terminals A and B or Level 2 at Terminal C, and cannot wait at the curb. The Quick Park ramp at the end of the Departures curb leads to Garages A and B. Free cell phone lots are available for pickups."
+  },
+  "construction2026": [
+   "Gate Link tram replacement for Gates 70-129 ($253M) runs December 2025 to Fall 2027, with one tram line out of service at a time. Departing passengers to Gates 100-129 may be routed by tram to Gates 70-99 and then by COBUS shuttle, and shuttles are routine overnight (11pm-4am). The airport says to expect only a few extra minutes.",
+   "The first upgraded Gate Link track to Gates 100-129 entered service October 1, 2026. The second 100-129 track is scheduled to be worked on through December 2026, then the Gates 70-99 lines from December 2026 to October 2027.",
+   "Terminal C opened four new gates on June 30, 2026, and Virgin Atlantic moved from Terminal A to Terminal C",
+   "Florida directed $2.5M (posted January 2026) to improve the congested Jeff Fuqua Blvd / Station Loop Road junction, the main road into the airport; no construction timeline has been announced"
+  ],
+  "bagDrop": "Terminal C has early bag storage within its baggage system, so ask your airline how far ahead you can check bags. No airline-specific bag cutoffs for MCO were verified.",
+  "tips": [
+   "MCO's 2-hour advice is for arriving at the security checkpoint, not the curb. Add time for parking, rental-car return and bag check.",
+   "Without PreCheck or CLEAR, you can book a free MCO Reserve security time slot up to 7 days ahead. Reserve lanes run 5am-5pm at Terminals A and B (flights 6:30am-8:30pm) and 5am-7pm at Terminal C (flights 6:30am-10:30pm), with limited slots.",
+   "Check your terminal before you leave: JetBlue and most international airlines are in Terminal C, which has its own entrance, Level 2 drop-off and checkpoint. It is not reachable airside from Terminals A and B.",
+   "At Terminals A and B, pick the checkpoint by gate number (1-59 or 70-129). Once through, you can reach only the paired gate area, and a Gate Link tram ride is still needed to reach your gate.",
+   "Through Fall 2027, trips to Gates 70-129 may include a COBUS shuttle hop during the Gate Link replacement, so build a few extra minutes in after security"
+  ],
+  "faq": [
+   {
+    "q": "How early should I get to Orlando airport (MCO)?",
+    "a": "The Greater Orlando Aviation Authority recommends arriving at the security checkpoint 2 hours before your scheduled departure, and says to check your airline's own recommendation. Add time for parking, rental-car return and bag drop on top of that."
+   },
+   {
+    "q": "Which terminal is my airline in at MCO?",
+    "a": "Per the airport's directory, JetBlue and most international airlines (British Airways, Virgin Atlantic, Emirates, Aer Lingus and others) use Terminal C. Southwest, Frontier and Avelo are listed in Terminal A, and American, Delta, United and Alaska in Terminal B."
+   },
+   {
+    "q": "Can I get from Terminal C to Terminals A and B after security?",
+    "a": "No. Terminal C has its own single checkpoint, and you must clear security again for Terminals A and B. You connect landside on the 24-hour Terminal Link from Terminal B plus a walk of about 1,200 ft through Garage C, or on the 24-hour shuttle bus."
+   }
+  ],
+  "sources": [
+   {
+    "title": "MCO - Security",
+    "url": "https://flymco.com/security/"
+   },
+   {
+    "title": "MCO - Airlines (terminal, checkpoint, gates by airline)",
+    "url": "https://flymco.com/airlines/"
+   },
+   {
+    "title": "MCO - Frequently Asked Questions",
+    "url": "https://flymco.com/faq/"
+   },
+   {
+    "title": "MCO - Ride Share",
+    "url": "https://flymco.com/ground-transportation/ride-share/"
+   },
+   {
+    "title": "MCO - Ground Transportation (approximate rates)",
+    "url": "https://flymco.com/ground-transportation/"
+   },
+   {
+    "title": "MCO - Local Bus",
+    "url": "https://flymco.com/ground-transportation/local-bus/"
+   },
+   {
+    "title": "MCO - SunRail",
+    "url": "https://flymco.com/ground-transportation/sunrail/"
+   },
+   {
+    "title": "MCO - Brightline Trains",
+    "url": "https://flymco.com/ground-transportation/brightline-trains/"
+   },
+   {
+    "title": "MCO - Gate Link Replacement, Gates 70-129",
+    "url": "https://www.flymco.com/elevatingmco/current-projects/gatelink-replacement-gates-70-129/"
+   },
+   {
+    "title": "BlogMickey - MCO launches new Gate Link trams (Oct 2, 2026)",
+    "url": "https://blogmickey.com/2026/10/mco-launches-new-gate-link-trams-for-253-million-upgrade-project/"
+   },
+   {
+    "title": "InsideFlyer - MCO adds four gates, Virgin Atlantic moves to Terminal C (Jun 30, 2026)",
+    "url": "https://www.insideflyer.com/posts/mco-adds-four-gates-virgin-atlantic-moves-to-terminal-c"
+   },
+   {
+    "title": "NationGraph - Orlando airport's busiest entry road getting capacity upgrades (Mar 24, 2026)",
+    "url": "https://news.nationgraph.com/articles/orlando-airports-busiest-entry-road-getting-capacity-upgrades-as-travelers-surge"
+   },
+   {
+    "title": "WFTV - Travelers face long lines at Orlando International amid spring break surge (Mar 23, 2026)",
+    "url": "https://www.wftv.com/news/local/travelers-face-long-lines-orlando-international-airport-amid-spring-break-surge/5THVTM2WJBHHLL72XT5WXERGTY"
+   },
+   {
+    "title": "Disney Tourist Blog - TSA PreCheck Touchless is Pointless at Orlando Airport (Apr 11, 2026)",
+    "url": "https://www.disneytouristblog.com/tsa-precheck-touchless-is-pointless-at-orlando-airport/"
+   }
+  ]
+ },
+ "MIA": {
+  "code": "MIA",
+  "name": "Miami International Airport",
+  "city": "Miami",
+  "state": "FL",
+  "checkedOn": "2026-10-14",
+  "officialArrivalAdvice": {
+   "domestic": "MIA says recommendations vary by airline and day of travel. Its security page cites TSA's guidance to arrive at least 2 hours before domestic flights.",
+   "international": "MIA's security page cites TSA's guidance to arrive at least 3 hours before international flights. MIA's Departures page separately says to arrive at least 2 hours early for international departures to allow time to clear security.",
+   "source": "https://www.miami-airport.com/airport-security.asp"
+  },
+  "terminals": [
+   {
+    "id": "North",
+    "name": "North Terminal (Concourse D)",
+    "airlines": [
+     "American Airlines",
+     "British Airways",
+     "GOL"
+    ],
+    "checkpoints": [
+     {
+      "notes": "Open 4:00am-8:15pm; TSA PreCheck during checkpoint hours; American Airlines priority lane",
+      "precheck": true,
+      "clear": null,
+      "name": "Checkpoint 1"
+     },
+     {
+      "notes": "Open 3:30am-11:45pm; American Airlines priority lane; PreCheck not listed. A Sept 2026 third-party guide lists it as temporarily closed.",
+      "precheck": false,
+      "clear": null,
+      "name": "Checkpoint 2"
+     },
+     {
+      "notes": "Open 4:00am-9:45pm; American Airlines priority lane; PreCheck not listed",
+      "precheck": false,
+      "clear": null,
+      "name": "Checkpoint 3"
+     },
+     {
+      "notes": "Open 4:00am-8:15pm; PreCheck not listed",
+      "precheck": false,
+      "clear": null,
+      "name": "Checkpoint 4"
+     },
+     {
+      "notes": "Open 5:15am-9:30pm; PreCheck not listed",
+      "precheck": false,
+      "clear": null,
+      "name": "Checkpoint DFIS"
+     }
+    ],
+    "notes": [
+     "Concourse D is long; the Skytrain above it runs end to end with 4 stations (take the Concourse D elevators up)",
+     "American (with American Eagle) checks in at Concourses D and E; American is MIA's hub carrier",
+     "The Dolphin (North) garage is closest if you fly American or Qatar Airways",
+     "Concourse D connects to Concourse E inside security via a connector bridge"
+    ]
+   },
+   {
+    "id": "Central",
+    "name": "Central Terminal (Concourses E, F, G)",
+    "airlines": [
+     "American Airlines",
+     "Alaska Airlines",
+     "Southwest",
+     "Frontier",
+     "Avelo",
+     "Sun Country",
+     "Iberia",
+     "Qatar",
+     "Aer Lingus",
+     "Porter Airlines"
+    ],
+    "checkpoints": [
+     {
+      "notes": "Open 4:00am-10:45pm; TSA PreCheck during checkpoint hours",
+      "precheck": true,
+      "clear": null,
+      "name": "Checkpoint 5"
+     },
+     {
+      "notes": "Open 3:30am-10:45pm; TSA PreCheck during checkpoint hours",
+      "precheck": true,
+      "clear": null,
+      "name": "Checkpoint 6"
+     },
+     {
+      "notes": "Open 4:00am-8:15pm; TSA PreCheck during checkpoint hours",
+      "precheck": true,
+      "clear": null,
+      "name": "Checkpoint 7"
+     }
+    ],
+    "notes": [
+     "Per a Sept 2026 guide, checkpoints 5-7 sit at the entrances to Concourses E, F and G",
+     "Check-in by airline per MIA directory: Alaska, Avelo, Iberia, Qatar, Aer Lingus at E; Frontier, Sun Country at F; Southwest, Porter at G",
+     "The Tourist Information Center is in Central Terminal E (6am-10pm)",
+     "Moving walkways lead from the Central Terminal to the MIA Mover station (Rental Car Center, Metrorail, Tri-Rail)"
+    ]
+   },
+   {
+    "id": "South",
+    "name": "South Terminal (Concourses H, J)",
+    "airlines": [
+     "Delta",
+     "United Airlines",
+     "Lufthansa",
+     "Air France",
+     "KLM",
+     "Emirates",
+     "Turkish",
+     "LATAM Airlines",
+     "Avianca",
+     "Copa Airlines",
+     "Virgin Atlantic"
+    ],
+    "checkpoints": [
+     {
+      "notes": "Open 4:00am-8:15pm; TSA PreCheck during checkpoint hours",
+      "precheck": true,
+      "clear": null,
+      "name": "Checkpoint 8"
+     },
+     {
+      "notes": "Open 24 hours; TSA PreCheck during checkpoint hours. A Sept 2026 guide places it in the H-J connector.",
+      "precheck": true,
+      "clear": null,
+      "name": "Checkpoint 9"
+     },
+     {
+      "notes": "Open 4:15am-7:15pm; TSA PreCheck during checkpoint hours",
+      "precheck": true,
+      "clear": null,
+      "name": "Checkpoint 10"
+     }
+    ],
+    "notes": [
+     "Delta and United check in at Concourse H; most long-haul international carriers check in at J",
+     "Concourses H and J are connected inside security",
+     "The Flamingo (South) garage is nearest for all airlines other than American and Qatar"
+    ]
+   }
+  ],
+  "connectedAirside": false,
+  "betweenTerminals": "Before security, moving walkways on Level 3 link all three terminals, the Dolphin/Flamingo garages and the MIA Mover station; MIA says to allow 15 minutes between the North and South Terminals. Behind security, only Concourses D-E and H-J are connected, so moving between other concourses means clearing security again.",
+  "securityWaits": {
+   "summary": null,
+   "busiestTimes": [],
+   "source": null
+  },
+  "precheckNotes": "Per MIA's checkpoint list, PreCheck runs during checkpoint hours at Checkpoints 1 (Concourse D), 5, 6, 7 (Central) and 8, 9, 10 (South). Checkpoints 2, 3, 4 and DFIS in Concourse D are not listed with PreCheck. Checkpoint 9 is the only one open 24 hours.",
+  "clearAvailable": true,
+  "touchlessId": "TSA announced PreCheck Touchless ID at MIA on Feb 10, 2026: North Terminal for American Airlines, Central Terminal for American and Alaska, and South Terminal for Delta and United. Opt in through your airline with your Known Traveler Number and passport on file, and carry a physical ID as backup.",
+  "gettingThere": {
+   "rideshare": "Ride-app pickups are on Level 1 (arrivals) and Level 2 (departures); check your app for the designated door number. Check-in and ticketing are on Level 2. Taxis use the Level 1 curb outside baggage claim and have a $15 minimum fare from MIA.",
+   "transit": "The free MIA Mover (1.25 miles) runs from Level 3 between the Dolphin and Flamingo garages to the Miami Intermodal Center / Central Station. From there take Metrorail ($2.25; the Orange Line serves Brickell and Government Center downtown), Tri-Rail to Fort Lauderdale and West Palm Beach, or Metrobus routes 37, 42, 57, J and the 150 Miami Beach Airport Express ($2.25, every 30 minutes 6am-11:40pm). As of Oct 14, 2026, MIA posts a transit alert that Metrorail riders must transfer at Earlington Heights for the Orange Line train to MIA.",
+   "driving": "Curbside is for active loading and unloading only; unattended vehicles are towed. Park in the Dolphin (North) garage for American or Qatar Airways and the Flamingo (South) garage for all other airlines."
+  },
+  "construction2026": [
+   "MIA's $14B 'Modernization in Action' program is renovating 600+ elevators, escalators and moving walkways in phases. MIA says under 10% are out of service on an average day, and some units can be down for up to a year.",
+   "Restroom renovation Phase 2 (Concourses D, E, F, G, H and J) is scheduled for completion by Fall 2026",
+   "Longer-term plans include a full redevelopment of the Central Terminal between Concourses E and G, and a new Concourse K expanding the South Terminal",
+   "Metrorail service alert (posted on MIA's homepage, Oct 2026): transfer at Earlington Heights for the Orange Line to MIA"
+  ],
+  "bagDrop": null,
+  "tips": [
+   "Pick your checkpoint by concourse. MIA's checkpoints are spread across D, E-G and H-J, and only D-E and H-J connect after security, so a walk to the 'wrong' concourse means screening again.",
+   "In Concourse D, only Checkpoint 1 is listed with TSA PreCheck (4:00am-8:15pm), while all Central and South Terminal checkpoints list it. Concourses D and E are connected behind security.",
+   "Checkpoint 9 (South Terminal) is the only one open 24 hours, and most others open between 3:30am and 4:15am, so very early or late flights should check hours",
+   "Concourse D is long. Use the Skytrain on the upper level, which has 4 stations, to reach far gates.",
+   "Paid 'Concierge Powered by CLEAR' curb-to-gate escort service launched in June 2026 for all travelers, from $99 for departures; CLEAR membership is not required"
+  ],
+  "faq": [
+   {
+    "q": "How early should I get to Miami airport (MIA)?",
+    "a": "MIA says recommendations vary by airline and day, and cites TSA's guidance: at least 2 hours before domestic flights and 3 hours before international flights. Check your airline's own advice too."
+   },
+   {
+    "q": "Which MIA terminal is my airline in?",
+    "a": "American uses the North Terminal (Concourse D) and also Concourse E. Delta and United check in at Concourse H in the South Terminal, and most long-haul international carriers are at J. Southwest, Frontier, Alaska and several others are in the Central Terminal (E, F, G)."
+   },
+   {
+    "q": "Can I walk between concourses at MIA after security?",
+    "a": "Only between Concourses D and E, and between H and J. Other moves require leaving the secure area, using the Level 3 moving walkways, and clearing security again. MIA suggests allowing 15 minutes between the North and South Terminals."
+   }
+  ],
+  "sources": [
+   {
+    "title": "MIA - Airport Security (checkpoint hours, arrival advice)",
+    "url": "https://www.miami-airport.com/airport-security.asp"
+   },
+   {
+    "title": "MIA - Airline Directory",
+    "url": "https://www.miami-airport.com/airline-information.asp"
+   },
+   {
+    "title": "MIA - Departures",
+    "url": "https://www.miami-airport.com/departures.asp"
+   },
+   {
+    "title": "MIA - Connecting Flights",
+    "url": "https://www.miami-airport.com/flight_connections.asp"
+   },
+   {
+    "title": "MIA - Getting Around MIA",
+    "url": "https://www.miami-airport.com/getting-around-mia.asp"
+   },
+   {
+    "title": "MIA - Expedited Security",
+    "url": "https://www.miami-airport.com/expedited-security.asp"
+   },
+   {
+    "title": "MIA - Public Transportation",
+    "url": "https://www.miami-airport.com/public-transportation.asp"
+   },
+   {
+    "title": "MIA - Taxis & Ride App",
+    "url": "https://www.miami-airport.com/taxicabs-shuttles.asp"
+   },
+   {
+    "title": "MIA - Homepage (transit alert)",
+    "url": "https://www.miami-airport.com/"
+   },
+   {
+    "title": "MIA - Future Ready / Modernization in Action Plan",
+    "url": "https://www.miami-airport.com/MIAFutureReady.asp"
+   },
+   {
+    "title": "MIA News - Concierge Powered by CLEAR launched at MIA (Jun 1, 2026)",
+    "url": "https://news.miami-airport.com/concierge-powered-by-clear-launched-at-mia-to-elevate-travel-experiences/"
+   },
+   {
+    "title": "TSA - TSA PreCheck Touchless ID now available at Miami International (Feb 10, 2026)",
+    "url": "https://www.tsa.gov/news/press/releases/2026/02/10/tsa-precheckr-touchless-id-now-available-miami-international"
+   },
+   {
+    "title": "Upgraded Points - Miami International Airport guide (updated Sep 7, 2026)",
+    "url": "https://upgradedpoints.com/travel/airports/miami-international-mia-airport/"
+   }
+  ]
+ },
+ "MSP": {
+  "code": "MSP",
+  "name": "Minneapolis-Saint Paul International Airport",
+  "city": "Minneapolis",
+  "state": "MN",
+  "checkedOn": "2026-10-14",
+  "officialArrivalAdvice": {
+   "domestic": "Arrive at least 2 hours before domestic flights",
+   "international": "Arrive at least 3 hours before international flights",
+   "source": "https://www.mspairport.com/node/5005"
+  },
+  "terminals": [
+   {
+    "id": "1",
+    "name": "Terminal 1",
+    "airlines": [
+     "Delta Air Lines",
+     "American Airlines",
+     "United Airlines",
+     "Alaska Airlines",
+     "Air Canada",
+     "Air France",
+     "KLM",
+     "Lufthansa",
+     "Aer Lingus",
+     "WestJet",
+     "Discover",
+     "Denver Air"
+    ],
+    "checkpoints": [
+     {
+      "notes": "To the right as you enter the ticketing lobby; MSP says it often has shorter waits. MSP RESERVE lane is here. All gates reachable.",
+      "precheck": true,
+      "clear": true,
+      "name": "North Checkpoint, Ticketing (Departures) level"
+     },
+     {
+      "notes": "All gates reachable. One of the two T1 checkpoints is open 24 hours.",
+      "precheck": true,
+      "clear": true,
+      "name": "South Checkpoint, Ticketing (Departures) level"
+     },
+     {
+      "notes": "Temporarily closed per MSP.",
+      "precheck": null,
+      "clear": false,
+      "name": "Skyway Security Checkpoint (Concourse C/G connector bridge)"
+     }
+    ],
+    "notes": [
+     "Security was consolidated from six checkpoints to two (north and south ends of the ticketing lobby) under a $600M program substantially completed in 2025.",
+     "Wait-time boards at both ends of the ticketing lobby show current checkpoint waits.",
+     "Drivers can drop off or pick up on either level of the Terminal 1 roadway loop; Departures is the upper level.",
+     "Terminal 1 FLEX Lane on the left side of Departures Drive serves doors 5-8 (Green/Gold ramps) with sky bridges to ticketing.",
+     "Terminal 1 light rail station is below the Red and Blue ramps, reached by tram."
+    ]
+   },
+   {
+    "id": "2",
+    "name": "Terminal 2 (Humphrey)",
+    "airlines": [
+     "Sun Country",
+     "Southwest",
+     "Frontier",
+     "Icelandair"
+    ],
+    "checkpoints": [
+     {
+      "notes": "Open 4:00am until the last scheduled departure.",
+      "precheck": null,
+      "clear": null,
+      "name": "Checkpoint 1, Level 2"
+     },
+     {
+      "notes": "Open 4:00am-5:15pm; only for TSA PreCheck, MSP RESERVE and Priority passengers.",
+      "precheck": true,
+      "clear": null,
+      "name": "Checkpoint 2, Level 2"
+     }
+    ],
+    "notes": [
+     "Checkpoints are on Level 2 near the Orange and Purple ramp skyways.",
+     "Terminal 2 is a separate building at 7150 Humphrey Drive; it is not connected airside to Terminal 1.",
+     "Terminal 2 light rail station is on the north side of the Orange Ramp.",
+     "Terminal 2 North Expansion ($263M, two added gates near H13/H14) is scheduled to finish in early 2027."
+    ]
+   }
+  ],
+  "connectedAirside": false,
+  "betweenTerminals": "METRO Blue Line light rail; free between the two terminal stations and available 24 hours a day. A shuttle is available for passengers with mobility needs.",
+  "securityWaits": {
+   "summary": null,
+   "busiestTimes": [],
+   "source": null
+  },
+  "precheckNotes": "PreCheck lanes are at open Terminal 1 checkpoints. At Terminal 2, Checkpoint 2 (4:00am-5:15pm) is restricted to PreCheck, MSP RESERVE and Priority passengers. MSP RESERVE is a free reserved security time slot, bookable up to one week ahead; at Terminal 1 the RESERVE lane is at the North Checkpoint and availability is limited.",
+  "clearAvailable": true,
+  "touchlessId": "TSA lists Touchless ID at 65 airports and tells travelers to check with their airline. Delta lists MSP as a participating airport with dedicated Touchless ID bag drop. A March 2026 third-party list shows Alaska, American, Delta and United participating at MSP.",
+  "gettingThere": {
+   "rideshare": "Terminal 1: rideshare pickup is at the Ground Transportation Center, Level 1 of the Green/Gold ramps. Terminal 2: rideshare pickup and drop-off moved to Level 2 of the Purple Ramp, with a sky bridge to the terminal.",
+   "transit": "METRO Blue Line light rail serves both terminals; about 25 minutes to downtown Minneapolis (Warehouse District). Trains run every 15-30 minutes, roughly 3:30am to midnight. MSP suggests the Blue Line if Hwy 5 is backed up.",
+   "driving": "Terminal 1 is at 4300 Glumack Drive, Terminal 2 at 7150 Humphrey Drive. Pre-book parking online for the lowest daily rates; bookings must be made at least 12 hours before arrival. Terminal 2 Express Lane on Level 2 of the Purple Ramp is a free, covered, 24-hour drop-off alternative to the curb. Free cell phone lots are on Post Road."
+  },
+  "construction2026": [
+   "Terminal 2 roadway: a fifth curb lane is being added in front of Terminal 2 (work began mid-June 2026, scheduled for completion in late November 2026); at least three lanes stay open during all phases.",
+   "Rideshare at Terminal 2 relocated off the front curb to Level 2 of the Purple Ramp ahead of the roadway work.",
+   "Post Road was under construction as of July 2026 with eastbound-only traffic (away from Terminal 2 toward Hwy 5, also the route to the cell phone lot).",
+   "Concourse G expansion between gates G8 and G13 is underway, expected to finish in 2028.",
+   "Terminal 2 North Expansion is under construction, scheduled for completion in early 2027."
+  ],
+  "bagDrop": "Delta (Terminal 1): domestic bags must be checked at least 45 minutes before departure (30 minutes if no checked bags); bags are not accepted more than 6 hours before departure; be at the gate 15 minutes before departure.",
+  "tips": [
+   "MSP has two separate terminals: Delta and most legacy/foreign carriers use Terminal 1, while Sun Country, Southwest, Frontier and Icelandair use Terminal 2. Confirm before you go.",
+   "At Terminal 1, check the wait-time boards at both ends of the ticketing lobby; the North Checkpoint (right as you enter) often has shorter waits and every gate is reachable from either checkpoint.",
+   "MSP RESERVE lets you book a free security time slot up to a week ahead; at Terminal 1 the lane is at the North Checkpoint.",
+   "Terminal 2 Checkpoint 2 is PreCheck/RESERVE/Priority only and closes at 5:15pm; after that everyone uses Checkpoint 1.",
+   "Parking reservations must be made at least 12 hours before arrival, so book the night before at the latest.",
+   "Through late November 2026, Terminal 2 curb lane construction can slow traffic; the free Terminal 2 Express Lane in the Purple Ramp avoids the curb."
+  ],
+  "faq": [
+   {
+    "q": "How early should I get to MSP?",
+    "a": "The Metropolitan Airports Commission advises arriving at least 2 hours before a domestic flight and 3 hours before an international flight. Delta also requires bags to be checked at least 45 minutes before domestic departures."
+   },
+   {
+    "q": "Which terminal is Sun Country or Southwest at MSP?",
+    "a": "Sun Country, Southwest, Frontier and Icelandair use Terminal 2 (Humphrey). Delta, American, United, Alaska and most international carriers use Terminal 1."
+   },
+   {
+    "q": "How do I get between Terminal 1 and Terminal 2 at MSP?",
+    "a": "Take the METRO Blue Line light rail, which is free between the two terminal stations and runs 24 hours a day. The two terminals are separate buildings, so arrive at the correct one for your airline."
+   }
+  ],
+  "sources": [
+   {
+    "title": "MSP Airport - travel update (May 25, 2026)",
+    "url": "https://www.mspairport.com/node/5005"
+   },
+   {
+    "title": "MSP Airport - Security screening / travel with confidence",
+    "url": "https://mspairport.com/node/1261"
+   },
+   {
+    "title": "MSP Airport - Airlines by terminal",
+    "url": "https://mspairport.com/node/1251"
+   },
+   {
+    "title": "MAC - MSP Terminal 1: A leap into the modern era (Sep 9, 2025)",
+    "url": "https://metroairports.org/news/msp-terminal-1-leap-modern-era"
+   },
+   {
+    "title": "MAC - MSP Airport expecting increase in holiday, year-end travel (Dec 18, 2025)",
+    "url": "https://metroairports.org/news/msp-airport-expecting-increase-holiday-year-end-travel"
+   },
+   {
+    "title": "MAC - MSP Airport expands security line program to Terminal 1 (Sep 12, 2024)",
+    "url": "https://metroairports.org/news/msp-airport-expands-security-line-program-terminal-1"
+   },
+   {
+    "title": "MSP Airport - Light Rail Transit",
+    "url": "https://mspairport.com/node/1071"
+   },
+   {
+    "title": "MSP Airport - To, From and Between the Terminals",
+    "url": "https://www.mspairport.com/node/1056"
+   },
+   {
+    "title": "MSP Airport - Terminal 1 app-based ride pickup",
+    "url": "https://www.mspairport.com/node/1086"
+   },
+   {
+    "title": "MSP Airport - Directions / getting here",
+    "url": "https://www.mspairport.com/node/3350"
+   },
+   {
+    "title": "MSP Airport - Terminal 2 traffic update (Jul 5, 2026)",
+    "url": "https://www.mspairport.com/node/5059"
+   },
+   {
+    "title": "MAC - Terminal 2 Roadway Expansion and Rideshare Relocation",
+    "url": "https://metroairports.org/terminal-2-roadway-expansion-and-rideshare-relocation"
+   },
+   {
+    "title": "State Aviation Journal - MSP Terminal 2 North Expansion Underway (Aug 5, 2024)",
+    "url": "https://stateaviationjournal.com/index.php/news/airports/msp-airports-terminal-2-north-expansion-underway"
+   },
+   {
+    "title": "TSA - PreCheck Touchless ID",
+    "url": "https://www.tsa.gov/touchless-id"
+   },
+   {
+    "title": "Delta - TSA PreCheck Touchless ID participating airports",
+    "url": "https://www.delta.com/us/en/check-in-security/expedited-airport-security/touchless-id"
+   },
+   {
+    "title": "The Bulkhead Seat - Touchless ID airports and airlines (Mar 16, 2026)",
+    "url": "https://thebulkheadseat.com/?p=33789"
+   },
+   {
+    "title": "Delta - Domestic check-in time requirements",
+    "url": "https://www.delta.com/us/en/check-in-security/check-in-time-requirements/domestic-check-in"
+   }
+  ]
+ },
+ "PHL": {
+  "code": "PHL",
+  "name": "Philadelphia International Airport",
+  "city": "Philadelphia",
+  "state": "PA",
+  "checkedOn": "2026-10-14",
+  "officialArrivalAdvice": {
+   "domestic": "PHL, relaying TSA advice, says to arrive 2 hours before boarding time for domestic flights",
+   "international": "PHL, relaying TSA advice, says to arrive 3 hours before international flights",
+   "source": "https://www.phl.org/newsroom/Labor-Day-26"
+  },
+  "terminals": [
+   {
+    "id": "A-West",
+    "name": "Terminal A-West",
+    "airlines": [
+     "British Airways",
+     "Aer Lingus",
+     "Lufthansa"
+    ],
+    "checkpoints": [
+     {
+      "notes": "Open 5:00am-10:15pm",
+      "precheck": false,
+      "clear": false,
+      "name": "Terminal A-West checkpoint"
+     },
+     {
+      "notes": "TSA PreCheck lane, open 3:00pm-5:30pm on Sun, Mon, Thu and Fri only (closed Tue, Wed and Sat)",
+      "precheck": true,
+      "clear": false,
+      "name": "Terminal A-West 1 checkpoint"
+     }
+    ],
+    "notes": [
+     "American's Flagship Lounge and Admirals Club are in A-West between gates A15 and A16"
+    ]
+   },
+   {
+    "id": "A-East",
+    "name": "Terminal A-East",
+    "airlines": [
+     "American Airlines",
+     "Aeromexico"
+    ],
+    "checkpoints": [
+     {
+      "notes": "Open 4:15am-8:15pm. PreCheck lane open 4:15am-6:30pm.",
+      "precheck": true,
+      "clear": false,
+      "name": "Terminal A-East checkpoint"
+     }
+    ],
+    "notes": [
+     "American offers curbside check-in at A-East and at B/C ticketing"
+    ]
+   },
+   {
+    "id": "B",
+    "name": "Terminal B",
+    "airlines": [
+     "American Airlines"
+    ],
+    "checkpoints": [
+     {
+      "notes": "Standard screening only, 3:30am-9:15pm",
+      "precheck": false,
+      "clear": false,
+      "name": "Terminal B checkpoint"
+     }
+    ],
+    "notes": [
+     "The airport lists American's ticketing, gates and baggage claim at Terminal A-East and B/C"
+    ]
+   },
+   {
+    "id": "C",
+    "name": "Terminal C",
+    "airlines": [
+     "American Airlines"
+    ],
+    "checkpoints": [
+     {
+      "notes": "TSA PreCheck only, 4:15am-8:00pm. Non-PreCheck passengers cannot use this checkpoint.",
+      "precheck": true,
+      "clear": false,
+      "name": "Terminal C checkpoint"
+     }
+    ],
+    "notes": [
+     "The United Club is in the C/D walkway"
+    ]
+   },
+   {
+    "id": "D",
+    "name": "Terminal D",
+    "airlines": [
+     "Delta",
+     "United",
+     "Air Canada",
+     "Alaska Airlines",
+     "JetBlue",
+     "Sun Country Airlines"
+    ],
+    "checkpoints": [
+     {
+      "notes": "Open 3:15am-10:15pm. PreCheck lane open 3:45am-8:00pm.",
+      "precheck": true,
+      "clear": false,
+      "name": "Terminal D/E checkpoint"
+     }
+    ],
+    "notes": [
+     "Alaska, JetBlue and Sun Country ticket in Terminal E, but their gates and baggage claim are in Terminal D"
+    ]
+   },
+   {
+    "id": "E",
+    "name": "Terminal E",
+    "airlines": [
+     "Southwest",
+     "Frontier Airlines",
+     "Allegiant"
+    ],
+    "checkpoints": [
+     {
+      "notes": "Open 3:15am-10:15pm. PreCheck lane open 3:45am-8:00pm.",
+      "precheck": true,
+      "clear": false,
+      "name": "Terminal D/E checkpoint (shared with Terminal D)"
+     }
+    ],
+    "notes": [
+     "Terminal E is also the ticketing area for Alaska, JetBlue and Sun Country, whose gates are in Terminal D"
+    ]
+   },
+   {
+    "id": "F",
+    "name": "Terminal F",
+    "airlines": [
+     "American Eagle"
+    ],
+    "checkpoints": [
+     {
+      "notes": "Standard screening only, 4:30am-9:15pm",
+      "precheck": false,
+      "clear": false,
+      "name": "Terminal F checkpoint"
+     }
+    ],
+    "notes": []
+   }
+  ],
+  "connectedAirside": true,
+  "betweenTerminals": "After screening, you can walk between terminals without leaving and re-entering security. You can use any TSA checkpoint to reach any terminal.",
+  "securityWaits": {
+   "summary": null,
+   "busiestTimes": [],
+   "source": null
+  },
+  "precheckNotes": "TSA PreCheck is at A-West 1 (3:00pm-5:30pm, Sun/Mon/Thu/Fri only), A-East (4:15am-6:30pm), C (PreCheck only, 4:15am-8:00pm) and D/E (3:45am-8:00pm). Terminals B and F have no PreCheck lane.",
+  "clearAvailable": false,
+  "touchlessId": "Delta and Southwest both list PHL for TSA PreCheck Touchless ID. Delta does not list PHL for dedicated Touchless ID bag drop.",
+  "gettingThere": {
+   "rideshare": "Ride-app pickups are in Zone 7 on S. Commercial Road, outside each Baggage Claim. Follow the 'Ride App/Zone 7' signs.",
+   "transit": "SEPTA's Airport Regional Rail Line runs every 30 minutes. It stops at Terminals E&F, C&D, B and A, then continues to Penn Medicine, 30th Street (Amtrak/NJ Transit connections), Suburban, Jefferson and Temple University. Tap-to-pay is accepted. SEPTA bus routes 37, 108 and 115 stop at Zone 1 outside baggage claim.",
+   "driving": "From Center City, take I-95 South to the airport exit or I-76 East following airport signs. Garages A, B, D and E/F are open and Garage C is closed. Garages are $32 per day and link to the terminals by pedestrian bridges. The Economy Lot is $18 per day with 24-hour shuttles."
+  },
+  "construction2026": [
+   "PHL's nearly $2 billion modernization program continues through 2026. The airport says construction itself can affect the traveler experience.",
+   "Garage C is listed as closed. Garages A, B, D and E/F and Economy Parking are open."
+  ],
+  "bagDrop": "Delta at PHL: domestic check-in and bags close 45 minutes before departure, international check-in closes 1 hour before, and you must be at the gate 15 minutes before departure. JetBlue at PHL: bags must be checked 45 minutes before departure, and check-in without bags closes 30 minutes before.",
+  "tips": [
+   "The Terminal C checkpoint is PreCheck-only. Without PreCheck, use another checkpoint. Every checkpoint leads to every terminal once you are through.",
+   "PreCheck lanes close early in the evening: A-East at 6:30pm and C and D/E at 8:00pm. Plan for standard screening on evening departures.",
+   "Terminals B and F have only standard screening. Any checkpoint reaches every terminal, so PreCheck members can use the PreCheck checkpoints (C, A-East or D/E) during their hours.",
+   "Alaska, JetBlue and Sun Country passengers check in at Terminal E, but their gates are in Terminal D",
+   "Garage C is closed. Use Garages A, B, D or E/F, or the Economy Lot ($18 per day with 24-hour shuttles)."
+  ],
+  "faq": [
+   {
+    "q": "How early should I get to Philadelphia airport?",
+    "a": "PHL, citing TSA, advises arriving 2 hours before boarding for domestic flights and 3 hours before international flights. Delta closes domestic check-in 45 minutes before departure at PHL."
+   },
+   {
+    "q": "Does PHL have CLEAR?",
+    "a": "PHL is not on CLEAR's list of airport locations. For expedited screening, the airport offers TSA PreCheck lanes at A-West 1 (limited hours), A-East, C and D/E."
+   },
+   {
+    "q": "Can I walk between terminals at PHL after security?",
+    "a": "Yes. Once screened, you can walk between terminals without re-entering security, and any checkpoint gives access to any terminal."
+   }
+  ],
+  "sources": [
+   {
+    "title": "PHL - Security Checkpoint Hours",
+    "url": "https://www.phl.org/flights/security-information/checkpoint-hours"
+   },
+   {
+    "title": "PHL - Our Airlines",
+    "url": "https://www.phl.org/about/airlines"
+   },
+   {
+    "title": "PHL Newsroom - PHL Marks Unofficial End to Historic Summer of 2026 (Sept 2, 2026)",
+    "url": "https://www.phl.org/newsroom/Labor-Day-26"
+   },
+   {
+    "title": "PHL Newsroom - Department of Aviation Advances Nearly $2 Billion Transformation (Sept 15, 2026)",
+    "url": "https://www.phl.org/newsroom/upgrades_26"
+   },
+   {
+    "title": "PHL - Home (parking status, checkpoints)",
+    "url": "https://www.phl.org/"
+   },
+   {
+    "title": "PHL - Public Transportation",
+    "url": "https://www.phl.org/getting-around/public-transportation"
+   },
+   {
+    "title": "PHL - Ride Share Services",
+    "url": "https://www.phl.org/to-and-from/taxis-and-limousines/rideshare"
+   },
+   {
+    "title": "PHL - Driving Directions",
+    "url": "https://www.phl.org/getting-around/driving-directions"
+   },
+   {
+    "title": "CLEAR - Where to Use CLEAR",
+    "url": "https://www.clearme.com/where-to-use-clear"
+   },
+   {
+    "title": "Delta - U.S. Domestic Check-In Requirements",
+    "url": "https://www.delta.com/us/en/check-in-security/check-in-time-requirements/domestic-check-in"
+   },
+   {
+    "title": "Delta - International Check-In Requirements",
+    "url": "https://www.delta.com/us/en/check-in-security/check-in-time-requirements/international-check-in"
+   },
+   {
+    "title": "Delta - TSA PreCheck Touchless ID",
+    "url": "https://www.delta.com/us/en/check-in-security/expedited-airport-security/touchless-id"
+   },
+   {
+    "title": "Southwest - TSA PreCheck Touchless ID",
+    "url": "https://www.southwest.com/tsa-precheck-touchless-id/"
+   },
+   {
+    "title": "JetBlue - Airport Check-In",
+    "url": "https://www.jetblue.com/help/checking-in/airport-check-in"
+   }
+  ]
+ },
+ "PHX": {
+  "code": "PHX",
+  "name": "Phoenix Sky Harbor International Airport",
+  "city": "Phoenix",
+  "state": "AZ",
+  "checkedOn": "2026-10-14",
+  "officialArrivalAdvice": {
+   "domestic": "If flying domestically, arrive at least two hours early",
+   "international": "For international travel, allow at least three hours",
+   "source": "https://www.skyharbor.com/flying-from-phx/travel-tips/"
+  },
+  "terminals": [
+   {
+    "id": "3",
+    "name": "Terminal 3",
+    "airlines": [
+     "Delta",
+     "United",
+     "Alaska",
+     "JetBlue",
+     "Frontier",
+     "Hawaiian",
+     "Allegiant",
+     "Sun Country",
+     "Breeze",
+     "Air Canada",
+     "Porter"
+    ],
+    "checkpoints": [
+     {
+      "notes": "Open 24 hours. TSA PreCheck 5 a.m.-2 p.m. only. PHX RESERVE appointments available 24 hours.",
+      "precheck": true,
+      "clear": true,
+      "name": "Terminal 3 TSA Security Checkpoint"
+     }
+    ],
+    "notes": [
+     "A new six-gate North Concourse is under construction, expected to finish in 2027",
+     "The PHX Sky Train station is on Level 5; take the ticketing escalators to Level 4, then up to Level 5",
+     "Frontier closes its ticket counters 1 hour before departure, and Porter's close 90 minutes before"
+    ]
+   },
+   {
+    "id": "4",
+    "name": "Terminal 4",
+    "airlines": [
+     "American",
+     "Southwest",
+     "British Airways",
+     "Aeromexico",
+     "Air France",
+     "Volaris",
+     "WestJet",
+     "China Airlines",
+     "STARLUX",
+     "Contour"
+    ],
+    "checkpoints": [
+     {
+      "notes": "Open 24 hours. TSA PreCheck 5 a.m.-7 p.m.",
+      "precheck": true,
+      "clear": true,
+      "name": "Checkpoint A"
+     },
+     {
+      "notes": "4:15 a.m.-8:30 p.m. TSA PreCheck 5 a.m.-7 p.m.",
+      "precheck": true,
+      "clear": true,
+      "name": "Checkpoint B"
+     },
+     {
+      "notes": "3:15 a.m.-12:30 a.m. TSA PreCheck 5 a.m.-7 p.m.",
+      "precheck": true,
+      "clear": true,
+      "name": "Checkpoint C"
+     },
+     {
+      "notes": "3:15 a.m.-7:30 p.m. TSA PreCheck 5 a.m.-7 p.m.",
+      "precheck": true,
+      "clear": true,
+      "name": "Checkpoint D"
+     }
+    ],
+    "notes": [
+     "PHX says any Terminal 4 checkpoint can be used to reach any Terminal 4 gate",
+     "The PHX Sky Train arrives on Level 3, a short walk from the security checkpoints",
+     "The Global Entry Enrollment Center is on Level 3"
+    ]
+   }
+  ],
+  "connectedAirside": false,
+  "betweenTerminals": "The free PHX Sky Train runs 24/7 between Terminals 3 and 4, both Economy lots, the Rental Car Center and the 44th St Valley Metro Rail station. Waits average about 3.5-7 minutes from 5 a.m. to 10 p.m. and can be 15+ minutes during nightly maintenance (10 p.m.-5 a.m.). Passengers changing terminals must be screened again.",
+  "securityWaits": {
+   "summary": "PHX posts live checkpoint wait times on the skyharbor.com homepage and terminal flight information screens; it publishes no typical wait figures.",
+   "busiestTimes": [],
+   "source": "https://www.skyharbor.com/flying-from-phx/security-screening/"
+  },
+  "precheckNotes": "PreCheck hours are limited: Terminal 3 from 5 a.m.-2 p.m., and all Terminal 4 checkpoints (A-D) from 5 a.m.-7 p.m., subject to change. Outside those hours, PreCheck travelers go through regular screening. Free PHX RESERVE appointments (book up to 6 days ahead, for 60-240 min before departure) are for general-screening passengers only.",
+  "clearAvailable": true,
+  "touchlessId": "PHX is on an April 2026 list of 65 airports with TSA PreCheck Touchless ID; participating airlines there were not specified. Opt in with your airline.",
+  "gettingThere": {
+   "rideshare": "Uber, Lyft, Wridz, Waymo and HUM serve PHX. Pickups are on the Terminal 3 outer curbs and Terminal 4 Level 1 outer curbs (doors 1, 2, 6, 8). Waymo picks up and drops off at each terminal's rideshare location 24/7. PHX suggests using the 24th St or 44th St PHX Sky Train stations for drop-offs to avoid terminal traffic.",
+   "transit": "Valley Metro Rail connects directly to the PHX Sky Train at the 44th St & Washington station, with access to Phoenix, Tempe and Mesa. Bus Route 13 stops at the 24th St Sky Train station and Route 44 at the 44th St station. PHX does not publish a downtown travel time.",
+   "driving": "Expect construction on Sky Harbor Boulevard: a realignment took effect Oct 10, westbound west-airport traffic is down to a single lane (since Aug 14), and Terminal 3 has indefinite overnight lane restrictions. Reserve parking in advance, and use the free 24-hour cell phone waiting lots."
+  },
+  "construction2026": [
+   "Terminal 3 North Concourse (six new gates) under construction, completion expected 2027. Overnight lane restrictions on Sky Harbor Blvd at Terminal 3 are indefinite, and at times the Terminal 3 garage can be entered and exited only from the south side via westbound Sky Harbor Blvd.",
+   "Eastbound and westbound Sky Harbor Boulevard realignment on the west side of the airport took effect Oct 10",
+   "Taxiway Uniform project: westbound Sky Harbor Blvd on the west end reduced to a single lane since 5 a.m. Aug 14, until further notice; eastbound Sky Harbor Blvd rerouted beneath the new taxiway bridge. PHX advises planning for longer travel times.",
+   "PHX Sky Train nightly maintenance from 10 p.m.-5 a.m. can mean 15+ minute waits; staged buses run from 44th St Station to the Terminal 3 and Terminal 4 curbs",
+   "Sept 21, 2026: PHX named American Airlines the primary carrier for a future West Terminal (Destination PHX 2050); no 2026 passenger impact announced"
+  ],
+  "bagDrop": "Delta: bags at least 45 min before departure, check-in at least 30 min without bags, at the gate 15 min before. Southwest: bags 45 min, check-in 30 min (domestic). Alaska: check-in and bag drop typically close 40 min before. At PHX, Frontier closes ticket counters 1 hour before departure and Porter 90 minutes before. Free Early Bag Check (Rental Car Center and East Economy, 5 a.m.-5 p.m.) requires bags at least 90 minutes and no more than 4 hours before departure, for domestic flights on Alaska, American, Delta, Frontier, Southwest and United.",
+  "tips": [
+   "PreCheck lanes close early (2 p.m. at Terminal 3 and 7 p.m. at Terminal 4). On evening flights, plan for standard screening or book a free PHX RESERVE slot.",
+   "Book PHX RESERVE up to six days ahead for a dedicated general-screening lane; appointments have a 15-minute grace period",
+   "Terminals 3 and 4 are not connected after security, so confirm your terminal: Southwest and American use Terminal 4, while Delta, United and Alaska use Terminal 3",
+   "Returning a rental car or parking at East Economy? Free Early Bag Check (5 a.m.-5 p.m.) lets you drop domestic bags before taking the Sky Train",
+   "Late-night Sky Train trips can involve 15+ minute waits during nightly maintenance (10 p.m.-5 a.m.), so add buffer time",
+   "Frontier's ticket counters at PHX close 1 hour before departure, earlier than most airlines"
+  ],
+  "faq": [
+   {
+    "q": "How early should I get to Phoenix Sky Harbor?",
+    "a": "PHX recommends arriving at least two hours early for domestic flights and at least three hours for international travel."
+   },
+   {
+    "q": "Can I walk between Terminal 3 and Terminal 4 at PHX after security?",
+    "a": "No. Use the free 24-hour PHX Sky Train to change terminals, and expect to go through security again at the other terminal."
+   },
+   {
+    "q": "Is TSA PreCheck open all day at PHX?",
+    "a": "No. PHX lists PreCheck hours of 5 a.m.-2 p.m. at Terminal 3 and 5 a.m.-7 p.m. at Terminal 4 Checkpoints A-D, subject to change."
+   }
+  ],
+  "sources": [
+   {
+    "title": "PHX - Security Screening (checkpoint and PreCheck hours)",
+    "url": "https://www.skyharbor.com/flying-from-phx/security-screening/"
+   },
+   {
+    "title": "PHX - PHX RESERVE",
+    "url": "https://www.skyharbor.com/flying-from-phx/security-screening/phx-reserve/"
+   },
+   {
+    "title": "PHX - Expedited Screening Info (CLEAR, PreCheck)",
+    "url": "https://www.skyharbor.com/flying-from-phx/security-screening/expedited-screening-info/"
+   },
+   {
+    "title": "PHX - Travel Tips",
+    "url": "https://www.skyharbor.com/flying-from-phx/travel-tips/"
+   },
+   {
+    "title": "PHX - Check-In & Bag Check",
+    "url": "https://www.skyharbor.com/flying-from-phx/check-in-bag-check/"
+   },
+   {
+    "title": "PHX - Early Bag Check",
+    "url": "https://www.skyharbor.com/at-the-airport/services/early-bag-check/"
+   },
+   {
+    "title": "PHX - Passenger Airlines",
+    "url": "https://www.skyharbor.com/flights/passenger-airlines/"
+   },
+   {
+    "title": "PHX - PHX Sky Train",
+    "url": "https://www.skyharbor.com/ground-transportation/phx-sky-train/"
+   },
+   {
+    "title": "PHX - Ride Share",
+    "url": "https://www.skyharbor.com/ground-transportation/ride-share/"
+   },
+   {
+    "title": "PHX - Public Transportation",
+    "url": "https://www.skyharbor.com/ground-transportation/public-transportation/"
+   },
+   {
+    "title": "PHX - Roadway Restrictions",
+    "url": "https://www.skyharbor.com/ground-transportation/roadway-restrictions/"
+   },
+   {
+    "title": "PHX - Terminal 3 Concourse Construction",
+    "url": "https://www.skyharbor.com/terminal3construction"
+   },
+   {
+    "title": "PHX Check-In - Time flies for Terminal 3 Construction (Aug 18, 2026)",
+    "url": "https://www.skyharbor.com/about-phx/news-media/phx-check-in/2026/august-2026/time-flies-for-terminal-3-construction/"
+   },
+   {
+    "title": "PHX Check-In - American Airlines as Primary Carrier for West Terminal (Sept 21, 2026)",
+    "url": "https://www.skyharbor.com/about-phx/news-media/phx-check-in/2026/september-2026/phoenix-sky-harbor-announces-american-airlines-as-primary-carrier-for-west-terminal-unveils-destination-phx-2050/"
+   },
+   {
+    "title": "The Bulkhead Seat - TSA Expands Touchless ID Screening to 65 US Airports (Apr 27, 2026)",
+    "url": "https://thebulkheadseat.com/tsa-expands-touchless-id-screening-to-65-us-airports-full-list/"
+   },
+   {
+    "title": "Delta - U.S. Domestic Check-In Requirements",
+    "url": "https://www.delta.com/us/en/check-in-security/check-in-time-requirements/domestic-check-in"
+   },
+   {
+    "title": "Southwest - When to Arrive for Your Flight",
+    "url": "https://support.southwest.com/helpcenter/article/airport-arrival-recommendation"
+   },
+   {
+    "title": "Alaska Airlines News - What's happening behind the scenes before your flight",
+    "url": "https://news.alaskaair.com/alaska-airlines/before-your-flight/"
+   }
+  ]
+ },
+ "SEA": {
+  "code": "SEA",
+  "name": "Seattle-Tacoma International Airport",
+  "city": "Seattle",
+  "state": "WA",
+  "checkedOn": "2026-10-14",
+  "officialArrivalAdvice": {
+   "domestic": "Arrive two hours before your departure time",
+   "international": "Arrive three hours before your departure time",
+   "source": "https://www.flysea.org/page/live-estimated-checkpoint-wait-times"
+  },
+  "terminals": [
+   {
+    "id": "Main Terminal",
+    "name": "Main Terminal (Concourses A, B, C, D)",
+    "airlines": [
+     "Alaska",
+     "Delta",
+     "American",
+     "Southwest",
+     "United",
+     "Frontier",
+     "WestJet"
+    ],
+    "checkpoints": [
+     {
+      "notes": "4 a.m.-8 p.m. Closest to A and S gates. General screening, CLEAR (general), TSA PreCheck and Gateside by TSA PreCheck. New checkpoint that opened in 2025.",
+      "precheck": true,
+      "clear": true,
+      "name": "Checkpoint 1"
+     },
+     {
+      "notes": "4 a.m.-4 p.m. Closest to A and S gates. TSA PreCheck, Gateside by TSA PreCheck and a U.S. Service Member lane.",
+      "precheck": true,
+      "clear": false,
+      "name": "Checkpoint 2"
+     },
+     {
+      "notes": "4 a.m.-11:30 p.m. Closest to A and S gates. General screening; TSA PreCheck and PreCheck Touchless ID run 4 a.m.-8 p.m.; Premium lane for participating airlines.",
+      "precheck": true,
+      "clear": false,
+      "name": "Checkpoint 3"
+     },
+     {
+      "notes": "Open 24 hours. Closest to the Central Terminal and B and C gates. General screening, Premium lane, Family lane, and SEA Spot Saver appointments (4 a.m.-10 p.m.) until Nov 29, 2026.",
+      "precheck": false,
+      "clear": false,
+      "name": "Checkpoint 4"
+     },
+     {
+      "notes": "4 a.m.-8 p.m. Closest to C, D and N gates. TSA PreCheck and Gateside by TSA PreCheck only.",
+      "precheck": true,
+      "clear": false,
+      "name": "Checkpoint 5"
+     },
+     {
+      "notes": "4 a.m.-10 p.m. Closest to C, D and N gates (far north end). General, Premium, TSA PreCheck, PreCheck Touchless ID, and CLEAR general and PreCheck lanes. Redesigned with six lanes and reopened in 2025.",
+      "precheck": true,
+      "clear": true,
+      "name": "Checkpoint 6"
+     }
+    ],
+    "notes": [
+     "SEA is a single terminal and every checkpoint leads to all gates",
+     "Alaska uses C, D and N concourses; Delta uses A and B; American uses D; Southwest, United and Frontier use B; WestJet uses A and B",
+     "The new C Concourse Expansion opened June 2026, with dining, retail, an airfield lookout and a 41,000+ sq ft Alaska Lounge",
+     "D Annex (across from Gate D5, Gates D21-26) is the bus-boarding hub for flights parked away from gates"
+    ]
+   },
+   {
+    "id": "N",
+    "name": "N Concourse (satellite)",
+    "airlines": [
+     "Alaska"
+    ],
+    "checkpoints": [],
+    "notes": [
+     "Reached after screening by the SEA Underground train; buses replace trains during maintenance or outages"
+    ]
+   },
+   {
+    "id": "S",
+    "name": "S Concourse (satellite, main international concourse)",
+    "airlines": [
+     "Hawaiian",
+     "JetBlue",
+     "British Airways",
+     "Lufthansa",
+     "Emirates",
+     "Korean Air",
+     "Japan Airlines",
+     "ANA",
+     "Air France",
+     "Air Canada",
+     "Condor",
+     "Icelandair",
+     "EVA Air",
+     "Cathay Pacific"
+    ],
+    "checkpoints": [],
+    "notes": [
+     "Reached after screening by the SEA Underground train; Checkpoints 1-3 are closest",
+     "S Concourse Evolution renovation is approved and in design; the concourse stays open during multi-phase work"
+    ]
+   }
+  ],
+  "connectedAirside": true,
+  "betweenTerminals": "Everything is one terminal. Concourses A-D connect by walkway, and the SEA Underground train runs to the N and S satellite concourses. Buses connect the satellites during train maintenance, including intermittent overnight closures through 2027.",
+  "securityWaits": {
+   "summary": "SEA says the new Checkpoint 1 and redesigned Checkpoint 6 (opened 2025) have lines moving quickly, with over 94% of travelers getting through in 20 minutes or less. More than a third of daily passengers arrive before 9 a.m.",
+   "busiestTimes": [
+    "Before 9:00 a.m.",
+    "2:00-5:00 p.m.",
+    "9:00-11:00 p.m."
+   ],
+   "source": "https://www.flysea.org/page/live-estimated-checkpoint-wait-times"
+  },
+  "precheckNotes": "PreCheck is offered at Checkpoints 1, 2, 3, 5 and 6, but not 4. Checkpoint 3 PreCheck runs only 4 a.m.-8 p.m., Checkpoint 2 closes at 4 p.m., and Checkpoints 1 and 5 close at 8 p.m. After 10 p.m. only Checkpoints 3 (to 11:30 p.m.) and 4 (24 hours, no PreCheck) are listed as open. SEA's wait-times page lists slightly different screening types per checkpoint than its security page; SEA says hours and types are approximate, so check terminal signage.",
+  "clearAvailable": true,
+  "touchlessId": "TSA PreCheck Touchless ID is offered at Checkpoint 3 (4 a.m.-8 p.m.) and Checkpoint 6 for participating airlines only. Alaska announced in June 2025 that it was bringing Touchless ID to SEA (Mileage Plan members 18+, opt in with a KTN and passport), and SEA appears on an April 2026 list of 65 Touchless ID airports.",
+  "gettingThere": {
+   "rideshare": "Uber and Lyft drop off at the terminal on the airport drives; at peak times drivers may use the Arrivals drive to avoid traffic. Departures drives are often congested 6-8 a.m. Pickups are on the 3rd floor of the parking garage (stalls 1-34).",
+   "transit": "Sound Transit Link light rail takes about 38 minutes from downtown Seattle. The Airport/SeaTac station connects to the terminal via the parking garage and 4th-floor skybridges, and a free Train-to-Plane shuttle runs between the station and the garage 5 a.m.-midnight.",
+   "driving": "Arrive via the Airport Expressway; parking on its shoulders is illegal. The on-site garage has more than 11,000 spaces: drive-up General Parking on Levels 1-3, 6-8 and Level 5 Rows A-M, and Reserved Parking on Level 4 and Level 5 Rows N-W, bookable up to 120 days ahead. The free Cell Phone Lot is off the S. 170th St exit."
+  },
+  "construction2026": [
+   "Roadway Improvements (in progress) are widening the southbound Northern Airport Expressway from 4 to 6 lanes from S. 170th St to the curbsides and Main Garage. SEA listed main-work completion as Q2 2026 but still shows the project in progress.",
+   "SEA Underground train controls replacement brings intermittent overnight closures, with buses taking passengers to the N and S Concourses; completion estimated Q3 2027",
+   "Parking garage elevator refurbishment causes intermittent closures; as of an Aug 14, 2026 update, all yellow elevators were out of service",
+   "SEA Spot Saver, the free security-appointment program, ends November 30, 2026",
+   "S Concourse Evolution (international concourse renovation) is approved and in design"
+  ],
+  "bagDrop": "Alaska: check-in and bag drop typically close 40 minutes before departure, earlier for international. Delta: bags at least 45 min before departure, check-in at least 30 min without bags, at the gate 15 min before. Southwest: bags 45 min, check-in 30 min (domestic).",
+  "tips": [
+   "In the morning, get dropped off on the lower Arrivals level to skip the congested Departures drive (SEA's own 'think opposite' advice)",
+   "Checkpoint 4 is the only 24-hour checkpoint but has no PreCheck lane. Late-night PreCheck travelers should know most PreCheck lanes close at 8 p.m.",
+   "Book SEA Spot Saver at Checkpoint 4 for a free reserved screening time (4 a.m.-10 p.m., 60-240 min before departure) until it ends Nov 30, 2026",
+   "Flights at N or S gates need extra minutes for the SEA Underground train, or a bus if the train is down",
+   "During peaks your flight may board by bus from the D Annex (Gates D21-26, across from D5) when gates are full",
+   "Reserved garage parking (Level 4 and Level 5 Rows N-W) guarantees a space; drive-up parking can mean extra time hunting for a stall in busy periods"
+  ],
+  "faq": [
+   {
+    "q": "How early should I get to Sea-Tac?",
+    "a": "The Port of Seattle advises arriving two hours before a domestic flight and three hours before an international flight. More than a third of the day's passengers arrive before 9 a.m., so early-morning departures are the busiest."
+   },
+   {
+    "q": "Which Sea-Tac security checkpoint should I use?",
+    "a": "Any checkpoint reaches all gates. Checkpoints 1-3 are closest to A and S gates, Checkpoint 4 to B and C gates, and Checkpoints 5-6 to C, D and N gates. PreCheck is not offered at Checkpoint 4."
+   },
+   {
+    "q": "How long is the Link light rail ride from downtown Seattle to Sea-Tac?",
+    "a": "The Port of Seattle says it is about a 38-minute ride. From the Airport/SeaTac station, walk through the parking garage to the skybridges, or take the free Train-to-Plane shuttle (5 a.m.-midnight)."
+   }
+  ],
+  "sources": [
+   {
+    "title": "SEA - Security Screening and Checkpoints",
+    "url": "https://www.flysea.org/Security"
+   },
+   {
+    "title": "SEA - Predicted Checkpoint Wait Times / When to arrive",
+    "url": "https://www.flysea.org/page/live-estimated-checkpoint-wait-times"
+   },
+   {
+    "title": "SEA - SEA Spot Saver (ending Nov 30, 2026)",
+    "url": "https://www.flysea.org/SEAspotsaver"
+   },
+   {
+    "title": "SEA - How to Fly through Security at SEA Airport (updated Oct 2025)",
+    "url": "https://www.flysea.org/blog/how-fly-through-security-sea-airport"
+   },
+   {
+    "title": "SEA - Airlines and Destinations",
+    "url": "https://www.flysea.org/sea/airlines-destinations"
+   },
+   {
+    "title": "SEA - Travel Tips for SEA Airport",
+    "url": "https://www.flysea.org/page/traveler-updates-and-tips"
+   },
+   {
+    "title": "SEA - Ground Transportation",
+    "url": "https://www.flysea.org/sea/ground-transportation"
+   },
+   {
+    "title": "SEA - Ride App Pick-Up",
+    "url": "https://www.flysea.org/sea/ground-transportation/app-based-rideshare"
+   },
+   {
+    "title": "SEA - Public Transit: Link Light Rail",
+    "url": "https://www.flysea.org/page/public-transit-link-light-rail"
+   },
+   {
+    "title": "SEA - Parking at SEA Airport",
+    "url": "https://www.flysea.org/sea/parking"
+   },
+   {
+    "title": "SEA - Traffic and Roadway Construction Alerts",
+    "url": "https://www.flysea.org/page/traffic-and-roadway-construction-alerts"
+   },
+   {
+    "title": "SEA - Construction Impacts (updated Aug 14, 2026)",
+    "url": "https://www.flysea.org/page/construction-impacts"
+   },
+   {
+    "title": "SEA - Roadway Improvements project",
+    "url": "https://www.flysea.org/projects/roadway-improvements"
+   },
+   {
+    "title": "SEA - SEA Gateway Project",
+    "url": "https://www.flysea.org/projects/sea-gateway-project"
+   },
+   {
+    "title": "SEA - C Concourse Expansion (opened June 2026)",
+    "url": "https://www.flysea.org/projects/c-concourse-expansion"
+   },
+   {
+    "title": "SEA - S Concourse Evolution",
+    "url": "https://www.flysea.org/projects/s-concourse-evolution"
+   },
+   {
+    "title": "SEA - SEA Underground Controls Replacement",
+    "url": "https://www.flysea.org/projects/sea-underground-controls-replacement"
+   },
+   {
+    "title": "SEA - Why Am I Taking a Bus to Get to my Plane?",
+    "url": "https://www.flysea.org/BusBoarding"
+   },
+   {
+    "title": "The Bulkhead Seat - TSA Expands Touchless ID Screening to 65 US Airports (Apr 27, 2026)",
+    "url": "https://thebulkheadseat.com/tsa-expands-touchless-id-screening-to-65-us-airports-full-list/"
+   },
+   {
+    "title": "Alaska Airlines News - What's happening behind the scenes before your flight",
+    "url": "https://news.alaskaair.com/alaska-airlines/before-your-flight/"
+   },
+   {
+    "title": "Delta - U.S. Domestic Check-In Requirements",
+    "url": "https://www.delta.com/us/en/check-in-security/check-in-time-requirements/domestic-check-in"
+   },
+   {
+    "title": "Southwest - When to Arrive for Your Flight",
+    "url": "https://support.southwest.com/helpcenter/article/airport-arrival-recommendation"
+   },
+   {
+    "title": "The Bulkhead Seat - Alaska is bringing TSA PreCheck Touchless ID to LAX, PDX and SEA (Jun 22, 2025)",
+    "url": "https://thebulkheadseat.com/alaska-is-bringing-tsa-precheck-touchless-id-to-los-angeles-portland-and-seattle/"
+   }
+  ]
+ },
+ "SFO": {
+  "code": "SFO",
+  "name": "San Francisco International Airport",
+  "city": "San Francisco",
+  "state": "CA",
+  "checkedOn": "2026-10-14",
+  "officialArrivalAdvice": {
+   "domestic": "SFO says arrival recommendations vary by airline and day of travel; it cites TSA's advice to arrive 2 hours before domestic flights",
+   "international": "SFO cites TSA's advice to arrive 3 hours before international flights",
+   "source": "https://www.flysfo.com/passengers/flight-info/check-in-security"
+  },
+  "terminals": [
+   {
+    "id": "1",
+    "name": "Harvey Milk Terminal 1",
+    "airlines": [
+     "Alaska",
+     "Hawaiian",
+     "American",
+     "Delta",
+     "JetBlue",
+     "Frontier",
+     "Sun Country",
+     "Porter",
+     "Aer Lingus"
+    ],
+    "checkpoints": [
+     {
+      "notes": "Hours 3:15 a.m. to 12:30 a.m. SFO's live wait board lists general screening on the Departures Level and TSA PreCheck on the Mezzanine Level.",
+      "precheck": null,
+      "clear": true,
+      "name": "Security Checkpoint B (Departures Level)"
+     },
+     {
+      "notes": "Hours 4:00 a.m. to 11:00 p.m.",
+      "precheck": true,
+      "clear": null,
+      "name": "Security Checkpoint B (Mezzanine Level)"
+     }
+    ],
+    "notes": [
+     "Gates B1-B27",
+     "SFO directs connecting passengers bound for B and C gates to the Harvey Milk Terminal 1 checkpoint",
+     "AirTrain station reached via Mezzanine Level 3 and the skybridge"
+    ]
+   },
+   {
+    "id": "2",
+    "name": "Terminal 2",
+    "airlines": [
+     "United (domestic)",
+     "Southwest",
+     "Air Canada",
+     "WestJet",
+     "Breeze"
+    ],
+    "checkpoints": [
+     {
+      "notes": "Hours 3:15 a.m. to 12:30 a.m.",
+      "precheck": true,
+      "clear": true,
+      "name": "Security Checkpoint D"
+     }
+    ],
+    "notes": [
+     "SFO lists Terminal 2 gates as C1-C11 and D1-D18",
+     "United passengers departing from D and E gates should check in at the United counters on the west side of Terminal 2",
+     "The Terminal 2 AirTrain station now serves both Terminals 2 and 3 (\"Terminals 2 & 3 AirTrain Station\")",
+     "Air Canada checks in, boards and claims bags in Terminal 2, not the International Terminal"
+    ]
+   },
+   {
+    "id": "3",
+    "name": "Terminal 3",
+    "airlines": [
+     "United (domestic)"
+    ],
+    "checkpoints": [
+     {
+      "notes": "Hours 3:15 a.m. to 12:30 a.m.",
+      "precheck": true,
+      "clear": true,
+      "name": "Security Checkpoint F1"
+     }
+    ],
+    "notes": [
+     "Gates E2-E13 and F5-F22 (United)",
+     "Terminal 3 West modernization under way: Departures Level curb and drop-off lane closed between Doors 6-13",
+     "United counters at the west end of Terminal 3 are closed; use east-end counters for F-gate flights",
+     "Terminal 3 AirTrain station closed until the new facility opens in 2027; use the Terminals 2 & 3 station",
+     "Interim post-security walkways connect E gates, F gates and International G gates around the construction"
+    ]
+   },
+   {
+    "id": "International A",
+    "name": "Dianne Feinstein International Terminal, Boarding Area A",
+    "airlines": [
+     "British Airways",
+     "Emirates",
+     "Cathay Pacific",
+     "Singapore Airlines",
+     "Korean Air",
+     "Japan Airlines",
+     "EVA Air",
+     "Qantas",
+     "Air France",
+     "KLM",
+     "Turkish Airlines",
+     "Virgin Atlantic",
+     "Aeromexico",
+     "Air India",
+     "Qatar Airways"
+    ],
+    "checkpoints": [
+     {
+      "notes": "Hours 4:15 a.m. to 2:00 a.m.",
+      "precheck": true,
+      "clear": true,
+      "name": "Security Checkpoint A"
+     }
+    ],
+    "notes": [
+     "Check-in desks are on the Departures Level of the International Terminal Main Hall",
+     "CLEAR's primary TSA PreCheck enrollment location here is open 7 a.m.-8 p.m. daily, no appointment needed"
+    ]
+   },
+   {
+    "id": "International G",
+    "name": "Dianne Feinstein International Terminal, Boarding Area G",
+    "airlines": [
+     "United (international)",
+     "Lufthansa",
+     "Swiss",
+     "ANA",
+     "Air China",
+     "Air New Zealand"
+    ],
+    "checkpoints": [
+     {
+      "notes": "Hours 4:30 a.m. to 2:00 a.m.",
+      "precheck": true,
+      "clear": true,
+      "name": "Security Checkpoint G"
+     }
+    ],
+    "notes": [
+     "SFO BART station is on the Departures/Ticketing Level of the International Terminal, G side",
+     "Walking is SFO's recommended way between the International Terminal and Terminal 3"
+    ]
+   }
+  ],
+  "connectedAirside": true,
+  "betweenTerminals": "All terminals are connected by walkways before and after security, and you can enter at any checkpoint with a same-day boarding pass. AirTrain (free, 24 hours, as often as every 4 minutes) Red Line loops all terminals, garages and BART in about 9 minutes; the Blue Line adds the Rental Car Center and Long-Term Parking (about 25-minute loop).",
+  "securityWaits": {
+   "summary": "SFO does not publish typical waits, but its Check In & Security page shows live General and PreCheck wait times for each checkpoint. SFO says TSA PreCheck waits average 5 minutes or less.",
+   "busiestTimes": [],
+   "source": "https://www.flysfo.com/passengers/flight-info/check-in-security"
+  },
+  "precheckNotes": "SFO says every checkpoint offers TSA PreCheck, Priority and CLEAR lanes. At Terminal 1, the live board lists PreCheck at the Mezzanine Level checkpoint (4:00 a.m.-11:00 p.m.), not at the Departures Level one.",
+  "clearAvailable": true,
+  "touchlessId": "TSA PreCheck Touchless ID is offered in Domestic Terminals 1, 2 and 3 for Alaska, American, Delta, Southwest and United passengers who opt in with their airline. You still need to carry a REAL ID-compliant physical ID.",
+  "gettingThere": {
+   "rideshare": "Lyft, Uber and Wingz drop off curbside on the Departures level of the domestic terminals; SFO suggests asking for an Arrivals level or garage drop-off at peak times. Domestic Lyft and Uber pickups are on Level 5 of the Domestic Garage. Waymo autonomous rides are available to select users in a pilot program.",
+   "transit": "BART stops inside the International Terminal (G side), and BART says the ride to downtown San Francisco takes about 30 minutes. Domestic terminals reach it on the free AirTrain. Weekday BART service from SFO starts at 4:58 a.m. and Sunday service at 8:08 a.m. Caltrain connects via BART at Millbrae, and SamTrans Route 292 stops at the terminals.",
+   "driving": "Curbs are for active drop-off only, with no waiting. Kiss & Fly drop-off is at the Rental Car Center on North McDonnell Rd, which connects to the terminals by AirTrain Blue Line. Parking options are the Domestic Garage (6'6\" clearance), International Garages A and G, ParkFAST, Long-Term and Grand Hyatt valet; you can book online and change or cancel up to 2 hours before entry."
+  },
+  "construction2026": [
+   "Terminal 3 West modernization: the Departures Level curb is closed between Doors 6-13. SFO suggests dropping off at Terminal 2 or the Terminal 3 Arrivals level, especially in the morning.",
+   "The Terminal 3 AirTrain station is closed until 2027, and the Terminal 2 station serves both terminals",
+   "The F walkway from the Domestic Garage is closed; follow signs to the E walkway",
+   "Runway 1R was closed for repaving from March 30, 2026, causing flight delays. On Sept 16, 2026, SFO said it would reopen no later than Sept 29, 2026, ahead of schedule."
+  ],
+  "bagDrop": "Delta: bags at least 45 min before departure, check-in at least 30 min without bags, at the gate 15 min before. Southwest: bags 45 min, check-in 30 min (domestic). Alaska: check-in and bag drop typically close 40 min before departure. SFO Remote Bag Check (Rental Car Center and Long-Term Parking, 4 a.m.-8 p.m.) requires bags at least 90 min before departure.",
+  "tips": [
+   "United flying from D or E gates: check in at the United counters on the west side of Terminal 2. Use the Terminal 3 counters only for F-gate flights.",
+   "Without bags to check, SFO suggests getting dropped at Terminal 2 and using that checkpoint, since all gates connect after security",
+   "Free Remote Bag Check at the Rental Car Center (Kiss & Fly) and Long-Term Parking lets you check bags for domestic flights on participating airlines, including Alaska, American, Delta, Frontier, JetBlue and United. It's open 4 a.m.-8 p.m., and bags must be in at least 90 min before departure.",
+   "BART tells travelers with early Sunday-morning flights to make other plans because Sunday service starts late",
+   "Checkpoints B, D and F1 open at 3:15 a.m.; Checkpoint A opens at 4:15 a.m. and G at 4:30 a.m.",
+   "Without an acceptable ID, TSA ConfirmID costs $45 and takes 10-15 minutes on average, sometimes 30+ minutes"
+  ],
+  "faq": [
+   {
+    "q": "How early should I get to SFO?",
+    "a": "SFO says arrival recommendations vary by airline and day of travel, and points to TSA's advice of 2 hours before domestic flights and 3 hours before international flights. Add time for parking or transit, checking bags and security."
+   },
+   {
+    "q": "Can I use any security checkpoint at SFO?",
+    "a": "Yes. SFO says you can enter at any checkpoint in any terminal with a same-day boarding pass, and once through you can walk to all gates."
+   },
+   {
+    "q": "Where do I check in for United at SFO during Terminal 3 construction?",
+    "a": "United's west-end Terminal 3 counters are closed. Check in at Terminal 2's west-side United counters for D and E gate flights, or at Terminal 3's east-end counters for F gate flights."
+   }
+  ],
+  "sources": [
+   {
+    "title": "SFO - Check In & Security",
+    "url": "https://www.flysfo.com/passengers/flight-info/check-in-security"
+   },
+   {
+    "title": "SFO - Terminal 3 West Modernization Project (travel alerts)",
+    "url": "https://www.flysfo.com/about/construction/terminal-3-construction"
+   },
+   {
+    "title": "SFO - TSA PreCheck and Touchless ID",
+    "url": "https://www.flysfo.com/passengers/services-amenities/expedited-travel/tsa-precheck"
+   },
+   {
+    "title": "SFO - Airlines at SFO",
+    "url": "https://www.flysfo.com/passengers/flight-info/airlines-sfo"
+   },
+   {
+    "title": "SFO - International Departures",
+    "url": "https://www.flysfo.com/passengers/travel-tips/international-travel/departures"
+   },
+   {
+    "title": "SFO - Getting Around SFO / AirTrain",
+    "url": "https://www.flysfo.com/passengers/ground-transportation/getting-around-sfo"
+   },
+   {
+    "title": "SFO - Lyft/Uber/Wingz Rides",
+    "url": "https://www.flysfo.com/passengers/ground-transportation/lyft-uber-rides"
+   },
+   {
+    "title": "SFO - Autonomous Rides",
+    "url": "https://www.flysfo.com/passengers/ground-transportation/autonomous-rides"
+   },
+   {
+    "title": "SFO - Public Transit",
+    "url": "https://www.flysfo.com/passengers/ground-transportation/public-transit"
+   },
+   {
+    "title": "SFO - Passenger Pick Up & Drop Off",
+    "url": "https://www.flysfo.com/passengers/ground-transportation/passenger-pickup-dropoff"
+   },
+   {
+    "title": "SFO - Parking",
+    "url": "https://www.flysfo.com/passengers/parking"
+   },
+   {
+    "title": "SFO - Kiss & Fly",
+    "url": "https://www.flysfo.com/passengers/parking/kiss-and-fly"
+   },
+   {
+    "title": "SFO - Remote Bag Check",
+    "url": "https://www.flysfo.com/passengers/services-amenities/remote-bag-check"
+   },
+   {
+    "title": "SFO press release: Six-Month Closure of Runway 1R Set to Begin March 30th (Feb 27, 2026)",
+    "url": "https://www.flysfo.com/about/media/press-releases/six-month-closure-runway-1r-sfo-set-begin-march-30th"
+   },
+   {
+    "title": "SFO press release: Runway Repaving Project Ahead of Schedule, Expected to Reopen Early (Sept 16, 2026)",
+    "url": "https://www.flysfo.com/about/media/press-releases/sfo-runway-repaving-project-ahead-schedule-expected-reopen-early"
+   },
+   {
+    "title": "BART - Airport Connections (SFO)",
+    "url": "https://www.bart.gov/guide/airport/sfo"
+   },
+   {
+    "title": "Delta - U.S. Domestic Check-In Requirements",
+    "url": "https://www.delta.com/us/en/check-in-security/check-in-time-requirements/domestic-check-in"
+   },
+   {
+    "title": "Southwest - When to Arrive for Your Flight",
+    "url": "https://support.southwest.com/helpcenter/article/airport-arrival-recommendation"
+   },
+   {
+    "title": "Alaska Airlines News - What's happening behind the scenes before your flight",
+    "url": "https://news.alaskaair.com/alaska-airlines/before-your-flight/"
+   }
+  ]
+ },
+ "SLC": {
+  "code": "SLC",
+  "name": "Salt Lake City International Airport",
+  "city": "Salt Lake City",
+  "state": "UT",
+  "checkedOn": "2026-10-14",
+  "officialArrivalAdvice": {
+   "domestic": "Arrive 2 hours prior to boarding for a domestic flight",
+   "international": "Arrive 3 hours prior to departure for an international flight",
+   "source": "https://slcairport.com/customer-assistance/independence-day-weekend-travel-tips/"
+  },
+  "terminals": [
+   {
+    "id": "Terminal",
+    "name": "Main Terminal (Concourses A and B)",
+    "airlines": [
+     "Delta Air Lines",
+     "Southwest",
+     "United Airlines",
+     "American Airlines",
+     "Alaska Airlines",
+     "Frontier",
+     "JetBlue",
+     "Hawaiian Airlines",
+     "Sun Country",
+     "Aeromexico",
+     "Air Canada",
+     "KLM",
+     "Volaris",
+     "WestJet"
+    ],
+    "checkpoints": [
+     {
+      "notes": "Listed as open 3:30am-1:00am; the same SLC page gives regular PreCheck hours at this checkpoint as 3:30am-10:00pm. Hours subject to change. Onsite PreCheck enrollment is available in the CLEAR lane.",
+      "precheck": true,
+      "clear": true,
+      "name": "Main TSA checkpoint, Level 2"
+     },
+     {
+      "notes": "Open 6:00am-5:00pm; serves international arrivals with connections and departing passengers.",
+      "precheck": null,
+      "clear": null,
+      "name": "International checkpoint, ground level (International Arrivals area)"
+     }
+    ],
+    "notes": [
+     "Single terminal with two long concourses (A and B) reached after security; Concourse B is reached by the Mid-Concourse Tunnel or the Central Tunnel (opened fall 2024).",
+     "Official walking times from the post-security terminal (not using moving walks): about 9.5 min to the west end of Concourse A, 7 min to the Central Tunnel end of Concourse B, 8.5 min to the east end of Concourse A, and about 14 min to either far end of Concourse B (21 min if you stand on the moving walks).",
+     "Ten Concourse B-east gates opened in October 2025 for Delta and Southwest; four more opened July 14, 2026, and the final seven Phase 4 gates (serving United plus two common-use gates) open October 27, 2026.",
+     "Departures drop-off is on the elevated roadway to Level 3; stay right on Terminal Drive."
+    ]
+   }
+  ],
+  "connectedAirside": true,
+  "betweenTerminals": "One terminal; Concourses A and B are connected after security by the Central Tunnel and Mid-Concourse Tunnel (walk with moving walkways).",
+  "securityWaits": {
+   "summary": "SLC has identified peak departure times when higher volumes of passengers depart; the airport homepage shows a live security wait estimate.",
+   "busiestTimes": [
+    "7:00am",
+    "10:00am",
+    "4:00pm",
+    "8:00pm",
+    "10:00pm"
+   ],
+   "source": "https://slcairport.com/blog/?p=650"
+  },
+  "precheckNotes": "PreCheck is at the main Level 2 checkpoint; SLC lists regular PreCheck hours there as 3:30am-10:00pm, so late-night travelers may not have a PreCheck lane. TSA PreCheck enrollment is offered in the CLEAR lane.",
+  "clearAvailable": true,
+  "touchlessId": "TSA lists Touchless ID at 65 airports and tells travelers to check with their airline. Delta lists SLC as a participating airport with dedicated Touchless ID bag drop. A March 2026 third-party list shows Alaska, American, Delta, Southwest and United participating at SLC.",
+  "gettingThere": {
+   "rideshare": "Rideshare (TNC) pickup is at signed curbside zones on the ground level outside the terminal (B-Lane). General passenger drop-off is the elevated roadway to Level 3.",
+   "transit": "UTA TRAX Green Line: the Airport station is on the ground level on the east side of the terminal (exit door 1A and go east). One-way fare $2.50.",
+   "driving": "Stay right on Terminal Drive for the Level 3 departures drop-off. Reserve parking in advance for the garage, Lot E and long-term/economy parking. 13-foot height limit in front of the terminal. Free Park and Wait lot for drivers picking up."
+  },
+  "construction2026": [
+   "Phase 4 (final phase) of The New SLC: the last seven Concourse B-east gates and six concessions open October 27, 2026; some paving and ancillary work may extend into early 2027.",
+   "Terminal Drive exit lanes were repaved in phases May 11-27, 2026, with two lanes kept open."
+  ],
+  "bagDrop": "Delta: domestic bags must be checked at least 45 minutes before departure (30 minutes if no checked bags); bags not accepted more than 6 hours before departure; be at the gate 15 minutes before departure.",
+  "tips": [
+   "Budget walking time after security: the far ends of Concourse B are about 3,000 feet from the checkpoint, roughly 14 minutes at a steady walk.",
+   "The Central Tunnel (opened 2024) cuts the walk to the middle of Concourse B to about 7 minutes versus 15 minutes via the older Mid-Concourse Tunnel.",
+   "SLC lists PreCheck hours at the main checkpoint as 3:30am-10:00pm; late-evening flyers may face standard screening.",
+   "Reserve parking ahead: SLC urges advance reservations for the garage, Lot E and economy parking during busy periods.",
+   "TRAX Green Line stops right outside the east side of the terminal (door 1A) if you want to skip parking."
+  ],
+  "faq": [
+   {
+    "q": "How early should I get to Salt Lake City airport?",
+    "a": "SLC recommends arriving 2 hours before boarding for domestic flights and 3 hours before international departures. Add time for the walk: the farthest Concourse B gates are about 14 minutes on foot from security."
+   },
+   {
+    "q": "How long is the walk to the gates at SLC?",
+    "a": "According to the airport's walking-time chart, it takes about 7 to 14 minutes (not using moving walks) from the post-security terminal to Concourse A or B gates, and up to about 21 minutes if you stand on the moving walkways to the far end of Concourse B."
+   },
+   {
+    "q": "Does SLC have TSA PreCheck and CLEAR?",
+    "a": "Yes. The main Level 2 checkpoint has PreCheck (regular hours 3:30am-10:00pm per the airport) and a CLEAR lane, where you can also enroll in PreCheck."
+   }
+  ],
+  "sources": [
+   {
+    "title": "SLC - Independence Day Weekend Travel Tips (2026)",
+    "url": "https://slcairport.com/customer-assistance/independence-day-weekend-travel-tips/"
+   },
+   {
+    "title": "SLC - Tips for Fall Break travel (Oct 14, 2024)",
+    "url": "https://slcairport.com/blog/?p=650"
+   },
+   {
+    "title": "SLC - Tips for Holiday Travel (Dec 31, 2024)",
+    "url": "https://slcairport.com/blog/2024/12/slc-international-offers-tips-for-holiday-travel/"
+   },
+   {
+    "title": "SLC - Security",
+    "url": "https://slcairport.com/airlines-flights/security/"
+   },
+   {
+    "title": "SLC - Airline Flight Information",
+    "url": "https://slcairport.com/airlines-flights/"
+   },
+   {
+    "title": "SLC - Walking Distances (PDF)",
+    "url": "https://slcairport.com/assets/pdfDocuments/The-New-SLC/SLC-Walking-Distances-Updated.pdf"
+   },
+   {
+    "title": "SLC - To mark completion of The New SLC (Jul 23, 2026)",
+    "url": "https://slcairport.com/pressroom/news-releases/2026/slc-international-airport-to-mark-completion-of-the-new-slc/"
+   },
+   {
+    "title": "KSL - Salt Lake airport adds 10 new gates (Oct 28, 2025)",
+    "url": "https://www.ksl.com/article/news/utah/counties/salt-lake/salt-lake-airport-adds-10-new-gates-2-large-lounges-as-it-reaches-final-approach/51396705"
+   },
+   {
+    "title": "Hoodline - Salt Lake City's $5.1B airport makeover hits final approach (Feb 11, 2026)",
+    "url": "https://hoodline.com/2026/02/salt-lake-city-s-5-1b-airport-makeover-hits-final-approach/"
+   },
+   {
+    "title": "SLC - Home",
+    "url": "https://slcairport.com/"
+   },
+   {
+    "title": "SLC - Ground Transportation",
+    "url": "https://slcairport.com/parking-and-transportation/ground-transportation/"
+   },
+   {
+    "title": "SLC - Public Transportation",
+    "url": "https://slcairport.com/parking-and-transportation/public-transportation/"
+   },
+   {
+    "title": "SLC - Pick-up/Drop-off and Park & Wait Lot",
+    "url": "https://slcairport.com/parking-and-transportation/pickup-dropoff/"
+   },
+   {
+    "title": "SLC - Terminal Drive Paving Project (2026)",
+    "url": "https://slcairport.com/pressroom/news-releases/2026/slc-international-airport-plans-terminal-drive-paving-project/"
+   },
+   {
+    "title": "TSA - PreCheck Touchless ID",
+    "url": "https://www.tsa.gov/touchless-id"
+   },
+   {
+    "title": "Delta - TSA PreCheck Touchless ID participating airports",
+    "url": "https://www.delta.com/us/en/check-in-security/expedited-airport-security/touchless-id"
+   },
+   {
+    "title": "The Bulkhead Seat - Touchless ID airports and airlines (Mar 16, 2026)",
+    "url": "https://thebulkheadseat.com/?p=33789"
+   },
+   {
+    "title": "Delta - Domestic check-in time requirements",
+    "url": "https://www.delta.com/us/en/check-in-security/check-in-time-requirements/domestic-check-in"
+   }
+  ]
+ }
+}
