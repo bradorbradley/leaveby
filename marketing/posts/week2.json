@@ -1,0 +1,52 @@
+{
+  "week": "2026-W43",
+  "notes": "3 concepts x 2 hooks = 6 posts, all built from the cited /airports guides (checked Oct 14, 2026). Week 1's bank has not been posted yet, so it runs first; these follow.",
+  "concepts": [
+    {
+      "id": "long-walks",
+      "caption": "Security isn't the last line. Some gates are a 10+ minute walk past it. Which airport got you? 👇 (Walk times from each airport's own terminal maps.)",
+      "hashtags": ["airporttips", "traveltok", "jfk", "atlanta", "traveltips"],
+      "hooks": [
+        { "id": "a", "slide": { "type": "text", "kicker": "After security", "title": "Made it through security. Your gate is *14 minutes* away.", "sticker": "wow.webp" } },
+        { "id": "b", "slide": { "type": "text", "title": "The part of the airport nobody *budgets* for", "sub": "The walk to the gate.", "sticker": "wow.webp" } }
+      ],
+      "slides": [
+        { "type": "photo", "image": "a4_walk.webp", "kicker": "JFK Terminal 4", "title": "Gates B42–B55: *10–14 min*", "sub": "walk from security." },
+        { "type": "photo", "image": "s05b_tram.webp", "kicker": "LaGuardia Terminal C", "title": "Gates 60–69: *9–11 min*", "sub": "The longest walks at LGA." },
+        { "type": "photo", "image": "s05_sprint.webp", "kicker": "Atlanta", "title": "End to end on foot: *~30 min*", "sub": "The Plane Train runs every 2 minutes. Take it." },
+        { "type": "text", "kicker": "Sources", "title": "Walk times from *each airport's* terminal pages", "note": "jfkairport.com · laguardiaairport.com · ATL travel guides, checked Oct 14, 2026" },
+        { "type": "cta", "title": "Leave By adds *your* walk", "sub": "Pick your flight. It knows your terminal." }
+      ]
+    },
+    {
+      "id": "late-checkpoints",
+      "caption": "Red-eye tonight? At O'Hare most checkpoints close between 8 and 11 PM, and PreCheck lanes often close around 8–8:30. Source: flychicago.com.",
+      "hashtags": ["redeye", "airporttips", "ohare", "chicago", "traveltok"],
+      "hooks": [
+        { "id": "a", "slide": { "type": "text", "kicker": "Flying a red-eye?", "title": "Your *PreCheck* lane might be closed.", "sticker": "wow.webp" } },
+        { "id": "b", "slide": { "type": "text", "kicker": "O'Hare at night", "title": "Most checkpoints *close* by 11 PM.", "sticker": "wow.webp" } }
+      ],
+      "slides": [
+        { "type": "photo", "image": "s07_calm_night.webp", "at": "bottom", "kicker": "Chicago O'Hare", "title": "Most checkpoints close *8–11 PM*", "sub": "Terminal 5's Checkpoint 10 is the only one open 24 hours." },
+        { "type": "photo", "image": "s04_security.webp", "title": "PreCheck lanes close *around 8 PM*", "sub": "At most O'Hare checkpoints. Evening flyers may only get standard lanes." },
+        { "type": "text", "kicker": "And Terminal 5", "title": "isn't connected to *1–3* after security", "sub": "Go straight to the right terminal.", "note": "Source: flychicago.com, checked Oct 14, 2026" },
+        { "type": "cta", "title": "Leave By plans for *the hour you fly*" }
+      ]
+    },
+    {
+      "id": "lax-changes",
+      "caption": "Flying out of LAX? Terminal 5 is closed, rideshare pickups aren't at the curb, and United's Terminal 8 has no checkpoint of its own. Sources: LAWA and airport guides.",
+      "hashtags": ["lax", "losangeles", "airporttips", "traveltok", "latravel"],
+      "hooks": [
+        { "id": "a", "slide": { "type": "text", "kicker": "LAX in 2026", "title": "3 things that *changed* at LAX", "sticker": "wow.webp" } },
+        { "id": "b", "slide": { "type": "text", "kicker": "LAX", "title": "Your old LAX routine is *out of date*.", "sticker": "wow.webp" } }
+      ],
+      "slides": [
+        { "type": "photo", "image": "s02_pack.webp", "kicker": "1", "title": "Terminal 5 is *closed*", "sub": "American checks in at T4, JetBlue at T1, Spirit at T2." },
+        { "type": "photo", "image": "s03_traffic.webp", "kicker": "2", "title": "Uber and Lyft pickups are at *LAX-it*", "sub": "The lot east of Terminal 1, not the curb." },
+        { "type": "photo", "image": "a3_line.webp", "at": "bottom", "kicker": "3", "title": "United T8? *Screen at T7.*", "sub": "Terminal 8 has no checkpoint of its own." },
+        { "type": "cta", "title": "Leave By knows *your* terminal" }
+      ]
+    }
+  ]
+}
