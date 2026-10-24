@@ -24,6 +24,9 @@ export default function AirportsIndex() {
       <p className="mt-4 max-w-[52ch] text-[16.5px] leading-relaxed text-ink-2">
         &ldquo;Two hours domestic, three international&rdquo; is a blanket rule. Here&apos;s what&apos;s actually different at each of the busiest US airports: terminals, checkpoints, PreCheck and CLEAR, construction, and how to get there. Every guide lists its sources.
       </p>
+      <p className="mt-3 text-[15px] text-ink-2">
+        Flying abroad? See <Link href="/international-flights">international flights</Link>. Tempted by the TikTok trend? <Link href="/airport-theory">Does airport theory work?</Link>
+      </p>
       <div className="mt-8 grid grid-cols-1 gap-2.5 sm:grid-cols-2">
         {guides.map((g) => (
           <Link key={g.code} href={`/airports/${g.code.toLowerCase()}`} className="card flex items-center gap-4 !p-4 transition-transform hover:-translate-y-0.5">

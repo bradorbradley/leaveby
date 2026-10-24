@@ -48,3 +48,27 @@ export function GuideSection({ id, title, children }: { id?: string; title: stri
 export function JsonLd({ data }: { data: unknown }) {
   return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data).replace(/</g, "\\u003c") }} />;
 }
+
+/** Airline-by-airline facts as stacked cards: readable at phone width, unlike a wide table. */
+export function FactCards({ items }: { items: Array<{ title: string; href: string; source: string; rows: Array<[string, string]> }> }) {
+  return (
+    <div className="grid grid-cols-1 gap-2.5 sm:grid-cols-2">
+      {items.map((it) => (
+        <div key={it.title} className="card !p-4">
+          <p className="flex items-baseline justify-between gap-3">
+            <span className="font-display text-[18px] font-semibold text-ink">{it.title}</span>
+            <a href={it.href} target="_blank" rel="noreferrer" className="text-[12px]">{it.source}</a>
+          </p>
+          <dl className="mt-2 space-y-1.5 text-[14.5px]">
+            {it.rows.map(([k, v]) => (
+              <div key={k}>
+                <dt className="text-[12px] font-semibold uppercase tracking-[0.06em] text-ink-3">{k}</dt>
+                <dd className="text-ink-2">{v}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+      ))}
+    </div>
+  );
+}

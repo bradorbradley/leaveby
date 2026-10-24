@@ -2,6 +2,13 @@
 
 Newest first. Every ~3 hours a scheduled check-in picks the next most useful step, ships it, and adds an entry here.
 
+## 2026-10-24 (afternoon)
+- **Two new pages for big searches,** every fact cited:
+  - `/international-flights`: airline cutoffs, no exit control leaving the US, EU Entry/Exit System waits, UK ETA, US preclearance, Global Entry.
+  - `/airport-theory`: the TikTok trend versus bag and gate cutoffs, expert quotes, a real JFK plan.
+  - Both have FAQPage schema, are in the sitemap and llms.txt, and are linked from home and `/airports`. Submit them to IndexNow after deploy.
+- **Next:** a short-form post pack on the EES waits and airport theory; Bing Webmaster / Google Search Console once the founder adds them.
+
 ## 2026-10-24
 - **Founder post pack:** 5 slideshows (an "I built this" post plus 4 of the best brand posts) sent to the founder to post on their own TikTok and Instagram. Source: `marketing/posts/founder.json`; render with `JPEG=1` for phone-sized files.
 - **Technical SEO/AEO:**

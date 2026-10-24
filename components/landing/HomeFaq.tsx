@@ -35,6 +35,14 @@ export function HomeFaq() {
         <Link href="/thanksgiving-travel-2026" className="font-semibold text-ink underline decoration-ink/20 underline-offset-4 hover:decoration-coral">
           Thanksgiving 2026
         </Link>
+        {" · "}
+        <Link href="/international-flights" className="font-semibold text-ink underline decoration-ink/20 underline-offset-4 hover:decoration-coral">
+          international flights
+        </Link>
+        {" · "}
+        <Link href="/airport-theory" className="font-semibold text-ink underline decoration-ink/20 underline-offset-4 hover:decoration-coral">
+          airport theory
+        </Link>
       </p>
     </section>
   );
