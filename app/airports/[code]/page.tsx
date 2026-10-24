@@ -28,7 +28,8 @@ export async function generateMetadata({ params }: { params: Promise<{ code: str
     description: describe(g),
     metadataBase: new URL(SITE),
     alternates: { canonical: `/airports/${g.code.toLowerCase()}` },
-    openGraph: { title, description: describe(g), images: ["/api/og"], type: "article", url: `/airports/${g.code.toLowerCase()}` },
+    openGraph: { title, description: describe(g), images: [`/api/og?airport=${g.code}`], type: "article", url: `/airports/${g.code.toLowerCase()}` },
+    twitter: { card: "summary_large_image", images: [`/api/og?airport=${g.code}`] },
   };
 }
 

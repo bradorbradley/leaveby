@@ -33,7 +33,14 @@ function googleFont(family: string, weight: number, italic = false): Promise<Arr
   return fontCache.get(key)!;
 }
 
-/** 1200x630 preview card for a shared plan. */
+const GUIDE_CARDS: Record<string, { kicker: string; lines: [string, string, string] }> = {
+  airports: { kicker: "Airport guides", lines: ["How early should", "I get to the", "airport"] },
+  international: { kicker: "International flights", lines: ["How early for an", "international", "flight"] },
+  theory: { kicker: "The TikTok trend", lines: ["Does airport", "theory", "work"] },
+  thanksgiving: { kicker: "Thanksgiving 2026", lines: ["When should I", "leave for the", "airport"] },
+};
+
+/** 1200x630 preview card for a shared plan, a guide page, or the app itself. */
 export async function GET(request: NextRequest) {
   const p = request.nextUrl.searchParams;
   const leave = p.get("leave");
@@ -71,6 +78,35 @@ export async function GET(request: NextRequest) {
       <circle cx="1070" cy="510" r="6" fill="#FCFAF6" />
     </svg>
   );
+
+  // Guide pages get their own headline. Only fixed titles or a 3-letter airport code are accepted,
+  // so the endpoint can't be used to render arbitrary text on our domain.
+  const code = p.get("airport")?.toUpperCase() ?? "";
+  const guide = /^[A-Z]{3}$/.test(code)
+    ? { kicker: "Airport guide", lines: ["How early should", "I get to", code] }
+    : GUIDE_CARDS[p.get("guide") ?? ""];
+  if (!leave && guide) {
+    const [first, second, accent] = guide.lines;
+    return new ImageResponse(
+      (
+        <div style={{ width: "100%", height: "100%", display: "flex", flexDirection: "column", justifyContent: "space-between", padding: 72, background: "#F3EEE5", position: "relative", fontFamily: body }}>
+          {geometry}
+          {mark}
+          <div style={{ display: "flex", flexDirection: "column" }}>
+            <div style={{ fontSize: 26, letterSpacing: 7, color: "#62606F", fontWeight: 500, textTransform: "uppercase", marginBottom: 18 }}>{guide.kicker}</div>
+            <div style={{ fontFamily: display, fontSize: 92, fontWeight: 600, color: "#1F2030", lineHeight: 1.04, letterSpacing: -2.5, display: "flex", flexDirection: "column" }}>
+              <span>{first}</span>
+              <span>
+                {second} <span style={{ color: "#E36F58", marginLeft: 22 }}>{accent}?</span>
+              </span>
+            </div>
+          </div>
+          <div style={{ fontSize: 30, color: "#62606F" }}>Get the exact minute to leave for your flight. Free.</div>
+        </div>
+      ),
+      { width: 1200, height: 630, fonts },
+    );
+  }
 
   if (!leave) {
     return new ImageResponse(

@@ -14,7 +14,8 @@ export const metadata: Metadata = {
   description: DESCRIPTION,
   metadataBase: new URL(SITE),
   alternates: { canonical: "/thanksgiving-travel-2026" },
-  openGraph: { title: TITLE, description: DESCRIPTION, images: ["/api/og"], type: "article", url: "/thanksgiving-travel-2026" },
+  openGraph: { title: TITLE, description: DESCRIPTION, images: ["/api/og?guide=thanksgiving"], type: "article", url: "/thanksgiving-travel-2026" },
+  twitter: { card: "summary_large_image", images: ["/api/og?guide=thanksgiving"] },
 };
 
 const FAQ = [

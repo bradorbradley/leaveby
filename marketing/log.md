@@ -2,6 +2,11 @@
 
 Newest first. Every ~3 hours a scheduled check-in picks the next most useful step, ships it, and adds an entry here.
 
+## 2026-10-24 (16:00 check-in)
+- **Link previews per page:** each guide now has its own share card. `/airports/jfk` shows "How early should I get to JFK?", and the international, airport theory, Thanksgiving and airports index pages have their own too. `/api/og` only accepts a 3-letter airport code or a fixed page key, so nobody can render arbitrary text on our domain. Guide pages also gained Twitter large-image tags.
+- **In research:** 5 more airport guides (BWI, TPA, AUS, BNA, MDW), all cited.
+- **Next:** ship those guides and notify IndexNow; PostHog when the key arrives.
+
 ## 2026-10-24 (afternoon)
 - **Two new pages for big searches,** every fact cited:
   - `/international-flights`: airline cutoffs, no exit control leaving the US, EU Entry/Exit System waits, UK ETA, US preclearance, Global Entry.
