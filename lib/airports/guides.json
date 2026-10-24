@@ -2339,6 +2339,244 @@
    }
   ]
  },
+ "HNL": {
+  "code": "HNL",
+  "name": "Daniel K. Inouye International Airport",
+  "city": "Honolulu",
+  "state": "HI",
+  "checkedOn": "2026-10-24",
+  "officialArrivalAdvice": {
+   "domestic": "Arrive at least two hours before overseas flights (including the US mainland) and 90 minutes before interisland flights, or as your airline advises. Add at least 30 minutes if you are parking or returning a rental car.",
+   "international": "Arrive at least two hours before overseas flights",
+   "source": "https://airports.hawaii.gov/hnl/flights/ticketing-check-in/"
+  },
+  "terminals": [
+   {
+    "id": "1",
+    "name": "Terminal 1",
+    "airlines": [
+     "Hawaiian",
+     "Alaska (Neighbor Island 737 flights)"
+    ],
+    "checkpoints": [
+     {
+      "notes": "Standard passengers only. Opens as needed between 6:15 a.m. and 1:30 p.m. based on passenger volume (HNL hours as of May 17, 2026).",
+      "precheck": false,
+      "clear": null,
+      "name": "CP 1A (Mauka)"
+     },
+     {
+      "notes": "4:15 a.m.-11:30 p.m. daily, 1-4 lanes. Dedicated PreCheck lanes 4:15 a.m.-11:30 p.m. Checkpoint 1 is on the right side of Ticket Lobby 2.",
+      "precheck": true,
+      "clear": null,
+      "name": "CP 1B (Makai)"
+     }
+    ],
+    "notes": [
+     "Flights to the US mainland: the USDA inspects all checked and carry-on bags before the flight. Checked bags are inspected at check-in, so be ready to open them. Declare all food, plants and other farm items. Most fresh fruits and vegetables, berries, soil, live insects and snails, cactus and plants in soil are prohibited; fresh pineapple, coconut, coffee and commercially canned foods are allowed after inspection.",
+     "Hawaiian and Alaska Neighbor Island check-in and bag drop are in Terminal 1, Lobby 3; HNL lists Alaska-Hawaiian in Lobbies 2 and 3",
+     "Ticket counters are on the second level"
+    ]
+   },
+   {
+    "id": "2",
+    "name": "Terminal 2",
+    "airlines": [
+     "Alaska",
+     "American",
+     "Delta",
+     "Southwest",
+     "United",
+     "Hawaiian (international check-in)",
+     "Air Canada",
+     "Air New Zealand",
+     "Air Premia",
+     "ANA",
+     "Asiana",
+     "Fiji Airways",
+     "Japan Airlines",
+     "Korean Air",
+     "Philippine Airlines",
+     "Qantas",
+     "WestJet",
+     "ZIPAIR"
+    ],
+    "checkpoints": [
+     {
+      "notes": "Opens as needed between 9:15 a.m. and 1:00 p.m. based on passenger volume",
+      "precheck": false,
+      "clear": null,
+      "name": "CP 2"
+     },
+     {
+      "notes": "4:15 a.m.-11:30 p.m. daily, 1-6 lanes. PreCheck in Lane 6 only, 4:15-5:15 a.m. (or as needed) and 2:30-11:30 p.m.",
+      "precheck": true,
+      "clear": null,
+      "name": "CP 3"
+     },
+     {
+      "notes": "9:15 a.m.-1:00 p.m. and 6:15-8:30 p.m. daily, 1-2 lanes",
+      "precheck": false,
+      "clear": null,
+      "name": "CP 4"
+     },
+     {
+      "notes": "5:15 a.m.-9:00 p.m. daily, 1-3 lanes, with a dedicated PreCheck lane",
+      "precheck": true,
+      "clear": null,
+      "name": "CP 5"
+     }
+    ],
+    "notes": [
+     "Flights to the US mainland: the USDA inspects all checked and carry-on bags before the flight. Checked bags are inspected at check-in, so be ready to open them. Declare all food, plants and other farm items. Most fresh fruits and vegetables, berries, soil, live insects and snails, cactus and plants in soil are prohibited; fresh pineapple, coconut, coffee and commercially canned foods are allowed after inspection.",
+     "Lobby 4: Hawaiian international flights (moved from Terminal 1 on Oct 3, 2026), Air Canada, Air Premia, Fiji Airways, Korean Air, Philippine Airlines, Qantas, ZIPAIR",
+     "Lobby 5: Alaska, Japan Airlines. Lobby 6: Air New Zealand, Southwest (interisland), WestJet. Lobby 7: American, Delta, Southwest (domestic). Lobby 8: ANA, United",
+     "Checkpoints 2-5 sit between the ticket lobbies; check the airport map for the one nearest your lobby",
+     "Terminal 3 (ground-level counters) serves Mokulele Airlines and is not connected by walkway"
+    ]
+   }
+  ],
+  "connectedAirside": true,
+  "betweenTerminals": "Terminals 1 and 2 are connected after security. HNL says the walk from Terminal 2 to Terminal 1 takes 10-15 minutes; people walking between them pass a USDA inspection station for carry-on bags. The free Wiki Wiki bus links Terminals 1, 2 and 3 and the Skyline station (terminal service 6 a.m.-11:30 p.m.), and open-air trams run between Terminals 1 and 2 from 10 a.m. to 6 p.m.",
+  "securityWaits": {
+   "summary": "HNL does not publish typical wait times or busiest hours. Several checkpoints (CP 1A, CP 2, CP 4) open only at midday or as needed, so fewer lanes are open early in the morning and late at night.",
+   "busiestTimes": [],
+   "source": "https://airports.hawaii.gov/hnl/flights/tsa-checkpoint-hours/"
+  },
+  "precheckNotes": "PreCheck has dedicated lanes at CP 1B (Terminal 1, 4:15 a.m.-11:30 p.m.) and CP 5 (Terminal 2, open 5:15 a.m.-9 p.m.). At CP 3, PreCheck uses Lane 6 only, from 4:15-5:15 a.m. or as needed and 2:30-11:30 p.m. HNL says hours can change without notice.",
+  "clearAvailable": true,
+  "touchlessId": null,
+  "gettingThere": {
+   "rideshare": "Rideshare pickup is on the ground level: Terminal 1 outside Baggage Claim 6; Terminal 2 at the median between Baggage Claims 19 and 20 and at the median across from Baggage Claim 31. Check-in counters are on the second level.",
+   "transit": "Skyline rail's Lelepaua Station sits between the International and Terminal 2 parking garages (ground level and 4th-floor walkways). Trains run about 4 a.m.-10 p.m., every 10 minutes until 8:30 p.m. and every 15 minutes after, between East Kapolei and Middle Street; you need a HOLO card. TheBus W Line runs to Downtown, Ala Moana and Waikiki from a stop on Ala Onaona Street east of the lei stands, with luggage limits (one medium suitcase plus one small bag).",
+   "driving": "Garages: Terminal 1 Parking Garage next to Terminal 1, Terminal 2 Parking Garage across from Terminal 2, and the International Parking Garage across from the International Arrivals Building. Since July 1, 2026, parking 8+ hours (including overnight) is $29. Free cell phone waiting areas (60-minute limit, stay with your car) are on Aolele Street near Lagoon Drive and on Service Road A near the Airport Post Office."
+  },
+  "construction2026": [
+   "Concrete repairs on the Terminal 2 roadways continue at the 1st, 2nd and 3rd levels of the Ewa and Diamond Head Concourses and the Connecting Links, including the Departures level; the contract was extended, with project acceptance listed for Dec 13, 2027",
+   "A new parking structure at Ualena Street entered construction in June 2026",
+   "Hawaiian moved all international check-in to Terminal 2, Lobby 4 on Oct 3, 2026; Neighbor Island check-in stays in Terminal 1"
+  ],
+  "bagDrop": "Hawaiian and Alaska Neighbor Island flights: check in and drop bags at least 50 minutes before departure (since Oct 3, 2026). Delta at HNL: 45 minutes for domestic flights with or without bags, 1 hour for international. Southwest: bags 45 minutes before domestic departure, check-in 30 minutes. United and American: 45 minutes for check-in and bags on most domestic flights.",
+  "tips": [
+   "Flying to the mainland? Keep fresh fruit, plants and flowers out of your bags or declare them; USDA inspects checked bags at check-in and carry-ons before the flight",
+   "Find your lobby before you go: Hawaiian Neighbor Island flights use Terminal 1, while Hawaiian international flights now check in at Terminal 2, Lobby 4",
+   "For early flights from Terminal 2, CP 3 and CP 5 are the main checkpoints; CP 2 and CP 4 open only part of the day",
+   "Add at least 30 minutes if you are parking or returning a rental car, as HNL advises",
+   "Allow 10-15 minutes to walk between Terminals 1 and 2, or use the Wiki Wiki bus"
+  ],
+  "faq": [
+   {
+    "q": "How early should I get to Honolulu airport?",
+    "a": "HNL advises at least two hours before overseas flights, including the mainland, and 90 minutes before interisland flights. Add at least 30 minutes if you are parking or returning a rental car."
+   },
+   {
+    "q": "Is there an agricultural inspection when flying from Honolulu to the mainland?",
+    "a": "Yes. The USDA inspects all checked and carry-on bags before flights from Hawaii to the US mainland. Most fresh fruits and vegetables are not allowed; fresh pineapple, coconut and coffee are allowed after inspection."
+   },
+   {
+    "q": "Which terminal does Hawaiian Airlines use at HNL?",
+    "a": "Hawaiian uses Terminal 1 (Lobbies 2 and 3), including Neighbor Island check-in in Lobby 3. Since Oct 3, 2026, Hawaiian international check-in is at Terminal 2, Lobby 4."
+   },
+   {
+    "q": "What time does security open at HNL?",
+    "a": "CP 1B (Terminal 1) and CP 3 (Terminal 2) open at 4:15 a.m. and run until 11:30 p.m. CP 5 opens at 5:15 a.m. Other checkpoints open only part of the day."
+   }
+  ],
+  "sources": [
+   {
+    "title": "HNL - Ticketing & Check-In",
+    "url": "https://airports.hawaii.gov/hnl/flights/ticketing-check-in/"
+   },
+   {
+    "title": "HNL - TSA Checkpoint Hours (as of May 17, 2026)",
+    "url": "https://airports.hawaii.gov/hnl/flights/tsa-checkpoint-hours/"
+   },
+   {
+    "title": "HNL - Airlines",
+    "url": "https://airports.hawaii.gov/hnl/flights/airlines/"
+   },
+   {
+    "title": "HNL - Agriculture Inspection",
+    "url": "https://airports.hawaii.gov/hnl/flights/agriculture-inspection/"
+   },
+   {
+    "title": "USDA APHIS - Information for Travelers From Hawaii to the U.S. Mainland, Alaska, or Guam",
+    "url": "https://www.aphis.usda.gov/traveling-with-ag-products/hawaii"
+   },
+   {
+    "title": "HNL - Frequently Asked Questions",
+    "url": "https://airports.hawaii.gov/hnl/frequently-asked-questions/"
+   },
+   {
+    "title": "HNL - Intra-Airport Transportation (Wiki Wiki)",
+    "url": "https://airports.hawaii.gov/hnl/getting-to-from/ground-transportation/intra-airport-transportation/"
+   },
+   {
+    "title": "HNL - Ride App Pickup Zones (map)",
+    "url": "https://airports.hawaii.gov/hnl/hnl-ride-app-pickup-zones/"
+   },
+   {
+    "title": "HNL - TheBus and Skyline",
+    "url": "https://airports.hawaii.gov/hnl/the-bus-and-skyline/"
+   },
+   {
+    "title": "HNL - Parking",
+    "url": "https://airports.hawaii.gov/hnl/getting-to-from/parking/"
+   },
+   {
+    "title": "HNL - Cell Phone Waiting Lots",
+    "url": "https://airports.hawaii.gov/hnl/getting-to-from/parking/cell-phone-waiting-lots/"
+   },
+   {
+    "title": "HDOT - New parking rates at HNL take effect July 1 (2026)",
+    "url": "https://hidot.hawaii.gov/airports/new-parking-rates-at-daniel-k-inouye-international-airport-take-effect-july-1/"
+   },
+   {
+    "title": "HDOT - Ground transportation changes at HNL as Skyline launches (Oct 2025)",
+    "url": "https://hidot.hawaii.gov/airports/hdot-announces-ground-transportation-modifications-at-daniel-k-inouye-international-airport-as-skyline-launches-service/"
+   },
+   {
+    "title": "Hawaii Airports Modernization - HNL projects",
+    "url": "https://www.hawaiiairportsmodernization.com/projects"
+   },
+   {
+    "title": "Hawaii Airports Modernization - Concrete Spall Repairs at Terminal 2 Roadways",
+    "url": "https://www.hawaiiairportsmodernization.com/projects/concrete-spall-repairs-at-terminal-2-roadways-daniel-k.-inouye-international-airport"
+   },
+   {
+    "title": "Alaska Airlines News - Honolulu-Kahului 737 flights, new check-in times, Honolulu lobby changes (2026)",
+    "url": "https://news.alaskaair.com/guest-experience/honolulu-kahului-737-flights-new-check-in-times-honolulu-lobby-changes/"
+   },
+   {
+    "title": "Hawaii News Now - Flying Hawaiian or Alaska soon? Allow extra time for checked bags (Oct 2, 2026)",
+    "url": "https://www.hawaiinewsnow.com/2026/10/03/flying-hawaiian-or-alaska-soon-allow-extra-time-checked-bags/"
+   },
+   {
+    "title": "Hawaii News Now - Skyline celebrates new segment and stations (Oct 13, 2025)",
+    "url": "https://www.hawaiinewsnow.com/2025/10/14/skyline-celebrates-new-segment-stations-with-free-weekend-fares"
+   },
+   {
+    "title": "CLEAR - CLEAR launches lanes at Honolulu's Daniel K. Inouye International Airport (Jul 17, 2024)",
+    "url": "https://ir.clearme.com/news-events/press-releases/detail/120/clear-launches-new-lanes-at-honolulus-daniel-k-inouye"
+   },
+   {
+    "title": "Wikipedia - Daniel K. Inouye International Airport",
+    "url": "https://en.wikipedia.org/wiki/Daniel_K._Inouye_International_Airport"
+   },
+   {
+    "title": "Delta - U.S. Domestic Check-In Requirements (HNL exception)",
+    "url": "https://www.delta.com/us/en/check-in-security/check-in-time-requirements/domestic-check-in"
+   },
+   {
+    "title": "Southwest - When to Arrive for Your Flight",
+    "url": "https://support.southwest.com/helpcenter/article/airport-arrival-recommendation"
+   },
+   {
+    "title": "AP via MyNorthwest - United narrows check-in window; airline comparison (May 27, 2025)",
+    "url": "https://mynorthwest.com/lifestyle/united-is-narrowing-its-check-in-window-for-us-flights-heres-how-it-compares-to-other-airlines/4092751"
+   }
+  ]
+ },
  "IAD": {
   "code": "IAD",
   "name": "Washington Dulles International Airport",
@@ -4725,6 +4963,187 @@
    }
   ]
  },
+ "PDX": {
+  "code": "PDX",
+  "name": "Portland International Airport",
+  "city": "Portland",
+  "state": "OR",
+  "checkedOn": "2026-10-24",
+  "officialArrivalAdvice": {
+   "domestic": "Arrive two hours before your domestic flight during the busy early-morning hours; first-time visitors since the new terminal opened should allow extra time to find their way",
+   "international": "Arrive three hours before all departing international flights",
+   "source": "https://www.flypdx.com/TravelTips"
+  },
+  "terminals": [
+   {
+    "id": "Main Terminal",
+    "name": "Main Terminal (Concourses B, C, D, E)",
+    "airlines": [
+     "Alaska",
+     "Horizon",
+     "Southwest",
+     "Delta",
+     "United",
+     "American",
+     "JetBlue",
+     "Air Canada",
+     "Allegiant",
+     "Boutique Air",
+     "British Airways",
+     "Condor",
+     "Frontier",
+     "Hawaiian",
+     "Icelandair",
+     "KLM",
+     "Sun Country",
+     "Volaris",
+     "WestJet"
+    ],
+    "checkpoints": [
+     {
+      "notes": "Serves Concourses B and C (south side). Closed 10 p.m.-3 a.m. PreCheck lanes open 4 a.m. to about 4 p.m. daily. CLEAR enrollment staff here 4:30 a.m.-9 p.m.",
+      "precheck": true,
+      "clear": true,
+      "name": "B/C Checkpoint"
+     },
+     {
+      "notes": "Serves Concourses D and E (north side). Open 24 hours, 7 days a week. PreCheck lanes open 4 a.m. to about 4 p.m. daily. CLEAR enrollment staff here 4 a.m.-10 p.m.",
+      "precheck": true,
+      "clear": true,
+      "name": "D/E Checkpoint"
+     }
+    ],
+    "notes": [
+     "PDX says you can reach all gates from either checkpoint, but you save time by using the checkpoint that matches your gate",
+     "Alaska and Horizon use Concourse B (Port of Portland, 2021). Southwest moved to Concourse E in 2020, joining Delta and United on the north side; Alaska, American and JetBlue were on the south side (The Points Guy, 2020). Many gates are common-use, so check the monitors for your gate.",
+     "The new main terminal opened in phases from August 2024 and was declared complete on June 30, 2026",
+     "Express Lanes are usually open at the busiest departure times for eligible travelers (some airline elite status, First or Business Class, and Portland-Seattle flyers at B/C)"
+    ]
+   }
+  ],
+  "connectedAirside": true,
+  "betweenTerminals": "One terminal with two security wings: B/C to the south and D/E to the north. The post-security concourse connector has reopened, so you can walk between the wings after screening. Some older guides still say it is closed.",
+  "securityWaits": {
+   "summary": "PDX does not publish average waits on its tips page. It names early morning as the busy time and says check-in lines may be long in the early morning and at lunchtime. Live wait times for both checkpoints are shown on the flypdx.com home page.",
+   "busiestTimes": [
+    "Early morning",
+    "Lunchtime (check-in lines)"
+   ],
+   "source": "https://www.flypdx.com/TravelTips"
+  },
+  "precheckNotes": "PreCheck lanes at both checkpoints open at 4 a.m. and close at about 4 p.m. daily. Evening flyers should expect standard lanes only. After 10 p.m. only the D/E checkpoint is open.",
+  "clearAvailable": true,
+  "touchlessId": "Alaska announced in June 2025 that it was bringing TSA PreCheck Touchless ID to PDX for Mileage Plan members 18+ who add a KTN and passport details on alaskaair.com. Which PDX checkpoints offer it was not confirmed.",
+  "gettingThere": {
+   "rideshare": "Drivers drop off on the departures level. Uber, Lyft and Wingz pickups are inside Level 1 of the Short-Term Parking garage at the Transportation Plaza; columns are marked by company.",
+   "transit": "TriMet MAX Red Line stops at the terminal near baggage claim. TriMet says the ride to downtown takes about 40 minutes, trains run about every 15 minutes most of the day, and the adult fare is $2.80 for 2.5 hours (Dec 2025).",
+   "driving": "Take I-205 to the Airport Way West exit and follow Airport Way to the terminal. PDX says to allow 30-45 minutes from downtown. Parking is first-come, first-served: Short-Term $30/day, Long-Term $24/day, Economy $15/day (free shuttle about every 7-9 minutes), Valet $45/day. The free cell phone waiting area off NE Airport Way and NE 82nd Ave allows up to 30 minutes. Curbside is for active loading only."
+  },
+  "construction2026": [
+   "Baggage claim renovation (new ceiling, lighting and restrooms) continues in sections into 2027, with some baggage claim areas closed; follow posted signs",
+   "The main terminal project (PDX Next) was declared complete on June 30, 2026, so the ticket lobby and pre-security layout differ from before 2024"
+  ],
+  "bagDrop": "Alaska: check-in cutoff is 50 minutes before domestic departure, with or without bags (AP, May 2025). Southwest: bags 45 minutes before domestic departure, check-in 30 minutes. Delta: bags 45 minutes before domestic departure, check-in 30 minutes without bags. United and American: 45 minutes for check-in and bags on most domestic flights.",
+  "tips": [
+   "Use the checkpoint that matches your gate: B/C for B and C gates, D/E for D and E gates",
+   "The B/C checkpoint closes 10 p.m.-3 a.m.; for overnight and very early flights use D/E, which is open 24 hours",
+   "PreCheck lanes close at about 4 p.m., so afternoon and evening PreCheck members will go through standard lanes",
+   "Parking cannot be reserved; Valet ($45/day) is never full if the garages are tight",
+   "Get your boarding pass before you go to security; both checkpoints scan mobile boarding passes"
+  ],
+  "faq": [
+   {
+    "q": "How early should I get to Portland airport?",
+    "a": "PDX advises two hours before a domestic flight during the busy early-morning hours and three hours before an international flight."
+   },
+   {
+    "q": "Which PDX security checkpoint should I use?",
+    "a": "Use the one that matches your gate: B/C for B and C gates, D/E for D and E gates. The concourse connector lets you reach any gate after screening, but the matching checkpoint is quicker."
+   },
+   {
+    "q": "Is PDX security open 24 hours?",
+    "a": "Only the D/E checkpoint is open 24 hours. The B/C checkpoint is closed from 10 p.m. to 3 a.m."
+   },
+   {
+    "q": "When is TSA PreCheck open at PDX?",
+    "a": "PreCheck lanes at both checkpoints open at 4 a.m. and close at about 4 p.m. daily."
+   }
+  ],
+  "sources": [
+   {
+    "title": "PDX - Travel Tips",
+    "url": "https://www.flypdx.com/TravelTips"
+   },
+   {
+    "title": "PDX - Construction",
+    "url": "https://flypdx.com/construction"
+   },
+   {
+    "title": "PDX - Home page (checkpoint wait times)",
+    "url": "https://www.flypdx.com/"
+   },
+   {
+    "title": "PDX - Airline Information",
+    "url": "https://www.flypdx.com/Airlines"
+   },
+   {
+    "title": "PDX - Parking",
+    "url": "https://www.flypdx.com/Parking"
+   },
+   {
+    "title": "PDX - Ground Transportation",
+    "url": "https://www.flypdx.com/GroundTransportation"
+   },
+   {
+    "title": "PDX - App-based Rideshares",
+    "url": "https://www.flypdx.com/GroundTransportation/Rideshares"
+   },
+   {
+    "title": "PDX - Public Transit (TriMet)",
+    "url": "https://www.flypdx.com/GroundTransportation/TriMet"
+   },
+   {
+    "title": "PDX - Directions",
+    "url": "https://www.flypdx.com/Directions"
+   },
+   {
+    "title": "Port of Portland - New Concourse B for Alaska Airlines (Dec 8, 2021)",
+    "url": "https://www.flypdx.com/Newsroom/Port-of-Portland-Opens-New-Concourse-B-for-Alaska-Airlines-at-PDX"
+   },
+   {
+    "title": "KATU - PDX says its main terminal project is complete (Jul 7, 2026)",
+    "url": "https://katu.com/news/local/pdx-says-its-main-terminal-project-is-complete-so-why-is-construction-still-happening-portland-international-airport-oregon-multnolmah-county-trees-alaska-airlines-new-lounge"
+   },
+   {
+    "title": "The Points Guy - Southwest moves to new PDX Concourse E (Jul 15, 2020)",
+    "url": "https://thepointsguy.com/news/southwest-airlines-portland-pdx-airport-new-concourse/"
+   },
+   {
+    "title": "TriMet Rider Insider - How to take MAX to and from PDX (Dec 12, 2025)",
+    "url": "https://blog.trimet.org/2025/12/12/how-to-take-max-to-and-from-portland-international-airport/"
+   },
+   {
+    "title": "CLEAR - CLEAR launches lanes at Portland International Airport (Feb 7, 2025)",
+    "url": "https://ir.clearme.com/news-events/press-releases/detail/136/clear-launches-new-lanes-at-portland-international-airport"
+   },
+   {
+    "title": "The Bulkhead Seat - Alaska bringing TSA PreCheck Touchless ID to LAX, PDX and SEA (Jun 22, 2025)",
+    "url": "https://thebulkheadseat.com/alaska-is-bringing-tsa-precheck-touchless-id-to-los-angeles-portland-and-seattle/"
+   },
+   {
+    "title": "Southwest - When to Arrive for Your Flight",
+    "url": "https://support.southwest.com/helpcenter/article/airport-arrival-recommendation"
+   },
+   {
+    "title": "Delta - U.S. Domestic Check-In Requirements",
+    "url": "https://www.delta.com/us/en/check-in-security/check-in-time-requirements/domestic-check-in"
+   },
+   {
+    "title": "AP via MyNorthwest - United narrows check-in window; airline comparison (May 27, 2025)",
+    "url": "https://mynorthwest.com/lifestyle/united-is-narrowing-its-check-in-window-for-us-flights-heres-how-it-compares-to-other-airlines/4092751"
+   }
+  ]
+ },
  "PHL": {
   "code": "PHL",
   "name": "Philadelphia International Airport",
@@ -5185,6 +5604,224 @@
    {
     "title": "Alaska Airlines News - What's happening behind the scenes before your flight",
     "url": "https://news.alaskaair.com/alaska-airlines/before-your-flight/"
+   }
+  ]
+ },
+ "RDU": {
+  "code": "RDU",
+  "name": "Raleigh-Durham International Airport",
+  "city": "Raleigh-Durham",
+  "state": "NC",
+  "checkedOn": "2026-10-24",
+  "officialArrivalAdvice": {
+   "domestic": "Arrive at least 2 hours before a domestic flight to allow for parking, check-in and security; more time may be needed at peak periods",
+   "international": "Arrive at least 3 hours before an international flight",
+   "source": "https://www.rdu.com/frequently-asked-questions"
+  },
+  "terminals": [
+   {
+    "id": "T1",
+    "name": "Terminal 1 (A gates)",
+    "airlines": [
+     "Southwest Airlines",
+     "Alaska Airlines",
+     "Avelo Airlines",
+     "Breeze Airways",
+     "Sun Country Airlines"
+    ],
+    "checkpoints": [
+     {
+      "notes": "Open 3:30am-10:30pm daily, per RDU. RDU lists CLEAR here 4am-7:45pm daily (standard lane) and 4am-7pm weekdays, 4am-6pm weekends (PreCheck lane); CLEAR's own site lists slightly different hours.",
+      "precheck": true,
+      "clear": true,
+      "name": "Terminal 1 Checkpoint"
+     }
+    ],
+    "notes": [
+     "Terminal 1 has gates A1-A9",
+     "Breeze and Sun Country moved from Terminal 2 to Terminal 1 in April 2024",
+     "Post-security pet relief area is near Gate A7"
+    ]
+   },
+   {
+    "id": "T2",
+    "name": "Terminal 2 (C and D gates)",
+    "airlines": [
+     "Delta Air Lines",
+     "American Airlines",
+     "United Airlines",
+     "JetBlue",
+     "Frontier",
+     "Air Canada",
+     "Aer Lingus",
+     "Aeromexico",
+     "Air France",
+     "BermudAir",
+     "Copa Airlines",
+     "Icelandair",
+     "Lufthansa",
+     "Volaris"
+    ],
+    "checkpoints": [
+     {
+      "notes": "Open 3:30am-10:30pm daily, per RDU. RDU lists one CLEAR lane for standard and PreCheck travelers, 4am-7:45pm daily; CLEAR's own site lists 4am-7pm on Tuesday, Wednesday and Saturday.",
+      "precheck": true,
+      "clear": true,
+      "name": "Terminal 2 Checkpoint"
+     }
+    ],
+    "notes": [
+     "Terminal 2 has 36 gates on Concourses C and D and handles all international arrivals",
+     "Delta has the largest market share at RDU",
+     "Air Canada and Frontier ticketing is at Counter D",
+     "The north end of the ticketing hall has been walled off for expansion work since January 2026, for about two years; all ticket counters and checkpoint lanes stay open",
+     "The TSA PreCheck enrollment center is in Terminal 2 near Bag Claim 5 (Mon 9am-1pm; Tue-Fri 9am-1pm and 2-6pm)"
+    ]
+   }
+  ],
+  "connectedAirside": false,
+  "betweenTerminals": "The terminals are not connected after security. Walk between them through the parking garage atrium (5-10 minutes) or take a free parking shuttle: from Terminal 1 to Terminal 2 use the ParkRDU Economy shuttle, and from Terminal 2 to Terminal 1 use the ParkRDU Express shuttle. You will go through security again in the other terminal.",
+  "securityWaits": {
+   "summary": "RDU publishes no typical wait times or peak hours. In TSA's hourly screening counts for Sep 13-19, 2026, RDU was busiest from 4am to 7am, peaking 5-6am. A second busy stretch ran from about noon to 6pm, and traffic dropped sharply after 7pm. Thursday, Friday and Sunday were the busiest days that week; Tuesday was the quietest. A few Terminal 2 hours could not be read from TSA's file, so treat these as a pattern, not exact counts.",
+   "busiestTimes": [
+    "4:00-7:00am (peak 5:00-6:00am)",
+    "12:00-6:00pm",
+    "Thursdays, Fridays and Sundays (TSA counts, week of Sep 13, 2026)"
+   ],
+   "source": "https://www.tsa.gov/sites/default/files/foia-readingroom/tsa-throughput-data-to-september-13-2026-to-september-19-2026.pdf"
+  },
+  "precheckNotes": "RDU takes part in TSA PreCheck, and both terminals have PreCheck screening, including a CLEAR lane for PreCheck travelers. Both checkpoints open at 3:30am and close at 10:30pm, but CLEAR lanes close earlier in the evening.",
+  "clearAvailable": true,
+  "touchlessId": "The Points Guy reported in April 2026 that TSA PreCheck Touchless ID had recently come online at RDU. This research could not confirm which airlines offer it there.",
+  "gettingThere": {
+   "rideshare": "Drop off at the Terminal 1 curb or the Terminal 2 upper level (Departures). Ride app and prearranged pickups are outside baggage claim: Terminal 1 Zone 1 and Terminal 2 Zone 8. Curbs are for active loading only; the free Cell Lot is at 1000 Trade Drive, about three minutes from the terminals.",
+   "transit": "GoTriangle serves RDU. The RDU Shuttle runs from the Regional Transit Center Monday-Saturday, 6am-6pm. Route 100 runs direct from downtown Raleigh after 6:30pm Monday-Saturday and all day Sunday. Stops are between Zones 2 and 3 at Terminal 1 and between Zones 6 and 7 at Terminal 2.",
+   "driving": "From I-40 take Exit 284 or 285; from I-540 take Exit 2 (Aviation Parkway). Parking is cashless. Drive-up rates: Premier $34/day, Central $22.75/day (both in the garage between the terminals), Express $18.50/day (shuttle every 5-10 minutes) and Economy 3 $14.50/day (shuttle about every 20 minutes, 24/7). Book online at least 24 hours ahead to guarantee a space; if Central is full and you have not booked, follow signs to another lot."
+  },
+  "construction2026": [
+   "Terminal 2 expansion: a floor-to-ceiling wall closes the north end of the ticketing hall for about two years (from January 2026) while crews add ticketing, international arrivals and checkpoint lanes. All ticket counters and checkpoint lanes remain open, but you may hear construction noise. The full project is due in 2032.",
+   "John Brantley Boulevard, the main road serving both terminals, is being widened and extended. Utility work is underway now; lane closures are expected to start in summer 2027, and a temporary Terminal 2 departures curb near Terminal 1 is expected in early 2028.",
+   "A new primary runway (5L-23R) is under construction and due to open in 2029. This is airfield work and does not change terminal access."
+  ],
+  "bagDrop": "Delta: bags 45 minutes before domestic departure (30 minutes without bags). Southwest: bags 45 minutes before a domestic flight (60 minutes international), check in at least 30 minutes before. American and United: check in and check bags 45 minutes before domestic departure (AP, May 2025). Most RDU ticket counters open around 4:30am, and curbside check-in is offered for select airlines.",
+  "tips": [
+   "Check your terminal first: Southwest and the low-cost carriers use Terminal 1; Delta, American, United, JetBlue and all international airlines use Terminal 2",
+   "Morning is the busiest time at security, peaking 5-6am, so early flyers should not cut it close",
+   "Book parking online at least 24 hours ahead to guarantee a spot in the lot you want, especially for the garage",
+   "CLEAR lanes close around 6-7:45pm, before the checkpoints close at 10:30pm, so evening flyers may get only standard or PreCheck lanes",
+   "Went to the wrong terminal? Walk through the garage atrium in 5-10 minutes rather than driving around",
+   "Terminal 2's ticketing hall is partly walled off for construction, but every counter and checkpoint lane is open"
+  ],
+  "faq": [
+   {
+    "q": "How early should I get to RDU?",
+    "a": "RDU says to arrive at least 2 hours before a domestic flight and 3 hours before an international flight, and more at peak times. The busiest hour at security is usually 5-6am."
+   },
+   {
+    "q": "What time does security open at RDU?",
+    "a": "Both checkpoints, in Terminal 1 and Terminal 2, open at 3:30am and close at 10:30pm daily. Most airline ticket counters open around 4:30am."
+   },
+   {
+    "q": "Which terminal is my airline at RDU?",
+    "a": "Terminal 1: Southwest, Alaska, Avelo, Breeze and Sun Country. Terminal 2: Delta, American, United, JetBlue, Frontier and all international airlines, including Air Canada, Air France, Lufthansa, Icelandair, Aer Lingus, Aeromexico, Copa, BermudAir and Volaris."
+   },
+   {
+    "q": "Can I walk between Terminal 1 and Terminal 2 at RDU?",
+    "a": "Yes, but not after security. Walk through the parking garage atrium, about 5-10 minutes, or take a free parking shuttle, then go through security in the other terminal."
+   }
+  ],
+  "sources": [
+   {
+    "title": "RDU - Frequently Asked Questions (checkpoint hours, arrival advice, CLEAR, PreCheck)",
+    "url": "https://www.rdu.com/frequently-asked-questions"
+   },
+   {
+    "title": "RDU - Travel Tips (arrival times, drop-off and pick-up)",
+    "url": "https://www.rdu.com/travel-tips"
+   },
+   {
+    "title": "RDU - Airlines Serving RDU (airlines by terminal)",
+    "url": "https://www.rdu.com/flights/airlines"
+   },
+   {
+    "title": "RDU - Taxis & Ride App Services",
+    "url": "https://www.rdu.com/ground-transportation/taxis"
+   },
+   {
+    "title": "RDU - Public Transportation",
+    "url": "https://www.rdu.com/ground-transportation/bus-and-rail-service"
+   },
+   {
+    "title": "RDU - Parking (rates and payment)",
+    "url": "https://www.rdu.com/parking"
+   },
+   {
+    "title": "RDU - Parking FAQs (shuttles, terminal transfers)",
+    "url": "https://www.rdu.com/parking/parking-faq"
+   },
+   {
+    "title": "RDU - Cell Lot",
+    "url": "https://www.rdu.com/maps-and-directions/cell-lot"
+   },
+   {
+    "title": "RDU - Services & Amenities (ticketing counters, lounges)",
+    "url": "https://www.rdu.com/shops-and-restaurants/services-and-amenities/"
+   },
+   {
+    "title": "RDU - Answering Your Questions About Terminal 2 Construction (Jan 9, 2026)",
+    "url": "https://www.rdu.com/newsroom/news-articles/answering-your-questions-about-terminal-2-construction"
+   },
+   {
+    "title": "RDU - Terminal 2 Expansion Reaches Milestone (Jul 17, 2026)",
+    "url": "https://www.rdu.com/newsroom/press-releases/terminal-2-expansion-reaches-milestone"
+   },
+   {
+    "title": "RDU - Roadway Construction: Customer Impacts Ahead (Mar 18, 2026)",
+    "url": "https://www.rdu.com/newsroom/news-articles/rdu-roadway-construction-customer-impacts-ahead"
+   },
+   {
+    "title": "RDU - John Brantley Boulevard Is Getting a Major Upgrade (Jun 26, 2026)",
+    "url": "https://www.rdu.com/newsroom/news-articles/john-brantley-boulevard-is-getting-a-major-upgrade"
+   },
+   {
+    "title": "RDU - New Runway Construction Unlocks Terminal 2 Growth (Jul 9, 2026)",
+    "url": "https://www.rdu.com/newsroom/news-articles/new-runway-construction-unlocks-terminal-2-growth"
+   },
+   {
+    "title": "RDU - Two Airlines Set to Move to Terminal 1 (Mar 25, 2024)",
+    "url": "https://www.rdu.com/newsroom/news-articles/two-airlines-set-to-move-to-terminal-1"
+   },
+   {
+    "title": "GoTriangle - RDU Shuttle and Route 100",
+    "url": "https://gotriangle.org/rdu-shuttle/"
+   },
+   {
+    "title": "CLEAR - Raleigh-Durham International Airport CLEAR locations & hours",
+    "url": "https://www.clearme.com/all-locations/raleigh-durham-international-airport"
+   },
+   {
+    "title": "The Points Guy - TSA PreCheck Touchless ID nationwide rollout complete (Apr 27, 2026)",
+    "url": "https://thepointsguy.com/news/tsa-precheck-touchless-id-nationwide-rollout-complete/"
+   },
+   {
+    "title": "Wikipedia - Raleigh-Durham International Airport",
+    "url": "https://en.wikipedia.org/wiki/Raleigh%E2%80%93Durham_International_Airport"
+   },
+   {
+    "title": "TSA throughput data, September 13-19, 2026",
+    "url": "https://www.tsa.gov/sites/default/files/foia-readingroom/tsa-throughput-data-to-september-13-2026-to-september-19-2026.pdf"
+   },
+   {
+    "title": "Delta - Check-In Times at U.S. Airports",
+    "url": "https://www.delta.com/us/en/check-in-security/check-in-time-requirements/domestic-check-in"
+   },
+   {
+    "title": "Southwest - When to arrive for your flight (check-in and bag deadlines)",
+    "url": "https://support.southwest.com/helpcenter/article/airport-arrival-recommendation"
+   },
+   {
+    "title": "AP via MyNorthwest - United narrows check-in window; airline comparison (May 27, 2025)",
+    "url": "https://mynorthwest.com/lifestyle/united-is-narrowing-its-check-in-window-for-us-flights-heres-how-it-compares-to-other-airlines/4092751"
    }
   ]
  },
@@ -5899,6 +6536,169 @@
    }
   ]
  },
+ "SJC": {
+  "code": "SJC",
+  "name": "San José Mineta International Airport",
+  "city": "San Jose",
+  "state": "CA",
+  "checkedOn": "2026-10-24",
+  "officialArrivalAdvice": {
+   "domestic": "Arrive at least 2 hours before domestic flights, and allow extra time for parking, check-in and screening",
+   "international": "Arrive at least 3 hours before international flights",
+   "source": "https://www.flysanjose.com/traveltips"
+  },
+  "terminals": [
+   {
+    "id": "A",
+    "name": "Terminal A",
+    "airlines": [
+     "American",
+     "Delta",
+     "Frontier",
+     "United",
+     "Volaris"
+    ],
+    "checkpoints": [
+     {
+      "notes": "Opens 4:00 a.m.; standard closing 11 p.m., later if flights depart late. PreCheck is offered at peak times set by TSA. CLEAR Sun-Fri 4:30 a.m.-7 p.m., Sat 4:30 a.m.-4 p.m.",
+      "precheck": true,
+      "clear": true,
+      "name": "Terminal A Security Checkpoint"
+     }
+    ],
+    "notes": []
+   },
+   {
+    "id": "B",
+    "name": "Terminal B",
+    "airlines": [
+     "Southwest",
+     "Alaska",
+     "Hawaiian",
+     "ZIPAIR"
+    ],
+    "checkpoints": [
+     {
+      "notes": "Opens 4:15 a.m.; standard closing 11 p.m., later if flights depart late. PreCheck is offered at peak times set by TSA. CLEAR Sun-Fri 4:30 a.m.-8 p.m., Sat 4:30 a.m.-6 p.m. CLEAR eGates for CLEAR+ members in the PreCheck lane (since March 2026). In-person PreCheck enrollment and renewal here, no appointment.",
+      "precheck": true,
+      "clear": true,
+      "name": "Terminal B Security Checkpoint"
+     }
+    ],
+    "notes": [
+     "Gateside by TSA PreCheck is listed by SJC as coming soon"
+    ]
+   }
+  ],
+  "connectedAirside": true,
+  "betweenTerminals": "Terminals A and B are connected after security, so your boarding pass works at either checkpoint. The layout is linear, with less than a mile from Gate 1 to Gate 36 and no train. Before security, free shuttles run between the terminals every 7-10 minutes, 24 hours a day.",
+  "securityWaits": {
+   "summary": "SJC does not publish typical wait times or busiest hours. It says PreCheck lanes run during peak periods set by TSA.",
+   "busiestTimes": [],
+   "source": null
+  },
+  "precheckNotes": "PreCheck is at both checkpoints but only during peak periods set by TSA, with no fixed hours published. Touchless ID is available for opted-in PreCheck members on American, Alaska, Delta, Hawaiian, Southwest and United.",
+  "clearAvailable": true,
+  "touchlessId": "TSA PreCheck Touchless ID is offered at SJC for PreCheck members flying American, Alaska, Delta, Hawaiian, Southwest or United who add their KTN and passport to their airline profile and opt in. Carry ID as a backup.",
+  "gettingThere": {
+   "rideshare": "Rideshares drop off at the departures curb of both terminals. Terminal A pickup: Stop 1 (Lyft, Tesla, Uber, Wingz) and Stop 9 (Waymo). Terminal B pickup at the ground transportation island: Stop 7 (Waymo), Stop 8 (Tesla, Uber), Stop 9 (Uber), Stop 10 (Lyft, Wingz).",
+   "transit": "VTA Route 60 (Airport Flyer) stops at Terminal A (Stop 7) and Terminal B (Stop 5) and is free to ride from SJC. It links to Milpitas BART, Winchester station and Santa Clara Transit Center (Caltrain). To downtown San José, ride to Metro/Airport and take light rail (fare applies); SJC estimates 25-35 minutes.",
+   "driving": "Parking can be reserved online as little as 2 hours ahead. Daily rates: Economy Lot 1 $19 (free shuttle every 7-10 minutes, 24/7), Terminal A Garage (Lot 2) $25, Terminal B Garage (Lot 3) $41, Daily Lot 4 and Lot 5 $31. Free cell phone waiting area at 2470 Airport Blvd. Never leave a vehicle unattended at the curb."
+  },
+  "construction2026": [],
+  "bagDrop": "Southwest: bags 45 minutes before domestic departure, check-in 30 minutes. Alaska: check-in cutoff 50 minutes before domestic departure (AP, May 2025). Delta: bags 45 minutes before domestic departure. United and American: 45 minutes for check-in and bags on most domestic flights.",
+  "tips": [
+   "Check your terminal: American, Delta, Frontier and United use Terminal A; Southwest, Alaska and Hawaiian use Terminal B",
+   "Both checkpoints reach every gate, since Terminals A and B connect after security",
+   "Checkpoints open at 4:00 a.m. (Terminal A) and 4:15 a.m. (Terminal B), so arriving earlier for a first-wave flight means waiting",
+   "PreCheck lanes are not open all day; they run during TSA-set peak periods",
+   "Reserve parking online to lock in a space; Economy Lot 1 is cheapest and has a 24-hour shuttle"
+  ],
+  "faq": [
+   {
+    "q": "How early should I get to San José airport?",
+    "a": "SJC cites TSA advice: at least 2 hours before a domestic flight and 3 hours before an international flight. Add time if you are parking."
+   },
+   {
+    "q": "Which terminal is my airline at SJC?",
+    "a": "Terminal A: American, Delta, Frontier, United and Volaris. Terminal B: Southwest, Alaska, Hawaiian and ZIPAIR."
+   },
+   {
+    "q": "What time does security open at SJC?",
+    "a": "Terminal A opens at 4:00 a.m. and Terminal B at 4:15 a.m. Standard closing is 11 p.m., and TSA stays open later for late departures."
+   },
+   {
+    "q": "Can I walk between Terminal A and Terminal B after security?",
+    "a": "Yes. The terminals are connected inside security, so you can clear either checkpoint and walk to any gate."
+   }
+  ],
+  "sources": [
+   {
+    "title": "SJC - Travel Tips & Resources",
+    "url": "https://www.flysanjose.com/traveltips"
+   },
+   {
+    "title": "SJC Buzz - What to Expect When You're Flying SJC (Oct 8, 2025)",
+    "url": "https://www.flysanjose.com/sjc-buzz/what-expect-when-youre-flying-sjc"
+   },
+   {
+    "title": "SJC - Airlines at SJC",
+    "url": "https://www.flysanjose.com/airlines"
+   },
+   {
+    "title": "SJC - Security",
+    "url": "https://www.flysanjose.com/security"
+   },
+   {
+    "title": "SJC - TSA PreCheck",
+    "url": "https://www.flysanjose.com/services/tsa-precheck"
+   },
+   {
+    "title": "SJC - CLEAR",
+    "url": "https://www.flysanjose.com/services/clear"
+   },
+   {
+    "title": "SJC - eGates at SJC (Mar 11, 2026)",
+    "url": "https://www.flysanjose.com/news-release/egates-at-sjc"
+   },
+   {
+    "title": "SJC - Frequently Asked Questions",
+    "url": "https://www.flysanjose.com/faq"
+   },
+   {
+    "title": "SJC - App-Based Rideshares",
+    "url": "https://www.flysanjose.com/app-based-rideshares"
+   },
+   {
+    "title": "SJC - Public Transit & Bike/Pedestrian Access",
+    "url": "https://www.flysanjose.com/public-transit-bike-pedestrian-access"
+   },
+   {
+    "title": "SJC - Airport Shuttle Buses",
+    "url": "https://www.flysanjose.com/sjc-shuttle-buses"
+   },
+   {
+    "title": "SJC - Parking Lots & Garages",
+    "url": "https://www.flysanjose.com/parking"
+   },
+   {
+    "title": "SJC - Airport Improvement Program",
+    "url": "https://www.flysanjose.com/improvement"
+   },
+   {
+    "title": "Southwest - When to Arrive for Your Flight",
+    "url": "https://support.southwest.com/helpcenter/article/airport-arrival-recommendation"
+   },
+   {
+    "title": "Delta - U.S. Domestic Check-In Requirements",
+    "url": "https://www.delta.com/us/en/check-in-security/check-in-time-requirements/domestic-check-in"
+   },
+   {
+    "title": "AP via MyNorthwest - United narrows check-in window; airline comparison (May 27, 2025)",
+    "url": "https://mynorthwest.com/lifestyle/united-is-narrowing-its-check-in-window-for-us-flights-heres-how-it-compares-to-other-airlines/4092751"
+   }
+  ]
+ },
  "SLC": {
   "code": "SLC",
   "name": "Salt Lake City International Airport",
@@ -6071,6 +6871,212 @@
    {
     "title": "Delta - Domestic check-in time requirements",
     "url": "https://www.delta.com/us/en/check-in-security/check-in-time-requirements/domestic-check-in"
+   }
+  ]
+ },
+ "STL": {
+  "code": "STL",
+  "name": "St. Louis Lambert International Airport",
+  "city": "St. Louis",
+  "state": "MO",
+  "checkedOn": "2026-10-24",
+  "officialArrivalAdvice": {
+   "domestic": "Arrive 2 hours before a domestic flight (TSA guidance quoted on STL's FAQ page), and allow extra time for driving, parking and drop-off",
+   "international": "Arrive 3 hours before an international flight (TSA guidance quoted on STL's FAQ page)",
+   "source": "https://www.flystl.com/faqs"
+  },
+  "terminals": [
+   {
+    "id": "T1",
+    "name": "Terminal 1 (Concourses A and C)",
+    "airlines": [
+     "American Airlines",
+     "Delta Air Lines",
+     "United Airlines",
+     "Alaska Airlines",
+     "Frontier Airlines",
+     "Air Canada",
+     "Southern Airways Express"
+    ],
+    "checkpoints": [
+     {
+      "notes": "Serves the A gates: Delta (A2-A10), United (A14-A21), Air Canada (A17) and charter departures. STL lists hours of 3:30am-7:00pm, set by TSA and subject to change. CLEAR's site lists CLEAR at Checkpoint A, about 4am to 5:30-6pm depending on the day.",
+      "precheck": true,
+      "clear": true,
+      "name": "T1, A Gates checkpoint"
+     },
+     {
+      "notes": "Serves the C gates: American (C6-C24), Alaska (C15), Frontier (C19, C23) and Southern Airways Express (C1, C3). STL lists hours of 3:30am-10:00pm. CLEAR's site lists CLEAR at Checkpoint C, 4am-5:30pm Sunday-Friday and 4am-4pm Saturday.",
+      "precheck": true,
+      "clear": true,
+      "name": "T1, C Gates checkpoint"
+     }
+    ],
+    "notes": [
+     "Concourses B and D are closed; Terminal 1 uses Concourses A and C",
+     "Delta's ticket counter is at Door 4, with curbside check-in at Departures Drive, Entry 4. Delta counter hours: 4am-7pm Sunday-Friday, 4am-6pm Saturday.",
+     "This research could not confirm whether Concourses A and C are connected after security, so use the checkpoint for your gate",
+     "The MetroLink station at Terminal 1 is closed from Oct 12, 2026 until about mid-December 2026 for airport construction"
+    ]
+   },
+   {
+    "id": "T2",
+    "name": "Terminal 2 (Concourse E)",
+    "airlines": [
+     "Southwest Airlines",
+     "British Airways",
+     "Lufthansa"
+    ],
+    "checkpoints": [
+     {
+      "notes": "Serves the E/F gates: Southwest (E4-E40), British Airways and Lufthansa (E29). STL lists hours of 3:30am-10:00pm. TSA screening counts report two screening points here, T2-E and T2-F. CLEAR's site lists CLEAR at Checkpoint E (4am-8pm Sunday-Friday, 4am-6pm Saturday) and a PreCheck CLEAR lane at Checkpoint F (4am-7pm Sunday-Friday, 4am-5pm Saturday).",
+      "precheck": true,
+      "clear": true,
+      "name": "T2, E/F Gates checkpoint"
+     }
+    ],
+    "notes": [
+     "Southwest, STL's dominant carrier, uses Terminal 2",
+     "Southwest curbside check-in is at Departures Drive, Entry 1: 4am-noon Sunday-Friday and 4am-10am Saturday",
+     "British Airways' ticket counter is at Door 3",
+     "Gate E29 also handles international arrivals, including Frontier and charter flights"
+    ]
+   }
+  ],
+  "connectedAirside": false,
+  "betweenTerminals": "The two terminals are not connected and you cannot walk between them. A free Terminal Shuttle runs 24/7 between Terminal 1 Exit 12 and Terminal 2 Door 10, about 10 minutes, with pickups every 8-15 minutes. Connecting between terminals means going through TSA screening again.",
+  "securityWaits": {
+   "summary": "STL shows a live estimated wait on its security page, based on MyTSA (which reports a historical maximum within a range). It publishes no typical peak times. In TSA's hourly screening counts for Sep 13-19, 2026, STL was busiest from 4am to 9am, peaking 7-8am. There was a smaller midday rise around 11am-2pm, and traffic was much lighter after 6pm. Sunday, Friday, Thursday and Monday were the busiest days that week; Tuesday and Saturday were the quietest.",
+   "busiestTimes": [
+    "4:00-9:00am (peak 7:00-8:00am)",
+    "11:00am-2:00pm",
+    "Sundays, Thursdays, Fridays and Mondays (TSA counts, week of Sep 13, 2026)"
+   ],
+   "source": "https://www.tsa.gov/sites/default/files/foia-readingroom/tsa-throughput-data-to-september-13-2026-to-september-19-2026.pdf"
+  },
+  "precheckNotes": "STL lists TSA PreCheck lanes at the Concourse A and Concourse C checkpoints in Terminal 1 and the Concourse E checkpoint in Terminal 2. The PreCheck enrollment center that was in Terminal 1 near Entry 1 has closed; CLEAR enrollment pods outside the checkpoints can help with PreCheck enrollment.",
+  "clearAvailable": true,
+  "touchlessId": "A Newsweek report from early 2026 listed STL among airports scheduled to get TSA PreCheck Touchless ID in spring 2026. This research could not confirm that it is live at STL or which airlines offer it there.",
+  "gettingThere": {
+   "rideshare": "Uber and Lyft pickup is at Terminal 1 Door 6 (Departure level) and Terminal 2 Door 12 (Arrivals level). STL does not list separate rideshare drop-off spots; follow signs to your terminal's Departures Drive. Vehicles may not wait in the Arrivals areas; use the free T1 or T2 cell phone lots.",
+   "transit": "MetroLink's Red Line stops at both terminals. The Terminal 1 station is closed from Oct 12, 2026 until about mid-December 2026. Until it reopens, ride to Terminal 2 and take the free shuttle from Exit 10 to Terminal 1; Metro says to allow a few extra minutes. Buy fares in advance at station machines or in the Transit app.",
+   "driving": "From westbound I-70 or I-170, take Exit 238A (Lambert International Blvd). From eastbound I-70, take Exit 235C (Cypress Road). The terminals are about a mile apart, so follow signs for your terminal. Garage rates since July 1, 2026: Terminal 1 $31/day, Terminal 2 $33/day. Lot B is $14/day and Lot C $12-15/day, with shuttles every 8-15 minutes, 24/7. Lot E, east of Terminal 2, is reservation-only ($27/day plus a $10 reservation fee). STL suggests allowing 30 extra minutes when parking in a shuttle lot."
+  },
+  "construction2026": [
+   "The Terminal 1 MetroLink station is closed for airport construction from Oct 12, 2026 until about mid-December 2026; a free shuttle links it to the Terminal 2 station",
+   "A new single terminal is still in design (30% done in early 2026; groundbreaking possibly in 2027). Reported plans close Concourse A in August 2027 and move its airlines to Concourses C and D, so nothing changes for departures in 2026."
+  ],
+  "bagDrop": "Southwest: check bags at least 45 minutes before a domestic flight's scheduled departure (60 minutes for international), and check in at least 30 minutes before a domestic flight. Delta: bags 45 minutes before domestic departure, 30 minutes without bags. American and United: check in and check bags 45 minutes before domestic departure (AP, May 2025).",
+  "tips": [
+   "Check which terminal your airline uses before you leave. The terminals are more than a mile apart, and you cannot walk between them.",
+   "Flying Southwest? Go to Terminal 2. Delta, United and Air Canada use the A-gates checkpoint in Terminal 1; American, Alaska and Frontier use the C-gates checkpoint.",
+   "The T1 A-gates checkpoint is listed as open only until 7pm, while the C-gates and Terminal 2 checkpoints are listed until 10pm. If you fly late from the A gates, check flystl.com for current hours.",
+   "Taking MetroLink to Terminal 1 before mid-December 2026? Get off at Terminal 2 and take the free shuttle from Exit 10, and allow a few extra minutes.",
+   "Lot E now takes reservations only. Without a booking, use another lot and allow 30 extra minutes for the shuttle.",
+   "Southwest curbside check-in at Entry 1 closes at noon on most days (10am on Saturday), so later flyers check bags inside"
+  ],
+  "faq": [
+   {
+    "q": "How early should I get to St. Louis airport (STL)?",
+    "a": "STL quotes TSA's advice: arrive 2 hours before a domestic flight and 3 hours before an international flight. Mornings are busiest at security, especially 7-8am, so allow extra time then and for parking or drop-off."
+   },
+   {
+    "q": "Which terminal is Southwest at STL?",
+    "a": "Terminal 2, Concourse E. Southwest curbside check-in is at Departures Drive, Entry 1, open 4am-noon Sunday-Friday and 4am-10am Saturday."
+   },
+   {
+    "q": "Are STL's Terminal 1 and Terminal 2 connected?",
+    "a": "No. There is no walking route between them. A free 24/7 shuttle runs between Terminal 1 Exit 12 and Terminal 2 Door 10, about 10 minutes, every 8-15 minutes. Connecting passengers must go through security again."
+   },
+   {
+    "q": "Can I take MetroLink to STL airport?",
+    "a": "Yes. The Red Line stops at both terminals. The Terminal 1 station is closed from Oct 12 until about mid-December 2026, so ride to Terminal 2 and take the free shuttle from Exit 10 to Terminal 1."
+   },
+   {
+    "q": "Does STL have TSA PreCheck and CLEAR?",
+    "a": "Yes. STL lists PreCheck lanes at the Concourse A, C and E checkpoints. CLEAR lists lanes at Terminal 1 Checkpoints A and C and Terminal 2 Checkpoints E and F, generally from 4am to late afternoon or early evening."
+   }
+  ],
+  "sources": [
+   {
+    "title": "STL - Security (checkpoint hours, PreCheck, wait times)",
+    "url": "https://www.flystl.com/security"
+   },
+   {
+    "title": "STL - FAQs (arrival advice, terminal shuttle, MetroLink)",
+    "url": "https://www.flystl.com/faqs"
+   },
+   {
+    "title": "STL - Flights & Airlines (gates and check-in by airline)",
+    "url": "https://www.flystl.com/flights-airlines/"
+   },
+   {
+    "title": "STL - Parking & Transportation (rideshare, MetroLink, cell phone lots, directions)",
+    "url": "https://www.flystl.com/parking-transportation/"
+   },
+   {
+    "title": "STL - Terminal 1 Parking (rates effective July 1, 2026)",
+    "url": "https://www.flystl.com/parking-transportation/terminal-1-parking/"
+   },
+   {
+    "title": "STL - Terminal 2 Parking (rates effective July 1, 2026)",
+    "url": "https://www.flystl.com/parking-transportation/terminal-2-parking/"
+   },
+   {
+    "title": "STL - Lot E Parking (reservation only)",
+    "url": "https://www.flystl.com/parking-transportation/lot-E-parking/"
+   },
+   {
+    "title": "STL - Lot B Parking",
+    "url": "https://www.flystl.com/parking-transportation/lot-b-parking/"
+   },
+   {
+    "title": "STL - Lot C Parking",
+    "url": "https://www.flystl.com/parking-transportation/lot-c-parking/"
+   },
+   {
+    "title": "CLEAR - St. Louis Lambert Airport CLEAR locations & hours",
+    "url": "https://www.clearme.com/all-locations/st-louis-lambert-international-airport"
+   },
+   {
+    "title": "Spectrum News - Terminal 1 MetroLink station closing through mid-December (Oct 9, 2026)",
+    "url": "https://spectrumlocalnews.com/mo/st-louis/news/2026/10/09/metrolink-st-louis-lambert-international-airport-closure"
+   },
+   {
+    "title": "First Alert 4 - New details on Lambert's single-terminal project and airline shifts (Apr 14, 2026)",
+    "url": "https://www.firstalert4.com/2026/04/14/new-details-emerge-lamberts-single-terminal-project-airline-shifts/"
+   },
+   {
+    "title": "First Alert 4 - Lambert moves closer to new terminal as design work progresses (Mar 25, 2026)",
+    "url": "https://www.firstalert4.com/2026/03/25/lambert-airport-moves-closer-new-terminal-design-work-progresses"
+   },
+   {
+    "title": "Chase - A guide to St. Louis Lambert International Airport",
+    "url": "https://www.chase.com/personal/credit-cards/education/basics/the-guide-to-st-louis-lambert-international-airport"
+   },
+   {
+    "title": "Wikipedia - St. Louis Lambert International Airport",
+    "url": "https://en.wikipedia.org/wiki/St._Louis_Lambert_International_Airport"
+   },
+   {
+    "title": "Newsweek - TSA expanding PreCheck Touchless ID to 65 more airports (early 2026)",
+    "url": "https://newsweek.com/tsa-expanding-precheck-touchless-id-system-to-65-more-airports-heres-the-list-11466312"
+   },
+   {
+    "title": "TSA throughput data, September 13-19, 2026",
+    "url": "https://www.tsa.gov/sites/default/files/foia-readingroom/tsa-throughput-data-to-september-13-2026-to-september-19-2026.pdf"
+   },
+   {
+    "title": "Southwest - When to arrive for your flight (check-in and bag deadlines)",
+    "url": "https://support.southwest.com/helpcenter/article/airport-arrival-recommendation"
+   },
+   {
+    "title": "Delta - Check-In Times at U.S. Airports",
+    "url": "https://www.delta.com/us/en/check-in-security/check-in-time-requirements/domestic-check-in"
+   },
+   {
+    "title": "AP via MyNorthwest - United narrows check-in window; airline comparison (May 27, 2025)",
+    "url": "https://mynorthwest.com/lifestyle/united-is-narrowing-its-check-in-window-for-us-flights-heres-how-it-compares-to-other-airlines/4092751"
    }
   ]
  },

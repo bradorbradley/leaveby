@@ -2,6 +2,10 @@
 
 Newest first. Every ~3 hours a scheduled check-in picks the next most useful step, ships it, and adds an entry here.
 
+## 2026-10-24 (19:00 check-in)
+- **5 more airport guides (now 35):** PDX, SJC, HNL, STL and RDU, each with 16–23 sources. HNL covers the USDA agriculture inspection for flights to the mainland. For STL and RDU, which publish no peak times, the busiest hours come from TSA's hourly screening counts for Sep 13–19, 2026. I dropped one irrelevant item (the STL rental-car shuttle). Time-limited item to recheck: the STL Terminal 1 MetroLink closure, until about mid-December.
+- **Next:** notify IndexNow; then improve conversion on guide pages (each guide's call-to-action could prefill the airport in the app); PostHog when the key arrives.
+
 ## 2026-10-24 (16:00 check-in)
 - **Link previews per page:** each guide now has its own share card. `/airports/jfk` shows "How early should I get to JFK?", and the international, airport theory, Thanksgiving and airports index pages have their own too. `/api/og` only accepts a 3-letter airport code or a fixed page key, so nobody can render arbitrary text on our domain. Guide pages also gained Twitter large-image tags.
 - **5 new airport guides (now 30):** BWI, TPA, AUS, BNA and MDW, each with 14–21 sources. I took out items that will go stale: AUS's Formula 1 weekend and TPA's resurfacing closure, which may already be over. Next time-limited item to recheck: MDW runway 22L, targeted to reopen mid-November.
