@@ -28,9 +28,18 @@ export function AppCta({ title, body }: { title: string; body: string }) {
     <section className="card mt-10 !p-6 text-center">
       <h2 className="font-display text-[24px] font-semibold tracking-[-0.01em]">{title}</h2>
       <p className="mx-auto mt-2 max-w-[46ch] text-[15.5px] leading-relaxed text-ink-2">{body}</p>
-      <Link href="/app" className="btn-primary mx-auto mt-5 !w-auto px-7">
-        Find my leave time <ArrowRight className="h-4 w-4" />
-      </Link>
+      {/* A plain GET form: works without JavaScript and lands in the app with the flight filled in. */}
+      <form action="/app" method="get" className="mx-auto mt-5 flex max-w-[420px] flex-col gap-2.5 sm:flex-row">
+        <label htmlFor="cta-flight" className="sr-only">
+          Flight number
+        </label>
+        <div className="field flex-1">
+          <input id="cta-flight" name="flight" placeholder="Flight number, e.g. DL212" autoComplete="off" autoCapitalize="characters" spellCheck={false} maxLength={12} />
+        </div>
+        <button type="submit" className="btn-primary !w-auto shrink-0 px-6">
+          Find my leave time <ArrowRight className="h-4 w-4" />
+        </button>
+      </form>
       <p className="mt-3 text-[12.5px] text-ink-3">Free. No account.</p>
     </section>
   );
