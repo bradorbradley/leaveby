@@ -1,0 +1,22 @@
+{
+  "week": "founder",
+  "notes": "For the founder's own TikTok and Instagram: a plain 'I built this' post. The plan slide is the real JetBlue 123 plan from week 1.",
+  "concepts": [
+    {
+      "id": "founder",
+      "caption": "I built a free app that tells you exactly when to leave for your flight. Type your flight number and it does the math: traffic, security, bag drop, the walk to your gate. leaveby.xyz (free, no account). Tell me what it says for your next trip 👇",
+      "hashtags": ["traveltok", "airporttips", "traveltips", "buildinpublic", "airporttheory"],
+      "hooks": [
+        { "id": "a", "slide": { "type": "text", "kicker": "I built this", "title": "A free app that tells you the *exact minute* to leave for your flight", "sticker": "wow.webp", "size": 116 } },
+        { "id": "b", "slide": { "type": "text", "title": "Stop guessing when to leave for *the airport*.", "sticker": "wow.webp" } }
+      ],
+      "slides": [
+        { "type": "text", "kicker": "Step 1", "title": "Type your *flight number*", "sub": "It finds your airport, your terminal and your departure time." },
+        { "type": "text", "kicker": "Step 2", "title": "It checks what makes you *late*", "sub": "Live traffic, weather, the security line at your hour, bag drop and the walk to your gate." },
+        { "type": "plan", "time": "3:45", "ampm": "AM", "trip": "JetBlue 123 · JFK T5 → LAX · from Williamsburg", "rows": [["Drive (rain at 2 AM)", "46 min"], ["Curb to security", "5 min"], ["Security line", "30 min"], ["Walk to gate", "7 min"], ["Boarding starts", "5:30 AM"]], "note": "Real Leave By plan for Fri, Oct 16. Yours will differ." },
+        { "type": "photo", "image": "a5_gate.webp", "at": "bottom", "title": "Then you just *leave on time.*", "sub": "Ride, route and a reminder are one tap away." },
+        { "type": "cta", "title": "Try it on *your* next flight" }
+      ]
+    }
+  ]
+}
