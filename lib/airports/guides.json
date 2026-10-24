@@ -172,6 +172,387 @@
    }
   ]
  },
+ "AUS": {
+  "code": "AUS",
+  "name": "Austin-Bergstrom International Airport",
+  "city": "Austin",
+  "state": "TX",
+  "checkedOn": "2026-10-24",
+  "officialArrivalAdvice": {
+   "domestic": "AUS says passengers should arrive at least 2.5 hours before departure for all domestic flights",
+   "international": "AUS says to arrive 3 hours before international flights",
+   "source": "https://www.flyaustin.com/travel-security-austin-bergstrom-international-airport"
+  },
+  "terminals": [
+   {
+    "id": "BJT",
+    "name": "Barbara Jordan Terminal",
+    "airlines": [
+     "American",
+     "Southwest",
+     "Delta",
+     "United",
+     "Alaska",
+     "Allegiant",
+     "Frontier",
+     "JetBlue",
+     "Sun Country",
+     "Air Canada",
+     "WestJet",
+     "Porter",
+     "British Airways",
+     "Lufthansa",
+     "KLM",
+     "Aeromexico",
+     "Viva Aerobus",
+     "Copa Airlines",
+     "Cayman Airways"
+    ],
+    "checkpoints": [
+     {
+      "notes": "From October 20, 2026: TSA PreCheck, PreCheck Touchless ID, CLEAR with PreCheck, Known Crew Member, ADA and Priority/Premium screening.",
+      "precheck": true,
+      "clear": true,
+      "name": "Checkpoint 1"
+     },
+     {
+      "notes": "From October 20, 2026: TSA PreCheck only.",
+      "precheck": true,
+      "clear": false,
+      "name": "Checkpoint 2"
+     },
+     {
+      "notes": "From October 20, 2026: general screening, CLEAR for general screening, ADA and Priority/Premium screening.",
+      "precheck": false,
+      "clear": true,
+      "name": "Checkpoint 3"
+     },
+     {
+      "notes": "General screening only. Opened February 23, 2026, in the West Infill on the far west side of the terminal, with easier access to Gates 22 and above. AUS says a future central checkpoint will eventually replace it.",
+      "precheck": false,
+      "clear": false,
+      "name": "Checkpoint 4"
+     }
+    ],
+    "notes": [
+     "All airlines now fly from the Barbara Jordan Terminal. The South Terminal closed March 31, 2026, and Allegiant and Frontier moved over on April 1.",
+     "All four checkpoints lead to all gates",
+     "The first checkpoints typically open at 3am daily",
+     "AUS says travelers with a REAL ID can use dedicated lanes at all checkpoints",
+     "Curbside check-in is offered by select airlines on the upper level"
+    ]
+   }
+  ],
+  "connectedAirside": true,
+  "betweenTerminals": "Single terminal. All four checkpoints lead to all gates, so you can reach any gate after screening.",
+  "securityWaits": {
+   "summary": "AUS officials said in March 2026 that TSA checkpoints are busiest from about 3 to 7am, with departures peaking 6-7am. AUS calls a day with more than 35,000 departing passengers high-volume. In spring 2026, Sundays and Mondays were its busiest days. Lines stretched outside the terminal on the peak Friday of spring break 2026.",
+   "busiestTimes": [
+    "3:00-7:00am (TSA)",
+    "6:00-7:00am (departures)",
+    "Sundays and Mondays during busy seasons"
+   ],
+   "source": "https://www.cbsaustin.com/news/local/aus-expects-over-30000-departing-passengers-on-thursday-as-dhs-shutdown-continues"
+  },
+  "precheckNotes": "As of October 20, 2026, PreCheck lanes are at Checkpoints 1 and 2 only. Checkpoints 3 and 4 are general screening. AUS did not publish PreCheck lane hours.",
+  "clearAvailable": true,
+  "touchlessId": "AUS lists TSA PreCheck Touchless ID at Checkpoint 1. A March 2026 airport list shows it at AUS for American. You opt in through your airline profile.",
+  "gettingThere": {
+   "rideshare": "Drop-off is at the upper level (departures) curb. Rideshare and taxi pickup is on the ground level under the Consolidated Rental Car Facility, just north of (behind) the Red Garage. Mobility trams run from the garages and terminal to the rideshare area.",
+   "transit": "CapMetro Route 20 stops on the lower level just outside baggage claim. It runs every 15-30 minutes, seven days a week, and takes about 35 minutes to downtown. A single ride is $1.25.",
+   "driving": "Both the upper and lower roadways are open for drop-off; AUS says to use whichever is less crowded. On-site parking can sell out, so book ahead at ABIAParking.com. Economy Lot shuttles run every 15-20 minutes. The free cell phone lot at 2901 Spirit of Texas Drive is open 24/7."
+  },
+  "construction2026": [
+   "Atrium Infill between Checkpoints 2 and 3 in the Departures Hall: construction walls, adjusted queue lines and a different flow when busy. It adds screening, bag check and processing space and is planned to finish in 2026.",
+   "West Gate Expansion (August 2023 to late 2026) is past security on the west side, with temporary walls and barriers. It replaces 12 boarding bridges and adds 3 gates.",
+   "Yellow Garage construction next to the Blue Garage (finish expected early 2027): shifting traffic around the Blue Garage exits, flaggers and lower speeds. The Blue Garage exit ramp closes at times from 1am to 8am, and drivers exit through the Red Garage toll booth.",
+   "AUS says Journey With AUS construction continues across the campus; check flyaustin.com/construction-updates before you go"
+  ],
+  "bagDrop": "American: check-in and bag deadline is 45 minutes before domestic departure. Southwest: bags checked less than 45 minutes before a domestic departure may not be accepted (60 minutes for international); bags are accepted no earlier than 4 hours ahead. Delta: check bags at least 45 minutes before domestic departure, no more than 6 hours ahead.",
+  "tips": [
+   "AUS asks for 2.5 hours before domestic flights, more than most US airports. Plan for that, especially before 7am.",
+   "Pick your checkpoint by your lane type. PreCheck is only at Checkpoints 1 and 2, and CLEAR is at 1 (with PreCheck) and 3 (general).",
+   "Checkpoint 4 on the far west side is general screening only and is closest to Gates 22 and up",
+   "Allegiant and Frontier no longer use the South Terminal. Go to the Barbara Jordan Terminal for every airline.",
+   "Garages can sell out on busy days. Book parking ahead and allow for Economy Lot shuttle time."
+  ],
+  "faq": [
+   {
+    "q": "How early should I get to Austin airport?",
+    "a": "AUS recommends at least 2.5 hours before domestic flights and 3 hours before international flights. Allow more if you are checking bags or returning a rental car."
+   },
+   {
+    "q": "Which checkpoint has TSA PreCheck at AUS?",
+    "a": "As of October 20, 2026, Checkpoints 1 and 2 have PreCheck. Checkpoint 1 also has CLEAR with PreCheck and Touchless ID. Checkpoints 3 and 4 are general screening."
+   },
+   {
+    "q": "Is the South Terminal at Austin airport still open?",
+    "a": "No. The South Terminal closed March 31, 2026. Allegiant and Frontier now fly from the Barbara Jordan Terminal with all other airlines."
+   },
+   {
+    "q": "Where do I get an Uber or Lyft at AUS?",
+    "a": "Drop-off is at the upper level curb. Pickup is on the ground level under the Consolidated Rental Car Facility, behind the Red Garage. Trams run there from the terminal and garages."
+   }
+  ],
+  "sources": [
+   {
+    "title": "AUS - Travel & Security (checkpoints, arrival advice)",
+    "url": "https://www.flyaustin.com/travel-security-austin-bergstrom-international-airport"
+   },
+   {
+    "title": "AUS - Airlines at the Barbara Jordan Terminal",
+    "url": "https://www.flyaustin.com/aus-airport-airlines-flights"
+   },
+   {
+    "title": "AUS - Ground Transportation",
+    "url": "https://www.flyaustin.com/ground-transportation-barbara-jordan-terminal"
+   },
+   {
+    "title": "AUS - Construction Updates",
+    "url": "https://www.flyaustin.com/construction-updates"
+   },
+   {
+    "title": "AUS - Formula 1 high-volume travel advisory (Oct 20, 2026)",
+    "url": "https://www.flyaustin.com/news/austin-bergstrom-international-airport-advises-passengers-prepare-high-volume-travel-formula-1"
+   },
+   {
+    "title": "AUS - Navigating AUS During Construction (Jul 22, 2026)",
+    "url": "https://www.flyaustin.com/fly-aus-blog/navigating-aus-during-construction-your-friendly-guide-getting-around-airport"
+   },
+   {
+    "title": "AUS - West Infill expansion complete, new checkpoint (Feb 6, 2026)",
+    "url": "https://www.flyaustin.com/news/austin-bergstrom-international-airport-celebrates-completion-west-infill-expansion"
+   },
+   {
+    "title": "AUS - Spring break travel advisory (Mar 10, 2026)",
+    "url": "https://www.flyaustin.com/news/aus-prepares-increased-passenger-traffic-during-spring-break-and-spring-festival-travel-season"
+   },
+   {
+    "title": "AUS - South Terminal closure",
+    "url": "https://www.flyaustin.com/news/south-terminal-closure-marks-new-chapter-aus-expansion"
+   },
+   {
+    "title": "AUS - Travel Tips & FAQ",
+    "url": "https://www.flyaustin.com/aus-travel-tips-frequently-asked-questions"
+   },
+   {
+    "title": "CapMetro - Airport service (Route 20)",
+    "url": "https://www.capmetro.org/airport"
+   },
+   {
+    "title": "CBS Austin - AUS expects 30,000+ departing passengers (Mar 26, 2026)",
+    "url": "https://www.cbsaustin.com/news/local/aus-expects-over-30000-departing-passengers-on-thursday-as-dhs-shutdown-continues"
+   },
+   {
+    "title": "CBS Austin - Long lines for TSA continue at Austin airport (Mar 14, 2026)",
+    "url": "https://www.cbsaustin.com/news/local/long-lines-for-tsa-continue-at-austin-airport-for-second-day"
+   },
+   {
+    "title": "AP via MyNorthwest - United narrows check-in window; airline comparison (May 2025)",
+    "url": "https://mynorthwest.com/lifestyle/united-is-narrowing-its-check-in-window-for-us-flights-heres-how-it-compares-to-other-airlines/4092751"
+   },
+   {
+    "title": "Southwest - How long before departure can I check bags",
+    "url": "https://support.southwest.com/helpcenter/s/article/How-long-before-my-flights-departure-time-can-I-check-bags"
+   },
+   {
+    "title": "Delta - Check-In Times at U.S. Airports",
+    "url": "https://www.delta.com/us/en/check-in-security/check-in-time-requirements/domestic-check-in"
+   },
+   {
+    "title": "The Bulkhead Seat - TSA PreCheck Touchless ID airport list (Mar 16, 2026)",
+    "url": "https://thebulkheadseat.com/?p=33789"
+   }
+  ]
+ },
+ "BNA": {
+  "code": "BNA",
+  "name": "Nashville International Airport",
+  "city": "Nashville",
+  "state": "TN",
+  "checkedOn": "2026-10-24",
+  "officialArrivalAdvice": {
+   "domestic": "BNA's fall break tips say to arrive 2 hours before domestic flights and to leave time for parking (WSMV, Sept 30, 2026). Southwest also suggests 120 minutes at BNA.",
+   "international": "BNA's fall break tips say to arrive 3 hours before international flights (WSMV, Sept 30, 2026)",
+   "source": "https://www.wsmv.com/2026/09/30/nashville-airport-shares-tips-ahead-busy-fall-break-travel-season/"
+  },
+  "terminals": [
+   {
+    "id": "Main",
+    "name": "Main Terminal (Grand Lobby)",
+    "airlines": [
+     "Southwest",
+     "American",
+     "Delta",
+     "United",
+     "Alaska",
+     "Frontier",
+     "JetBlue",
+     "Allegiant",
+     "Avelo",
+     "Sun Country",
+     "Contour",
+     "Air Canada",
+     "Porter",
+     "WestJet",
+     "Aer Lingus",
+     "British Airways",
+     "Icelandair",
+     "Viva Aerobus"
+    ],
+    "checkpoints": [
+     {
+      "notes": "On Level 3 (departures) in the Grand Lobby and serves all concourses. It opened with 24 lanes in January 2023. Upgraded Points (Sept 2026) says it opens daily at 3:30am; closing time not confirmed. Has dedicated PreCheck lanes; TSA sets PreCheck hours.",
+      "precheck": true,
+      "clear": null,
+      "name": "Central Security Checkpoint, Level 3"
+     }
+    ],
+    "notes": [
+     "Concourse B (gates B1, B3-B11): Delta and United, per Upgraded Points (Sept 2026)",
+     "Concourse C (C1-C3, C13-C27): American and Southwest. Gates C4-C11 are a satellite reached by shuttle bus from near gate C2; Upgraded Points lists Air Canada, Allegiant, Avelo, Contour, JetBlue, Porter and Sun Country there",
+     "Concourse D (D1-D11): Southwest. Southwest lists its BNA gates as C4, C7, C9, C16, C18-C22, C25 and D1-D6",
+     "T Gates, just past security: Alaska, Frontier and international carriers including Aer Lingus, British Airways, Icelandair, WestJet and Viva Aerobus. All international arrivals use Concourse T",
+     "Concourse A is closed and being rebuilt; the new 16-gate Concourse A is due in July 2028",
+     "If you park in a terminal garage, you enter the terminal on Level 1. The Level 5 pedestrian bridge is closed during construction"
+    ]
+   }
+  ],
+  "connectedAirside": true,
+  "betweenTerminals": "Single terminal. After security you can walk between Concourses B, C, D and T. Gates C4-C11 are a satellite reached by shuttle bus from near gate C2.",
+  "securityWaits": {
+   "summary": "BNA does not publish an hourly wait pattern that this research could find. Fall break is its busiest period: it set a one-day record of 116,047 passengers on Oct 5, 2025. For fall break 2025, BNA named Sundays, Mondays, Thursdays and Fridays as high-volume days, and TSA added staff Thursday through Monday. BNA also warned of longer parking, check-in and security waits on Monday, Sept 21, 2026.",
+   "busiestTimes": [
+    "Fall break (early to mid October)",
+    "Sundays, Mondays, Thursdays and Fridays at busy times (BNA fall break 2025 plan)"
+   ],
+   "source": "https://www.wsmv.com/2025/10/01/bna-prepares-one-its-busiest-travel-periods/"
+  },
+  "precheckNotes": "The central checkpoint has dedicated PreCheck lanes. Upgraded Points says to check TSA for PreCheck hours because they vary. This research could not confirm PreCheck closing times.",
+  "clearAvailable": null,
+  "touchlessId": "Southwest's BNA page lists a TSA PreCheck Touchless ID checkpoint (opt in through your airline profile). A March 2026 list showed BNA as being added by late spring.",
+  "gettingThere": {
+   "rideshare": "Drop-off is at the Level 3 departures curb in front of the terminal. Uber and Lyft pickup is at the Ground Transportation Center on Level 1 of Terminal Garage 2. A local guide (Oct 2026) says Lyft uses Zone A and Uber Zones B and C.",
+   "transit": "WeGo Route 18 Airport runs to WeGo Central downtown from the Ground Transportation Center (Level 1, Terminal Garage 2). Express trips take about 20 minutes and local trips 35-45 minutes. Since July 5, 2026, it runs every 30 minutes from 6am to 6pm, seven days a week, and every 40 minutes in the evening. Fare is $2.",
+   "driving": "Construction is underway, so BNA suggests learning the alternate route from Murfreesboro Pike and I-40 Exit 216B. Terminal Lot A closed July 1, 2026. Terminal Garages 1 and 2, Economy Lots B and C, and valet remain; economy shuttles leave from Level 2 arrivals about every 10 minutes. Since Sept 23, 2026, Garage 1 has no exit: drive through to Garage 2, take the helix down to Level P2 and pay there. The free cell lot is at 1415 Murfreesboro Pike."
+  },
+  "construction2026": [
+   "Central Core Enhancement: the main escalator and elevator hub closed June 1, 2026, for an 18-month, $40 million rebuild expected to run through December 2027",
+   "The Level 5 pedestrian bridge from the garages is closed, so garage parkers enter the terminal on Level 1",
+   "Concourse A is closed for demolition and rebuilding; the new 16-gate concourse is expected in July 2028",
+   "Terminal Lot A closed July 1, 2026, for a new rental car facility and parking garage",
+   "The Terminal Garage 1 exit closed Sept 23, 2026; drivers exit through Terminal Garage 2. BNA says more roadway changes are expected this fall"
+  ],
+  "bagDrop": "Southwest: check bags at least 45 minutes before domestic departure (60 minutes for international) and check in at least 30 minutes before domestic departure. Be at the gate 10 minutes before departure. Its BNA ticket counter opens 90 minutes before the first departing flight. American, United and Delta: check bags at least 45 minutes before domestic departure. Alaska: check in at least 50 minutes before domestic departure.",
+  "tips": [
+   "There is one central checkpoint, on Level 3 in the Grand Lobby, and it serves all concourses",
+   "Parking in a garage? Allow extra walking time. You enter the terminal on Level 1 because the Level 5 bridge is closed until the Central Core work ends (expected December 2027)",
+   "Lot A is closed. Use the terminal garages, Economy Lots B and C, or valet. Leaving Garage 1, follow signs to Garage 2 to exit",
+   "If traffic backs up on the usual route, BNA suggests the Murfreesboro Pike and I-40 Exit 216B approach",
+   "Southwest's BNA ticket counter opens 90 minutes before the first flight of the day, so very early flyers should check in online",
+   "Gates C4-C11 are on a satellite reached by shuttle bus from near gate C2, so leave extra time if your flight leaves from one of them"
+  ],
+  "faq": [
+   {
+    "q": "How early should I get to Nashville airport?",
+    "a": "BNA says to arrive 2 hours before a domestic flight and 3 hours before an international flight. Leave extra time for parking and construction detours."
+   },
+   {
+    "q": "How many security checkpoints does BNA have?",
+    "a": "One. The central checkpoint on Level 3 in the Grand Lobby has 24 lanes and serves all concourses. It opens at 3:30am, and it has PreCheck lanes."
+   },
+   {
+    "q": "Where do Uber and Lyft pick up at Nashville airport?",
+    "a": "At the Ground Transportation Center on Level 1 of Terminal Garage 2. Drop-off is at the Level 3 departures curb."
+   },
+   {
+    "q": "Is Lot A still open at BNA?",
+    "a": "No. Terminal Lot A closed July 1, 2026, to make room for a new garage and rental car facility. The terminal garages, Economy Lots B and C, and valet are still open."
+   },
+   {
+    "q": "Can I take a bus from BNA to downtown Nashville?",
+    "a": "Yes. WeGo Route 18 Airport leaves from Level 1 of Terminal Garage 2 and costs $2. Express trips take about 20 minutes. Buses run every 30 minutes from 6am to 6pm."
+   }
+  ],
+  "sources": [
+   {
+    "title": "WSMV - Nashville airport shares tips ahead of busy fall break travel season (Sept 30, 2026)",
+    "url": "https://www.wsmv.com/2026/09/30/nashville-airport-shares-tips-ahead-busy-fall-break-travel-season/"
+   },
+   {
+    "title": "WSMV - Nashville airport changing Terminal Garage 1 exit route (Sept 18, 2026)",
+    "url": "https://www.wsmv.com/2026/09/18/nashville-airport-changing-terminal-garage-1-exit-route-heres-when-more-you-need-know/"
+   },
+   {
+    "title": "WSMV - Nashville airport warning travelers of high passenger volume Monday (Sept 21, 2026)",
+    "url": "https://www.wsmv.com/2026/09/21/nashville-airport-warning-travelers-high-passenger-volume-monday-heres-what-know/"
+   },
+   {
+    "title": "WSMV - Nashville airport reports record nearly 27M passengers as construction intensifies (Aug 5, 2026)",
+    "url": "https://www.wsmv.com/2026/08/05/nashville-airport-reports-record-nearly-27m-passengers-construction-intensifies-heres-what-that-means-you/"
+   },
+   {
+    "title": "WSMV - A large parking lot at BNA is closing (June 30, 2026)",
+    "url": "https://www.wsmv.com/2026/06/30/large-parking-lot-bna-is-closing-heres-why/"
+   },
+   {
+    "title": "WKRN - BNA begins major terminal construction project (June 2026)",
+    "url": "https://www.wkrn.com/news/local-news/nashville/bna-terminal-construction-2026/amp/"
+   },
+   {
+    "title": "Future Travel Experience - BNA launches Central Core Enhancement (April 2026)",
+    "url": "https://www.futuretravelexperience.com/2026/04/nashville-international-airport-launches-central-core-enhancement-to-elevate-traveller-experience/"
+   },
+   {
+    "title": "WSMV - BNA prepares for one of its busiest travel periods (Oct 1, 2025)",
+    "url": "https://www.wsmv.com/2025/10/01/bna-prepares-one-its-busiest-travel-periods/"
+   },
+   {
+    "title": "WSMV - BNA opens new lobby, security lanes (Jan 24, 2023)",
+    "url": "https://www.wsmv.com/2023/01/24/bna-opens-new-lobby"
+   },
+   {
+    "title": "Upgraded Points - Nashville International Airport guide (updated Sept 7, 2026)",
+    "url": "https://upgradedpoints.com/travel/airports/nashville-international-bna-airport/"
+   },
+   {
+    "title": "Nashville Unscripted - BNA construction 2026: Central Core closure (updated Oct 2026)",
+    "url": "https://nashvilleunscripted.com/bna-construction-2026/"
+   },
+   {
+    "title": "Wikipedia - Nashville International Airport",
+    "url": "https://en.wikipedia.org/wiki/Nashville_International_Airport"
+   },
+   {
+    "title": "WeGo Public Transit - Airport service (Route 18)",
+    "url": "https://wegotransit.com/ride/transit-services/airport"
+   },
+   {
+    "title": "WeGo Public Transit - Summer 2026 service changes go into effect July 5",
+    "url": "https://www.wegotransit.com/wego-summer-service-changes-go-into-effect-july-5/"
+   },
+   {
+    "title": "Southwest Airlines - Airport Information (BNA)",
+    "url": "https://www.southwest.com/airport-information/"
+   },
+   {
+    "title": "Southwest Airlines - When to Arrive for Your Flight",
+    "url": "https://support.southwest.com/helpcenter/article/airport-arrival-recommendation"
+   },
+   {
+    "title": "Delta - Check-In Times at U.S. Airports",
+    "url": "https://www.delta.com/us/en/check-in-security/check-in-time-requirements/domestic-check-in"
+   },
+   {
+    "title": "AP via MyNorthwest - United narrows check-in window; airline comparison (May 2025)",
+    "url": "https://mynorthwest.com/lifestyle/united-is-narrowing-its-check-in-window-for-us-flights-heres-how-it-compares-to-other-airlines/4092751"
+   },
+   {
+    "title": "The Bulkhead Seat - TSA PreCheck Touchless ID airport list (Mar 16, 2026)",
+    "url": "https://thebulkheadseat.com/?p=33789"
+   }
+  ]
+ },
  "BOS": {
   "code": "BOS",
   "name": "Boston Logan International Airport",
@@ -392,6 +773,196 @@
    {
     "title": "Southwest - TSA PreCheck Touchless ID",
     "url": "https://www.southwest.com/tsa-precheck-touchless-id/"
+   }
+  ]
+ },
+ "BWI": {
+  "code": "BWI",
+  "name": "Baltimore/Washington International Thurgood Marshall Airport",
+  "city": "Baltimore",
+  "state": "MD",
+  "checkedOn": "2026-10-24",
+  "officialArrivalAdvice": {
+   "domestic": "BWI's security page says TSA currently recommends arriving 2 hours before scheduled domestic flights",
+   "international": "BWI's security page says TSA recommends arriving 3 hours before international flights",
+   "source": "https://www.bwiairport.com/flying-with-us/security"
+  },
+  "terminals": [
+   {
+    "id": "A-B-C",
+    "name": "Concourses A, B and C (Main Terminal)",
+    "airlines": [
+     "Southwest",
+     "American",
+     "Contour"
+    ],
+    "checkpoints": [
+     {
+      "notes": "BWI lists screening 4am-8pm. Upgraded Points (May 2026) says PreCheck runs here only when operationally needed, and CLEAR 4am-7:30pm. Leads to Concourses A, B and C.",
+      "precheck": null,
+      "clear": true,
+      "name": "Checkpoint A"
+     },
+     {
+      "notes": "BWI's security page lists screening as open 24 hours. Upgraded Points (May 2026) lists 4am-9:45pm, with PreCheck and CLEAR 4am-9pm. Leads to Concourses A, B and C.",
+      "precheck": true,
+      "clear": true,
+      "name": "Checkpoint B"
+     },
+     {
+      "notes": "BWI lists screening 4am-8pm. Upgraded Points (May 2026) says PreCheck runs here only when operationally needed, and CLEAR 4am-9pm. Leads to Concourses A, B and C.",
+      "precheck": null,
+      "clear": true,
+      "name": "Checkpoint C"
+     }
+    ],
+    "notes": [
+     "Southwest flies from Concourses A, B and C (and E for some flights); American and Contour use Concourse C",
+     "Concourses A, B and C share one secure area, so any of Checkpoints A, B or C reaches all three",
+     "A new A/B Connector opened January 9, 2026, adding a direct link between Concourses A and B",
+     "Upgraded Points says Checkpoints A, B or C may be closed when passenger volumes are low"
+    ]
+   },
+   {
+    "id": "D-E",
+    "name": "Concourses D and E (Main Terminal)",
+    "airlines": [
+     "Alaska",
+     "Avelo",
+     "BermudAir",
+     "Delta",
+     "Frontier",
+     "JetBlue",
+     "Sun Country",
+     "United",
+     "Breeze",
+     "British Airways",
+     "Copa Airlines",
+     "Icelandair",
+     "Southwest (some flights, Concourse E)"
+    ],
+    "checkpoints": [
+     {
+      "notes": "BWI's security page lists screening as open 24 hours. Upgraded Points (May 2026) lists 4am-9:15pm, with PreCheck 4am-8pm and CLEAR 4am-9pm.",
+      "precheck": true,
+      "clear": true,
+      "name": "Checkpoint D/E"
+     }
+    ],
+    "notes": [
+     "BWI lists Alaska, Avelo, BermudAir, Delta, Frontier, JetBlue, Sun Country and United at Concourse D",
+     "Breeze, British Airways, Copa, Icelandair and some Southwest flights use Concourse E (the international concourse)",
+     "D/E has its own checkpoint, separate from A/B/C"
+    ]
+   }
+  ],
+  "connectedAirside": false,
+  "betweenTerminals": "All concourses are in one terminal building. Concourses A, B and C connect airside, and D and E connect to each other. But D/E is not linked airside to A/B/C, so moving between the two groups means walking through the terminal and clearing security again.",
+  "securityWaits": {
+   "summary": "BWI publishes daily peak periods. Mornings peak at 5-8am on Monday, Thursday and Friday, and 6-8am on other days. Afternoon peaks vary by day, with the longest on Thursday (3-7pm) and Sunday (4-7pm). In March 2026, local news reported that A/B/C (Southwest and American) had the longest lines, while D/E saw normal to no waits. Real-time waits are on BWI's homepage.",
+   "busiestTimes": [
+    "5:00-8:00am Monday, Thursday and Friday",
+    "6:00-8:00am Sunday, Tuesday, Wednesday and Saturday",
+    "3:00-7:00pm Thursday",
+    "4:00-7:00pm Sunday",
+    "3:00-6:00pm Monday"
+   ],
+   "source": "https://www.bwiairport.com/flying-with-us/security"
+  },
+  "precheckNotes": "Upgraded Points (May 2026) lists regular PreCheck lanes at Checkpoint B (4am-9pm) and Checkpoint D/E (4am-8pm). It says Checkpoints A and C open PreCheck only when operationally needed. BWI does not publish PreCheck hours by checkpoint, so confirm before a late flight.",
+  "clearAvailable": true,
+  "touchlessId": "A March 2026 list of TSA PreCheck Touchless ID airports shows BWI for American only. You opt in through your airline profile.",
+  "gettingThere": {
+   "rideshare": "Rideshare pickup and drop-off is on the outer curb of the Departures/Upper Level, between Doors 5 and 12.",
+   "transit": "MTA Light Rail stops just outside the lower level next to Concourse E. It runs to downtown Baltimore, Timonium and Hunt Valley for $2.00 each way. First trains arrive at 4:45am on weekdays and 5:05am on Saturdays, but not until 10:35am on Sundays and holidays. MARC and Amtrak use the BWI rail station; a free 24-hour shuttle drops you near your airline's check-in counter.",
+   "driving": "BWI listed these rates: Hourly Garage (closest) $6/hour or $30/day; Daily Garage $16/day; Express Parking $14/day; Long Term A and B $11/day. Lots can fill and close, and drivers are then sent to other lots. A free cell phone lot is available for pickups."
+  },
+  "construction2026": [
+   "The Concourse A/B Connector and new Southwest baggage system opened January 9, 2026, with a direct A-B link and relocated gate areas",
+   "BWI's construction page lists ongoing passenger boarding bridge replacement and restroom renovations, without dates or passenger impacts"
+  ],
+  "bagDrop": "Southwest: bags checked less than 45 minutes before a domestic departure may not be accepted; international bags must be checked at the counter at least 60 minutes ahead. Southwest accepts bags no earlier than 4 hours before departure. Delta: check bags at least 45 minutes before domestic departure, and no more than 6 hours ahead. American: check-in and bag deadline is 45 minutes before domestic departure.",
+  "tips": [
+   "Check your concourse before you go. D/E (Delta, United, JetBlue, Frontier, most international flights) has its own checkpoint and is not connected airside to A/B/C.",
+   "Southwest carries most of BWI's traffic and uses A, B and C. Those checkpoints have had the longest lines at busy times.",
+   "If you have PreCheck and fly from A/B/C, head to Checkpoint B. Checkpoints A and C may not have PreCheck lanes open.",
+   "The Light Rail does not start until about 10:35am on Sundays and holidays. Plan another way for early Sunday flights.",
+   "Rideshare drop-off is on the upper level outer curb between Doors 5 and 12."
+  ],
+  "faq": [
+   {
+    "q": "How early should I get to BWI airport?",
+    "a": "BWI passes on TSA's advice: 2 hours before a domestic flight and 3 hours before an international flight. Allow more time if you fly Southwest or American from Concourses A-C at morning peaks (5-8am)."
+   },
+   {
+    "q": "Can I walk from Concourse D to Concourse A after security at BWI?",
+    "a": "No. Concourses A, B and C share one secure area, and D and E share another. To switch between them you must walk through the terminal and clear security again."
+   },
+   {
+    "q": "Which concourse is Southwest at BWI?",
+    "a": "BWI lists Southwest at Concourses A, B, C and E. Most domestic Southwest flights leave from A, B or C, and E handles international flights."
+   },
+   {
+    "q": "Is BWI security open 24 hours?",
+    "a": "BWI lists Checkpoints B and D/E as open 24 hours, with A and C open 4am to 8pm. A May 2026 third-party guide lists shorter hours for B and D/E, and BWI says hours can change. Late-night flyers should check bwiairport.com."
+   }
+  ],
+  "sources": [
+   {
+    "title": "BWI - Security (checkpoint hours, peak periods, arrival advice)",
+    "url": "https://www.bwiairport.com/flying-with-us/security"
+   },
+   {
+    "title": "BWI - Airlines (concourse by airline)",
+    "url": "https://www.bwiairport.com/flying-with-us/airlines"
+   },
+   {
+    "title": "BWI - To & From BWI (parking rates and options)",
+    "url": "https://www.bwiairport.com/to-from-bwi"
+   },
+   {
+    "title": "BWI - App-Based Ride Services",
+    "url": "https://bwiairport.com/to-from-bwi/transportation/app-based-ride-services/"
+   },
+   {
+    "title": "BWI - MTA Light Rail",
+    "url": "https://bwiairport.com/to-from-bwi/transportation/transit/mta-light-rail/"
+   },
+   {
+    "title": "BWI - MTA MARC Train",
+    "url": "https://bwiairport.com/to-from-bwi/transportation/transit/mta-marc-train/"
+   },
+   {
+    "title": "BWI - Construction Information (Enhancing Maryland's Gateway)",
+    "url": "https://bwiairport.com/at-bwi/construction-information/"
+   },
+   {
+    "title": "Office of Governor Moore - A/B Connector opens at BWI (Jan 8, 2026)",
+    "url": "https://governor.maryland.gov/news/press/pages/Governor-Moore-Celebrates-Major-Terminal-Enhancement-at-BWI-Thurgood-Marshall-Airport.aspx"
+   },
+   {
+    "title": "The Baltimore Banner - BWI TSA lines (Mar 30, 2026)",
+    "url": "https://www.thebanner.com/community/transportation/bwi-airport-tsa-lines-BQRJUDQIYNDTHBRAPMIZPT5EGM"
+   },
+   {
+    "title": "Upgraded Points - BWI airport guide (updated May 26, 2026)",
+    "url": "https://upgradedpoints.com/baltimore-washington-international-bwi-airport"
+   },
+   {
+    "title": "Southwest - How long before departure can I check bags",
+    "url": "https://support.southwest.com/helpcenter/s/article/How-long-before-my-flights-departure-time-can-I-check-bags"
+   },
+   {
+    "title": "Delta - Check-In Times at U.S. Airports",
+    "url": "https://www.delta.com/us/en/check-in-security/check-in-time-requirements/domestic-check-in"
+   },
+   {
+    "title": "AP via MyNorthwest - United narrows check-in window; airline comparison (May 2025)",
+    "url": "https://mynorthwest.com/lifestyle/united-is-narrowing-its-check-in-window-for-us-flights-heres-how-it-compares-to-other-airlines/4092751"
+   },
+   {
+    "title": "The Bulkhead Seat - TSA PreCheck Touchless ID airport list (Mar 16, 2026)",
+    "url": "https://thebulkheadseat.com/?p=33789"
    }
   ]
  },
@@ -3297,6 +3868,183 @@
    }
   ]
  },
+ "MDW": {
+  "code": "MDW",
+  "name": "Chicago Midway International Airport",
+  "city": "Chicago",
+  "state": "IL",
+  "checkedOn": "2026-10-24",
+  "officialArrivalAdvice": {
+   "domestic": "Southwest, Midway's main airline, suggests arriving 120 minutes before domestic flights at MDW. Delta also recommends at least 2 hours. The Chicago Department of Aviation's TSA page gives no arrival time.",
+   "international": "Southwest suggests 120 minutes before international flights at MDW",
+   "source": "https://www.southwest.com/airport-information/"
+  },
+  "terminals": [
+   {
+    "id": "Main",
+    "name": "Main Terminal (Concourses A, B and C)",
+    "airlines": [
+     "Southwest",
+     "Delta",
+     "Volaris",
+     "Frontier"
+    ],
+    "checkpoints": [
+     {
+      "notes": "The CDA lists checkpoint hours of 3:30am-11pm daily and PreCheck 4:30am-8pm daily. CLEAR lane and enrollment run 4am-8pm daily. One checkpoint serves all concourses; Wikipedia says widening the Cicero Avenue bridge made room for up to 17 lanes.",
+      "precheck": true,
+      "clear": true,
+      "name": "Main Security Checkpoint"
+     }
+    ],
+    "notes": [
+     "Concourse A: Southwest, Delta and Volaris (Upgraded Points, Sept 2026). Southwest lists gates A4a, A4b, A9, A11 and A15-A19",
+     "Concourse B: Southwest only. Southwest lists gates B1-B3, B5, B7-B12 and B14-B26",
+     "Concourse C (gates C1-C3): Upgraded Points lists Frontier, Avelo and North Country Sky",
+     "Porter moved its Toronto Billy Bishop flights from Midway to O'Hare on Sept 1, 2026",
+     "Drop off at the upper-level departures curb at the concourse for your airline; signs show which concourse each airline uses"
+    ]
+   }
+  ],
+  "connectedAirside": true,
+  "betweenTerminals": "Single terminal. All three concourses (A, B and C) are connected after security, so you can walk between them without screening again.",
+  "securityWaits": {
+   "summary": "The CDA does not publish a routine wait pattern for Midway. For Labor Day weekend 2026, it projected Monday as Midway's busiest day, with nearly 58,000 travelers.",
+   "busiestTimes": [
+    "The Monday at the end of a holiday weekend (Labor Day 2026 projection)"
+   ],
+   "source": "https://chicago.suntimes.com/transportation/2026/09/03/labor-day-weekend-travel"
+  },
+  "precheckNotes": "Midway has one checkpoint. Standard screening runs 3:30am-11pm, but the CDA lists PreCheck lanes only from 4:30am to 8pm, so evening flyers may face standard lanes only.",
+  "clearAvailable": true,
+  "touchlessId": "TSA PreCheck Touchless ID is listed at MDW for Delta and Southwest (opt in through your airline profile); Southwest's MDW page also lists a Touchless ID checkpoint",
+  "gettingThere": {
+   "rideshare": "Drop-off is at the upper-level departures curb. Rideshare pickup is on the lower level, center lane, outside baggage claim: Blue Zones A and B (Doors 2-3), Orange Zones C and D (Doors 3-4) and Green Zones E and F (Door 4).",
+   "transit": "The CTA Orange Line station is east of the terminal, reached by an enclosed walkway (follow 'Trains to City'). The trip downtown takes 20-25 minutes. Trains leave Midway for the Loop from about 3:30am on weekdays, 4am on Saturdays and 4:30am on Sundays, until about 1:05am. The N62 Archer bus runs overnight.",
+   "driving": "The terminal garage is next to the terminal: hourly parking on Level 1 and daily parking on Levels 2-6 ($43 for 8-24 hours). Economy Garage and Lot at 5050 W. 55th St. cost $15 a day, with free shuttles every 10-15 minutes. The Daily Lot is temporarily closed. The CDA says terminal roadways can get congested at peak times; the CTA Kiss and Ride at 59th and Kilpatrick lets drivers avoid them. Curbside waiting is not allowed; the free cell phone lot is at 61st Street and Cicero Avenue."
+  },
+  "construction2026": [
+   "Runway 22L closed Oct 20, 2026, to repair its safety overrun system, with completion targeted for mid-November. The CDA warns of possible flight delays and cancellations, depending on wind, and says to check flight status before leaving for the airport",
+   "The Daily Lot is temporarily closed; the CDA does not give a reopening date"
+  ],
+  "bagDrop": "Southwest: all bags must be checked 45 minutes before scheduled departure (60 minutes for international); check in at least 30 minutes before domestic departure and be at the gate 10 minutes before. Its MDW ticket counter opens 90 minutes before the first departing flight. Delta: bags 45 minutes before domestic departure, 30 minutes to check in without bags.",
+  "tips": [
+   "Midway has one checkpoint for all concourses, and the concourses are connected after security",
+   "PreCheck closes at 8pm and CLEAR at 8pm, while standard screening runs until 11pm",
+   "Runway 22L is closed until about mid-November 2026, so check your flight status before you leave",
+   "Southwest's Midway ticket counter opens 90 minutes before the first flight of the day, and bags must be checked 45 minutes before departure",
+   "The CTA Orange Line reaches downtown in 20-25 minutes, and its Kiss and Ride lets drivers skip the terminal roadways",
+   "The Daily Lot is closed; the economy lots are $15 a day with shuttles every 10-15 minutes"
+  ],
+  "faq": [
+   {
+    "q": "How early should I get to Midway airport?",
+    "a": "Southwest suggests arriving 120 minutes before your flight at Midway, for both domestic and international flights. Delta also recommends 2 hours for domestic flights."
+   },
+   {
+    "q": "What time does security open at Midway?",
+    "a": "The checkpoint runs from 3:30am to 11pm every day. PreCheck lanes are open 4:30am to 8pm, and CLEAR 4am to 8pm."
+   },
+   {
+    "q": "Where do Uber and Lyft pick up at Midway?",
+    "a": "On the lower level outside baggage claim, in the center lane, at Doors 2-4 (Blue, Orange and Green zones)."
+   },
+   {
+    "q": "Can you walk between concourses at Midway after security?",
+    "a": "Yes. Concourses A, B and C are all connected after the checkpoint."
+   },
+   {
+    "q": "How do I get from Midway to downtown Chicago by train?",
+    "a": "Take the CTA Orange Line from the station next to the terminal. The ride takes 20-25 minutes, and trains run from early morning until about 1am."
+   }
+  ],
+  "sources": [
+   {
+    "title": "Fly Chicago - Midway TSA Information (checkpoint hours)",
+    "url": "https://www.flychicago.com/midway/myflight/security/Pages/TSA.aspx"
+   },
+   {
+    "title": "Fly Chicago - Midway CLEAR",
+    "url": "https://www.flychicago.com/midway/myflight/security/Pages/CLEAR.aspx"
+   },
+   {
+    "title": "Fly Chicago - Midway Connecting Traveler",
+    "url": "https://www.flychicago.com/midway/myflight/connecting/pages/default.aspx"
+   },
+   {
+    "title": "Fly Chicago - Midway Taxi, Limo, Rideshare",
+    "url": "https://www.flychicago.com/midway/tofrom/taxi/pages/default.aspx"
+   },
+   {
+    "title": "Fly Chicago - Midway Drop Off / Pick Up",
+    "url": "https://www.flychicago.com/midway/tofrom/dropoff/pages/default.aspx"
+   },
+   {
+    "title": "Fly Chicago - Midway Public Transit",
+    "url": "https://www.flychicago.com/midway/tofrom/publictransit/pages/default.aspx"
+   },
+   {
+    "title": "Fly Chicago - Midway Terminal Garage (Daily)",
+    "url": "https://www.flychicago.com/midway/tofrom/parking/Pages/maindaily.aspx"
+   },
+   {
+    "title": "Fly Chicago - Midway Economy Parking",
+    "url": "https://www.flychicago.com/midway/tofrom/parking/Pages/economy.aspx"
+   },
+   {
+    "title": "Fly Chicago - Midway Daily Lot",
+    "url": "https://www.flychicago.com/midway/tofrom/parking/Pages/daily.aspx"
+   },
+   {
+    "title": "Fly Chicago - MDW Full Map (Oct 2025)",
+    "url": "https://www.flychicago.com/SiteCollectionDocuments/Midway/Map/FullMap.pdf"
+   },
+   {
+    "title": "City of Chicago - CDA announces temporary runway closure at Midway (Oct 20, 2026)",
+    "url": "https://www.chicago.gov/city/en/depts/doa/provdrs/dbata/news/2026/October/10202026.html"
+   },
+   {
+    "title": "ABC7 Chicago - Runway 22L at Midway closed for repairs (Oct 20, 2026)",
+    "url": "https://abc7chicago.com/post/runway-22l-midway-airport-closed-repairs-could-cause-flight-cancellations-delays-leading-chicago-holiday-travel/19961348/"
+   },
+   {
+    "title": "CTA - Orange Line hours of operation",
+    "url": "https://www.transitchicago.com/orangeline/"
+   },
+   {
+    "title": "Chicago Sun-Times - Labor Day weekend travel (Sept 3, 2026)",
+    "url": "https://chicago.suntimes.com/transportation/2026/09/03/labor-day-weekend-travel"
+   },
+   {
+    "title": "Southwest Airlines - Airport Information (MDW)",
+    "url": "https://www.southwest.com/airport-information/"
+   },
+   {
+    "title": "Southwest Airlines - When to Arrive for Your Flight",
+    "url": "https://support.southwest.com/helpcenter/article/airport-arrival-recommendation"
+   },
+   {
+    "title": "Delta - Check-In Times at U.S. Airports",
+    "url": "https://www.delta.com/us/en/check-in-security/check-in-time-requirements/domestic-check-in"
+   },
+   {
+    "title": "Upgraded Points - Chicago Midway airport guide (updated Sept 7, 2026)",
+    "url": "https://upgradedpoints.com/travel/airports/chicago-midway-international-mdw-airport/"
+   },
+   {
+    "title": "ch-aviation - Porter Airlines switches Chicago airport (Feb 25, 2026)",
+    "url": "https://www.ch-aviation.com/news/164258-canadas-porter-airlines-switches-chicago-airport"
+   },
+   {
+    "title": "Wikipedia - Midway International Airport",
+    "url": "https://en.wikipedia.org/wiki/Midway_International_Airport"
+   },
+   {
+    "title": "The Bulkhead Seat - TSA PreCheck Touchless ID airport list (Mar 16, 2026)",
+    "url": "https://thebulkheadseat.com/?p=33789"
+   }
+  ]
+ },
  "MIA": {
   "code": "MIA",
   "name": "Miami International Airport",
@@ -5323,6 +6071,244 @@
    {
     "title": "Delta - Domestic check-in time requirements",
     "url": "https://www.delta.com/us/en/check-in-security/check-in-time-requirements/domestic-check-in"
+   }
+  ]
+ },
+ "TPA": {
+  "code": "TPA",
+  "name": "Tampa International Airport",
+  "city": "Tampa",
+  "state": "FL",
+  "checkedOn": "2026-10-24",
+  "officialArrivalAdvice": {
+   "domestic": "TPA recommends arriving 2 hours before domestic flights (TPA newsroom, March 2026)",
+   "international": "TPA recommends arriving 3 hours before international flights (TPA newsroom, March 2026)",
+   "source": "https://news.tampaairport.com/answers-to-questions-about-traveling-through-tpa-during-spring-break-and-the-us-government-shutdown/"
+  },
+  "terminals": [
+   {
+    "id": "A",
+    "name": "Airside A",
+    "airlines": [
+     "United",
+     "JetBlue",
+     "Breeze",
+     "Sun Country"
+    ],
+    "checkpoints": [
+     {
+      "notes": "Opens at 4am per TPA (March 2026). Expanded to seven lanes in 2025, five with CT scanners. CLEAR+ lanes are planned but were not confirmed open.",
+      "precheck": true,
+      "clear": null,
+      "name": "Airside A checkpoint"
+     }
+    ],
+    "notes": [
+     "Gates A1-A18; reached by shuttle from the Main Terminal",
+     "United and JetBlue check in on the Blue Side; Breeze and Sun Country on the Red Side"
+    ]
+   },
+   {
+    "id": "C",
+    "name": "Airside C",
+    "airlines": [
+     "Southwest",
+     "Alaska",
+     "Avelo"
+    ],
+    "checkpoints": [
+     {
+      "notes": "Opens at 3:30am per TPA (March 2026). CLEAR+ lanes are planned but were not confirmed open.",
+      "precheck": true,
+      "clear": null,
+      "name": "Airside C checkpoint"
+     }
+    ],
+    "notes": [
+     "Gates C30-C45; reached by shuttle from the Main Terminal",
+     "Southwest, Alaska and Avelo check in on the Red Side"
+    ]
+   },
+   {
+    "id": "E",
+    "name": "Airside E",
+    "airlines": [
+     "Delta",
+     "Air Canada",
+     "Frontier"
+    ],
+    "checkpoints": [
+     {
+      "notes": "Opens at 3:30am per TPA (March 2026). Expanded from six to seven lanes in March 2025, reached through a passageway off the Airside E shuttle lobby. CLEAR+ lanes are planned but were not confirmed open.",
+      "precheck": true,
+      "clear": null,
+      "name": "Airside E checkpoint"
+     }
+    ],
+    "notes": [
+     "Gates E62-E75",
+     "Delta checks in on the Blue Side; Air Canada and Frontier on the Red Side"
+    ]
+   },
+   {
+    "id": "F",
+    "name": "Airside F",
+    "airlines": [
+     "American",
+     "British Airways",
+     "Virgin Atlantic",
+     "Aeromexico",
+     "Avianca",
+     "Cayman Airways",
+     "Copa Airlines",
+     "Discover Airlines",
+     "Edelweiss",
+     "Havana Air",
+     "Porter",
+     "WestJet"
+    ],
+    "checkpoints": [
+     {
+      "notes": "Opens at 3:15am per TPA (March 2026), the earliest of the four. CLEAR+ lanes are planned but were not confirmed open.",
+      "precheck": true,
+      "clear": null,
+      "name": "Airside F checkpoint"
+     }
+    ],
+    "notes": [
+     "Gates F78-F90; TPA's international airside",
+     "American, Virgin Atlantic, Aeromexico, Avianca, Cayman, Copa, Havana Air and Porter check in on the Blue Side; British Airways, Discover, Edelweiss and WestJet on the Red Side"
+    ]
+   }
+  ],
+  "connectedAirside": false,
+  "betweenTerminals": "Check-in and bag drop are in the Main Terminal, which has a Red Side and a Blue Side by airline. Each of the four airsides is reached by its own automated shuttle and has its own TSA checkpoint. To change airsides you ride back to the Main Terminal and clear security again at the other airside.",
+  "securityWaits": {
+   "summary": "TPA says TSA lines are often under 10 minutes and rarely over 30-40 minutes even at peak times. The busiest hours across all airsides are typically 5-7am. Ticket counter and bag check lines can be longer than security in busy periods. Live wait-time monitors were only at the Airside A shuttle lobby as of March 2026.",
+   "busiestTimes": [
+    "5:00-7:00am (all airsides)"
+   ],
+   "source": "https://news.tampaairport.com/answers-to-questions-about-traveling-through-tpa-during-spring-break-and-the-us-government-shutdown/"
+  },
+  "precheckNotes": "A Kayak airport guide says all four airside checkpoints have TSA PreCheck lanes. TPA's own hours for PreCheck lanes could not be verified.",
+  "clearAvailable": null,
+  "touchlessId": "A March 2026 list of TSA PreCheck Touchless ID airports shows TPA for Alaska, American, Delta, Southwest and United. You opt in through your airline profile.",
+  "gettingThere": {
+   "rideshare": "Uber drops you at the curb for your airline. Rideshare riders can choose the Red Express Curbside as a pickup or drop-off point, per TPA. Pick the Red or Blue side that matches your airline.",
+   "transit": "HART and PSTA buses stop next to the SkyConnect station at the Rental Car Center; take SkyConnect from the Main Terminal. HART Route 30 runs to downtown Tampa. PSTA's new 727 Airport Express runs from downtown St. Petersburg via the Howard Frankland Bridge express lanes, about 5am-11pm daily, $2.25 one way; Bay News 9 reported it launched by early October 2026.",
+   "driving": "Follow signs to the Red or Blue side for your airline. Express Curbsides on both sides let travelers with no checked bags and an electronic boarding pass skip the ticketing level. Short Term, Long Term and Economy garages are getting new ticket and payment machines with tap-to-pay and plate readers (due to finish October 2026). If you leave within 60 minutes, the plate reader opens the exit arm. A free cell phone lot is off George J. Bean Parkway."
+  },
+  "construction2026": [
+   "Airside D (16 gates, Delta as anchor tenant) is under construction northwest of the Main Terminal and is scheduled to open in 2029. Overnight closures on George J. Bean Parkway have been needed for shuttle guideway work, with more expected.",
+   "A multi-year checked baggage system rebuild is underway (TPA, September 2026). Construction walls block some Red Bag Claim carousels on the first floor.",
+   "CLEAR+ lanes and eGates are planned for all four airside checkpoints, expected fall 2026. The contract took effect October 1, but no opening was confirmed."
+  ],
+  "bagDrop": "Southwest: bags checked less than 45 minutes before a domestic departure may not be accepted (60 minutes for international); bags are accepted no earlier than 4 hours ahead. Delta: check bags at least 45 minutes before domestic departure, no more than 6 hours ahead. American: check-in and bag deadline is 45 minutes before domestic departure.",
+  "tips": [
+   "Know your airside and your side. Your airline sets both the Red or Blue check-in side and the airside (A, C, E or F) you take the shuttle to.",
+   "Security is at each airside, not in the Main Terminal. Switching airsides means screening again.",
+   "With no checked bag and a mobile boarding pass, use the Red or Blue Express Curbside and go straight up to the shuttles.",
+   "Early mornings (5-7am) are the busiest time. Airside A checkpoint opens at 4am; C and E at 3:30am; F at 3:15am.",
+   "TPA says bag check and ticket counter lines can run longer than security at busy times, so add time if you are checking a bag."
+  ],
+  "faq": [
+   {
+    "q": "How early should I get to Tampa airport?",
+    "a": "TPA recommends 2 hours before domestic flights and 3 hours before international flights. Security is usually under 10 minutes, but bag check lines can be long at peak times."
+   },
+   {
+    "q": "Do I need to go through security again to change airsides at TPA?",
+    "a": "Yes. Each airside has its own checkpoint. You ride the shuttle back to the Main Terminal, then take the shuttle to the other airside and clear security there."
+   },
+   {
+    "q": "Does Tampa airport have CLEAR?",
+    "a": "Not yet confirmed. TPA approved CLEAR+ lanes and eGates for all four airsides, expected in fall 2026, but this research found no confirmed opening date."
+   },
+   {
+    "q": "Which side is Southwest at TPA?",
+    "a": "Southwest checks in on the Red Side of the Main Terminal and flies from Airside C."
+   }
+  ],
+  "sources": [
+   {
+    "title": "TPA Newsroom - Traveling through TPA during spring break and the shutdown (Mar 23, 2026)",
+    "url": "https://news.tampaairport.com/answers-to-questions-about-traveling-through-tpa-during-spring-break-and-the-us-government-shutdown/"
+   },
+   {
+    "title": "TPA Newsroom - Red Express Curbsides open (Aug 11, 2025)",
+    "url": "https://news.tampaairport.com/tampa-international-airport-opens-new-red-express-curbsides/"
+   },
+   {
+    "title": "TPA Newsroom - Blue Departures drive resurfacing (Blue Side airline list, Jul 2025)",
+    "url": "https://news.tampaairport.com/blue-departures-drive-at-tpa-closing-for-resurfacing/"
+   },
+   {
+    "title": "TPA Newsroom - Checked baggage system upgrade (Sep 29, 2026)",
+    "url": "https://news.tampaairport.com/checked-baggage-system-getting-sorted-at-tpa/"
+   },
+   {
+    "title": "TPA Newsroom - Parking garages getting new ticket technology (Sep 15, 2026)",
+    "url": "https://news.tampaairport.com/tpa-parking-garages-getting-upgraded-ticket-technology/"
+   },
+   {
+    "title": "TPA Newsroom - Airside D construction spanning the Parkway (Jun 11, 2026)",
+    "url": "https://news.tampaairport.com/airside-d-construction-spanning-the-parkway-at-tpa/"
+   },
+   {
+    "title": "TPA Newsroom - Airside D concrete work (Aug 4, 2026)",
+    "url": "https://news.tampaairport.com/airside-d-concrete-work-is-building-up-at-tpa/"
+   },
+   {
+    "title": "Bay News 9 - Red departures curbside changes (Aug 31, 2026)",
+    "url": "https://baynews9.com/fl/tampa/news/2026/08/31/curbside-changes-start-today-for-tampa-international-s-red-airside-departures"
+   },
+   {
+    "title": "WUSF - CLEAR+ coming to Tampa International Airport (Aug 10, 2026)",
+    "url": "https://wusf.org/text/transportation/2026-08-10/clear-security-screening-coming-to-tampa-international-airport"
+   },
+   {
+    "title": "WUSF - Expanded Airside A security checkpoint (Apr 8, 2025)",
+    "url": "https://wusf.org/text/transportation/2025-04-08/tampa-international-airport-expanded-airside-a-security-checkpoint"
+   },
+   {
+    "title": "Yahoo/WFLA - TPA opens new Airside E checkpoint (Mar 3, 2025)",
+    "url": "https://www.yahoo.com/news/tampa-international-airport-officially-opens-223010660.html"
+   },
+   {
+    "title": "Bay News 9 - PSTA express route to TPA set to debut (Sep 30, 2026)",
+    "url": "https://baynews9.com/fl/tampa/spectrum-news-in-90/2026/09/30/pstas-express-route-to-tampa-international-airport-set-to-debut"
+   },
+   {
+    "title": "Wikipedia - Tampa International Airport",
+    "url": "https://en.wikipedia.org/wiki/Tampa_International_Airport"
+   },
+   {
+    "title": "Kayak - Tampa International Airport guide",
+    "url": "https://www.kayak.com/Tampa-Tampa-Airport.TPA.ap.html"
+   },
+   {
+    "title": "Blacklane - Guide to Tampa International Airport (updated Aug 27, 2026)",
+    "url": "https://www.blacklane.com/en/blog/travel/airports/a-guide-to-tampa-international-airport-tpa/"
+   },
+   {
+    "title": "Uber - Rides to and from TPA",
+    "url": "https://www.uber.com/global/en/r/airports/tpa/"
+   },
+   {
+    "title": "Southwest - How long before departure can I check bags",
+    "url": "https://support.southwest.com/helpcenter/s/article/How-long-before-my-flights-departure-time-can-I-check-bags"
+   },
+   {
+    "title": "Delta - Check-In Times at U.S. Airports",
+    "url": "https://www.delta.com/us/en/check-in-security/check-in-time-requirements/domestic-check-in"
+   },
+   {
+    "title": "AP via MyNorthwest - United narrows check-in window; airline comparison (May 2025)",
+    "url": "https://mynorthwest.com/lifestyle/united-is-narrowing-its-check-in-window-for-us-flights-heres-how-it-compares-to-other-airlines/4092751"
+   },
+   {
+    "title": "The Bulkhead Seat - TSA PreCheck Touchless ID airport list (Mar 16, 2026)",
+    "url": "https://thebulkheadseat.com/?p=33789"
    }
   ]
  }
