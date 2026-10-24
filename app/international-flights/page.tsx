@@ -13,8 +13,8 @@ export const metadata: Metadata = {
   description: DESCRIPTION,
   metadataBase: new URL(SITE),
   alternates: { canonical: "/international-flights" },
-  openGraph: { title: TITLE, description: DESCRIPTION, images: ["/api/og"], type: "article", url: "/international-flights" },
-  twitter: { card: "summary_large_image", images: ["/api/og"] },
+  openGraph: { title: TITLE, description: DESCRIPTION, images: ["/api/og?guide=international"], type: "article", url: "/international-flights" },
+  twitter: { card: "summary_large_image", images: ["/api/og?guide=international"] },
 };
 
 const CUTOFFS: Array<{ airline: string; arrive: string; checkin: string; gate: string; source: { title: string; url: string } }> = [

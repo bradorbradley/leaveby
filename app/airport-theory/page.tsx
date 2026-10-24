@@ -13,8 +13,8 @@ export const metadata: Metadata = {
   description: DESCRIPTION,
   metadataBase: new URL(SITE),
   alternates: { canonical: "/airport-theory" },
-  openGraph: { title: TITLE, description: DESCRIPTION, images: ["/api/og"], type: "article", url: "/airport-theory" },
-  twitter: { card: "summary_large_image", images: ["/api/og"] },
+  openGraph: { title: TITLE, description: DESCRIPTION, images: ["/api/og?guide=theory"], type: "article", url: "/airport-theory" },
+  twitter: { card: "summary_large_image", images: ["/api/og?guide=theory"] },
 };
 
 const FAQ = [
