@@ -13,7 +13,7 @@ import { Reveal } from "@/components/Reveal";
 import { Searching } from "@/components/Searching";
 import { usePlan } from "@/hooks/usePlan";
 import { clearProfile, defaultProfile, loadProfile, profileIsEmpty, rememberOrigin, saveProfile, type Profile } from "@/lib/profile";
-import { parsePlanQuery, planQuery } from "@/lib/ride-links";
+import { parsePlanQuery, planQuery, prefillFlight } from "@/lib/ride-links";
 import type { PlanEntry } from "@/lib/analytics";
 import { decodeSharedPlanClient, encodeSharedPlan, slimForShare } from "@/lib/share-payload";
 import type { PlanRequest, PlanResult } from "@/types/plan";
@@ -71,7 +71,9 @@ export function HomeClient() {
         setValues(valuesFromRequest(fromUrl, p));
         launch(fromUrl, p, "shared_fallback");
       } else {
-        setValues(initialValues(p));
+        // A guide page's quick form sends just the flight number; the picker then shows its departures.
+        const flight = prefillFlight(search);
+        setValues({ ...initialValues(p), ...(flight ? { flightNumber: flight } : {}) });
       }
       setLoaded(true);
     };

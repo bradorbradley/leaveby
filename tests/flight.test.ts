@@ -222,3 +222,13 @@ describe("links and airports", () => {
     assert.equal(getAirportProfile("DMM").timezone, "Asia/Riyadh");
   });
 });
+
+it("prefillFlight accepts a guide form's flight number and rejects junk", async () => {
+  const { prefillFlight } = await import("@/lib/ride-links");
+  assert.equal(prefillFlight("?flight=dl212"), "DL212");
+  assert.equal(prefillFlight("?flight=B6%20123"), "B6123");
+  assert.equal(prefillFlight("?flight="), null);
+  assert.equal(prefillFlight("?flight=hello"), null);
+  assert.equal(prefillFlight("?flight=DL2121234567890"), null);
+  assert.equal(prefillFlight(""), null);
+});

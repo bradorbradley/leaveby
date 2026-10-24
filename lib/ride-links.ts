@@ -1,3 +1,4 @@
+import { parseFlightNumber } from "@/lib/flight-utils";
 import type { PlanRequest, PlanResult } from "@/types/plan";
 
 function terminalLabel(result: PlanResult) {
@@ -134,4 +135,12 @@ export function parsePlanQuery(search: string): PlanRequest | null {
     mode: m === "drive" || m === "transit" ? m : "ride",
     leg,
   };
+}
+
+/** `?flight=DL212` from a guide page's quick form: a valid flight number to prefill, or null. Nothing runs until the traveler picks a departure. */
+export function prefillFlight(search: string): string | null {
+  const raw = new URLSearchParams(search).get("flight")?.trim() ?? "";
+  if (!raw || raw.length > 12) return null;
+  const normalized = raw.toUpperCase().replace(/\s+/g, "");
+  return parseFlightNumber(normalized) ? normalized : null;
 }
