@@ -103,7 +103,9 @@ for (const post of spec.posts) {
   for (const [i, slide] of post.slides.entries()) {
     await page.setContent(`<!doctype html><html><head><meta charset="utf-8"><style>${CSS}</style></head><body>${slideHtml(slide)}</body></html>`, { waitUntil: "load" });
     await page.evaluate(() => document.fonts.ready);
-    await page.screenshot({ path: join(dir, `${String(i + 1).padStart(2, "0")}.png`) });
+    // JPEG=1 writes smaller files for sending to a phone.
+    const ext = process.env.JPEG ? "jpg" : "png";
+    await page.screenshot({ path: join(dir, `${String(i + 1).padStart(2, "0")}.${ext}`), ...(ext === "jpg" ? { type: "jpeg", quality: 90 } : {}) });
   }
   console.log(`${post.id}: ${post.slides.length} slides`);
 }

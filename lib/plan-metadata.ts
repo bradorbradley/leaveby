@@ -14,6 +14,7 @@ export const appMetadata: Metadata = {
   title: "Leave By",
   description: TAGLINE,
   metadataBase: new URL(SITE),
+  alternates: { canonical: "/app" },
   openGraph: { title: "Leave By", description: TAGLINE, images: ["/api/og"], type: "website" },
   twitter: { card: "summary_large_image", title: "Leave By", description: TAGLINE, images: ["/api/og"] },
 };
@@ -24,6 +25,7 @@ export const landingMetadata: Metadata = {
   title: "Leave By · Never miss a flight again",
   description: PITCH,
   metadataBase: new URL(SITE),
+  alternates: { canonical: "/" },
   openGraph: { title: "Leave By", description: PITCH, images: ["/api/og"], type: "website", url: "/" },
   twitter: { card: "summary_large_image", title: "Leave By", description: PITCH, images: ["/api/og"] },
 };

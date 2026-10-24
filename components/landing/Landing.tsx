@@ -7,6 +7,7 @@ import { useState } from "react";
 
 import { Checks } from "@/components/landing/Checks";
 import { HeroDemo } from "@/components/landing/HeroDemo";
+import { HomeFaq } from "@/components/landing/HomeFaq";
 import { Rise } from "@/components/landing/Rise";
 import { useMounted } from "@/components/landing/useMounted";
 import { LegalFooter } from "@/components/LegalPage";
@@ -96,6 +97,8 @@ export function Landing() {
         </Rise>
         {mounted ? <Checks /> : null}
       </section>
+
+      <HomeFaq />
 
       <section className="pt-24 md:pt-36">
         <Rise>

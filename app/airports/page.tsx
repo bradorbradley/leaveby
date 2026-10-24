@@ -10,6 +10,8 @@ export const metadata: Metadata = {
   description: "Terminals, security checkpoints, PreCheck and CLEAR, construction and official arrival advice for the busiest US airports, with sources. Then get your exact leave time.",
   metadataBase: new URL(SITE),
   alternates: { canonical: "/airports" },
+  openGraph: { title: "How early to get to the airport", type: "website", url: "/airports", images: ["/api/og"] },
+  twitter: { card: "summary_large_image", images: ["/api/og"] },
 };
 
 export default function AirportsIndex() {
