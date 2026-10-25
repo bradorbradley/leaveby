@@ -1530,6 +1530,222 @@
    }
   ]
  },
+ "CUN": {
+  "code": "CUN",
+  "name": "Cancún International Airport",
+  "city": "Cancún",
+  "state": "Mexico",
+  "region": "intl",
+  "checkedOn": "2026-10-25",
+  "passportControl": "Mexico has no separate exit immigration check for departing tourists; your airline checks your passport at check-in. Air arrivals no longer fill in a paper FMM tourist card: you get a passport stamp or an e-gate ticket, and the digital record (FMMd) can be downloaded from Mexico's immigration institute (INM). Keep your passport with its entry stamp and any printed e-gate ticket; UK government advice tells visitors they must show these when leaving. Quintana Roo's Visitax tourist tax applies to all foreign tourists, and spot checks just before security were reported in December 2025, so keep your Visitax QR code handy. Cancún has no US preclearance, so you clear US immigration and customs after you land.",
+  "officialArrivalAdvice": {
+   "domestic": null,
+   "international": "When you're traveling outside of the United States, we suggest arriving at least 3 hours prior to your departure. (Delta; JetBlue and Southwest also advise 3 hours at Cancún.)",
+   "source": "https://www.delta.com/us/en/check-in-security/check-in-time-requirements/international-check-in"
+  },
+  "terminals": [
+   {
+    "id": "T1",
+    "name": "Terminal 1",
+    "airlines": [],
+    "checkpoints": [],
+    "notes": [
+     "Closed while it is rebuilt; ASUR expects it to reopen in the fourth quarter of 2026",
+     "ASUR has not said which airlines will move there"
+    ]
+   },
+   {
+    "id": "T2",
+    "name": "Terminal 2",
+    "airlines": [
+     "Alaska"
+    ],
+    "checkpoints": [
+     {
+      "notes": "No published wait times found.",
+      "precheck": null,
+      "clear": null,
+      "name": "Departures security"
+     }
+    ],
+    "notes": [
+     "Mainly Mexican airlines Viva and Volaris",
+     "Wikipedia and an October 2026 airport directory list Alaska here; some 2026 guides place it in T3, so check your booking"
+    ]
+   },
+   {
+    "id": "T3",
+    "name": "Terminal 3",
+    "airlines": [
+     "American",
+     "Delta",
+     "United"
+    ],
+    "checkpoints": [
+     {
+      "notes": "No published wait times found.",
+      "precheck": null,
+      "clear": null,
+      "name": "Departures security"
+     }
+    ],
+    "notes": [
+     "International flights only; 21 gates (C4-C24)",
+     "Parking lot directly in front of the terminal, open 24/7"
+    ]
+   },
+   {
+    "id": "T4",
+    "name": "Terminal 4",
+    "airlines": [
+     "JetBlue",
+     "Southwest",
+     "Frontier",
+     "Sun Country"
+    ],
+    "checkpoints": [
+     {
+      "notes": "JetBlue says the checkpoint is open 24 hours and that it offers no priority security lane here.",
+      "precheck": null,
+      "clear": null,
+      "name": "Departures security"
+     }
+    ],
+    "notes": [
+     "JetBlue's lobby is cashless",
+     "Southwest's ticket counter opens 180 minutes before its first departure",
+     "Terminal 4 is being expanded"
+    ]
+   }
+  ],
+  "connectedAirside": null,
+  "betweenTerminals": "A free inter-terminal shuttle runs between the terminals about every 10 minutes. Terminals are spread out, so tell your driver which terminal you need.",
+  "securityWaits": {
+   "summary": "This research found no published security wait times for Cancún. In December 2025, reporters described Visitax spot checks just before the security area; passengers without a QR code were sent to pay on the spot.",
+   "busiestTimes": [],
+   "source": "https://www.traveloffpath.com/travelers-must-pay-cancun-visitax-separately-hotels-wont-collect-it-confirm-authorities/"
+  },
+  "precheckNotes": null,
+  "clearAvailable": null,
+  "touchlessId": null,
+  "gettingThere": {
+   "rideshare": "The Hotel Zone is about 16 km from the airport, roughly a 20-30 minute drive. Uber serves the airport and says the average trip from Cancún takes about 24 minutes. Most travelers pre-book a private transfer or shuttle; give the driver your terminal.",
+   "transit": "ADO buses serve Terminals 2, 3 and 4 and link the airport with the downtown Cancún bus station, Playa del Carmen and Tulum; ADO says some routes leave every 15 minutes. ADO's Hotel Zone service uses a fixed stop at Punta Cancún, not individual hotels; it lists about 45 minutes and up to 9 departures a day from the airport. The Tren Maya Cancún Airport station is across Highway 180, and a shuttle bus links it to all four terminals.",
+   "driving": "All terminals have short- and long-term parking. The Terminal 3 lot is directly in front of the building, open 24/7, and takes pesos or major cards at pay machines."
+  },
+  "construction2026": [
+   "Terminal 1 is being rebuilt. ASUR expects the new terminal to open in the fourth quarter of 2026 (El CEO, July 2026). It has not said which airlines will use it, so check your terminal before you leave.",
+   "Terminal 4 is being expanded."
+  ],
+  "bagDrop": "American: 60 minutes for check-in and bags on flights from outside the US. Delta: check in at least 1 hour before departure; Cancún is not on its list of airports with earlier cutoffs. United: at least 1 hour before international departures. Southwest: have your passport verified at the ticket counter at least 60 minutes before departure. JetBlue lists ticket counter hours of 7:00am-3:00pm at Terminal 4; this research found no published cutoff.",
+  "tips": [
+   "Check your terminal before you leave the hotel: American, Delta and United use T3; JetBlue, Southwest, Frontier and Sun Country use T4; Alaska is listed at T2.",
+   "Keep your passport with its entry stamp and any printed e-gate ticket until you have left Mexico.",
+   "Pay Visitax only on the official site, visitax.gob.mx, and keep the QR code on your phone for spot checks.",
+   "Bring a card if you fly JetBlue; its Terminal 4 lobby does not accept cash.",
+   "From the Hotel Zone, allow 20-30 minutes by car, or about 45 minutes on ADO's Punta Cancún service."
+  ],
+  "faq": [
+   {
+    "q": "How early should I get to Cancún Airport for a flight to the US?",
+    "a": "Three hours. Delta, JetBlue and Southwest all advise arriving 3 hours before departure. American, Delta and United close check-in and bag drop 60 minutes before departure."
+   },
+   {
+    "q": "Which Cancún terminal is my flight to the US from?",
+    "a": "American, Delta and United use Terminal 3. JetBlue, Southwest, Frontier and Sun Country use Terminal 4. Alaska is listed at Terminal 2. Check your booking, since assignments can change."
+   },
+   {
+    "q": "Do I go through immigration when leaving Mexico?",
+    "a": "No separate exit check. Your airline checks your passport. Keep your passport with its entry stamp and any e-gate ticket in case you are asked."
+   },
+   {
+    "q": "Do I need an FMM tourist card to fly home from Cancún?",
+    "a": "Not a paper one. Air arrivals get a passport stamp or e-gate ticket, and the digital FMM can be downloaded from INM. If you lose your entry proof, you may have to pay a replacement fee at the airport immigration office."
+   },
+   {
+    "q": "Do I have to pay Visitax before leaving Cancún?",
+    "a": "Visitax is required of all foreign tourists in Quintana Roo. Pay it online at visitax.gob.mx. Spot checks before security have been reported, so keep your QR code ready."
+   }
+  ],
+  "sources": [
+   {
+    "title": "Delta - International check-in time requirements",
+    "url": "https://www.delta.com/us/en/check-in-security/check-in-time-requirements/international-check-in"
+   },
+   {
+    "title": "JetBlue - Cancún airport information",
+    "url": "https://www.jetblue.com/at-the-airport/airport-information/cancun-mexico"
+   },
+   {
+    "title": "Southwest - Airport information (Cancún, Terminal 4)",
+    "url": "https://mobile.southwest.com/airport-info/CUN"
+   },
+   {
+    "title": "AP via MyNorthwest - United narrows check-in window; airline comparison (May 27, 2025)",
+    "url": "https://mynorthwest.com/lifestyle/united-is-narrowing-its-check-in-window-for-us-flights-heres-how-it-compares-to-other-airlines/4092751"
+   },
+   {
+    "title": "U.S. Customs and Border Protection - Preclearance locations (none in Mexico)",
+    "url": "https://www.cbp.gov/travel/preclearance"
+   },
+   {
+    "title": "Wikipedia - Cancún International Airport",
+    "url": "https://en.wikipedia.org/wiki/Canc%C3%BAn_International_Airport"
+   },
+   {
+    "title": "Aeropuertos del Mundo - Cancún airlines by terminal (updated Oct 14, 2026)",
+    "url": "https://www.aeropuertosdelmundo.net/mx/aeropuerto-CUN-lineas-aereas/"
+   },
+   {
+    "title": "The Better Vacation - Cancún International Airport guide (Apr 9, 2026)",
+    "url": "https://thebettervacation.com/cancun/cancun-international-airport/amp/"
+   },
+   {
+    "title": "El CEO - Spirit and jet fuel hit Cancún airport; new Terminal 1 expected Q4 (July 29, 2026)",
+    "url": "https://elceo.com/negocios/quiebra-de-spirit-y-alza-en-la-turbosina-golpean-al-aeropuerto-de-cancun-el-mas-afectado-en-2026/"
+   },
+   {
+    "title": "GOV.UK - Mexico entry requirements",
+    "url": "https://www.gov.uk/foreign-travel-advice/mexico/entry-requirements"
+   },
+   {
+    "title": "TT & More - Mexico FMM 2026: flying into Cancún (Sept 25, 2026)",
+    "url": "https://www.ttandmore.com/blog/mexico-fmm-immigration-form-cancun-2026/"
+   },
+   {
+    "title": "The Mexico Handbook - The FMM and tourist entry to Mexico (updated Oct 25, 2026)",
+    "url": "https://themexicohandbook.com/the-fmm-and-tourist-entry-to-mexico/"
+   },
+   {
+    "title": "The Points Guy - Cancún drops paper immigration form (Aug 23, 2022)",
+    "url": "https://thepointsguy.com/news/cancun-immigration-form"
+   },
+   {
+    "title": "The Alviator - Countries without departure immigration (Mar 12, 2026)",
+    "url": "https://thealviator.com/2026/03/departure-immigration/"
+   },
+   {
+    "title": "Visitax - Official site (Quintana Roo)",
+    "url": "https://www.visitax.gob.mx/sitio/"
+   },
+   {
+    "title": "Travel Off Path - Cancún Visitax spot checks at the airport (Dec 19, 2025)",
+    "url": "https://www.traveloffpath.com/travelers-must-pay-cancun-visitax-separately-hotels-wont-collect-it-confirm-authorities/"
+   },
+   {
+    "title": "ADO - Cancún Airport to Hotel Zone (Punta Cancún)",
+    "url": "https://international.ado.com.mx/ado-bus/cancun-airport-to-cancun-hotel-zone-punta-cancun"
+   },
+   {
+    "title": "ADO blog - ADO at Cancún Airport",
+    "url": "https://blog.ado.com.mx/aeropuerto-cancun-ado"
+   },
+   {
+    "title": "Uber - Cancún Airport (CUN)",
+    "url": "https://www.uber.com/global/en/r/airports/cun/"
+   }
+  ]
+ },
  "DCA": {
   "code": "DCA",
   "name": "Ronald Reagan Washington National Airport",
@@ -2295,6 +2511,219 @@
    }
   ]
  },
+ "DUB": {
+  "code": "DUB",
+  "name": "Dublin Airport",
+  "city": "Dublin",
+  "state": "Ireland",
+  "region": "intl",
+  "checkedOn": "2026-10-25",
+  "passportControl": "Ireland has no routine exit passport control, so no Irish officer checks you on the way out. US preclearance is on the ground floor of Terminal 2, beyond Dublin security: you clear US immigration, customs and agriculture checks in Dublin, so you land in the US as a domestic arrival and skip CBP and TSA lines. CBP lists the facility's hours as 07:00 to 16:30 GMT, and Dublin Airport says most, but not all, direct US flights from Terminal 2 are precleared, so check with your airline. Global Entry members can use kiosks at preclearance, and Mobile Passport Control works for US and Canadian citizens, green card holders and ESTA travellers. Because of preclearance, Delta recommends arriving 4 hours before departure at Dublin; Dublin Airport suggests 3 hours.",
+  "officialArrivalAdvice": {
+   "domestic": null,
+   "international": "We suggest you arrive at your terminal 3 hours before your long-haul flight. Allow extra time if you are checking bags or travelling in a group.",
+   "source": "https://www.dublinairport.com/flight-information/travelling-to-usa/faqs"
+  },
+  "terminals": [
+   {
+    "id": "T1",
+    "name": "Terminal 1",
+    "airlines": [],
+    "checkpoints": [
+     {
+      "notes": "Fast Track is on Departures Level 3 (Mezzanine), open 04:00-21:00, €7.99-€13.99 depending on date and time. Book online up to 5 minutes ahead, at a kiosk, or tap a card at the entrance.",
+      "precheck": null,
+      "clear": null,
+      "name": "Departures security"
+     }
+    ],
+    "notes": [
+     "Dublin Airport lists no US airline at T1; Ryanair, Air Canada, WestJet and Air Transat check in here",
+     "US flights leave from Terminal 2, a five-minute walk from T1"
+    ]
+   },
+   {
+    "id": "T2",
+    "name": "Terminal 2",
+    "airlines": [
+     "Aer Lingus",
+     "United",
+     "American",
+     "Delta",
+     "JetBlue"
+    ],
+    "checkpoints": [
+     {
+      "notes": "Busiest 05:00-12:00. Fast Track is on Departures Level 2, before security, open 04:00-18:00, €7.99-€13.99. Liquids in containers up to 2 litres and electronics can stay in your bag.",
+      "precheck": null,
+      "clear": null,
+      "name": "Departures security"
+     },
+     {
+      "notes": "Ground floor, after Dublin security. Wait until the flight screens show your allocated time, then go. Global Entry kiosks and Mobile Passport Control are available. A December 2025 traveller report says some passengers are sent to a bag-screening belt here while others go straight to the immigration desks.",
+      "precheck": null,
+      "clear": null,
+      "name": "U.S. Preclearance"
+     }
+    ],
+    "notes": [
+     "All US airlines at Dublin use T2",
+     "Aer Lingus offers an evening-before bag drop",
+     "There are only a few shops after US preclearance",
+     "Dublin Express route 782 stops at T2 before T1"
+    ]
+   }
+  ],
+  "connectedAirside": null,
+  "betweenTerminals": "Terminals 1 and 2 are a five-minute walk apart. All US flights use Terminal 2.",
+  "securityWaits": {
+   "summary": "In June 2026, Dublin Airport said 95.2% of departing passengers cleared security in under 15 minutes and 98.2% in under 20 minutes. Terminal 2 security is busiest from 05:00 to 12:00, when most US flights leave. Live times on dublinairport.com and in the app show the median wait over the previous 15 minutes. These figures cover Dublin security only, not the US preclearance queue.",
+   "busiestTimes": [
+    "Terminal 2, 05:00-12:00"
+   ],
+   "source": "https://www.dublinairport.com/latest-news/2026/07/10/Passenger-numbers-at-Dublin-Airport-up-2percent-in-June"
+  },
+  "precheckNotes": null,
+  "clearAvailable": null,
+  "touchlessId": null,
+  "gettingThere": {
+   "rideshare": "Taxis wait outside both terminals and drop you at the kerb near check-in. Dublin Airport estimates a metered fare of €30-45 to or from Dublin city centre. Meter rates are €1.32/km Monday to Saturday 8am-8pm, and €1.81-2.20/km at other times.",
+   "transit": "Dublin Express route 782 runs from the city quays and Heuston Station to the airport from about 03:30 to 01:00 (August 2026 timetable), stopping at Terminal 2 first. From Custom House Quay, its last city stop, the ride to T2 takes about 25 minutes; from George's Quay, about 50 minutes. TFI bus routes 16, 19, 24, 33a, 41, 101, 102 and 109A also serve the airport from Zones 11, 13 and 15, and the TFI network runs 24-hour buses to the city.",
+   "driving": "The airport is 10 km north of the city, off Junction 2 of the M1. Set-down zones are in front of both terminals; follow signs for T2 Departures. Unattended vehicles are towed. Short-term car parks charge from €4 an hour. Dublin Airport has permission to charge for drop-offs but had not started as of August 2026."
+  },
+  "construction2026": [
+   "Dublin Airport plans to expand the US preclearance facility in Terminal 2. In October 2026 it applied to add a storey to the already approved design. No construction dates have been published."
+  ],
+  "bagDrop": "Delta and United: check-in and bag drop close 1 hour 15 minutes before departure at Dublin. Aer Lingus: check-in opens 3 hours before; its 2018 fact sheet gave a 75-minute cutoff for economy and 60 minutes for business on US flights, and it offers an evening-before bag drop. American: opens 3.5 hours before; its general cutoff for flights from outside the US is 60 minutes. JetBlue: opens 4 hours before; this research found no published cutoff for Dublin.",
+  "tips": [
+   "Plan on 3 hours, or 4 if you fly Delta. You must finish check-in, Dublin security and US preclearance before boarding.",
+   "After Dublin security, watch the screens for your flight's allocated preclearance time, then go straight down to the ground floor.",
+   "Use Global Entry kiosks if you are a member. Otherwise, fill in Mobile Passport Control once you reach preclearance to speed up the CBP check.",
+   "Do not carry scissors or blades in your cabin bag; Dublin Airport says they are not allowed on US-bound flights.",
+   "Food bought before preclearance may be restricted. Keep it in your hand luggage, declare it and show it for inspection.",
+   "Eat and shop before preclearance if you can; there are only a few shops after it."
+  ],
+  "faq": [
+   {
+    "q": "How early should I get to Dublin Airport for a flight to the US?",
+    "a": "Dublin Airport suggests 3 hours before a long-haul flight. Delta recommends 4 hours at Dublin. Delta and United close check-in and bag drop 1 hour 15 minutes before departure."
+   },
+   {
+    "q": "Do I go through US customs in Dublin?",
+    "a": "Yes, on most direct US flights. US preclearance in Terminal 2 covers US immigration, customs and agriculture checks. You land as a domestic arrival and skip CBP and TSA lines in the US."
+   },
+   {
+    "q": "Which Dublin terminal do US flights leave from?",
+    "a": "Terminal 2. Aer Lingus, United, American, Delta and JetBlue all check in there."
+   },
+   {
+    "q": "Can I use Global Entry at Dublin preclearance?",
+    "a": "Yes. Global Entry members can use the self-service kiosks at US preclearance. Mobile Passport Control is also available."
+   },
+   {
+    "q": "Is there Irish passport control when leaving Dublin?",
+    "a": "No. Ireland has no routine exit passport control. On a precleared US flight, the passport check before boarding is done by US officers at preclearance."
+   }
+  ],
+  "sources": [
+   {
+    "title": "Dublin Airport - U.S. Preclearance",
+    "url": "https://www.dublinairport.com/flight-information/travelling-to-usa/usa-preclearance"
+   },
+   {
+    "title": "Dublin Airport - Travelling to the USA FAQs",
+    "url": "https://www.dublinairport.com/flight-information/travelling-to-usa/faqs"
+   },
+   {
+    "title": "Dublin Airport - Travelling to the USA",
+    "url": "https://www.dublinairport.com/flight-information/travelling-to-usa"
+   },
+   {
+    "title": "Dublin Airport - Airlines (terminals and check-in times)",
+    "url": "https://www.dublinairport.com/flight-information/airlines"
+   },
+   {
+    "title": "Dublin Airport - Security FAQs",
+    "url": "https://www.dublinairport.com/at-the-airport/security/security-faqs"
+   },
+   {
+    "title": "Dublin Airport - Passenger joy as security rules eased (Sept 17, 2025)",
+    "url": "https://www.dublinairport.com/latest-news/2025/09/17/passenger-joy-as-security-rules-eased-at-dublin-airport"
+   },
+   {
+    "title": "Dublin Airport - Passenger numbers up 2% in June (July 10, 2026)",
+    "url": "https://www.dublinairport.com/latest-news/2026/07/10/Passenger-numbers-at-Dublin-Airport-up-2percent-in-June"
+   },
+   {
+    "title": "Dublin Airport - Mobile Passport Control introduced (Jan 26, 2024)",
+    "url": "https://www.dublinairport.com/latest-news/2024/01/26/mobile-passport-control-introduced-for-us-bound-passengers-at-dublin-airport"
+   },
+   {
+    "title": "Dublin Airport - Fast Track",
+    "url": "https://www.dublinairport.com/enhance-your-journey/fast-track"
+   },
+   {
+    "title": "Dublin Airport - Flight connections",
+    "url": "https://www.dublinairport.com/flight-information/connections"
+   },
+   {
+    "title": "Dublin Airport - Bus services",
+    "url": "https://www.dublinairport.com/to-from-the-airport/by-bus"
+   },
+   {
+    "title": "Dublin Airport - Dublin bus routes",
+    "url": "https://www.dublinairport.com/to-from-the-airport/by-bus/dublin-buses"
+   },
+   {
+    "title": "Dublin Airport - Driving to Dublin Airport",
+    "url": "https://www.dublinairport.com/to-from-the-airport/by-car"
+   },
+   {
+    "title": "Dublin Airport - Taxis",
+    "url": "https://www.dublinairport.com/to-from-the-airport/by-taxi"
+   },
+   {
+    "title": "Dublin Express",
+    "url": "https://www.dublinexpress.ie/"
+   },
+   {
+    "title": "Dublin Express - Timetable (valid August 2026)",
+    "url": "https://www.dublinexpress.ie/timetable"
+   },
+   {
+    "title": "U.S. Customs and Border Protection - Preclearance locations",
+    "url": "https://www.cbp.gov/travel/preclearance"
+   },
+   {
+    "title": "Delta - International check-in time requirements",
+    "url": "https://www.delta.com/us/en/check-in-security/check-in-time-requirements/international-check-in"
+   },
+   {
+    "title": "Aer Lingus media centre - US immigration and pre-clearance fact sheet (Sept 19, 2018)",
+    "url": "https://mediacentre.aerlingus.com/factsheet/us-immigration-and-pre-clearance"
+   },
+   {
+    "title": "AP via MyNorthwest - United narrows check-in window; airline comparison (May 27, 2025)",
+    "url": "https://mynorthwest.com/lifestyle/united-is-narrowing-its-check-in-window-for-us-flights-heres-how-it-compares-to-other-airlines/4092751"
+   },
+   {
+    "title": "Irish Travel Extra - Dublin Airport seeks to expand US preclearance facility (Oct 10, 2026)",
+    "url": "https://www.travelextra.ie/?p=152120"
+   },
+   {
+    "title": "Live and Let's Fly - US preclearance in Dublin (Dec 6, 2025)",
+    "url": "https://liveandletsfly.com/us-preclearance-dublin/"
+   },
+   {
+    "title": "The Alviator - Countries without departure immigration (Mar 12, 2026)",
+    "url": "https://thealviator.com/2026/03/departure-immigration/"
+   },
+   {
+    "title": "Autobiz - Dublin Airport drop-off charges not yet in place (Aug 4, 2026)",
+    "url": "https://www.autobiz.ie/home/uk-passengers-paying-the-price-for-drop-offs"
+   }
+  ]
+ },
  "EWR": {
   "code": "EWR",
   "name": "Newark Liberty International Airport",
@@ -2505,6 +2934,210 @@
    {
     "title": "Southwest - TSA PreCheck Touchless ID",
     "url": "https://www.southwest.com/tsa-precheck-touchless-id/"
+   }
+  ]
+ },
+ "FCO": {
+  "code": "FCO",
+  "name": "Rome Fiumicino Leonardo da Vinci Airport",
+  "city": "Rome",
+  "state": "Italy",
+  "region": "intl",
+  "checkedOn": "2026-10-25",
+  "officialArrivalAdvice": {
+   "domestic": null,
+   "international": "Aeroporti di Roma (ADR) gives no single arrival time. It says the right time depends on your destination, the travel period and whether you check bags, and that you should allow time for check-in, security and passport control. Delta suggests arriving at least 3 hours before an international flight.",
+   "source": "https://www.adr.it/web/aeroporti-di-roma-en/pax-fco-check-in"
+  },
+  "passportControl": "A flight to the US leaves the Schengen area, so after check-in and security you pass Italian passport control before you reach the E gates. The EU Entry/Exit System (EES) has run at Fiumicino since October 12, 2025 and records your exit with your biometric data; if you registered your fingerprints and photo on arrival, exit is a quick check. ADR says US citizens aged 14 or older with a chip passport can use its e-gates when departing, and EES self-service kiosks are being rolled out for biometric passport holders over 12. Reported waits vary: Ryanair said in April 2026 that queues at Fiumicino and other Italian airports had passed 1-2 hours, and in July 2026 ADR's chief aviation officer told the BBC that average EES waits for UK travelers rose from 7 to 20 minutes. Italy is one of nine countries reported in September 2026 to have informal EU approval to keep pausing biometric capture when queues build.",
+  "terminals": [
+   {
+    "id": "T1",
+    "name": "Terminal 1 (A gates)",
+    "airlines": [
+     "ITA Airways"
+    ],
+    "checkpoints": [
+     {
+      "notes": "ADR says direct flights to the USA operated by airlines that check in at Terminal 1 still use traditional X-ray screening: liquids in containers of up to 100 ml in a clear bag of up to 1 liter, and electronics taken out of your bag. QPass booked slots run here from 5:00 to 20:00, but QPass is not available for flights to the USA.",
+      "precheck": null,
+      "clear": null,
+      "name": "Terminal 1 security"
+     }
+    ],
+    "notes": [
+     "ADR lists ITA Airways in Terminal 1. Terminal 1 is generally used for domestic and Schengen flights",
+     "Terminal 1 gates are A1-3, A21-27, A31-52 and A61-83",
+     "Non-Schengen departures, including flights to the US, leave from Boarding Area E after passport control",
+     "ITA passengers flying to the US must check in at the airport counters; the Airport in the City check-in at Roma Termini does not take US-bound passengers"
+    ]
+   },
+   {
+    "id": "T3",
+    "name": "Terminal 3 (E gates)",
+    "airlines": [
+     "Delta",
+     "United",
+     "American"
+    ],
+    "checkpoints": [
+     {
+      "notes": "ADR says its EDS C3 scanners let you keep laptops and tablets in your bag, and that since July 26, 2025 liquids may be carried in containers of up to 2 liters. At checkpoints without EDS C3 scanners, older rules apply. QPass booked slots run at Terminal 3 East from 3:00 to 23:00, but QPass is not available for flights to the USA.",
+      "precheck": null,
+      "clear": null,
+      "name": "Terminal 3 security"
+     }
+    ],
+    "notes": [
+     "Terminal 3 is mainly used for extra-Schengen and intercontinental flights. ADR's carrier list puts Delta, United and American here",
+     "Delta checks in and drops bags in Terminal 3, then passport control is directly behind Terminal 3; Delta says all its flights leave from the E gates",
+     "Terminal 3 gates are E1-8, E11-24, E31-44 and E51-61",
+     "Gates E31-44 are in a satellite reached by the SkyBridge people mover. The westbound train is for departing passengers only, so you cannot ride back",
+     "ADR says Terminal 3 has longer walking routes than Terminal 1"
+    ]
+   }
+  ],
+  "connectedAirside": null,
+  "betweenTerminals": "ADR says Terminals 1 and 3 are linked by marked pedestrian routes. It does not publish walking times. The train station is inside the airport area, close to the terminals.",
+  "securityWaits": {
+   "summary": "No published security wait times were found for Fiumicino. For US-bound travelers in 2026, the bigger risk has been passport control under EES. Ryanair said in April 2026 that queues had passed 1-2 hours, and ADR told the BBC in July 2026 that average EES waits for UK travelers rose from 7 to 20 minutes.",
+   "busiestTimes": [],
+   "source": "https://www.thelocal.es/20260720/airport-bosses-warn-eus-new-border-checks-triple-waiting-times-for-brits"
+  },
+  "precheckNotes": null,
+  "clearAvailable": null,
+  "touchlessId": null,
+  "gettingThere": {
+   "rideshare": "Rome taxis charge a fixed fare of 55 euros between the airport and the city center inside the Aurelian Walls, in either direction, with all supplements included. Fixed fares are 60 euros to or from Tiburtina station and 50 euros to or from Ostiense station. Chauffeur cars (NCC) must be booked in advance.",
+   "transit": "The Leonardo Express runs nonstop from Roma Termini to the airport in 32 minutes, every 15 minutes, from 4:50 to 23:05. ADR lists the fare as 14 euros. FL1 regional trains link the airport with other Rome stations, including Tiburtina, every 15 minutes on working days and every 30 minutes on weekends and holidays. Buses also run from Roma Termini and other city stops.",
+   "driving": "The A91 Rome-Fiumicino motorway leads to the airport. Drop-offs use the Kiss&Go area, which has free parking, and the Lunga Sosta (long-stay) car park offers 2 hours free."
+  },
+  "construction2026": [
+   "From October 12, 2026 through February 2027, ADR is upgrading airfield infrastructure, including a second Taxiway Bravo. ADR says take-offs and landings continue as normal and the airport remains fully operational"
+  ],
+  "bagDrop": "Delta: FCO is not on Delta's list of exceptions, so its international rule applies: be checked in at least 1 hour before departure and at the gate 45 minutes before. United: check in at least 1 hour before an international flight. ITA Airways passengers to the US must check in at the departure terminal counters, not at Airport in the City. American's and ITA's FCO bag-drop cutoffs were not confirmed here, so check your booking.",
+  "tips": [
+   "Check your terminal: Delta, United and American use Terminal 3, while ITA Airways checks in at Terminal 1",
+   "Do not plan on QPass: ADR's free security time slots are not available for flights to the USA",
+   "On ITA and other airlines that check in at Terminal 1, US flights get traditional screening, so pack liquids in 100 ml containers in a clear bag and be ready to take out electronics",
+   "US citizens aged 14 or older with a chip passport can use FCO's e-gates at departure passport control",
+   "If your gate is E31-44, visit lounges and shops first: the SkyBridge to that satellite runs one way for departing passengers",
+   "Allow at least 3 hours before a US flight; EES border queues at Italian airports were reported at 1-2 hours in spring 2026"
+  ],
+  "faq": [
+   {
+    "q": "How early should I get to Rome Fiumicino airport for a flight to the US?",
+    "a": "At least 3 hours before departure. ADR gives no fixed time, Delta suggests 3 hours for international flights, and EES passport queues at Italian airports were reported at 1-2 hours in spring 2026."
+   },
+   {
+    "q": "Which Fiumicino terminal is my US flight in?",
+    "a": "Delta, United and American check in at Terminal 3. ITA Airways checks in at Terminal 1. US flights board from the E gates after passport control."
+   },
+   {
+    "q": "Can US citizens use the e-gates when leaving Fiumicino?",
+    "a": "Yes. ADR says US citizens can use the e-gates at departure and arrival if they are 14 or older and have an electronic (chip) passport."
+   },
+   {
+    "q": "How much is a taxi from central Rome to Fiumicino?",
+    "a": "The fixed fare is 55 euros from inside the Aurelian Walls, with all supplements included. The Leonardo Express train from Roma Termini costs 14 euros and takes 32 minutes."
+   }
+  ],
+  "sources": [
+   {
+    "title": "Aeroporti di Roma - Before flying from Rome Fiumicino",
+    "url": "https://www.adr.it/web/aeroporti-di-roma-en/pax-fco-before-travelling"
+   },
+   {
+    "title": "Aeroporti di Roma - Fiumicino check-in",
+    "url": "https://www.adr.it/web/aeroporti-di-roma-en/pax-fco-check-in"
+   },
+   {
+    "title": "Aeroporti di Roma - Security checks at Fiumicino (EDS C3, liquids, US/Israel flights)",
+    "url": "https://www.adr.it/web/aeroporti-di-roma-en/pax-fco-cheks"
+   },
+   {
+    "title": "Aeroporti di Roma - Immigration and customs (EES)",
+    "url": "https://www.adr.it/web/aeroporti-di-roma-en/pax-fco-immigration-and-customs"
+   },
+   {
+    "title": "Aeroporti di Roma - E-gates",
+    "url": "https://www.adr.it/web/aeroporti-di-roma-en/e-gates1"
+   },
+   {
+    "title": "Aeroporti di Roma - QPass FAQs",
+    "url": "https://www.adr.it/web/aeroporti-di-roma-en/qpass-faqs"
+   },
+   {
+    "title": "Aeroporti di Roma - Which terminal (carrier list)",
+    "url": "https://www.adr.it/web/aeroporti-di-roma-en/pax-fco-which-terminal"
+   },
+   {
+    "title": "Aeroporti di Roma - Fiumicino airport map",
+    "url": "https://www.adr.it/web/aeroporti-di-roma-en/pax-fco-airport-map"
+   },
+   {
+    "title": "Aeroporti di Roma - Taxi fares",
+    "url": "https://www.adr.it/web/aeroporti-di-roma-en/pax-fco-taxi"
+   },
+   {
+    "title": "Aeroporti di Roma - Train (Leonardo Express, FL1)",
+    "url": "https://www.adr.it/web/aeroporti-di-roma-en/pax-fco-train"
+   },
+   {
+    "title": "Aeroporti di Roma - To and from Fiumicino",
+    "url": "https://www.adr.it/web/aeroporti-di-roma-en/pax-fco-to-and-from"
+   },
+   {
+    "title": "Aeroporti di Roma - Airport in The City",
+    "url": "https://www.adr.it/web/aeroporti-di-roma-en/airportinthecity"
+   },
+   {
+    "title": "Aeroporti di Roma - News (Scheduled Infrastructure Upgrade Works, Oct 11, 2026)",
+    "url": "https://www.adr.it/web/aeroporti-di-roma-en/azn-news"
+   },
+   {
+    "title": "Delta - Rome Fiumicino (FCO) airport information",
+    "url": "https://www.delta.com/content/www/en_US/traveling-with-us/airports-and-aircraft/airports/rome.html"
+   },
+   {
+    "title": "Delta - International check-in time requirements",
+    "url": "https://www.delta.com/us/en/check-in-security/check-in-time-requirements/international-check-in"
+   },
+   {
+    "title": "Scripps / 10News - United will require passengers to check in sooner",
+    "url": "https://www.10news.com/life/travel/united-will-require-passengers-to-check-in-for-their-flights-sooner"
+   },
+   {
+    "title": "ANSA - Ryanair asks Italian government to suspend EES for passports (Apr 30, 2026)",
+    "url": "https://www.ansa.it/nuova_europa/en/news/countries/greece/2026/04/30/ryanair-has-asked-the-italian-government-to-suspend-ees-for-passports_a5f4d836-009d-48d7-a9c1-e32cfcd078e6.html"
+   },
+   {
+    "title": "The Local - Airport bosses warn EU's new border checks triple waiting times (Jul 20, 2026)",
+    "url": "https://www.thelocal.es/20260720/airport-bosses-warn-eus-new-border-checks-triple-waiting-times-for-brits"
+   },
+   {
+    "title": "The Connexion - Rome airports call for pause to EES checks this summer (Jun 29, 2026)",
+    "url": "https://www.connexionfrance.com/news/rome-airports-call-for-pause-to-ees-checks-this-summer-amid-growing-queues/799192"
+   },
+   {
+    "title": "Biometric Update - EU lets 9 Schengen countries delay full EES biometric checks (Sept 2026)",
+    "url": "https://www.biometricupdate.com/202609/eu-lets-9-schengen-countries-delay-full-ees-biometric-checks"
+   },
+   {
+    "title": "European Commission Home Affairs - Entry/Exit System",
+    "url": "https://home-affairs.ec.europa.eu/policies/schengen/smart-borders/entry-exit-system_en"
+   },
+   {
+    "title": "European Commission - How the new digital borders system works",
+    "url": "https://commission.europa.eu/news-and-media/news/how-new-digital-borders-system-works-2025-10-13_en"
+   },
+   {
+    "title": "The Points Analyst - Rome Fiumicino Airport (FCO) guide (Mar 23, 2026)",
+    "url": "https://www.thepointsanalyst.com/rome-fiumicino-airport-fco/"
+   },
+   {
+    "title": "Wikipedia - Rome Fiumicino Airport",
+    "url": "https://en.wikipedia.org/wiki/Rome_Fiumicino_Airport"
    }
   ]
  },
@@ -4925,6 +5558,212 @@
    {
     "title": "Wikipedia - Heathrow Airport",
     "url": "https://en.wikipedia.org/wiki/Heathrow_Airport"
+   }
+  ]
+ },
+ "MAD": {
+  "code": "MAD",
+  "name": "Adolfo Suárez Madrid-Barajas Airport",
+  "city": "Madrid",
+  "state": "Spain",
+  "region": "intl",
+  "checkedOn": "2026-10-25",
+  "officialArrivalAdvice": {
+   "domestic": null,
+   "international": "Aena does not publish a general arrival time for Madrid-Barajas. Delta suggests arriving at least 3 hours before an international flight.",
+   "source": "https://www.delta.com/us/en/check-in-security/check-in-time-requirements/international-check-in"
+  },
+  "passportControl": "A flight to the US leaves the Schengen area, so you pass Spanish passport control after security, and the EU Entry/Exit System (EES) records your exit; Madrid-Barajas was the first Spanish airport to start EES, on October 12, 2025. In T1 (Delta, United, Air Europa), passport control is to the right after the security checkpoint; if your T4 flight (Iberia, American) leaves from the T4S satellite, you ride the people mover there and pass passport control on level -1 before going up to the S gates. In February 2026, The Objective reported long queues at T4 passport control for several days, with police sources saying the system ran slower than expected because officers must take fingerprints and photos, and in May 2026 Merca2 reported waits of more than 60 minutes at Barajas and El Prat. Aena lists its automated border gates for EU, Iceland, Norway and Swiss citizens only, so US passport holders should expect a staffed booth. Spain was not among the nine countries reported in September 2026 to have informal EU approval to keep pausing biometric capture.",
+  "terminals": [
+   {
+    "id": "T1",
+    "name": "Terminal T1",
+    "airlines": [
+     "Delta",
+     "United",
+     "Air Europa"
+    ],
+    "checkpoints": [
+     {
+      "notes": "Screens at the checkpoint show estimated waiting times. Aena offers Fast Track for first and business class passengers in all terminals. For non-Schengen flights, passport control is to the right after security.",
+      "precheck": null,
+      "clear": null,
+      "name": "Terminal T1 security checkpoint"
+     }
+    ],
+    "notes": [
+     "Delta checks in on the 1st floor at desks 130-135",
+     "United checks in on the 1st floor at desks 140-149",
+     "Air Europa checks in for non-Schengen flights, including the US, on the 1st floor at desks 206-222; its Schengen flights use T2",
+     "Aena says desk numbers can change, so check the screens in the terminal"
+    ]
+   },
+   {
+    "id": "T4",
+    "name": "Terminal T4 and T4 Satellite (T4S)",
+    "airlines": [
+     "Iberia",
+     "American"
+    ],
+    "checkpoints": [
+     {
+      "notes": "Fully opened in summer 2026 with 36 scanners, so you can keep liquids and electronic devices in your carry-on. It has lanes for families and passengers with reduced mobility and a separate Fast Track area. Screens show estimated waiting times.",
+      "precheck": null,
+      "clear": null,
+      "name": "T4 central security checkpoint (floor +2)"
+     }
+    ],
+    "notes": [
+     "Iberia checks in on floor 2; desks 870-899 serve the USA, Japan and the United Kingdom, and desks 780-799 serve business class",
+     "American checks in on floor 2 at desks 930-949",
+     "Aena describes the T4 main building as handling check-in, security and boarding for domestic and Schengen flights, with the T4S satellite used for international hub flights",
+     "From T4 (gates H, J, K, floor -2) the automated people mover takes about 5 minutes to T4S and runs every 4 to 12 minutes, all day, every day",
+     "In T4S, go to level -1 for passport control, then up to level 1 for the S (non-Schengen) gates"
+    ]
+   }
+  ],
+  "connectedAirside": null,
+  "betweenTerminals": "A free bus links T1, T2 and T4 24 hours a day. It runs every 5 minutes from 6:00 to 22:00 and every 20 minutes from 22:00 to 6:00. Stops are T1 floor 1, T2 floor 2 (departures) and T4 floor 2 (departures). An automated train links T4 and T4S; the ride takes about 5 minutes.",
+  "securityWaits": {
+   "summary": "Aena does not publish security wait times online, but screens at the T1, T2 and T4 security checkpoints show estimated waits. For US-bound travelers in 2026, the bigger risk has been EES passport control: T4 had long queues in February 2026, and waits of more than 60 minutes were reported at Barajas in May 2026.",
+   "busiestTimes": [],
+   "source": "https://www.aena.es/en/adolfo-suarez-madrid-barajas/airport-services/categories-and-terminals/departures-area.html"
+  },
+  "precheckNotes": null,
+  "clearAvailable": null,
+  "touchlessId": null,
+  "gettingThere": {
+   "rideshare": "Madrid taxis charge a flat fare of 33 euros between the airport and anywhere inside the M-30 ring road, 24 hours a day, with no supplements added. Official taxis are white with a red stripe and the city coat of arms.",
+   "transit": "Metro Line 8 runs from Nuevos Ministerios to the airport, with stations at T1-T2-T3 (in T2, floor 1) and T4 (floor -1), from 6:05 to 2:00. A 3 euro airport supplement is added to the regular fare. Cercanías line C1 links Príncipe Pío, Atocha and Chamartín with a station in T4 only. The 203 Airport Express bus runs 24 hours between Atocha station and the airport (T1, T2 and T4) for a flat 5 euros.",
+   "driving": "T4 has the P4, First Class and Long Stay car parks. Aena takes parking bookings through its app or parking.aena.es and gives discounts for app bookings; the plate on the booking must match the car."
+  },
+  "construction2026": [
+   "In July 2026 Aena put out to tender a 35-month expansion of the T4 North apron, to be built in five phases alongside normal operations",
+   "Aena also tendered a 24-month extension of the T4S south pier by 36 meters, adding three new boarding bridges for non-Schengen flights",
+   "Aena's wider plan, mostly for 2027-2031, extends T4 and T4S and adds a new processor building in front of T1, T2 and T3. Aena has not announced passenger impacts"
+  ],
+  "bagDrop": "Delta: MAD is not on Delta's list of exceptions, so its international rule applies: be checked in at least 1 hour before departure and at the gate 45 minutes before. United: check in at least 1 hour before an international flight. Iberia's and American's MAD cutoffs were not confirmed here, so check your booking.",
+  "tips": [
+   "Check your terminal: Delta, United and Air Europa's US flights check in at T1, while Iberia and American use T4",
+   "On Iberia or American, budget extra time for the people mover to T4S (about 5 minutes, every 4-12 minutes) and passport control there",
+   "At the T4 central security checkpoint, liquids and electronics can stay in your carry-on",
+   "US passports cannot use Aena's automated border gates, which are for EU, Iceland, Norway and Swiss citizens",
+   "Cercanías trains stop only at T4. For T1, take Metro Line 8, the 203 Airport Express bus or the free shuttle bus from T4"
+  ],
+  "faq": [
+   {
+    "q": "How early should I get to Madrid airport for a flight to the US?",
+    "a": "At least 3 hours before departure. Delta suggests 3 hours for international flights, and EES passport queues at Barajas were reported at more than an hour in 2026."
+   },
+   {
+    "q": "Which Madrid terminal is my US flight in?",
+    "a": "Delta and United check in at T1, and so does Air Europa for non-Schengen flights. Iberia and American check in at T4. Aena says the T4S satellite handles international hub flights, and its S gates serve non-Schengen flights."
+   },
+   {
+    "q": "How do I get from T4 to T4S?",
+    "a": "Take the automated people mover from floor -2 of T4. The ride is about 5 minutes and trains run every 4 to 12 minutes. In T4S, go to level -1 for passport control, then up to the S gates."
+   },
+   {
+    "q": "How much is a taxi to Madrid airport?",
+    "a": "A flat 33 euros from anywhere inside the M-30 ring road, at any hour, with no supplements."
+   }
+  ],
+  "sources": [
+   {
+    "title": "Aena - Madrid-Barajas departures area",
+    "url": "https://www.aena.es/en/adolfo-suarez-madrid-barajas/airport-services/categories-and-terminals/departures-area.html"
+   },
+   {
+    "title": "Aena - Madrid-Barajas flight connections (passport control locations, T4S gates)",
+    "url": "https://www.aena.es/en/adolfo-suarez-madrid-barajas/airport-services/connecting-flights.html"
+   },
+   {
+    "title": "Aena - Transport between terminals",
+    "url": "https://www.aena.es/en/adolfo-suarez-madrid-barajas/airport-services/transport-between-terminals.html"
+   },
+   {
+    "title": "Aena - Arrivals area (Automatic Border Control eligibility)",
+    "url": "https://www.aena.es/en/adolfo-suarez-madrid-barajas/airport-services/categories-and-terminals/arrivals-area.html"
+   },
+   {
+    "title": "Aena - Iberia at Madrid-Barajas",
+    "url": "https://www.aena.es/en/madrid-barajas-adolfo-suarez/airlines/iberia.html"
+   },
+   {
+    "title": "Aena - American Airlines at Madrid-Barajas",
+    "url": "https://www.aena.es/en/madrid-barajas-adolfo-suarez/airlines/american-airlines.html"
+   },
+   {
+    "title": "Aena - Delta at Madrid-Barajas",
+    "url": "https://www.aena.es/en/madrid-barajas-adolfo-suarez/airlines/delta.html"
+   },
+   {
+    "title": "Aena - United Airlines at Madrid-Barajas",
+    "url": "https://www.aena.es/en/madrid-barajas-adolfo-suarez/airlines/united.html"
+   },
+   {
+    "title": "Aena - Air Europa at Madrid-Barajas",
+    "url": "https://www.aena.es/en/madrid-barajas-adolfo-suarez/airlines/air-europa.html"
+   },
+   {
+    "title": "Aena - How to get here by taxi",
+    "url": "https://www.aena.es/en/adolfo-suarez-madrid-barajas/getting-there/taxi.html"
+   },
+   {
+    "title": "Aena - How to get here by underground",
+    "url": "https://www.aena.es/en/adolfo-suarez-madrid-barajas/getting-there/underground.html"
+   },
+   {
+    "title": "Aena - How to get here by train",
+    "url": "https://www.aena.es/en/adolfo-suarez-madrid-barajas/getting-there/trains.html"
+   },
+   {
+    "title": "Aena - How to get here by bus",
+    "url": "https://www.aena.es/en/adolfo-suarez-madrid-barajas/getting-there/bus.html"
+   },
+   {
+    "title": "Aena - T4 car parks",
+    "url": "https://www.aena.es/en/adolfo-suarez-madrid-barajas/parking/t4.html"
+   },
+   {
+    "title": "Aena press release - T4 security checkpoint fully open; T4 and T4S expansion tenders (Jul 30, 2026)",
+    "url": "https://www.aena.es/doc/detalleprensa/260730-mad-licitacion-obras-ampliacion-dique-sur-t4s-y-plataforma-t4-y-apertura-filtro-seguridad-t4.pdf"
+   },
+   {
+    "title": "Aena press release - Terminal T4 turns 20 (Feb 3, 2026)",
+    "url": "https://www.aena.es/doc/detalleprensa/260203-mad-20-aniversario-terminal-t4.pdf"
+   },
+   {
+    "title": "Delta - International check-in time requirements",
+    "url": "https://www.delta.com/us/en/check-in-security/check-in-time-requirements/international-check-in"
+   },
+   {
+    "title": "Scripps / 10News - United will require passengers to check in sooner",
+    "url": "https://www.10news.com/life/travel/united-will-require-passengers-to-check-in-for-their-flights-sooner"
+   },
+   {
+    "title": "The Local Spain - Three more airports in Spain introduce EES border checks (Oct 14, 2025)",
+    "url": "https://www.thelocal.es/20251014/three-more-airports-in-spain-introduce-ees-border-checks"
+   },
+   {
+    "title": "The Objective - Colas en el control de pasaportes de la T4 (Feb 15, 2026)",
+    "url": "https://theobjective.com/espana/2026-02-15/colas-control-pasaportes-t4-problemas-nuevo-sistema/"
+   },
+   {
+    "title": "Merca2 - España sufre el caos del control fronterizo EES (May 31, 2026)",
+    "url": "https://www.merca2.es/2026/05/31/caos-control-fronterizo-ees-espana-2387009/"
+   },
+   {
+    "title": "Biometric Update - EU lets 9 Schengen countries delay full EES biometric checks (Sept 2026)",
+    "url": "https://www.biometricupdate.com/202609/eu-lets-9-schengen-countries-delay-full-ees-biometric-checks"
+   },
+   {
+    "title": "European Commission Home Affairs - Entry/Exit System",
+    "url": "https://home-affairs.ec.europa.eu/policies/schengen/smart-borders/entry-exit-system_en"
+   },
+   {
+    "title": "European Commission - How the new digital borders system works",
+    "url": "https://commission.europa.eu/news-and-media/news/how-new-digital-borders-system-works-2025-10-13_en"
    }
   ]
  },
