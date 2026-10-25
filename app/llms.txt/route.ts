@@ -16,6 +16,7 @@ export function GET() {
 - [Airport guides](${SITE}/airports): how early to get to the busiest US airports
 - [Thanksgiving 2026 travel](${SITE}/thanksgiving-travel-2026): busiest days and when to leave
 - [Christmas and New Year's 2026 travel](${SITE}/holiday-travel-2026): busiest days and when to leave
+- [Busiest days to fly](${SITE}/busiest-travel-days): every day of TSA checkpoint numbers since 2025, busiest days and weekdays
 - [International flights](${SITE}/international-flights): how early to arrive, airline check-in cutoffs, EU Entry/Exit System waits, UK ETA, US preclearance, with sources
 - [Does airport theory work?](${SITE}/airport-theory): the TikTok trend versus airline bag and gate cutoffs, with sources
 

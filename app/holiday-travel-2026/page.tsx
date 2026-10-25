@@ -167,7 +167,7 @@ export default function Holidays2026() {
 
       <GuideSection title="More guides">
         <p>
-          <Link href="/airports">Airport guides</Link> · <Link href="/thanksgiving-travel-2026">Thanksgiving 2026</Link> · <Link href="/international-flights">International flights</Link> ·{" "}
+          <Link href="/airports">Airport guides</Link> · <Link href="/thanksgiving-travel-2026">Thanksgiving 2026</Link> · <Link href="/busiest-travel-days">Busiest days to fly</Link> · <Link href="/international-flights">International flights</Link> ·{" "}
           <Link href="/airport-theory">Airport theory</Link>
         </p>
       </GuideSection>
