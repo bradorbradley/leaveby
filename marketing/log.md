@@ -2,6 +2,13 @@
 
 Newest first. Every ~3 hours a scheduled check-in picks the next most useful step, ships it, and adds an entry here.
 
+## 2026-10-25 (22:00 check-in)
+- **New data page: `/busiest-travel-days`**, built from every day of TSA checkpoint numbers since Jan 1, 2025 (660 days, stored in `lib/tsa-volumes.json`, 16 values spot-checked against TSA's tables). It has a heatmap calendar for each year, the top 10 days on record, a busiest-weekday chart, the quietest days and 2026 vs 2025. FAQ and Dataset schema, its own share card, and links from home, Thanksgiving and holidays.
+  - Findings: the record is 3,134,613 (Sun Nov 30, 2025). Only 8 days ever topped 3M, all in 2025 and all on a Friday or Sunday. Sunday is the busiest day of the week and Tuesday the quietest (about 21% lower). 2026 is running 0.8% below 2025, and no 2026 day has reached 3M.
+  - Why: "busiest travel days" and "busiest day to fly" are big, evergreen searches, and original charted data is what reporters and bloggers link to.
+  - To update: TSA blocks curl (403), so fetch the table with WebFetch and append to `counts`. The tests pin known dates.
+- **Next:** a post pack from these findings ("Only 8 days ever hit 3 million"); refresh holiday pages when the 2026 forecasts publish; PostHog when the key arrives.
+
 ## 2026-10-25 (19:00 check-in)
 - **New page: `/holiday-travel-2026`** (Christmas and New Year's). People plan holiday trips weeks ahead, so publishing now gives search engines time to rank it before the rush. Every number is cited (TSA daily checkpoint counts, the TSA, AAA and Airlines for America 2025 forecasts, BTS December delays, TSA ConfirmID, the Newark flight limits). The 2026 busy days are clearly labeled as last season's pattern mapped onto this year's calendar, not a forecast. It has its own share card and FAQ schema, and is linked from home, Thanksgiving and airport theory.
 - **Fixed:** the Thanksgiving page now says "about 3.13 million" for TSA's record day. TSA's own table shows 3,134,613, but news outlets reported 3,133,924.

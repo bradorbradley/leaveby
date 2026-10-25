@@ -56,6 +56,7 @@ export default function Thanksgiving2026() {
           <li><strong>Thu Nov 26 (Thanksgiving):</strong> usually the quietest day of the week to fly.</li>
           <li><strong>Sun Nov 29:</strong> the return rush, and the likeliest day for a new all-time record.</li>
           <li><strong>Mon Nov 30:</strong> still heavy as late returners head home.</li>
+          <li>Every day of TSA numbers since 2025: <Link href="/busiest-travel-days">the busiest days to fly</Link>.</li>
           <li>Flying again in December? See <Link href="/holiday-travel-2026">Christmas and New Year&apos;s 2026</Link>.</li>
         </ul>
       </section>
