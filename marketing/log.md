@@ -2,6 +2,11 @@
 
 Newest first. Every ~3 hours a scheduled check-in picks the next most useful step, ships it, and adds an entry here.
 
+## 2026-10-25 (19:00 check-in)
+- **New page: `/holiday-travel-2026`** (Christmas and New Year's). People plan holiday trips weeks ahead, so publishing now gives search engines time to rank it before the rush. Every number is cited (TSA daily checkpoint counts, the TSA, AAA and Airlines for America 2025 forecasts, BTS December delays, TSA ConfirmID, the Newark flight limits). The 2026 busy days are clearly labeled as last season's pattern mapped onto this year's calendar, not a forecast. It has its own share card and FAQ schema, and is linked from home, Thanksgiving and airport theory.
+- **Fixed:** the Thanksgiving page now says "about 3.13 million" for TSA's record day. TSA's own table shows 3,134,613, but news outlets reported 3,133,924.
+- **Next:** refresh both holiday pages when the 2026 TSA and AAA forecasts come out (mid-Nov and mid-Dec); PostHog when the key arrives.
+
 ## 2026-10-25 (16:00 check-in)
 - **4 more guides (now 52):**
   - YYZ: US preclearance; which US airlines use T1 vs T3; CBP hours are 3:30am–9pm.

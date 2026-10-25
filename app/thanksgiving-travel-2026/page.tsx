@@ -21,7 +21,7 @@ export const metadata: Metadata = {
 const FAQ = [
   {
     q: "What is the busiest day to fly at Thanksgiving 2026?",
-    a: "Expect the Sunday after Thanksgiving, Nov 29, 2026, to be the busiest. That Sunday set TSA's all-time screening record in each of the last three years, most recently 3,133,924 people on Nov 30, 2025. The Tuesday and Wednesday before (Nov 24–25) are the busiest outbound days.",
+    a: "Expect the Sunday after Thanksgiving, Nov 29, 2026, to be the busiest. That Sunday set TSA's all-time screening record in each of the last three years, most recently about 3.13 million people on Nov 30, 2025. The Tuesday and Wednesday before (Nov 24–25) are the busiest outbound days.",
   },
   {
     q: "How early should I get to the airport at Thanksgiving?",
@@ -56,19 +56,21 @@ export default function Thanksgiving2026() {
           <li><strong>Thu Nov 26 (Thanksgiving):</strong> usually the quietest day of the week to fly.</li>
           <li><strong>Sun Nov 29:</strong> the return rush, and the likeliest day for a new all-time record.</li>
           <li><strong>Mon Nov 30:</strong> still heavy as late returners head home.</li>
+          <li>Flying again in December? See <Link href="/holiday-travel-2026">Christmas and New Year&apos;s 2026</Link>.</li>
         </ul>
       </section>
 
       <GuideSection title="Record crowds, three years running">
         <p>
-          TSA screened <strong>3,133,924 people</strong> on Sunday, Nov 30, 2025, the busiest day in its history. It was the third year in a row that the Sunday after Thanksgiving set the record, and TSA expected
+          TSA screened <strong>about 3.13 million people</strong> on Sunday, Nov 30, 2025, the busiest day in its history. It was the third year in a row that the Sunday after Thanksgiving set the record, and TSA expected
           more than 17.8 million screenings over that Thanksgiving period. If the pattern holds, Sunday, Nov 29, 2026 will be busier still.
         </p>
         <p className="text-[13px] text-ink-3">
           Sources:{" "}
           <a href="https://www.tsa.gov/news/press/releases/2025/11/21/golden-age-travel-tsa-prepared-screen-more-3-million-thanksgiving" target="_blank" rel="noreferrer">TSA</a>,{" "}
           <a href="https://abcnews.com/US/tsa-sets-time-record-31-million-travelers-screened/story?id=128004157" target="_blank" rel="noreferrer">ABC News</a>,{" "}
-          <a href="https://thepointsguy.com/news/thanksgiving-travel-2025-sets-records/" target="_blank" rel="noreferrer">The Points Guy</a>.
+          <a href="https://thepointsguy.com/news/thanksgiving-travel-2025-sets-records/" target="_blank" rel="noreferrer">The Points Guy</a>,{" "}
+          <a href="https://www.tsa.gov/travel/passenger-volumes/2025" target="_blank" rel="noreferrer">TSA checkpoint numbers</a>.
         </p>
       </GuideSection>
 

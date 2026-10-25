@@ -130,7 +130,7 @@ export default function AirportTheory() {
       <GuideSection title="More guides">
         <p>
           <Link href="/airports">How early to get to the airport: US airport guides</Link> · <Link href="/international-flights">International flights</Link> ·{" "}
-          <Link href="/thanksgiving-travel-2026">Thanksgiving 2026</Link>
+          <Link href="/thanksgiving-travel-2026">Thanksgiving 2026</Link> · <Link href="/holiday-travel-2026">Christmas and New Year&apos;s 2026</Link>
         </p>
       </GuideSection>
       <p className="mt-6 text-[12.5px] text-ink-3">Checked October 24, 2026.</p>
