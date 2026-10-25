@@ -2,6 +2,10 @@
 
 Newest first. Every ~3 hours a scheduled check-in picks the next most useful step, ships it, and adds an entry here.
 
+## 2026-10-25 (13:00 check-in)
+- **Nearby-airport links:** each guide now links up to 3 other guided airports within 120 km, nearest first, with the distance in miles. Examples: JFK → LGA, EWR; ORD → MDW; DCA → IAD, BWI; SFO → SJC. This helps people comparing airports in one metro, and gives search engines a clearer map of related pages. Unit test added.
+- **Next:** Thanksgiving refresh when TSA publishes its forecast; PostHog when the key arrives.
+
 ## 2026-10-25 (10:00 check-in)
 - **4 more guides abroad (now 48):** DUB, CUN, FCO and MAD.
   - DUB: US preclearance at Terminal 2. CBP lists its hours as 07:00–16:30 GMT. Delta advises 4 hours and closes check-in 75 minutes before departure.
