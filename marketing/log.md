@@ -2,6 +2,10 @@
 
 Newest first. Every ~3 hours a scheduled check-in picks the next most useful step, ships it, and adds an entry here.
 
+## 2026-10-25 (01:00 check-in)
+- **Product Hunt kit:** 5 gallery images (1270×760), built from real production screens (a live UA1564 DFW → ORD plan, the flight picker, the JFK guide, the international page) by `marketing/launch/gallery.mjs`. The launch-day checklist is in `marketing/launch/product-hunt.md`. Sent to the founder with the copy.
+- **Next:** Thanksgiving refresh once TSA publishes its 2026 forecast; more guides; PostHog when the key arrives.
+
 ## 2026-10-24 (22:00 check-in)
 - **Guide pages convert in one step:** every guide's call-to-action now has a flight-number box. Typing "DL 212" lands on `/app?flight=DL212` with the flight filled in and its departures already listed, so the visitor goes straight to picking theirs. It's a plain form, so it works without JavaScript. The query param is never sent to analytics (the page-URL allowlist strips queries). Tested end to end in a browser.
 - **Next:** once PostHog is on, compare guide → plan conversion. Meanwhile: a Thanksgiving update with TSA's 2026 forecast when it's published (usually the week before), and the next guide batch.

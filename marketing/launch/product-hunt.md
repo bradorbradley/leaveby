@@ -17,4 +17,16 @@ Leave By answers it for your flight. It works backwards from boarding: the walk 
 
 It's free and there's no account. I'd love to hear whether the times match your experience at your home airport.
 
-**Gallery (in order):** the 60-second mascot ad (video), the leave-time screen, the step-by-step plan, the flight picker, the Thanksgiving page.
+**Gallery (in order):**
+1. The 60-second mascot ad (video, from the founder).
+2. Five 1270×760 images from real app screens: leave time, flight picker, step-by-step plan, airport guides, international.
+
+To regenerate the images:
+1. Capture the screens: `BASE=https://www.leaveby.xyz OUT=<dir> FLIGHT=UA1564 PICK=DFW ORIGIN=75201 node scripts/e2e-picker.mjs`.
+2. Add 390px captures of `/airports/jfk` and `/international-flights` to the same folder.
+3. Run `node marketing/launch/gallery.mjs <dir>`.
+
+**Launch-day checklist (founder):**
+1. Mon Nov 2: schedule the launch on producthunt.com for Wed Nov 4, 12:01am PT. Upload the gallery and paste the copy above.
+2. Text ~10 friends and coworkers who travel the link that morning, asking them to try it and comment honestly. Don't ask for upvotes.
+3. Post the maker comment right after launch. Reply to every comment that day.
