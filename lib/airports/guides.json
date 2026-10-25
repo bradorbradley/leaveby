@@ -2981,6 +2981,165 @@
    }
   ]
  },
+ "IND": {
+  "code": "IND",
+  "name": "Indianapolis International Airport",
+  "city": "Indianapolis",
+  "state": "IN",
+  "checkedOn": "2026-10-25",
+  "officialArrivalAdvice": {
+   "domestic": "IND recommends arriving two hours before your flight departure time for domestic travel",
+   "international": "IND recommends arriving three hours before international flights",
+   "source": "https://www.ind.com/travel-prep/security"
+  },
+  "terminals": [
+   {
+    "id": "Main",
+    "name": "Main Terminal (Concourses A and B)",
+    "airlines": [
+     "Southwest",
+     "American",
+     "Allegiant",
+     "Delta",
+     "United",
+     "Alaska",
+     "Frontier",
+     "Avelo",
+     "Sun Country",
+     "Air Canada",
+     "Aer Lingus",
+     "JetBlue"
+    ],
+    "checkpoints": [
+     {
+      "notes": "Opens at 3:30am. IND says TSA PreCheck passengers should use Checkpoint A; Upgraded Points lists PreCheck lanes there from 4am to 7pm. CLEAR lanes run 4am-7pm daily.",
+      "precheck": true,
+      "clear": true,
+      "name": "Checkpoint A"
+     },
+     {
+      "notes": "Opens at 3:45am. No PreCheck lanes. CLEAR lanes run 4am-7pm daily.",
+      "precheck": false,
+      "clear": true,
+      "name": "Checkpoint B"
+     }
+    ],
+    "notes": [
+     "All Concourse A and B gates can be reached from either checkpoint by the Concourse Connector after screening",
+     "Wikipedia lists Concourse A for Aer Lingus, Air Canada, Alaska, Avelo, Delta, Frontier, Sun Country and United, and Concourse B for Allegiant, American and Southwest",
+     "JetBlue starts daily nonstops to Fort Lauderdale on Nov 2, 2026; IND has not said which concourse it will use",
+     "You can enroll in CLEAR at kiosks in the Ticketing Hall across from the Guest Services desk"
+    ]
+   }
+  ],
+  "connectedAirside": true,
+  "betweenTerminals": "Single terminal with two concourses. After either checkpoint, the Concourse Connector links Concourses A and B, so you can reach any gate without screening again.",
+  "securityWaits": {
+   "summary": "IND says about one-third of its passengers leave before 9am. On peak fall-break days in October 2026, it said most travelers flew out between 4am and 6am. MyTSA data for mid-June to mid-August 2026 put IND's average wait at 8.4 minutes, below the 9.9-minute average for the 50 busiest US airports.",
+   "busiestTimes": [
+    "4:00-6:00am on peak travel days",
+    "Before 9:00am (about one-third of departures)"
+   ],
+   "source": "https://www.ind.com/about/media/media-releases/fall-break-air-travel-2026-looking-ahead"
+  },
+  "precheckNotes": "PreCheck lanes are only at Checkpoint A. Upgraded Points lists them as open 4am-7pm, so very early and evening flyers may have only standard lanes. Both checkpoints lead to all gates.",
+  "clearAvailable": true,
+  "touchlessId": "A March 2026 airport list shows TSA PreCheck Touchless ID at IND for Delta. You opt in through your airline profile.",
+  "gettingThere": {
+   "rideshare": "Drop-off is at the curb on the departures level. Vehicles may stop only while loading or unloading, and unattended vehicles are towed. Uber and Lyft pickup is at the Ground Transportation Center on the first floor of the Terminal Garage.",
+   "transit": "IndyGo Route 8 (Washington Street) runs between the airport and downtown Indianapolis, about every 30 minutes",
+   "driving": "Terminal Garage daily parking is $23/day, hourly parking (Level 3) is $2 per half hour, and valet (Level 3) is $32/day. In the Long Term Lot, Park & Walk is $14/day and Economy is $9/day, with shuttles 24/7 every 5-7 minutes. IND does not take parking reservations, and garage levels can fill, so check availability on ind.com before you leave. Drivers picking up can wait free in the Cell Phone Lot."
+  },
+  "construction2026": [],
+  "bagDrop": "Southwest: bags checked less than 45 minutes before a domestic departure may not be accepted (60 minutes for international); bags are accepted no earlier than 4 hours ahead. American and United: check-in and bag deadline is 45 minutes before domestic departure. Delta: check bags at least 45 minutes before domestic departure, no more than 6 hours ahead.",
+  "tips": [
+   "PreCheck members should go to Checkpoint A. Checkpoint B has no PreCheck lanes.",
+   "Either checkpoint gets you to every gate through the Concourse Connector, so pick the shorter line if you are not in PreCheck",
+   "Early mornings are the busiest. About one-third of IND passengers depart before 9am.",
+   "Checkpoint A opens at 3:30am and Checkpoint B at 3:45am",
+   "IND does not take parking reservations and garage levels can fill. Check live availability online and allow time for the Economy Lot shuttle."
+  ],
+  "faq": [
+   {
+    "q": "How early should I get to Indianapolis airport?",
+    "a": "IND recommends two hours before domestic flights and three hours before international flights. Early mornings are the busiest time."
+   },
+   {
+    "q": "Which checkpoint has TSA PreCheck at IND?",
+    "a": "Checkpoint A. Checkpoint B has standard and CLEAR lanes only. Both checkpoints lead to all gates."
+   },
+   {
+    "q": "Are Concourses A and B connected after security at IND?",
+    "a": "Yes. The Concourse Connector links them after either checkpoint, so you never need to screen twice."
+   },
+   {
+    "q": "Where do I get an Uber or Lyft at Indianapolis airport?",
+    "a": "Pickup is at the Ground Transportation Center on the first floor of the Terminal Garage. Drop-off is at the departures-level curb."
+   }
+  ],
+  "sources": [
+   {
+    "title": "IND - Security",
+    "url": "https://www.ind.com/travel-prep/security"
+   },
+   {
+    "title": "IND - Passenger Drop-Off",
+    "url": "https://www.ind.com/maps-directions/passenger-drop-off"
+   },
+   {
+    "title": "IND - Passenger Pick-Up",
+    "url": "https://www.ind.com/maps-directions/passenger-pickup"
+   },
+   {
+    "title": "IND - Transportation & Car Rental",
+    "url": "https://www.ind.com/transportation-car-rental"
+   },
+   {
+    "title": "IND - Parking",
+    "url": "https://www.ind.com/parking"
+   },
+   {
+    "title": "IND - Fall Break Air Travel 2026: Looking Ahead (Oct 1, 2026)",
+    "url": "https://www.ind.com/about/media/media-releases/fall-break-air-travel-2026-looking-ahead"
+   },
+   {
+    "title": "IND - Indy Airport hotel tops out (May 14, 2026)",
+    "url": "https://www.ind.com/about/media/media-releases/indy-airport-hotel-tops-out-structure-is-complete"
+   },
+   {
+    "title": "IND - Indy Airport welcomes JetBlue (May 4, 2026)",
+    "url": "https://www.ind.com/about/media/media-releases/indy-airport-welcomes-jetblue-to-its-line-up"
+   },
+   {
+    "title": "Upgraded Points - IND airport guide (updated May 14, 2026)",
+    "url": "https://upgradedpoints.com/travel/airports/indianapolis-international-ind-airport/"
+   },
+   {
+    "title": "Wikipedia - Indianapolis International Airport",
+    "url": "https://en.wikipedia.org/wiki/Indianapolis_International_Airport"
+   },
+   {
+    "title": "Travel Bulletin - TSA wait times at 50 US airports (updated Aug 27, 2026)",
+    "url": "https://travelbulletin.com/tsa-wait-times-data-study"
+   },
+   {
+    "title": "The Bulkhead Seat - TSA PreCheck Touchless ID airport list (Mar 16, 2026)",
+    "url": "https://thebulkheadseat.com/?p=33789"
+   },
+   {
+    "title": "Southwest - How long before departure can I check bags",
+    "url": "https://support.southwest.com/helpcenter/s/article/How-long-before-my-flights-departure-time-can-I-check-bags"
+   },
+   {
+    "title": "Delta - Check-In Times at U.S. Airports",
+    "url": "https://www.delta.com/us/en/check-in-security/check-in-time-requirements/domestic-check-in"
+   },
+   {
+    "title": "AP via MyNorthwest - United narrows check-in window; airline comparison (May 2025)",
+    "url": "https://mynorthwest.com/lifestyle/united-is-narrowing-its-check-in-window-for-us-flights-heres-how-it-compares-to-other-airlines/4092751"
+   }
+  ]
+ },
  "JFK": {
   "code": "JFK",
   "name": "John F. Kennedy International Airport",
@@ -3886,6 +4045,176 @@
    }
   ]
  },
+ "MCI": {
+  "code": "MCI",
+  "name": "Kansas City International Airport",
+  "city": "Kansas City",
+  "state": "MO",
+  "checkedOn": "2026-10-25",
+  "officialArrivalAdvice": {
+   "domestic": "Allow at least 2 hours before a domestic departure, because check-in and security can take longer at busy times (FlyKC, Nov 2025). Southwest also suggests 120 minutes at MCI.",
+   "international": "Allow at least 2 hours 30 minutes before an international flight (FlyKC, Nov 2025)",
+   "source": "https://flykc.com/newsroom/news-releases/kansas-city-international-airport-preparing-for-2025-thanksgiving-travel"
+  },
+  "terminals": [
+   {
+    "id": "Main",
+    "name": "Single Terminal (Concourses A and B)",
+    "airlines": [
+     "Southwest",
+     "American",
+     "Delta",
+     "United",
+     "Alaska",
+     "Allegiant",
+     "Frontier"
+    ],
+    "checkpoints": [
+     {
+      "notes": "One checkpoint in the middle of the terminal serves both concourses. Since April 2026, most travelers enter at one central point near the middle of the check-in hall, near Dunkin'. General, TSA PreCheck, Touchless ID and one of the two ADA lanes enter side by side there. CLEAR lanes are at either end of the queue area, and CLEAR eGates opened in December 2025. Screening officers work for the contractor VMD Corp., under TSA oversight, and wear gray shirts. Upgraded Points (Aug 2026) lists 16 lanes. Checkpoint hours are not published.",
+      "precheck": true,
+      "clear": true,
+      "name": "Central Security Checkpoint, Departures level"
+     }
+    ],
+    "notes": [
+     "Concourse A (gates A1-A20): American A1-A6, Alaska A10 and Allegiant A12-A16, per FlyKC's airline page",
+     "Concourse B (gates B40-B69): Delta B40-B52, United B43-B51, Frontier B57 and Southwest B54-B69, per FlyKC. Southwest's own site lists B54-B68.",
+     "Drop-off and check-in are on the upper Departures level. Check-in areas are on each side of the hall, depending on your airline.",
+     "From the garage, lighted crosswalks on Level 3 lead to the check-in counters",
+     "Travelers who used to enter security near the United and American check-in desks may now walk farther to the central entry",
+     "Wikipedia also lists Sun Country Airlines at MCI; FlyKC's airline page does not"
+    ]
+   }
+  ],
+  "connectedAirside": true,
+  "betweenTerminals": "Single terminal. One checkpoint serves Concourses A and B, and you can walk between them after security without screening again. An indoor walkway with moving walkways links them, a few minutes apart.",
+  "securityWaits": {
+   "summary": "MCI does not publish typical wait times or peak hours that this research could find. For Thanksgiving 2025, the airport named the Saturday, Sunday and Monday after the holiday as the busiest days, and it expected most parking lots to fill. In April 2026 it made the general boarding queue larger to handle holiday crowds.",
+   "busiestTimes": [
+    "The Saturday, Sunday and Monday after Thanksgiving (FlyKC, Nov 2025)"
+   ],
+   "source": "https://flykc.com/newsroom/news-releases/kansas-city-international-airport-preparing-for-2025-thanksgiving-travel"
+  },
+  "precheckNotes": "PreCheck lanes are at the central entry, next to general boarding and Touchless ID. FlyKC's airline page lists PreCheck for Alaska, American, Delta, Frontier, Southwest and United, and lists Allegiant as \"No\". This research could not confirm PreCheck lane hours.",
+  "clearAvailable": true,
+  "touchlessId": "A TSA Touchless ID lane is at the central security entry (April 2026), and Southwest's MCI page lists a TSA PreCheck Touchless ID checkpoint. Opt in through your airline profile. This research could not confirm which other airlines offer it at MCI.",
+  "gettingThere": {
+   "rideshare": "Drop-off is at the upper-level Departures curb. Uber and Lyft pickup is at the Arrivals (lower level) commercial curb, at the purple signposts 2K-2N.",
+   "transit": "RideKC Route 229 (Boardwalk-KCI) stops at the airport. On weekdays it runs about once an hour; the first trip leaves East Village Transit Center downtown at 5:49am, the last leaves the airport at 10:10pm, and the ride takes about an hour. Since fares returned on June 1, 2026, a ride costs $2, paid by contactless card, phone or the RideKCGO app. Cash is not accepted on board.",
+   "driving": "Use 1 Kansas City Boulevard, Kansas City, MO 64153 for navigation. Parking on the curbs is not allowed. Garage: $30 daily max. Surface lot (walkable, uncovered): $22 daily max. Economy Lot: $9 per day, with free shuttles about every 15-20 minutes, 24/7. Valet is inside the garage: $40 daily max. The free cell phone lot is at 50 Bern St (45-minute limit)."
+  },
+  "construction2026": [],
+  "bagDrop": "Southwest: check bags at least 45 minutes before domestic departure (60 minutes for international) and check in at least 30 minutes before domestic departure. Be at the gate 10 minutes before departure. Its MCI ticket counter opens 90 minutes before the first departing flight. American, United and Delta: check bags at least 45 minutes before domestic departure. Alaska: check in at least 50 minutes before domestic departure.",
+  "tips": [
+   "Security now has one central entry near the middle of the check-in hall, near Dunkin'. CLEAR members enter at either end of the queue area.",
+   "You can walk between Concourses A and B after security, so either check-in side gets you to any gate",
+   "Do not wait at the curb. Drivers picking someone up should use the free cell phone lot at 50 Bern St (45 minutes max).",
+   "Economy parking is $9 a day with a free shuttle every 15-20 minutes. Shuttles stop on the Arrivals level, so take the escalator or elevator up to Departures.",
+   "FlyKC expects most lots to fill at holidays. Take a photo of your floor and row so you can find your car.",
+   "Taking the 229 bus? Bring a contactless card or phone, or use the RideKCGO app. Buses no longer take cash."
+  ],
+  "faq": [
+   {
+    "q": "How early should I get to Kansas City airport?",
+    "a": "The airport says to allow at least 2 hours before a domestic flight and 2 hours 30 minutes before an international flight. Southwest also suggests 120 minutes at MCI."
+   },
+   {
+    "q": "How many security checkpoints does Kansas City airport have?",
+    "a": "One. It sits in the middle of the terminal and serves both concourses. Since April 2026, most travelers enter at one central point near the middle of the check-in hall."
+   },
+   {
+    "q": "Can I walk between Concourse A and Concourse B at MCI?",
+    "a": "Yes. One checkpoint serves both concourses, and you can walk between them after security without screening again."
+   },
+   {
+    "q": "Where do Uber and Lyft pick up at Kansas City airport?",
+    "a": "At the Arrivals (lower level) commercial curb, at the purple signposts 2K-2N. Drop-off is at the upper-level Departures curb."
+   },
+   {
+    "q": "Who runs security at Kansas City airport?",
+    "a": "Screening is done by officers from VMD Corp., a private contractor, under TSA's Screening Partnership Program. TSA audits the work, and the procedures are the same as at TSA-staffed airports."
+   }
+  ],
+  "sources": [
+   {
+    "title": "FlyKC - Kansas City International Airport security layout changed (Apr 10, 2026)",
+    "url": "https://flykc.com/newsroom/news-releases/kansas-city-international-airport-security-layout-changed"
+   },
+   {
+    "title": "FlyKC - Kansas City International Airport preparing for 2025 Thanksgiving travel (Nov 24, 2025)",
+    "url": "https://flykc.com/newsroom/news-releases/kansas-city-international-airport-preparing-for-2025-thanksgiving-travel"
+   },
+   {
+    "title": "FlyKC - Airlines",
+    "url": "https://flykc.com/airlines"
+   },
+   {
+    "title": "FlyKC - Parking",
+    "url": "https://flykc.com/parking"
+   },
+   {
+    "title": "FlyKC - Getting To & From (drop-off, pickup, ground transportation)",
+    "url": "https://flykc.com/getting-to-and-from"
+   },
+   {
+    "title": "FlyKC - New Terminal Project",
+    "url": "https://flykc.com/new-terminal-project"
+   },
+   {
+    "title": "KCTV5 - KCI centralizes security checkpoint to handle larger crowds (Apr 10, 2026)",
+    "url": "https://www.kctv5.com/2026/04/10/kci-centralizes-security-checkpoint-handle-larger-crowds/"
+   },
+   {
+    "title": "KCTV5 - Kansas City travelers face new security options at KCI this holiday season (Dec 19, 2025)",
+    "url": "https://www.kctv5.com/2025/12/19/kansas-city-travelers-face-new-security-options-kci-airport-this-holiday-season/"
+   },
+   {
+    "title": "KCUR - Why do some U.S. airports have private security? (June 30, 2026)",
+    "url": "https://www.kcur.org/news/2026-06-29/why-do-some-u-s-airports-have-private-security-but-others-use-tsa"
+   },
+   {
+    "title": "KSHB - A guide on how to get around the new single terminal at KCI",
+    "url": "https://www.kshb.com/news/local-news/new-kci/a-guide-on-how-to-get-around-at-new-single-terminal-at-kansas-city-international-airport"
+   },
+   {
+    "title": "Upgraded Points - Kansas City International Airport guide (updated Aug 12, 2026)",
+    "url": "https://upgradedpoints.com/travel/airports/kansas-city-international-mci-airport/"
+   },
+   {
+    "title": "Wikipedia - Kansas City International Airport",
+    "url": "https://en.wikipedia.org/wiki/Kansas_City_International_Airport"
+   },
+   {
+    "title": "CLEAR - Kansas City International Airport locations and hours",
+    "url": "https://www.clearme.com/all-locations/kansas-city-international-airport"
+   },
+   {
+    "title": "RideKC - Route 229 Boardwalk-KCI",
+    "url": "https://ridekc.org/getting-around/routes-in-service/229-boardwalk-kci/"
+   },
+   {
+    "title": "RideKC - Fares and Passes",
+    "url": "https://ridekc.org/fares-passes/"
+   },
+   {
+    "title": "Southwest Airlines - Airport Information (MCI)",
+    "url": "https://www.southwest.com/airport-information/"
+   },
+   {
+    "title": "Southwest Airlines - When to Arrive for Your Flight",
+    "url": "https://support.southwest.com/helpcenter/article/airport-arrival-recommendation"
+   },
+   {
+    "title": "Delta - Check-In Times at U.S. Airports",
+    "url": "https://www.delta.com/us/en/check-in-security/check-in-time-requirements/domestic-check-in"
+   },
+   {
+    "title": "AP via MyNorthwest - United narrows check-in window; airline comparison (May 2025)",
+    "url": "https://mynorthwest.com/lifestyle/united-is-narrowing-its-check-in-window-for-us-flights-heres-how-it-compares-to-other-airlines/4092751"
+   }
+  ]
+ },
  "MCO": {
   "code": "MCO",
   "name": "Orlando International Airport",
@@ -4738,6 +5067,181 @@
    {
     "title": "Delta - Domestic check-in time requirements",
     "url": "https://www.delta.com/us/en/check-in-security/check-in-time-requirements/domestic-check-in"
+   }
+  ]
+ },
+ "MSY": {
+  "code": "MSY",
+  "name": "Louis Armstrong New Orleans International Airport",
+  "city": "New Orleans",
+  "state": "LA",
+  "checkedOn": "2026-10-25",
+  "officialArrivalAdvice": {
+   "domestic": "MSY recommends arriving at least two hours before the scheduled departure time for domestic flights",
+   "international": null,
+   "source": "https://flymsy.com/faqs/"
+  },
+  "terminals": [
+   {
+    "id": "Main",
+    "name": "Main Terminal (Concourses A, B and C)",
+    "airlines": [
+     "Air Canada",
+     "Alaska",
+     "Allegiant",
+     "American",
+     "Breeze",
+     "British Airways",
+     "Delta",
+     "Frontier",
+     "JetBlue",
+     "Southwest",
+     "Sun Country",
+     "United"
+    ],
+    "checkpoints": [
+     {
+      "notes": "The only checkpoint, serving all gates. MSY says it opens at 3:30am and stays open until 30 minutes before the last scheduled departure. MSY says dedicated CLEAR lanes are available for standard and PreCheck screening, for all airlines. CLEAR lists its lanes here as closing at 7pm.",
+      "precheck": true,
+      "clear": true,
+      "name": "Consolidated Security Checkpoint, Level 2"
+     }
+    ],
+    "notes": [
+     "All passengers use one security checkpoint on Level 2 of the terminal",
+     "The three concourses (A, B and C) are connected inside the secure area",
+     "Concourse A handles international flights and has the customs facility",
+     "A May 2026 airport guide places Southwest and American on Concourse B and Delta and United on Concourse C. MSY does not publish airline concourse assignments, so check your boarding pass.",
+     "Curbside check-in is available for Delta, Southwest and United",
+     "Baggage claim and ground transportation pickup are on Level 1"
+    ]
+   }
+  ],
+  "connectedAirside": true,
+  "betweenTerminals": "Single terminal. One checkpoint leads to all three concourses, which connect by indoor walkways inside security. A May 2026 guide says the farthest Concourse A gates are about a 10-minute walk from the checkpoint.",
+  "securityWaits": {
+   "summary": "MSY says its peak security periods are 4-7am and 3-6pm. During a TSA staffing shortage in March 2026, Sundays and Mondays were the heaviest days and waits reached up to 2 hours. In normal summer conditions (mid-June to mid-August 2026), MyTSA data put MSY's average wait at 4.1 minutes, the second-shortest of the 50 busiest US airports.",
+   "busiestTimes": [
+    "4:00-7:00am",
+    "3:00-6:00pm",
+    "Sundays and Mondays (March 2026)"
+   ],
+   "source": "https://flymsy.com/new-orleans-airport-provides-update-on-tsa-checkpoint-lines2/"
+  },
+  "precheckNotes": "PreCheck screening is at the single Level 2 checkpoint, with a dedicated CLEAR lane for PreCheck members. MSY does not publish separate PreCheck lane hours. CLEAR lists its lanes as open until 7pm.",
+  "clearAvailable": true,
+  "touchlessId": "MSY added TSA PreCheck Touchless ID in May 2026 for Alaska, American, Delta, Southwest and United, with a dedicated lane at the checkpoint. Opt in through your airline's app or profile, with your Known Traveler Number and passport details saved. Carry a physical ID as backup.",
+  "gettingThere": {
+   "rideshare": "Drop-off is at the terminal curb; stopping, parking and waiting there are not allowed. Uber and Lyft pickup is outside Level 1 Baggage Claim on the middle curb. Lyft riders use Doors 7-9 and UberX riders use Doors 9-11.",
+   "transit": "Buses stop at Level 1 Baggage Claim outside Door 2 (Zones B4 and B5). The RTA Airport Express (Route 202) costs $1.25 and stops at Elk Place at Cleveland and the Union Passenger Terminal. The JET E1 (Veterans-Airport) runs to City Park Avenue: $1.50 within Jefferson Parish, $2.00 into New Orleans.",
+   "driving": "Daily maximums: Short Term garage $26, Long Term $22, Surface Lot $20, Economy Garage $12 (shuttle to the terminal), valet $36. Parking payment is by credit card only. You can reserve any facility online; reservations cannot be changed within 24 hours and are non-refundable. A third-party guide places the free cell phone lot at Airline Drive and Hollandey Street."
+  },
+  "construction2026": [
+   "The $84.5M Express Shuttle Connector Road, a dedicated shuttle road between the south-campus parking garages and the terminal, broke ground in August 2025 and is due before the end of the decade",
+   "In March 2026, MSY said it would soon start building 400 more parking spaces near the terminal. It gave no completion date."
+  ],
+  "bagDrop": "Southwest: bags checked less than 45 minutes before a domestic departure may not be accepted (60 minutes for international); bags are accepted no earlier than 4 hours ahead. Delta: check bags at least 45 minutes before domestic departure, no more than 6 hours ahead. American and United: check-in and bag deadline is 45 minutes before domestic departure.",
+  "tips": [
+   "There is one checkpoint for every gate, on Level 2. It is busiest 4-7am and 3-6pm, so leave extra time for flights in or just after those windows.",
+   "After security you can walk between Concourses A, B and C, so you can eat or shop in any concourse",
+   "Delta, Southwest and United offer curbside check-in at the departures curb",
+   "Reserve parking ahead in busy seasons. MSY asked travelers to book ahead for summer 2026, and reservations must be made at least 24 hours in advance.",
+   "Drivers cannot wait at the curb. The Short Term garage's first half hour is free."
+  ],
+  "faq": [
+   {
+    "q": "How early should I get to New Orleans airport?",
+    "a": "MSY recommends at least two hours before a domestic flight. Allow more if your flight is during its 4-7am or 3-6pm peaks or you are checking bags."
+   },
+   {
+    "q": "How many security checkpoints does MSY have?",
+    "a": "One. All passengers use the consolidated checkpoint on Level 2. It has PreCheck and CLEAR lanes and leads to Concourses A, B and C."
+   },
+   {
+    "q": "Are the concourses at MSY connected after security?",
+    "a": "Yes. Concourses A, B and C are connected inside the secure area, so you do not need to clear security again."
+   },
+   {
+    "q": "Where do I get an Uber or Lyft at New Orleans airport?",
+    "a": "Go to the middle curb outside Level 1 Baggage Claim. Lyft riders exit Doors 7-9 and UberX riders exit Doors 9-11."
+   }
+  ],
+  "sources": [
+   {
+    "title": "MSY - Security Checkpoint",
+    "url": "https://flymsy.com/?p=307"
+   },
+   {
+    "title": "MSY - FAQs",
+    "url": "https://flymsy.com/faqs/"
+   },
+   {
+    "title": "MSY - Airlines",
+    "url": "https://flymsy.com/airlines/"
+   },
+   {
+    "title": "MSY - Ride App pickup",
+    "url": "https://flymsy.com/ride-app-2/"
+   },
+   {
+    "title": "MSY - Public Transportation",
+    "url": "https://flymsy.com/public-transportation/"
+   },
+   {
+    "title": "MSY - Parking",
+    "url": "https://flymsy.com/parking/"
+   },
+   {
+    "title": "MSY - Update on TSA checkpoint lines (Mar 27, 2026)",
+    "url": "https://flymsy.com/new-orleans-airport-provides-update-on-tsa-checkpoint-lines2/"
+   },
+   {
+    "title": "MSY - TSA PreCheck Touchless ID now available (May 22, 2026)",
+    "url": "https://flymsy.com/louis-armstrong-airport-tsa-precheck-touchless-id/"
+   },
+   {
+    "title": "MSY - Master plan details (Mar 20, 2026)",
+    "url": "https://flymsy.com/regional-leaders-share-master-plan-for-msy/"
+   },
+   {
+    "title": "Fox 8 - Flying out of MSY Sunday or Monday? Expect long TSA lines (Mar 13, 2026)",
+    "url": "https://www.fox8live.com/2026/03/13/flying-out-msy-sunday-or-monday-expect-long-tsa-lines-arrive-early/"
+   },
+   {
+    "title": "WDAM - MSY urges travelers to reserve parking (Jun 21, 2026)",
+    "url": "https://www.wdam.com/2026/06/21/msy-airport-urges-travelers-reserve-parking-ahead-busy-summer-season/"
+   },
+   {
+    "title": "Biz New Orleans - MSY breaks ground on shuttle connector road (Aug 26, 2025)",
+    "url": "https://bizneworleans.com/msy-breaks-ground-on-84-5m-shuttle-connector-road/"
+   },
+   {
+    "title": "CLEAR - Louis Armstrong New Orleans International Airport",
+    "url": "https://www.clearme.com/locations/louis-armstrong-new-orleans-international-airport"
+   },
+   {
+    "title": "Upgraded Points - MSY airport guide (updated May 14, 2026)",
+    "url": "https://upgradedpoints.com/travel/airports/louis-armstrong-new-orleans-international-msy-airport"
+   },
+   {
+    "title": "Layover Index - MSY hub guide (reviewed May 12, 2026)",
+    "url": "https://layoverindex.com/msy/"
+   },
+   {
+    "title": "Travel Bulletin - TSA wait times at 50 US airports (updated Aug 27, 2026)",
+    "url": "https://travelbulletin.com/tsa-wait-times-data-study"
+   },
+   {
+    "title": "Southwest - How long before departure can I check bags",
+    "url": "https://support.southwest.com/helpcenter/s/article/How-long-before-my-flights-departure-time-can-I-check-bags"
+   },
+   {
+    "title": "Delta - Check-In Times at U.S. Airports",
+    "url": "https://www.delta.com/us/en/check-in-security/check-in-time-requirements/domestic-check-in"
+   },
+   {
+    "title": "AP via MyNorthwest - United narrows check-in window; airline comparison (May 2025)",
+    "url": "https://mynorthwest.com/lifestyle/united-is-narrowing-its-check-in-window-for-us-flights-heres-how-it-compares-to-other-airlines/4092751"
    }
   ]
  },
@@ -5607,6 +6111,199 @@
    }
   ]
  },
+ "PIT": {
+  "code": "PIT",
+  "name": "Pittsburgh International Airport",
+  "city": "Pittsburgh",
+  "state": "PA",
+  "checkedOn": "2026-10-25",
+  "officialArrivalAdvice": {
+   "domestic": "PIT recommends arriving at least 2 hours before a domestic flight. At peak times, including flights leaving between 5am and 8am, it says to arrive 2 to 3 hours early. Southwest suggests 90 minutes at PIT.",
+   "international": "PIT recommends arriving at least 3 hours before an international flight",
+   "source": "https://flypittsburgh.com/pittsburgh-international-airport/contact-us/pit-faqs/"
+  },
+  "terminals": [
+   {
+    "id": "Main",
+    "name": "Landside Terminal and Airside Terminal (Concourses A-D)",
+    "airlines": [
+     "Southwest",
+     "American",
+     "Delta",
+     "United",
+     "Alaska",
+     "Allegiant",
+     "Breeze",
+     "Frontier",
+     "JetBlue",
+     "Sun Country",
+     "Southern Airways",
+     "Air Canada",
+     "Aer Lingus",
+     "British Airways",
+     "Icelandair"
+    ],
+    "checkpoints": [
+     {
+      "notes": "One consolidated checkpoint in the new Landside Terminal (opened Nov 18, 2025), with 12 lanes. Lanes include TSA PreCheck, CLEAR and Priority; lane use changes with demand. A dedicated TSA PreCheck Touchless ID lane opened Oct 13, 2026. PIT says checkpoints are closed 10:30pm-2:30am daily. Southwest says the checkpoint closes at 10:15pm. TSA's screening data calls it the Main Checkpoint.",
+      "precheck": true,
+      "clear": true,
+      "name": "Main Checkpoint, Landside Terminal"
+     }
+    ],
+    "notes": [
+     "Departures (drop-off and check-in) is on the top level of the new Landside Terminal. Arrivals is on the middle level, and rideshare, taxis and buses use the ground level.",
+     "Airline check-in counters are in the main lobby. American and Southwest, PIT's two biggest airlines, have the counters closest to security.",
+     "After security, walk about 160 feet across a bridge and through a tunnel to the Airside Terminal, then take escalators or elevators down to the center core and the gates.",
+     "The old landside terminal and the underground people mover (tram) closed when the new terminal opened. You now walk from check-in to the gates.",
+     "Southwest lists its PIT gates as A1, A3, A7 and A9 in Concourse A",
+     "Concourse C gates handle international arrivals"
+    ]
+   }
+  ],
+  "connectedAirside": true,
+  "betweenTerminals": "Single terminal. One checkpoint serves all four concourses (A, B, C and D), which meet at the Airside Terminal's center core. You can walk between them after security.",
+  "securityWaits": {
+   "summary": "PIT shows live estimated waits for Standard, Priority, CLEAR and PreCheck lanes on its security page. It does not publish typical peak times. In TSA's hourly screening counts for Sep 13-19, 2026, PIT was busiest from 4am to 7am, peaking 5-6am. Smaller rises came around 11am-noon and from about 3pm to 6pm, and traffic was light after 7pm. Monday, Sunday, Friday and Thursday were the busiest days that week; Saturday and Tuesday were the quietest.",
+   "busiestTimes": [
+    "4:00-7:00am (peak 5:00-6:00am)",
+    "11:00am-noon",
+    "3:00-6:00pm",
+    "Mondays, Sundays, Fridays and Thursdays (TSA counts, week of Sep 13, 2026)"
+   ],
+   "source": "https://www.tsa.gov/sites/default/files/foia-readingroom/tsa-throughput-data-to-september-13-2026-to-september-19-2026.pdf"
+  },
+  "precheckNotes": "PIT says TSA PreCheck and CLEAR are both available, and the 12-lane checkpoint has PreCheck lanes. Since Oct 13, 2026, there is also a dedicated PreCheck Touchless ID lane. This research could not confirm PreCheck lane hours. CLEAR's location page lists CLEAR lanes from 4am to 7pm, but that page may not reflect the new terminal.",
+  "clearAvailable": true,
+  "touchlessId": "A dedicated TSA PreCheck Touchless ID lane opened Oct 13, 2026. It is for PreCheck members with a valid passport who opt in through Alaska, American, Delta, Hawaiian, Southwest or United, or through Google Wallet. Your mobile boarding pass must show a Touchless ID indicator. Carry a REAL ID or other accepted ID anyway.",
+  "gettingThere": {
+   "rideshare": "Drop-off is at the departures curb on the top level. Uber and Lyft pickup is on the ground level, across the commercial curb from Door 7.",
+   "transit": "Pittsburgh Regional Transit's 28X Airport Flyer stops outside Door 9 on the ground level. It runs to Robinson Town Center, Downtown Pittsburgh and Oakland about every 30-40 minutes, seven days a week, from about 5am to midnight. Fare is $2.75 (exact change if paying cash; no cards on the bus). A ticket machine near Door 8 or 9 takes cards.",
+   "driving": "Use I-376 Exit 53. The Terminal Garage ($38/day drive-up) and Terminal Lot ($28/day drive-up) are a 3-5 minute walk. The Shuttle Lot is $12/day drive-up, with shuttles about every 10 minutes, 24/7, that drop off at Door 5. Lower rates need a reservation at least 7 days ahead on ParkAtPIT.com. The Free Wait Lot is free for the first hour."
+  },
+  "construction2026": [
+   "Four outdoor terraces (two before security and two after) were still being finished in 2026, after the new terminal opened in November 2025",
+   "PIT plans further Airside Terminal renovations, including reconfiguring Concourses A and B; this research found no dates",
+   "I-376 Parkway West: work on the Route 22/30 interchange in Robinson is expected to run until fall 2029. The westbound right shoulder between the Crafton (Exit 60B) and Robinson Town Centre (Exit 59) exits is closed through July 2027. This is on the drive from Downtown to the airport."
+  ],
+  "bagDrop": "Southwest: check bags at least 45 minutes before domestic departure (60 minutes for international) and check in at least 30 minutes before domestic departure. Be at the gate 10 minutes before departure. Its PIT ticket counter opens 90 minutes before the first departing flight. American, United and Delta: check bags at least 45 minutes before domestic departure. Alaska: check in at least 50 minutes before domestic departure.",
+  "tips": [
+   "Security is closed from 10:30pm to 2:30am, and Southwest says it closes at 10:15pm. For very early flights, do not arrive before 2:30am expecting to get through.",
+   "There is no train to the gates anymore. After security you walk across a short bridge and tunnel, then go down to the center core.",
+   "Flights leaving 5am-8am are PIT's peak. The airport says to arrive 2 to 3 hours early for them.",
+   "American offers curbside check-in on the departures curb from 4am to 11:30am daily. Southwest also offers curbside check-in.",
+   "Reserve parking at least 7 days ahead for lower rates. Shuttle Lot buses run about every 10 minutes and the ride takes under 10 minutes.",
+   "Using Touchless ID? Check that your mobile boarding pass shows the Touchless ID indicator before you get in that lane."
+  ],
+  "faq": [
+   {
+    "q": "How early should I get to Pittsburgh airport?",
+    "a": "PIT recommends at least 2 hours before a domestic flight and 3 hours before an international flight. For flights between 5am and 8am and other peak times, it says 2 to 3 hours."
+   },
+   {
+    "q": "What time does security open at Pittsburgh airport?",
+    "a": "Security checkpoints are closed from 10:30pm to 2:30am daily, so screening starts at 2:30am. Southwest says the checkpoint closes at 10:15pm."
+   },
+   {
+    "q": "Is there still a train to the gates at PIT?",
+    "a": "No. The people mover closed when the new terminal opened on Nov 18, 2025. After security you walk about 160 feet across a bridge and through a tunnel to the gates."
+   },
+   {
+    "q": "Where do Uber and Lyft pick up at Pittsburgh airport?",
+    "a": "On the ground level, across the commercial curb from Door 7. Drop-off is at the departures curb on the top level."
+   },
+   {
+    "q": "Can I take a bus from Pittsburgh airport to downtown?",
+    "a": "Yes. The 28X Airport Flyer leaves from outside Door 9 on the ground level about every 30-40 minutes. It goes to Downtown and Oakland and costs $2.75."
+   }
+  ],
+  "sources": [
+   {
+    "title": "Pittsburgh International Airport - Frequently Asked Questions",
+    "url": "https://flypittsburgh.com/pittsburgh-international-airport/contact-us/pit-faqs/"
+   },
+   {
+    "title": "Pittsburgh International Airport - Security",
+    "url": "https://flypittsburgh.com/pittsburgh-international-airport/security/"
+   },
+   {
+    "title": "Pittsburgh International Airport - Ground Transportation",
+    "url": "https://flypittsburgh.com/pittsburgh-international-airport/ground-transport/"
+   },
+   {
+    "title": "Pittsburgh International Airport - Parking",
+    "url": "https://flypittsburgh.com/pittsburgh-international-airport/parking/"
+   },
+   {
+    "title": "Pittsburgh International Airport - Airlines",
+    "url": "https://flypittsburgh.com/pittsburgh-international-airport/airlines/"
+   },
+   {
+    "title": "PR Newswire - Transformed Pittsburgh International Airport Opens Today (Nov 18, 2025)",
+    "url": "https://www.prnewswire.com/news-releases/transformed-pittsburgh-international-airport-opens-today-302618557.html"
+   },
+   {
+    "title": "Pittsburgh Magazine - Your Guide to the New Terminal at Pittsburgh International Airport (Sept 2, 2025)",
+    "url": "https://www.pittsburghmagazine.com/airport-guide-new-pittsburgh-terminal/"
+   },
+   {
+    "title": "The Points Guy - Inside Pittsburgh's new terminal (Oct 18, 2025)",
+    "url": "https://thepointsguy.com/news/inside-pittsburgh-new-terminal"
+   },
+   {
+    "title": "NEXTpittsburgh - 7 things to know about PIT's new terminal",
+    "url": "https://nextpittsburgh.com/current-features/7-things-you-might-not-know-about-the-new-pittsburgh-international-airport-terminal/"
+   },
+   {
+    "title": "WPXI via Yahoo - What's ahead for Pittsburgh International Airport's new terminal in 2026 (Dec 31, 2025)",
+    "url": "https://www.yahoo.com/news/articles/ahead-pittsburgh-international-airport-terminal-153135389.html"
+   },
+   {
+    "title": "Future Travel Experience - PIT to introduce dedicated TSA PreCheck Touchless ID lane (Oct 2026)",
+    "url": "https://www.futuretravelexperience.com/2026/10/pittsburgh-international-airport-to-introduce-dedicated-tsa-precheck-touchless-id-lane/"
+   },
+   {
+    "title": "Deep Arrival - Pittsburgh airport Touchless ID lane starts Oct 13, 2026",
+    "url": "https://deeparrival.com/news/pittsburgh-airport-tsa-precheck-touchless-id-lane-october-13-2026/"
+   },
+   {
+    "title": "TSA - Throughput data, Sep 13-19, 2026 (FOIA reading room)",
+    "url": "https://www.tsa.gov/sites/default/files/foia-readingroom/tsa-throughput-data-to-september-13-2026-to-september-19-2026.pdf"
+   },
+   {
+    "title": "CLEAR - Pittsburgh International Airport locations and hours",
+    "url": "https://www.clearme.com/all-locations/pittsburgh-international-airport"
+   },
+   {
+    "title": "Pittsburgh Regional Transit - Airport Service (28X)",
+    "url": "https://www.rideprt.org/services/airport-service/"
+   },
+   {
+    "title": "Airport Corridor Transportation Association - Westbound I-376 long-term shoulder closure in Robinson (Apr 28, 2026)",
+    "url": "https://actapgh.org/westbound-i-376-parkway-west-long-term-shoulder-closure-begins-wednesday-in-robinson/"
+   },
+   {
+    "title": "Wikipedia - Pittsburgh International Airport",
+    "url": "https://en.wikipedia.org/wiki/Pittsburgh_International_Airport"
+   },
+   {
+    "title": "Southwest Airlines - Airport Information (PIT)",
+    "url": "https://www.southwest.com/airport-information/"
+   },
+   {
+    "title": "Southwest Airlines - When to Arrive for Your Flight",
+    "url": "https://support.southwest.com/helpcenter/article/airport-arrival-recommendation"
+   },
+   {
+    "title": "Delta - Check-In Times at U.S. Airports",
+    "url": "https://www.delta.com/us/en/check-in-security/check-in-time-requirements/domestic-check-in"
+   },
+   {
+    "title": "AP via MyNorthwest - United narrows check-in window; airline comparison (May 2025)",
+    "url": "https://mynorthwest.com/lifestyle/united-is-narrowing-its-check-in-window-for-us-flights-heres-how-it-compares-to-other-airlines/4092751"
+   }
+  ]
+ },
  "RDU": {
   "code": "RDU",
   "name": "Raleigh-Durham International Airport",
@@ -6009,6 +6706,186 @@
    {
     "title": "SAN - Airport Capital Improvement Projects",
     "url": "https://www.san.org/airport-capital-improvement-projects/"
+   }
+  ]
+ },
+ "SAT": {
+  "code": "SAT",
+  "name": "San Antonio International Airport",
+  "city": "San Antonio",
+  "state": "TX",
+  "checkedOn": "2026-10-25",
+  "officialArrivalAdvice": {
+   "domestic": "SAT says its airlines recommend arriving 90 minutes before your scheduled departure for domestic travel, and 2 hours before during peak travel times",
+   "international": null,
+   "source": "https://flysanantonio.com/home/flights/security-checkpoints-wait-time/"
+  },
+  "terminals": [
+   {
+    "id": "A",
+    "name": "Terminal A",
+    "airlines": [
+     "Southwest",
+     "Delta",
+     "Alaska",
+     "Frontier",
+     "Breeze",
+     "Sun Country",
+     "United (some flights)",
+     "Air Canada",
+     "Aeromexico",
+     "Viva",
+     "Volaris"
+    ],
+    "checkpoints": [
+     {
+      "notes": "At the east end of Terminal A (Upgraded Points). Opens at 3:30am. SAT lists PreCheck hours as 3:30am-6pm daily. CLEAR+ lanes: 4am-7pm Sun, Thu and Fri; 4am-6:30pm Mon-Wed and Sat.",
+      "precheck": true,
+      "clear": true,
+      "name": "Terminal A checkpoint"
+     }
+    ],
+    "notes": [
+     "SAT's airline list shows United at both Terminal A and Terminal B; check your boarding pass",
+     "All international carriers use Terminal A, which has the customs facility",
+     "Rideshare pickup is on the outer commercial curb on the lower level of Terminal A"
+    ]
+   },
+   {
+    "id": "B",
+    "name": "Terminal B",
+    "airlines": [
+     "American",
+     "United"
+    ],
+    "checkpoints": [
+     {
+      "notes": "At the entrance to Concourse B (Upgraded Points). Opens at 3:30am. SAT lists PreCheck hours as 3:30am-5pm daily. CLEAR+ lanes: 4am-6pm Sun-Fri; 4am-4:30pm Sat.",
+      "precheck": true,
+      "clear": true,
+      "name": "Terminal B checkpoint"
+     }
+    ],
+    "notes": [
+     "Terminal C construction has closed two of the four curb lanes at the far end of Terminal B, on both levels, plus some doors into Terminal B",
+     "The VIA Route 5 bus stop is at the far west end of Terminal B on the lower level"
+    ]
+   }
+  ],
+  "connectedAirside": false,
+  "betweenTerminals": "Terminals A and B are in one building, and you can walk between them on the ticketing and arrivals levels before security. They are not connected after security, so changing terminals means leaving the secure area and screening again.",
+  "securityWaits": {
+   "summary": "SAT does not publish wait times or busiest hours. MyTSA data for mid-June to mid-August 2026 put SAT's average wait at 3.7 minutes, the shortest of the 50 busiest US airports.",
+   "busiestTimes": [],
+   "source": "https://travelbulletin.com/tsa-wait-times-data-study"
+  },
+  "precheckNotes": "Both checkpoints have PreCheck lanes. SAT lists PreCheck hours as 3:30am-6pm at Terminal A and 3:30am-5pm at Terminal B, so evening flyers may have only standard lanes. Checkpoints themselves open at 3:30am.",
+  "clearAvailable": true,
+  "touchlessId": "A March 2026 airport list shows TSA PreCheck Touchless ID at SAT for Alaska and American. You opt in through your airline profile.",
+  "gettingThere": {
+   "rideshare": "Rideshare drop-off is at the departures curb. Pickup is on the outer commercial curb, lower level of Terminal A. SAT says construction has shifted rideshare, hotel shuttle and off-site parking shuttle pickup spots slightly; they remain outside baggage claim on the lower level.",
+   "transit": "VIA Route 5 runs daily between the airport and downtown in about 30 minutes for $1.30. It stops on the lower (arrivals) roadway at the far west end of Terminal B. VIA Route 7 Stone Oak Express runs weekdays from the Stone Oak Park & Ride every 30 minutes (5:45am-7pm), about 15-20 minutes nonstop, for $2.60.",
+   "driving": "New parking rates start Nov 1, 2026: Economy $10/day, Long Term $20/day, Short Term $30/day. Economy lots are about half a mile away with a courtesy shuttle. During construction SAT suggests using the Short-Term Garage's 3-hour spaces ($5 the first hour, $4 each extra hour) for drop-off. Use the free 24/7 Cell Phone Waiting Lot (with Wi-Fi) instead of waiting at the curb."
+  },
+  "construction2026": [
+   "Phase I of Terminal C curbside construction runs March 23 through December 2026. Two of the four lanes at the far end of Terminal B are closed on both the upper and lower levels, and some doors into Terminal B are closed. Departures stay open with limited access.",
+   "Phase II is expected to start near the end of 2026. It will move lane changes further along Terminal Drive, in front of Terminal B. Phase III will mainly affect Terminal A. No dates have been set.",
+   "Terminal C, with up to 17 gates and a central screening area for all terminals, is scheduled to open in 2028"
+  ],
+  "bagDrop": "Southwest: bags checked less than 45 minutes before a domestic departure may not be accepted (60 minutes for international); bags are accepted no earlier than 4 hours ahead. American and United: check-in and bag deadline is 45 minutes before domestic departure (United: 60 minutes for international). Delta: check bags at least 45 minutes before domestic departure, no more than 6 hours ahead.",
+  "tips": [
+   "Go to the right terminal. Southwest, Delta and the international airlines use Terminal A; American uses Terminal B; United uses both.",
+   "Terminals are not connected after security, so clear security at the terminal your gate is in",
+   "PreCheck lanes close early: 6pm at Terminal A and 5pm at Terminal B, per SAT",
+   "Expect reduced curb space at Terminal B during construction. SAT suggests arriving early and using the Short-Term Garage for drop-off.",
+   "Parking rates go up on Nov 1, 2026. Short Term will be $30 a day and Economy $10 a day."
+  ],
+  "faq": [
+   {
+    "q": "How early should I get to San Antonio airport?",
+    "a": "SAT says its airlines recommend 90 minutes before a domestic flight and 2 hours during peak travel times. Allow extra time at Terminal B while curb lanes are closed for construction."
+   },
+   {
+    "q": "Are Terminals A and B at SAT connected after security?",
+    "a": "No. You can walk between them before security, but each terminal has its own checkpoint. Changing terminals means screening again."
+   },
+   {
+    "q": "Which terminal is my airline in at San Antonio?",
+    "a": "Southwest, Delta, Alaska, Frontier, Breeze, Sun Country and the international carriers use Terminal A. American uses Terminal B. United uses both, so check your boarding pass."
+   },
+   {
+    "q": "Does San Antonio airport have TSA PreCheck and CLEAR?",
+    "a": "Yes, at both checkpoints. SAT lists PreCheck hours as 3:30am-6pm (Terminal A) and 3:30am-5pm (Terminal B). CLEAR+ lanes open at 4am and close between 4:30pm and 7pm, depending on terminal and day."
+   }
+  ],
+  "sources": [
+   {
+    "title": "SAT - Security Checkpoints & Wait Time",
+    "url": "https://flysanantonio.com/home/flights/security-checkpoints-wait-time/"
+   },
+   {
+    "title": "SAT - Airlines",
+    "url": "https://flysanantonio.com/home/flights/airlines/"
+   },
+   {
+    "title": "SAT - Construction",
+    "url": "https://flysanantonio.com/home/construction/"
+   },
+   {
+    "title": "SAT - Rideshare",
+    "url": "https://flysanantonio.com/home/ground-transportation/ride-share/"
+   },
+   {
+    "title": "SAT - Public Transportation",
+    "url": "https://flysanantonio.com/home/ground-transportation/public-transportation/"
+   },
+   {
+    "title": "City of San Antonio - Airport to begin terminal curbside lane closures (Mar 19, 2026)",
+    "url": "https://www.sa.gov/Directory/News-Releases/Airport-to-Begin-Construction-on-Terminal-Curbside-Lane-Closures"
+   },
+   {
+    "title": "Texas Public Radio - SAT to start closing pickup and drop-off lanes for Terminal C (Mar 19, 2026)",
+    "url": "https://www.tpr.org/transportation/2026-03-19/san-antonio-international-airport-to-start-closing-pickup-and-drop-off-lanes-as-terminal-c-construction-begins"
+   },
+   {
+    "title": "San Antonio Report - Parking at SAT getting more expensive (Aug 28, 2026)",
+    "url": "https://sanantonioreport.org/parking-san-antonio-airport-more-expensive/"
+   },
+   {
+    "title": "CLEAR - San Antonio International Airport",
+    "url": "https://www.clearme.com/locations/san-antonio-international-airport"
+   },
+   {
+    "title": "Upgraded Points - SAT airport guide (updated May 14, 2026)",
+    "url": "https://upgradedpoints.com/travel/airports/san-antonio-international-sat-airport/"
+   },
+   {
+    "title": "Layover Index - SAT hub guide (reviewed Apr 27, 2026)",
+    "url": "https://layoverindex.com/sat/"
+   },
+   {
+    "title": "Wikipedia - San Antonio International Airport",
+    "url": "https://en.wikipedia.org/wiki/San_Antonio_International_Airport"
+   },
+   {
+    "title": "Travel Bulletin - TSA wait times at 50 US airports (updated Aug 27, 2026)",
+    "url": "https://travelbulletin.com/tsa-wait-times-data-study"
+   },
+   {
+    "title": "The Bulkhead Seat - TSA PreCheck Touchless ID airport list (Mar 16, 2026)",
+    "url": "https://thebulkheadseat.com/?p=33789"
+   },
+   {
+    "title": "Southwest - How long before departure can I check bags",
+    "url": "https://support.southwest.com/helpcenter/s/article/How-long-before-my-flights-departure-time-can-I-check-bags"
+   },
+   {
+    "title": "Delta - Check-In Times at U.S. Airports",
+    "url": "https://www.delta.com/us/en/check-in-security/check-in-time-requirements/domestic-check-in"
+   },
+   {
+    "title": "AP via MyNorthwest - United narrows check-in window; airline comparison (May 2025)",
+    "url": "https://mynorthwest.com/lifestyle/united-is-narrowing-its-check-in-window-for-us-flights-heres-how-it-compares-to-other-airlines/4092751"
    }
   ]
  },
