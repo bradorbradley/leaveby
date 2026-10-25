@@ -2,6 +2,10 @@
 
 Newest first. Every ~3 hours a scheduled check-in picks the next most useful step, ships it, and adds an entry here.
 
+## 2026-10-25 (04:00 check-in)
+- **5 more airport guides (now 40):** MSY, SAT, IND, PIT and MCI, each with 15–21 sources. PIT covers the new terminal, open since Nov 18, 2025. Its busiest hours come from TSA's hourly screening counts (Sep 13–19, 2026). Recheck the SAT Terminal B curb work, which runs through December 2026.
+- **Next:** IndexNow; Thanksgiving refresh when TSA publishes its forecast; PostHog when the key arrives.
+
 ## 2026-10-25 (01:00 check-in)
 - **Product Hunt kit:** 5 gallery images (1270×760), built from real production screens (a live UA1564 DFW → ORD plan, the flight picker, the JFK guide, the international page) by `marketing/launch/gallery.mjs`. The launch-day checklist is in `marketing/launch/product-hunt.md`. Sent to the founder with the copy.
 - **Next:** Thanksgiving refresh once TSA publishes its 2026 forecast; more guides; PostHog when the key arrives.
