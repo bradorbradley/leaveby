@@ -2,6 +2,16 @@
 
 Newest first. Every ~3 hours a scheduled check-in picks the next most useful step, ships it, and adds an entry here.
 
+## 2026-10-25 (07:00 check-in)
+- **First guides abroad (now 44):** LHR, CDG, FRA and AMS, written for Americans flying home. Each has a "Passport control on the way out" section:
+  - EES on exit at CDG, FRA and AMS, with reported waits.
+  - The UK has no exit passport control.
+  - AMS eGates for US passports.
+  - FRA Terminal 3, open since April 23, 2026, now handles Delta and American.
+
+  The template now supports `region: "intl"`, and `/airports` has a "Flying home to the US" section.
+- **Next:** more international hubs (DUB with US preclearance, FCO, MAD, CUN); Thanksgiving refresh; PostHog when the key arrives.
+
 ## 2026-10-25 (04:00 check-in)
 - **5 more airport guides (now 40):** MSY, SAT, IND, PIT and MCI, each with 15–21 sources. PIT covers the new terminal, open since Nov 18, 2025. Its busiest hours come from TSA's hourly screening counts (Sep 13–19, 2026). Recheck the SAT Terminal B curb work, which runs through December 2026.
 - **Next:** IndexNow; Thanksgiving refresh when TSA publishes its forecast; PostHog when the key arrives.
