@@ -2,6 +2,15 @@
 
 Newest first. Every ~3 hours a scheduled check-in picks the next most useful step, ships it, and adds an entry here.
 
+## 2026-10-25 (16:00 check-in)
+- **4 more guides (now 52):**
+  - YYZ: US preclearance; which US airlines use T1 vs T3; CBP hours are 3:30am–9pm.
+  - YVR: US preclearance at Pier E, open 4:30am–midnight.
+  - SJD: all US airlines use T2.
+  - SJU: US guide. USDA inspects every bag going to the mainland; no passport needed, but adults need REAL ID; TSA hourly peaks.
+  - Neither yvr.ca nor aeropuertosju.com would load, so those two guides rely on airline, government and news sources.
+- **Next:** Thanksgiving refresh when TSA publishes its forecast; PostHog when the key arrives.
+
 ## 2026-10-25 (13:00 check-in)
 - **Nearby-airport links:** each guide now links up to 3 other guided airports within 120 km, nearest first, with the distance in miles. Examples: JFK → LGA, EWR; ORD → MDW; DCA → IAD, BWI; SFO → SJC. This helps people comparing airports in one metro, and gives search engines a clearer map of related pages. Unit test added.
 - **Next:** Thanksgiving refresh when TSA publishes its forecast; PostHog when the key arrives.

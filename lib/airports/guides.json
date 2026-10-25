@@ -9298,6 +9298,456 @@
    }
   ]
  },
+ "SJD": {
+  "code": "SJD",
+  "name": "Los Cabos International Airport",
+  "city": "San José del Cabo",
+  "state": "Mexico",
+  "region": "intl",
+  "checkedOn": "2026-10-25",
+  "passportControl": "Mexico has no separate exit immigration check for air departures. Your airline checks your passport at check-in. US airlines fly from Terminal 2. Air arrivals get either a passport stamp or, at the Terminal 2 e-gates, a printed ticket with a QR code. E-gate users get no stamp, and the ticket links to the digital FMM. UK government advice says you must show your passport with its entry stamp, or the printed e-gate ticket, when you leave. If you lose your passport, replacing the entry stamp costs about 700 pesos at an airport immigration office. Baja California Sur charges international visitors an 'Embrace It' fee, reported at 470 pesos in December 2025. Reports say airport checks of the QR receipt are rare, but they can happen. Los Cabos has no US preclearance, so you clear US immigration and customs after you land.",
+  "officialArrivalAdvice": {
+   "domestic": null,
+   "international": "When you're traveling outside of the United States, we suggest arriving at least 3 hours prior to your departure. (Delta; Southwest and JetBlue also advise 3 hours at Los Cabos.)",
+   "source": "https://www.delta.com/us/en/check-in-security/check-in-time-requirements/international-check-in"
+  },
+  "terminals": [
+   {
+    "id": "T1",
+    "name": "Terminal 1",
+    "airlines": [
+     "Aeroméxico",
+     "Viva Aerobus",
+     "Volaris"
+    ],
+    "checkpoints": [],
+    "notes": [
+     "Domestic Mexican flights; no US airlines are listed here",
+     "Domestic flights are due to move into Terminal 2 by late 2027, after which Terminal 1 will close for a time"
+    ]
+   },
+   {
+    "id": "T2",
+    "name": "Terminal 2",
+    "airlines": [
+     "American",
+     "Delta",
+     "United",
+     "Alaska",
+     "Southwest",
+     "JetBlue",
+     "Frontier",
+     "Sun Country",
+     "Air Canada",
+     "WestJet"
+    ],
+    "checkpoints": [
+     {
+      "notes": "JetBlue lists security checkpoint hours of 7:00am-9:00pm. No published wait times found.",
+      "precheck": null,
+      "clear": null,
+      "name": "Departures security"
+     }
+    ],
+    "notes": [
+     "International terminal; customs and immigration are on the ground floor",
+     "Being expanded in 2026; expect temporary walls, rerouted corridors and longer walks to gates",
+     "Southwest's ticket counter opens three hours before its first departure; gates change daily",
+     "JetBlue's ticket counter opens 3 hours before departure; its lobby is cashless and it has no priority security lane or curbside check-in here"
+    ]
+   }
+  ],
+  "connectedAirside": null,
+  "betweenTerminals": null,
+  "securityWaits": {
+   "summary": "This research found no published security wait times for Los Cabos. Wikipedia notes congestion and capacity limits at peak hours. Terminal 2 expansion work began in mid-2026.",
+   "busiestTimes": [],
+   "source": "https://en.wikipedia.org/wiki/Los_Cabos_International_Airport"
+  },
+  "precheckNotes": null,
+  "clearAvailable": null,
+  "touchlessId": null,
+  "gettingThere": {
+   "rideshare": "You can take an Uber to the airport; drop-offs at departures are allowed. Uber pickups at the airport are still prohibited, which only affects arrivals. Uber puts the average trip from San José del Cabo at about 21 minutes and 12 km, with an average UberX fare of about MX$255 over the past month. Private transfers and shared shuttles have the federal plates needed to work at the airport, so the Cabo Sun suggests pre-booking one.",
+   "transit": null,
+   "driving": "The airport is about 8 miles from San José del Cabo and about a 23-mile drive from Cabo San Lucas. Mexico News Daily put the drive from Cabo San Lucas on Federal Highway 1 at about 40 minutes; the airport toll road is faster and costs up to 113 pesos. The Cabo Sun says most transfers from Cabo San Lucas use the toll road. The underpass at the former Fonatur roundabout, whose construction had slowed airport traffic, opened on May 25, 2026."
+  },
+  "construction2026": [
+   "Terminal 2 is being expanded. Heavy construction began around mid-2026, and the airport stays open throughout. Expect temporary walls, rerouted walkways, changing signs and longer walks to gates (The Cabo Sun, March 2026).",
+   "The work adds three gates, new jet bridges and nearly 20 self-service check-in kiosks. Terminal 2 will grow by about 22,000 square meters.",
+   "Domestic flights are due to move from Terminal 1 into Terminal 2 by late 2027. Terminal 1 will then close for a time. Mexico News Daily says the full upgrade should be done by 2029."
+  ],
+  "bagDrop": "Delta: check in at least 1 hour before international departures; Los Cabos is not on its list of airports with earlier cutoffs. American, United, Alaska and Southwest: check-in closes 60 minutes before international departures (AP, May 2025). JetBlue: check in and check bags at least 60 minutes before international departures. Southwest's ticket counter opens three hours before its first departure, and JetBlue's opens 3 hours before departure.",
+  "tips": [
+   "US airlines, including American, Delta, United, Alaska, Southwest and JetBlue, fly from Terminal 2. Terminal 1 is for domestic Mexican flights.",
+   "Keep your passport with its entry stamp, or your printed e-gate ticket, until you have left Mexico.",
+   "Allow extra time to walk to your gate. Terminal 2 is under construction, and walkways and signs may change.",
+   "Uber is fine for getting to the airport. The pickup ban applies only to arrivals.",
+   "Bring a card if you fly JetBlue. Its Los Cabos lobby does not accept cash.",
+   "Keep your Embrace It QR receipt on your phone. Reports say checks are rare, but they can happen."
+  ],
+  "faq": [
+   {
+    "q": "How early should I get to Los Cabos Airport for a flight to the US?",
+    "a": "Three hours. Delta, Southwest and JetBlue all advise 3 hours. Check-in and bag drop close 60 minutes before departure on the main US airlines."
+   },
+   {
+    "q": "Which Los Cabos terminal is my flight to the US from?",
+    "a": "Terminal 2. American, Delta, United, Alaska, Southwest, JetBlue, Frontier and Sun Country all fly from there. Terminal 1 handles domestic Mexican flights."
+   },
+   {
+    "q": "Do I go through immigration when leaving Mexico?",
+    "a": "There is no separate exit check. Your airline checks your passport. Keep your passport with its entry stamp, or your e-gate ticket, in case you are asked."
+   },
+   {
+    "q": "Can I take an Uber to Los Cabos Airport?",
+    "a": "Yes. Uber drop-offs at departures are allowed. Uber pickups at the airport are still prohibited."
+   },
+   {
+    "q": "Is Los Cabos Airport under construction?",
+    "a": "Yes. Terminal 2 is being expanded, with heavy work since mid-2026. The airport stays open, but expect detours and longer walks to gates."
+   }
+  ],
+  "sources": [
+   {
+    "title": "Delta - International check-in time requirements",
+    "url": "https://www.delta.com/us/en/check-in-security/check-in-time-requirements/international-check-in"
+   },
+   {
+    "title": "Southwest - Airport information (Los Cabos, Terminal 2)",
+    "url": "https://www.southwest.com/html/air/airport-information.html?airportCode=SJD"
+   },
+   {
+    "title": "JetBlue - Los Cabos airport information",
+    "url": "https://www.jetblue.com/at-the-airport/airport-information/los-cabos-mexico"
+   },
+   {
+    "title": "JetBlue - Airport check-in (cutoff times)",
+    "url": "https://www.jetblue.com/help/checking-in/airport-check-in"
+   },
+   {
+    "title": "AP via MyNorthwest - United narrows check-in window; airline comparison (May 27, 2025)",
+    "url": "https://mynorthwest.com/lifestyle/united-is-narrowing-its-check-in-window-for-us-flights-heres-how-it-compares-to-other-airlines/4092751"
+   },
+   {
+    "title": "Aeropuertos del Mundo - Los Cabos airlines by terminal (updated Oct 15, 2026)",
+    "url": "https://www.aeropuertosdelmundo.net/mx/aeropuerto-SJD-lineas-aereas/"
+   },
+   {
+    "title": "Wikipedia - Los Cabos International Airport",
+    "url": "https://en.wikipedia.org/wiki/Los_Cabos_International_Airport"
+   },
+   {
+    "title": "Visit Los Cabos - Los Cabos airports",
+    "url": "https://www.visitloscabos.travel/plan/los-cabos-airports/"
+   },
+   {
+    "title": "The Cabo Sun - Los Cabos airport expansion underway in 2026 (Mar 23, 2026)",
+    "url": "https://thecabosun.com/los-cabos-airport-expansion-underway-in-2026-new-terminal-2-upgrades-travelers-will-actually-notice/"
+   },
+   {
+    "title": "The Cabo Sun - Los Cabos airport to convert to a single terminal (Nov 14, 2025)",
+    "url": "https://thecabosun.com/los-cabos-airport-to-convert-to-single-terminal-what-tourists-need-to-know/"
+   },
+   {
+    "title": "Mexico News Daily - Infrastructure projects in Los Cabos (Sep 17, 2025)",
+    "url": "https://mexiconewsdaily.com/baja-california-peninsula/mnd-local-major-infrastructure-projects-reflect-growing-pains-in-los-cabos/"
+   },
+   {
+    "title": "Zeta Tijuana - Sheinbaum opens the Glorieta de las Mujeres Libres underpass (Jun 2, 2026)",
+    "url": "https://zetatijuana.com/2026/06/sheinbaum-inaugura-la-glorieta-de-las-mujeres-libres-en-los-cabos/"
+   },
+   {
+    "title": "The Cabo Sun - Los Cabos airport e-gates (Apr 10, 2026)",
+    "url": "https://thecabosun.com/los-cabos-airport-is-slashing-wait-times-for-americans-and-how-to-take-advantage/"
+   },
+   {
+    "title": "GOV.UK - Mexico entry requirements",
+    "url": "https://www.gov.uk/foreign-travel-advice/mexico/entry-requirements"
+   },
+   {
+    "title": "The Mexico Handbook - The FMM and tourist entry to Mexico (updated Oct 25, 2026)",
+    "url": "https://themexicohandbook.com/the-fmm-and-tourist-entry-to-mexico/"
+   },
+   {
+    "title": "The Alviator - Countries without departure immigration (Mar 12, 2026)",
+    "url": "https://thealviator.com/2026/03/departure-immigration/"
+   },
+   {
+    "title": "U.S. Customs and Border Protection - Preclearance locations (none in Mexico)",
+    "url": "https://www.cbp.gov/travel/preclearance"
+   },
+   {
+    "title": "The Cabo Sun - Taking an Uber to Los Cabos airport for departures in 2026 (Jan 12, 2026)",
+    "url": "https://thecabosun.com/can-you-take-an-uber-to-the-los-cabos-airport-for-departures-in-2026/"
+   },
+   {
+    "title": "Gringo Gazette - No airport concession for Uber after taxi agreement (Apr 15, 2026)",
+    "url": "https://gringogazette.com/?p=35546"
+   },
+   {
+    "title": "Uber - Los Cabos Airport (SJD)",
+    "url": "https://www.uber.com/global/en/r/airports/sjd/"
+   },
+   {
+    "title": "The Cabo Sun - Los Cabos tourists must pay separate Embrace It tax in 2026 (Dec 23, 2025)",
+    "url": "https://thecabosun.com/authorities-confirm-los-cabos-tourists-must-pay-separate-tax-in-2026-and-is-paid-separately/"
+   },
+   {
+    "title": "PAX News - Baja California Sur tourist tax extended through 2026 (Dec 2, 2025)",
+    "url": "https://www.paxnews.com/news/buzz/baja-california-sur-tourist-tax-extended-through-2026-confusion-remains"
+   },
+   {
+    "title": "Embrace It - Official Baja California Sur government site",
+    "url": "https://embraceit.bcs.gob.mx/"
+   }
+  ]
+ },
+ "SJU": {
+  "code": "SJU",
+  "name": "Luis Muñoz Marín International Airport",
+  "city": "San Juan",
+  "state": "PR",
+  "checkedOn": "2026-10-25",
+  "officialArrivalAdvice": {
+   "domestic": "JetBlue advises arriving 2 hours before departure at San Juan, and Delta's standard US advice is also 2 hours. Southwest suggests 180 minutes at SJU. Flights to the US mainland count as domestic, but every bag first goes through USDA agricultural inspection.",
+   "international": "Delta suggests arriving at least 3 hours before international flights.",
+   "source": "https://www.jetblue.com/at-the-airport/airport-information/san-juan-puerto-rico"
+  },
+  "terminals": [
+   {
+    "id": "A",
+    "name": "Terminal A",
+    "airlines": [
+     "JetBlue",
+     "Avelo",
+     "Tradewind Aviation"
+    ],
+    "checkpoints": [
+     {
+      "notes": "JetBlue lists checkpoint hours of 4:00am-7:00pm. CLEAR lists its Terminal A lanes as Mon-Sat 4:00am-5:30pm and Sun 4:00am-6:00pm. TSA's throughput data names a 'Checkpoint Alpha' at SJU, which appears to be this one. In TSA's counts for Sept 20-26, 2026, it screened no passengers between 7pm and 3am.",
+      "precheck": true,
+      "clear": true,
+      "name": "Terminal A checkpoint"
+     }
+    ],
+    "notes": [
+     "Has its own ticketing hall and checkpoint; gates A1-A8",
+     "JetBlue's ticket counter is open 24 hours; its lobby is cashless",
+     "JetBlue does not accept bags more than 4 hours before departure at SJU",
+     "Contour Airlines checks in here but flies from Concourse D",
+     "Wikipedia lists Air Canada here; other sources place it in Terminal B, so check your booking",
+     "A covered pedestrian bridge with elevators from the parking garage to Terminal A opened in June 2026"
+    ]
+   },
+   {
+    "id": "B",
+    "name": "Terminal B (main terminal)",
+    "airlines": [
+     "American",
+     "Delta",
+     "United",
+     "Southwest",
+     "Sun Country"
+    ],
+    "checkpoints": [
+     {
+      "notes": "One central checkpoint serves Concourses B, C and D. TSA's throughput data names a 'Checkpoint BC' at SJU, which appears to be this one. It screened passengers in every hour of the day in TSA's Sept 20-26, 2026 counts. CLEAR lists its Terminal B/C lanes as 4:00am-8:30pm.",
+      "precheck": true,
+      "clear": true,
+      "name": "Terminal B central checkpoint"
+     }
+    ],
+    "notes": [
+     "Terminals B, C and D share check-in counters in the main terminal building",
+     "Gates B2-B10",
+     "Southwest's airport page lists gates D4 and D6, plus B3, B5 and B7",
+     "Wikipedia also lists American at Concourse C gates",
+     "The short-term parking garage is outside Terminal B"
+    ]
+   },
+   {
+    "id": "C",
+    "name": "Concourse C",
+    "airlines": [
+     "Frontier",
+     "Avianca",
+     "Copa Airlines",
+     "Iberia",
+     "Arajet"
+    ],
+    "checkpoints": [],
+    "notes": [
+     "Gates C2-C10; Frontier is the main carrier",
+     "Reached through the Terminal B central checkpoint"
+    ]
+   },
+   {
+    "id": "D",
+    "name": "Concourse D",
+    "airlines": [
+     "Cape Air",
+     "InterCaribbean Airways",
+     "Contour Airlines"
+    ],
+    "checkpoints": [],
+    "notes": [
+     "Mainly regional and small carriers; reopened in March 2023 after renovation",
+     "Delta, Frontier and United also use Concourse D gates when B and C are full",
+     "Reached through the Terminal B central checkpoint"
+    ]
+   }
+  ],
+  "connectedAirside": true,
+  "betweenTerminals": "Terminals A and B connect outside security near the ticket counters. After security, covered walkways link all the concourses, including A. Upgraded Points puts the longest gate-to-gate walk at about 0.6 miles, or about 15 minutes.",
+  "securityWaits": {
+   "summary": "This research found no official typical wait times for SJU. In TSA's hourly screening counts for Sept 20-26, 2026, the airport was busiest from about 4am to 6am, 8am to noon, and 3pm to 5pm. The main Terminal B checkpoint handled about two-thirds of passengers. The Terminal A checkpoint was busiest around 8am and 1pm and screened no one from 7pm to 3am.",
+   "busiestTimes": [
+    "4:00-6:00am",
+    "8:00am-12:00pm",
+    "3:00-5:00pm",
+    "Sundays and Fridays (busiest days in the TSA sample week)"
+   ],
+   "source": "https://www.tsa.gov/sites/default/files/foia-readingroom/tsa-throughput-data-to-september-20-2026-to-september-26-2026.pdf"
+  },
+  "precheckNotes": "CLEAR's SJU page lists TSA PreCheck lanes at both checkpoints, Terminal A and Terminal B/C. Upgraded Points says the Terminal A PreCheck lanes are open 24 hours, but TSA's counts show no screening at that checkpoint from 7pm to 3am. The Terminal B checkpoint screened passengers around the clock. CLEAR also offers TSA PreCheck enrollment at the airport.",
+  "clearAvailable": true,
+  "touchlessId": "Southwest's SJU page lists a TSA PreCheck Touchless ID checkpoint. To use it, TSA says you need PreCheck, a valid passport and an opted-in airline profile, and you must carry a physical REAL ID-compliant ID as backup. This research found no list confirming which other airlines offer it at SJU.",
+  "gettingThere": {
+   "rideshare": "Uber serves SJU and drops you curbside at the terminal you pick. Tourist taxis charge fixed fares between the airport and the tourist zones: $12 for Isla Verde, $17 for Condado, Ocean Park, Miramar and Santurce, and $21 for Old San Juan and the cruise piers. Extras include $1 per bag, $1 late at night, $2 for groups over five, and a $3 airport fee.",
+   "transit": "Public buses stop on the upper-level roadway outside Terminals A and B and Concourse E. Routes include D53 (Condado and the Convention Center), E40 (Piñero Avenue) and T5/D53 (Isla Verde and Old San Juan).",
+   "driving": "The short-term garage is outside Terminal B; Upgraded Points listed $27.55 for the first day in May 2026. A covered bridge with elevators now links the garage to Terminal A. The long-term lot is next to Concourse E, and a cell phone lot offers up to 45 minutes free."
+  },
+  "construction2026": [
+   "Aerostar, the airport operator, hired Burns & McDonnell to design a rehab and expansion of Terminal A. The plan includes a larger, reconfigured TSA checkpoint, new ticketing and check-in areas, and two more gates. No construction dates have been published.",
+   "A restroom renovation program of about $7 million is under way (News is my Business, June 2026)."
+  ],
+  "bagDrop": "Every bag going to the mainland must pass USDA inspection before you hand it to the airline, so do that first. JetBlue: at SJU, check in at least 45 minutes before departure, with or without bags; it does not accept bags more than 4 hours before departure. Delta: check bags at least 45 minutes before US departures. American and United: domestic check-in closes 45 minutes before departure. Southwest: be at the counter with checked bags 45 minutes before departure (AP, May 2025).",
+  "tips": [
+   "Go to the USDA inspection station before the airline counter. Inspectors put a sticker on bags that pass. Tell them about any fruit, plants or other farm products.",
+   "Most fresh fruits and vegetables, pork products (including chicharrones), plants in soil, cactus and sugarcane cannot go to the mainland. Coconut, pineapple, papaya, avocado, cut flowers and coffee beans are allowed after inspection.",
+   "Carry-on bags are inspected too, at a marked agricultural station at the security checkpoint or the gate.",
+   "You do not need a passport for a direct flight to the mainland. Adults still need a REAL ID or another TSA-accepted ID.",
+   "On a late-night flight from Terminal A, you may need to use the Terminal B checkpoint. In TSA's September 2026 counts, the Terminal A checkpoint screened no one from 7pm to 3am. The concourses connect after security.",
+   "JetBlue at Terminal A will not take bags more than 4 hours before departure, and its lobby does not accept cash."
+  ],
+  "faq": [
+   {
+    "q": "How early should I get to San Juan airport (SJU)?",
+    "a": "JetBlue and Delta advise 2 hours for flights to the mainland; Southwest suggests 3. Allow time for the USDA bag inspection, which comes before check-in. Bag drop closes 45 minutes before departure on JetBlue, Delta, American, United and Southwest."
+   },
+   {
+    "q": "Do I need a passport to fly from San Juan to the US mainland?",
+    "a": "No, not for US citizens on a direct flight. CBP says you need a passport if the trip also includes a foreign country. You still need a REAL ID-compliant license or another TSA-accepted ID."
+   },
+   {
+    "q": "What is the USDA inspection at San Juan airport?",
+    "a": "USDA inspects all passenger bags going to the mainland before departure. Checked bags are inspected before you hand them to the airline, and carry-ons at the checkpoint or gate. Failing to declare items can bring fines of $100 to $1,000 per violation."
+   },
+   {
+    "q": "Which SJU terminal is my airline in?",
+    "a": "JetBlue, Avelo and Tradewind use Terminal A. American, Delta, United, Southwest and Sun Country check in at Terminal B, and Frontier flies from Concourse C. Terminals B, C and D share one checkpoint."
+   },
+   {
+    "q": "Does SJU have TSA PreCheck and CLEAR?",
+    "a": "Yes. CLEAR lists CLEAR and TSA PreCheck lanes at both the Terminal A and Terminal B/C checkpoints. Southwest lists a PreCheck Touchless ID checkpoint."
+   }
+  ],
+  "sources": [
+   {
+    "title": "USDA APHIS - Traveling to U.S. mainland from Puerto Rico and the U.S. Virgin Islands (last modified Sep 16, 2026)",
+    "url": "https://www.aphis.usda.gov/traveling-with-ag-products/puerto-rico-usvi"
+   },
+   {
+    "title": "USDA APHIS - Baggage inspection required for travelers going from Puerto Rico to the U.S. mainland (revised July 2026)",
+    "url": "https://www.aphis.usda.gov/sites/default/files/fs-bag-inspection-travelers-notice-puerto-rico.pdf"
+   },
+   {
+    "title": "eCFR - 7 CFR 318.13-10, Inspection of baggage, other personal effects, and cargo",
+    "url": "https://www.ecfr.gov/current/title-7/subtitle-B/chapter-III/part-318/subpart-A/section-318.13-10"
+   },
+   {
+    "title": "JetBlue - San Juan airport information",
+    "url": "https://www.jetblue.com/at-the-airport/airport-information/san-juan-puerto-rico"
+   },
+   {
+    "title": "JetBlue - Airport check-in (cutoff times)",
+    "url": "https://www.jetblue.com/help/checking-in/airport-check-in"
+   },
+   {
+    "title": "Southwest - Airport information (San Juan)",
+    "url": "https://www.southwest.com/html/air/airport-information.html?airportCode=SJU"
+   },
+   {
+    "title": "Delta - Domestic check-in time requirements",
+    "url": "https://www.delta.com/us/en/check-in-security/check-in-time-requirements/domestic-check-in"
+   },
+   {
+    "title": "Delta - International check-in time requirements",
+    "url": "https://www.delta.com/us/en/check-in-security/check-in-time-requirements/international-check-in"
+   },
+   {
+    "title": "AP via MyNorthwest - United narrows check-in window; airline comparison (May 27, 2025)",
+    "url": "https://mynorthwest.com/lifestyle/united-is-narrowing-its-check-in-window-for-us-flights-heres-how-it-compares-to-other-airlines/4092751"
+   },
+   {
+    "title": "TSA throughput data, September 20-26, 2026 (hourly screening counts by checkpoint)",
+    "url": "https://www.tsa.gov/sites/default/files/foia-readingroom/tsa-throughput-data-to-september-20-2026-to-september-26-2026.pdf"
+   },
+   {
+    "title": "TSA - Identification (REAL ID)",
+    "url": "https://www.tsa.gov/travel/security-screening/identification"
+   },
+   {
+    "title": "TSA - PreCheck Touchless ID",
+    "url": "https://www.tsa.gov/touchless-id"
+   },
+   {
+    "title": "CLEAR - Luis Muñoz Marín International Airport locations and hours",
+    "url": "https://www.clearme.com/all-locations/luis-munoz-marin-international-airport"
+   },
+   {
+    "title": "News is my Business - CLEAR expands TSA PreCheck service to SJU (Jun 26, 2024)",
+    "url": "https://newsismybusiness.com/clear-expands-tsa-precheck-service-to-munoz-marin-intl-airport"
+   },
+   {
+    "title": "U.S. Customs and Border Protection - Western Hemisphere Travel Initiative FAQs",
+    "url": "https://www.cbp.gov/travel/us-citizens/western-hemisphere-travel-initiative/faqs"
+   },
+   {
+    "title": "USA.gov - Passports for travel to U.S. territories",
+    "url": "https://www.usa.gov/visit-territories"
+   },
+   {
+    "title": "Upgraded Points - Luis Muñoz Marín International Airport guide (updated May 14, 2026)",
+    "url": "https://upgradedpoints.com/travel/airports/luis-munoz-marin-international-sju-airport/"
+   },
+   {
+    "title": "Wikipedia - Luis Muñoz Marín International Airport",
+    "url": "https://en.wikipedia.org/wiki/Luis_Mu%C3%B1oz_Mar%C3%ADn_International_Airport"
+   },
+   {
+    "title": "Aeropuertos del Mundo - San Juan airlines by terminal (updated Oct 25, 2026)",
+    "url": "https://www.aeropuertosdelmundo.net/aeropuerto-SJU-lineas-aereas/"
+   },
+   {
+    "title": "News is my Business - Aerostar opens $5M bridge linking parking garage to Terminal A (Jun 17, 2026)",
+    "url": "https://newsismybusiness.com/aerostar-opens-5m-bridge-linking-parking-garage-to-terminal-a/"
+   },
+   {
+    "title": "Burns & McDonnell - SJU Terminal A expansion project",
+    "url": "https://www.burnsmcd.com/projects/luis-munoz-marin-international-airport-terminal-expansion"
+   },
+   {
+    "title": "SanJuanPuertoRico.com - Getting around San Juan by taxi",
+    "url": "https://sanjuanpuertorico.com/taxis/"
+   },
+   {
+    "title": "Uber - San Juan Airport (SJU)",
+    "url": "https://www.uber.com/global/en/r/airports/sju/"
+   }
+  ]
+ },
  "SLC": {
   "code": "SLC",
   "name": "Salt Lake City International Airport",
@@ -9914,6 +10364,432 @@
    {
     "title": "The Bulkhead Seat - TSA PreCheck Touchless ID airport list (Mar 16, 2026)",
     "url": "https://thebulkheadseat.com/?p=33789"
+   }
+  ]
+ },
+ "YVR": {
+  "code": "YVR",
+  "name": "Vancouver International Airport",
+  "city": "Vancouver",
+  "state": "Canada",
+  "region": "intl",
+  "checkedOn": "2026-10-25",
+  "passportControl": "Canada has no exit passport control. The CBSA gets your exit record from the airline's passenger manifest, and you do not need to do anything. At YVR you first go through Canadian security at CATSA's E - United States checkpoint, then through US preclearance, where US CBP officers clear you for immigration and customs before you board. CBP lists the facility on Level 3 of the International Terminal, open 4:30 am to midnight. You land in the US as a domestic passenger and skip CBP and TSA lines there; CBP lists YVR as a Global Entry and Mobile Passport Control location.",
+  "officialArrivalAdvice": {
+   "domestic": null,
+   "international": "U.S. & International: Arrive 2 hours 30 minutes (150 minutes) before departure. Check-in cut-off closes 1 hour 15 minutes (75 minutes) before departure for flights departing Calgary, Edmonton, Toronto, and Vancouver.",
+   "source": "https://www.westjet.com/en-ca/manage/check-in"
+  },
+  "terminals": [
+   {
+    "id": "INTL",
+    "name": "International Terminal - US departures (Pier E)",
+    "airlines": [
+     "Air Canada",
+     "Alaska",
+     "American",
+     "Delta",
+     "Flair",
+     "United",
+     "WestJet"
+    ],
+    "checkpoints": [
+     {
+      "notes": "CATSA security for US flights, before US preclearance. CATSA lists CT scanners here, and YVR said in June 2026 that CT installation at US Departures was under way. On a CT lane, small liquids and laptops can stay in your bag; where there is no CT sign, take them out.",
+      "precheck": null,
+      "clear": null,
+      "name": "E - United States"
+     },
+     {
+      "notes": "International Terminal, Level 3. Open 4:30 am to midnight. Global Entry and Mobile Passport Control are available.",
+      "precheck": null,
+      "clear": null,
+      "name": "U.S. Preclearance"
+     }
+    ],
+    "notes": [
+     "US flights use the Pier E gates, E71-E88 and E90-E96",
+     "Gates E90-E96 are in a smaller satellite building reached by a ground-level walkway",
+     "Gates E71-E78 can switch to international use as D71-D78, so check the screens"
+    ]
+   }
+  ],
+  "connectedAirside": null,
+  "betweenTerminals": "YVR's main terminal has domestic piers A to C, the international Pier D and the US Pier E. US flights board at Pier E, after Canadian security and US preclearance.",
+  "securityWaits": {
+   "summary": "CATSA posts live wait times for YVR's checkpoints, including E - United States for US flights, refreshed every 2 minutes from boarding-pass scans. The figures leave out check-in, bag drop, US customs processing and the walk to the gate. This research found no published busiest times for US departures.",
+   "busiestTimes": [],
+   "source": "https://www.catsa-acsta.gc.ca/en/airport/vancouver-international-airport"
+  },
+  "precheckNotes": null,
+  "clearAvailable": null,
+  "touchlessId": null,
+  "gettingThere": {
+   "rideshare": "Uber drops you at the curb of the departures area for the terminal you choose; if you do not know it, you can enter your airline instead. US preclearance is in the International Terminal.",
+   "transit": "The Canada Line runs from Waterfront Station downtown to YVR-Airport Station in about 25 minutes. The $6.50 YVR Airport AddFare applies only to trips that start at YVR-Airport, Sea Island Centre or Templeton stations, so it is not charged on the way to the airport. You can pay the adult fare by tapping a contactless credit or debit card or a mobile wallet.",
+   "driving": "Dinsmore Bridge onto Sea Island closes overnight, Sunday to Friday from 10 pm to 6 am, through December 31, 2026. Traffic detours via the No. 2 Rd. Bridge, which adds about six minutes. Outside those hours the bridge is open with a 30 km/h limit."
+  },
+  "construction2026": [
+   "YVR said in December 2025 that it would extend CT screening to every checkpoint in 2026, including US departures. In June 2026 it said installation at US Departures was under way.",
+   "Dinsmore Bridge closes overnight, Sunday to Friday from 10 pm to 6 am, through December 31, 2026. Use the No. 2 Rd. Bridge and allow about six extra minutes."
+  ],
+  "bagDrop": "Air Canada: check-in and bag drop open 3 hours and close 60 minutes before US flights; be at the gate 30 minutes before departure, and the gate closes 15 minutes before. Delta and WestJet: check-in closes 75 minutes before departure at Vancouver; WestJet suggests dropping bags 90 minutes before. American and Alaska: AP reported 60-minute cutoffs for international flights. United: AP reported a 60-minute international cutoff and did not list Vancouver among its exceptions.",
+  "tips": [
+   "Plan on 2.5 to 3 hours. WestJet asks for 2.5 hours on US flights, and Delta suggests 3 hours for departures outside the US.",
+   "Know your cutoff. Delta and WestJet close check-in 75 minutes before US flights at Vancouver; Air Canada closes check-in and bag drop at 60 minutes.",
+   "Fill in the Mobile Passport Control app before you reach preclearance. Global Entry also works at YVR.",
+   "Pack liquids in containers of 100 ml or less in one clear 1 L bag. At the US checkpoint, look for a CT sign; without one, take out liquids and laptops.",
+   "US preclearance opens at 4:30 am and closes at midnight.",
+   "Driving in late at night? Dinsmore Bridge is closed overnight through December 31, 2026, so allow a few extra minutes for the No. 2 Rd. Bridge detour."
+  ],
+  "faq": [
+   {
+    "q": "How early should I get to Vancouver airport for a flight to the US?",
+    "a": "Plan on 2.5 to 3 hours. WestJet says 2.5 hours for US flights, and Delta suggests 3 hours for departures outside the US. Delta and WestJet close check-in 75 minutes before departure at Vancouver; Air Canada closes at 60 minutes."
+   },
+   {
+    "q": "Do I clear US customs in Vancouver?",
+    "a": "Yes. US CBP officers clear you for US immigration and customs at YVR before you board. You land in the US as a domestic passenger and skip CBP and TSA lines."
+   },
+   {
+    "q": "What hours is US preclearance open at YVR?",
+    "a": "CBP lists 4:30 am to midnight. The facility is on Level 3 of the International Terminal."
+   },
+   {
+    "q": "Can I leave liquids and laptops in my bag at YVR security?",
+    "a": "Only on lanes marked for CT screening. CATSA lists CT at YVR's US checkpoint, and YVR said installation there was under way in June 2026. Elsewhere, take out liquids (100 ml or less, in one 1 L bag) and laptops."
+   },
+   {
+    "q": "Is there Canadian passport control when leaving Vancouver?",
+    "a": "No. Canada collects exit records from airline passenger manifests. The passport check before your US flight is done by US officers at preclearance."
+   }
+  ],
+  "sources": [
+   {
+    "title": "U.S. Customs and Border Protection - Preclearance locations",
+    "url": "https://www.cbp.gov/travel/preclearance"
+   },
+   {
+    "title": "U.S. Customs and Border Protection - Mobile Passport Control",
+    "url": "https://www.cbp.gov/travel/us-citizens/mobile-passport-control"
+   },
+   {
+    "title": "U.S. Customs and Border Protection - Airports with Global Entry",
+    "url": "https://www.cbp.gov/travel/trusted-traveler-programs/global-entry/locations"
+   },
+   {
+    "title": "CATSA - Vancouver International Airport security wait times",
+    "url": "https://www.catsa-acsta.gc.ca/en/airport/vancouver-international-airport"
+   },
+   {
+    "title": "CATSA - Liquids, non-solid food and personal items",
+    "url": "https://www.catsa-acsta.gc.ca/en/what-can-bring/liquids-non-solid-food-personal-items"
+   },
+   {
+    "title": "CATSA - CT X-ray (airports and checkpoints, modified Apr 1, 2026)",
+    "url": "https://www.catsa-acsta.gc.ca/en/ct-x-ray"
+   },
+   {
+    "title": "YVR Newsroom - From Gate to Goal: YVR ready for FIFA 2026 (June 3, 2026)",
+    "url": "https://news.yvr.ca/from-gate-to-goal-vancouver-international-airport-ready-to-welcome-the-world-for-fifa-2026/"
+   },
+   {
+    "title": "YVR Newsroom - Security screening equipment upgrade (Dec 3, 2025)",
+    "url": "https://news.yvr.ca/security-screening-equipment-upgrade-yvr-domestic-terminal/"
+   },
+   {
+    "title": "YVR Newsroom - Dinsmore Bridge overnight closures (Sept 1, 2026)",
+    "url": "https://news.yvr.ca/dinsmore-bridge-overnight-closures/"
+   },
+   {
+    "title": "Air Canada - Check-in and boarding times",
+    "url": "https://www.aircanada.com/ca/en/aco/home/plan/check-in-information/check-in-and-boarding-times.html"
+   },
+   {
+    "title": "Delta - International check-in time requirements",
+    "url": "https://www.delta.com/us/en/check-in-security/check-in-time-requirements/international-check-in"
+   },
+   {
+    "title": "WestJet - Check-in",
+    "url": "https://www.westjet.com/en-ca/manage/check-in"
+   },
+   {
+    "title": "AP via MyNorthwest - United narrows check-in window; airline comparison (May 27, 2025)",
+    "url": "https://mynorthwest.com/lifestyle/united-is-narrowing-its-check-in-window-for-us-flights-heres-how-it-compares-to-other-airlines/4092751"
+   },
+   {
+    "title": "TransLink - Visiting Vancouver",
+    "url": "https://www.translink.ca/rider-guide/visiting-vancouver"
+   },
+   {
+    "title": "TransLink - Pricing and fare zones",
+    "url": "https://www.translink.ca/transit-fares/pricing-and-fare-zones"
+   },
+   {
+    "title": "Uber - Vancouver International Airport (YVR)",
+    "url": "https://www.uber.com/global/en/airports/yvr/"
+   },
+   {
+    "title": "Canada Border Services Agency - Entry/Exit initiative (July 11, 2019)",
+    "url": "https://www.canada.ca/en/border-services-agency/news/2019/07/entryexit-initiative.html"
+   },
+   {
+    "title": "Wikipedia - Vancouver International Airport (piers, gates and airlines)",
+    "url": "https://en.wikipedia.org/wiki/Vancouver_International_Airport"
+   },
+   {
+    "title": "Wikipedia - United States border preclearance",
+    "url": "https://en.wikipedia.org/wiki/United_States_border_preclearance"
+   }
+  ]
+ },
+ "YYZ": {
+  "code": "YYZ",
+  "name": "Toronto Pearson International Airport",
+  "city": "Toronto",
+  "state": "Canada",
+  "region": "intl",
+  "checkedOn": "2026-10-25",
+  "passportControl": "Canada has no exit passport control. The CBSA gets your exit record from the airline's passenger manifest, and you do not need to do anything. US preclearance is in both Terminal 1 and Terminal 3: after check-in you go through CATSA security, then into the US CBP hall, where US officers clear you for immigration and customs before you board. CBP processing runs 3:30 am to 9:00 pm, and you land in the US as a domestic passenger, skipping CBP and TSA lines there. NEXUS holders have a priority line, Global Entry members use the NEXUS kiosks, and CBP lists Pearson as a Mobile Passport Control site.",
+  "officialArrivalAdvice": {
+   "domestic": null,
+   "international": "Flying out of Toronto Pearson (YYZ) to the U.S. or another international destination? If your flight departs before 9 am, please consider arriving at the airport no later than 3 hours prior to your scheduled departure.",
+   "source": "https://www.aircanada.com/ca/en/aco/home/plan/check-in-information/check-in-and-boarding-times.html"
+  },
+  "terminals": [
+   {
+    "id": "T1",
+    "name": "Terminal 1",
+    "airlines": [
+     "Air Canada",
+     "United"
+    ],
+    "checkpoints": [
+     {
+      "notes": "CATSA security for US flights, before the US customs hall. Pearson says screening starts at 3:00 am; Air Canada gives 3:15 am. Pearson lists dedicated lines for Trusted Travellers (NEXUS, Global Entry), families and special assistance, and American Express cardholders. CATSA does not list CT scanners at this checkpoint, so take out liquids and laptops.",
+      "precheck": null,
+      "clear": null,
+      "name": "T1 - Transborder"
+     },
+     {
+      "notes": "Open 3:30 am to 9:00 pm. NEXUS holders, and passengers in wheelchairs or with mobility issues, can use a priority line. Global Entry members use the NEXUS kiosks. Mobile Passport Control is accepted.",
+      "precheck": null,
+      "clear": null,
+      "name": "U.S. Customs and Border Protection (Terminal 1)"
+     }
+    ],
+    "notes": [
+     "Air Canada and United fly to the US from Terminal 1",
+     "US gates are in Concourse F",
+     "The UP Express airport station is in Terminal 1"
+    ]
+   },
+   {
+    "id": "T3",
+    "name": "Terminal 3",
+    "airlines": [
+     "Alaska",
+     "American",
+     "Delta",
+     "Flair",
+     "Porter",
+     "Sun Country",
+     "WestJet"
+    ],
+    "checkpoints": [
+     {
+      "notes": "CATSA security for US flights, before the US customs hall. Pearson says screening starts at 3:00 am. CATSA does not list CT scanners at this checkpoint, so take out liquids and laptops.",
+      "precheck": null,
+      "clear": null,
+      "name": "T3 - Transborder"
+     },
+     {
+      "notes": "Open 3:30 am to 9:00 pm. NEXUS holders, and passengers in wheelchairs or with mobility issues, can use a priority line. Global Entry members use the NEXUS kiosks. Mobile Passport Control is accepted.",
+      "precheck": null,
+      "clear": null,
+      "name": "U.S. Customs and Border Protection (Terminal 3)"
+     }
+    ],
+    "notes": [
+     "All US airlines except United fly from Terminal 3",
+     "US gates are in Concourse A",
+     "From the UP Express, take the free Terminal Link train to Terminal 3"
+    ]
+   }
+  ],
+  "connectedAirside": null,
+  "betweenTerminals": "Terminals 1 and 3 are linked by the free Terminal Link train, which runs 24 hours. The ride between stations takes 2 to 8 minutes, and the wait is up to 4 or 8 minutes depending on the time of day. In Terminal 1 the station is on parking garage Level 5; in Terminal 3 it is off the pedestrian bridge to the Sheraton Gateway Hotel.",
+  "securityWaits": {
+   "summary": "CATSA posts live wait times for Pearson's T1 - Transborder and T3 - Transborder checkpoints, refreshed every 2 minutes from boarding-pass scans. CATSA's figures leave out check-in, bag drop, US customs and the walk to the gate. Pearson's own wait-time dashboard shows a United States time that combines CATSA security and US CBP processing, plus airline check-in waits. Air Canada uses a queue system for US flights leaving before 9 am and asks those passengers to arrive 3 hours early.",
+   "busiestTimes": [
+    "US departures before 9 am"
+   ],
+   "source": "https://www.catsa-acsta.gc.ca/en/airport/toronto-pearson-international-airport"
+  },
+  "precheckNotes": null,
+  "clearAvailable": null,
+  "touchlessId": null,
+  "gettingThere": {
+   "rideshare": "Uber, Lyft and Hopp are licensed at Pearson. Rideshare cars, like any car, may stop only briefly at the Departures curb; waiting is not allowed, and Pearson says the curb is running at limited capacity. Tell the driver your terminal: Terminal 1 for Air Canada and United, Terminal 3 for the other US airlines.",
+   "transit": "UP Express runs from Union Station to Pearson in about 28 minutes, stopping at Bloor, Weston and Mount Dennis. From Union, the first train leaves at 4:55 am on weekdays and 6:00 am on weekends and holidays; the last leaves at 1:00 am. An adult one-way fare is $12.35. Tap PRESTO or a contactless credit or debit card, or buy a ticket online or from a machine. The airport station is in Terminal 1; for Terminal 3, change to the free Terminal Link train.",
+   "driving": "You may stop briefly at the Departures curb of either terminal, but waiting is not allowed. Parking on the roads leading to the terminals brings a $50 fine. Express Pass gives a free short stop in the Terminal 1 and 3 garages (Pearson's pages say 18 or 20 minutes); book it online. Vehicles must be under 4.5 m to use the terminal curbs."
+  },
+  "construction2026": [
+   "Pearson LIFT, a decade-long rebuilding program, started on May 11, 2026. Its first $3-billion phase covers airfield upgrades and 30 km of baggage systems.",
+   "In July 2026 Pearson awarded a C$1.5-billion Terminal 1 and Terminal 3 revitalization covering check-in, security, customs and immigration areas, and gates. It will be built in phases while the terminals stay open. No dates for work in passenger areas have been published.",
+   "Metrolinx says planned construction is under way across the UP Express network, sometimes overnight and on weekends. Check UP Express service alerts before you travel."
+  ],
+  "bagDrop": "Air Canada: check-in and bag drop open 3 hours and close 60 minutes before US flights; be at the gate 30 minutes before departure, and the gate closes 15 minutes before. Delta and WestJet: check-in closes 75 minutes before departure at Toronto; WestJet suggests dropping bags 90 minutes before. United: AP reported in May 2025 a 90-minute check-in cutoff at Toronto. American and Alaska: AP reported 60-minute cutoffs for international flights. This research could not open Porter's check-in page.",
+  "tips": [
+   "Plan on 3 hours. Air Canada asks for 3 hours on US flights before 9 am, and Pearson's general guide for international flights is 3 to 4 hours.",
+   "Check your terminal before you leave. Air Canada and United use Terminal 1; Alaska, American, Delta, Flair, Porter, Sun Country and WestJet use Terminal 3.",
+   "Check Pearson's wait-time dashboard. Its United States figure includes both CATSA security and US customs.",
+   "Fill in the Mobile Passport Control app before you reach the US customs hall.",
+   "NEXUS and Global Entry members get a dedicated line at security and at US customs. Global Entry members use the NEXUS kiosks.",
+   "Pack liquids in containers of 100 ml or less in one clear 1 L bag. CATSA does not list CT scanners at Pearson's transborder checkpoints, so expect to take out liquids and laptops."
+  ],
+  "faq": [
+   {
+    "q": "How early should I get to Toronto Pearson for a flight to the US?",
+    "a": "Plan on 3 hours. Air Canada asks for 3 hours on US flights leaving before 9 am, and Pearson's general guide for international flights is 3 to 4 hours. Check-in closes 60 minutes before departure on Air Canada, 75 minutes on Delta and WestJet, and 90 minutes on United, according to AP."
+   },
+   {
+    "q": "Which Pearson terminal do US flights leave from?",
+    "a": "It depends on the airline. Air Canada and United use Terminal 1. Alaska, American, Delta, Flair, Porter, Sun Country and WestJet use Terminal 3. Both terminals have their own US customs hall."
+   },
+   {
+    "q": "Do I go through US customs at Toronto Pearson?",
+    "a": "Yes. US CBP officers clear you for US immigration and customs at Pearson before you board. You land in the US as a domestic passenger and skip CBP and TSA lines."
+   },
+   {
+    "q": "What time does US customs open at Pearson?",
+    "a": "CBP processing runs from 3:30 am to 9:00 pm in both Terminal 1 and Terminal 3. Pearson says CATSA security for US flights starts at 3:00 am."
+   },
+   {
+    "q": "Can I use Global Entry at Toronto Pearson?",
+    "a": "Yes. Global Entry members use the NEXUS kiosks at US customs, and NEXUS holders have a dedicated line at security and US customs. Mobile Passport Control also works at Pearson."
+   }
+  ],
+  "sources": [
+   {
+    "title": "Toronto Pearson - US Customs at Pearson",
+    "url": "https://www.torontopearson.com/en/departures/us-customs-pearson"
+   },
+   {
+    "title": "Toronto Pearson - NEXUS and Global Entry",
+    "url": "https://www.torontopearson.com/en/departures/nexus-global-entry"
+   },
+   {
+    "title": "Toronto Pearson - Security",
+    "url": "https://www.torontopearson.com/en/departures/security"
+   },
+   {
+    "title": "Toronto Pearson - Get ready to depart",
+    "url": "https://www.torontopearson.com/en/ready-to-travel"
+   },
+   {
+    "title": "Toronto Pearson - Baggage",
+    "url": "https://www.torontopearson.com/en/departures/baggage"
+   },
+   {
+    "title": "Toronto Pearson - Airlines and destinations",
+    "url": "https://www.torontopearson.com/en/airlines"
+   },
+   {
+    "title": "Toronto Pearson - Airport wait time dashboard",
+    "url": "https://www.torontopearson.com/en/airport-wait-time-dashboard"
+   },
+   {
+    "title": "Toronto Pearson - Departures",
+    "url": "https://www.torontopearson.com/en/departures"
+   },
+   {
+    "title": "Toronto Pearson - Terminal Link train",
+    "url": "https://www.torontopearson.com/en/transportation-and-parking/terminal-link-train"
+   },
+   {
+    "title": "Toronto Pearson - Picking up and dropping off",
+    "url": "https://www.torontopearson.com/en/transportation-and-parking/picking-up-and-dropping-off"
+   },
+   {
+    "title": "Toronto Pearson - Ride sharing",
+    "url": "https://www.torontopearson.com/en/transportation-and-parking/ride-sharing"
+   },
+   {
+    "title": "U.S. Customs and Border Protection - Preclearance locations",
+    "url": "https://www.cbp.gov/travel/preclearance"
+   },
+   {
+    "title": "U.S. Customs and Border Protection - Mobile Passport Control",
+    "url": "https://www.cbp.gov/travel/us-citizens/mobile-passport-control"
+   },
+   {
+    "title": "U.S. Customs and Border Protection - Airports with Global Entry",
+    "url": "https://www.cbp.gov/travel/trusted-traveler-programs/global-entry/locations"
+   },
+   {
+    "title": "CATSA - Toronto Pearson security wait times",
+    "url": "https://www.catsa-acsta.gc.ca/en/airport/toronto-pearson-international-airport"
+   },
+   {
+    "title": "CATSA - Liquids, non-solid food and personal items",
+    "url": "https://www.catsa-acsta.gc.ca/en/what-can-bring/liquids-non-solid-food-personal-items"
+   },
+   {
+    "title": "CATSA - CT X-ray (airports and checkpoints, modified Apr 1, 2026)",
+    "url": "https://www.catsa-acsta.gc.ca/en/ct-x-ray"
+   },
+   {
+    "title": "Air Canada - Check-in and boarding times",
+    "url": "https://www.aircanada.com/ca/en/aco/home/plan/check-in-information/check-in-and-boarding-times.html"
+   },
+   {
+    "title": "Delta - International check-in time requirements",
+    "url": "https://www.delta.com/us/en/check-in-security/check-in-time-requirements/international-check-in"
+   },
+   {
+    "title": "WestJet - Check-in",
+    "url": "https://www.westjet.com/en-ca/manage/check-in"
+   },
+   {
+    "title": "AP via MyNorthwest - United narrows check-in window; airline comparison (May 27, 2025)",
+    "url": "https://mynorthwest.com/lifestyle/united-is-narrowing-its-check-in-window-for-us-flights-heres-how-it-compares-to-other-airlines/4092751"
+   },
+   {
+    "title": "UP Express - Union Station",
+    "url": "https://www.upexpress.com/en/up-express-stations/union-station"
+   },
+   {
+    "title": "UP Express - Pearson Station",
+    "url": "https://www.upexpress.com/en/up-express-stations/pearson-station"
+   },
+   {
+    "title": "UP Express - Fares",
+    "url": "https://www.upexpress.com/en/ways-to-pay/up-express-fares"
+   },
+   {
+    "title": "UP Express - Planned construction",
+    "url": "https://www.upexpress.com/en/planned-construction"
+   },
+   {
+    "title": "CP24 - Toronto Pearson begins decade-long renovation project (May 11, 2026)",
+    "url": "https://www.cp24.com/local/toronto/2026/05/11/toronto-pearson-begins-decade-long-renovation-project-here-is-what-the-work-will-entail/"
+   },
+   {
+    "title": "Future Travel Experience - Toronto Pearson launches $1.5bn terminal revitalisation (July 2026)",
+    "url": "https://www.futuretravelexperience.com/2026/07/toronto-pearson-launches-1-5bn-terminal-revitalisation-to-enhance-passenger-experience/"
+   },
+   {
+    "title": "Canada Border Services Agency - Entry/Exit initiative (July 11, 2019)",
+    "url": "https://www.canada.ca/en/border-services-agency/news/2019/07/entryexit-initiative.html"
+   },
+   {
+    "title": "Wikipedia - Toronto Pearson International Airport (terminals and concourses)",
+    "url": "https://en.wikipedia.org/wiki/Toronto_Pearson_International_Airport"
+   },
+   {
+    "title": "Wikipedia - United States border preclearance",
+    "url": "https://en.wikipedia.org/wiki/United_States_border_preclearance"
    }
   ]
  }
