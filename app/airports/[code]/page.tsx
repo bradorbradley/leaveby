@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { AppCta, GuideSection, GuideShell, JsonLd } from "@/components/GuideShell";
-import { allGuides, getGuide, guideCodes, prettyChecked, type AirportGuide } from "@/lib/guides";
+import { allGuides, getGuide, guideCodes, isIntl, prettyChecked, type AirportGuide } from "@/lib/guides";
 import { SITE } from "@/lib/plan-metadata";
 
 export const dynamicParams = false;
@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: { params: Promise<{ code: str
   const { code } = await params;
   const g = getGuide(code);
   if (!g) return {};
-  const title = `How early to get to ${g.code} (${g.name}) · 2026 guide`;
+  const title = isIntl(g) ? `How early to get to ${g.code} (${g.name}) for a flight to the US · 2026 guide` : `How early to get to ${g.code} (${g.name}) · 2026 guide`;
   return {
     title,
     description: describe(g),
@@ -84,10 +84,12 @@ export default async function AirportGuidePage({ params }: { params: Promise<{ c
           {g.officialArrivalAdvice.domestic ? <p>{g.officialArrivalAdvice.domestic}</p> : null}
           {g.officialArrivalAdvice.international ? <p>{g.officialArrivalAdvice.international}</p> : null}
           {!g.officialArrivalAdvice.domestic && !g.officialArrivalAdvice.international ? (
-            <p>{g.code} doesn&apos;t publish a single rule. Most US airlines ask for 2 hours domestic and 3 hours international.</p>
+            <p>{g.code} doesn&apos;t publish a single rule. Most airlines ask for 2 hours domestic and 3 hours international.</p>
           ) : null}
           <p className="text-ink-2">
-            Those are blanket rules. Your real number depends on your terminal, the time of day, traffic from your door, and whether you have PreCheck or a bag.{" "}
+            {isIntl(g)
+              ? "Those are blanket rules. Your real number depends on your terminal, the time of day, passport control and whether you're checking a bag."
+              : "Those are blanket rules. Your real number depends on your terminal, the time of day, traffic from your door, and whether you have PreCheck or a bag."}{" "}
             <Link href="/app" className="font-semibold text-ink underline underline-offset-4">Leave By works out your exact leave time</Link>.
           </p>
           {g.officialArrivalAdvice.source ? (
@@ -97,6 +99,15 @@ export default async function AirportGuidePage({ params }: { params: Promise<{ c
           ) : null}
         </div>
       </section>
+
+      {g.passportControl ? (
+        <GuideSection id="passport" title="Passport control on the way out">
+          <p>{g.passportControl}</p>
+          <p>
+            More on exit checks, the EU&apos;s Entry/Exit System and US preclearance: <Link href="/international-flights">how early for an international flight</Link>.
+          </p>
+        </GuideSection>
+      ) : null}
 
       {g.securityWaits.summary || g.precheckNotes || g.touchlessId || g.clearAvailable !== null ? (
         <GuideSection id="security" title={`Security lines at ${g.code}`}>

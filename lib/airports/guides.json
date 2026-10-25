@@ -1,4 +1,187 @@
 {
+ "AMS": {
+  "code": "AMS",
+  "name": "Amsterdam Airport Schiphol",
+  "city": "Amsterdam",
+  "state": "Netherlands",
+  "region": "intl",
+  "checkedOn": "2026-10-25",
+  "officialArrivalAdvice": {
+   "domestic": null,
+   "international": "Schiphol recommends arriving 3 hours before departure for non-Schengen flights, which includes all flights to the US (2 hours for Schengen flights). Delta also recommends at least 3 hours before an international flight.",
+   "source": "https://news.schiphol.com/security-wait-times/"
+  },
+  "passportControl": "At Schiphol you go through security first, then Royal Netherlands Marechaussee passport control before the non-Schengen gates. The EU Entry/Exit System (EES, fully operational since April 10, 2026) records your exit: US passport holders aged 14 and over with a chip passport can use the departure eGates, which handle the EES check automatically, while children under 14 go to a staffed desk. A Financial Times and Qsensor study reported by Euronews on Aug 12, 2026 found maximum border waits at Amsterdam rose to 120 minutes in July 2026 from 80 a year earlier, though Schiphol said in August that departing travelers saw fewer delays than arriving ones. On flights to the US, gate agents may ask extra security questions and check documents before you reach the gate seating area. In September 2026, reports said the Netherlands is among nine countries that may still pause fingerprint and face capture when queues build; the European Commission declined to comment.",
+  "terminals": [
+   {
+    "id": "D2",
+    "name": "Departures 2 (to Piers D and E)",
+    "airlines": [
+     "Delta",
+     "KLM"
+    ],
+    "checkpoints": [
+     {
+      "notes": "Security comes first, then passport control for non-Schengen flights. You can book a free security timeslot from 3 days before departure in the Schiphol app or on schiphol.nl. Schiphol's April 2026 guidance says liquids must be in containers of 100 ml or less.",
+      "precheck": null,
+      "clear": null,
+      "name": "Security, then passport control"
+     }
+    ],
+    "notes": [
+     "Delta and KLM's intercontinental flights check in here",
+     "Pier E is non-Schengen. Pier D has both: non-Schengen gates D3-D57 and Schengen gates D59-D87",
+     "You can walk between piers and halls, but going from the Schengen side to the non-Schengen side means passing passport control"
+    ]
+   },
+   {
+    "id": "D3",
+    "name": "Departures 3 (to Piers F, G, H and M)",
+    "airlines": [
+     "United"
+    ],
+    "checkpoints": [
+     {
+      "notes": "Security comes first, then passport control for non-Schengen flights. You can book a free security timeslot from 3 days before departure in the Schiphol app or on schiphol.nl.",
+      "precheck": null,
+      "clear": null,
+      "name": "Security, then passport control"
+     }
+    ],
+    "notes": [
+     "United checks in here",
+     "Piers F and G handle intercontinental (non-Schengen) flights; H is non-Schengen low-cost and M is Schengen low-cost",
+     "Pier M is separate: once airside, you cannot reach the other piers from it"
+    ]
+   },
+   {
+    "id": "D1",
+    "name": "Departures 1 (to Piers B and C)",
+    "airlines": [],
+    "checkpoints": [],
+    "notes": [
+     "Mainly Schengen flights (Piers B and C and gates D59-D87), so US-bound passengers normally check in at Departures 2 or 3"
+    ]
+   }
+  ],
+  "connectedAirside": true,
+  "betweenTerminals": "Schiphol is one terminal with three departure halls. You can walk between the halls and piers on both sides of security; moving from the Schengen side to the non-Schengen side means passing passport control.",
+  "securityWaits": {
+   "summary": "Schiphol does not publish a fixed security wait figure. Wikivoyage says separate security and passport checks can take 20-30 minutes or more at busy times around 6-9am. Border control waits rose in summer 2026: a maximum of 120 minutes in July 2026, up from 80 a year earlier.",
+   "busiestTimes": [
+    "6:00-9:00am"
+   ],
+   "source": "https://en.wikivoyage.org/wiki/Schiphol_Airport"
+  },
+  "precheckNotes": null,
+  "clearAvailable": null,
+  "touchlessId": null,
+  "gettingThere": {
+   "rideshare": "Taxis serve the airport. Wikivoyage suggests booking ahead for a fixed price and avoiding unlicensed drivers who call out to travelers at the bus station.",
+   "transit": "Schiphol station sits right under the main entrance. Trains to Amsterdam Centraal take about 15 minutes, with about 10 trains an hour; after about 1am an hourly night train runs to Amsterdam, Rotterdam, The Hague and Utrecht. Bus 397 (Amsterdam Airport Express) runs to Museumplein and Leidseplein about every 15 minutes.",
+   "driving": null
+  },
+  "construction2026": [
+   "The Multimodal Hub project is rebuilding the airport train and bus interchange; a replacement bus station is expected in autumn 2027",
+   "The new Pier A is not open yet; Schiphol expects to start using it in April 2027"
+  ],
+  "bagDrop": "Delta: be checked in at least 60 minutes before an international departure and at the gate 45 minutes before (AMS has no Delta exception). United: check in at least 60 minutes before an international flight. KLM's current AMS cutoffs were not confirmed here, so check your boarding pass.",
+  "tips": [
+   "Arrive 3 hours before a US flight, as Schiphol advises for all non-Schengen flights",
+   "Book a free security timeslot from 3 days before departure in the Schiphol app or on schiphol.nl",
+   "Check in at the right hall: Delta and KLM intercontinental flights use Departures 2, United uses Departures 3",
+   "At the eGates, take your passport out of its cover and remove glasses, hats or face masks; US passport holders 14 and over can use them",
+   "Get to the gate early: US flights can have extra security questions and document checks before boarding"
+  ],
+  "faq": [
+   {
+    "q": "How early should I get to Amsterdam Schiphol for a flight to the US?",
+    "a": "3 hours before departure. Schiphol recommends 3 hours for all non-Schengen flights, and Delta recommends at least 3 hours for international flights. Border control waits reached 120 minutes at peak in July 2026."
+   },
+   {
+    "q": "Is security or passport control first at Schiphol?",
+    "a": "Security comes first. Passport control comes after it, before the non-Schengen gates used by US flights."
+   },
+   {
+    "q": "Can US citizens use the eGates when leaving Schiphol?",
+    "a": "Yes. US travelers aged 14 and over with a chip passport can use the departure eGates, which record the Entry/Exit System exit automatically. Children under 14 go to a staffed Marechaussee desk."
+   },
+   {
+    "q": "How do I get from Amsterdam to Schiphol by train?",
+    "a": "Take a train from Amsterdam Centraal. The trip takes about 15 minutes, with about 10 trains an hour, and the station is right under the airport's main entrance."
+   }
+  ],
+  "sources": [
+   {
+    "title": "Schiphol newsroom - Security wait times (May 19, 2026)",
+    "url": "https://news.schiphol.com/security-wait-times/"
+   },
+   {
+    "title": "Schiphol newsroom - May holidays approaching (Apr 17, 2026)",
+    "url": "https://news.schiphol.com/may-holidays-approaching-schiphol-ready-for-departures-and-homecomings/"
+   },
+   {
+    "title": "Royal Netherlands Marechaussee - Entry/Exit System (EES)",
+    "url": "https://english.marechaussee.nl/topics/e/ees"
+   },
+   {
+    "title": "Royal Netherlands Marechaussee - Self-service passport control (eGates)",
+    "url": "https://english.marechaussee.nl/topics/s/self-service-passport-control"
+   },
+   {
+    "title": "Euronews - Europe's new border system is causing huge airport queues (Aug 12, 2026)",
+    "url": "https://www.euronews.com/travel/2026/08/12/europes-new-border-system-is-causing-huge-airport-queues-as-ees-wait-times-double"
+   },
+   {
+    "title": "NL Times - Schiphol says new border controls causing one-to-two-hour waits (Aug 13, 2026)",
+    "url": "https://nltimes.nl/2026/08/13/schiphol-says-new-border-controls-causing-one-two-hour-waits"
+   },
+   {
+    "title": "Biometric Update - EU lets 9 Schengen countries delay full EES biometric checks (Sept 14, 2026)",
+    "url": "https://www.biometricupdate.com/202609/eu-lets-9-schengen-countries-delay-full-ees-biometric-checks"
+   },
+   {
+    "title": "European Commission Home Affairs - Entry/Exit System",
+    "url": "https://home-affairs.ec.europa.eu/policies/schengen/smart-borders/entry-exit-system_en"
+   },
+   {
+    "title": "European Commission - How the new digital borders system works",
+    "url": "https://commission.europa.eu/news-and-media/news/how-new-digital-borders-system-works-2025-10-13_en"
+   },
+   {
+    "title": "Delta - International check-in time requirements",
+    "url": "https://www.delta.com/us/en/check-in-security/check-in-time-requirements/international-check-in"
+   },
+   {
+    "title": "Scripps / 10News - United will require passengers to check in sooner",
+    "url": "https://www.10news.com/life/travel/united-will-require-passengers-to-check-in-for-their-flights-sooner"
+   },
+   {
+    "title": "The Traveler - How Amsterdam Schiphol Airport works from arrival to departure (July 8, 2026)",
+    "url": "https://www.thetraveler.org/how-amsterdam-schiphol-airport-works-from-arrival-to-departure/"
+   },
+   {
+    "title": "Parkos - Guide to Schiphol (Feb 2026)",
+    "url": "https://eu.parkos.com/blog/guide-to-schiphol/"
+   },
+   {
+    "title": "Wikipedia - Amsterdam Airport Schiphol",
+    "url": "https://en.wikipedia.org/wiki/Amsterdam_Airport_Schiphol"
+   },
+   {
+    "title": "Wikivoyage - Schiphol Airport",
+    "url": "https://en.wikivoyage.org/wiki/Schiphol_Airport"
+   },
+   {
+    "title": "Rijden de Treinen - Trains from Schiphol Airport to Amsterdam",
+    "url": "https://www.rijdendetreinen.nl/en/information/trains-schiphol-airport-amsterdam"
+   },
+   {
+    "title": "Airways - Schiphol Airport Pier A delayed to 2027 (July 6, 2024)",
+    "url": "https://www.airwaysmag.com/new-post/schiphol-airport-pier-a-delayed-2027"
+   }
+  ]
+ },
  "ATL": {
   "code": "ATL",
   "name": "Hartsfield-Jackson Atlanta International Airport",
@@ -963,6 +1146,214 @@
    {
     "title": "The Bulkhead Seat - TSA PreCheck Touchless ID airport list (Mar 16, 2026)",
     "url": "https://thebulkheadseat.com/?p=33789"
+   }
+  ]
+ },
+ "CDG": {
+  "code": "CDG",
+  "name": "Paris Charles de Gaulle Airport",
+  "city": "Paris",
+  "state": "France",
+  "region": "intl",
+  "checkedOn": "2026-10-25",
+  "passportControl": "French border police run exit passport control at CDG, after check-in and before your gate; in some terminals it comes after the security check. The EU Entry/Exit System (EES), fully operational since April 10, 2026, covers US citizens: your passport data, a face photo and fingerprints are recorded, and digital records have replaced passport stamps. Long passport queues have been reported since April; one family leaving CDG that month cleared check-in and security, then waited about three hours for passport control and missed their flight despite arriving three hours early. Paris Aéroport (ADP) has said it switches to manual checks when queues get too long, and no official wait-time figures for CDG departures were found. At Terminal 2E, Delta sends Sky Priority passengers to dedicated border and security lanes before the main security checkpoint.",
+  "officialArrivalAdvice": {
+   "domestic": null,
+   "international": "Delta suggests arriving 3 hours before international departures at airports without their own listed times, which includes CDG; check-in must be completed at least 1 hour before departure",
+   "source": "https://www.delta.com/us/en/check-in-security/check-in-time-requirements/international-check-in"
+  },
+  "terminals": [
+   {
+    "id": "1",
+    "name": "Terminal 1",
+    "airlines": [
+     "United"
+    ],
+    "checkpoints": [],
+    "notes": [
+     "Mainly Star Alliance airlines; United moved back to T1 in January 2023 after its renovation",
+     "United check-in is on level 3, hall 3; the Star Alliance lounge is on level 4, before passport control",
+     "From the RER B station Aéroport CDG 1, take the free CDGVAL shuttle to Terminal 1"
+    ]
+   },
+   {
+    "id": "2A",
+    "name": "Terminal 2A",
+    "airlines": [
+     "American"
+    ],
+    "checkpoints": [],
+    "notes": [
+     "oneworld airlines, including American",
+     "A shared boarding area between 2A and 2C handles security and passport control in one place"
+    ]
+   },
+   {
+    "id": "2B",
+    "name": "Terminal 2B",
+    "airlines": [
+     "JetBlue"
+    ],
+    "checkpoints": [],
+    "notes": [
+     "JetBlue flies from 2B to Boston and New York-JFK"
+    ]
+   },
+   {
+    "id": "2D",
+    "name": "Terminal 2D",
+    "airlines": [
+     "Air Tahiti Nui"
+    ],
+    "checkpoints": [],
+    "notes": [
+     "Air Tahiti Nui uses 2D for its Los Angeles flights"
+    ]
+   },
+   {
+    "id": "2E",
+    "name": "Terminal 2E",
+    "airlines": [
+     "Delta",
+     "Air France"
+    ],
+    "checkpoints": [
+     {
+      "notes": "Delta Sky Priority passengers follow signs to dedicated border and security lanes in the hallway between check-in Row 7 and the main checkpoint entrance.",
+      "precheck": null,
+      "clear": null,
+      "name": "Terminal 2E main security checkpoint"
+     }
+    ],
+    "notes": [
+     "Delta says its flights to and from the US use 2E; Air France uses 2E and 2F, so check your boarding pass",
+     "Delta check-in is at Rows 2 and 3",
+     "The LISA shuttle train links 2E to the L gates and M gates, so allow time to reach your gate"
+    ]
+   },
+   {
+    "id": "3",
+    "name": "Terminal 3",
+    "airlines": [],
+    "checkpoints": [],
+    "notes": [
+     "Used by charter and low-cost airlines; this research found no US airline here",
+     "Next to Roissypôle and the RER B station Aéroport CDG 1"
+    ]
+   }
+  ],
+  "connectedAirside": null,
+  "betweenTerminals": "Terminals 2A to 2F are linked by walkways; 2G is reached by shuttle bus. The free CDGVAL train links Terminal 1, the RER station Aéroport CDG 1 (by Terminal 3) and the Aéroport CDG 2 TGV station between 2C, 2D, 2E and 2F.",
+  "securityWaits": {
+   "summary": "No official CDG wait-time data was found. Since EES became fully operational on April 10, 2026, news outlets have reported long passport queues at CDG, including a family who missed their departing flight after about three hours in the passport line in April. ADP has said it reverts to manual border procedures when waits become excessive.",
+   "busiestTimes": [],
+   "source": "https://www.connexionfrance.com/news/we-missed-paris-flight-due-to-ees-despite-arriving-early-to-airport/780051"
+  },
+  "precheckNotes": null,
+  "clearAvailable": null,
+  "touchlessId": null,
+  "gettingThere": {
+   "rideshare": "Paris taxis charge a flat fare between the city and CDG in either direction: €56 from the Right Bank and €65 from the Left Bank (2026 rates).",
+   "transit": "The RER B takes about 34 minutes from Gare du Nord. It stops at Aéroport CDG 1 (for Terminals 1 and 3; take CDGVAL to Terminal 1) and Aéroport CDG 2 TGV (between 2C, 2D, 2E and 2F). The RER B is regularly disrupted, so check before you go. RoissyBus stopped on March 1, 2026; its replacement, the 9517 bus from Saint-Denis Pleyel (metro line 14), takes about 50 to 70 minutes from central Paris.",
+   "driving": "Recurring traffic jams on the A1 motorway make road travel times to CDG unreliable, so leave a buffer."
+  },
+  "construction2026": [
+   "The CDG Express rail link from Gare de l'Est is still being built. It is due to open on March 28, 2027, with a 20-minute trip every 15 minutes. Until then, use the RER B."
+  ],
+  "bagDrop": "Delta: check in at least 1 hour before departure (CDG follows Delta's general international rule). United: check-in closes 75 minutes before departure at Paris airports. American: 60 minutes for check-in and checked bags on flights from outside the US.",
+  "tips": [
+   "Budget extra time for the EES passport line on the way out. Queues of up to about three hours were reported at CDG after April 10, 2026.",
+   "Check your terminal: Delta US flights use 2E (shared with Air France), American uses 2A, United uses Terminal 1 and JetBlue uses 2B.",
+   "Terminals get new names on March 16, 2027: Terminal 3 becomes 2, 2A and 2C become 3, 2B and 2D become 4, 2E becomes 5, 2F becomes 6 and 2G becomes 7. Tickets for later flights may already show the new names.",
+   "Unlike Heathrow, CDG still applies the 100ml liquids limit in carry-on bags, even where new CT scanners are installed.",
+   "If you are flying from 2E, allow time for the LISA train to the L and M gates after the checkpoints."
+  ],
+  "faq": [
+   {
+    "q": "How early should I get to CDG for a flight to the US?",
+    "a": "Plan on at least 3 hours, and more at busy times. Delta suggests 3 hours for international departures, check-in closes 60 to 75 minutes before departure depending on the airline, and the EES passport line has taken up to about three hours at peak times in 2026."
+   },
+   {
+    "q": "What happens at passport control when I leave France?",
+    "a": "Under the EU Entry/Exit System, your passport, a face photo and fingerprints are recorded as you exit, and your passport is no longer stamped. The check comes after check-in; in some terminals it comes after security, so do not linger before it."
+   },
+   {
+    "q": "Which CDG terminal is my flight to the US from?",
+    "a": "Delta flies to the US from Terminal 2E, which it shares with Air France. American uses 2A, United uses Terminal 1 and JetBlue uses 2B. Check your boarding pass, because terminals get new names on March 16, 2027."
+   },
+   {
+    "q": "How do I get from Paris to CDG by train?",
+    "a": "Take the RER B, about 34 minutes from Gare du Nord. Get off at Aéroport CDG 2 TGV for Terminal 2, or at Aéroport CDG 1 and take the free CDGVAL to Terminal 1."
+   }
+  ],
+  "sources": [
+   {
+    "title": "European Commission - The Entry/Exit System will become fully operational on 10 April 2026 (Mar 30, 2026)",
+    "url": "https://home-affairs.ec.europa.eu/news/entryexit-system-will-become-fully-operational-10-april-2026-2026-03-30_en"
+   },
+   {
+    "title": "European Commission - Entry/Exit System (EES)",
+    "url": "https://home-affairs.ec.europa.eu/policies/schengen/smart-borders/entry-exit-system_en"
+   },
+   {
+    "title": "The Connexion - EES delays cause missed flights at Paris airport despite early arrival (Apr 16, 2026)",
+    "url": "https://www.connexionfrance.com/news/we-missed-paris-flight-due-to-ees-despite-arriving-early-to-airport/780051"
+   },
+   {
+    "title": "The Connexion - EES checks paused? EU responds over possible exemptions (May 8, 2026)",
+    "url": "https://www.connexionfrance.com/news/ees-checks-paused-european-commission-responds-to-media-reports/789666"
+   },
+   {
+    "title": "The Local France - Queues worsen at French airports as EES rollout continues (May 5, 2026)",
+    "url": "https://www.thelocal.fr/20260505/queues-worsen-at-french-airports-as-ees-rollout-continues"
+   },
+   {
+    "title": "AFAR - Be ready for a long wait at border control (June 9, 2026)",
+    "url": "https://www.afar.com/magazine/europes-new-ees-digital-entry-system-causing-travel-delays"
+   },
+   {
+    "title": "Euronews - French airports call for suspension of EES rollout (Feb 24, 2026)",
+    "url": "https://www.euronews.com/travel/2026/02/24/eus-entryexit-system-rollout-delayed-until-september-over-fears-of-summer-travel-chaos"
+   },
+   {
+    "title": "Delta - Paris (CDG) airport information",
+    "url": "https://www.delta.com/ca/en/airports/europe/paris-sky-club-airport-map"
+   },
+   {
+    "title": "Delta - International check-in time requirements",
+    "url": "https://www.delta.com/us/en/check-in-security/check-in-time-requirements/international-check-in"
+   },
+   {
+    "title": "AP via MyNorthwest - United narrows check-in window; airline comparison (May 2025)",
+    "url": "https://mynorthwest.com/lifestyle/united-is-narrowing-its-check-in-window-for-us-flights-heres-how-it-compares-to-other-airlines/4092751"
+   },
+   {
+    "title": "Air Journal - United Airlines returns to CDG Terminal 1 (Jan 10, 2023)",
+    "url": "https://www.air-journal.fr/?p=245557"
+   },
+   {
+    "title": "Wikipedia - Paris Charles de Gaulle Airport",
+    "url": "https://en.wikipedia.org/wiki/Paris_Charles_de_Gaulle_Airport"
+   },
+   {
+    "title": "The Connexion - Paris Charles de Gaulle airport to rename terminals (Oct 9, 2026)",
+    "url": "https://www.connexionfrance.com/transportation/paris-charles-de-gaulle-airport-to-rename-terminals/820088"
+   },
+   {
+    "title": "Euronews - Paris's new airport express train has a launch date (Apr 28, 2026)",
+    "url": "https://www.euronews.com/travel/2026/04/28/paris-new-airport-express-train-has-a-launch-date-heres-what-you-need-to-know"
+   },
+   {
+    "title": "Sortiraparis - RoissyBus is ending: alternatives (Dec 8, 2025)",
+    "url": "https://www.sortiraparis.com/en/news/in-paris/articles/337880-roissybus-is-stopping-how-to-get-to-charles-de-gaulle-airport-alternatives"
+   },
+   {
+    "title": "Service-Public.fr - Forfaits taxis 2026 (Jan 16, 2026)",
+    "url": "https://entreprendre.service-public.gouv.fr/actualites/A15396?lang=fr&profil=tout"
+   },
+   {
+    "title": "Journal du Geek - 100 ml liquids limit ends at these airports (Aug 5, 2026)",
+    "url": "https://www.journaldugeek.com/2026/08/05/la-limite-des-liquides-de-100-ml-en-avion-prend-fin-dans-ces-aeroports/"
    }
   ]
  },
@@ -2336,6 +2727,233 @@
    {
     "title": "The Bulkhead Seat - TSA Expands Touchless ID Screening to 65 US Airports (Apr 27, 2026)",
     "url": "https://thebulkheadseat.com/tsa-expands-touchless-id-screening-to-65-us-airports-full-list/"
+   }
+  ]
+ },
+ "FRA": {
+  "code": "FRA",
+  "name": "Frankfurt Airport",
+  "city": "Frankfurt",
+  "state": "Germany",
+  "region": "intl",
+  "checkedOn": "2026-10-25",
+  "officialArrivalAdvice": {
+   "domestic": null,
+   "international": "For summer 2026, Frankfurt Airport asked travelers who go through border control (non-EU citizens and anyone flying outside the Schengen area) to be at the airport at least 3 hours before departure. Delta also recommends arriving at least 3 hours before an international flight.",
+   "source": "https://www.reisevor9.de/destinations/flughafen-frankfurt-warnt-vor-laengeren-wartezeiten"
+  },
+  "passportControl": "Flying to the US means leaving the Schengen area, so you pass German border control on the way to your gate, and the EU Entry/Exit System (EES, fully operational since April 10, 2026) records your exit; if you registered your face and fingerprints when you arrived, exit is a quick check against that record, otherwise you register on exit. A Financial Times and Qsensor study reported by Euronews on Aug 12, 2026 found the average border wait at Frankfurt reached 120 minutes in July 2026, up from 60 minutes a year earlier, and FRA asked EES travelers to arrive at least 3 hours before departure. US citizens can use the EasyPASS-RTP eGates after a one-time registration with the Federal Police at the airport; FRA says self-service kiosks, where available, are faster than going straight to a desk. On Lufthansa and Discover Airlines flights to the US, the required US entry document check can be done at Fast Bag Drop if you consent to biometric verification during online check-in. In September 2026, reports said Germany is among nine countries that may still pause fingerprint and face capture when queues build; the European Commission declined to comment.",
+  "terminals": [
+   {
+    "id": "T1",
+    "name": "Terminal 1 (Concourses A, B, C, Z)",
+    "airlines": [
+     "United",
+     "Lufthansa",
+     "Discover Airlines",
+     "Condor"
+    ],
+    "checkpoints": [
+     {
+      "notes": "Serves Schengen and non-Schengen flights. Has an FRA SmartWay lane: book a free time slot up to 72 hours before departure (up to five people per slot). Most Terminal 1 checkpoints have CT scanners, so liquids up to 2 liters and laptops can stay in your bag.",
+      "precheck": null,
+      "clear": null,
+      "name": "Terminal 1, area B security (west and east access, level 2)"
+     },
+     {
+      "notes": "FRA lists its SmartWay lane here for Schengen flights only.",
+      "precheck": null,
+      "clear": null,
+      "name": "Terminal 1, area A security (level 2)"
+     },
+     {
+      "notes": "In Concourse C you and your carry-on are screened just before the gate. The old 100 ml liquid rules still apply at gates C1, C2, C4 and C6, including to duty-free purchases.",
+      "precheck": null,
+      "clear": null,
+      "name": "Concourse C gate security"
+     }
+    ],
+    "notes": [
+     "Used mainly by Lufthansa Group and Star Alliance airlines, including United",
+     "United check-in moved from Hall B to Hall C on October 25",
+     "Lufthansa check-in is in Hall A, with Fast Bag Drop at zones 12-13",
+     "Discover Airlines checks in at Hall B (Fast Bag Drop zones 12-14) and offers evening-before check-in from 5 to 8pm at zone 14",
+     "Condor checks in at Hall C (Fast Bag Drop zones 18-19) and offers evening-before check-in from 6 to 10pm at zone 19; Condor is expected to move to Terminal 3 in summer 2027",
+     "Non-Schengen flights, including US flights, leave from the Z gates, gates B20-B63 and Concourse C; Z sits on the floor above Concourse A"
+    ]
+   },
+   {
+    "id": "T3",
+    "name": "Terminal 3 (Piers G, H, J)",
+    "airlines": [
+     "Delta",
+     "American"
+    ],
+    "checkpoints": [
+     {
+      "notes": "Serves Schengen and non-Schengen flights and has an FRA SmartWay lane (free slot, book up to 72 hours ahead). All Terminal 3 checkpoints use CT scanners: liquids up to 2 liters without a plastic bag, and laptops, tablets and cameras stay in your bag.",
+      "precheck": null,
+      "clear": null,
+      "name": "Terminal 3 central security (level 3)"
+     }
+    ],
+    "notes": [
+     "Opened April 23, 2026. Delta and American moved here from Terminal 2 on May 19, 2026",
+     "Delta ticket counters are in Zone 36; Delta suggests checking in on its app and self-tagging bags at its kiosks",
+     "Pier J handles non-Schengen flights and Pier H Schengen flights; Pier G can handle both but is only partly in use",
+     "Terminal 3 has no train station. From the Terminal 1 train stations, the SkyLine takes about 10-15 minutes",
+     "Self check-in and Fast Bag Drop are the main check-in options; shops and restaurants are past security"
+    ]
+   }
+  ],
+  "connectedAirside": null,
+  "betweenTerminals": "The free SkyLine train links Terminals 1 and 3. It runs from 4am to 11pm about every 2-3 minutes, and a shuttle bus covers the hours outside that. The trip from Terminal 1 to Terminal 3 takes about 8-15 minutes.",
+  "securityWaits": {
+   "summary": "FRA does not publish security wait times. The bigger delay for US-bound travelers in 2026 has been border control: the Financial Times and Qsensor found the average border wait reached 120 minutes in July 2026, double the year before.",
+   "busiestTimes": [],
+   "source": "https://www.euronews.com/travel/2026/08/12/europes-new-border-system-is-causing-huge-airport-queues-as-ees-wait-times-double"
+  },
+  "precheckNotes": null,
+  "clearAvailable": null,
+  "touchlessId": null,
+  "gettingThere": {
+   "rideshare": "A taxi or car to Frankfurt Central Station or the city center takes about 10-15 minutes. Terminal 3 has a drop-off zone in front of the building.",
+   "transit": "S-Bahn lines S8 and S9 and regional trains stop at the regional station under Terminal 1 (Level 0); the trip to Frankfurt Central Station takes about 10-12 minutes. Long-distance IC and ICE trains stop at the long-distance station, about a 5-minute walk from Terminal 1. Terminal 3 has no station: change to the SkyLine (about 10-15 minutes). Bus X77 runs every 15 minutes between Gateway Gardens and Terminal 3.",
+   "driving": "Terminal 3 connects directly to the A5 motorway. Its garage has up to 8,500 spaces; without a reservation use entrance P11. Fraport recommends booking parking online in advance."
+  },
+  "construction2026": [
+   "Terminal 3 opened April 23, 2026, and the airlines from Terminal 2 moved there in waves through June 9, 2026",
+   "Terminal 2 closed to passengers on June 9, 2026 for renovation; reports say it will be out of use for years",
+   "From October 26, the AiRail Terminal at the long-distance station is no longer available; rail-and-fly passengers check bags at the counters in the departure hall",
+   "Condor is expected to move from Terminal 1 to Terminal 3 in summer 2027"
+  ],
+  "bagDrop": "Delta: be checked in, with or without bags, at least 75 minutes before departure at FRA, and at the gate 45 minutes before. United: check in at least 60 minutes before an international flight. Discover Airlines and Condor offer evening-before check-in in Terminal 1. Lufthansa's current FRA cutoff was not confirmed here, so check your boarding pass.",
+  "tips": [
+   "Check your terminal before you go: United, Lufthansa, Discover and Condor use Terminal 1, while Delta and American use Terminal 3",
+   "Terminal 3 has no train station, so add about 10-15 minutes for the SkyLine ride from the Terminal 1 stations",
+   "Book a free FRA SmartWay security slot up to 72 hours ahead; the Terminal 1 area B and Terminal 3 lanes serve US flights",
+   "At CT-scanner checkpoints (all of Terminal 3 and most of Terminal 1), liquids up to 2 liters and laptops can stay in your bag; gates C1, C2, C4 and C6 still use the 100 ml rule",
+   "On Lufthansa or Discover, consent to biometric verification during online check-in so the US document check is done at Fast Bag Drop",
+   "Plan at least 3 hours before a US flight: border control waits at FRA averaged 120 minutes in July 2026"
+  ],
+  "faq": [
+   {
+    "q": "How early should I get to Frankfurt airport for a flight to the US?",
+    "a": "At least 3 hours before departure. FRA asked travelers going through border control to arrive 3 hours early in summer 2026, Delta recommends 3 hours for international flights, and average border waits hit 120 minutes in July 2026."
+   },
+   {
+    "q": "Which Frankfurt terminal is my US flight in?",
+    "a": "United, Lufthansa, Discover Airlines and Condor use Terminal 1. Delta and American moved to the new Terminal 3 on May 19, 2026. Terminal 2 closed on June 9, 2026."
+   },
+   {
+    "q": "How do I get to Frankfurt Terminal 3 by train?",
+    "a": "Take the S-Bahn or a long-distance train to the Terminal 1 stations, then ride the free SkyLine to Terminal 3, about 10-15 minutes. The SkyLine runs 4am-11pm; a shuttle bus runs outside those hours."
+   },
+   {
+    "q": "What happens at passport control when I leave Frankfurt?",
+    "a": "The EU Entry/Exit System records your exit. If you registered your face and fingerprints on arrival, it is a quick check; if not, you register on exit. US citizens can register once for the EasyPASS-RTP eGates with the Federal Police at the airport."
+   }
+  ],
+  "sources": [
+   {
+    "title": "Frankfurt Airport - Border Control (EES, kiosks, EasyPASS-RTP)",
+    "url": "https://www.frankfurt-airport.com/en/travel-planning/check-in-luggage-controls/border-control.html"
+   },
+   {
+    "title": "Frankfurt Airport - Security Check (CT scanners, liquid rules)",
+    "url": "https://www.frankfurt-airport.com/en/travel-planning/check-in-luggage-controls/security-check.html"
+   },
+   {
+    "title": "Frankfurt Airport - Check-in, Luggage & Controls (Fast Bag Drop, US data verification)",
+    "url": "https://www.frankfurt-airport.com/en/travel-planning/check-in-luggage-controls.html"
+   },
+   {
+    "title": "Frankfurt Airport - FRA SmartWay",
+    "url": "https://www.frankfurt-airport.com/en/travel-planning/check-in-luggage-controls/fra-smartway.html"
+   },
+   {
+    "title": "Frankfurt Airport - Terminal 3",
+    "url": "https://www.frankfurt-airport.com/en/flights-and-transfer/terminal-3.html"
+   },
+   {
+    "title": "Frankfurt Airport - Traveling by train (AiRail notice)",
+    "url": "https://www.frankfurt-airport.com/en/transport-and-parking/to-from-the-airport/travel-by-train.html"
+   },
+   {
+    "title": "Frankfurt Airport - Homepage notices (United Hall C move, EES, US data verification)",
+    "url": "https://www.frankfurt-airport.com/en.html"
+   },
+   {
+    "title": "Frankfurt Airport - United Airlines",
+    "url": "https://www.frankfurt-airport.com/en/airlines/U/ua.html"
+   },
+   {
+    "title": "Frankfurt Airport - Lufthansa",
+    "url": "https://www.frankfurt-airport.com/en/airlines/L/lh.html"
+   },
+   {
+    "title": "Frankfurt Airport - Delta Air Lines",
+    "url": "https://www.frankfurt-airport.com/en/airlines/D/dl.html"
+   },
+   {
+    "title": "Frankfurt Airport - American Airlines",
+    "url": "https://www.frankfurt-airport.com/en/airlines/A/aa.html"
+   },
+   {
+    "title": "Frankfurt Airport - Discover Airlines",
+    "url": "https://www.frankfurt-airport.com/en/airlines/D/4y.html"
+   },
+   {
+    "title": "Frankfurt Airport - Condor",
+    "url": "https://www.frankfurt-airport.com/en/airlines/C/de.html"
+   },
+   {
+    "title": "Delta - Frankfurt (FRA) Terminal Update",
+    "url": "https://www.delta.com/us/en/advisories/airports/frankfurt-fra-terminal-update"
+   },
+   {
+    "title": "Delta - International check-in time requirements",
+    "url": "https://www.delta.com/us/en/check-in-security/check-in-time-requirements/international-check-in"
+   },
+   {
+    "title": "Scripps / 10News - United will require passengers to check in sooner",
+    "url": "https://www.10news.com/life/travel/united-will-require-passengers-to-check-in-for-their-flights-sooner"
+   },
+   {
+    "title": "Euronews - Europe's new border system is causing huge airport queues (Aug 12, 2026)",
+    "url": "https://www.euronews.com/travel/2026/08/12/europes-new-border-system-is-causing-huge-airport-queues-as-ees-wait-times-double"
+   },
+   {
+    "title": "reisevor9 - Flughafen Frankfurt warnt vor längeren Wartezeiten (June 22, 2026)",
+    "url": "https://www.reisevor9.de/destinations/flughafen-frankfurt-warnt-vor-laengeren-wartezeiten"
+   },
+   {
+    "title": "t-online - Flughafen Frankfurt: Drei Stunden vor Abflug wegen EU-Grenzsystem (July 4, 2026)",
+    "url": "https://www.t-online.de/leben/aktuelles/id_101327398/flughafen-frankfurt-drei-stunden-vor-abflug-wegen-eu-grenzsystem.html"
+   },
+   {
+    "title": "hessenschau - Terminal 3: airlines, transfers, getting there (Apr 22, 2026)",
+    "url": "https://www.hessenschau.de/wirtschaft/terminal-3-am-flughafen-frankfurt-alles-ueber-airlines-umstiege-anfahrt-v4,terminal-3-fragen-antworten-100.html"
+   },
+   {
+    "title": "hessenschau - Terminal 3 startet: Was sich für Reisende ändert (Apr 22, 2026)",
+    "url": "https://www.hessenschau.de/wirtschaft/terminal-3-startet-was-sich-fuer-reisende-am-flughafen-frankfurt-aendert-v2,terminal-3-fragen-antworten-100.html"
+   },
+   {
+    "title": "European Commission Home Affairs - Entry/Exit System",
+    "url": "https://home-affairs.ec.europa.eu/policies/schengen/smart-borders/entry-exit-system_en"
+   },
+   {
+    "title": "European Commission - How the new digital borders system works",
+    "url": "https://commission.europa.eu/news-and-media/news/how-new-digital-borders-system-works-2025-10-13_en"
+   },
+   {
+    "title": "Biometric Update - EU lets 9 Schengen countries delay full EES biometric checks (Sept 14, 2026)",
+    "url": "https://www.biometricupdate.com/202609/eu-lets-9-schengen-countries-delay-full-ees-biometric-checks"
+   },
+   {
+    "title": "Wikipedia - Frankfurt Airport",
+    "url": "https://en.wikipedia.org/wiki/Frankfurt_Airport"
    }
   ]
  },
@@ -4042,6 +4660,271 @@
    {
     "title": "JetBlue - Airport Check-In",
     "url": "https://www.jetblue.com/help/checking-in/airport-check-in"
+   }
+  ]
+ },
+ "LHR": {
+  "code": "LHR",
+  "name": "London Heathrow Airport",
+  "city": "London",
+  "state": "United Kingdom",
+  "region": "intl",
+  "checkedOn": "2026-10-25",
+  "passportControl": "The UK has no exit passport control, so no border officer checks you on the way out. Routine embarkation checks at airports ended in 1998. Since April 2015, exit checks work through passport data your airline sends to the Home Office (Advance Passenger Information). If you fly British Airways long-haul from Terminal 3 or 5 with hand baggage only, BA says it must check your passport and visa before security, so go to an Assistance desk first. Heathrow is not a US preclearance airport, so you clear US immigration and customs after you land.",
+  "officialArrivalAdvice": {
+   "domestic": null,
+   "international": "Heathrow recommends arriving three hours before your flight if you are travelling internationally (long-haul)",
+   "source": "https://www.heathrow.com/departures/checking-in"
+  },
+  "terminals": [
+   {
+    "id": "T2",
+    "name": "Terminal 2 (The Queen's Terminal)",
+    "airlines": [
+     "United",
+     "JetBlue"
+    ],
+    "checkpoints": [
+     {
+      "notes": "Heathrow sells Fast Track security from £12.99 per person, booked in one-hour arrival windows, 06:00-21:00 daily. Premium cabins and some frequent flyers may already have it; check with your airline.",
+      "precheck": null,
+      "clear": null,
+      "name": "Departures security"
+     }
+    ],
+    "notes": [
+     "Mainly Star Alliance airlines, including United",
+     "Terminals 2 and 3 share one rail station and are within walking distance of each other",
+     "Heathrow Express from Paddington takes about 15 minutes to Terminals 2 & 3"
+    ]
+   },
+   {
+    "id": "T3",
+    "name": "Terminal 3",
+    "airlines": [
+     "American",
+     "Delta",
+     "Virgin Atlantic",
+     "Alaska",
+     "British Airways (some flights)"
+    ],
+    "checkpoints": [
+     {
+      "notes": "Fast Track security can be booked from £12.99 per person, 06:00-21:00 daily.",
+      "precheck": null,
+      "clear": null,
+      "name": "Departures security"
+     },
+     {
+      "notes": "Private security channel for Virgin Atlantic Upper Class passengers.",
+      "precheck": null,
+      "clear": null,
+      "name": "Virgin Atlantic Upper Class Wing"
+     }
+    ],
+    "notes": [
+     "Heathrow lists American, Delta, Virgin Atlantic and Alaska in T3; British Airways operates from both T3 and T5, so check your booking",
+     "Virgin Atlantic: arrive in Zone A and follow signs to its bag drop",
+     "BA overnight bag drop at T3 runs 16:00-21:30 for flights leaving before 10:00 the next day"
+    ]
+   },
+   {
+    "id": "T4",
+    "name": "Terminal 4",
+    "airlines": [],
+    "checkpoints": [],
+    "notes": [
+     "Heathrow lists no US airline at T4, and this research found no nonstop US flights from it; SkyTeam's Air France uses T4 if you fly home via Paris",
+     "Heathrow Express does not stop at T4; ride it to Terminals 2 & 3 and change to the free Elizabeth line (about 4 more minutes)",
+     "The T4 multi-storey car park closed on 23 June 2026 for redevelopment; parking is now in Zone A of the T4 Park & Ride, with free shuttles every five minutes"
+    ]
+   },
+   {
+    "id": "T5",
+    "name": "Terminal 5",
+    "airlines": [
+     "British Airways"
+    ],
+    "checkpoints": [
+     {
+      "notes": "Fast Track security can be booked from £12.99 per person, 06:00-21:00 daily; BA premium cabins and some status holders may have it included.",
+      "precheck": null,
+      "clear": null,
+      "name": "Departures security"
+     }
+    ],
+    "notes": [
+     "British Airways' main Heathrow hub",
+     "Gates in satellites B and C are reached by an underground people mover (the Transit) after security",
+     "BA overnight bag drop at T5 runs 16:00-22:00 for flights leaving before 10:00 the next day",
+     "Heathrow Express from Paddington takes about 21 minutes to T5"
+    ]
+   }
+  ],
+  "connectedAirside": null,
+  "betweenTerminals": "Terminals 2 and 3 are a short walk apart. Heathrow Express is free between Terminals 2 & 3 and Terminal 5 (get a free ticket at the platform machines or tap in with contactless or Oyster). The Elizabeth line is free from Terminals 2 & 3 to Terminal 4. Airside transfer buses are for connecting passengers only.",
+  "securityWaits": {
+   "summary": "Heathrow's published figures show average security queues under five minutes at every terminal, though they leave out time walking through the queue area. In a Which? member survey (April 2025, published May 2026), passengers estimated about 17 minutes at T5, 18 at T3, 19 at T2 and 23 at T4. The Heathrow app shows live security times.",
+   "busiestTimes": [],
+   "source": "https://www.which.co.uk/reviews/airports/article/uk-airports/uk-airports-with-the-worst-queues-a7G9i3W7rJNo"
+  },
+  "precheckNotes": null,
+  "clearAvailable": null,
+  "touchlessId": null,
+  "gettingThere": {
+   "rideshare": "Taxis to central London take at least an hour, depending on traffic. Every car that enters a terminal drop-off area pays a £7 charge per visit (raised from £6 on 1 January 2026). Pay online or by phone by midnight the next day; unpaid charges lead to an £80 penalty.",
+   "transit": "Heathrow Express runs non-stop from London Paddington every 15 minutes: about 15 minutes to Terminals 2 & 3 and 21 minutes to Terminal 5 (no T4 stop). The Elizabeth line serves Terminals 2 & 3 (6 trains an hour), Terminal 4 (4 an hour) and Terminal 5 (2 an hour); fares through Zone 1 start at £13.90. The Piccadilly line (Underground) stops at Terminals 2 & 3, 4 and 5, runs about every 10 minutes and takes under an hour from central London; fares from £5.50.",
+   "driving": "Drop-off at the terminal costs £7 per visit. Drop-off is free at Heathrow's Park & Ride car parks, with a free bus to the terminal. Terminal 4 parking moved to Park & Ride Zone A in June 2026."
+  },
+  "construction2026": [
+   "Terminal 4 redevelopment: the T4 multi-storey car park closed on 23 June 2026. Plans include a replacement car park, a reconfigured drop-off area and upgraded facilities. T4 stays open, and drop-off continues as normal for now."
+  ],
+  "bagDrop": "British Airways: check-in closes 60 minutes before long-haul departures at Heathrow (90 minutes for some destinations; check Manage My Booking). Virgin Atlantic: check-in opens four hours and closes one hour before departure. American: 60 minutes for check-in and bags on flights from outside the US. Delta: check in at least 1 hour before departure. United: generally at least 1 hour before international departures.",
+  "tips": [
+   "Heathrow's new scanners let you keep liquids in containers up to 2 litres, and laptops, in your bag at Terminals 2, 3, 4 and 5. Empty metal or insulated bottles before security.",
+   "Check your terminal before you leave: United and JetBlue use T2; American, Delta, Virgin Atlantic and Alaska use T3; British Airways uses T5 and some T3.",
+   "Flying BA long-haul from T3 or T5 with hand baggage only? Go to a BA Assistance desk for a passport and visa check before security.",
+   "Being dropped off by car? Pay the £7 drop-off charge online by midnight the next day, or use the free drop-off at a Park & Ride car park.",
+   "Use the Heathrow app for live security times. Fast Track security costs from £12.99 and runs 06:00-21:00."
+  ],
+  "faq": [
+   {
+    "q": "How early should I get to Heathrow for a flight to the US?",
+    "a": "Heathrow recommends arriving three hours before an international flight. Most airlines' bag drop closes 60 minutes before departure for US flights, so do not cut it closer than that."
+   },
+   {
+    "q": "Do I go through passport control when leaving the UK?",
+    "a": "No. The UK has no exit passport control. Your airline sends your passport details to the Home Office, and BA checks documents for hand-baggage-only long-haul passengers at an Assistance desk."
+   },
+   {
+    "q": "Which Heathrow terminal is my flight to the US from?",
+    "a": "United and JetBlue fly from Terminal 2. American, Delta, Virgin Atlantic and Alaska fly from Terminal 3. British Airways flies mainly from Terminal 5, with some flights from Terminal 3."
+   },
+   {
+    "q": "Can I take liquids over 100ml through Heathrow security?",
+    "a": "Yes. Containers up to 2 litres can stay in your cabin bag at Terminals 2, 3, 4 and 5. Many other airports still have a 100ml limit."
+   },
+   {
+    "q": "What is the fastest way from central London to Heathrow?",
+    "a": "Heathrow Express from Paddington, about 15 minutes to Terminals 2 & 3 and 21 minutes to Terminal 5, every 15 minutes. For Terminal 4, change to the free Elizabeth line at Terminals 2 & 3."
+   }
+  ],
+  "sources": [
+   {
+    "title": "Heathrow - Checking in",
+    "url": "https://www.heathrow.com/departures/checking-in"
+   },
+   {
+    "title": "Heathrow blog - Top tips for timing your airport journey (Sept 22, 2026)",
+    "url": "https://www.heathrow.com/heathrow-blog/top-tips-for-timing-your-airport-journey"
+   },
+   {
+    "title": "Heathrow - Hand baggage and liquids",
+    "url": "https://www.heathrow.com/at-the-airport/security-and-baggage/hand-baggage-and-liquids"
+   },
+   {
+    "title": "Heathrow - Travel tips",
+    "url": "https://www.heathrow.com/at-the-airport/travel-tips"
+   },
+   {
+    "title": "Heathrow - Fast Track",
+    "url": "https://www.heathrow.com/at-the-airport/airport-services/fast-track"
+   },
+   {
+    "title": "Heathrow - Terminal Drop-Off Charge",
+    "url": "https://www.heathrow.com/transport-and-directions/terminal-drop-off-charge"
+   },
+   {
+    "title": "Heathrow - Passenger updates (drop-off charge rise, Jan 1, 2026)",
+    "url": "https://www.heathrow.com/passenger-updates"
+   },
+   {
+    "title": "Heathrow - Changes to Terminal 4",
+    "url": "https://www.heathrow.com/at-the-airport/changes-to-terminal-4"
+   },
+   {
+    "title": "Heathrow - Getting to Central London",
+    "url": "https://www.heathrow.com/transport-and-directions/getting-to-central-london"
+   },
+   {
+    "title": "Heathrow - Elizabeth line",
+    "url": "https://www.heathrow.com/transport-and-directions/by-rail-or-train/elizabeth-line"
+   },
+   {
+    "title": "Heathrow Express",
+    "url": "https://www.heathrowexpress.com/"
+   },
+   {
+    "title": "Heathrow - United Airlines (operates in T2)",
+    "url": "https://www.heathrow.com/airline-contact-info/united-airlines"
+   },
+   {
+    "title": "Heathrow - JetBlue (operates in T2)",
+    "url": "https://www.heathrow.com/airline-contact-info/jetblue"
+   },
+   {
+    "title": "Heathrow - American Airlines (operates in T3)",
+    "url": "https://www.heathrow.com/airline-contact-info/american-airlines"
+   },
+   {
+    "title": "Heathrow - Delta Air Lines (operates in T3)",
+    "url": "https://www.heathrow.com/airline-contact-info/delta-air-lines"
+   },
+   {
+    "title": "Heathrow - Virgin Atlantic (operates in T3)",
+    "url": "https://www.heathrow.com/airline-contact-info/virgin-atlantic"
+   },
+   {
+    "title": "Heathrow - Alaska Airlines (operates in T3)",
+    "url": "https://www.heathrow.com/airline-contact-info/alaska-airlines"
+   },
+   {
+    "title": "Heathrow - British Airways (operates in T3 and T5)",
+    "url": "https://www.heathrow.com/airline-contact-info/british-airways"
+   },
+   {
+    "title": "Heathrow - Air France (operates in T4)",
+    "url": "https://www.heathrow.com/airline-contact-info/air-france"
+   },
+   {
+    "title": "GOV.UK - Exit checks fact sheet (2015)",
+    "url": "https://www.gov.uk/government/publications/exit-checks-on-passengers-leaving-the-uk/exit-checks-fact-sheet"
+   },
+   {
+    "title": "Independent Chief Inspector of Borders and Immigration - An inspection of exit checks (March 2018)",
+    "url": "https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/695321/An_inspection_of_exit_checks.pdf"
+   },
+   {
+    "title": "U.S. Customs and Border Protection - Preclearance locations",
+    "url": "https://www.cbp.gov/travel/preclearance"
+   },
+   {
+    "title": "British Airways - Checking in",
+    "url": "https://hotline.britishairways.com/content/information/checking-in-and-boarding/checking-in.html"
+   },
+   {
+    "title": "Virgin Atlantic - London Heathrow airport guide",
+    "url": "https://www.virginatlantic.com/en-US/where-we-fly/europe/uk/london/london-heathrow-airport-guide"
+   },
+   {
+    "title": "Delta - International check-in time requirements",
+    "url": "https://www.delta.com/us/en/check-in-security/check-in-time-requirements/international-check-in"
+   },
+   {
+    "title": "AP via MyNorthwest - United narrows check-in window; airline comparison (May 2025)",
+    "url": "https://mynorthwest.com/lifestyle/united-is-narrowing-its-check-in-window-for-us-flights-heres-how-it-compares-to-other-airlines/4092751"
+   },
+   {
+    "title": "Which? - The worst UK airports for queues (May 28, 2026)",
+    "url": "https://www.which.co.uk/reviews/airports/article/uk-airports/uk-airports-with-the-worst-queues-a7G9i3W7rJNo"
+   },
+   {
+    "title": "Which? - The UK's airport liquid rules for 2026 (Jan 23, 2026)",
+    "url": "https://www.which.co.uk/news/article/100ml-rule-at-uk-airport-security-new-scanners-avLDH4E9xSVg"
+   },
+   {
+    "title": "Wikipedia - Heathrow Airport",
+    "url": "https://en.wikipedia.org/wiki/Heathrow_Airport"
    }
   ]
  },

@@ -21,6 +21,8 @@ export interface GuideTerminal {
 
 export interface AirportGuide {
   code: string;
+  /** "intl" for airports abroad: no TSA, and an exit passport-control section instead. */
+  region?: "us" | "intl";
   name: string;
   city: string;
   state: string;
@@ -36,6 +38,8 @@ export interface AirportGuide {
   gettingThere: { rideshare: string | null; transit: string | null; driving: string | null };
   construction2026: string[];
   bagDrop: string | null;
+  /** Exit border control for a US traveler flying home (international guides only). */
+  passportControl?: string | null;
   tips: string[];
   faq: Array<{ q: string; a: string }>;
   sources: Array<{ title: string; url: string }>;
@@ -54,6 +58,8 @@ export function getGuide(code: string): AirportGuide | null {
 export function allGuides(): AirportGuide[] {
   return guideCodes().map((c) => all[c]);
 }
+
+export const isIntl = (g: AirportGuide) => g.region === "intl";
 
 /** "Sep 26, 2026" from "2026-09-26". */
 export function prettyChecked(iso: string): string {
