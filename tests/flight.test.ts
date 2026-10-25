@@ -232,3 +232,12 @@ it("prefillFlight accepts a guide form's flight number and rejects junk", async 
   assert.equal(prefillFlight("?flight=DL2121234567890"), null);
   assert.equal(prefillFlight(""), null);
 });
+
+it("nearbyGuides links airports in the same metro, nearest first", async () => {
+  const { nearbyGuides } = await import("@/lib/guides");
+  const jfk = nearbyGuides("JFK").map((n) => n.guide.code);
+  assert.deepEqual(jfk.slice(0, 2).sort(), ["EWR", "LGA"]);
+  assert.ok(nearbyGuides("ORD").some((n) => n.guide.code === "MDW"));
+  assert.ok(!nearbyGuides("JFK").some((n) => n.guide.code === "JFK"));
+  assert.deepEqual(nearbyGuides("HNL"), []);
+});

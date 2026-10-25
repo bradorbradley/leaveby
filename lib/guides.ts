@@ -1,4 +1,6 @@
 import guides from "@/lib/airports/guides.json";
+import { worldAirport } from "@/lib/airports/world";
+import { haversineKm } from "@/lib/flight-legs";
 
 /**
  * Researched departure guides for the busiest US airports, with sources. They power the public
@@ -65,4 +67,19 @@ export const isIntl = (g: AirportGuide) => g.region === "intl";
 export function prettyChecked(iso: string): string {
   const [y, m, d] = iso.split("-").map(Number);
   return new Date(Date.UTC(y, m - 1, d)).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" });
+}
+
+/** Other guided airports within `maxKm`, nearest first: JFK → LGA, EWR. Server only (reads the world table). */
+export function nearbyGuides(code: string, maxKm = 120, limit = 3): Array<{ guide: AirportGuide; km: number }> {
+  const here = worldAirport(code);
+  if (!here) return [];
+  return allGuides()
+    .filter((g) => g.code !== here.code)
+    .map((g) => {
+      const there = worldAirport(g.code);
+      return { guide: g, km: there ? haversineKm(here, there) : Infinity };
+    })
+    .filter((n) => n.km <= maxKm)
+    .sort((a, b) => a.km - b.km)
+    .slice(0, limit);
 }

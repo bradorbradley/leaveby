@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { AppCta, GuideSection, GuideShell, JsonLd } from "@/components/GuideShell";
-import { allGuides, getGuide, guideCodes, isIntl, prettyChecked, type AirportGuide } from "@/lib/guides";
+import { allGuides, getGuide, guideCodes, isIntl, nearbyGuides, prettyChecked, type AirportGuide } from "@/lib/guides";
 import { SITE } from "@/lib/plan-metadata";
 
 export const dynamicParams = false;
@@ -46,7 +46,8 @@ export default async function AirportGuidePage({ params }: { params: Promise<{ c
   const { code } = await params;
   const g = getGuide(code);
   if (!g) notFound();
-  const others = allGuides().filter((o) => o.code !== g.code);
+  const nearby = nearbyGuides(g.code);
+  const others = allGuides().filter((o) => o.code !== g.code && !nearby.some((n) => n.guide.code === o.code));
   const url = `${SITE}/airports/${g.code.toLowerCase()}`;
 
   return (
@@ -198,6 +199,22 @@ export default async function AirportGuidePage({ params }: { params: Promise<{ c
         </ul>
         <p className="text-[13px] text-ink-3">Airport conditions change. Always follow your airline&apos;s check-in and bag-drop deadlines.</p>
       </GuideSection>
+
+      {nearby.length ? (
+        <GuideSection id="nearby" title={`Other airports near ${g.city}`}>
+          <div className="not-prose grid grid-cols-1 gap-2.5 sm:grid-cols-2">
+            {nearby.map(({ guide: n, km }) => (
+              <Link key={n.code} href={`/airports/${n.code.toLowerCase()}`} className="card flex items-center gap-4 !p-4 !no-underline transition-transform hover:-translate-y-0.5">
+                <span className="font-display text-[24px] font-semibold text-ink">{n.code}</span>
+                <span className="min-w-0">
+                  <span className="block truncate text-[14px] font-semibold text-ink">{n.name}</span>
+                  <span className="block text-[12.5px] text-ink-3">{Math.round(km * 0.621)} miles away · how early to get there</span>
+                </span>
+              </Link>
+            ))}
+          </div>
+        </GuideSection>
+      ) : null}
 
       <GuideSection title="Other airport guides">
         <p className="flex flex-wrap gap-2">
