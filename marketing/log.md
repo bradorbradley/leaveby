@@ -2,6 +2,14 @@
 
 Newest first. Every ~3 hours a scheduled check-in picks the next most useful step, ships it, and adds an entry here.
 
+## 2026-10-25 (10:00 check-in)
+- **4 more guides abroad (now 48):** DUB, CUN, FCO and MAD.
+  - DUB: US preclearance at Terminal 2. CBP lists its hours as 07:00–16:30 GMT. Delta advises 4 hours and closes check-in 75 minutes before departure.
+  - CUN: which terminal each US airline uses. No paper FMM and no separate exit immigration.
+  - FCO: e-gates for US passports, and the E-gate satellite.
+  - MAD: the T4S train, then passport control.
+- **Next:** Thanksgiving refresh when TSA publishes its forecast; PostHog when the key arrives.
+
 ## 2026-10-25 (07:00 check-in)
 - **First guides abroad (now 44):** LHR, CDG, FRA and AMS, written for Americans flying home. Each has a "Passport control on the way out" section:
   - EES on exit at CDG, FRA and AMS, with reported waits.
