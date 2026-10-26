@@ -3,7 +3,7 @@
 Compiled Oct 26, 2026 for leaveby.xyz outreach (TSA checkpoint-data pitch, Thanksgiving 2026).
 Every "Tip page" URL below was opened and read on Oct 26, 2026. The addresses listed are general newsroom or desk inboxes printed on the outlet's own site. No individual reporters' emails or phone numbers are included. Nothing was submitted or signed up for.
 
-Context for the pitch: TSA's all-time single-day record is 3,133,924 screenings, set on Sun Nov 30, 2025 (the Sunday after Thanksgiving). Several of the articles below covered it.
+Context for the pitch: TSA's all-time single-day record was set on Sun Nov 30, 2025 (the Sunday after Thanksgiving). News reports at the time said 3,133,924; TSA's own table now shows 3,134,613, which is the figure on our pages. Several of the articles below covered it.
 
 ## National
 
