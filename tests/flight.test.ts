@@ -241,3 +241,13 @@ it("nearbyGuides links airports in the same metro, nearest first", async () => {
   assert.ok(!nearbyGuides("JFK").some((n) => n.guide.code === "JFK"));
   assert.deepEqual(nearbyGuides("HNL"), []);
 });
+
+it("knows airports whose IATA code changed after the dataset was taken (PBI → DJT)", async () => {
+  const { worldAirport } = await import("@/lib/airports/world");
+  const djt = worldAirport("djt");
+  assert.equal(djt?.code, "DJT");
+  assert.equal(djt?.timezone, "America/New_York");
+  assert.equal(djt?.city, "West Palm Beach");
+  assert.equal(getAirportProfile("DJT").timezone, "America/New_York");
+  assert.equal(worldAirport("PBI")?.city, "West Palm Beach");
+});
