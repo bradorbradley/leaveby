@@ -2,6 +2,13 @@
 
 Newest first. Every ~3 hours a scheduled check-in picks the next most useful step, ships it, and adds an entry here.
 
+## 2026-10-26 (10:00 check-in)
+- **Press kit for the pre-Thanksgiving news cycle.** Distribution is the bottleneck: the post packs are still waiting on the founder. Reporters write "busiest travel days" stories every November and need data and charts, which we have.
+  - Four chart images with titles and TSA sources, free to use with credit: `/press/tsa-by-hour.png`, `/press/tsa-day-by-hour.png`, `/press/tsa-by-weekday.png`, `/press/tsa-2025-calendar.png`. Both data pages now link to them.
+  - `marketing/outreach/press-pitch.md`: the email, subject lines and a facts table, for the founder to send Nov 2–13.
+  - `marketing/outreach/outlets.md`: 20 outlets (The Points Guy, NBC/TODAY, ABC News, Simple Flying, plus 16 local TV stations in 9 airport metros), each with a public tip channel printed on the outlet's own site. No personal reporter contacts. Axios, CNBC, T+L, CN Traveler and USA Today block automated checks, so check those by hand.
+- **Next:** founder sends the pitch; a post from the hourly findings; refresh holiday pages when the 2026 forecasts publish; PostHog when the key arrives.
+
 ## 2026-10-26 (07:00 check-in)
 - **New data page: `/tsa-busiest-times`** ("What time of day is TSA busiest?"). I summed TSA's hourly counts for every checkpoint in the US over Sep 13–19, 2026 (168 hours, 16.6M screenings) from the FOIA throughput PDF. Daily totals match TSA's published national numbers within 1.2%, and a test checks this.
   - Findings: 5–7am local is the peak on every day of the week and carries 15% of screenings; 34% happen before 9am, and only 7% after 7pm. Sundays stay busy from early morning into late afternoon.
