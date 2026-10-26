@@ -2,6 +2,18 @@
 
 Newest first. Every ~3 hours a scheduled check-in picks the next most useful step, ships it, and adds an entry here.
 
+## 2026-10-26 (13:00 check-in)
+- **Product fix: DJT.** Palm Beach International is now President Donald J. Trump International Airport, and its IATA code changed from PBI to DJT on Aug 18, 2026 (flydjt.org). Our airport table predates that, so a hand-entered DJT departure was rejected and the airport had no coordinates for the drive. DJT now maps to PBI's row (test added), and `/airports/pbi` redirects permanently to `/airports/djt`.
+- **2 more guides (now 59):**
+  - DJT: concourses A/B and C are not connected airside; CLEAR and PreCheck at both checkpoints; the winter peak is about 2x September.
+  - JAX: one checkpoint for Concourses A and C; new Concourse B due Jan 2027; no CLEAR. I removed a near-live "garage partly closed" note.
+- **3 more guides (now 62):**
+  - CMH: three concourses, each with its own checkpoint; the CMH Next terminal is due in 2029, and the Walking Lot closed May 2026.
+  - CVG: one checkpoint, then a tunnel and trains to Concourses A and B; Delta's 45-minute check-in rule at CVG.
+  - BDL: two checkpoints; its new concourse opened Jan 2026.
+- **Internal links:** every US airport guide now links to `/tsa-busiest-times` and `/busiest-travel-days`.
+- **Next:** CMH, CVG, BDL; refresh holiday pages when the 2026 forecasts publish; PostHog when the key arrives.
+
 ## 2026-10-26 (10:00 check-in)
 - **Press kit for the pre-Thanksgiving news cycle.** Distribution is the bottleneck: the post packs are still waiting on the founder. Reporters write "busiest travel days" stories every November and need data and charts, which we have.
   - Four chart images with titles and TSA sources, free to use with credit: `/press/tsa-by-hour.png`, `/press/tsa-day-by-hour.png`, `/press/tsa-by-weekday.png`, `/press/tsa-2025-calendar.png`. Both data pages now link to them.

@@ -114,6 +114,12 @@ export default async function AirportGuidePage({ params }: { params: Promise<{ c
         <GuideSection id="security" title={`Security lines at ${g.code}`}>
           {g.securityWaits.summary ? <p>{g.securityWaits.summary}</p> : null}
           {g.securityWaits.busiestTimes.length ? <p><strong>Busiest times:</strong> {g.securityWaits.busiestTimes.join(", ")}.</p> : null}
+          {!isIntl(g) ? (
+            <p>
+              Nationally, TSA checkpoints are busiest from 5 to 7 AM local time. See <Link href="/tsa-busiest-times">TSA&apos;s hourly numbers</Link> and{" "}
+              <Link href="/busiest-travel-days">the busiest days to fly</Link>.
+            </p>
+          ) : null}
           {g.precheckNotes ? <p><strong>TSA PreCheck:</strong> {g.precheckNotes}</p> : null}
           {g.clearAvailable !== null ? <p><strong>CLEAR:</strong> {g.clearAvailable ? "Available at this airport (see terminals below for which checkpoints)." : "Not available at this airport."}</p> : null}
           {g.touchlessId ? <p><strong>Touchless ID:</strong> {g.touchlessId}</p> : null}
