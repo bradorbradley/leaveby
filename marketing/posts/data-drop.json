@@ -1,0 +1,39 @@
+{
+  "week": "2026-W44",
+  "notes": "Data drops from TSA's daily checkpoint numbers (Jan 1, 2025 to Oct 22, 2026), the same data as leaveby.xyz/busiest-travel-days. 2 concepts x 2 hooks = 4 posts. Timely: the Sunday after Thanksgiving (Nov 29) is the likeliest day for a new record.",
+  "concepts": [
+    {
+      "id": "three-million",
+      "caption": "Only 8 days in history have topped 3 million people through TSA. Every one was a Friday or a Sunday. The record: 3,134,613 on the Sunday after Thanksgiving 2025. Flying Nov 29? Plan for a crowd. Source: TSA checkpoint travel numbers. All 660 days charted at leaveby.xyz/busiest-travel-days",
+      "hashtags": ["thanksgivingtravel", "tsa", "airporttips", "traveltok", "holidaytravel"],
+      "hooks": [
+        { "id": "a", "slide": { "type": "text", "kicker": "TSA's own numbers", "title": "Only *8 days* in history hit 3 million.", "sticker": "wow.webp" } },
+        { "id": "b", "slide": { "type": "text", "kicker": "The busiest day ever to fly", "title": "3,134,613 people. *One Sunday.*", "sticker": "wow.webp" } }
+      ],
+      "slides": [
+        { "type": "photo", "image": "a3_line.webp", "at": "bottom", "kicker": "The record", "title": "Sun, Nov 30, 2025: *3,134,613*", "sub": "The Sunday after Thanksgiving." },
+        { "type": "photo", "image": "s04_security.webp", "kicker": "All 8 days over 3 million", "title": "Every one a *Friday or Sunday*", "sub": "Five were summer Sundays." },
+        { "type": "text", "kicker": "This year", "title": "The Sunday after Thanksgiving is *Nov 29*", "sub": "It's set the record three years running." },
+        { "type": "text", "kicker": "Sources", "title": "TSA checkpoint *travel numbers*", "note": "tsa.gov/travel/passenger-volumes · Jan 1, 2025 to Oct 22, 2026 · charted at leaveby.xyz/busiest-travel-days" },
+        { "type": "cta", "title": "Flying that Sunday? Know *when to leave.*", "sub": "Live traffic, your terminal's line, your airline's cutoffs." }
+      ]
+    },
+    {
+      "id": "quiet-days",
+      "caption": "The quietest day of the week to fly is Tuesday: about 21% fewer people than Sunday, from TSA's daily numbers for all of 2025. The holidays themselves are quiet too (1.56M on Thanksgiving Day vs 3.13M three days later). Quiet airport, same cutoffs. Source: TSA. Chart: leaveby.xyz/busiest-travel-days",
+      "hashtags": ["traveltips", "airporttips", "tsa", "traveltok", "cheapflights"],
+      "hooks": [
+        { "id": "a", "slide": { "type": "text", "kicker": "From TSA's daily numbers", "title": "The quietest day to fly is *Tuesday.*", "sticker": "thumb.webp" } },
+        { "id": "b", "slide": { "type": "text", "kicker": "Want an empty airport?", "title": "Fly on the *holiday* itself.", "sticker": "wow.webp" } }
+      ],
+      "slides": [
+        { "type": "text", "kicker": "Average day in 2025", "title": "Sunday *2.74M*\nTuesday *2.16M*", "sub": "About 21% fewer people on a Tuesday.", "size": 112 },
+        { "type": "photo", "image": "s07_calm_night.webp", "at": "bottom", "kicker": "Thanksgiving Day 2025", "title": "*1.56M* people", "sub": "Three days later: 3.13M, the all-time record." },
+        { "type": "text", "kicker": "Also quiet", "title": "Christmas Day, July 4th, and *January*", "sub": "January averaged 2.12M a day. July: 2.74M." },
+        { "type": "text", "kicker": "One catch", "title": "A quiet airport doesn't *move the cutoffs.*", "sub": "Bags still close 45–60 min before. The gate still closes 10–15 min before." },
+        { "type": "text", "kicker": "Sources", "title": "TSA checkpoint *travel numbers*", "note": "tsa.gov/travel/passenger-volumes · all of 2025 · charted at leaveby.xyz/busiest-travel-days" },
+        { "type": "cta", "title": "Busy day or quiet, know *when to leave.*" }
+      ]
+    }
+  ]
+}

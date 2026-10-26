@@ -2,6 +2,13 @@
 
 Newest first. Every ~3 hours a scheduled check-in picks the next most useful step, ships it, and adds an entry here.
 
+## 2026-10-26 (01:00 check-in)
+- **Data-drop post pack (4 posts, 2 concepts x 2 hooks)** from TSA's daily numbers, the same data as `/busiest-travel-days`:
+  - `three-million`: only 8 days in history topped 3M, every one a Friday or Sunday. The record is 3,134,613 on the Sunday after Thanksgiving, and this year that Sunday is Nov 29.
+  - `quiet-days`: Tuesday averages 21% fewer people than Sunday, and the holidays themselves are quiet, with the reminder that cutoffs don't move.
+  - Every number is from the dataset or a cited page. One caption was moved off the mascot's face. Spec: `marketing/posts/data-drop.json`. Queued as "post before Thanksgiving" in `queue.md`. Zip sent to the founder.
+- **Next:** more guides or the next data page; refresh holiday pages when the 2026 forecasts publish; PostHog when the key arrives.
+
 ## 2026-10-25 (22:00 check-in)
 - **New data page: `/busiest-travel-days`**, built from every day of TSA checkpoint numbers since Jan 1, 2025 (660 days, stored in `lib/tsa-volumes.json`, 16 values spot-checked against TSA's tables). It has a heatmap calendar for each year, the top 10 days on record, a busiest-weekday chart, the quietest days and 2026 vs 2025. FAQ and Dataset schema, its own share card, and links from home, Thanksgiving and holidays.
   - Findings: the record is 3,134,613 (Sun Nov 30, 2025). Only 8 days ever topped 3M, all in 2025 and all on a Friday or Sunday. Sunday is the busiest day of the week and Tuesday the quietest (about 21% lower). 2026 is running 0.8% below 2025, and no 2026 day has reached 3M.
