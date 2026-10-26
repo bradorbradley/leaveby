@@ -38,6 +38,7 @@ const GUIDE_CARDS: Record<string, { kicker: string; lines: [string, string, stri
   international: { kicker: "International flights", lines: ["How early for an", "international", "flight"] },
   theory: { kicker: "The TikTok trend", lines: ["Does airport", "theory", "work"] },
   thanksgiving: { kicker: "Thanksgiving 2026", lines: ["When should I", "leave for the", "airport"] },
+  hours: { kicker: "TSA's hourly numbers", lines: ["What time is", "TSA the", "busiest"] },
   busiest: { kicker: "TSA's daily numbers", lines: ["What's the", "busiest day to", "fly"] },
   holidays: { kicker: "Christmas & New Year's 2026", lines: ["When should I", "leave for the", "airport"] },
 };

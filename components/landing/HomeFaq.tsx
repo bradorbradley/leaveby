@@ -44,6 +44,10 @@ export function HomeFaq() {
           busiest days to fly
         </Link>
         {" · "}
+        <Link href="/tsa-busiest-times" className="font-semibold text-ink underline decoration-ink/20 underline-offset-4 hover:decoration-coral">
+          busiest time of day
+        </Link>
+        {" · "}
         <Link href="/international-flights" className="font-semibold text-ink underline decoration-ink/20 underline-offset-4 hover:decoration-coral">
           international flights
         </Link>
