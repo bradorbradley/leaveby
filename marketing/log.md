@@ -7,7 +7,10 @@ Newest first. Every ~3 hours a scheduled check-in picks the next most useful ste
 - **2 more guides (now 59):**
   - DJT: concourses A/B and C are not connected airside; CLEAR and PreCheck at both checkpoints; the winter peak is about 2x September.
   - JAX: one checkpoint for Concourses A and C; new Concourse B due Jan 2027; no CLEAR. I removed a near-live "garage partly closed" note.
-- CMH, CVG and BDL are still being researched and will ship next.
+- **3 more guides (now 62):**
+  - CMH: three concourses, each with its own checkpoint; the CMH Next terminal is due in 2029, and the Walking Lot closed May 2026.
+  - CVG: one checkpoint, then a tunnel and trains to Concourses A and B; Delta's 45-minute check-in rule at CVG.
+  - BDL: two checkpoints; its new concourse opened Jan 2026.
 - **Internal links:** every US airport guide now links to `/tsa-busiest-times` and `/busiest-travel-days`.
 - **Next:** CMH, CVG, BDL; refresh holiday pages when the 2026 forecasts publish; PostHog when the key arrives.
 

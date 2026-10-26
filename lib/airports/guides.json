@@ -548,6 +548,175 @@
    }
   ]
  },
+ "BDL": {
+  "code": "BDL",
+  "name": "Bradley International Airport",
+  "city": "Windsor Locks",
+  "state": "CT",
+  "checkedOn": "2026-10-26",
+  "officialArrivalAdvice": {
+   "domestic": "Airport officials advised arriving at least 90 minutes before your scheduled departure to allow time for airline check-in and TSA screening (April 2026)",
+   "international": null,
+   "source": "https://www.wfsb.com/2026/04/10/bradley-international-airport-expects-more-than-139000-travelers-during-spring-break-rush"
+  },
+  "terminals": [
+   {
+    "id": "A",
+    "name": "Terminal A (East and West concourses)",
+    "airlines": [
+     "Southwest Airlines",
+     "American Airlines",
+     "Delta Air Lines",
+     "United Airlines",
+     "JetBlue",
+     "Breeze Airways",
+     "Frontier Airlines",
+     "Sun Country Airlines",
+     "Aer Lingus"
+    ],
+    "checkpoints": [
+     {
+      "notes": "Upgraded Points' BDL guide (updated Sep 2026) says Checkpoint 1 is at the south end of the terminal and implies it serves airlines other than American, Breeze and United. Official hours could not be confirmed. TSA's counts list two screening points at BDL, A1 and A2, with screening starting in the 3am hour; this research could not confirm which is which. CLEAR's site lists CLEAR+ on the Departures level by Door 3, across from the checkpoint entrance, 4am-6:30pm Sunday-Friday and 4am-6pm Saturday, without naming a checkpoint.",
+      "precheck": null,
+      "clear": null,
+      "name": "Checkpoint 1 (south end)"
+     },
+     {
+      "notes": "Upgraded Points says Checkpoint 2 is at the north end of the terminal and is for passengers flying American, Breeze or United, or with TSA PreCheck. Official hours could not be confirmed.",
+      "precheck": true,
+      "clear": null,
+      "name": "Checkpoint 2 (north end)"
+     }
+    ],
+    "notes": [
+     "Terminal A handles most flights. Terminal B (the International Arrivals Building) is used for international arrivals that need customs processing. This research could not confirm which terminal Aer Lingus departures use.",
+     "Terminal A gates are in three areas: 1-12, 18-20 and 21-30",
+     "Southwest lists its BDL gates as A2, A4 and A6. Its counter opens 90 minutes before the first departing flight.",
+     "A new concourse with three gates, an extension of Terminal A behind the Sheraton hotel, was finished in January 2026. Wikipedia says Breeze uses it exclusively.",
+     "Checked bags now go by conveyor from the ticket counters to a new screening facility, so you no longer carry them to screening machines in the lobby"
+    ]
+   }
+  ],
+  "connectedAirside": true,
+  "betweenTerminals": "Terminal A handles most flights. Upgraded Points says both checkpoints lead to a central area with shops and restaurants, with gates 1-12 to one side and gates 21-30 to the other. This research could not confirm walking times between the two gate areas.",
+  "securityWaits": {
+   "summary": "In April 2026, airport officials said the busiest times are early morning, 4am to 7am, and again in the mid-to-late afternoon. In TSA's hourly screening counts for Sep 13-19, 2026, BDL was busiest from 4am to 7am, peaking 5-6am, with screening already under way in the 3am hour. There was a smaller rise from 10am to 1pm, and traffic was light after 5pm. Sunday, Thursday, Monday and Friday were the busiest days that week; Tuesday and Saturday were the quietest.",
+   "busiestTimes": [
+    "4:00-7:00am (peak 5:00-6:00am)",
+    "10:00am-1:00pm",
+    "Sundays, Thursdays, Mondays and Fridays (TSA counts, week of Sep 13, 2026)"
+   ],
+   "source": "https://www.tsa.gov/sites/default/files/foia-readingroom/tsa-throughput-data-to-september-13-2026-to-september-19-2026.pdf"
+  },
+  "precheckNotes": "Upgraded Points says TSA PreCheck travelers use Checkpoint 2 at the north end of the terminal. The checkpoint was expanded with more screening lanes and queue space after the old center exit lane closed in 2025. CLEAR pods are on the Departures level by Door 3, across from the checkpoint entrance.",
+  "clearAvailable": true,
+  "touchlessId": "The Points Guy's table of TSA PreCheck Touchless ID airports (May 2026, based on TSA.gov) lists BDL for four of the five airlines it tracks (American, Delta, United, Southwest and Alaska). This research could not confirm which one is missing or where the lane is. To use it, add your Known Traveler Number and passport details to your airline profile and opt in; a Touchless ID indicator then shows on your boarding pass. Carry your physical ID.",
+  "gettingThere": {
+   "rideshare": "Rideshare pickup is in a marked area near Door 2 on the Arrivals level. A free cell phone waiting lot with EV charging is a few minutes from the terminal.",
+   "transit": "CTtransit Route 30 (Bradley Flyer) runs between downtown Hartford, including Hartford Union Station, and the airport. Chase's guide says it typically runs every 40 minutes most days; check CTtransit for current times. CTtransit Route 24 links the airport with the Windsor Locks train station on the Hartford Line.",
+   "driving": "BDL's on-airport parking (BDL sPARK) includes a garage and surface lots. Surface Lot 3 on Schoephoester Road is being expanded and is due to finish this winter, adding more than 1,500 spaces. Airport officials say lots may fill quickly during peak periods. This research could not confirm current parking rates because the airport's website blocked access."
+  },
+  "construction2026": [
+   "The terminal projects are done. The new three-gate concourse was finished in January 2026. The expanded TSA checkpoint, two new exit corridors on the east and west sides, and the new in-line baggage screening facility opened in 2025.",
+   "Surface Lot 3 on Schoephoester Road is being expanded (about midway in August 2026) and is due to be finished in the winter. The work includes moving the lot's entrance and exit plaza. This research could not confirm whether any parking is closed during the work."
+  ],
+  "bagDrop": "Southwest: check bags at least 45 minutes before a domestic flight (60 minutes for international), check in at least 30 minutes before a domestic flight, and be at the gate 10 minutes before departure. Delta: bags 45 minutes before domestic departure, 30 minutes without bags; Delta lists no BDL exception. American and United: check in and check bags 45 minutes before domestic departure (AP, May 2025).",
+  "tips": [
+   "Early morning is the busiest time. Airport officials name 4-7am, and in TSA's September 2026 counts the peak was 5-6am.",
+   "Flying American, Breeze or United, or have TSA PreCheck? Upgraded Points says to use Checkpoint 2 at the north end of the terminal.",
+   "After check-in, leave your checked bags with the airline. They now go to screening by conveyor, so there is no extra stop at screening machines in the lobby.",
+   "Parking lots can fill at peak times, and Lot 3 is under construction until this winter. Allow extra time to park.",
+   "The Bradley Flyer bus (CTtransit Route 30) links the airport with downtown Hartford"
+  ],
+  "faq": [
+   {
+    "q": "How early should I get to Bradley airport (BDL)?",
+    "a": "Airport officials advise arriving at least 90 minutes before a domestic flight. Early mornings, 4-7am, are the busiest time at security, so allow more time then."
+   },
+   {
+    "q": "Which security checkpoint should I use at BDL?",
+    "a": "Upgraded Points says Checkpoint 2 at the north end is for American, Breeze and United passengers and TSA PreCheck members. Others use Checkpoint 1 at the south end. Both lead to the same central area."
+   },
+   {
+    "q": "Which terminal do I fly from at BDL?",
+    "a": "Most flights use Terminal A, including Southwest, American, Delta, United, JetBlue and Breeze. Terminal B, the International Arrivals Building, is used for international arrivals that need customs processing."
+   },
+   {
+    "q": "Does BDL have TSA PreCheck and CLEAR?",
+    "a": "Yes. Upgraded Points says PreCheck travelers use Checkpoint 2. CLEAR is on the Departures level by Door 3, across from the checkpoint, 4am-6:30pm Sunday-Friday and 4am-6pm Saturday."
+   }
+  ],
+  "sources": [
+   {
+    "title": "WFSB - Bradley expects more than 139,000 travelers during spring break (arrival advice, peak times; Apr 10, 2026)",
+    "url": "https://www.wfsb.com/2026/04/10/bradley-international-airport-expects-more-than-139000-travelers-during-spring-break-rush"
+   },
+   {
+    "title": "BDL - New concourse ribbon cutting press release (Jan 23, 2026)",
+    "url": "https://bradleyairport.com/wp-content/uploads/2026/01/BDL-New-Concourse-Ribbon-Cutting-Press-Release-FINAL.pdf"
+   },
+   {
+    "title": "BDL - New exit corridor opens; checkpoint to expand (Jun 30, 2025)",
+    "url": "https://bradleyairport.com/wp-content/uploads/2025/06/Opening-of-BDLs-new-exit-corridor.pdf"
+   },
+   {
+    "title": "BDL - Parking Lot 3 expansion press release (Aug 3, 2026)",
+    "url": "https://bradleyairport.com/wp-content/uploads/2026/08/Parking-Lot-3-Expansion.pdf"
+   },
+   {
+    "title": "WFSB - Bradley Airport adding more parking (Aug 3, 2026)",
+    "url": "https://www.wfsb.com/2026/08/03/bradley-airport-adding-more-parking/"
+   },
+   {
+    "title": "Upgraded Points - BDL terminal guide (updated Sep 8, 2026)",
+    "url": "https://upgradedpoints.com/travel/airports/bradley-international-airport-bdl-terminal-guide/"
+   },
+   {
+    "title": "CLEAR - Bradley International CLEAR locations and hours",
+    "url": "https://www.clearme.com/all-locations/bradley-international-airport"
+   },
+   {
+    "title": "Chase - A guide to Bradley International Airport",
+    "url": "https://www.chase.com/personal/credit-cards/education/basics/a-guide-to-bradley-international-airport"
+   },
+   {
+    "title": "The Points Guy - Airports with TSA PreCheck Touchless ID (May 2026)",
+    "url": "https://thepointsguy.com/travel/tsa-precheck-touchless-id-airports/"
+   },
+   {
+    "title": "TSA - PreCheck Touchless ID",
+    "url": "https://www.tsa.gov/precheck/touchless-id"
+   },
+   {
+    "title": "CTtransit - Bradley Flyer and airport bus routes",
+    "url": "https://www.cttransit.com/services/bradley-flyer"
+   },
+   {
+    "title": "Wikipedia - Bradley International Airport",
+    "url": "https://en.wikipedia.org/wiki/Bradley_International_Airport"
+   },
+   {
+    "title": "TSA throughput data, September 13-19, 2026",
+    "url": "https://www.tsa.gov/sites/default/files/foia-readingroom/tsa-throughput-data-to-september-13-2026-to-september-19-2026.pdf"
+   },
+   {
+    "title": "Southwest - Airport information (BDL gates and counter hours)",
+    "url": "https://www.southwest.com/airport-information/"
+   },
+   {
+    "title": "Southwest - When to arrive for your flight (check-in and bag deadlines)",
+    "url": "https://support.southwest.com/helpcenter/article/airport-arrival-recommendation"
+   },
+   {
+    "title": "Delta - Check-In Times at U.S. Airports",
+    "url": "https://www.delta.com/us/en/check-in-security/check-in-time-requirements/domestic-check-in"
+   },
+   {
+    "title": "AP via MyNorthwest - United narrows check-in window; airline comparison (May 27, 2025)",
+    "url": "https://mynorthwest.com/lifestyle/united-is-narrowing-its-check-in-window-for-us-flights-heres-how-it-compares-to-other-airlines/4092751"
+   }
+  ]
+ },
  "BNA": {
   "code": "BNA",
   "name": "Nashville International Airport",
@@ -1753,6 +1922,233 @@
    }
   ]
  },
+ "CMH": {
+  "code": "CMH",
+  "name": "John Glenn Columbus International Airport",
+  "city": "Columbus",
+  "state": "OH",
+  "checkedOn": "2026-10-26",
+  "officialArrivalAdvice": {
+   "domestic": "CMH says to arrive at least 90 minutes before a domestic flight, and to allow extra time to arrive and park because of airport construction",
+   "international": "CMH says to arrive 2 hours before an international flight",
+   "source": "https://flycolumbus.com/passengers/security/"
+  },
+  "terminals": [
+   {
+    "id": "A",
+    "name": "Concourse A",
+    "airlines": [
+     "Southwest Airlines"
+    ],
+    "checkpoints": [
+     {
+      "notes": "CMH lists hours of 4:00am-8:30pm. CLEAR's site lists CLEAR+ at Checkpoint A, 4am-7pm Sunday-Friday and 4am-6pm Saturday. It handled about 29% of CMH screenings in TSA's counts for Sep 13-19, 2026.",
+      "precheck": true,
+      "clear": true,
+      "name": "Concourse A checkpoint"
+     }
+    ],
+    "notes": [
+     "Southwest lists its CMH gates as A2-A6",
+     "Southwest's CMH ticket counter opens 90 minutes before the first departing flight"
+    ]
+   },
+   {
+    "id": "B",
+    "name": "Concourse B",
+    "airlines": [
+     "American Airlines",
+     "United Airlines"
+    ],
+    "checkpoints": [
+     {
+      "notes": "CMH lists hours of 4:00am-8:30pm. CLEAR's site lists CLEAR+ at Checkpoint B, 4am-7pm daily. It was the busiest of the three checkpoints in TSA's counts for Sep 13-19, 2026, with about 42% of screenings.",
+      "precheck": true,
+      "clear": true,
+      "name": "Concourse B checkpoint"
+     }
+    ],
+    "notes": [
+     "The Escape Lounge is in Concourse B"
+    ]
+   },
+   {
+    "id": "C",
+    "name": "Concourse C",
+    "airlines": [
+     "Delta Air Lines",
+     "Air Canada",
+     "Alaska Airlines",
+     "Breeze Airways",
+     "Frontier Airlines",
+     "JetBlue",
+     "Lufthansa",
+     "Sun Country Airlines"
+    ],
+    "checkpoints": [
+     {
+      "notes": "CMH lists hours of 4:00am-8:30pm. CLEAR's site lists CLEAR+ at Checkpoint C: 4am-7pm Sunday and Thursday, 4am-6pm Monday-Wednesday and Friday, 4am-5pm Saturday. It handled about 29% of screenings in TSA's counts for Sep 13-19, 2026, and stayed busier than A and B in the evening.",
+      "precheck": true,
+      "clear": true,
+      "name": "Concourse C checkpoint"
+     }
+    ],
+    "notes": [
+     "Allegiant does not fly from CMH. CMH says Allegiant passengers should go to Rickenbacker Airport (LCK)."
+    ]
+   }
+  ],
+  "connectedAirside": false,
+  "betweenTerminals": "CMH has one terminal with three concourses (A, B and C). Each concourse has its own security checkpoint, and the concourses are not connected after security. You can only use the shops and restaurants in your own concourse. To change concourses you must leave and go through security again.",
+  "securityWaits": {
+   "summary": "CMH shows live average wait times on its security page. It does not publish typical peak times. In TSA's hourly screening counts for Sep 13-19, 2026, CMH was busiest from 4am to 7am, peaking 5-6am. There were smaller rises around noon-1pm and 2-4pm, and traffic was light after 7pm. Thursday, Friday, Sunday and Monday were the busiest days that week; Tuesday and Saturday were the quietest.",
+   "busiestTimes": [
+    "4:00-7:00am (peak 5:00-6:00am)",
+    "12:00-1:00pm",
+    "2:00-4:00pm",
+    "Thursdays, Fridays, Sundays and Mondays (TSA counts, week of Sep 13, 2026)"
+   ],
+   "source": "https://www.tsa.gov/sites/default/files/foia-readingroom/tsa-throughput-data-to-september-13-2026-to-september-19-2026.pdf"
+  },
+  "precheckNotes": "Upgraded Points' CMH guide (updated Sep 2026) says TSA PreCheck is at all three checkpoints and CLEAR is near all three. CMH's security page does not list PreCheck lanes by checkpoint. Since Sep 8, 2026, CMH has taken part in GateSide by TSA PreCheck, which lets approved visitors with PreCheck or a Known Traveler Number go through the PreCheck lane to accompany a traveler. Apply online with TSA 1 to 3 days ahead.",
+  "clearAvailable": true,
+  "touchlessId": "The Points Guy's table of TSA PreCheck Touchless ID airports (May 2026, based on TSA.gov) lists CMH for American, Delta, United, Southwest and Alaska. CMH's own site does not say which checkpoints have the lane. To use it, add your Known Traveler Number and passport details to your airline profile and opt in; a Touchless ID indicator then shows on your boarding pass. Carry your physical ID.",
+  "gettingThere": {
+   "rideshare": "Drop-off is at the curb on the Departures level. Curbside parking is not allowed, and drivers must stay with their cars; unattended cars are ticketed or towed. Uber and Lyft pick up in the ground transportation area: cross the Arrivals drive from Baggage Claim. Taxis are on the ground transportation level. Drivers can wait in the free cell phone waiting lot between the control tower and the terminal, or use the Green Lot, which has a one-hour grace period.",
+   "transit": "COTA Line 7 (Mt. Vernon) serves the airport from downtown Columbus; on the timetable effective May 4, 2026, every other trip runs to the airport and the rest go to Easton. The fare is $2, capped at $4.50 a day with digital payment.",
+   "driving": "The garage at 4600 International Gateway connects to the terminal. Short-term parking (Level 4): $7 first hour, $30 per 24 hours. Long-term parking (Levels 1-6): $7 first hour, $24 per 24 hours. Red Lot: $11 per 24 hours. Green Lot: $9 per 24 hours, first hour free. Shuttles from the Red and Green lots run 24 hours a day, every 15-18 minutes. Valet at the curbside ticketing area: $18 first hour, $30 per 24 hours. The Walking Lot closed on May 4, 2026."
+  },
+  "construction2026": [
+   "CMH Next, a new terminal, is under construction and due to open in early 2029. The current terminal stays open until then.",
+   "The Walking Lot closed to new parkers on May 4, 2026, to make room for a public safety building. CMH points former Walking Lot users to valet, the garage, or the Red and Green shuttle lots.",
+   "Roadways are shifting as work goes on. A new permanent eastbound International Gateway roadway opened in September 2026. CMH says to check current roadway advisories and to allow extra time to arrive and park.",
+   "The new terminal's arrivals and departures roadways are built but not yet in use (Sep 2026). The lower arrivals roadway will open first."
+  ],
+  "bagDrop": "Southwest: check bags at least 45 minutes before a domestic flight (60 minutes for international), check in at least 30 minutes before a domestic flight, and be at the gate 10 minutes before departure. Delta: bags 45 minutes before domestic departure, 30 minutes without bags; Delta lists no CMH exception. American and United: check in and check bags 45 minutes before domestic departure. Alaska: 50 minutes for domestic flights, with or without bags (AP, May 2025).",
+  "tips": [
+   "Go to the right concourse. Southwest uses A; American and United use B; Delta, Air Canada, Alaska, Breeze, Frontier, JetBlue, Lufthansa and Sun Country use C. The concourses are not connected after security.",
+   "All three checkpoints are listed as open 4:00am-8:30pm. CMH says the latest TSA stays open for a delayed flight is 10pm, so clear security before your checkpoint closes.",
+   "Early morning is the busiest time. In TSA's September 2026 counts, 4-7am was the peak, especially 5-6am.",
+   "Allow extra time to park. The Walking Lot is closed and roads around the terminal are shifting for CMH Next. The cheapest lots (Green and Red) use shuttles that run every 15-18 minutes.",
+   "Flying Allegiant? Go to Rickenbacker Airport (LCK), not CMH."
+  ],
+  "faq": [
+   {
+    "q": "How early should I get to Columbus airport (CMH)?",
+    "a": "CMH says to arrive at least 90 minutes before a domestic flight and 2 hours before an international flight, and to allow extra time to park because of construction. Early mornings, especially 5-6am, are the busiest time at security."
+   },
+   {
+    "q": "Which concourse is my airline at CMH?",
+    "a": "Southwest is in Concourse A. American and United are in Concourse B. Delta, Air Canada, Alaska, Breeze, Frontier, JetBlue, Lufthansa and Sun Country are in Concourse C."
+   },
+   {
+    "q": "Are CMH's concourses connected after security?",
+    "a": "No. Each concourse has its own checkpoint, and you cannot walk between concourses after security. Use the checkpoint for your airline's concourse."
+   },
+   {
+    "q": "What time does security open at CMH?",
+    "a": "CMH lists all three checkpoints as open from 4:00am to 8:30pm. If a flight is delayed, TSA stays open no later than 10pm."
+   },
+   {
+    "q": "Is the new CMH terminal open yet?",
+    "a": "No. The new terminal is due to open in early 2029. Until then all flights use the current terminal, but construction affects roads and parking, so allow extra time."
+   }
+  ],
+  "sources": [
+   {
+    "title": "CMH - Security (checkpoint hours, arrival advice, wait times)",
+    "url": "https://flycolumbus.com/passengers/security/"
+   },
+   {
+    "title": "CMH - Prepare for your flight (arrival advice, concourses, construction note)",
+    "url": "https://flycolumbus.com/passengers/prepare-for-your-flight/"
+   },
+   {
+    "title": "CMH - Airlines (concourse by airline)",
+    "url": "https://flycolumbus.com/passengers/airlines/"
+   },
+   {
+    "title": "CMH - Parking options (rates, shuttles, Walking Lot closure)",
+    "url": "https://flycolumbus.com/passengers/parking-options/"
+   },
+   {
+    "title": "CMH - Picking up and dropping off (curb rules, cell phone lots)",
+    "url": "https://flycolumbus.com/passengers/picking-up-dropping-off/"
+   },
+   {
+    "title": "CMH - Taxis, shuttles and rideshare",
+    "url": "https://flycolumbus.com/passengers/taxis-shuttles-rideshare/"
+   },
+   {
+    "title": "CMH - Walking Lot closes as terminal construction continues (Apr 13, 2026)",
+    "url": "https://flycolumbus.com/cmh-walking-lot-closes-as-terminal-construction-continues/"
+   },
+   {
+    "title": "CMH - GateSide by TSA PreCheck launches at CMH (Sep 8, 2026)",
+    "url": "https://flycolumbus.com/?p=12852"
+   },
+   {
+    "title": "CMH Next - FAQs (separate concourses and checkpoints, opening date, roadways)",
+    "url": "https://cmhnext.com/resources/faqs/"
+   },
+   {
+    "title": "CMH Next - Timeline (opening early 2029)",
+    "url": "https://cmhnext.com/timeline-events/"
+   },
+   {
+    "title": "CMH Next - New terminal project update (Sep 2, 2026)",
+    "url": "https://cmhnext.com/one-milestone-at-a-time-cmh-nexts-new-terminal-project-update/"
+   },
+   {
+    "title": "Construction Equipment Guide - New $2B terminal takes shape at John Glenn Airport (Oct 6, 2026)",
+    "url": "https://www.constructionequipmentguide.com/new-2b-terminal-takes-shape-at-john-glenn-airport/72424?markdown=1"
+   },
+   {
+    "title": "CLEAR - John Glenn Columbus CLEAR locations and hours",
+    "url": "https://www.clearme.com/all-locations/john-glenn-columbus-international-airport"
+   },
+   {
+    "title": "Upgraded Points - CMH terminal guide (updated Sep 7, 2026)",
+    "url": "https://upgradedpoints.com/travel/airports/john-glenn-columbus-airport-cmh-terminal-guide/"
+   },
+   {
+    "title": "The Points Guy - Airports with TSA PreCheck Touchless ID (May 2026)",
+    "url": "https://thepointsguy.com/travel/tsa-precheck-touchless-id-airports/"
+   },
+   {
+    "title": "TSA - PreCheck Touchless ID",
+    "url": "https://www.tsa.gov/precheck/touchless-id"
+   },
+   {
+    "title": "COTA - Line 7 Mt. Vernon timetable (effective May 4, 2026)",
+    "url": "https://www.cota.com/timetables/7.pdf"
+   },
+   {
+    "title": "Wikipedia - John Glenn Columbus International Airport",
+    "url": "https://en.wikipedia.org/wiki/John_Glenn_Columbus_International_Airport"
+   },
+   {
+    "title": "TSA throughput data, September 13-19, 2026",
+    "url": "https://www.tsa.gov/sites/default/files/foia-readingroom/tsa-throughput-data-to-september-13-2026-to-september-19-2026.pdf"
+   },
+   {
+    "title": "Southwest - Airport information (CMH gates and counter hours)",
+    "url": "https://www.southwest.com/airport-information/"
+   },
+   {
+    "title": "Southwest - When to arrive for your flight (check-in and bag deadlines)",
+    "url": "https://support.southwest.com/helpcenter/article/airport-arrival-recommendation"
+   },
+   {
+    "title": "Delta - Check-In Times at U.S. Airports",
+    "url": "https://www.delta.com/us/en/check-in-security/check-in-time-requirements/domestic-check-in"
+   },
+   {
+    "title": "AP via MyNorthwest - United narrows check-in window; airline comparison (May 27, 2025)",
+    "url": "https://mynorthwest.com/lifestyle/united-is-narrowing-its-check-in-window-for-us-flights-heres-how-it-compares-to-other-airlines/4092751"
+   }
+  ]
+ },
  "CUN": {
   "code": "CUN",
   "name": "Cancún International Airport",
@@ -1966,6 +2362,187 @@
    {
     "title": "Uber - Cancún Airport (CUN)",
     "url": "https://www.uber.com/global/en/r/airports/cun/"
+   }
+  ]
+ },
+ "CVG": {
+  "code": "CVG",
+  "name": "Cincinnati/Northern Kentucky International Airport",
+  "city": "Hebron",
+  "state": "KY",
+  "checkedOn": "2026-10-26",
+  "officialArrivalAdvice": {
+   "domestic": "CVG recommends arriving at least 2 hours before your scheduled departure, and allowing at least 30 minutes for security screening",
+   "international": null,
+   "source": "https://www.cvgairport.com/security/"
+  },
+  "terminals": [
+   {
+    "id": "Main",
+    "name": "Main Terminal (Concourses A and B)",
+    "airlines": [
+     "Delta Air Lines",
+     "American Airlines",
+     "United Airlines",
+     "Southwest Airlines",
+     "Frontier Airlines",
+     "Allegiant Air",
+     "Alaska Airlines",
+     "Breeze Airways",
+     "Sun Country Airlines",
+     "Air Canada",
+     "Viva Aerobus"
+    ],
+    "checkpoints": [
+     {
+      "notes": "CVG's single checkpoint serves both concourses. CVG says it is normally open daily 3:30am-9:20pm and that hours can change without notice; Southwest's CVG page lists 3:30am-8:50pm. It is reached by a pedestrian bridge from the ticketing level, under 200 feet from the counters. Lanes are general, assistance (wheelchairs, strollers, service animals) and TSA PreCheck; check your boarding pass to pick the right entry. CLEAR's site lists CLEAR+ on the Departures level near the checkpoint, 4am-7:30pm Sunday, Monday, Thursday and Friday and 4am-7pm Tuesday, Wednesday and Saturday.",
+      "precheck": true,
+      "clear": true,
+      "name": "Main security checkpoint"
+     }
+    ],
+    "notes": [
+     "Check in on the Ticketing level. Delta and Frontier counters are left of the main entrance. American, United, Air Canada, Sun Country, Viva Aerobus, Southwest, Alaska, Breeze and Allegiant are to the right.",
+     "Delta has most of the gates in Concourse B (Local 12, 2023). All international arrivals without preclearance use Concourse B.",
+     "Southwest lists its CVG gates as A3 and A5. Its counter opens 120 minutes before the first departing flight.",
+     "This research could not find a current official list of airlines by concourse. Check your boarding pass or the airport screens for your gate.",
+     "Concourse A has gates A1-A23 and Concourse B has gates B1-B28"
+    ]
+   }
+  ],
+  "connectedAirside": true,
+  "betweenTerminals": "Single terminal with one checkpoint. After security, take the escalators down to the Transportation Tunnel, then ride the train, use the moving walkways or walk to Concourse A or B. CVG says Concourse B is under 1,500 feet from the terminal, about 4 minutes by train or 6 minutes on foot; Concourse A takes about half that time. You can move between the concourses without going through security again.",
+  "securityWaits": {
+   "summary": "CVG shows live security wait times on a monitor at the checkpoint entrance and on its website. It does not publish typical peak times. In TSA's hourly screening counts for Sep 13-19, 2026, CVG was busiest from 4am to 7am, peaking 6-7am. Traffic stayed fairly steady from 9am to about 5pm, with small rises around 10-11am and 1-2pm, and was light after 7pm. Thursday, Friday, Monday and Sunday were the busiest days that week; Tuesday, Saturday and Wednesday were the quietest.",
+   "busiestTimes": [
+    "4:00-7:00am (peak 6:00-7:00am)",
+    "10:00-11:00am",
+    "1:00-2:00pm",
+    "Thursdays, Fridays, Mondays and Sundays (TSA counts, week of Sep 13, 2026)"
+   ],
+   "source": "https://www.tsa.gov/sites/default/files/foia-readingroom/tsa-throughput-data-to-september-13-2026-to-september-19-2026.pdf"
+  },
+  "precheckNotes": "CVG's checkpoint has a TSA PreCheck entry next to the general and assistance lanes. CLEAR is on the Departures level near the checkpoint. CVG's security page also lists TSA PreCheck Touchless ID, with dedicated lanes for enrolled travelers on participating airlines.",
+  "clearAvailable": true,
+  "touchlessId": "CVG says TSA PreCheck Touchless ID is available, with dedicated lanes for enrolled travelers on participating airlines. The Points Guy's table (May 2026, based on TSA.gov) lists CVG for American, Delta, United, Southwest and Alaska. Add your Known Traveler Number and passport details to your airline profile and opt in; a Touchless ID indicator then shows on your boarding pass. Carry your physical ID.",
+  "gettingThere": {
+   "rideshare": "Uber, Lyft and taxis (zTrip) pick up at Ground Transport East on the Baggage Claim level, not at the terminal curb. Regular passenger pickup is on the outer curb. Drivers meeting arriving flights can wait in the free Cell Phone Lot.",
+   "transit": "TANK Route 2X runs between downtown Cincinnati and the airport every 30 minutes. It leaves from the Baggage Claim level; follow signs for Ground Transport East to Public Transit. TANK's local cash fare is $2, exact fare only.",
+   "driving": "Terminal Garage (next to the terminal): $23/day, credit card only. Premium Reserved (garage level C, rows 28-30): $27/day, prepaid reservation only. Valet: $35/day, open 24/7; follow signs for Arrivals, then Valet. ValuPark: $12/day, with 24/7 pickup and drop-off and luggage help. Economy Lot: $10/day, shuttles every 15 minutes. You can reserve the garage, ValuPark and Economy Lot online."
+  },
+  "construction2026": [
+   "Elevate CVG, a $575 million program, is under way. It replaces the baggage system, expands the ticketing area and the security checkpoint, and renovates the tunnel, both concourses and restrooms. Completion is expected in 2029. CVG says the work is phased to limit the impact on travelers. This research found no current checkpoint, curb or garage closures from this work."
+  ],
+  "bagDrop": "Delta at CVG: check in 45 minutes before a domestic flight whether or not you check bags, and 1 hour before an international flight; be at the gate 15 minutes before departure. Southwest: check bags at least 45 minutes before a domestic flight (60 minutes for international), check in at least 30 minutes before a domestic flight, and be at the gate 10 minutes before departure. American and United: check in and check bags 45 minutes before domestic departure. Alaska: 50 minutes for domestic flights, with or without bags (AP, May 2025).",
+  "tips": [
+   "There is one checkpoint for all gates. After security, take the train or walk through the tunnel: about 4 minutes by train or 6 minutes on foot to Concourse B.",
+   "Flying Delta? CVG has a stricter Delta cutoff than most airports: be checked in 45 minutes before a domestic flight even without bags.",
+   "Early morning is the busiest time. In TSA's September 2026 counts, 4-7am was the peak, especially 6-7am.",
+   "The checkpoint is normally open 3:30am-9:20pm. CVG says hours can change without notice.",
+   "Uber, Lyft and taxis pick up at Ground Transport East on the Baggage Claim level, not at the curb"
+  ],
+  "faq": [
+   {
+    "q": "How early should I get to Cincinnati airport (CVG)?",
+    "a": "CVG recommends arriving at least 2 hours before your flight and allowing at least 30 minutes for screening. Early mornings, especially 6-7am, are the busiest time at security."
+   },
+   {
+    "q": "How many security checkpoints does CVG have?",
+    "a": "One. The main checkpoint serves both Concourse A and Concourse B. It is normally open 3:30am-9:20pm."
+   },
+   {
+    "q": "How do I get from security to my gate at CVG?",
+    "a": "Go down to the Transportation Tunnel and take the train, the moving walkways or walk. Concourse B is about 4 minutes by train or 6 minutes on foot; Concourse A is about half that."
+   },
+   {
+    "q": "Can I take a bus to CVG?",
+    "a": "Yes. TANK Route 2X runs between downtown Cincinnati and the airport every 30 minutes. At the airport it stops at Ground Transport East on the Baggage Claim level."
+   },
+   {
+    "q": "Does CVG have TSA PreCheck, CLEAR and Touchless ID?",
+    "a": "Yes. The checkpoint has a PreCheck entry, CLEAR is on the Departures level near the checkpoint, and CVG lists dedicated Touchless ID lanes for participating airlines."
+   }
+  ],
+  "sources": [
+   {
+    "title": "CVG - Security (checkpoint hours, arrival advice, PreCheck, CLEAR, Touchless ID)",
+    "url": "https://www.cvgairport.com/security/"
+   },
+   {
+    "title": "CVG - Step-by-step directions (ticketing, checkpoint, tunnel, concourses)",
+    "url": "https://www.cvgairport.com/accessibility/step-by-step-directions/"
+   },
+   {
+    "title": "CVG - Parking options (rates, shuttles, cell phone lot)",
+    "url": "https://www.cvgairport.com/parking-options/"
+   },
+   {
+    "title": "CVG - Ground transportation (rideshare, taxi, TANK)",
+    "url": "https://www.cvgairport.com/terminal-information/ground-transportation/"
+   },
+   {
+    "title": "CVG - Homepage (live wait times and parking)",
+    "url": "https://www.cvgairport.com/"
+   },
+   {
+    "title": "CVG - Elevate CVG board update (Nov 18, 2024)",
+    "url": "https://assets.ctfassets.net/38z8fjm5i4nh/7bgHc79PkgELL9UlW9JogJ/f49b01dccce383ca6148c3b03ff5873f/CVG_Elevate_CVG_Board_Update_2024-11_V2.pdf"
+   },
+   {
+    "title": "AviationPros - CVG announces team for Elevate CVG terminal modernization (Nov 26, 2024)",
+    "url": "https://www.aviationpros.com/airports/press-release/55246170/cvg-airport-announces-team-for-elevate-cvg-terminal-modernization-program"
+   },
+   {
+    "title": "CLEAR - Cincinnati/Northern Kentucky CLEAR locations and hours",
+    "url": "https://www.clearme.com/all-locations/cincinnati-northern-kentucky-international-airport"
+   },
+   {
+    "title": "The Points Guy - Airports with TSA PreCheck Touchless ID (May 2026)",
+    "url": "https://thepointsguy.com/travel/tsa-precheck-touchless-id-airports/"
+   },
+   {
+    "title": "TSA - PreCheck Touchless ID",
+    "url": "https://www.tsa.gov/precheck/touchless-id"
+   },
+   {
+    "title": "TANK - Service FAQ (Route 2X to CVG every 30 minutes)",
+    "url": "https://www.tankbus.org/wp-content/uploads/2024/07/TANK-Service-FAQ.pdf"
+   },
+   {
+    "title": "TANK - Fare structure and passes",
+    "url": "https://www.tankbus.org/fares-guides/fare/"
+   },
+   {
+    "title": "Local 12 - CVG lands millions to redo parts of Concourse B (Mar 2, 2023)",
+    "url": "https://local12.com/news/local/cvg-millions-redo-renovate-concourse-b-cincinnati-northern-kentucky-international-airport-delta-american"
+   },
+   {
+    "title": "Chase - A guide to Cincinnati/Northern Kentucky International Airport",
+    "url": "https://www.chase.com/personal/credit-cards/education/basics/a-guide-to-cincinnati-international-airport"
+   },
+   {
+    "title": "Wikipedia - Cincinnati/Northern Kentucky International Airport",
+    "url": "https://en.wikipedia.org/wiki/Cincinnati/Northern_Kentucky_International_Airport"
+   },
+   {
+    "title": "TSA throughput data, September 13-19, 2026",
+    "url": "https://www.tsa.gov/sites/default/files/foia-readingroom/tsa-throughput-data-to-september-13-2026-to-september-19-2026.pdf"
+   },
+   {
+    "title": "Southwest - Airport information (CVG gates, counter and checkpoint hours)",
+    "url": "https://www.southwest.com/airport-information/"
+   },
+   {
+    "title": "Southwest - When to arrive for your flight (check-in and bag deadlines)",
+    "url": "https://support.southwest.com/helpcenter/article/airport-arrival-recommendation"
+   },
+   {
+    "title": "Delta - Check-In Times at U.S. Airports (CVG exception)",
+    "url": "https://www.delta.com/us/en/check-in-security/check-in-time-requirements/domestic-check-in"
+   },
+   {
+    "title": "AP via MyNorthwest - United narrows check-in window; airline comparison (May 27, 2025)",
+    "url": "https://mynorthwest.com/lifestyle/united-is-narrowing-its-check-in-window-for-us-flights-heres-how-it-compares-to-other-airlines/4092751"
    }
   ]
  },
