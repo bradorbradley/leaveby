@@ -39,7 +39,7 @@ Leave By
 ## Facts and sources (for follow-ups)
 | Claim | Source |
 |---|---|
-| 3,134,613 on Nov 30, 2025 (record) | tsa.gov/travel/passenger-volumes/2025 |
+| 3,134,613 on Nov 30, 2025 (record) | tsa.gov/travel/passenger-volumes/2025. News reports at the time said 3,133,924; TSA's table now shows 3,134,613. If asked, say "about 3.13 million" and cite the table. |
 | 8 days ≥ 3M, all 2025, all Fri/Sun | same, computed in `lib/tsa-volumes.json` |
 | 5–7 AM peak, ~15% of screenings | TSA FOIA throughput data, Sep 13–19, 2026; `lib/tsa-hourly.json` |
 | Tuesday ~21% below Sunday (2025) | tsa.gov passenger volumes 2025 |
