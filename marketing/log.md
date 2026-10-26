@@ -2,6 +2,16 @@
 
 Newest first. Every ~3 hours a scheduled check-in picks the next most useful step, ships it, and adds an entry here.
 
+## 2026-10-26 (16:00 check-in)
+- **5 more guides (now 67):**
+  - MKE: Concourses C and D have separate checkpoints, not connected airside; Concourse E rebuild.
+  - CHS: one checkpoint, 3:30am–9:30pm; Touchless ID since March 2026; no CLEAR.
+  - OGG: USDA inspection for flights to the mainland; 50-minute inter-island bag cutoff.
+  - BUR: the new terminal opened Oct 13, 2026 (confirmed by ABC7 and Airways), with one checkpoint and a new entrance at Winona Ave & Hollywood Way.
+  - ONT: Terminals 2 and 4 are not connected airside.
+  - Busiest hours come from TSA's Sep 13–19 counts, checked against annual traffic. BUR's counts predate the new terminal, and the guide says so. OGG's airside connection was only inferred, so I left it as unknown.
+- **Next:** refresh holiday pages when the 2026 forecasts publish; PostHog when the key arrives.
+
 ## 2026-10-26 (13:00 check-in)
 - **Product fix: DJT.** Palm Beach International is now President Donald J. Trump International Airport, and its IATA code changed from PBI to DJT on Aug 18, 2026 (flydjt.org). Our airport table predates that, so a hand-entered DJT departure was rejected and the airport had no coordinates for the drive. DJT now maps to PBI's row (test added), and `/airports/pbi` redirects permanently to `/airports/djt`.
 - **2 more guides (now 59):**
