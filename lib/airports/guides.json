@@ -2546,6 +2546,249 @@
    }
   ]
  },
+ "DJT": {
+  "code": "DJT",
+  "name": "President Donald J. Trump International Airport, formerly Palm Beach International",
+  "city": "West Palm Beach",
+  "state": "FL",
+  "checkedOn": "2026-10-26",
+  "officialArrivalAdvice": {
+   "domestic": "The airport's website gives no set arrival time. Delta recommends arriving at least 2 hours before a domestic flight at U.S. airports, and this airport is not on its list of exceptions. JetBlue's page for this airport suggests about 90 minutes, and Southwest's suggests 60 minutes.",
+   "international": "Southwest's page for this airport suggests 90 minutes before an international flight. The airport itself gives no set time.",
+   "source": "https://www.delta.com/us/en/check-in-security/check-in-time-requirements/domestic-check-in"
+  },
+  "terminals": [
+   {
+    "id": "A/B",
+    "name": "Concourses A and B",
+    "airlines": [
+     "American Airlines",
+     "Southwest Airlines",
+     "United Airlines",
+     "Sun Country Airlines",
+     "Avelo Airlines",
+     "Allegiant Air",
+     "Bahamasair"
+    ],
+    "checkpoints": [
+     {
+      "notes": "One of two checkpoints on Level 2, at opposite ends of the terminal. Hours are not published by the airport. CLEAR lists CLEAR+ and TSA PreCheck lanes here from 4:30am to 6:30pm. TSA's screening counts call it DJT A/B. In mid-September 2026 it was in use from about 4am, was busiest 5-7am and 10am-noon, and was very light after 7pm.",
+      "precheck": true,
+      "clear": true,
+      "name": "Concourse A/B checkpoint"
+     }
+    ],
+    "notes": [
+     "Concourse A is the ground-level concourse (gates A1-A4) used for smaller aircraft. Allegiant, Avelo and Bahamasair are listed there.",
+     "Concourse B has gates B1-B12 and B14. American, Southwest, United, Sun Country and Avelo are listed there.",
+     "Southwest lists its gates as B3 and B5. Its ticket counter opens 90 minutes before the first departing flight.",
+     "Customs and immigration are on the lower level, west side, reached from Concourses A and B."
+    ]
+   },
+   {
+    "id": "C",
+    "name": "Concourse C",
+    "airlines": [
+     "Delta Air Lines",
+     "JetBlue",
+     "Frontier Airlines",
+     "Breeze Airways",
+     "Air Canada",
+     "Porter Airlines"
+    ],
+    "checkpoints": [
+     {
+      "notes": "The other Level 2 checkpoint. JetBlue's page lists the checkpoint as open 4:00am to 10:30pm. CLEAR lists CLEAR+ and TSA PreCheck lanes here from 4:30am to 8pm Sunday to Tuesday and 4:30am to 7:30pm Wednesday to Saturday. TSA's screening counts call it DJT C. In mid-September 2026 it was busiest 9-11am and had a second rise from 5pm to 7pm.",
+      "precheck": true,
+      "clear": true,
+      "name": "Concourse C checkpoint"
+     }
+    ],
+    "notes": [
+     "Gates C1-C12, C14 and C16",
+     "JetBlue lists Level 3, Concourse C. Its ticket counter is open 4:10am to 7:30pm and its lobby is cashless.",
+     "Delta, JetBlue and American carried the most passengers in September 2025 (airport traffic report)"
+    ]
+   }
+  ],
+  "connectedAirside": false,
+  "betweenTerminals": "One terminal with three concourses and two checkpoints. One checkpoint serves Concourses A and B; the other serves Concourse C. Concourses A and B are connected after security, but A/B and C are not. The airport is only in early design for a post-security connector, so use the checkpoint for your airline's concourse.",
+  "securityWaits": {
+   "summary": "This research found no typical peak times published by the airport. In TSA's hourly screening counts for Sep 13-19, 2026 (mid-September, the airport's quiet season), the airport was busiest from 9am to noon, peaking 10-11am. There was a second early peak from 5am to 7am, peaking 6-7am. Traffic eased after noon, held fairly steady until about 7pm and was very light after that. The Concourse C checkpoint had a late-afternoon rise from 5pm to 7pm. Friday, Thursday, Sunday and Monday were the busiest days that week; Tuesday and Saturday were the quietest. Winter is much busier. The airport's traffic reports show 992,435 passengers in March 2026, about twice the 498,729 of September 2025. January and February 2026 each had more than 800,000.",
+   "busiestTimes": [
+    "9:00am-noon (peak 10:00-11:00am)",
+    "5:00-7:00am (peak 6:00-7:00am)",
+    "Fridays, Thursdays, Sundays and Mondays (TSA counts, week of Sep 13, 2026)",
+    "January to March, with March the busiest month in the airport's 2026 reports"
+   ],
+   "source": "https://www.tsa.gov/sites/default/files/foia-readingroom/tsa-throughput-data-to-september-13-2026-to-september-19-2026.pdf"
+  },
+  "precheckNotes": "TSA PreCheck lanes are at both checkpoints. CLEAR lists combined CLEAR+ and TSA PreCheck lanes at the A/B checkpoint (4:30am-6:30pm) and the C checkpoint (4:30am-8pm Sunday to Tuesday, 4:30am-7:30pm Wednesday to Saturday). The airport says PreCheck enrollment is available through CLEAR at every checkpoint with no appointment.",
+  "clearAvailable": true,
+  "touchlessId": "A March 2026 list of TSA PreCheck Touchless ID airports shows this airport (as PBI) for American, Delta and Southwest. Southwest's airport page also lists a Touchless ID checkpoint here. You opt in through your airline profile and need a valid passport.",
+  "gettingThere": {
+   "rideshare": "Uber drops off curbside at the terminal; Departures is Level 3. Rideshare pickup is on the outer curb of Level 3, across the street from the terminal exit. Taxis use the Ground Transportation desk on the west end of Level 1.",
+   "transit": "Palm Tran routes 2 and 44 serve the airport; the bus stop is on the outer curb of Level 1. From Tri-Rail's West Palm Beach station (203 South Tamarind Avenue), Palm Tran Route 2 to the airport is free if you show a valid Tri-Rail fare. Rides from the airport to the station need no fare.",
+   "driving": "The airport has direct access from I-95, Southern Boulevard and Congress Avenue. Parking daily maximums: Premium $34 (outside Baggage Claim, card or SunPass only), Short-Term $21, Long-Term $14 (direct access to the terminal on Level 2), Economy $8 (free shuttle). The Economy shuttle runs 24 hours Sunday to Thursday, but not 1-3am Friday or 1-4am Saturday. The free cell phone waiting lot is at the Travel Plaza, 2050 Belvedere Road. The airport says lots closest to the terminal often fill around the holidays."
+  },
+  "construction2026": [
+   "Concourse B is being remodeled and expanded. Phases 1 and 2 are done. Phase 3 is underway with temporary walls in place, and completion is targeted for summer 2028.",
+   "The IATA code changed from PBI to DJT on August 18, 2026, and the airport was renamed President Donald J. Trump International Airport on July 9, 2026. The airport says flights and services are unaffected; search and check bags using DJT."
+  ],
+  "bagDrop": "Delta: check bags at least 45 minutes before a domestic departure, check in at least 30 minutes ahead without bags, and bags are not accepted more than 6 hours ahead. JetBlue: bags 45 minutes before departure; check-in 30 minutes ahead without bags. Southwest: bags 45 minutes before a domestic flight (60 minutes international); check-in closes 30 minutes before a domestic flight. American and United: check in and check bags 45 minutes before domestic departure (AP, May 2025).",
+  "tips": [
+   "Know your concourse. Delta, JetBlue, Frontier, Breeze, Air Canada and Porter use Concourse C. American, Southwest, United and Sun Country use Concourse B. Allegiant, Avelo and Bahamasair are listed at Concourse A.",
+   "Concourse C is not connected to A and B after security, so use the checkpoint for your airline's concourse",
+   "Plan more time from January to March. In 2026 the airport handled about twice as many passengers in March as in September.",
+   "The airport code is now DJT, not PBI. Use DJT when searching for flights; airline reservations and bag tags now show DJT.",
+   "Early flight? The checkpoints were in use from about 4am in mid-September 2026, and the 6-7am hour was one of the busiest.",
+   "Parking in Economy for a very early flight? The shuttle does not run 1-3am Friday or 1-4am Saturday. The lot is about a 5-minute walk from the terminal."
+  ],
+  "faq": [
+   {
+    "q": "How early should I get to Palm Beach airport (DJT, formerly PBI)?",
+    "a": "The airport does not publish a set time. Delta recommends at least 2 hours before a domestic flight; JetBlue suggests about 90 minutes and Southwest 60 minutes at this airport. Allow more time from January to March, when the airport is busiest."
+   },
+   {
+    "q": "Is PBI the same airport as DJT?",
+    "a": "Yes. Palm Beach International was renamed President Donald J. Trump International Airport on July 9, 2026, and its code changed from PBI to DJT on August 18, 2026. Flights and services did not change."
+   },
+   {
+    "q": "Are the concourses connected after security?",
+    "a": "Concourses A and B are. Concourse C is not; it has its own checkpoint. Go through the checkpoint for your airline's concourse."
+   },
+   {
+    "q": "Does the airport have CLEAR?",
+    "a": "Yes. CLEAR has lanes at both the A/B and C checkpoints. TSA PreCheck lanes are also at both."
+   },
+   {
+    "q": "When is the airport busiest?",
+    "a": "Winter. March 2026 had 992,435 passengers, about twice September 2025. In mid-September 2026 TSA counts, the busiest hours were 9am-noon, peaking 10-11am, with a second peak at 6-7am."
+   }
+  ],
+  "sources": [
+   {
+    "title": "Palm Beach County Department of Airports - Name change FAQs",
+    "url": "https://flydjt.org/about/name-change-faqs/"
+   },
+   {
+    "title": "Palm Beach County Department of Airports - Airport guide (PreCheck via CLEAR, cell phone lot)",
+    "url": "https://flydjt.org/guide/"
+   },
+   {
+    "title": "Palm Beach County Department of Airports - Parking",
+    "url": "https://flydjt.org/new-parking/"
+   },
+   {
+    "title": "Palm Beach County Department of Airports - Ground transportation",
+    "url": "https://flydjt.org/ground/"
+   },
+   {
+    "title": "Palm Beach County Department of Airports - Taxis and rideshare",
+    "url": "https://flydjt.org/ground/taxis/"
+   },
+   {
+    "title": "Palm Beach County Department of Airports - Public transportation",
+    "url": "https://flydjt.org/ground/public-transportation/"
+   },
+   {
+    "title": "Palm Beach County Department of Airports - Concourse B expansion",
+    "url": "https://flydjt.org/construction-projects/concourse-b/"
+   },
+   {
+    "title": "Palm Beach County Department of Airports - Terminal connector (conceptual design)",
+    "url": "https://flydjt.org/construction-projects/terminal-connector/"
+   },
+   {
+    "title": "Palm Beach County Department of Airports - Travel tips (Nov 20, 2023)",
+    "url": "https://flydjt.org/articles/post/follow-pbi-travel-tips-to-ensure-a-smooth-experience/"
+   },
+   {
+    "title": "Palm Beach County Department of Airports - Traffic report, September 2025",
+    "url": "https://assets.simpleviewinc.com/simpleview/image/upload/v1/clients/pbi/Sept_2025_Traffic_Report_05af6d16-a48a-475e-b676-e77475ef2a6b.pdf"
+   },
+   {
+    "title": "Palm Beach County Department of Airports - Traffic report, January 2026",
+    "url": "https://assets.simpleviewinc.com/simpleview/image/upload/v1/clients/pbi/January_2026_Traffic_Report_cb41cfd7-7276-4f91-b32d-d75e3d90c8b4.pdf"
+   },
+   {
+    "title": "Palm Beach County Department of Airports - Traffic report, February 2026",
+    "url": "https://assets.simpleviewinc.com/simpleview/image/upload/v1/clients/pbi/February_2026_Traffic_Report_71a959c5-bc73-4b7b-9de9-6210d497fde5.pdf"
+   },
+   {
+    "title": "Palm Beach County Department of Airports - Traffic report, March 2026",
+    "url": "https://assets.simpleviewinc.com/simpleview/image/upload/v1/clients/pbi/March_2026_Traffic_Report_582684d7-32dd-44c7-aab5-c16965fb5fc5.pdf"
+   },
+   {
+    "title": "KMPH - From PBI to DJT: airport gets new three-letter code (Aug 18, 2026)",
+    "url": "https://kmph.com/news/nation-world/from-pbi-to-djt-palm-beach-county-airport-gets-new-three-letter-code-donald-trump-international-airport-pbia-name-change-airport-travelers-booking-code-flights-president-donald-j-trump-international-aiport"
+   },
+   {
+    "title": "Wikipedia - President Donald J. Trump International Airport",
+    "url": "https://en.wikipedia.org/wiki/Palm_Beach_International_Airport"
+   },
+   {
+    "title": "Chase - Guide to Palm Beach International Airport (checkpoints, transit)",
+    "url": "https://www.chase.com/personal/credit-cards/education/basics/the-guide-to-palm-beach-international-airport"
+   },
+   {
+    "title": "CLEAR - President Donald J. Trump International Airport lanes and hours",
+    "url": "https://www.clearme.com/all-locations/palm-beach-international-airport"
+   },
+   {
+    "title": "CLEAR - Where to use CLEAR (airport list)",
+    "url": "https://www.clearme.com/where-to-use-clear"
+   },
+   {
+    "title": "Tri-Rail - West Palm Beach station (free Palm Tran Route 2 to the airport)",
+    "url": "https://www1.tri-rail.com/stations/west-palm-beach"
+   },
+   {
+    "title": "Uber - Rides to PBI",
+    "url": "https://www.uber.com/global/en/r/airports/pbi/"
+   },
+   {
+    "title": "Uber - Get picked up at PBI",
+    "url": "https://www.uber.com/global/en/r/airports/pbi/pickup"
+   },
+   {
+    "title": "TSA - TSA PreCheck Touchless ID",
+    "url": "https://www.tsa.gov/touchless-id"
+   },
+   {
+    "title": "The Bulkhead Seat - TSA PreCheck Touchless ID airport list (Mar 16, 2026)",
+    "url": "https://thebulkheadseat.com/?p=33789"
+   },
+   {
+    "title": "TSA throughput data, September 13-19, 2026",
+    "url": "https://www.tsa.gov/sites/default/files/foia-readingroom/tsa-throughput-data-to-september-13-2026-to-september-19-2026.pdf"
+   },
+   {
+    "title": "Southwest - Airport information (DJT gates, counter hours, suggested arrival)",
+    "url": "https://www.southwest.com/airport-information/"
+   },
+   {
+    "title": "Southwest - When to arrive for your flight (check-in and bag deadlines)",
+    "url": "https://support.southwest.com/helpcenter/article/airport-arrival-recommendation"
+   },
+   {
+    "title": "JetBlue - West Palm Beach airport information",
+    "url": "https://www.jetblue.com/at-the-airport/airport-information/west-palm-beach-fl"
+   },
+   {
+    "title": "JetBlue - Airport check-in (bag deadlines)",
+    "url": "https://www.jetblue.com/help/checking-in/airport-check-in"
+   },
+   {
+    "title": "Delta - Check-In Times at U.S. Airports",
+    "url": "https://www.delta.com/us/en/check-in-security/check-in-time-requirements/domestic-check-in"
+   },
+   {
+    "title": "AP via MyNorthwest - United narrows check-in window; airline comparison (May 27, 2025)",
+    "url": "https://mynorthwest.com/lifestyle/united-is-narrowing-its-check-in-window-for-us-flights-heres-how-it-compares-to-other-airlines/4092751"
+   }
+  ]
+ },
  "DTW": {
   "code": "DTW",
   "name": "Detroit Metropolitan Wayne County Airport",
@@ -4610,6 +4853,208 @@
    },
    {
     "title": "AP via MyNorthwest - United narrows check-in window; airline comparison (May 2025)",
+    "url": "https://mynorthwest.com/lifestyle/united-is-narrowing-its-check-in-window-for-us-flights-heres-how-it-compares-to-other-airlines/4092751"
+   }
+  ]
+ },
+ "JAX": {
+  "code": "JAX",
+  "name": "Jacksonville International Airport",
+  "city": "Jacksonville",
+  "state": "FL",
+  "checkedOn": "2026-10-26",
+  "officialArrivalAdvice": {
+   "domestic": "JAX recommended arriving at least 2 hours before a domestic flight (holiday guidance reported by WOKV, December 2025). It said to allow time to find parking, check bags and get through security.",
+   "international": "JAX recommended arriving at least 3 hours before an international flight (WOKV, December 2025)",
+   "source": "https://www.wokv.com/entertainment/dont-let-airport-turn-you-into-grinch-2025-holiday-flight-travel-tips-jacksonville/XCIQSGTCQBFQRNIML5RYXR5TJQ"
+  },
+  "terminals": [
+   {
+    "id": "A",
+    "name": "Concourse A",
+    "airlines": [
+     "Delta Air Lines",
+     "United Airlines",
+     "JetBlue",
+     "Sun Country Airlines"
+    ],
+    "checkpoints": [
+     {
+      "notes": "JAX has one security checkpoint, on the mezzanine past ticketing, serving Concourses A and C. JAX says it opens at 4:00am; JetBlue's JAX page lists it as open 4:00am to 10:30pm. In mid-September 2026 TSA counts, a small amount of screening began in the 3am hour every day, and it was very light after 8pm.",
+      "precheck": true,
+      "clear": false,
+      "name": "Main Checkpoint"
+     }
+    ],
+    "notes": [
+     "Gates A1-A10",
+     "JetBlue lists Concourse A, with its ticket counter open 3:30am to 8:30pm. Its lobby is cashless.",
+     "Kayak lists Frontier at both Concourse A and Concourse C; check your boarding pass."
+    ]
+   },
+   {
+    "id": "C",
+    "name": "Concourse C",
+    "airlines": [
+     "American Airlines",
+     "Southwest Airlines",
+     "Allegiant Air",
+     "Avelo Airlines",
+     "Breeze Airways",
+     "Air Canada"
+    ],
+    "checkpoints": [
+     {
+      "notes": "Same single checkpoint as Concourse A. After screening, Concourse A is to one side and Concourse C to the other.",
+      "precheck": true,
+      "clear": false,
+      "name": "Main Checkpoint"
+     }
+    ],
+    "notes": [
+     "Gates C1-C10",
+     "Southwest lists gates C1, C2 and C4. Its ticket counter opens 90 minutes before the first departing flight.",
+     "Air Canada's Toronto service is seasonal.",
+     "American is due to move to the new Concourse B in late January 2027."
+    ]
+   }
+  ],
+  "connectedAirside": true,
+  "betweenTerminals": "JAX has one terminal and one security checkpoint on the mezzanine. After security you walk to Concourse A or Concourse C; no train or shuttle is needed, and you do not clear security again to switch concourses. A third-party map guide puts the walk between the far ends of the two concourses at about 10 minutes. A new Concourse B between A and C is due to open in late January 2027.",
+  "securityWaits": {
+   "summary": "This research found no typical peak times published by JAX. In TSA's hourly screening counts for Sep 13-19, 2026, JAX was busiest from 4am to 7am, peaking 5-6am. There was a second peak at 10-11am. Traffic held fairly steady from 7am to 6pm, dropped after 6pm and was very light after 8pm. Thursday, Monday, Sunday and Friday were the busiest days that week; Tuesday and Saturday were the quietest.",
+   "busiestTimes": [
+    "4:00-7:00am (peak 5:00-6:00am)",
+    "10:00-11:00am",
+    "Thursdays, Mondays, Sundays and Fridays (TSA counts, week of Sep 13, 2026)"
+   ],
+   "source": "https://www.tsa.gov/sites/default/files/foia-readingroom/tsa-throughput-data-to-september-13-2026-to-september-19-2026.pdf"
+  },
+  "precheckNotes": "TSA PreCheck lanes are available at the main checkpoint (Kayak, December 2025). Global Entry, NEXUS and SENTRI members can use PreCheck by adding their Known Traveler Number to their airline booking. This research found no published PreCheck lane hours.",
+  "clearAvailable": false,
+  "touchlessId": "A March 2026 list of TSA PreCheck Touchless ID airports shows JAX for American and Southwest. Southwest's JAX page also lists a Touchless ID checkpoint. You opt in through your airline profile and need a valid passport.",
+  "gettingThere": {
+   "rideshare": "Uber and Lyft may drop off on the Upper Departure Curb only. For pickup, request the ride once you are at the curb; App-Based Rides Service signs are on the Lower Arrival Curb next to baggage claim, at Poles 1 and 2.",
+   "transit": "Wikipedia lists JTA Route 1 between the airport and downtown Jacksonville. This research could not open JTA's current route pages, and JTA changed Route 1's schedule in June 2026, so check times with JTA before you go.",
+   "driving": "Daily maximum rates: Hourly Garage $26 (next to the terminal), Daily Garage $22 (behind it), Daily Surface Lot $16 (walking distance), Economy Lots 1-3 $10 (card only). Economy shuttles run 24/7, about every 15 minutes, and stop on the Lower Arrival curb outside Door A. Valet is $30 per 24 hours; drop off at the valet booth on the Departure Level, no reservation needed. Garages and surface lots have been filling up in 2026, so check the parking availability page before you leave."
+  },
+  "construction2026": [
+   "The new Concourse B (six gates) is not open yet. JAX expects a ribbon-cutting on January 27, 2027, with American Airlines starting flights from five of its gates on January 28. Until then, American uses Concourse C.",
+   "A third parking garage of about 2,000 spaces is being built next to the existing two and was expected to be finished by Thanksgiving 2026. Garages and surface lots have been filling up, and some travelers have been using the economy lot."
+  ],
+  "bagDrop": "Delta: check bags at least 45 minutes before a domestic departure, check in at least 30 minutes ahead without bags, and bags are not accepted more than 6 hours ahead. Southwest: bags 45 minutes before a domestic flight (60 minutes international); check-in closes 30 minutes before a domestic flight. JetBlue: bags 45 minutes before departure; check-in 30 minutes ahead without bags. American and United: check in and check bags 45 minutes before domestic departure (AP, May 2025).",
+  "tips": [
+   "JAX has one checkpoint for both concourses, so you can go through security and then walk to your gate on A or C",
+   "Early mornings are the busiest time. In mid-September 2026 TSA counts, 5-6am was the peak hour, and the checkpoint opens around 4am.",
+   "Driving? Garages and close-in lots have been filling up. Check JAX's parking availability page and allow time for the economy lot shuttle if needed.",
+   "Being dropped off by Uber or Lyft? Drop-off is on the Upper Departure Curb only.",
+   "Flying American after late January 2027? Check your gate. American is moving to the new Concourse B."
+  ],
+  "faq": [
+   {
+    "q": "How early should I get to Jacksonville airport (JAX)?",
+    "a": "JAX recommends at least 2 hours before a domestic flight and 3 hours before an international flight. That leaves time to park, check bags and clear security."
+   },
+   {
+    "q": "Is the new Concourse B at JAX open?",
+    "a": "Not yet. JAX expects to open it with a ribbon-cutting on January 27, 2027. American Airlines is due to start flights from it on January 28."
+   },
+   {
+    "q": "Are JAX's concourses connected after security?",
+    "a": "Yes. There is one checkpoint, and after it you walk to Concourse A or C without clearing security again."
+   },
+   {
+    "q": "What time does security open at JAX?",
+    "a": "JAX says the TSA checkpoint opens at 4:00am. The terminal is open 24 hours."
+   },
+   {
+    "q": "Does JAX have CLEAR?",
+    "a": "No. CLEAR's list of airport locations does not include JAX. TSA PreCheck lanes are available."
+   }
+  ],
+  "sources": [
+   {
+    "title": "WOKV - Holiday flight travel tips for Jacksonville; JAX arrival advice (Dec 19, 2025)",
+    "url": "https://www.wokv.com/entertainment/dont-let-airport-turn-you-into-grinch-2025-holiday-flight-travel-tips-jacksonville/XCIQSGTCQBFQRNIML5RYXR5TJQ"
+   },
+   {
+    "title": "Jacksonville International Airport - Amenities and services (checkpoint opens 4am)",
+    "url": "https://www.flyjacksonville.com/Content.aspx?id=11"
+   },
+   {
+    "title": "Jacksonville International Airport - Parking",
+    "url": "https://www.flyjacksonville.com/content.aspx?id=433"
+   },
+   {
+    "title": "Jacksonville International Airport - Ground transportation",
+    "url": "https://www.flyjacksonville.com/content.aspx?id=13"
+   },
+   {
+    "title": "Jacksonville Today - New concourse nears completion at JAX (Oct 9, 2026)",
+    "url": "https://jaxtoday.org/?p=121690"
+   },
+   {
+    "title": "Jacksonville Today / Daily Record - Concourse B opening plans (Aug 31, 2026)",
+    "url": "https://jaxtoday.org/2026/08/31/jacksonville-airport-concourse-b-opening/"
+   },
+   {
+    "title": "Jacksonville Today - New concourse at Jacksonville airport (Feb 27, 2026)",
+    "url": "https://jaxtoday.org/2026/02/27/new-concourse-jacksonville-airport/"
+   },
+   {
+    "title": "Wikipedia - Jacksonville International Airport",
+    "url": "https://en.wikipedia.org/wiki/Jacksonville_International_Airport"
+   },
+   {
+    "title": "Kayak - Jacksonville International Airport guide (Dec 16, 2025)",
+    "url": "https://www.kayak.com/Jacksonville-Jacksonville-Airport.JAX.ap.html"
+   },
+   {
+    "title": "Airport Map HQ - Jacksonville airport terminal map (Mar 2026)",
+    "url": "https://airportmaphq.com/jacksonville-airport-map-terminal.html"
+   },
+   {
+    "title": "Uber - Rides to JAX",
+    "url": "https://www.uber.com/global/en/r/airports/jax/"
+   },
+   {
+    "title": "CLEAR - Where to use CLEAR (airport list)",
+    "url": "https://www.clearme.com/where-to-use-clear"
+   },
+   {
+    "title": "TSA - TSA PreCheck Touchless ID",
+    "url": "https://www.tsa.gov/touchless-id"
+   },
+   {
+    "title": "The Bulkhead Seat - TSA PreCheck Touchless ID airport list (Mar 16, 2026)",
+    "url": "https://thebulkheadseat.com/?p=33789"
+   },
+   {
+    "title": "TSA throughput data, September 13-19, 2026",
+    "url": "https://www.tsa.gov/sites/default/files/foia-readingroom/tsa-throughput-data-to-september-13-2026-to-september-19-2026.pdf"
+   },
+   {
+    "title": "Southwest - Airport information (JAX gates, counter hours, suggested arrival, parking alert)",
+    "url": "https://www.southwest.com/airport-information/"
+   },
+   {
+    "title": "Southwest - When to arrive for your flight (check-in and bag deadlines)",
+    "url": "https://support.southwest.com/helpcenter/article/airport-arrival-recommendation"
+   },
+   {
+    "title": "JetBlue - Jacksonville airport information",
+    "url": "https://www.jetblue.com/at-the-airport/airport-information/jacksonville-fl"
+   },
+   {
+    "title": "JetBlue - Airport check-in (bag deadlines)",
+    "url": "https://www.jetblue.com/help/checking-in/airport-check-in"
+   },
+   {
+    "title": "Delta - Check-In Times at U.S. Airports",
+    "url": "https://www.delta.com/us/en/check-in-security/check-in-time-requirements/domestic-check-in"
+   },
+   {
+    "title": "AP via MyNorthwest - United narrows check-in window; airline comparison (May 27, 2025)",
     "url": "https://mynorthwest.com/lifestyle/united-is-narrowing-its-check-in-window-for-us-flights-heres-how-it-compares-to-other-airlines/4092751"
    }
   ]
