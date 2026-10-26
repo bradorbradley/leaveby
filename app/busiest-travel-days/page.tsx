@@ -146,7 +146,7 @@ export default function BusiestTravelDays() {
 
       <GuideSection title="What this means for your leave time">
         <p>
-          A busy day nationally doesn&apos;t mean a long line everywhere, and the hour matters as much as the day. Each of our{" "}
+          A busy day nationally doesn&apos;t mean a long line everywhere, and the hour matters as much as the day: see <Link href="/tsa-busiest-times">what time of day TSA is busiest</Link>. Each of our{" "}
           <Link href="/airports">airport guides</Link> lists that airport&apos;s busiest hours and checkpoints.
         </p>
         <p>

@@ -2,6 +2,13 @@
 
 Newest first. Every ~3 hours a scheduled check-in picks the next most useful step, ships it, and adds an entry here.
 
+## 2026-10-26 (07:00 check-in)
+- **New data page: `/tsa-busiest-times`** ("What time of day is TSA busiest?"). I summed TSA's hourly counts for every checkpoint in the US over Sep 13–19, 2026 (168 hours, 16.6M screenings) from the FOIA throughput PDF. Daily totals match TSA's published national numbers within 1.2%, and a test checks this.
+  - Findings: 5–7am local is the peak on every day of the week and carries 15% of screenings; 34% happen before 9am, and only 7% after 7pm. Sundays stay busy from early morning into late afternoon.
+  - Hour-of-day bar chart and a day × hour heatmap, using the same validated coral ramp. FAQ schema, og card, linked from home and `/busiest-travel-days`.
+  - Not done: a per-airport peak-hour table. My quick per-airport split didn't match the agents' checkpoint-matched totals (SMF 83K vs 133K), so I left it out rather than publish wrong numbers.
+- **Next:** a post from these findings; refresh holiday pages when the 2026 forecasts publish; PostHog when the key arrives.
+
 ## 2026-10-26 (04:00 check-in)
 - **5 more airport guides (now 57):** SMF, OAK, SNA, RSW and CLE, with 17–27 sources each.
   - Busiest hours come from TSA's hourly counts for Sep 13–19, 2026, since none of the five publishes peak times.

@@ -6,7 +6,7 @@ export const SESSION_STORAGE_KEY = "leaveby.analytics.v2";
 
 const SOURCES = ["google", "bing", "x", "twitter", "linkedin", "reddit", "hackernews", "producthunt", "facebook", "instagram", "tiktok", "threads", "newsletter", "email"] as const;
 const MEDIUMS = ["social", "organic", "referral", "email", "cpc", "paid_social", "community"] as const;
-const PAGES = ["/", "/app", "/privacy", "/terms", "/airports", "/thanksgiving-travel-2026", "/holiday-travel-2026", "/busiest-travel-days", "/international-flights", "/airport-theory"] as const;
+const PAGES = ["/", "/app", "/privacy", "/terms", "/airports", "/thanksgiving-travel-2026", "/holiday-travel-2026", "/busiest-travel-days", "/tsa-busiest-times", "/international-flights", "/airport-theory"] as const;
 /** Public airport guides, e.g. /airports/jfk. An airport code is public, never personal. */
 const GUIDE_PATH = /^\/airports\/[a-z]{3}$/;
 

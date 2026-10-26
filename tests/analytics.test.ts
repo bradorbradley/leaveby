@@ -37,6 +37,7 @@ test("Vercel URL scrubber strips entire query/hash and drops unknown paths", () 
   assert.equal(sanitizedPageUrl("https://www.leaveby.xyz/thanksgiving-travel-2026"), "https://www.leaveby.xyz/thanksgiving-travel-2026");
   assert.equal(sanitizedPageUrl("https://www.leaveby.xyz/holiday-travel-2026"), "https://www.leaveby.xyz/holiday-travel-2026");
   assert.equal(sanitizedPageUrl("https://www.leaveby.xyz/busiest-travel-days"), "https://www.leaveby.xyz/busiest-travel-days");
+  assert.equal(sanitizedPageUrl("https://www.leaveby.xyz/tsa-busiest-times"), "https://www.leaveby.xyz/tsa-busiest-times");
   assert.equal(sanitizedPageUrl("https://www.leaveby.xyz/international-flights?x=1"), "https://www.leaveby.xyz/international-flights");
   assert.equal(sanitizedPageUrl("https://www.leaveby.xyz/airport-theory"), "https://www.leaveby.xyz/airport-theory");
   assert.equal(attribution("https://www.leaveby.xyz/airports/lax", "https://www.google.com/", []).entry_page, "/airports");

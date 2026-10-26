@@ -12,6 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE}/thanksgiving-travel-2026`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },
     { url: `${SITE}/holiday-travel-2026`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },
     { url: `${SITE}/busiest-travel-days`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },
+    { url: `${SITE}/tsa-busiest-times`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${SITE}/international-flights`, lastModified: new Date("2026-10-24"), changeFrequency: "monthly", priority: 0.8 },
     { url: `${SITE}/airport-theory`, lastModified: new Date("2026-10-24"), changeFrequency: "monthly", priority: 0.7 },
     ...allGuides().map((g) => ({ url: `${SITE}/airports/${g.code.toLowerCase()}`, lastModified: new Date(g.checkedOn), changeFrequency: "monthly" as const, priority: 0.7 })),

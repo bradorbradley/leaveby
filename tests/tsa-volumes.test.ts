@@ -7,6 +7,7 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 
+import { averageByHour, hourlyGrid } from "@/lib/tsa-hourly";
 import { busiest, daysInYear, formatDay, tsaDays, weekdayAverages } from "@/lib/tsa-volumes";
 
 describe("TSA daily volumes", () => {
@@ -37,5 +38,24 @@ describe("TSA daily volumes", () => {
     assert.equal(avg.length, 7);
     assert.equal(avg.reduce((a, b) => (b.avg > a.avg ? b : a)).day, "Sunday");
     assert.equal(avg.reduce((a, b) => (b.avg < a.avg ? b : a)).day, "Tuesday");
+  });
+});
+
+describe("TSA hourly volumes", () => {
+  it("covers every hour of the week and matches TSA's daily totals within 2%", () => {
+    const grid = hourlyGrid();
+    assert.equal(grid.length, 7);
+    for (const row of grid) assert.equal(row.length, 24);
+    const published = tsaDays().filter((d) => d.date >= "2026-09-13" && d.date <= "2026-09-19").map((d) => d.count);
+    grid.forEach((row, i) => {
+      const sum = row.reduce((a, b) => a + b, 0);
+      assert.ok(Math.abs(sum / published[i] - 1) < 0.02, `day ${i}: ${sum} vs ${published[i]}`);
+    });
+  });
+
+  it("puts the national peak at 5–7am", () => {
+    const avg = averageByHour();
+    const peak = avg.indexOf(Math.max(...avg));
+    assert.ok(peak === 5 || peak === 6, `peak hour ${peak}`);
   });
 });
