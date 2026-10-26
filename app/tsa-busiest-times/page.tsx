@@ -122,6 +122,9 @@ export default function TsaBusiestTimes() {
           week in mid-September isn&apos;t a holiday week, so holiday peaks will be higher. Source:{" "}
           <a href={HOURLY_SOURCE} target="_blank" rel="noreferrer">TSA throughput data, Sep 13–19, 2026</a>.
         </p>
+        <p>
+          Writing about holiday travel? These charts are free to use with credit to Leave By (leaveby.xyz). Download them as images: <a href="/press/tsa-by-hour.png">by hour</a> and <a href="/press/tsa-day-by-hour.png">day by hour</a>.
+        </p>
       </GuideSection>
       <p className="mt-6 text-[12.5px] text-ink-3">Checked October 26, 2026.</p>
     </GuideShell>
