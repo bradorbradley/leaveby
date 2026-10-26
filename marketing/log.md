@@ -2,6 +2,10 @@
 
 Newest first. Every ~3 hours a scheduled check-in picks the next most useful step, ships it, and adds an entry here.
 
+## 2026-10-26 (19:00 check-in)
+- **Airports index:** with 67 guides, the phone list was about 4,600px long. Added a jump row of every airport code at the top, plus links to the two TSA data pages. Small and cheap: the founder hasn't answered whether to keep the full 3-hour pace, so this check-in avoided research agents.
+- **Next:** waiting on the founder (pace, PostHog key, Search Console, posts, press pitch).
+
 ## 2026-10-26 (16:00 check-in)
 - **5 more guides (now 67):**
   - MKE: Concourses C and D have separate checkpoints, not connected airside; Concourse E rebuild.

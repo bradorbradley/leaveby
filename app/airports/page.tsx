@@ -27,6 +27,16 @@ export default function AirportsIndex() {
       <p className="mt-3 text-[15px] text-ink-2">
         Flying abroad? See <Link href="/international-flights">international flights</Link>. Tempted by the TikTok trend? <Link href="/airport-theory">Does airport theory work?</Link>
       </p>
+      <p className="mt-3 text-[15px] text-ink-2">
+        When are airports busiest? See <Link href="/tsa-busiest-times">TSA&apos;s hourly numbers</Link> and <Link href="/busiest-travel-days">the busiest days to fly</Link>.
+      </p>
+      <nav aria-label="Jump to an airport" className="mt-6 flex flex-wrap gap-1.5">
+        {guides.map((g) => (
+          <Link key={g.code} href={`/airports/${g.code.toLowerCase()}`} className="chip !min-h-[32px] !px-2.5 !text-[12.5px] no-underline">
+            {g.code}
+          </Link>
+        ))}
+      </nav>
       <GuideList guides={guides.filter((g) => !isIntl(g))} />
       {guides.some(isIntl) ? (
         <>
