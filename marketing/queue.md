@@ -60,3 +60,7 @@ These beat the evergreen bank in November, so post them first once posting start
 ## Any day · quiet-days
 - **12:00 · `quiet-days-a`** (7 slides): Tuesday is the quietest day to fly, about 21% fewer people than Sunday.
 - **19:00, 2–3 days later · `quiet-days-b`** (7 slides): same slides, "fly on the holiday itself" hook.
+
+# Week of Oct 26 (plan)
+Nothing has been posted yet, so the queue stays in order: Week 1 bank (Days 1–7), then Week 2 (Days 8–10). From Nov 16, the TSA data drops (`three-million`, then `quiet-days`) jump ahead of the evergreen posts. Press pitch: send Nov 2–13 (`marketing/outreach/press-pitch.md`).
+
