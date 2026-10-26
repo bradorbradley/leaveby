@@ -49,3 +49,14 @@ Bio link: `https://www.leaveby.xyz/?utm_source=tiktok&utm_medium=social&utm_camp
 ## Day 10 · lax-changes
 - **12:00 · `lax-changes-a`** (5 slides): Flying out of LAX? Terminal 5 is closed, rideshare pickups aren't at the curb, and United's Terminal 8 has no checkpoint of its own. Sources: LAWA and airport guides. #lax #losangeles #airporttips #traveltok #latravel
 - **19:00 · `lax-changes-b`** (5 slides): Flying out of LAX? Terminal 5 is closed, rideshare pickups aren't at the curb, and United's Terminal 8 has no checkpoint of its own. Sources: LAWA and airport guides. #lax #losangeles #airporttips #traveltok #latravel
+
+# Timely: TSA data drops (post before Thanksgiving)
+These beat the evergreen bank in November, so post them first once posting starts. The record-day post lands best in the 10 days before the Sunday after Thanksgiving (Nov 29).
+
+## Any day, Nov 16–24 · three-million
+- **12:00 · `three-million-a`** (6 slides): Only 8 days in history have topped 3 million people through TSA, every one a Friday or a Sunday. Caption in `marketing/posts/data-drop.json`.
+- **19:00, 2–3 days later · `three-million-b`** (6 slides): same slides, different hook.
+
+## Any day · quiet-days
+- **12:00 · `quiet-days-a`** (7 slides): Tuesday is the quietest day to fly, about 21% fewer people than Sunday.
+- **19:00, 2–3 days later · `quiet-days-b`** (7 slides): same slides, "fly on the holiday itself" hook.
