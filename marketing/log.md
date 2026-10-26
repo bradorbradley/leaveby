@@ -2,6 +2,17 @@
 
 Newest first. Every ~3 hours a scheduled check-in picks the next most useful step, ships it, and adds an entry here.
 
+## 2026-10-26 (04:00 check-in)
+- **5 more airport guides (now 57):** SMF, OAK, SNA, RSW and CLE, with 17–27 sources each.
+  - Busiest hours come from TSA's hourly counts for Sep 13–19, 2026, since none of the five publishes peak times.
+  - SMF: the terminals aren't connected after security.
+  - OAK: BART start times; CLEAR is in Terminal 2 only.
+  - SNA: the 10pm–7am departure curfew (8am Sunday), checked against Newport Beach city documents; CLEAR is only at Terminal B.
+  - RSW: three concourses not connected airside, a temporary Concourse C checkpoint, and the winter peak (1.52M passengers in March vs 0.55M in September).
+  - CLE: checkpoint hours, the expanded Central checkpoint with Touchless ID, and the RTA Red Line.
+  - Removed two items that would go stale: RSW's proposed parking rates, which I couldn't confirm were approved, and CLE's live "lot full" status. Nearby links work (OAK → SFO, SJC). No production runtime errors in 48h.
+- **Next:** more data content (TSA hourly by airport could make a "best time of day to fly" page); refresh holiday pages when the 2026 forecasts publish; PostHog when the key arrives.
+
 ## 2026-10-26 (01:00 check-in)
 - **Data-drop post pack (4 posts, 2 concepts x 2 hooks)** from TSA's daily numbers, the same data as `/busiest-travel-days`:
   - `three-million`: only 8 days in history topped 3M, every one a Friday or Sunday. The record is 3,134,613 on the Sunday after Thanksgiving, and this year that Sunday is Nov 29.

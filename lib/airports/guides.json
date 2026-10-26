@@ -1357,6 +1357,229 @@
    }
   ]
  },
+ "CLE": {
+  "code": "CLE",
+  "name": "Cleveland Hopkins International Airport",
+  "city": "Cleveland",
+  "state": "OH",
+  "checkedOn": "2026-10-26",
+  "officialArrivalAdvice": {
+   "domestic": "CLE recommends arriving no later than 2 hours before a domestic flight",
+   "international": "CLE recommends arriving no later than 3 hours before an international flight",
+   "source": "https://www.clevelandairport.com/airport/tsa-security"
+  },
+  "terminals": [
+   {
+    "id": "Main",
+    "name": "Main Terminal (Concourses A, B and C)",
+    "airlines": [
+     "Southwest Airlines",
+     "United Airlines",
+     "American Airlines",
+     "Delta Air Lines",
+     "Frontier Airlines",
+     "Avelo Airlines",
+     "Alaska Airlines",
+     "JetBlue",
+     "Air Canada",
+     "Aer Lingus",
+     "Sun Country Airlines"
+    ],
+    "checkpoints": [
+     {
+      "notes": "CLE lists hours of 3:45am-7:00pm. CLE's May 2026 travel guide says PreCheck lanes are at all three checkpoints. CLE's security page and CLEAR's site list CLEAR only at Central and South. North handled about a quarter of screenings in TSA's counts for Sep 13-19, 2026.",
+      "precheck": true,
+      "clear": null,
+      "name": "North Checkpoint"
+     },
+     {
+      "notes": "CLE lists hours of 3:45am-10:00pm, the latest of the three. Expanded from two to four lanes, with over 300 feet of queue space (finished May 2026). CLE says CLEAR here is for travelers with TSA PreCheck. CLEAR's site lists CLEAR+ 4am-8pm, on the Departures level between Doors 3 and 4. TSA PreCheck Touchless ID has a dedicated lane here. It was the busiest checkpoint in TSA's counts, with about 45% of screenings.",
+      "precheck": true,
+      "clear": true,
+      "name": "Central Checkpoint"
+     },
+     {
+      "notes": "CLE lists hours of 3:15am-7:45pm, the earliest opening of the three. CLE says CLEAR here is for travelers without TSA PreCheck. CLEAR's site lists CLEAR+ 4am-7pm.",
+      "precheck": true,
+      "clear": true,
+      "name": "South Checkpoint"
+     }
+    ],
+    "notes": [
+     "Concourse A: Frontier and Avelo. Concourse B: Southwest and Delta. Concourse C: United, American, Alaska, JetBlue, Air Canada and Aer Lingus.",
+     "Southwest lists its CLE gates as Concourse B, Gates 7-11",
+     "Concourse D is closed",
+     "Departing airlines are marked on overhead signs on the upper (Departures) level",
+     "Air Canada does not offer online check-in for departures from CLE; check in at the counter"
+    ]
+   }
+  ],
+  "connectedAirside": true,
+  "betweenTerminals": "Single terminal. All three checkpoints (North, Central and South) connect to all departure gates, and you can walk between Concourses A, B and C after security.",
+  "securityWaits": {
+   "summary": "CLE shows live TSA wait times for the North, Central and South checkpoints on its homepage. It does not publish typical peak times. In TSA's hourly screening counts for Sep 13-19, 2026, CLE was busiest from 4am to 7am, peaking 5-6am. Traffic stayed fairly steady from 7am to about 6pm, with small rises around 9-10am and 2-4pm, and was light after 7pm. Friday, Thursday, Monday and Sunday were the busiest days that week; Tuesday and Saturday were the quietest.",
+   "busiestTimes": [
+    "4:00-7:00am (peak 5:00-6:00am)",
+    "9:00-10:00am",
+    "2:00-4:00pm",
+    "Fridays, Thursdays, Mondays and Sundays (TSA counts, week of Sep 13, 2026)"
+   ],
+   "source": "https://www.tsa.gov/sites/default/files/foia-readingroom/tsa-throughput-data-to-september-13-2026-to-september-19-2026.pdf"
+  },
+  "precheckNotes": "CLE says TSA PreCheck lanes are at the Central, North and South checkpoints (May 2026). The Central Checkpoint was expanded from two to four lanes in May 2026 and has the PreCheck Touchless ID lane. CLEAR at Central is for PreCheck members; CLEAR for travelers without PreCheck is at South.",
+  "clearAvailable": true,
+  "touchlessId": "TSA PreCheck Touchless ID has been available at the Central Security Checkpoint since May 19, 2026, in a dedicated lane, for PreCheck members flying Alaska, American, Delta, Southwest and United. Opt in through your airline's app or profile with your Known Traveler Number and passport details; a Touchless ID indicator then shows on your mobile boarding pass. Carry your physical ID in case an officer asks for it.",
+  "gettingThere": {
+   "rideshare": "Uber and Lyft pick up and drop off on either the upper (Departures) or lower (Arrivals) roadway. Taxi pickup is at the south end of Baggage Claim by carousel 11. Drivers should not wait on the lower level; use the free cell phone lot off State Route 237 South, or the Smart Garage, which is free for up to 30 minutes.",
+   "transit": "The RTA Red Line station is on the lower level of the main terminal. Use the elevators or escalators in the center of the ticketing and baggage claim levels. Trains run every 15 minutes for most of the day and reach Tower City downtown in under 30 minutes. RTA's fare is $2.50 per ride or $5 for an all-day pass. Station machines take credit and debit cards, and mobile tickets must be scanned at the validator.",
+   "driving": "Smart Garage: $26/day or $7/hour, joined to the terminal by a skywalk on level 3 and a walkway on level 1; reservations open 24 hours ahead. Orange Lot: $21/day, connected to the garage by skywalk. Blue Lot (covered, north of the terminal): $24/day. Premium Reserved Red Lot: $29/day, reservation only. Brown Lot (4960 Rocky River Drive): $15/day or $13 online, with a shuttle every 15 minutes. Curbside Valet: $37/day, on the upper roadway by Door 1. All lots take credit cards only."
+  },
+  "construction2026": [
+   "CLEvolution, CLE's modernization program, began construction in July 2026 with the Gold Lot, about 1,600 new parking spaces, due to open in spring 2027. CLE says to follow its social media for construction changes to parking, roadways or airport access.",
+   "Planned next: an eight-level garage with about 6,000 spaces, a ground transportation center and a relocated RTA Red Line station. NEOtrans reports the ground transportation center is due by 2029, and a new terminal and access roads could follow as early as 2032. This research found no current curb, checkpoint or Red Line closures from this work."
+  ],
+  "bagDrop": "Southwest: check bags at least 45 minutes before a domestic flight (60 minutes for international); check in at least 30 minutes before a domestic flight; be at the gate 10 minutes before departure. Delta: bags 45 minutes before domestic departure, 30 minutes without bags; Delta lists no CLE exception. American and United: check in and check bags 45 minutes before domestic departure. Alaska: 50 minutes for domestic flights, with or without bags (AP, May 2025).",
+  "tips": [
+   "Any checkpoint gets you to every gate. North closes at 7pm and South at 7:45pm; after that, use Central, open until 10pm.",
+   "Early morning is the busiest time. In TSA's September 2026 counts, 4-7am was the peak, especially 5-6am. South opens first, at 3:15am.",
+   "PreCheck members on Alaska, American, Delta, Southwest or United can use the Touchless ID lane at the Central Checkpoint after opting in with their airline",
+   "The RTA Red Line stops under the terminal and reaches downtown in under 30 minutes for $2.50",
+   "The Blue and Red lots can fill up. Check parking status on clevelandairport.com, or reserve the Smart Garage or Brown Lot online.",
+   "Flying Air Canada? CLE says it has no online check-in for CLE departures, so allow time at the counter"
+  ],
+  "faq": [
+   {
+    "q": "How early should I get to Cleveland Hopkins airport (CLE)?",
+    "a": "CLE recommends arriving no later than 2 hours before a domestic flight and 3 hours before an international flight. Early mornings, especially 5-6am, are the busiest time at security."
+   },
+   {
+    "q": "Which security checkpoint should I use at CLE?",
+    "a": "Any of them. All three checkpoints connect to all gates. Hours: South 3:15am-7:45pm, North 3:45am-7:00pm, Central 3:45am-10:00pm."
+   },
+   {
+    "q": "Can I take the RTA Red Line to CLE?",
+    "a": "Yes. The Red Line station is on the lower level of the main terminal. Trains run every 15 minutes most of the day, take under 30 minutes to Tower City, and cost $2.50."
+   },
+   {
+    "q": "Does CLE have TSA PreCheck, CLEAR and Touchless ID?",
+    "a": "Yes. CLE lists PreCheck at all three checkpoints. CLEAR is at Central (for PreCheck members) and South. Touchless ID is at the Central Checkpoint for Alaska, American, Delta, Southwest and United."
+   },
+   {
+    "q": "Which concourse is Southwest at CLE?",
+    "a": "Concourse B, Gates 7-11. Delta also uses Concourse B. United and American use Concourse C, and Frontier and Avelo use Concourse A."
+   }
+  ],
+  "sources": [
+   {
+    "title": "CLE - TSA & Security (checkpoint hours, CLEAR, arrival advice)",
+    "url": "https://www.clevelandairport.com/airport/tsa-security"
+   },
+   {
+    "title": "CLE - Airlines (concourse by airline)",
+    "url": "https://www.clevelandairport.com/flight-info/airlines"
+   },
+   {
+    "title": "CLE - Homepage (live checkpoint wait times, parking status)",
+    "url": "https://www.clevelandairport.com/"
+   },
+   {
+    "title": "CLE - Get ready for the 100 Days of Summer (PreCheck and CLEAR lanes, cell phone lot; May 2026)",
+    "url": "https://www.clevelandairport.com/about-cle/news-press/get-ready-100-days-summer-what-travelers-need-know-cle"
+   },
+   {
+    "title": "CLE - Central Security Checkpoint expansion complete (May 2026)",
+    "url": "https://www.clevelandairport.com/about-cle/news-press/exciting-news-cleveland-hopkins-central-security-checkpoint-expansion-project"
+   },
+   {
+    "title": "CLE - Revamped Central Checkpoint ribbon cutting (May 19, 2026)",
+    "url": "https://www.clevelandairport.com/about-cle/news-press/cle-celebrates-revamped-central-checkpoint-ribbon-cutting"
+   },
+   {
+    "title": "CLE - Security checkpoints renamed; all checkpoints connect to all gates (Jun 28, 2017)",
+    "url": "https://www.clevelandairport.com/news-press/security-checkpoints-renamed-cle"
+   },
+   {
+    "title": "CLE - Check-in options",
+    "url": "https://www.clevelandairport.com/airport/check-options"
+   },
+   {
+    "title": "CLE - Pick up and drop off",
+    "url": "https://www.clevelandairport.com/parking-transportation/pick-drop"
+   },
+   {
+    "title": "CLE - Taxis and rideshares",
+    "url": "https://www.clevelandairport.com/parking-transportation/ground-transportation/taxis-ride-shares"
+   },
+   {
+    "title": "CLE - Public transportation (RTA Red Line)",
+    "url": "https://www.clevelandairport.com/parking-transportation/ground-transportation/public-transportation"
+   },
+   {
+    "title": "CLE - Parking map and locations (rates)",
+    "url": "https://www.clevelandairport.com/parking-transportation/parking-map-locations"
+   },
+   {
+    "title": "CLEvolution - Projects and progress",
+    "url": "https://itsaclevolution.com/progress?hsLang=en"
+   },
+   {
+    "title": "CLEvolution - Gold Lot groundbreaking (Jul 1, 2026)",
+    "url": "https://itsaclevolution.com/article/clevolution-officially-begins-with-gold-lot-groundbreaking-gold-lot-marks-first-major-construction-milestone-of-phase-1-clevolution?hsLang=en"
+   },
+   {
+    "title": "CLE Connection: CLEvolution newsletter, Issue #3 (Sep 2026)",
+    "url": "https://itsaclevolution.com/hubfs/CAS_CLEConnectionCLEvolution_Issue03_September2026.pdf?hsLang=en"
+   },
+   {
+    "title": "NEOtrans - Hopkins Airport full masterplan released (Oct 13, 2026)",
+    "url": "https://neo-trans.blog/2026/10/13/hopkins-airport-full-masterplan-released/"
+   },
+   {
+    "title": "Cleveland 19 - Ribbon cutting for upgraded Hopkins checkpoint (May 19, 2026)",
+    "url": "https://www.cleveland19.com/2026/05/19/ribbon-cutting-upgraded-hopkins-airport-checkpoint-tsa-aims-double-throughput/"
+   },
+   {
+    "title": "TSA - PreCheck Touchless ID now available at Cleveland Hopkins (May 19, 2026)",
+    "url": "https://www.tsa.gov/news/press/releases/2026/05/19/tsa-precheck-touchless-id-now-available-cleveland-hopkins"
+   },
+   {
+    "title": "CLEAR - Cleveland Hopkins CLEAR locations and hours",
+    "url": "https://www.clearme.com/all-locations/cleveland-hopkins-international-airport"
+   },
+   {
+    "title": "RTA - Red Line",
+    "url": "https://www.riderta.com/routes/redline"
+   },
+   {
+    "title": "RTA - Fares",
+    "url": "https://www.riderta.com/fares"
+   },
+   {
+    "title": "Wikipedia - Cleveland Hopkins International Airport",
+    "url": "https://en.wikipedia.org/wiki/Cleveland_Hopkins_International_Airport"
+   },
+   {
+    "title": "TSA throughput data, September 13-19, 2026",
+    "url": "https://www.tsa.gov/sites/default/files/foia-readingroom/tsa-throughput-data-to-september-13-2026-to-september-19-2026.pdf"
+   },
+   {
+    "title": "Southwest - Airport information (CLE gates and counter hours)",
+    "url": "https://www.southwest.com/airport-information/"
+   },
+   {
+    "title": "Southwest - When to arrive for your flight (check-in and bag deadlines)",
+    "url": "https://support.southwest.com/helpcenter/article/airport-arrival-recommendation"
+   },
+   {
+    "title": "Delta - Check-In Times at U.S. Airports",
+    "url": "https://www.delta.com/us/en/check-in-security/check-in-time-requirements/domestic-check-in"
+   },
+   {
+    "title": "AP via MyNorthwest - United narrows check-in window; airline comparison (May 27, 2025)",
+    "url": "https://mynorthwest.com/lifestyle/united-is-narrowing-its-check-in-window-for-us-flights-heres-how-it-compares-to-other-airlines/4092751"
+   }
+  ]
+ },
  "CLT": {
   "code": "CLT",
   "name": "Charlotte Douglas International Airport",
@@ -6967,6 +7190,201 @@
    }
   ]
  },
+ "OAK": {
+  "code": "OAK",
+  "name": "Oakland San Francisco Bay Airport",
+  "city": "Oakland",
+  "state": "CA",
+  "checkedOn": "2026-10-26",
+  "officialArrivalAdvice": {
+   "domestic": "OAK says it always recommends arriving at least 2 hours before a domestic flight. (Its FAQ, in a section on wheelchair help, says at least 90 minutes.)",
+   "international": "At least 3 hours before an international flight (OAK's FAQ, in its wheelchair section, says at least 120 minutes)",
+   "source": "https://www.iflyoak.com/press_release/oak-is-turning-up-the-fun-for-busy-december-holidays/"
+  },
+  "terminals": [
+   {
+    "id": "T1",
+    "name": "Terminal 1",
+    "airlines": [
+     "Alaska",
+     "Delta",
+     "Frontier",
+     "Hawaiian",
+     "Volaris",
+     "Viva Aerobus",
+     "Advanced Air",
+     "Southwest (some flights)"
+    ],
+    "checkpoints": [
+     {
+      "notes": "TSA's screening counts list it as TERM1; it handled about 27% of OAK's screenings in the week of Sep 13, 2026. OAK does not publish checkpoint hours; in TSA's counts, screening started in the 3am hour. Upgraded Points (Aug 2026) says both checkpoints have PreCheck lanes. CLEAR's site lists CLEAR only in Terminal 2.",
+      "precheck": true,
+      "clear": false,
+      "name": "Terminal 1 checkpoint"
+     }
+    ],
+    "notes": [
+     "OAK says Terminal 1 serves all airlines, including Southwest",
+     "International flights that are not pre-cleared are processed in Terminal 1",
+     "The BART station is across from the Terminal 1 baggage claim",
+     "JSX flies from a separate facility, not the main terminals"
+    ]
+   },
+   {
+    "id": "T2",
+    "name": "Terminal 2",
+    "airlines": [
+     "Southwest"
+    ],
+    "checkpoints": [
+     {
+      "notes": "TSA's screening counts list it as TERM2; it handled about 73% of OAK's screenings in the week of Sep 13, 2026. CLEAR's site lists CLEAR to the left of the checkpoint entrance: 4:15am-8pm Sunday, Thursday and Friday, and 4:15am-7:30pm Monday-Wednesday and Saturday. CLEAR eGates opened here in January 2026. CLEAR's page lists PreCheck hours here, but gives two different sets.",
+      "precheck": true,
+      "clear": true,
+      "name": "Terminal 2 checkpoint"
+     }
+    ],
+    "notes": [
+     "OAK says Terminal 2 is Southwest only",
+     "Curbside wheelchairs are available only at Southwest in Terminal 2",
+     "CLEAR also offers TSA PreCheck enrollment in Terminal 2"
+    ]
+   }
+  ],
+  "connectedAirside": true,
+  "betweenTerminals": "Terminals 1 and 2 are connected after security, through a connecting area between the two terminals. Before security, you can walk between the two buildings on a walkway just outside them (Upgraded Points). The BART station is a short walk from both terminals.",
+  "securityWaits": {
+   "summary": "OAK does not publish typical peak times. In TSA's hourly screening counts for Sep 13-19, 2026, OAK was busiest from 5am to 1pm, with peaks at 5-6am and 11am-noon. Traffic stayed moderate through the afternoon and was much lighter after 7pm. Friday and Thursday were the busiest days that week, followed by Sunday and Monday; Tuesday and Saturday were the quietest.",
+   "busiestTimes": [
+    "5:00am-1:00pm (peaks 5:00-6:00am and 11:00am-12:00pm)",
+    "Fridays and Thursdays, then Sundays and Mondays (TSA counts, week of Sep 13, 2026)"
+   ],
+   "source": "https://www.tsa.gov/sites/default/files/foia-readingroom/tsa-throughput-data-to-september-13-2026-to-september-19-2026.pdf"
+  },
+  "precheckNotes": "OAK does not list PreCheck lanes on its own site. Upgraded Points (Aug 2026) says both checkpoints have dedicated PreCheck lanes, with hours that vary. CLEAR lists PreCheck hours at Terminal 2 but gives two different sets. Since January 2026, CLEAR offers PreCheck enrollment and renewal in Terminal 2.",
+  "clearAvailable": true,
+  "touchlessId": "Southwest lists OAK among its TSA PreCheck Touchless ID airports. You need a Rapid Rewards account, PreCheck with a valid KTN, a valid passport, and a mobile boarding pass, and you must be 18 or older. This research did not confirm which other airlines offer it at OAK.",
+  "gettingThere": {
+   "rideshare": "Lyft, Uber and Wingz operate at OAK. Pickup is on the 3rd Curb, Sections 3C2-3C9. For drop-off, OAK's directions say to use the right lanes for Terminal 1 and the left lanes for Terminal 2. Prolonged stopping at the curb is not allowed.",
+   "transit": "BART's OAK station is across the street from the terminals. Trains run to Coliseum station in about 8 minutes, then connect to the rest of BART. Trains leave about every 6 minutes from 5am on weekdays, 6am on Saturdays and 8am on Sundays, and every 20 minutes from 11pm to midnight. Fares depend on distance; fare gates take Clipper and contactless bank cards. AC Transit Line 73 links OAK and Coliseum BART every 15 minutes, about 4:56am-12:06am, and late-night Line 805 runs hourly, about 12:35am-4:30am.",
+   "driving": "From I-880 in either direction, exit at 98th Avenue and follow it to the airport. Daily maximums (since July 1, 2025): Premier $40 (in front of the terminals; gives a security checkpoint fast pass on entry), Hourly $36, Daily $26 (5-8 minute walk) and Economy $18 (free shuttle every 15-20 minutes, on-demand 2-5am). Reserve at least 2 hours ahead to guarantee entry when lots sell out. The Park & Call lot is free for up to 30 minutes."
+  },
+  "construction2026": [
+   "Public restroom renovations are in progress, with completion expected by June 2028. No other construction affecting departures was found."
+  ],
+  "bagDrop": "Southwest: check bags at least 45 minutes before a domestic flight's scheduled departure (60 minutes for international), and check in at least 30 minutes before a domestic flight. Alaska: check in at least 50 minutes before a domestic flight (AP, May 2025). Delta: bags 45 minutes before domestic departure, check-in 30 minutes without bags.",
+  "tips": [
+   "Southwest uses Terminal 2, and some Southwest flights use Terminal 1. The terminals connect after security, so you can walk to a gate in the other terminal.",
+   "BART service starts at 8am on Sundays and 6am on Saturdays. For an early weekend flight, plan another way to get there.",
+   "Reserve parking at least 2 hours ahead. A reservation guarantees entry even when drive-up parking is sold out.",
+   "CLEAR is only in Terminal 2, and only until about 7:30-8pm",
+   "In TSA's counts for mid-September 2026, security was busiest from 5am to 1pm, and Thursdays and Fridays were the busiest days"
+  ],
+  "faq": [
+   {
+    "q": "How early should I get to Oakland airport (OAK)?",
+    "a": "OAK recommends at least 2 hours before a domestic flight and 3 hours before an international flight. Security is busiest from 5am to 1pm, and Thursdays and Fridays are the busiest days."
+   },
+   {
+    "q": "Which terminal is Southwest at OAK?",
+    "a": "Terminal 2 is Southwest only, and Terminal 1 also serves Southwest. The terminals are connected after security, so you can reach any gate."
+   },
+   {
+    "q": "Are OAK's Terminal 1 and Terminal 2 connected?",
+    "a": "Yes. They connect after security, so you can walk between the gate areas without screening again."
+   },
+   {
+    "q": "Can I take BART to OAK?",
+    "a": "Yes. BART's OAK station is across the street from the terminals, about 8 minutes from Coliseum station. Trains run about every 6 minutes, starting at 5am on weekdays, 6am on Saturdays and 8am on Sundays."
+   },
+   {
+    "q": "Does OAK have TSA PreCheck and CLEAR?",
+    "a": "Yes. CLEAR is in Terminal 2, from 4:15am until 7:30pm or 8pm depending on the day. PreCheck lanes are reported at both checkpoints, and CLEAR offers PreCheck enrollment in Terminal 2."
+   }
+  ],
+  "sources": [
+   {
+    "title": "OAK - December holidays release, arrival advice and post-security connector (Dec 19, 2025)",
+    "url": "https://www.iflyoak.com/press_release/oak-is-turning-up-the-fun-for-busy-december-holidays/"
+   },
+   {
+    "title": "OAK - Frequently Asked Questions (BART, curb rules, arrival times)",
+    "url": "https://www.iflyoak.com/business/resources-faq/"
+   },
+   {
+    "title": "OAK - Accessibility (airlines, Terminal 2 Southwest curbside)",
+    "url": "https://www.iflyoak.com/visit/accessibility/"
+   },
+   {
+    "title": "OAK - Parking FAQ (terminal use, reservations, shuttles)",
+    "url": "https://www.iflyoak.com/park/frequently-asked-questions/"
+   },
+   {
+    "title": "OAK - Parking Information (rates effective July 1, 2025)",
+    "url": "https://www.iflyoak.com/park/book-parking/"
+   },
+   {
+    "title": "OAK - Rideshare",
+    "url": "https://www.iflyoak.com/ground-transportation/rideshare/"
+   },
+   {
+    "title": "OAK - Driving Directions",
+    "url": "https://www.iflyoak.com/ground-transportation/driving-directions-getting-to-oak/"
+   },
+   {
+    "title": "OAK - Public Transportation (BART, AC Transit)",
+    "url": "https://www.iflyoak.com/ground-transportation/public-transportation/"
+   },
+   {
+    "title": "OAK - BART Trains at OAK",
+    "url": "https://www.iflyoak.com/ground-transportation/public-transportation/bart-trains-at-oak/"
+   },
+   {
+    "title": "BART - Getting to Oakland International Airport",
+    "url": "https://www.bart.gov/guide/airport/inbound_oak"
+   },
+   {
+    "title": "OAK - CLEAR launches eGates and TSA PreCheck enrollment at OAK (Jan 13, 2026)",
+    "url": "https://www.iflyoak.com/press_release/clear-launches-biometric-egates-and-tsa-precheck-enrollment-at-oak/"
+   },
+   {
+    "title": "CLEAR - Oakland airport locations & hours",
+    "url": "https://www.clearme.com/all-locations/oakland-international-airport"
+   },
+   {
+    "title": "OAK - SFO and OAK resolve trademark lawsuit; name stays Oakland San Francisco Bay Airport (Apr 28, 2026)",
+    "url": "https://www.iflyoak.com/press_release/oak_sfo_settlement/"
+   },
+   {
+    "title": "Upgraded Points - Oakland San Francisco Bay Airport guide (updated Aug 20, 2026)",
+    "url": "https://upgradedpoints.com/travel/airports/oakland-san-francisco-bay-oak-airport/"
+   },
+   {
+    "title": "Wikipedia - Oakland San Francisco Bay Airport",
+    "url": "https://en.wikipedia.org/wiki/Oakland_San_Francisco_Bay_Airport"
+   },
+   {
+    "title": "Southwest - TSA PreCheck Touchless ID (participating airports)",
+    "url": "https://www.southwest.com/tsa-precheck-touchless-id/"
+   },
+   {
+    "title": "Southwest - When to arrive for your flight (check-in and bag deadlines)",
+    "url": "https://support.southwest.com/helpcenter/article/airport-arrival-recommendation"
+   },
+   {
+    "title": "Delta - Check-In Times at U.S. Airports",
+    "url": "https://www.delta.com/us/en/check-in-security/check-in-time-requirements/domestic-check-in"
+   },
+   {
+    "title": "AP via MyNorthwest - United narrows check-in window; airline comparison (May 27, 2025)",
+    "url": "https://mynorthwest.com/lifestyle/united-is-narrowing-its-check-in-window-for-us-flights-heres-how-it-compares-to-other-airlines/4092751"
+   },
+   {
+    "title": "TSA throughput data, September 13-19, 2026",
+    "url": "https://www.tsa.gov/sites/default/files/foia-readingroom/tsa-throughput-data-to-september-13-2026-to-september-19-2026.pdf"
+   }
+  ]
+ },
  "ORD": {
   "code": "ORD",
   "name": "Chicago O'Hare International Airport",
@@ -8237,6 +8655,227 @@
    {
     "title": "Southwest - When to arrive for your flight (check-in and bag deadlines)",
     "url": "https://support.southwest.com/helpcenter/article/airport-arrival-recommendation"
+   },
+   {
+    "title": "AP via MyNorthwest - United narrows check-in window; airline comparison (May 27, 2025)",
+    "url": "https://mynorthwest.com/lifestyle/united-is-narrowing-its-check-in-window-for-us-flights-heres-how-it-compares-to-other-airlines/4092751"
+   }
+  ]
+ },
+ "RSW": {
+  "code": "RSW",
+  "name": "Southwest Florida International Airport",
+  "city": "Fort Myers",
+  "state": "FL",
+  "checkedOn": "2026-10-26",
+  "officialArrivalAdvice": {
+   "domestic": "RSW advised arriving at least 2 hours before a domestic flight (RSW post quoted by The News-Press, March 2026). It said lines are long at certain times of day in the busy season and vary by concourse.",
+   "international": "RSW advised arriving at least 3 hours before an international flight (RSW post quoted by The News-Press, March 2026)",
+   "source": "https://travel.yahoo.com/advice/travel-tips/articles/tsa-wait-times-rsw-airport-160431325.html"
+  },
+  "terminals": [
+   {
+    "id": "B",
+    "name": "Concourse B",
+    "airlines": [
+     "Southwest Airlines",
+     "Allegiant Air",
+     "Frontier Airlines",
+     "Sun Country Airlines",
+     "Avelo Airlines",
+     "Alaska Airlines",
+     "Air Canada",
+     "Porter Airlines",
+     "Discover Airlines"
+    ],
+    "checkpoints": [
+     {
+      "notes": "Hours are not published on a page this research could open. TSA's screening counts list two screening points for this concourse, Checkpoint B Lower and Checkpoint B Upper. In mid-September 2026, B Lower was in use from about 4am to 9pm.",
+      "precheck": null,
+      "clear": false,
+      "name": "Concourse B checkpoint"
+     }
+    ],
+    "notes": [
+     "Southwest lists its RSW gates as B2, B4, B6 and B8",
+     "Customs and immigration are on the lower level of Concourse B",
+     "Southwest's ticket counter opens 120 minutes before the first departing flight"
+    ]
+   },
+   {
+    "id": "C",
+    "name": "Concourse C",
+    "airlines": [
+     "Delta Air Lines",
+     "United Airlines",
+     "WestJet"
+    ],
+    "checkpoints": [
+     {
+      "notes": "A temporary checkpoint for Concourse C opened in early February 2026 during terminal expansion work. It opened first for TSA PreCheck passengers, then for all Concourse C passengers. Hours are not published on a page this research could open. In mid-September 2026 TSA counts, it was in use from about 4am to 6pm, with almost no screening after 6pm.",
+      "precheck": true,
+      "clear": false,
+      "name": "Concourse C temporary checkpoint"
+     }
+    ],
+    "notes": [
+     "Delta was RSW's largest airline by passengers in March 2026",
+     "Follow the signs for the temporary Concourse C checkpoint; its entrance changed when it opened in February 2026"
+    ]
+   },
+   {
+    "id": "D",
+    "name": "Concourse D",
+    "airlines": [
+     "American Airlines",
+     "JetBlue",
+     "Breeze Airways"
+    ],
+    "checkpoints": [
+     {
+      "notes": "Hours are not published on a page this research could open. TSA's screening counts call it Checkpoint D Lower. In mid-September 2026 it was in use from about 4am to 8pm.",
+      "precheck": null,
+      "clear": false,
+      "name": "Concourse D checkpoint"
+     }
+    ],
+    "notes": [
+     "JetBlue lists Concourse D for its RSW flights, with ticket counter hours of 4am-10pm"
+    ]
+   }
+  ],
+  "connectedAirside": false,
+  "betweenTerminals": "RSW has one terminal with three concourses (B, C and D). Each has its own checkpoint, and the concourses are not connected after security. Use the checkpoint for your airline's concourse. A single consolidated checkpoint is planned as part of the terminal expansion.",
+  "securityWaits": {
+   "summary": "This research found no typical peak times published by RSW. In TSA's hourly screening counts for Sep 13-19, 2026 (mid-September, RSW's quietest season), RSW was busiest from 9am to noon, peaking 10-11am. There was a smaller early rise from 4am to 7am, peaking 5-6am. Traffic held steady until about 5pm, dropped after that and was very light after 8pm. Thursday, Friday, Sunday and Monday were the busiest days that week; Tuesday was the quietest. Winter and spring are much busier. The Lee County Port Authority's monthly counts show March as the peak month: 1,521,149 passengers in March 2026, compared with 550,259 in September 2025.",
+   "busiestTimes": [
+    "9:00am-noon (peak 10:00-11:00am)",
+    "4:00-7:00am (peak 5:00-6:00am)",
+    "Thursdays, Fridays, Sundays and Mondays (TSA counts, week of Sep 13, 2026)",
+    "January to April, peaking in March (Lee County Port Authority monthly passenger counts)"
+   ],
+   "source": "https://www.tsa.gov/sites/default/files/foia-readingroom/tsa-throughput-data-to-september-13-2026-to-september-19-2026.pdf"
+  },
+  "precheckNotes": "TSA PreCheck is available at the temporary Concourse C checkpoint, which opened first for PreCheck passengers in February 2026. This research could not confirm current PreCheck lanes or hours at the Concourse B and D checkpoints.",
+  "clearAvailable": false,
+  "touchlessId": "TSA says Touchless ID is at 65 airports but does not list them in the text of its page. RSW was not on a March 2026 list of Touchless ID airports, so this research could not confirm it at RSW.",
+  "gettingThere": {
+   "rideshare": "Uber drops off at the departures curb for your airline. Uber pickup is on the Arrival level, outside Doors 1-6, one level below baggage claim; the app shows your exact door.",
+   "transit": "LeeTran Route 50 serves the airport. This research could not open LeeTran's current timetable, so check times and fares with LeeTran before you go.",
+   "driving": "The Terminal Access Road connects directly to I-75 at Exit 128. The Short-term Parking Garage is across from the terminal, and the Long-term Parking Lot has a shuttle to the terminal. Since March 10, 2026, the only crosswalks between the terminal and the garage, rental cars and ground transportation (including the long-term lot shuttle) are Crosswalk 2 on the upper level and Crosswalks 2 and 6 on the lower level. The Port Authority says this adds a little time and suggests dropping passengers at the curb before parking."
+  },
+  "construction2026": [
+   "A temporary TSA checkpoint for Concourse C (Delta, United, WestJet) has been in use since early February 2026 while the terminal is rebuilt. Concourses B and D were not affected.",
+   "Since March 10, 2026, roadway work has limited the walking routes between the terminal and the Short-term Garage, rental cars and ground transportation to Crosswalk 2 (upper level) and Crosswalks 2 and 6 (lower level). Allow extra time if you park in the garage or ride the long-term lot shuttle.",
+   "The expansion will combine the three checkpoints into one and add Concourse E (14 gates), targeted for completion by the end of 2027. The Phase 1 construction contract was extended to March 31, 2029."
+  ],
+  "bagDrop": "Southwest: check bags at least 45 minutes before a domestic flight (60 minutes for international); check in at least 30 minutes before a domestic flight. Southwest suggests arriving 120 minutes before departure at RSW. Delta: bags 45 minutes before domestic departure, 30 minutes without bags, and no more than 6 hours ahead. American and United: check in and check bags 45 minutes before domestic departure (AP, May 2025). JetBlue: bags 45 minutes before departure.",
+  "tips": [
+   "Know your concourse before you go. Southwest, Allegiant, Frontier and Sun Country use Concourse B; Delta, United and WestJet use Concourse C; American, JetBlue and Breeze use Concourse D.",
+   "The concourses are not connected after security, so use the checkpoint for your airline's concourse",
+   "Plan more time from January to April. March is RSW's busiest month, with almost three times September's traffic.",
+   "Flying Delta, United or WestJet? Concourse C passengers use a temporary checkpoint during construction. Follow the signs and allow a few extra minutes.",
+   "Parking in the Short-term Garage? Construction has cut the number of crosswalks, so drop off passengers and bags at the curb first",
+   "In mid-September TSA counts, mid-morning (9am-noon) was busier than the early morning at RSW"
+  ],
+  "faq": [
+   {
+    "q": "How early should I get to Fort Myers airport (RSW)?",
+    "a": "RSW advises at least 2 hours before a domestic flight and 3 hours before an international flight. Allow more time from January to April, when the airport is busiest, and if you park in the garage during construction."
+   },
+   {
+    "q": "Which concourse is my airline at RSW?",
+    "a": "Concourse B: Southwest, Allegiant, Frontier, Sun Country, Avelo, Alaska, Air Canada, Porter and Discover. Concourse C: Delta, United and WestJet. Concourse D: American, JetBlue and Breeze."
+   },
+   {
+    "q": "Are RSW's concourses connected after security?",
+    "a": "No. Each concourse has its own checkpoint, so go through the one for your airline's concourse."
+   },
+   {
+    "q": "When is RSW busiest?",
+    "a": "Winter and spring. March is the peak month (1.52 million passengers in March 2026). In mid-September 2026 TSA counts, the busiest hours were 9am-noon, peaking 10-11am, with a smaller rise at 5-6am."
+   },
+   {
+    "q": "Does RSW have CLEAR?",
+    "a": "CLEAR's list of airport locations does not include RSW. TSA PreCheck is available, including at the temporary Concourse C checkpoint."
+   }
+  ],
+  "sources": [
+   {
+    "title": "The News-Press via Yahoo - TSA wait times at RSW; RSW arrival advice (Mar 10, 2026)",
+    "url": "https://travel.yahoo.com/advice/travel-tips/articles/tsa-wait-times-rsw-airport-160431325.html"
+   },
+   {
+    "title": "The News-Press via Yahoo - TSA wait times at RSW (Mar 9, 2026)",
+    "url": "https://travel.yahoo.com/advice/travel-tips/articles/tsa-wait-time-rsw-airport-174027076.html"
+   },
+   {
+    "title": "Lee County Port Authority - RSW total passengers by month (updated Jul 27, 2026)",
+    "url": "https://www.flylcpa.com/app/uploads/2026/07/Total-Passengers-2026.pdf"
+   },
+   {
+    "title": "Lee County Port Authority - Terminal Expansion Advisory #14: crosswalk changes (Mar 9, 2026)",
+    "url": "https://s3.wasabisys.com/cdn.flylcpa.com/app/uploads/2026/03/09170124/26-05-TEP-2-Advisory-14-Pedestrian-BridgeCrosswalk-Changes.pdf"
+   },
+   {
+    "title": "WINK News - Changes coming for RSW travelers: temporary Concourse C checkpoint (Feb 4, 2026)",
+    "url": "https://www.winknews.com/news/lee/changes-coming-for-rsw-travelers/article_9b114195-a729-4d10-ab3f-57795b142465.html"
+   },
+   {
+    "title": "WINK News - RSW terminal expansion gets new completion date (Mar 24, 2025)",
+    "url": "https://www.winknews.com/news/lee/rsw-terminal-expansion-project-gets-new-completion-date-budget/article_d5282aaa-1cc5-5d2c-9c39-21fe6526aca7.html"
+   },
+   {
+    "title": "WGCU - RSW sets March passenger record (Apr 22, 2026)",
+    "url": "https://news.wgcu.org/text/section/transportation/2026-04-22/southwest-florida-international-airport-made-history-on-march-passenger-numbers"
+   },
+   {
+    "title": "Wikipedia - Southwest Florida International Airport",
+    "url": "https://en.wikipedia.org/wiki/Southwest_Florida_International_Airport"
+   },
+   {
+    "title": "Uber - Get picked up at RSW",
+    "url": "https://www.uber.com/global/en/r/airports/rsw/pickup"
+   },
+   {
+    "title": "Uber - Rides to RSW",
+    "url": "https://www.uber.com/airports/rsw/"
+   },
+   {
+    "title": "CLEAR - Where to use CLEAR (airport list)",
+    "url": "https://www.clearme.com/where-to-use-clear"
+   },
+   {
+    "title": "TSA - TSA PreCheck Touchless ID",
+    "url": "https://www.tsa.gov/touchless-id"
+   },
+   {
+    "title": "The Bulkhead Seat - TSA PreCheck Touchless ID airport list (Mar 16, 2026)",
+    "url": "https://thebulkheadseat.com/?p=33789"
+   },
+   {
+    "title": "TSA throughput data, September 13-19, 2026",
+    "url": "https://www.tsa.gov/sites/default/files/foia-readingroom/tsa-throughput-data-to-september-13-2026-to-september-19-2026.pdf"
+   },
+   {
+    "title": "Southwest - Airport information (RSW gates, counter hours, suggested arrival)",
+    "url": "https://www.southwest.com/airport-information/"
+   },
+   {
+    "title": "Southwest - When to arrive for your flight (check-in and bag deadlines)",
+    "url": "https://support.southwest.com/helpcenter/article/airport-arrival-recommendation"
+   },
+   {
+    "title": "Delta - Check-In Times at U.S. Airports",
+    "url": "https://www.delta.com/us/en/check-in-security/check-in-time-requirements/domestic-check-in"
+   },
+   {
+    "title": "JetBlue - Fort Myers airport information",
+    "url": "https://www.jetblue.com/at-the-airport/airport-information/fort-myers-fl"
+   },
+   {
+    "title": "JetBlue - Airport check-in (bag deadlines)",
+    "url": "https://www.jetblue.com/help/checking-in/airport-check-in"
    },
    {
     "title": "AP via MyNorthwest - United narrows check-in window; airline comparison (May 27, 2025)",
@@ -9920,6 +10559,394 @@
    {
     "title": "Delta - Domestic check-in time requirements",
     "url": "https://www.delta.com/us/en/check-in-security/check-in-time-requirements/domestic-check-in"
+   }
+  ]
+ },
+ "SMF": {
+  "code": "SMF",
+  "name": "Sacramento International Airport",
+  "city": "Sacramento",
+  "state": "CA",
+  "checkedOn": "2026-10-26",
+  "officialArrivalAdvice": {
+   "domestic": "SMF says to check with your airline, and gives a rule of thumb of 2.5 hours before a domestic flight. You may be denied check-in if you arrive less than 45 minutes before your flight.",
+   "international": "SMF's rule of thumb is 3 hours before an international flight",
+   "source": "https://flysmf.gov/about/faq"
+  },
+  "terminals": [
+   {
+    "id": "A",
+    "name": "Terminal A",
+    "airlines": [
+     "American Airlines",
+     "Delta",
+     "United Airlines",
+     "Air Canada"
+    ],
+    "checkpoints": [
+     {
+      "notes": "On level 2 of Terminal A. SMF says checkpoints open at 4am daily and close at 12:30am, depending on flight schedules. CLEAR's site lists CLEAR in front of the checkpoint entrance, 4am-10pm Sunday-Friday and 4am-5pm Saturday. CLEAR's page also lists PreCheck here, but gives two different sets of hours.",
+      "precheck": true,
+      "clear": true,
+      "name": "Terminal A checkpoint"
+     }
+    ],
+    "notes": [
+     "Ticket counters are on the ground level",
+     "Terminal A is a separate building from Terminal B and is not connected after security"
+    ]
+   },
+   {
+    "id": "B",
+    "name": "Terminal B (Concourse B)",
+    "airlines": [
+     "Southwest",
+     "Alaska Airlines",
+     "Frontier",
+     "JetBlue",
+     "Aeromexico",
+     "Volaris"
+    ],
+    "checkpoints": [
+     {
+      "notes": "Ride the automated people mover from level 3 of Terminal B to Concourse B, then clear security there. SMF says checkpoints open at 4am daily and close at 12:30am, depending on flight schedules. TSA's screening counts call this checkpoint 'Central B'; it handled about two-thirds of SMF's screenings in the week of Sep 13, 2026. CLEAR's site lists CLEAR on the right side of the AirTrain entrance, 4am-8pm. CLEAR's page also lists PreCheck here, but gives two different sets of hours.",
+      "precheck": true,
+      "clear": true,
+      "name": "Terminal B checkpoint (Concourse B)"
+     }
+    ],
+    "notes": [
+     "Ticket counters are on level 2. Airport shuttles stop at the east entrance of the ground (baggage claim) level.",
+     "A new walkway between Terminal B and Concourse B is under construction and is expected to open in the first quarter of 2027"
+    ]
+   }
+  ],
+  "connectedAirside": false,
+  "betweenTerminals": "Terminals A and B are separate buildings and are not connected after security. Walking takes about 10 minutes through the parking garage (sky bridges from Terminal A level 2 and Terminal B level 3) and is the fastest way. Free shuttles also run between the terminals 24 hours a day; SMF's FAQ says to take the Daily Lot shuttle, which leaves every 10 minutes from the ground transportation curbs. You must clear security again in the other terminal.",
+  "securityWaits": {
+   "summary": "SMF does not publish typical peak times. In TSA's hourly screening counts for Sep 13-19, 2026, SMF was busiest from 4am to 7am, peaking 5-6am. There was a second rise from about 9am to noon, peaking 11am-noon. Traffic was much lighter after 7pm. Friday, Thursday, Sunday and Monday were the busiest days that week; Saturday and Tuesday were the quietest.",
+   "busiestTimes": [
+    "4:00-7:00am (peak 5:00-6:00am)",
+    "9:00am-12:00pm (peak 11:00am-12:00pm)",
+    "Fridays, Thursdays, Sundays and Mondays (TSA counts, week of Sep 13, 2026)"
+   ],
+   "source": "https://www.tsa.gov/sites/default/files/foia-readingroom/tsa-throughput-data-to-september-13-2026-to-september-19-2026.pdf"
+  },
+  "precheckNotes": "CLEAR's SMF page lists TSA PreCheck at both Terminal A and Terminal B, but gives two different sets of hours, so check before you go. SMF says every airline also runs a priority lane at both checkpoints, with its own rules for who can use it.",
+  "clearAvailable": true,
+  "touchlessId": "Southwest lists SMF among its TSA PreCheck Touchless ID airports. You need a Rapid Rewards account, PreCheck with a valid KTN, a valid passport, and a mobile boarding pass, and you must be 18 or older. This research did not confirm which other airlines offer it at SMF.",
+  "gettingThere": {
+   "rideshare": "Uber, Lyft and Wingz operate at SMF. Pickup is at the ground transportation curb, in designated areas shown on SMF's maps. The curb is only for active loading and unloading; vehicles that wait or are left unattended may be ticketed or towed. Drivers waiting to pick up can use the free waiting area.",
+   "transit": "SacRT Route 142 runs between downtown Sacramento and Terminals A and B. SacRT lists it as hourly, about 5:15am-10:33pm daily, for $2.50. SMF says it runs every 20-30 minutes when combined with Yolobus Routes 42A and 42B, which also serve Davis and Woodland.",
+   "driving": "Parking is first-come, first-served, with no reservations. Current daily maximums: Garage 1 $21 (sky bridges to both terminals), Daily Lot $14 (shuttle every 15-20 minutes) and Economy lots $12 (shuttle every 25-30 minutes). SMF says to allow up to 60 minutes from the Economy lots to the terminal. Lots can fill and close without notice. Booths no longer take cash; pay cash at pay-on-foot kiosks. When Garage 2 opens (expected fall 2026), daily rates rise to $28 (garage), $19 (Daily) and $14 (Economy)."
+  },
+  "construction2026": [
+   "Garage 2, with about 5,500 spaces west of Terminal B, is expected to open in the fourth quarter of 2026. Parking rates go up when it opens.",
+   "SMF lists construction of a new Terminal A exit road as starting in the second quarter of 2026, with opening expected in the fourth quarter of 2027. SMF has not published lane closures for it.",
+   "Concourse B expansion (6 more gates) is scheduled to start construction in the fourth quarter of 2026",
+   "A pedestrian walkway between Terminal B and Concourse B is under construction and is expected to open in the first quarter of 2027"
+  ],
+  "bagDrop": "Southwest: check bags at least 45 minutes before a domestic flight's scheduled departure (60 minutes for international), and check in at least 30 minutes before a domestic flight. Delta: bags 45 minutes before domestic departure, check-in 30 minutes without bags. United and American: check in and check bags 45 minutes before most domestic flights. Alaska: check in at least 50 minutes before a domestic flight (AP, May 2025). SMF warns you may be denied check-in less than 45 minutes before departure.",
+  "tips": [
+   "Check your terminal before you leave. Southwest, Alaska, Frontier, JetBlue, Aeromexico and Volaris use Terminal B; American, Delta, United and Air Canada use Terminal A. The terminals are not connected after security.",
+   "In Terminal B, security is on Concourse B, after the people mover ride from level 3. Allow a few extra minutes for the train.",
+   "Security opens at 4am, and 4-7am was the busiest stretch in TSA's counts for mid-September 2026. Arrive early for first-wave flights.",
+   "Parking in the Economy lots? SMF says to allow up to 60 minutes to reach the terminal, and lots can fill and close without notice.",
+   "Parking rates rise when Garage 2 opens, expected in late 2026; the Economy lots go from $12 to $14 a day"
+  ],
+  "faq": [
+   {
+    "q": "How early should I get to Sacramento airport (SMF)?",
+    "a": "SMF says to check with your airline. Its rule of thumb is 2.5 hours before a domestic flight and 3 hours before an international flight. Mornings, especially 4-7am, are the busiest at security."
+   },
+   {
+    "q": "Which terminal is Southwest at SMF?",
+    "a": "Terminal B. Check in on level 2, then take the people mover from level 3 to Concourse B, where the security checkpoint is."
+   },
+   {
+    "q": "Are SMF's Terminal A and Terminal B connected?",
+    "a": "No. They are separate buildings. Walking through the parking garage takes about 10 minutes, or take the Daily Lot shuttle, every 10 minutes. You must go through security again in the other terminal."
+   },
+   {
+    "q": "What time does security open at SMF?",
+    "a": "SMF says TSA checkpoints open at 4am daily and close at 12:30am, depending on flight schedules."
+   },
+   {
+    "q": "Does SMF have TSA PreCheck and CLEAR?",
+    "a": "Yes. CLEAR lists lanes at both terminals: Terminal A 4am-10pm Sunday-Friday and 4am-5pm Saturday, and Terminal B 4am-8pm. CLEAR's page also lists PreCheck at both terminals."
+   }
+  ],
+  "sources": [
+   {
+    "title": "SMF - Frequently Asked Questions (arrival advice, checkpoint hours, terminals, curb rules)",
+    "url": "https://flysmf.gov/about/faq"
+   },
+   {
+    "title": "SMF - Security Information",
+    "url": "https://flysmf.gov/flight-and-travel/security-information"
+   },
+   {
+    "title": "SMF - Airlines (terminal by airline)",
+    "url": "https://flysmf.gov/flight-and-travel/airlines"
+   },
+   {
+    "title": "SMF - Inter-Terminal Directions (PDF)",
+    "url": "https://flysmf.gov/assets/pdf/inter-terminal_directions-_ab_(rev.).pdf"
+   },
+   {
+    "title": "SMF - Parking",
+    "url": "https://flysmf.gov/to-and-from/parking"
+   },
+   {
+    "title": "SMF - Parking rate changes support new garage (Sep 17, 2026)",
+    "url": "https://flysmf.gov/articles/smf-parking-rate-changes-support-new-garage-and-customer-improvements"
+   },
+   {
+    "title": "SMF - SMForward project timelines",
+    "url": "https://flysmf.gov/smforward"
+   },
+   {
+    "title": "SMF - App Based Ride Share",
+    "url": "https://flysmf.gov/to-and-from/app-based-ride-share"
+   },
+   {
+    "title": "SMF - Public Transportation",
+    "url": "https://flysmf.gov/to-and-from/public-transportation"
+   },
+   {
+    "title": "SacRT - Route 142 Airport Express",
+    "url": "https://www.sacrt.com/express-airport-bus-service/"
+   },
+   {
+    "title": "CLEAR - Sacramento International Airport locations & hours",
+    "url": "https://www.clearme.com/all-locations/sacramento-international-airport"
+   },
+   {
+    "title": "Airport Improvement - SMF airside concourse and people mover (Nov 1, 2011)",
+    "url": "https://airportimprovement.com/article/airside-concourse-provides-sacramento-feel-comforts-home/"
+   },
+   {
+    "title": "Chase - A guide to Sacramento International Airport",
+    "url": "https://www.chase.com/personal/credit-cards/education/basics/the-guide-to-sacramento-international-airport"
+   },
+   {
+    "title": "Southwest - TSA PreCheck Touchless ID (participating airports)",
+    "url": "https://www.southwest.com/tsa-precheck-touchless-id/"
+   },
+   {
+    "title": "Southwest - When to arrive for your flight (check-in and bag deadlines)",
+    "url": "https://support.southwest.com/helpcenter/article/airport-arrival-recommendation"
+   },
+   {
+    "title": "Delta - Check-In Times at U.S. Airports",
+    "url": "https://www.delta.com/us/en/check-in-security/check-in-time-requirements/domestic-check-in"
+   },
+   {
+    "title": "AP via MyNorthwest - United narrows check-in window; airline comparison (May 27, 2025)",
+    "url": "https://mynorthwest.com/lifestyle/united-is-narrowing-its-check-in-window-for-us-flights-heres-how-it-compares-to-other-airlines/4092751"
+   },
+   {
+    "title": "TSA throughput data, September 13-19, 2026",
+    "url": "https://www.tsa.gov/sites/default/files/foia-readingroom/tsa-throughput-data-to-september-13-2026-to-september-19-2026.pdf"
+   }
+  ]
+ },
+ "SNA": {
+  "code": "SNA",
+  "name": "John Wayne Airport, Orange County",
+  "city": "Santa Ana",
+  "state": "CA",
+  "checkedOn": "2026-10-26",
+  "officialArrivalAdvice": {
+   "domestic": "Arrive 1.5 to 2 hours before a domestic flight. JWA says early mornings may need extra time because of heavy travel volume.",
+   "international": "Arrive 3 hours before an international flight",
+   "source": "https://www.ocair.com/travelers/services/travel-tips"
+  },
+  "terminals": [
+   {
+    "id": "A",
+    "name": "Terminal A (Thomas F. Riley Terminal)",
+    "airlines": [
+     "American Airlines",
+     "Delta Air Lines",
+     "Air Canada",
+     "Breeze Airways",
+     "WestJet"
+    ],
+    "checkpoints": [
+     {
+      "notes": "TSA's screening counts list it as CKPT A. JWA does not publish checkpoint hours. Any gate can be reached from any checkpoint.",
+      "precheck": null,
+      "clear": false,
+      "name": "Terminal A checkpoint"
+     }
+    ],
+    "notes": [
+     "Closest parking: structures A1 and A2. Baggage claim 1 and 2."
+    ]
+   },
+   {
+    "id": "B",
+    "name": "Terminal B (Thomas F. Riley Terminal)",
+    "airlines": [
+     "United Airlines",
+     "Alaska Airlines"
+    ],
+    "checkpoints": [
+     {
+      "notes": "TSA's screening counts list it as CKPT B. The only CLEAR lane at SNA is here; CLEAR's site lists CLEAR and a PreCheck lane at 5am-7pm. Any gate can be reached from any checkpoint.",
+      "precheck": true,
+      "clear": true,
+      "name": "Terminal B checkpoint"
+     }
+    ],
+    "notes": [
+     "Closest parking: structures B2 and C. Baggage claim 3 and 4."
+    ]
+   },
+   {
+    "id": "C",
+    "name": "Terminal C (Thomas F. Riley Terminal)",
+    "airlines": [
+     "Southwest Airlines",
+     "Allegiant Air",
+     "Frontier Airlines"
+    ],
+    "checkpoints": [
+     {
+      "notes": "TSA's screening counts list it as CKPT C. JWA does not publish checkpoint hours. Any gate can be reached from any checkpoint.",
+      "precheck": null,
+      "clear": false,
+      "name": "Terminal C checkpoint"
+     }
+    ],
+    "notes": [
+     "Skycap curbside check-in for Southwest is at the main entrance to Terminal C. JWA says curbside check-in for other airlines is out of service until further notice.",
+     "Closest parking: structures B2 and C. Baggage claim 5 and 6."
+    ]
+   }
+  ],
+  "connectedAirside": true,
+  "betweenTerminals": "Terminals A, B and C are parts of one building, the Thomas F. Riley Terminal. JWA says any gate can be reached from any security checkpoint. JSX flies from Jay's Air Center, not the main terminal.",
+  "securityWaits": {
+   "summary": "JWA says early mornings may need extra time because of heavy travel volume. Under the airport's curfew, airlines may not schedule departures before 6:45am Monday-Saturday or 7:45am Sunday, and no scheduled commercial departures are allowed from 10pm to 7am (8am Sunday). In TSA's hourly screening counts for Sep 13-19, 2026, SNA was busiest from 5am to 7am, peaking 6-7am. There was a second rise from about 9am to noon, peaking 10-11am. Traffic was much lighter after 6pm. Thursday, Monday, Friday and Sunday were the busiest days that week; Saturday and Tuesday were the quietest.",
+   "busiestTimes": [
+    "5:00-7:00am (peak 6:00-7:00am)",
+    "9:00am-12:00pm (peak 10:00-11:00am)",
+    "Thursdays, Mondays, Fridays and Sundays (TSA counts, week of Sep 13, 2026)"
+   ],
+   "source": "https://www.tsa.gov/sites/default/files/foia-readingroom/tsa-throughput-data-to-september-13-2026-to-september-19-2026.pdf"
+  },
+  "precheckNotes": "JWA's TSA PreCheck page explains the program but does not say which checkpoints have PreCheck lanes. CLEAR's site lists a PreCheck lane at the Terminal B checkpoint, 5am-7pm. This research could not confirm PreCheck lanes or hours at the Terminal A and C checkpoints. JWA is not a Global Entry enrollment center.",
+  "clearAvailable": true,
+  "touchlessId": "Southwest lists SNA among its TSA PreCheck Touchless ID airports. You need a Rapid Rewards account, PreCheck with a valid KTN, a valid passport, and a mobile boarding pass, and you must be 18 or older. This research did not confirm which other airlines offer it at SNA.",
+  "gettingThere": {
+   "rideshare": "Lyft, Uber and Wingz drop off at the Departures (upper) Level curb. Pickup is on the top levels of parking structures A2 and B2, and on the upper level of the Terminal C structure next to ticketing. No waiting is allowed at either curb; the white curb is only for loading and unloading.",
+   "transit": "Transit options are limited. OCTA Route 76 runs between the airport and Huntington Beach, 6am-6pm on weekdays, stopping at Terminal A Pillar 2 on the Arrival (lower) Level. The nearest train stations (Irvine, Santa Ana and Tustin) are about 10 miles away. Shared-ride shuttles need a 24-hour advance reservation.",
+   "driving": "Use I-405, SR-55 or SR-73. Parking structure entrances are on the Departure (upper) Level only. Rates (since Jan 1, 2025): terminal structures A1, A2, B2 and C $4/hour, $30/day; Main Street lot (1512 Main St, Irvine) $3/hour, $20/day, with a free shuttle every 15 minutes, 4:30am-midnight; curbside valet $50/day, 5am-11pm. JWA says the terminal structures fill quickly, so allow extra time."
+  },
+  "construction2026": [
+   "Electrical work on the lower roadway near Terminal C is scheduled from October 2025 to August 2028",
+   "The cell phone waiting lot has limited space while a construction trailer is staged there. JWA says it does not expect delays from its Capital Improvement Program."
+  ],
+  "bagDrop": "Southwest: check bags at least 45 minutes before a domestic flight's scheduled departure (60 minutes for international), and check in at least 30 minutes before a domestic flight. American and United: check in and check bags 45 minutes before most domestic flights. Delta: bags 45 minutes before domestic departure, check-in 30 minutes without bags. Alaska: check in at least 50 minutes before a domestic flight (AP, May 2025).",
+  "tips": [
+   "Check your terminal: Southwest, Allegiant and Frontier use Terminal C; United and Alaska use Terminal B; American, Delta, Air Canada, Breeze and WestJet use Terminal A",
+   "All three checkpoints lead to every gate, but CLEAR is only at the Terminal B checkpoint, 5am-7pm",
+   "Early mornings are the crunch. Flights cannot be scheduled before 6:45am (7:45am Sunday), and TSA counts peaked 6-7am in mid-September 2026.",
+   "The terminal parking structures fill quickly. Allow extra time, or use the Main Street lot and its 15-minute shuttle.",
+   "Flying Southwest with bags? Skycap curbside check-in is at the main entrance to Terminal C."
+  ],
+  "faq": [
+   {
+    "q": "How early should I get to John Wayne Airport (SNA)?",
+    "a": "JWA says 1.5 to 2 hours before a domestic flight and 3 hours before an international flight. Allow extra time early in the morning, when security is busiest."
+   },
+   {
+    "q": "Which terminal is Southwest at SNA?",
+    "a": "Terminal C. Southwest has skycap curbside check-in at the main entrance to Terminal C."
+   },
+   {
+    "q": "Are SNA's terminals connected after security?",
+    "a": "Yes. Terminals A, B and C are one building, and any gate can be reached from any security checkpoint."
+   },
+   {
+    "q": "Does SNA have TSA PreCheck and CLEAR?",
+    "a": "Yes. CLEAR is at the Terminal B checkpoint, and CLEAR's site lists CLEAR and a PreCheck lane there from 5am to 7pm. JWA does not list PreCheck hours for Terminals A and C."
+   },
+   {
+    "q": "Where do Uber and Lyft drop off and pick up at SNA?",
+    "a": "Drop-off is at the Departures (upper) Level curb. Pickup is on the top levels of parking structures A2 and B2, and on the upper level of the Terminal C structure."
+   }
+  ],
+  "sources": [
+   {
+    "title": "JWA - Travel Tips (arrival advice, checkpoints, curbside check-in)",
+    "url": "https://www.ocair.com/travelers/services/travel-tips"
+   },
+   {
+    "title": "JWA - FAQs",
+    "url": "https://www.ocair.com/travelers/services/faqs"
+   },
+   {
+    "title": "JWA - Airlines (terminal by airline)",
+    "url": "https://www.ocair.com/travelers/flights/airlines"
+   },
+   {
+    "title": "JWA - CLEAR",
+    "url": "https://www.ocair.com/travelers/services/clear"
+   },
+   {
+    "title": "JWA - TSA PreCheck",
+    "url": "https://www.ocair.com/travelers/services/tsa-prer"
+   },
+   {
+    "title": "JWA - Parking (rates effective Jan 1, 2025)",
+    "url": "https://www.ocair.com/travelers/parking-transport/parking"
+   },
+   {
+    "title": "JWA - App-Based Rideshare",
+    "url": "https://www.ocair.com/travelers/parking-transport/transportation/app-based-rideshare"
+   },
+   {
+    "title": "JWA - Buses & Trains",
+    "url": "https://www.ocair.com/travelers/parking-transport/transportation/buses-trains"
+   },
+   {
+    "title": "JWA - Capital Improvement Program",
+    "url": "https://www.ocair.com/about/news-info/capital-improvement-program"
+   },
+   {
+    "title": "JWA - Terminal Electrical Distribution Updates",
+    "url": "https://www.ocair.com/about/news-info/capital-improvement-program/terminal-electrical-distribution-updates"
+   },
+   {
+    "title": "CLEAR - John Wayne Airport location & hours",
+    "url": "https://www.clearme.com/all-locations/john-wayne-airport"
+   },
+   {
+    "title": "City of Newport Beach - July 2016 aviation update (JWA curfew and departure scheduling rules)",
+    "url": "https://newportbeachca.gov/home/showpublisheddocument/40787/636056713980970000"
+   },
+   {
+    "title": "Southwest - TSA PreCheck Touchless ID (participating airports)",
+    "url": "https://www.southwest.com/tsa-precheck-touchless-id/"
+   },
+   {
+    "title": "Southwest - When to arrive for your flight (check-in and bag deadlines)",
+    "url": "https://support.southwest.com/helpcenter/article/airport-arrival-recommendation"
+   },
+   {
+    "title": "Delta - Check-In Times at U.S. Airports",
+    "url": "https://www.delta.com/us/en/check-in-security/check-in-time-requirements/domestic-check-in"
+   },
+   {
+    "title": "AP via MyNorthwest - United narrows check-in window; airline comparison (May 27, 2025)",
+    "url": "https://mynorthwest.com/lifestyle/united-is-narrowing-its-check-in-window-for-us-flights-heres-how-it-compares-to-other-airlines/4092751"
+   },
+   {
+    "title": "TSA throughput data, September 13-19, 2026",
+    "url": "https://www.tsa.gov/sites/default/files/foia-readingroom/tsa-throughput-data-to-september-13-2026-to-september-19-2026.pdf"
    }
   ]
  },
