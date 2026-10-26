@@ -173,6 +173,9 @@ export default function BusiestTravelDays() {
           <a href={TSA_SOURCE} target="_blank" rel="noreferrer">TSA checkpoint travel numbers</a> (2026) and{" "}
           <a href={`${TSA_SOURCE}/2025`} target="_blank" rel="noreferrer">2025</a>.
         </p>
+        <p>
+          Writing about holiday travel? These charts are free to use with credit to Leave By (leaveby.xyz). Download them as images: <a href="/press/tsa-2025-calendar.png">2025 calendar</a> and <a href="/press/tsa-by-weekday.png">busiest weekday</a>.
+        </p>
       </GuideSection>
       <p className="mt-6 text-[12.5px] text-ink-3">Checked October 25, 2026.</p>
     </GuideShell>
