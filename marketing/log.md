@@ -2,6 +2,11 @@
 
 Newest first. Every ~3 hours a scheduled check-in picks the next most useful step, ships it, and adds an entry here.
 
+## 2026-11-02 (weekly report)
+- **Numbers:** still none. The Vercel analytics query API returns "not found", there's no PostHog key, and logs only go back 1 hour (0 requests logged in the last 30 minutes). Zero runtime errors in 7 days.
+- **Plan:** reordered next week's posts for Thanksgiving (in `queue.md`), and added the week 3 lesson to `learnings.md`.
+- **Next:** waiting on the founder: post the first slideshow, send the press pitch by Nov 13, send the PostHog key, and say what check-in pace they want.
+
 ## 2026-10-26 (19:00 check-in)
 - **Airports index:** with 67 guides, the phone list was about 4,600px long. Added a jump row of every airport code at the top, plus links to the two TSA data pages. Small and cheap: the founder hasn't answered whether to keep the full 3-hour pace, so this check-in avoided research agents.
 - **Next:** waiting on the founder (pace, PostHog key, Search Console, posts, press pitch).
