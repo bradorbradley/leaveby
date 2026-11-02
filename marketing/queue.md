@@ -64,3 +64,10 @@ These beat the evergreen bank in November, so post them first once posting start
 # Week of Oct 26 (plan)
 Nothing has been posted yet, so the queue stays in order: Week 1 bank (Days 1–7), then Week 2 (Days 8–10). From Nov 16, the TSA data drops (`three-million`, then `quiet-days`) jump ahead of the evergreen posts. Press pitch: send Nov 2–13 (`marketing/outreach/press-pitch.md`).
 
+# Week of Nov 2 (plan)
+Thanksgiving is Nov 26, so timely posts now go first. Nothing has been posted yet.
+1. **Day 5 · `thanksgiving`** first: it's the one most people will need this month.
+2. **`quiet-days-a`**, then `quiet-days-b` 2–3 days later.
+3. Then the Week 1 bank in order (Days 1–4, 6–7), then Week 2 (Days 8–10).
+4. **Nov 16–24:** `three-million-a` and `-b` jump ahead of everything else.
+5. **Press pitch:** send by Nov 13 (`marketing/outreach/press-pitch.md`, outlets in `outlets.md`).
