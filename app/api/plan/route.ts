@@ -1,9 +1,10 @@
 import { NextRequest } from "next/server";
 
 import { geocodeOrigin } from "@/lib/geo";
-import { computePlan } from "@/lib/plan-math";
+import { computePlan, type PlanMathInput } from "@/lib/plan-math";
 import { researchTrip } from "@/lib/research";
 import { haversineKm } from "@/lib/flight-legs";
+import { applyLaneHours } from "@/lib/lane-hours";
 import { FlightNotFoundError, legForPlan, resolveLeg } from "@/lib/resolve-flight";
 import { estimateRoute } from "@/lib/route";
 import { faaAlerts } from "@/lib/scrapers/faa";
@@ -116,7 +117,12 @@ export async function POST(request: NextRequest) {
         const research = { ...researched, airportAlerts };
 
         const bufferMinutes = Math.min(120, Math.max(0, Math.round(Number(body.bufferMinutes) || 30)));
-        const result = computePlan({ flight, route, research, bufferMinutes, checkedBag: Boolean(body.checkedBag), mode });
+        const planInput: PlanMathInput = { flight, route, research, bufferMinutes, checkedBag: Boolean(body.checkedBag), mode };
+        const first = computePlan(planInput);
+        // A PreCheck or CLEAR lane that's closed when they reach the checkpoint means standard lanes.
+        const atCheckpoint = first.timeline.find((stop) => stop.key === "checkpoint")?.iso;
+        const laneChecked = atCheckpoint ? applyLaneHours(flight, research, atCheckpoint) : research;
+        const result = laneChecked === research ? first : computePlan({ ...planInput, research: laneChecked });
         send({ type: "result", result });
       } catch (error) {
         const message = error instanceof Error ? error.message : "Something went wrong.";
