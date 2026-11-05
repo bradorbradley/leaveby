@@ -2,6 +2,10 @@
 
 Newest first. Every ~3 hours a scheduled check-in picks the next most useful step, ships it, and adds an entry here.
 
+## 2026-11-05 (03:55 check-in)
+- **PreCheck hours now cover 14 more airports.** I turned the PreCheck hours in the airport guides into a curated table (`lib/airports/precheck-hours.ts`): CLT, DEN, HNL, IND, MCO, MDW, PDX, SEA and SLC airport-wide, plus ORD (T1, T2, T3, T5), PHX (T3, T4), PHL (A-East, C, D, E), SAT (A, B) and IAH (E). A lane counts as closed only when every PreCheck checkpoint serving that terminal is closed. I left out hours that vary by day or that the guides couldn't confirm for every checkpoint.
+- **Next:** wait for the founder to say which airport it was, then fill that gap first.
+
 ## 2026-11-05 (founder report: PreCheck closed)
 - **Bug:** the founder reached security and found PreCheck closed. We held PreCheck and CLEAR hours for JFK and LGA terminals, but the plan never checked them: `isTerminalServiceOpen` was never called. The plan assumed PreCheck's short wait at any hour.
 - **Fix:** when we hold lane hours for that exact terminal, the plan checks them against the time you reach the checkpoint. If the lane is closed, it plans standard lanes with the standard wait and says when the lane opens or closes. Everywhere else, the research model is now told to do the same when its sources give the lane's hours. Tests added.

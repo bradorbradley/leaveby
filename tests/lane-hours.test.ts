@@ -49,7 +49,23 @@ describe("expedited lane hours", () => {
 
   it("does nothing without hours for that exact terminal", () => {
     assert.equal(applyLaneHours({ ...flight, terminal: "99" }, research, "2026-11-06T00:45:00.000Z"), research);
-    assert.equal(applyLaneHours({ ...flight, departureAirport: "DEN" }, research, "2026-11-06T00:45:00.000Z"), research);
+    assert.equal(applyLaneHours({ ...flight, departureAirport: "BOS" }, research, "2026-11-06T00:45:00.000Z"), research);
+    assert.equal(applyLaneHours({ ...flight, departureAirport: "ORD", terminal: "4" }, research, "2026-11-06T03:00:00.000Z"), research);
     assert.equal(applyLaneHours(flight, { ...research, lane: "standard lanes" }, "2026-11-06T00:45:00.000Z").lane, "standard lanes");
+  });
+
+  it("uses guide PreCheck hours: Midway closes at 8 PM, airport-wide", () => {
+    const mdw = { ...flight, departureAirport: "MDW", departureTimezone: "America/Chicago", terminal: null };
+    const r = applyLaneHours(mdw, research, "2026-11-06T02:30:00.000Z"); // 8:30 PM in Chicago
+    assert.equal(r.lane, "standard lanes");
+    assert.match(r.securityNotes[0], /TSA PreCheck at MDW closes at 8:00 PM/);
+    assert.equal(applyLaneHours(mdw, research, "2026-11-05T18:00:00.000Z"), research); // noon
+  });
+
+  it("uses guide PreCheck hours by terminal: PHX Terminal 3 closes at 2 PM", () => {
+    const phx = { ...flight, departureAirport: "PHX", departureTimezone: "America/Phoenix", terminal: "Terminal 3" };
+    const r = applyLaneHours(phx, research, "2026-11-05T22:00:00.000Z"); // 3:00 PM in Phoenix
+    assert.match(r.securityNotes[0], /TSA PreCheck at Terminal 3 closes at 2:00 PM/);
+    assert.equal(applyLaneHours({ ...phx, terminal: "4" }, research, "2026-11-05T22:00:00.000Z"), research); // T4 open to 7 PM
   });
 });

@@ -1,4 +1,5 @@
-import { getAirportProfile } from "@/lib/airports";
+import { getAirportProfile, getTerminalProfile } from "@/lib/airports";
+import { precheckWindow } from "@/lib/airports/precheck-hours";
 import { instantToZonedParts } from "@/lib/tz";
 import type { FlightInfo } from "@/types/flight";
 import type { Research } from "@/types/plan";
@@ -21,27 +22,35 @@ function clock(hhmm: string) {
 
 /**
  * If the traveler's expedited lane is closed when they reach the checkpoint, plan them in
- * standard lanes instead. Only acts on lane hours we hold for this exact terminal; never on a
- * fallback terminal, so a wrong terminal can't move the plan.
+ * standard lanes instead. Uses lane hours from our terminal data for that exact terminal, then
+ * the PreCheck hours from the airport guides. Never guesses a terminal, so a wrong terminal
+ * can't move the plan.
  */
 export function applyLaneHours(flight: FlightInfo, research: Research, atCheckpointISO: string): Research {
   const lane = laneOf(research.lane);
-  if (!lane || !flight.terminal) return research;
+  if (!lane) return research;
   const airport = getAirportProfile(flight.departureAirport);
-  const terminal = airport.terminals.find((t) => t.id === flight.terminal);
-  const hours = terminal?.security.serviceHours?.[lane];
-  if (!terminal || !hours) return research;
+  const terminal = flight.terminal ? airport.terminals.find((t) => t.id === flight.terminal) : undefined;
+  const fromGuide = lane === "precheck" ? precheckWindow(flight.departureAirport, flight.terminal) : null;
+  const hours = terminal?.security.serviceHours?.[lane] ?? fromGuide?.window;
+  if (!hours) return research;
+  const place = terminal?.security.serviceHours?.[lane]
+    ? terminal.name
+    : fromGuide?.terminalKey === "*"
+      ? flight.departureAirport
+      : `Terminal ${fromGuide?.terminalKey}`;
 
   const local = instantToZonedParts(new Date(atCheckpointISO), flight.departureTimezone ?? airport.timezone);
   if (local.hhmm >= hours.opensAt && local.hhmm <= hours.closesAt) return research;
 
+  const wait = (terminal ?? getTerminalProfile(flight.departureAirport, flight.terminal))?.security.waitEstimate ?? { normal: 25, peak: 40 };
   const peak = (local.hour >= 5 && local.hour < 9) || (local.hour >= 15 && local.hour < 19);
-  const standard = peak ? terminal.security.waitEstimate.peak : terminal.security.waitEstimate.normal;
+  const standard = peak ? wait.peak : wait.normal;
   const when = local.hhmm > hours.closesAt ? `closes at ${clock(hours.closesAt)}` : `opens at ${clock(hours.opensAt)}`;
   return {
     ...research,
     lane: "standard lanes",
     securityMinutes: Math.max(research.securityMinutes, standard),
-    securityNotes: [`${LANE_NAME[lane]} at ${terminal.name} ${when}, so plan for standard lanes.`, ...research.securityNotes].slice(0, 2),
+    securityNotes: [`${LANE_NAME[lane]} at ${place} ${when}, so plan for standard lanes.`, ...research.securityNotes].slice(0, 2),
   };
 }
