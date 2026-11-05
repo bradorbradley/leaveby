@@ -2,6 +2,11 @@
 
 Newest first. Every ~3 hours a scheduled check-in picks the next most useful step, ships it, and adds an entry here.
 
+## 2026-11-05 (founder report: PreCheck closed)
+- **Bug:** the founder reached security and found PreCheck closed. We held PreCheck and CLEAR hours for JFK and LGA terminals, but the plan never checked them: `isTerminalServiceOpen` was never called. The plan assumed PreCheck's short wait at any hour.
+- **Fix:** when we hold lane hours for that exact terminal, the plan checks them against the time you reach the checkpoint. If the lane is closed, it plans standard lanes with the standard wait and says when the lane opens or closes. Everywhere else, the research model is now told to do the same when its sources give the lane's hours. Tests added.
+- **Next:** we hold structured lane hours for only 5 terminals. Turn the PreCheck hours in our 67 guides into data the plan can check.
+
 ## 2026-11-02 (weekly report)
 - **Numbers:** still none. The Vercel analytics query API returns "not found", there's no PostHog key, and logs only go back 1 hour (0 requests logged in the last 30 minutes). Zero runtime errors in 7 days.
 - **Plan:** reordered next week's posts for Thanksgiving (in `queue.md`), and added the week 3 lesson to `learnings.md`.
