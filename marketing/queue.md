@@ -71,3 +71,9 @@ Thanksgiving is Nov 26, so timely posts now go first. Nothing has been posted ye
 3. Then the Week 1 bank in order (Days 1–4, 6–7), then Week 2 (Days 8–10).
 4. **Nov 16–24:** `three-million-a` and `-b` jump ahead of everything else.
 5. **Press pitch:** send by Nov 13 (`marketing/outreach/press-pitch.md`, outlets in `outlets.md`).
+
+# Week of Nov 9 (plan)
+Thanksgiving is Nov 26. Still nothing posted, so this week is about the timely posts.
+1. **`thanksgiving`** first, then **`quiet-days-a`**.
+2. **From Nov 16:** `three-million-a`, then `-b` 2–3 days later. The record-day window is Nov 16–24.
+3. **Press pitch:** the window closes Nov 13 (`marketing/outreach/press-pitch.md`).

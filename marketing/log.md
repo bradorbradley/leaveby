@@ -2,6 +2,11 @@
 
 Newest first. Every ~3 hours a scheduled check-in picks the next most useful step, ships it, and adds an entry here.
 
+## 2026-11-09 (weekly report)
+- **Numbers:** still none. The Vercel analytics query API returns "not found" and there's no PostHog key. Zero runtime errors in 7 days.
+- **This week:** the PreCheck lane-hours fixes (#61, #62), prompted by the founder's report. They're live for JFK, LGA and 14 more airports.
+- **Plan:** the week of Nov 9 in `queue.md`: Thanksgiving posts first, the record-day post from Nov 16, and the press pitch by Nov 13.
+
 ## 2026-11-05 (03:55 check-in)
 - **PreCheck hours now cover 14 more airports.** I turned the PreCheck hours in the airport guides into a curated table (`lib/airports/precheck-hours.ts`): CLT, DEN, HNL, IND, MCO, MDW, PDX, SEA and SLC airport-wide, plus ORD (T1, T2, T3, T5), PHX (T3, T4), PHL (A-East, C, D, E), SAT (A, B) and IAH (E). A lane counts as closed only when every PreCheck checkpoint serving that terminal is closed. I left out hours that vary by day or that the guides couldn't confirm for every checkpoint.
 - **Next:** wait for the founder to say which airport it was, then fill that gap first.
