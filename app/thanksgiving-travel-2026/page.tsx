@@ -18,6 +18,19 @@ export const metadata: Metadata = {
   twitter: { card: "summary_large_image", images: ["/api/og?guide=thanksgiving"] },
 };
 
+const AAA = "https://newsroom.aaa.com/2026/11/aaa-thanksgiving-holiday-travel-forecast/";
+
+// INRIX worst and best times to drive, from AAA's Nov 16, 2026 forecast (local time in each metro).
+const DRIVE = [
+  { day: "Tue Nov 24", worst: "2–8 PM", best: "Before 1 PM" },
+  { day: "Wed Nov 25", worst: "12–7 PM", best: "Before 12 PM" },
+  { day: "Thu Nov 26", worst: "Minimal traffic expected", best: "" },
+  { day: "Fri Nov 27", worst: "1–7 PM", best: "Before 12 PM" },
+  { day: "Sat Nov 28", worst: "12–9 PM", best: "Before 11 AM" },
+  { day: "Sun Nov 29", worst: "12–8 PM", best: "Before 11 AM" },
+  { day: "Mon Nov 30", worst: "2–7 PM", best: "Before 1 PM" },
+];
+
 const FAQ = [
   {
     q: "What is the busiest day to fly at Thanksgiving 2026?",
@@ -26,6 +39,14 @@ const FAQ = [
   {
     q: "How early should I get to the airport at Thanksgiving?",
     a: "Airlines still ask for at least 2 hours before domestic flights and 3 hours before international flights, and their check-in and bag-drop cutoffs don't move for crowds. On peak days the time you lose is in traffic to the airport and in the security line, so work out your time from your actual flight, terminal and starting point rather than a blanket rule.",
+  },
+  {
+    q: "How many people will travel for Thanksgiving 2026?",
+    a: "AAA projects 81.5 million Americans will travel at least 50 miles from home between Tuesday, Nov 24 and Monday, Nov 30, 2026, about 121,000 fewer than last year's 81.6 million. That includes 72.9 million by car and 5.96 million on domestic flights, 0.2% fewer flyers than last year.",
+  },
+  {
+    q: "What is the best time to drive to the airport at Thanksgiving 2026?",
+    a: "In the morning. INRIX, in AAA's forecast, puts the worst traffic on Tuesday, Nov 24 from 2 to 8 PM and on Wednesday, Nov 25 from noon to 7 PM, and the worst return traffic on Sunday, Nov 29 from noon to 8 PM. Thanksgiving Day itself should have minimal traffic.",
   },
   {
     q: "Does TSA PreCheck help at Thanksgiving?",
@@ -54,7 +75,7 @@ export default function Thanksgiving2026() {
         <ul className="space-y-2 text-[15.5px] leading-relaxed">
           <li><strong>Tue Nov 24 and Wed Nov 25:</strong> the outbound rush.</li>
           <li><strong>Thu Nov 26 (Thanksgiving):</strong> usually the quietest day of the week to fly.</li>
-          <li><strong>Sun Nov 29:</strong> the return rush, and the likeliest day for a new all-time record.</li>
+          <li><strong>Sun Nov 29:</strong> the return rush. The Sunday after Thanksgiving set TSA&apos;s all-time record the last three years.</li>
           <li><strong>Mon Nov 30:</strong> still heavy as late returners head home.</li>
           <li>Every day of TSA numbers since 2025: <Link href="/busiest-travel-days">the busiest days to fly</Link>.</li>
           <li>Flying again in December? See <Link href="/holiday-travel-2026">Christmas and New Year&apos;s 2026</Link>.</li>
@@ -64,7 +85,7 @@ export default function Thanksgiving2026() {
       <GuideSection title="Record crowds, three years running">
         <p>
           TSA screened <strong>about 3.13 million people</strong> on Sunday, Nov 30, 2025, the busiest day in its history. It was the third year in a row that the Sunday after Thanksgiving set the record, and TSA expected
-          more than 17.8 million screenings over that Thanksgiving period. If the pattern holds, Sunday, Nov 29, 2026 will be busier still.
+          more than 17.8 million screenings over that Thanksgiving period. This year AAA expects slightly fewer flyers (below), so a new record on Sunday, Nov 29, 2026 isn&apos;t certain, but it&apos;s still likely to be the busiest day of the week.
         </p>
         <p className="text-[13px] text-ink-3">
           Sources:{" "}
@@ -72,6 +93,37 @@ export default function Thanksgiving2026() {
           <a href="https://abcnews.com/US/tsa-sets-time-record-31-million-travelers-screened/story?id=128004157" target="_blank" rel="noreferrer">ABC News</a>,{" "}
           <a href="https://thepointsguy.com/news/thanksgiving-travel-2025-sets-records/" target="_blank" rel="noreferrer">The Points Guy</a>,{" "}
           <a href="https://www.tsa.gov/travel/passenger-volumes/2025" target="_blank" rel="noreferrer">TSA checkpoint numbers</a>.
+        </p>
+      </GuideSection>
+
+      <GuideSection title="AAA's 2026 forecast">
+        <p>
+          AAA projects <strong>81.5 million</strong> Americans will travel at least 50 miles from home between Tuesday, Nov 24 and Monday, Nov 30: <strong>72.9 million by car</strong> and{" "}
+          <strong>5.96 million on domestic flights</strong>. That&apos;s a 0.1% dip from last year&apos;s 81.6 million, and 0.2% fewer flyers. AAA says this ends a three-year streak of record Thanksgiving travel.
+        </p>
+        <p>The worst and best times to drive, from INRIX, local time in each metro. If you&apos;re driving to the airport, leave in the morning when you can:</p>
+        <div className="card !p-0 overflow-hidden">
+          <table className="w-full text-left text-[14px]">
+            <thead className="bg-ground text-[12.5px] text-ink-2">
+              <tr>
+                <th className="px-3 py-2 font-semibold">Day</th>
+                <th className="px-3 py-2 font-semibold">Worst traffic</th>
+                <th className="px-3 py-2 font-semibold">Best time</th>
+              </tr>
+            </thead>
+            <tbody>
+              {DRIVE.map((d) => (
+                <tr key={d.day} className="border-t border-line">
+                  <td className="whitespace-nowrap px-3 py-2 font-semibold text-ink">{d.day}</td>
+                  <td className="px-3 py-2">{d.worst}</td>
+                  <td className="whitespace-nowrap px-3 py-2">{d.best}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p className="text-[13px] text-ink-3">
+          Source: <a href={AAA} target="_blank" rel="noreferrer">AAA Thanksgiving forecast, Nov 16, 2026</a>, with INRIX. AAA counts trips, not TSA screenings, so its numbers aren&apos;t comparable with TSA&apos;s.
         </p>
       </GuideSection>
 
@@ -109,6 +161,7 @@ export default function Thanksgiving2026() {
           </p>
         </GuideSection>
       ) : null}
+      <p className="mt-6 text-[12.5px] text-ink-3">Checked November 16, 2026.</p>
     </GuideShell>
   );
 }
