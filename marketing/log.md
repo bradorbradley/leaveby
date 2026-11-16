@@ -2,6 +2,10 @@
 
 Newest first. Every ~3 hours a scheduled check-in picks the next most useful step, ships it, and adds an entry here.
 
+## 2026-11-16 (weekly report)
+- **Numbers:** still none (the Vercel analytics query API returns "not found"; no PostHog key). Zero runtime errors in 7 days.
+- **Plan:** week of Nov 16 in `queue.md`. One ask: post `three-million` before Nov 24. The press pitch moves to the Christmas cycle.
+
 ## 2026-11-09 (weekly report)
 - **Numbers:** still none. The Vercel analytics query API returns "not found" and there's no PostHog key. Zero runtime errors in 7 days.
 - **This week:** the PreCheck lane-hours fixes (#61, #62), prompted by the founder's report. They're live for JFK, LGA and 14 more airports.

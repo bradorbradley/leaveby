@@ -77,3 +77,6 @@ Thanksgiving is Nov 26. Still nothing posted, so this week is about the timely p
 1. **`thanksgiving`** first, then **`quiet-days-a`**.
 2. **From Nov 16:** `three-million-a`, then `-b` 2–3 days later. The record-day window is Nov 16–24.
 3. **Press pitch:** the window closes Nov 13 (`marketing/outreach/press-pitch.md`).
+
+# Week of Nov 16 (plan)
+Thanksgiving is Nov 26. One ask: post **`three-million-a`** this week (window Nov 16–24), then **`-b`** 2–3 days later. If there's time, post `thanksgiving` too. The press pitch window has closed; keep the pitch for the Christmas cycle (`holiday-travel-2026`, early December).
