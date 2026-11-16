@@ -2,6 +2,10 @@
 
 Newest first. Every ~3 hours a scheduled check-in picks the next most useful step, ships it, and adds an entry here.
 
+## 2026-11-16 (16:00 check-in)
+- **Thanksgiving page updated with AAA's 2026 forecast** (published today): 81.5M travelers Nov 24–30 (72.9M by car, 5.96M flying, slightly down from last year), plus INRIX's worst and best times to drive each day as a table and two new FAQs. I softened the "new record likely" line, since AAA expects 0.2% fewer flyers. Link: leaveby.xyz/thanksgiving-travel-2026
+- **Next:** IndexNow after deploy; refresh with TSA's own Thanksgiving forecast when it comes out.
+
 ## 2026-11-16 (weekly report)
 - **Numbers:** still none (the Vercel analytics query API returns "not found"; no PostHog key). Zero runtime errors in 7 days.
 - **Plan:** week of Nov 16 in `queue.md`. One ask: post `three-million` before Nov 24. The press pitch moves to the Christmas cycle.
