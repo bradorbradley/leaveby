@@ -80,3 +80,10 @@ Thanksgiving is Nov 26. Still nothing posted, so this week is about the timely p
 
 # Week of Nov 16 (plan)
 Thanksgiving is Nov 26. One ask: post **`three-million-a`** this week (window Nov 16–24), then **`-b`** 2–3 days later. If there's time, post `thanksgiving` too. The press pitch window has closed; keep the pitch for the Christmas cycle (`holiday-travel-2026`, early December).
+
+# Week of Nov 23 (plan)
+Thanksgiving week. Last chance for the Thanksgiving posts:
+- **Mon–Tue Nov 23–24:** post `three-million-a` (it still works until Sunday). If only one post goes out this year, this is it.
+- **Wed Nov 25:** `thanksgiving` (the outbound rush).
+- **Sun–Mon Nov 29–30:** if TSA reports a new record, a one-slide "it happened" follow-up; I'll draft it from TSA's numbers the morning after.
+- **Me:** add TSA's national forecast to `/thanksgiving-travel-2026` the day it's published; then from Dec 1 refresh `/holiday-travel-2026` and redraft the press pitch for the Christmas cycle.

@@ -2,6 +2,11 @@
 
 Newest first. Every ~3 hours a scheduled check-in picks the next most useful step, ships it, and adds an entry here.
 
+## 2026-11-23 (weekly report)
+- **Numbers:** still none (Vercel analytics query API returns "not found"; no PostHog key). Zero runtime errors in 7 days.
+- **This week:** Thanksgiving page updated twice from new sources (AAA forecast #65, TSA 3M estimate #66).
+- **Plan:** week of Nov 23 in `queue.md`. One ask: post `three-million-a` by Tuesday.
+
 ## 2026-11-20 (15:55 check-in)
 - **Thanksgiving page: TSA's first 2026 number.** TSA's Nov 18 release (from Las Vegas) says early indicators show it could screen more than 3 million people nationwide on Sunday, Nov 29. Added to the record section and the busiest-day FAQ, with the source. TSA's full national forecast is still pending. Link: leaveby.xyz/thanksgiving-travel-2026
 - **Next:** swap in TSA's national forecast when it's published; IndexNow after each update.
