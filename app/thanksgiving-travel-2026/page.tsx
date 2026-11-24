@@ -18,6 +18,7 @@ export const metadata: Metadata = {
   twitter: { card: "summary_large_image", images: ["/api/og?guide=thanksgiving"] },
 };
 
+const A4A = "https://www.airlines.org/news-update/u-s-airlines-prepare-for-busy-thanksgiving-travel-period-amid-record-high-jet-fuel-costs/";
 const AAA = "https://newsroom.aaa.com/2026/11/aaa-thanksgiving-holiday-travel-forecast/";
 
 // INRIX worst and best times to drive, from AAA's Nov 16, 2026 forecast (local time in each metro).
@@ -34,7 +35,7 @@ const DRIVE = [
 const FAQ = [
   {
     q: "What is the busiest day to fly at Thanksgiving 2026?",
-    a: "Expect the Sunday after Thanksgiving, Nov 29, 2026, to be the busiest. That Sunday set TSA's all-time screening record in each of the last three years, most recently about 3.13 million people on Nov 30, 2025, and TSA says early indicators show it could screen more than 3 million on Nov 29, 2026. The Tuesday and Wednesday before (Nov 24–25) are the busiest outbound days.",
+    a: "Expect the Sunday after Thanksgiving, Nov 29, 2026, to be the busiest. That Sunday set TSA's all-time screening record in each of the last three years, most recently about 3.13 million people on Nov 30, 2025, and TSA says early indicators show it could screen more than 3 million on Nov 29, 2026. Airlines for America also expects Sunday, Nov 29 and Monday, Nov 30 to be the busiest days of the holiday period. The Tuesday and Wednesday before (Nov 24–25) are the busiest outbound days.",
   },
   {
     q: "How early should I get to the airport at Thanksgiving?",
@@ -128,6 +129,16 @@ export default function Thanksgiving2026() {
         </p>
       </GuideSection>
 
+      <GuideSection title="Airlines' 2026 forecast">
+        <p>
+          Airlines for America, the U.S. airline trade group, projects U.S. airlines will carry <strong>nearly 29 million passengers</strong> from Friday, Nov 20 through Monday, Nov 30, about{" "}
+          <strong>2.7 million a day</strong>. It expects <strong>Sunday, Nov 29 and Monday, Nov 30</strong> to be the busiest days. Airlines are offering 38,000 more seats a day than in 2025, so flights will be full.
+        </p>
+        <p className="text-[13px] text-ink-3">
+          Source: <a href={A4A} target="_blank" rel="noreferrer">Airlines for America, Nov 10, 2026</a>. Airline passenger counts include connecting passengers, so they run higher than TSA screenings.
+        </p>
+      </GuideSection>
+
       <GuideSection title="Where the extra time goes">
         <ul>
           <li><strong>The drive.</strong> Holiday traffic and full airport roadways. Pickup and drop-off curbs back up first.</li>
@@ -162,7 +173,7 @@ export default function Thanksgiving2026() {
           </p>
         </GuideSection>
       ) : null}
-      <p className="mt-6 text-[12.5px] text-ink-3">Checked November 20, 2026.</p>
+      <p className="mt-6 text-[12.5px] text-ink-3">Checked November 24, 2026.</p>
     </GuideShell>
   );
 }

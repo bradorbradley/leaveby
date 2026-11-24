@@ -2,6 +2,10 @@
 
 Newest first. Every ~3 hours a scheduled check-in picks the next most useful step, ships it, and adds an entry here.
 
+## 2026-11-24 (12:55 check-in)
+- **Thanksgiving page: airlines' forecast.** Added Airlines for America's Nov 10 projection: nearly 29M passengers Nov 20–30 (~2.7M a day), with Sun Nov 29 and Mon Nov 30 the busiest days, plus 38,000 more daily seats than 2025. Also in the busiest-day FAQ. TSA's national forecast still isn't out. Link: leaveby.xyz/thanksgiving-travel-2026
+- **Next:** TSA's national forecast when published; record-day follow-up Nov 30.
+
 ## 2026-11-23 (weekly report)
 - **Numbers:** still none (Vercel analytics query API returns "not found"; no PostHog key). Zero runtime errors in 7 days.
 - **This week:** Thanksgiving page updated twice from new sources (AAA forecast #65, TSA 3M estimate #66).
