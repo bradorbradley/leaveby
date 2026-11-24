@@ -2,6 +2,9 @@
 
 Newest first. Every ~3 hours a scheduled check-in picks the next most useful step, ships it, and adds an entry here.
 
+## 2026-11-24 (18:55 check-in)
+- **Thanksgiving page: 3 more airports.** Added TSA's Nov 23 numbers for BOS (71,000+ a day Tue/Wed; 76–77k Sun/Mon), PHX (78,000+ Sun Nov 29; ~71,000 Mon Nov 30) and SLC (31,000+ Sun Nov 29), each linked to its guide. Six airports listed now. Link: leaveby.xyz/thanksgiving-travel-2026
+
 ## 2026-11-24 (15:55 check-in)
 - **Thanksgiving page: TSA's airport forecasts.** TSA's Nov 23 releases give local numbers: ATL more than 95,000 screened the Sunday after Thanksgiving; DEN more than 78,000 Sat Nov 28 and nearly 88,000 Sun Nov 29; LAS busiest Tue/Wed and Sun/Mon. Added as a short section linking to the ATL, DEN and LAS guides. Link: leaveby.xyz/thanksgiving-travel-2026
 
