@@ -2,6 +2,10 @@
 
 Newest first. Every ~3 hours a scheduled check-in picks the next most useful step, ships it, and adds an entry here.
 
+## 2026-11-24 (21:55 check-in)
+- **Thanksgiving page: TSA's national forecast is out.** TSA's Nov 24 release projects about 17.6M screenings Nov 24–30 and more than 3M on Sun Nov 29, the busiest day. Replaced the "early indicators" wording with the official numbers in the record section and busiest-day FAQ. Link: leaveby.xyz/thanksgiving-travel-2026
+- **Next:** if Nov 29 sets a record, a short "it happened" update on Nov 30 from TSA's checkpoint numbers.
+
 ## 2026-11-24 (18:55 check-in)
 - **Thanksgiving page: 3 more airports.** Added TSA's Nov 23 numbers for BOS (71,000+ a day Tue/Wed; 76–77k Sun/Mon), PHX (78,000+ Sun Nov 29; ~71,000 Mon Nov 30) and SLC (31,000+ Sun Nov 29), each linked to its guide. Six airports listed now. Link: leaveby.xyz/thanksgiving-travel-2026
 

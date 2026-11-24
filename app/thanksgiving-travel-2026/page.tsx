@@ -35,7 +35,7 @@ const DRIVE = [
 const FAQ = [
   {
     q: "What is the busiest day to fly at Thanksgiving 2026?",
-    a: "Expect the Sunday after Thanksgiving, Nov 29, 2026, to be the busiest. That Sunday set TSA's all-time screening record in each of the last three years, most recently about 3.13 million people on Nov 30, 2025, and TSA says early indicators show it could screen more than 3 million on Nov 29, 2026. Airlines for America also expects Sunday, Nov 29 and Monday, Nov 30 to be the busiest days of the holiday period. The Tuesday and Wednesday before (Nov 24–25) are the busiest outbound days.",
+    a: "Expect the Sunday after Thanksgiving, Nov 29, 2026, to be the busiest. That Sunday set TSA's all-time screening record in each of the last three years, most recently about 3.13 million people on Nov 30, 2025, and TSA projects more than 3 million on Nov 29, 2026, the busiest day of this year's holiday period. Airlines for America also expects Sunday, Nov 29 and Monday, Nov 30 to be the busiest days of the holiday period. The Tuesday and Wednesday before (Nov 24–25) are the busiest outbound days.",
   },
   {
     q: "How early should I get to the airport at Thanksgiving?",
@@ -86,7 +86,7 @@ export default function Thanksgiving2026() {
       <GuideSection title="Record crowds, three years running">
         <p>
           TSA screened <strong>about 3.13 million people</strong> on Sunday, Nov 30, 2025, the busiest day in its history. It was the third year in a row that the Sunday after Thanksgiving set the record, and TSA expected
-          more than 17.8 million screenings over that Thanksgiving period. This year AAA expects slightly fewer flyers (below), so a new record on Sunday, Nov 29, 2026 isn&apos;t certain. But TSA says early indicators show it has the potential to screen <strong>more than 3 million people</strong> nationwide that day, and it&apos;s still likely to be the busiest day of the week.
+          more than 17.8 million screenings over that Thanksgiving period. For 2026, TSA projects <strong>about 17.6 million screenings</strong> from Tuesday, Nov 24 through Monday, Nov 30, and <strong>more than 3 million</strong> on Sunday, Nov 29, the busiest day of the period. AAA expects slightly fewer flyers than last year (below), so a new all-time record isn&apos;t certain.
         </p>
         <p className="text-[13px] text-ink-3">
           Sources:{" "}
@@ -94,7 +94,7 @@ export default function Thanksgiving2026() {
           <a href="https://abcnews.com/US/tsa-sets-time-record-31-million-travelers-screened/story?id=128004157" target="_blank" rel="noreferrer">ABC News</a>,{" "}
           <a href="https://thepointsguy.com/news/thanksgiving-travel-2025-sets-records/" target="_blank" rel="noreferrer">The Points Guy</a>,{" "}
           <a href="https://www.tsa.gov/travel/passenger-volumes/2025" target="_blank" rel="noreferrer">TSA checkpoint numbers</a>,{" "}
-          <a href="https://www.tsa.gov/news/press/releases/2026/11/18/tsa-harry-reid-international-airport-fully-prepared-for-busy" target="_blank" rel="noreferrer">TSA, Nov 18, 2026</a>.
+          <a href="https://www.tsa.gov/news/press/releases/2026/11/24/tsa-ready-for-thanksgiving-passenger-volumes-urges-travelers-plan" target="_blank" rel="noreferrer">TSA, Nov 24, 2026</a>.
         </p>
       </GuideSection>
 
