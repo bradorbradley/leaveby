@@ -146,6 +146,10 @@ export default function Thanksgiving2026() {
             <Link href="/airports/atl">ATL guide</Link>
           </li>
           <li>
+            <strong>Boston (BOS):</strong> more than 71,000 a day on the Tuesday and Wednesday before Thanksgiving, then 76,000 to 77,000 a day on Sunday, Nov 29 and Monday, Nov 30.{" "}
+            <Link href="/airports/bos">BOS guide</Link>
+          </li>
+          <li>
             <strong>Denver (DEN):</strong> more than 78,000 on Saturday, Nov 28 and nearly 88,000 on Sunday, Nov 29.{" "}
             <Link href="/airports/den">DEN guide</Link>
           </li>
@@ -153,11 +157,22 @@ export default function Thanksgiving2026() {
             <strong>Las Vegas (LAS):</strong> busiest on the Tuesday and Wednesday before Thanksgiving and on Sunday, Nov 29 and Monday, Nov 30.{" "}
             <Link href="/airports/las">LAS guide</Link>
           </li>
+          <li>
+            <strong>Phoenix (PHX):</strong> more than 78,000 on Sunday, Nov 29 and about 71,000 on Monday, Nov 30.{" "}
+            <Link href="/airports/phx">PHX guide</Link>
+          </li>
+          <li>
+            <strong>Salt Lake City (SLC):</strong> busy the Tuesday and Wednesday before, and more than 31,000 on Sunday, Nov 29.{" "}
+            <Link href="/airports/slc">SLC guide</Link>
+          </li>
         </ul>
         <p className="text-[13px] text-ink-3">
           Sources: TSA releases for{" "}
           <a href="https://www.tsa.gov/news/press/releases/2026/11/23/tsa-hartsfield-jackson-atlanta-international-airport-prepared-for" target="_blank" rel="noreferrer">ATL</a>,{" "}
-          <a href="https://www.tsa.gov/news/press/releases/2026/11/23/tsa-denver-international-airport-ready-for-busy-thanksgiving-holiday" target="_blank" rel="noreferrer">DEN</a> (Nov 23, 2026) and{" "}
+          <a href="https://www.tsa.gov/news/press/releases/2026/11/23/tsa-boston-logan-international-airport-ready-for-busy-thanksgiving" target="_blank" rel="noreferrer">BOS</a>,{" "}
+          <a href="https://www.tsa.gov/news/press/releases/2026/11/23/tsa-denver-international-airport-ready-for-busy-thanksgiving-holiday" target="_blank" rel="noreferrer">DEN</a>,{" "}
+          <a href="https://www.tsa.gov/news/press/releases/2026/11/23/tsa-phoenix-sky-harbor-international-airport-fully-prepared-for-busy" target="_blank" rel="noreferrer">PHX</a>,{" "}
+          <a href="https://www.tsa.gov/news/press/releases/2026/11/23/tsa-salt-lake-city-international-ready-for-thanksgiving-holiday" target="_blank" rel="noreferrer">SLC</a> (Nov 23, 2026) and{" "}
           <a href="https://www.tsa.gov/news/press/releases/2026/11/18/tsa-harry-reid-international-airport-fully-prepared-for-busy" target="_blank" rel="noreferrer">LAS</a> (Nov 18, 2026).
         </p>
       </GuideSection>
