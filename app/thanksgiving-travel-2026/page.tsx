@@ -139,6 +139,29 @@ export default function Thanksgiving2026() {
         </p>
       </GuideSection>
 
+      <GuideSection title="What TSA expects at big airports">
+        <ul>
+          <li>
+            <strong>Atlanta (ATL):</strong> more than 95,000 people screened on the Sunday after Thanksgiving. The Tuesday and Wednesday before are also peak days.{" "}
+            <Link href="/airports/atl">ATL guide</Link>
+          </li>
+          <li>
+            <strong>Denver (DEN):</strong> more than 78,000 on Saturday, Nov 28 and nearly 88,000 on Sunday, Nov 29.{" "}
+            <Link href="/airports/den">DEN guide</Link>
+          </li>
+          <li>
+            <strong>Las Vegas (LAS):</strong> busiest on the Tuesday and Wednesday before Thanksgiving and on Sunday, Nov 29 and Monday, Nov 30.{" "}
+            <Link href="/airports/las">LAS guide</Link>
+          </li>
+        </ul>
+        <p className="text-[13px] text-ink-3">
+          Sources: TSA releases for{" "}
+          <a href="https://www.tsa.gov/news/press/releases/2026/11/23/tsa-hartsfield-jackson-atlanta-international-airport-prepared-for" target="_blank" rel="noreferrer">ATL</a>,{" "}
+          <a href="https://www.tsa.gov/news/press/releases/2026/11/23/tsa-denver-international-airport-ready-for-busy-thanksgiving-holiday" target="_blank" rel="noreferrer">DEN</a> (Nov 23, 2026) and{" "}
+          <a href="https://www.tsa.gov/news/press/releases/2026/11/18/tsa-harry-reid-international-airport-fully-prepared-for-busy" target="_blank" rel="noreferrer">LAS</a> (Nov 18, 2026).
+        </p>
+      </GuideSection>
+
       <GuideSection title="Where the extra time goes">
         <ul>
           <li><strong>The drive.</strong> Holiday traffic and full airport roadways. Pickup and drop-off curbs back up first.</li>
