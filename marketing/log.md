@@ -2,6 +2,9 @@
 
 Newest first. Every ~3 hours a scheduled check-in picks the next most useful step, ships it, and adds an entry here.
 
+## 2026-11-24 (15:55 check-in)
+- **Thanksgiving page: TSA's airport forecasts.** TSA's Nov 23 releases give local numbers: ATL more than 95,000 screened the Sunday after Thanksgiving; DEN more than 78,000 Sat Nov 28 and nearly 88,000 Sun Nov 29; LAS busiest Tue/Wed and Sun/Mon. Added as a short section linking to the ATL, DEN and LAS guides. Link: leaveby.xyz/thanksgiving-travel-2026
+
 ## 2026-11-24 (12:55 check-in)
 - **Thanksgiving page: airlines' forecast.** Added Airlines for America's Nov 10 projection: nearly 29M passengers Nov 20–30 (~2.7M a day), with Sun Nov 29 and Mon Nov 30 the busiest days, plus 38,000 more daily seats than 2025. Also in the busiest-day FAQ. TSA's national forecast still isn't out. Link: leaveby.xyz/thanksgiving-travel-2026
 - **Next:** TSA's national forecast when published; record-day follow-up Nov 30.
